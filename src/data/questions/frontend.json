@@ -10,7 +10,8 @@
       "Sve tri tehnologije rade identičnu stvar, razlikuje se samo sintaksa"
     ],
     "correctIndex": 0,
-    "explanation": "To je klasična podjela odgovornosti na webu: HTML = sadržaj/struktura, CSS = prezentacija, JS = ponašanje."
+    "explanation": "To je klasična podjela odgovornosti na webu: HTML = sadržaj/struktura, CSS = prezentacija, JS = ponašanje.",
+    "difficulty": "easy"
   },
   {
     "id": "frontend-002-dom",
@@ -23,7 +24,8 @@
       "Biblioteka za rad s bazama podataka u pregledniku"
     ],
     "correctIndex": 0,
-    "explanation": "DOM predstavlja HTML strukturu kao stablo objekata (node-ova) koje JavaScript može čitati, dodavati, mijenjati ili brisati, a preglednik zatim ponovno iscrtava stranicu."
+    "explanation": "DOM predstavlja HTML strukturu kao stablo objekata (node-ova) koje JavaScript može čitati, dodavati, mijenjati ili brisati, a preglednik zatim ponovno iscrtava stranicu.",
+    "difficulty": "easy"
   },
   {
     "id": "frontend-003-let-const-var",
@@ -36,7 +38,8 @@
       "Razlika je samo u brzini izvršavanja koda"
     ],
     "correctIndex": 0,
-    "explanation": "var je 'hoistan' na vrh funkcije i podložan poznatim greškama zbog function scopea; let/const uvode block scope i sigurnije ponašanje, pri čemu const sprječava ponovnu dodjelu (ali ne čini objekt immutable)."
+    "explanation": "var je 'hoistan' na vrh funkcije i podložan poznatim greškama zbog function scopea; let/const uvode block scope i sigurnije ponašanje, pri čemu const sprječava ponovnu dodjelu (ali ne čini objekt immutable).",
+    "difficulty": "easy"
   },
   {
     "id": "frontend-004-equality-operators",
@@ -49,7 +52,8 @@
       "Nema razlike, oba operatora rade identično u svim slučajevima"
     ],
     "correctIndex": 0,
-    "explanation": "Npr. 0 == '0' je true zbog pretvorbe tipa, dok je 0 === '0' false jer su tipovi različiti (number vs string) - zato se === preporučuje kao sigurniji izbor."
+    "explanation": "Npr. 0 == '0' je true zbog pretvorbe tipa, dok je 0 === '0' false jer su tipovi različiti (number vs string) - zato se === preporučuje kao sigurniji izbor.",
+    "difficulty": "easy"
   },
   {
     "id": "frontend-005-null-vs-undefined",
@@ -62,7 +66,8 @@
       "null označava grešku u kodu, dok undefined označava uspješno izvršavanje"
     ],
     "correctIndex": 0,
-    "explanation": "JavaScript automatski dodjeljuje undefined nedeklariranim/nepostavljenim varijablama, dok null programer eksplicitno postavlja kao 'namjerno prazna vrijednost'."
+    "explanation": "JavaScript automatski dodjeljuje undefined nedeklariranim/nepostavljenim varijablama, dok null programer eksplicitno postavlja kao 'namjerno prazna vrijednost'.",
+    "difficulty": "easy"
   },
   {
     "id": "frontend-006-event-bubbling",
@@ -75,7 +80,8 @@
       "Način na koji CSS animacije mijenjaju veličinu elementa"
     ],
     "correctIndex": 0,
-    "explanation": "Kad kliknete na element unutar drugog elementa, event prvo okine handler na tom elementu, a zatim 'buble-a' prema gore kroz sve roditelje (osim ako se pozove stopPropagation)."
+    "explanation": "Kad kliknete na element unutar drugog elementa, event prvo okine handler na tom elementu, a zatim 'buble-a' prema gore kroz sve roditelje (osim ako se pozove stopPropagation).",
+    "difficulty": "medium"
   },
   {
     "id": "frontend-007-event-propagation",
@@ -88,7 +94,8 @@
       "Mehanizam koji sprječava da se ijedan event ikad okine dvaput"
     ],
     "correctIndex": 0,
-    "explanation": "Event propagation opisuje cijeli put eventa kroz DOM stablo, a bubbling (širenje prema gore) je samo jedna od njegove tri faze - druga je capturing (širenje prema dolje prije nego stigne do cilja)."
+    "explanation": "Event propagation opisuje cijeli put eventa kroz DOM stablo, a bubbling (širenje prema gore) je samo jedna od njegove tri faze - druga je capturing (širenje prema dolje prije nego stigne do cilja).",
+    "difficulty": "medium"
   },
   {
     "id": "frontend-008-callback-functions",
@@ -101,7 +108,8 @@
       "Funkcije koje uvijek vraćaju Promise objekt"
     ],
     "correctIndex": 0,
-    "explanation": "Callback je uobičajen obrazac u JavaScriptu za rukovanje asinkronim operacijama (npr. addEventListener('click', callback) ili setTimeout(callback, 1000))."
+    "explanation": "Callback je uobičajen obrazac u JavaScriptu za rukovanje asinkronim operacijama (npr. addEventListener('click', callback) ili setTimeout(callback, 1000)).",
+    "difficulty": "easy"
   },
   {
     "id": "frontend-009-promise",
@@ -114,7 +122,8 @@
       "Poseban tip petlje za iteriranje kroz nizove"
     ],
     "correctIndex": 0,
-    "explanation": "Promise omogućuje čitljivije rukovanje asinkronim kodom pomoću .then()/.catch() lanaca (ili async/await) umjesto ugniježđenih callbackova."
+    "explanation": "Promise omogućuje čitljivije rukovanje asinkronim kodom pomoću .then()/.catch() lanaca (ili async/await) umjesto ugniježđenih callbackova.",
+    "difficulty": "medium"
   },
   {
     "id": "frontend-010-async-await",
@@ -127,7 +136,8 @@
       "async pretvara funkciju u sinkronu, a await je zastarjela sintaksa"
     ],
     "correctIndex": 0,
-    "explanation": "async/await je 'syntactic sugar' iznad Promisea - omogućuje pisanje asinkronog koda bez lanaca .then() poziva, uz zadržavanje neblokirajućeg ponašanja."
+    "explanation": "async/await je 'syntactic sugar' iznad Promisea - omogućuje pisanje asinkronog koda bez lanaca .then() poziva, uz zadržavanje neblokirajućeg ponašanja.",
+    "difficulty": "medium"
   },
   {
     "id": "frontend-011-single-threaded",
@@ -140,7 +150,8 @@
       "Svaka JavaScript funkcija smije imati samo jedan parametar"
     ],
     "correctIndex": 0,
-    "explanation": "Postoji samo jedan call stack, pa se izvršavanje odvija sekvencijalno - asinkrone operacije (I/O, timeri) se delegiraju pregledniku/Node okruženju i vraćaju u red čekanja (event loop) kad su gotove."
+    "explanation": "Postoji samo jedan call stack, pa se izvršavanje odvija sekvencijalno - asinkrone operacije (I/O, timeri) se delegiraju pregledniku/Node okruženju i vraćaju u red čekanja (event loop) kad su gotove.",
+    "difficulty": "medium"
   },
   {
     "id": "frontend-012-event-loop",
@@ -153,7 +164,8 @@
       "Funkcija koja se poziva samo jednom pri pokretanju aplikacije"
     ],
     "correctIndex": 0,
-    "explanation": "Event loop omogućuje da single-threaded JavaScript obrađuje asinkrone operacije - dok se čeka rezultat (npr. mrežni poziv), glavna nit nije blokirana, a callback se izvršava tek kad se stack isprazni."
+    "explanation": "Event loop omogućuje da single-threaded JavaScript obrađuje asinkrone operacije - dok se čeka rezultat (npr. mrežni poziv), glavna nit nije blokirana, a callback se izvršava tek kad se stack isprazni.",
+    "difficulty": "hard"
   },
   {
     "id": "frontend-013-closure",
@@ -166,7 +178,8 @@
       "Funkcija koja se automatski poziva kad se stranica zatvori"
     ],
     "correctIndex": 0,
-    "explanation": "Kad unutarnja funkcija koristi varijable iz vanjske funkcije, ona zadržava referencu na taj opseg i nakon što se vanjska funkcija izvrši - to je osnova za mnoge JS obrasce (npr. privatno stanje, memoizacija)."
+    "explanation": "Kad unutarnja funkcija koristi varijable iz vanjske funkcije, ona zadržava referencu na taj opseg i nakon što se vanjska funkcija izvrši - to je osnova za mnoge JS obrasce (npr. privatno stanje, memoizacija).",
+    "difficulty": "hard"
   },
   {
     "id": "frontend-014-scope",
@@ -179,7 +192,8 @@
       "Veličina memorije koju varijabla zauzima"
     ],
     "correctIndex": 0,
-    "explanation": "Scope određuje gdje se u kodu neka varijabla može referencirati - let/const stvaraju block scope, var stvara function scope, a varijable deklarirane izvan svega su globalne."
+    "explanation": "Scope određuje gdje se u kodu neka varijabla može referencirati - let/const stvaraju block scope, var stvara function scope, a varijable deklarirane izvan svega su globalne.",
+    "difficulty": "medium"
   },
   {
     "id": "frontend-015-hoisting",
@@ -192,7 +206,8 @@
       "Mehanizam za automatsko generiranje dokumentacije iz koda"
     ],
     "correctIndex": 0,
-    "explanation": "Deklaracije funkcija i var varijabli se 'podižu' na vrh opsega (inicijalizacija ostaje na mjestu) - zato se funkcija može pozvati prije nego je deklarirana u kodu, dok su let/const u 'temporal dead zone' do same deklaracije."
+    "explanation": "Deklaracije funkcija i var varijabli se 'podižu' na vrh opsega (inicijalizacija ostaje na mjestu) - zato se funkcija može pozvati prije nego je deklarirana u kodu, dok su let/const u 'temporal dead zone' do same deklaracije.",
+    "difficulty": "medium"
   },
   {
     "id": "frontend-016-destructuring",
@@ -205,7 +220,8 @@
       "Tehnika za spajanje dva objekta u jedan"
     ],
     "correctIndex": 0,
-    "explanation": "Primjer: const { name, age } = user; ili const [first, second] = arr; - čitljiviji je način izvlačenja podataka nego ručno pristupanje svakom svojstvu/indeksu."
+    "explanation": "Primjer: const { name, age } = user; ili const [first, second] = arr; - čitljiviji je način izvlačenja podataka nego ručno pristupanje svakom svojstvu/indeksu.",
+    "difficulty": "easy"
   },
   {
     "id": "frontend-017-spread-operator",
@@ -218,7 +234,8 @@
       "Definira privatnu varijablu unutar klase"
     ],
     "correctIndex": 0,
-    "explanation": "Primjeri: [...arr1, ...arr2] spaja nizove, {...obj1, ...obj2} spaja objekte, a fn(...args) raspakira niz u pojedinačne argumente funkcije."
+    "explanation": "Primjeri: [...arr1, ...arr2] spaja nizove, {...obj1, ...obj2} spaja objekte, a fn(...args) raspakira niz u pojedinačne argumente funkcije.",
+    "difficulty": "easy"
   },
   {
     "id": "frontend-018-spa-vs-ssr",
@@ -231,7 +248,8 @@
       "Nema razlike u ponašanju, razlikuje se samo naziv arhitekture"
     ],
     "correctIndex": 0,
-    "explanation": "SPA (npr. React/Vue aplikacije) nudi bržu navigaciju bez ponovnog učitavanja stranice nakon početnog loada, dok server-rendered pristup (npr. klasični PHP) šalje potpuno nov HTML pri svakom zahtjevu - svaki pristup ima svoje prednosti (SEO, initial load, interaktivnost)."
+    "explanation": "SPA (npr. React/Vue aplikacije) nudi bržu navigaciju bez ponovnog učitavanja stranice nakon početnog loada, dok server-rendered pristup (npr. klasični PHP) šalje potpuno nov HTML pri svakom zahtjevu - svaki pristup ima svoje prednosti (SEO, initial load, interaktivnost).",
+    "difficulty": "medium"
   },
   {
     "id": "frontend-019-box-model",
@@ -244,7 +262,8 @@
       "Tehnika za animiranje elemenata pri scrollanju"
     ],
     "correctIndex": 0,
-    "explanation": "Svaki element se sastoji od sadržaja, unutarnjeg razmaka (padding), ruba (border) i vanjskog razmaka (margin) - box-sizing: border-box mijenja kako se ukupna širina/visina računa."
+    "explanation": "Svaki element se sastoji od sadržaja, unutarnjeg razmaka (padding), ruba (border) i vanjskog razmaka (margin) - box-sizing: border-box mijenja kako se ukupna širina/visina računa.",
+    "difficulty": "easy"
   },
   {
     "id": "frontend-020-flexbox-vs-grid",
@@ -257,7 +276,8 @@
       "Flexbox je zastarjela tehnologija koju su u potpunosti zamijenili Grid"
     ],
     "correctIndex": 0,
-    "explanation": "Za raspored elemenata u jednom smjeru (npr. navigacijska traka) prirodniji je Flexbox; za složenije rasporede stranice s redcima i stupcima (npr. cijeli layout stranice) prirodniji je Grid."
+    "explanation": "Za raspored elemenata u jednom smjeru (npr. navigacijska traka) prirodniji je Flexbox; za složenije rasporede stranice s redcima i stupcima (npr. cijeli layout stranice) prirodniji je Grid.",
+    "difficulty": "easy"
   },
   {
     "id": "frontend-021-storage-cookies",
@@ -270,7 +290,8 @@
       "localStorage i sessionStorage se automatski šalju serveru kao cookie"
     ],
     "correctIndex": 0,
-    "explanation": "Ključna razlika je u trajanju i vidljivosti serveru: cookie putuje sa svakim zahtjevom (pa se koristi npr. za sesije), dok su localStorage/sessionStorage dostupni samo u pregledniku putem JavaScripta."
+    "explanation": "Ključna razlika je u trajanju i vidljivosti serveru: cookie putuje sa svakim zahtjevom (pa se koristi npr. za sesije), dok su localStorage/sessionStorage dostupni samo u pregledniku putem JavaScripta.",
+    "difficulty": "medium"
   },
   {
     "id": "frontend-022-debounce-vs-throttle",
@@ -283,7 +304,8 @@
       "Debounce povećava broj poziva funkcije, a throttle ih potpuno zaustavlja"
     ],
     "correctIndex": 0,
-    "explanation": "Tipičan primjer: debounce za search input (čekaj da korisnik prestane tipkati), throttle za scroll/resize event (izvrši najviše jednom svakih npr. 200ms)."
+    "explanation": "Tipičan primjer: debounce za search input (čekaj da korisnik prestane tipkati), throttle za scroll/resize event (izvrši najviše jednom svakih npr. 200ms).",
+    "difficulty": "medium"
   },
   {
     "id": "frontend-023-microtasks-macrotasks",
@@ -296,7 +318,8 @@
       "Nema razlike, oba tipa taskova se izvršavaju identičnim redoslijedom"
     ],
     "correctIndex": 0,
-    "explanation": "Nakon svakog macrotaska, event loop prvo isprazni CIJELI red microtaskova prije nego uzme sljedeći macrotask - zato se npr. Promise.resolve().then() izvrši prije setTimeout(fn, 0)."
+    "explanation": "Nakon svakog macrotaska, event loop prvo isprazni CIJELI red microtaskova prije nego uzme sljedeći macrotask - zato se npr. Promise.resolve().then() izvrši prije setTimeout(fn, 0).",
+    "difficulty": "hard"
   },
   {
     "id": "frontend-024-react-keys",
@@ -309,7 +332,8 @@
       "Kako bi svaki element dobio globalnu JavaScript varijablu"
     ],
     "correctIndex": 0,
-    "explanation": "Stabilan key pomaže Reactovom reconcileru prepoznati koji su elementi dodani, uklonjeni ili premješteni, čime se izbjegavaju nepotrebna ponovna renderiranja i gubitak lokalnog stanja komponente."
+    "explanation": "Stabilan key pomaže Reactovom reconcileru prepoznati koji su elementi dodani, uklonjeni ili premješteni, čime se izbjegavaju nepotrebna ponovna renderiranja i gubitak lokalnog stanja komponente.",
+    "difficulty": "medium"
   },
   {
     "id": "frontend-025-safe-text-rendering",
@@ -322,6 +346,7 @@
       "Izvršavanje teksta kroz eval() prije prikaza"
     ],
     "correctIndex": 0,
-    "explanation": "React pri običnoj JSX interpolaciji automatski escapea sadržaj, čime sprječava XSS napade; izravno umetanje HTML-a (npr. dangerouslySetInnerHTML) zaobilazi tu zaštitu i zahtijeva pažljivu sanitizaciju."
+    "explanation": "React pri običnoj JSX interpolaciji automatski escapea sadržaj, čime sprječava XSS napade; izravno umetanje HTML-a (npr. dangerouslySetInnerHTML) zaobilazi tu zaštitu i zahtijeva pažljivu sanitizaciju.",
+    "difficulty": "medium"
   }
 ]

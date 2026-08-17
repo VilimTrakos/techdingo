@@ -10,7 +10,8 @@
       "Način spremanja konfiguracijskih varijabli u bazu podataka"
     ],
     "correctIndex": 0,
-    "explanation": "Umjesto da klasa sama kreira svoje ovisnosti (npr. new Database()), one joj se 'injektiraju' izvana - to olakšava zamjenu implementacija (npr. mock u testovima) bez mijenjanja same klase."
+    "explanation": "Umjesto da klasa sama kreira svoje ovisnosti (npr. new Database()), one joj se 'injektiraju' izvana - to olakšava zamjenu implementacija (npr. mock u testovima) bez mijenjanja same klase.",
+    "difficulty": "medium"
   },
   {
     "id": "backend-002-rest-api",
@@ -23,7 +24,8 @@
       "Protokol za enkripciju podataka između klijenta i servera"
     ],
     "correctIndex": 0,
-    "explanation": "REST (Representational State Transfer) definira principe poput korištenja HTTP metoda za operacije nad resursima, statelessness-a i standardiziranih odgovora (najčešće JSON)."
+    "explanation": "REST (Representational State Transfer) definira principe poput korištenja HTTP metoda za operacije nad resursima, statelessness-a i standardiziranih odgovora (najčešće JSON).",
+    "difficulty": "easy"
   },
   {
     "id": "backend-003-http-methods",
@@ -36,7 +38,8 @@
       "PATCH i PUT se koriste isključivo za autentikaciju korisnika"
     ],
     "correctIndex": 0,
-    "explanation": "Konvencija (ne prisila) HTTP metoda: GET = read, POST = create, PUT = full update/replace, PATCH = partial update, DELETE = remove - PUT i DELETE su tipično idempotentni, POST obično nije."
+    "explanation": "Konvencija (ne prisila) HTTP metoda: GET = read, POST = create, PUT = full update/replace, PATCH = partial update, DELETE = remove - PUT i DELETE su tipično idempotentni, POST obično nije.",
+    "difficulty": "easy"
   },
   {
     "id": "backend-004-http-status-codes",
@@ -49,7 +52,8 @@
       "Svaka kategorija kodova ima potpuno proizvoljno značenje ovisno o developeru"
     ],
     "correctIndex": 0,
-    "explanation": "Prva znamenka statusnog koda odmah govori o kategoriji odgovora, što olakšava rukovanje odgovorima na klijentskoj strani bez parsiranja tijela odgovora."
+    "explanation": "Prva znamenka statusnog koda odmah govori o kategoriji odgovora, što olakšava rukovanje odgovorima na klijentskoj strani bez parsiranja tijela odgovora.",
+    "difficulty": "easy"
   },
   {
     "id": "backend-005-authentication-vs-authorization",
@@ -62,7 +66,8 @@
       "To su sinonimi koji opisuju identičan proces provjere lozinke"
     ],
     "correctIndex": 0,
-    "explanation": "Prvo se korisnik autenticira (dokaže identitet, npr. e-mail+lozinka), a zatim se za svaku akciju provjerava autorizacija (ima li taj identitet dozvolu za tu akciju/resurs)."
+    "explanation": "Prvo se korisnik autenticira (dokaže identitet, npr. e-mail+lozinka), a zatim se za svaku akciju provjerava autorizacija (ima li taj identitet dozvolu za tu akciju/resurs).",
+    "difficulty": "easy"
   },
   {
     "id": "backend-006-stateless",
@@ -75,7 +80,8 @@
       "Svaki zahtjev se automatski sprema u trajnu memoriju servera"
     ],
     "correctIndex": 0,
-    "explanation": "Statelessness olakšava skaliranje (bilo koji server instance može obraditi bilo koji zahtjev) jer server ne mora dijeliti session stanje - autentikacija se npr. rješava tokenom koji klijent šalje sa svakim zahtjevom."
+    "explanation": "Statelessness olakšava skaliranje (bilo koji server instance može obraditi bilo koji zahtjev) jer server ne mora dijeliti session stanje - autentikacija se npr. rješava tokenom koji klijent šalje sa svakim zahtjevom.",
+    "difficulty": "medium"
   },
   {
     "id": "backend-007-middleware",
@@ -88,7 +94,8 @@
       "Naziv za server koji se nalazi fizički između dva podatkovna centra"
     ],
     "correctIndex": 0,
-    "explanation": "Middleware funkcije se ulančavaju (npr. u Express.js) - svaka može modificirati request/response ili prekinuti lanac (npr. vratiti 401 ako korisnik nije autenticiran) prije nego zahtjev stigne do route handlera."
+    "explanation": "Middleware funkcije se ulančavaju (npr. u Express.js) - svaka može modificirati request/response ili prekinuti lanac (npr. vratiti 401 ako korisnik nije autenticiran) prije nego zahtjev stigne do route handlera.",
+    "difficulty": "medium"
   },
   {
     "id": "backend-008-sync-vs-async",
@@ -101,7 +108,8 @@
       "Nema razlike u ponašanju, razlikuje se samo sintaksa pisanja"
     ],
     "correctIndex": 0,
-    "explanation": "Asinkrono izvršavanje je ključno za I/O operacije (baza podataka, mrežni pozivi, čitanje datoteka) jer sprječava blokiranje cijele aplikacije dok se čeka spori vanjski resurs."
+    "explanation": "Asinkrono izvršavanje je ključno za I/O operacije (baza podataka, mrežni pozivi, čitanje datoteka) jer sprječava blokiranje cijele aplikacije dok se čeka spori vanjski resurs.",
+    "difficulty": "medium"
   },
   {
     "id": "backend-009-race-condition",
@@ -114,7 +122,8 @@
       "Naziv za automatsko testiranje performansi aplikacije"
     ],
     "correctIndex": 0,
-    "explanation": "Primjer: dva zahtjeva istovremeno čitaju stanje računa, oba izračunaju novo stanje na temelju starog i zapišu ga - jedna promjena se 'izgubi' jer se procesi nisu ispravno sinkronizirali (rješava se npr. transakcijama, zaključavanjem ili atomičnim operacijama)."
+    "explanation": "Primjer: dva zahtjeva istovremeno čitaju stanje računa, oba izračunaju novo stanje na temelju starog i zapišu ga - jedna promjena se 'izgubi' jer se procesi nisu ispravno sinkronizirali (rješava se npr. transakcijama, zaključavanjem ili atomičnim operacijama).",
+    "difficulty": "hard"
   },
   {
     "id": "backend-010-deadlock",
@@ -127,7 +136,8 @@
       "Proces automatskog zaustavljanja aplikacije nakon isteka licence"
     ],
     "correctIndex": 0,
-    "explanation": "Klasičan primjer: proces A drži zaključan resurs 1 i čeka resurs 2, dok proces B drži zaključan resurs 2 i čeka resurs 1 - nijedan se ne može pomaknuti bez vanjske intervencije (timeout, detekcija ciklusa)."
+    "explanation": "Klasičan primjer: proces A drži zaključan resurs 1 i čeka resurs 2, dok proces B drži zaključan resurs 2 i čeka resurs 1 - nijedan se ne može pomaknuti bez vanjske intervencije (timeout, detekcija ciklusa).",
+    "difficulty": "hard"
   },
   {
     "id": "backend-011-caching",
@@ -140,7 +150,8 @@
       "Caching se može koristiti isključivo za slike i statične datoteke"
     ],
     "correctIndex": 0,
-    "explanation": "Cache ubrzava sustav izbjegavanjem ponovnog računanja/dohvaćanja istih podataka, ali unosi izazov: ako se izvorni podatak promijeni, stara verzija u cacheu mora se osvježiti ili ukloniti - poznato kao jedan od 'dva najteža problema u informatici'."
+    "explanation": "Cache ubrzava sustav izbjegavanjem ponovnog računanja/dohvaćanja istih podataka, ali unosi izazov: ako se izvorni podatak promijeni, stara verzija u cacheu mora se osvježiti ili ukloniti - poznato kao jedan od 'dva najteža problema u informatici'.",
+    "difficulty": "medium"
   },
   {
     "id": "backend-012-idempotency",
@@ -153,7 +164,8 @@
       "Sve HTTP metode su po definiciji idempotentne"
     ],
     "correctIndex": 0,
-    "explanation": "PUT /users/5 s istim podacima uvijek rezultira istim stanjem bez obzira koliko se puta pozove, dok POST /users obično svaki put kreira novi resurs (novi id) - ovo je bitno za sigurno automatsko ponavljanje zahtjeva (retry) kod mrežnih grešaka."
+    "explanation": "PUT /users/5 s istim podacima uvijek rezultira istim stanjem bez obzira koliko se puta pozove, dok POST /users obično svaki put kreira novi resurs (novi id) - ovo je bitno za sigurno automatsko ponavljanje zahtjeva (retry) kod mrežnih grešaka.",
+    "difficulty": "medium"
   },
   {
     "id": "backend-013-load-balancer",
@@ -166,7 +178,8 @@
       "Sigurnosni mehanizam koji šifrira lozinke korisnika"
     ],
     "correctIndex": 0,
-    "explanation": "Load balancer (npr. Nginx, HAProxy, cloud load balanceri) distribuira promet prema više instanci aplikacije, čime omogućuje horizontalno skaliranje i otpornost na pad pojedine instance."
+    "explanation": "Load balancer (npr. Nginx, HAProxy, cloud load balanceri) distribuira promet prema više instanci aplikacije, čime omogućuje horizontalno skaliranje i otpornost na pad pojedine instance.",
+    "difficulty": "medium"
   },
   {
     "id": "backend-014-horizontal-vs-vertical-scaling",
@@ -179,7 +192,8 @@
       "Nema razlike, oba pojma opisuju identičan proces"
     ],
     "correctIndex": 0,
-    "explanation": "Horizontalno skaliranje obično zahtijeva load balancer i stateless dizajn aplikacije, dok vertikalno skaliranje ima fizičku gornju granicu (koliko se resursa može dodati jednom stroju)."
+    "explanation": "Horizontalno skaliranje obično zahtijeva load balancer i stateless dizajn aplikacije, dok vertikalno skaliranje ima fizičku gornju granicu (koliko se resursa može dodati jednom stroju).",
+    "difficulty": "medium"
   },
   {
     "id": "backend-015-microservices-vs-monolith",
@@ -192,7 +206,8 @@
       "Nema stvarne razlike, mikroservisi su samo noviji naziv za monolit"
     ],
     "correctIndex": 0,
-    "explanation": "Mikroservisi olakšavaju neovisno skaliranje i deployanje dijelova sustava, ali uvode dodatnu složenost (mrežna komunikacija, distribuirane transakcije, monitoring) koju monolit nema."
+    "explanation": "Mikroservisi olakšavaju neovisno skaliranje i deployanje dijelova sustava, ali uvode dodatnu složenost (mrežna komunikacija, distribuirane transakcije, monitoring) koju monolit nema.",
+    "difficulty": "medium"
   },
   {
     "id": "backend-016-cors",
@@ -205,7 +220,8 @@
       "Alat za automatsko testiranje performansi API-ja"
     ],
     "correctIndex": 0,
-    "explanation": "Bez odgovarajućih CORS zaglavlja (npr. Access-Control-Allow-Origin) preglednik će blokirati JavaScript kod jedne domene da čita odgovor s druge domene, radi zaštite korisnika od zlonamjernih cross-origin zahtjeva."
+    "explanation": "Bez odgovarajućih CORS zaglavlja (npr. Access-Control-Allow-Origin) preglednik će blokirati JavaScript kod jedne domene da čita odgovor s druge domene, radi zaštite korisnika od zlonamjernih cross-origin zahtjeva.",
+    "difficulty": "medium"
   },
   {
     "id": "backend-017-jwt-token-auth",
@@ -218,7 +234,8 @@
       "JWT zamjenjuje potrebu za HTTPS-om pri prijenosu osjetljivih podataka"
     ],
     "correctIndex": 0,
-    "explanation": "JWT se sastoji od headera, payloada i potpisa - budući da je potpisan (ne nužno enkriptiran), server može provjeriti njegovu autentičnost bez pristupa bazi, što odgovara stateless arhitekturi."
+    "explanation": "JWT se sastoji od headera, payloada i potpisa - budući da je potpisan (ne nužno enkriptiran), server može provjeriti njegovu autentičnost bez pristupa bazi, što odgovara stateless arhitekturi.",
+    "difficulty": "medium"
   },
   {
     "id": "backend-018-message-queue",
@@ -231,7 +248,8 @@
       "Message queue zamjenjuje potrebu za bazom podataka u svim aplikacijama"
     ],
     "correctIndex": 0,
-    "explanation": "Primjeri (RabbitMQ, Kafka, SQS) omogućuju npr. da web server brzo odgovori korisniku, dok se dugotrajna obrada (slanje e-maila, generiranje izvještaja) odvija asinkrono u pozadini preko workera koji čitaju iz reda."
+    "explanation": "Primjeri (RabbitMQ, Kafka, SQS) omogućuju npr. da web server brzo odgovori korisniku, dok se dugotrajna obrada (slanje e-maila, generiranje izvještaja) odvija asinkrono u pozadini preko workera koji čitaju iz reda.",
+    "difficulty": "medium"
   },
   {
     "id": "backend-019-n-plus-one",
@@ -244,7 +262,8 @@
       "Problem koji se javlja isključivo kod NoSQL baza podataka"
     ],
     "correctIndex": 0,
-    "explanation": "Klasičan primjer: dohvatiš listu od 50 postova (1 upit), pa za svaki post posebno dohvaćaš autora (50 dodatnih upita) - rješava se JOIN-ovima ili eager loadingom (npr. 'include' u ORM-u)."
+    "explanation": "Klasičan primjer: dohvatiš listu od 50 postova (1 upit), pa za svaki post posebno dohvaćaš autora (50 dodatnih upita) - rješava se JOIN-ovima ili eager loadingom (npr. 'include' u ORM-u).",
+    "difficulty": "hard"
   },
   {
     "id": "backend-020-rate-limiting",
@@ -257,7 +276,8 @@
       "Tehnika za smanjenje veličine slika prije slanja klijentu"
     ],
     "correctIndex": 0,
-    "explanation": "Rate limiting (npr. 'maksimalno 100 zahtjeva po minuti po IP adresi') štiti server od preopterećenja i otežava napade poput brute-force pokušaja pogađanja lozinke."
+    "explanation": "Rate limiting (npr. 'maksimalno 100 zahtjeva po minuti po IP adresi') štiti server od preopterećenja i otežava napade poput brute-force pokušaja pogađanja lozinke.",
+    "difficulty": "easy"
   },
   {
     "id": "backend-021-circuit-breaker",
@@ -270,7 +290,8 @@
       "Zamijeniti autentikaciju rate limitingom"
     ],
     "correctIndex": 0,
-    "explanation": "Nakon niza uzastopnih grešaka circuit breaker 'otvara krug' i brzo odbija nove pozive prema tom servisu (umjesto da čeka timeout), čime sprječava kaskadne kvarove, a povremeno propušta probni poziv da provjeri je li se servis oporavio."
+    "explanation": "Nakon niza uzastopnih grešaka circuit breaker 'otvara krug' i brzo odbija nove pozive prema tom servisu (umjesto da čeka timeout), čime sprječava kaskadne kvarove, a povremeno propušta probni poziv da provjeri je li se servis oporavio.",
+    "difficulty": "hard"
   },
   {
     "id": "backend-022-optimistic-concurrency",
@@ -283,6 +304,7 @@
       "Bezuvjetnim prihvaćanjem posljednjeg upisa, bez ikakve provjere"
     ],
     "correctIndex": 0,
-    "explanation": "UPDATE uspijeva samo ako je verzija/timestamp u bazi još uvijek jednaka onoj pročitanoj prije izmjene; ako se ne poklapa, znači da je netko drugi u međuvremenu promijenio zapis, pa aplikacija mora ponoviti operaciju."
+    "explanation": "UPDATE uspijeva samo ako je verzija/timestamp u bazi još uvijek jednaka onoj pročitanoj prije izmjene; ako se ne poklapa, znači da je netko drugi u međuvremenu promijenio zapis, pa aplikacija mora ponoviti operaciju.",
+    "difficulty": "hard"
   }
 ]

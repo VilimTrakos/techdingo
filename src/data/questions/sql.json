@@ -10,7 +10,8 @@
       "HAVING filtrira retke prije grupiranja, WHERE filtrira nakon GROUP BY"
     ],
     "correctIndex": 0,
-    "explanation": "WHERE djeluje na pojedinačne retke prije GROUP BY, dok HAVING filtrira već grupirane rezultate (npr. rezultate agregatnih funkcija)."
+    "explanation": "WHERE djeluje na pojedinačne retke prije GROUP BY, dok HAVING filtrira već grupirane rezultate (npr. rezultate agregatnih funkcija).",
+    "difficulty": "easy"
   },
   {
     "id": "sql-002-join-types",
@@ -23,7 +24,8 @@
       "INNER JOIN spaja tablice bez uvjeta, dok ostali zahtijevaju ON klauzulu"
     ],
     "correctIndex": 0,
-    "explanation": "INNER JOIN = presjek; LEFT/RIGHT JOIN zadržavaju sve retke iz jedne strane i popunjavaju NULL gdje nema podudaranja; FULL OUTER JOIN kombinira oba."
+    "explanation": "INNER JOIN = presjek; LEFT/RIGHT JOIN zadržavaju sve retke iz jedne strane i popunjavaju NULL gdje nema podudaranja; FULL OUTER JOIN kombinira oba.",
+    "difficulty": "easy"
   },
   {
     "id": "sql-003-index",
@@ -36,7 +38,8 @@
       "Skripta koja se pokreće prije svakog INSERT-a radi validacije podataka"
     ],
     "correctIndex": 0,
-    "explanation": "Indeks (npr. B-tree) ubrzava čitanje po cijenu sporijih INSERT/UPDATE/DELETE operacija i dodatnog prostora na disku, pa se koristi na stupcima koji se često filtriraju ili sortiraju."
+    "explanation": "Indeks (npr. B-tree) ubrzava čitanje po cijenu sporijih INSERT/UPDATE/DELETE operacija i dodatnog prostora na disku, pa se koristi na stupcima koji se često filtriraju ili sortiraju.",
+    "difficulty": "medium"
   },
   {
     "id": "sql-004-primary-vs-unique",
@@ -49,7 +52,8 @@
       "Nema razlike - oba osiguravaju identično ponašanje"
     ],
     "correctIndex": 0,
-    "explanation": "PRIMARY KEY jedinstveno identificira redak (implicitno NOT NULL + UNIQUE), a tablica ih smije imati samo jedan (može biti kompozitni); UNIQUE ograničenja mogu postojati na više stupaca."
+    "explanation": "PRIMARY KEY jedinstveno identificira redak (implicitno NOT NULL + UNIQUE), a tablica ih smije imati samo jedan (može biti kompozitni); UNIQUE ograničenja mogu postojati na više stupaca.",
+    "difficulty": "easy"
   },
   {
     "id": "sql-005-normalization",
@@ -62,7 +66,8 @@
       "Proces spajanja svih tablica u jednu radi jednostavnosti"
     ],
     "correctIndex": 0,
-    "explanation": "Normalizacija (1NF, 2NF, 3NF...) dijeli podatke tako da se svaka činjenica čuva samo na jednom mjestu, čime se smanjuje redundancija i rizik od nekonzistentnih podataka."
+    "explanation": "Normalizacija (1NF, 2NF, 3NF...) dijeli podatke tako da se svaka činjenica čuva samo na jednom mjestu, čime se smanjuje redundancija i rizik od nekonzistentnih podataka.",
+    "difficulty": "medium"
   },
   {
     "id": "sql-006-transactions-acid",
@@ -75,7 +80,8 @@
       "Transakcije se koriste isključivo za brisanje podataka"
     ],
     "correctIndex": 0,
-    "explanation": "ACID garantira da transakcija ili u potpunosti uspije ili u potpunosti propadne (atomičnost), da baza ostaje u ispravnom stanju, da se paralelne transakcije ne miješaju (izolacija) i da su promjene trajne nakon commita."
+    "explanation": "ACID garantira da transakcija ili u potpunosti uspije ili u potpunosti propadne (atomičnost), da baza ostaje u ispravnom stanju, da se paralelne transakcije ne miješaju (izolacija) i da su promjene trajne nakon commita.",
+    "difficulty": "medium"
   },
   {
     "id": "sql-007-delete-truncate-drop",
@@ -88,7 +94,8 @@
       "DROP briše samo jedan redak, DELETE i TRUNCATE brišu cijelu bazu"
     ],
     "correctIndex": 0,
-    "explanation": "DELETE je DML naredba koja se logira po retku i može imati WHERE uvjet; TRUNCATE je brži DDL koji resetira tablicu ali zadržava strukturu; DROP potpuno uklanja tablicu (strukturu i podatke)."
+    "explanation": "DELETE je DML naredba koja se logira po retku i može imati WHERE uvjet; TRUNCATE je brži DDL koji resetira tablicu ali zadržava strukturu; DROP potpuno uklanja tablicu (strukturu i podatke).",
+    "difficulty": "easy"
   },
   {
     "id": "sql-008-null-behavior",
@@ -101,7 +108,8 @@
       "NULL vrijednosti se automatski isključuju iz svih agregatnih funkcija osim COUNT(*)"
     ],
     "correctIndex": 0,
-    "explanation": "NULL znači 'nepoznato', pa x = NULL nikad nije TRUE (uvijek UNKNOWN) - za provjeru se mora koristiti IS NULL ili IS NOT NULL."
+    "explanation": "NULL znači 'nepoznato', pa x = NULL nikad nije TRUE (uvijek UNKNOWN) - za provjeru se mora koristiti IS NULL ili IS NOT NULL.",
+    "difficulty": "medium"
   },
   {
     "id": "sql-009-subquery",
@@ -114,7 +122,8 @@
       "Upit koji se izvršava isključivo nakon COMMIT-a"
     ],
     "correctIndex": 0,
-    "explanation": "Podupit je SELECT unutar drugog upita - može vraćati jednu vrijednost, listu vrijednosti ili cijelu tablicu, ovisno o kontekstu u kojem se koristi."
+    "explanation": "Podupit je SELECT unutar drugog upita - može vraćati jednu vrijednost, listu vrijednosti ili cijelu tablicu, ovisno o kontekstu u kojem se koristi.",
+    "difficulty": "easy"
   },
   {
     "id": "sql-010-subquery-vs-join",
@@ -127,7 +136,8 @@
       "Podupit mijenja podatke u bazi, dok JOIN samo čita podatke"
     ],
     "correctIndex": 0,
-    "explanation": "Oboje mogu riješiti isti problem, ali JOIN direktno spaja retke iz više tablica u rezultat, dok se podupit često koristi za filtriranje (npr. WHERE id IN (subquery)) - izbor ovisi o čitljivosti i planu izvršavanja."
+    "explanation": "Oboje mogu riješiti isti problem, ali JOIN direktno spaja retke iz više tablica u rezultat, dok se podupit često koristi za filtriranje (npr. WHERE id IN (subquery)) - izbor ovisi o čitljivosti i planu izvršavanja.",
+    "difficulty": "medium"
   },
   {
     "id": "sql-011-group-by",
@@ -140,7 +150,8 @@
       "Spaja dvije tablice po zajedničkom stupcu"
     ],
     "correctIndex": 0,
-    "explanation": "GROUP BY grupira retke po vrijednostima jednog ili više stupaca, a agregatne funkcije (COUNT, SUM...) se zatim računaju za svaku grupu posebno."
+    "explanation": "GROUP BY grupira retke po vrijednostima jednog ili više stupaca, a agregatne funkcije (COUNT, SUM...) se zatim računaju za svaku grupu posebno.",
+    "difficulty": "easy"
   },
   {
     "id": "sql-012-aggregate-functions",
@@ -153,7 +164,8 @@
       "VARCHAR, INT, DATE - tipovi podataka za stupce"
     ],
     "correctIndex": 0,
-    "explanation": "Agregatne funkcije sažimaju više redaka u jednu vrijednost, često u kombinaciji s GROUP BY."
+    "explanation": "Agregatne funkcije sažimaju više redaka u jednu vrijednost, često u kombinaciji s GROUP BY.",
+    "difficulty": "easy"
   },
   {
     "id": "sql-013-union-vs-union-all",
@@ -166,7 +178,8 @@
       "Nema stvarne razlike, UNION ALL je samo zastarjela sintaksa za UNION"
     ],
     "correctIndex": 0,
-    "explanation": "UNION interno radi dodatnu operaciju uklanjanja duplikata (slično DISTINCT), što ga čini sporijim od UNION ALL kad znamo da duplikati ne smetaju ili ih nema."
+    "explanation": "UNION interno radi dodatnu operaciju uklanjanja duplikata (slično DISTINCT), što ga čini sporijim od UNION ALL kad znamo da duplikati ne smetaju ili ih nema.",
+    "difficulty": "easy"
   },
   {
     "id": "sql-014-foreign-key",
@@ -179,7 +192,8 @@
       "Ključ koji automatski generira nasumične vrijednosti za primarni ključ"
     ],
     "correctIndex": 0,
-    "explanation": "Strani ključ sprječava unos vrijednosti koja ne postoji u referenciranoj tablici (npr. narudžba ne može imati customer_id koji ne postoji u tablici kupaca)."
+    "explanation": "Strani ključ sprječava unos vrijednosti koja ne postoji u referenciranoj tablici (npr. narudžba ne može imati customer_id koji ne postoji u tablici kupaca).",
+    "difficulty": "easy"
   },
   {
     "id": "sql-015-views",
@@ -192,7 +206,8 @@
       "Poseban tip indeksa koji ubrzava SELECT upite"
     ],
     "correctIndex": 0,
-    "explanation": "View se ponaša kao tablica pri čitanju, ali podaci se dohvaćaju iz osnovnog upita u trenutku pristupa - korisno za pojednostavljenje složenih upita ili ograničavanje pristupa podacima."
+    "explanation": "View se ponaša kao tablica pri čitanju, ali podaci se dohvaćaju iz osnovnog upita u trenutku pristupa - korisno za pojednostavljenje složenih upita ili ograničavanje pristupa podacima.",
+    "difficulty": "medium"
   },
   {
     "id": "sql-016-stored-procedure-vs-function",
@@ -205,7 +220,8 @@
       "Nema razlike, to su sinonimi u svim bazama podataka"
     ],
     "correctIndex": 0,
-    "explanation": "Funkcije se ugrađuju u izraze (npr. SELECT mojaFunkcija(x)) i moraju vratiti vrijednost, dok su procedure samostalne rutine koje se pozivaju naredbom CALL/EXEC i mogu imati širi opseg (npr. upravljati transakcijama)."
+    "explanation": "Funkcije se ugrađuju u izraze (npr. SELECT mojaFunkcija(x)) i moraju vratiti vrijednost, dok su procedure samostalne rutine koje se pozivaju naredbom CALL/EXEC i mogu imati širi opseg (npr. upravljati transakcijama).",
+    "difficulty": "medium"
   },
   {
     "id": "sql-017-clustered-vs-nonclustered-index",
@@ -218,7 +234,8 @@
       "Clustered indeks se automatski briše nakon svakog UPDATE-a"
     ],
     "correctIndex": 0,
-    "explanation": "Budući da clustered indeks određuje fizički poredak podataka, tablica može imati samo jedan; non-clustered indeksi se mogu dodavati u većem broju, ali zahtijevaju dodatni skok (lookup) do stvarnog retka."
+    "explanation": "Budući da clustered indeks određuje fizički poredak podataka, tablica može imati samo jedan; non-clustered indeksi se mogu dodavati u većem broju, ali zahtijevaju dodatni skok (lookup) do stvarnog retka.",
+    "difficulty": "hard"
   },
   {
     "id": "sql-018-sql-injection",
@@ -231,7 +248,8 @@
       "Greška koja se javlja isključivo kod korištenja NoSQL baza podataka"
     ],
     "correctIndex": 0,
-    "explanation": "Kad se korisnički unos direktno spaja u SQL string, napadač može ubaciti vlastiti SQL kod; parametrizirani upiti odvajaju kod od podataka i tako to sprječavaju."
+    "explanation": "Kad se korisnički unos direktno spaja u SQL string, napadač može ubaciti vlastiti SQL kod; parametrizirani upiti odvajaju kod od podataka i tako to sprječavaju.",
+    "difficulty": "medium"
   },
   {
     "id": "sql-019-normal-forms",
@@ -244,7 +262,8 @@
       "Označavaju broj indeksa koje tablica smije imati"
     ],
     "correctIndex": 0,
-    "explanation": "Svaka viša normalna forma gradi se na prethodnoj i dodatno smanjuje redundanciju/anomalije, uz kompromis da upiti mogu zahtijevati više JOIN-ova."
+    "explanation": "Svaka viša normalna forma gradi se na prethodnoj i dodatno smanjuje redundanciju/anomalije, uz kompromis da upiti mogu zahtijevati više JOIN-ova.",
+    "difficulty": "hard"
   },
   {
     "id": "sql-020-exists-vs-in",
@@ -257,7 +276,8 @@
       "Nema nikakve razlike u ponašanju ili performansama"
     ],
     "correctIndex": 0,
-    "explanation": "EXISTS vraća TRUE/FALSE čim pronađe prvi podudarajući redak (short-circuit), dok IN uspoređuje vrijednost sa cijelim skupom rezultata - izbor ovisi o veličini podataka i optimizatoru konkretne baze."
+    "explanation": "EXISTS vraća TRUE/FALSE čim pronađe prvi podudarajući redak (short-circuit), dok IN uspoređuje vrijednost sa cijelim skupom rezultata - izbor ovisi o veličini podataka i optimizatoru konkretne baze.",
+    "difficulty": "medium"
   },
   {
     "id": "sql-021-case-when",
@@ -270,7 +290,8 @@
       "Služi za brisanje redaka koji zadovoljavaju određeni uvjet"
     ],
     "correctIndex": 0,
-    "explanation": "CASE WHEN uvjet THEN vrijednost ... ELSE vrijednost END vraća različitu vrijednost ovisno o uvjetu, slično switch/if-else konstruktu u programskim jezicima."
+    "explanation": "CASE WHEN uvjet THEN vrijednost ... ELSE vrijednost END vraća različitu vrijednost ovisno o uvjetu, slično switch/if-else konstruktu u programskim jezicima.",
+    "difficulty": "easy"
   },
   {
     "id": "sql-022-varchar-vs-char",
@@ -283,7 +304,8 @@
       "Nema razlike u spremanju podataka, razlikuje se samo naziv u različitim bazama"
     ],
     "correctIndex": 0,
-    "explanation": "CHAR(n) uvijek zauzima n znakova (popunjava razmacima), dok VARCHAR(n) zauzima onoliko koliko je stvarno upisano (do maksimuma n) - CHAR može biti brži za podatke fiksne duljine (npr. šifre), VARCHAR štedi prostor za varijabilne tekstove."
+    "explanation": "CHAR(n) uvijek zauzima n znakova (popunjava razmacima), dok VARCHAR(n) zauzima onoliko koliko je stvarno upisano (do maksimuma n) - CHAR može biti brži za podatke fiksne duljine (npr. šifre), VARCHAR štedi prostor za varijabilne tekstove.",
+    "difficulty": "easy"
   },
   {
     "id": "sql-023-window-functions-vs-group-by",
@@ -296,7 +318,8 @@
       "Window funkcije se ne mogu kombinirati s ORDER BY klauzulom"
     ],
     "correctIndex": 0,
-    "explanation": "Window funkcija (npr. SUM() OVER (...)) računa vrijednost nad 'prozorom' povezanih redaka bez sažimanja svakog ulaznog retka u jedan grupni rezultat, za razliku od GROUP BY koji retke grupira i kolabira u sažete redove."
+    "explanation": "Window funkcija (npr. SUM() OVER (...)) računa vrijednost nad 'prozorom' povezanih redaka bez sažimanja svakog ulaznog retka u jedan grupni rezultat, za razliku od GROUP BY koji retke grupira i kolabira u sažete redove.",
+    "difficulty": "hard"
   },
   {
     "id": "sql-024-isolation-levels",
@@ -309,6 +332,7 @@
       "SERIALIZABLE"
     ],
     "correctIndex": 1,
-    "explanation": "READ COMMITTED ne dopušta čitanje promjena koje druga transakcija još nije potvrdila (commitala); više razine izolacije (REPEATABLE READ, SERIALIZABLE) dodatno sprječavaju i druge anomalije poput non-repeatable reada i phantom reada."
+    "explanation": "READ COMMITTED ne dopušta čitanje promjena koje druga transakcija još nije potvrdila (commitala); više razine izolacije (REPEATABLE READ, SERIALIZABLE) dodatno sprječavaju i druge anomalije poput non-repeatable reada i phantom reada.",
+    "difficulty": "hard"
   }
 ]

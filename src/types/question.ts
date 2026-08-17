@@ -2,6 +2,8 @@
 
 export type TopicId = string;
 
+export type Difficulty = 'easy' | 'medium' | 'hard';
+
 export interface Question {
   /** Globalno jedinstven identifikator, npr. "sql-001-inner-vs-left-join". */
   id: string;
@@ -14,4 +16,6 @@ export interface Question {
   correctIndex: 0 | 1 | 2 | 3;
   /** Kratko objašnjenje prikazano nakon odgovora (preporučeno, nije obavezno). */
   explanation?: string;
+  /** Koristi se za progresiju unutar sesije (easy -> medium -> hard). */
+  difficulty: Difficulty;
 }

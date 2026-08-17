@@ -14,6 +14,7 @@ export const QuestionSchema = z
       .length(4, 'mora postojati točno 4 ponuđena odgovora'),
     correctIndex: z.union([z.literal(0), z.literal(1), z.literal(2), z.literal(3)]),
     explanation: z.string().min(1).optional(),
+    difficulty: z.enum(['easy', 'medium', 'hard']),
   })
   .superRefine((q, ctx) => {
     const normalized = q.options.map((o) => o.trim().toLowerCase());
