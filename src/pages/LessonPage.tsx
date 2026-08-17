@@ -53,116 +53,212 @@ function LessonSession({ topicId, topicLabel }: LessonSessionProps) {
     question && session.correctOptionIndex !== null
       ? question.options[session.correctOptionIndex]
       : null;
+  const answeredCorrectly =
+    session.isAnswered &&
+    session.selectedOptionIndex === session.correctOptionIndex;
 
   return (
-    <div className="mx-auto max-w-3xl space-y-5 pb-8">
-      <header className="space-y-4">
-        <div className="flex items-center justify-between gap-4">
+    <div className="mx-auto max-w-4xl space-y-6 pb-8">
+      <header className="overflow-hidden rounded-[2rem] border-2 border-brand-200 bg-white shadow-[0_6px_0_#b8efc1,0_16px_34px_rgba(23,32,42,0.07)]">
+        <div className="flex items-center justify-between gap-3 border-b-2 border-cloud-200 bg-gradient-to-r from-brand-50 via-white to-amber-50 px-4 py-3 sm:px-6">
           <Link
             to="/"
-            className="inline-flex min-h-11 items-center rounded-xl px-2 text-sm font-black text-slate-600 transition hover:bg-slate-100 hover:text-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-xl px-2 text-sm font-black text-ink-600 transition hover:bg-white hover:text-brand-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600"
             aria-label="Prekini lekciju i vrati se na početnu"
           >
-            <span aria-hidden="true">←</span>&nbsp; Početna
+            <span
+              className="grid size-7 place-items-center rounded-lg bg-white text-base shadow-sm"
+              aria-hidden="true"
+            >
+              ←
+            </span>
+            <span className="hidden sm:inline">Izađi</span>
           </Link>
+          <div className="min-w-0 text-center">
+            <p className="text-[0.65rem] font-black uppercase tracking-[0.2em] text-brand-700">
+              Lekcija
+            </p>
+            <p className="truncate text-base font-black text-ink-950 sm:text-lg">
+              {topicLabel}
+            </p>
+          </div>
           <HeartsDisplay hearts={session.hearts} maxHearts={5} />
         </div>
-        <ProgressBar
-          value={session.questionIndex + (session.isAnswered ? 1 : 0)}
-          max={session.totalQuestions}
-          label={`Napredak lekcije: pitanje ${displayQuestionNumber} od ${session.totalQuestions}`}
-        />
+
+        <div className="grid gap-5 p-4 sm:grid-cols-[auto_1fr_auto] sm:items-center sm:p-6">
+          <div
+            className="flex items-baseline justify-center gap-1 rounded-2xl border-2 border-brand-200 bg-brand-50 px-5 py-3 text-brand-700 shadow-[0_3px_0_#b8efc1] sm:min-w-28 sm:flex-col sm:items-center sm:gap-0"
+            aria-label={`Pitanje ${displayQuestionNumber} od ${session.totalQuestions}`}
+          >
+            <span className="text-3xl font-black tabular-nums">
+              {displayQuestionNumber}
+            </span>
+            <span className="text-xs font-black uppercase tracking-wider text-brand-600">
+              od {session.totalQuestions}
+            </span>
+          </div>
+
+          <div className="min-w-0">
+            <div className="mb-3 flex items-end justify-between gap-3">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-ink-600">
+                  Misija u tijeku
+                </p>
+                <p className="mt-1 font-black text-ink-950">
+                  Dođi do cilja sa srcima na broju
+                </p>
+              </div>
+              <span className="shrink-0 text-sm font-extrabold text-ink-600 sm:hidden">
+                {session.correctCount} točno
+              </span>
+            </div>
+            <ProgressBar
+              value={session.questionIndex + (session.isAnswered ? 1 : 0)}
+              max={session.totalQuestions}
+              label="Napredak lekcije"
+              showValue
+            />
+          </div>
+
+          <div
+            className="hidden min-w-24 rounded-2xl border-2 border-emerald-200 bg-emerald-50 px-4 py-3 text-center shadow-[0_3px_0_#a7f3d0] sm:block"
+            role="status"
+            aria-label={`${session.correctCount} točnih odgovora`}
+          >
+            <span className="block text-xs font-black uppercase tracking-wider text-emerald-700">
+              Točno
+            </span>
+            <span className="mt-1 block text-2xl font-black tabular-nums text-emerald-700">
+              {session.correctCount}
+            </span>
+          </div>
+        </div>
       </header>
 
       {question ? (
-        <QuestionCard
-          eyebrow={`${topicLabel} · Pitanje ${displayQuestionNumber} od ${session.totalQuestions}`}
-          question={question.question}
-        >
+        <div className="relative">
           <div
-            className="grid gap-3"
-            role="group"
-            aria-label="Ponuđeni odgovori"
+            className="pointer-events-none absolute -inset-2 -z-10 rounded-[2rem] bg-gradient-to-br from-brand-100/80 via-transparent to-cyan-100/70 blur-lg"
+            aria-hidden="true"
+          />
+          <QuestionCard
+            key={`${topicId}-${session.questionIndex}`}
+            eyebrow={`Odaberi jedan odgovor · ${topicLabel}`}
+            question={question.question}
           >
-            {question.options.map((option, index) => {
-              let optionState:
-                | 'idle'
-                | 'selected'
-                | 'correct'
-                | 'incorrect'
-                | 'disabled' = 'idle';
+            <div
+              className="grid gap-3"
+              role="group"
+              aria-label={`Ponuđeni odgovori za pitanje ${displayQuestionNumber}`}
+            >
+              {question.options.map((option, index) => {
+                let optionState:
+                  | 'idle'
+                  | 'selected'
+                  | 'correct'
+                  | 'incorrect'
+                  | 'disabled' = 'idle';
 
-              if (session.isAnswered) {
-                if (index === session.correctOptionIndex) {
-                  optionState = 'correct';
-                } else if (index === session.selectedOptionIndex) {
-                  optionState = 'incorrect';
-                } else {
-                  optionState = 'disabled';
+                if (session.isAnswered) {
+                  if (index === session.correctOptionIndex) {
+                    optionState = 'correct';
+                  } else if (index === session.selectedOptionIndex) {
+                    optionState = 'incorrect';
+                  } else {
+                    optionState = 'disabled';
+                  }
                 }
-              }
 
-              return (
-                <OptionButton
-                  key={`${index}-${option}`}
-                  index={index}
-                  state={optionState}
-                  disabled={session.isAnswered}
-                  onClick={() => session.answerQuestion(index)}
-                >
-                  {option}
-                </OptionButton>
-              );
-            })}
-          </div>
-        </QuestionCard>
+                return (
+                  <OptionButton
+                    key={`${index}-${option}`}
+                    index={index}
+                    state={optionState}
+                    disabled={session.isAnswered}
+                    onClick={() => session.answerQuestion(index)}
+                  >
+                    {option}
+                  </OptionButton>
+                );
+              })}
+            </div>
+          </QuestionCard>
+        </div>
       ) : (
         <SessionLoading label="Učitavamo sljedeće pitanje…" />
       )}
 
-      {session.isAnswered && (
-        <div
-          className={`rounded-2xl border p-5 ${
-            session.selectedOptionIndex === session.correctOptionIndex
-              ? 'border-emerald-200 bg-emerald-50'
-              : 'border-rose-200 bg-rose-50'
-          }`}
-          role="status"
-          aria-live="polite"
-        >
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p
-                className={`text-lg font-black ${
-                  session.selectedOptionIndex === session.correctOptionIndex
-                    ? 'text-emerald-800'
-                    : 'text-rose-800'
+      <div className="min-h-24" aria-live="polite" aria-atomic="true">
+        {session.isAnswered && (
+          <section
+            className={`${
+              answeredCorrectly
+                ? 'session-correct border-emerald-200 bg-emerald-50'
+                : 'session-incorrect border-rose-200 bg-rose-50'
+            } overflow-hidden rounded-3xl border-2 shadow-[0_5px_0_rgba(23,32,42,0.12)]`}
+            aria-label="Povratna informacija o odgovoru"
+          >
+            <div className="flex flex-col gap-5 p-5 sm:flex-row sm:items-center sm:p-6">
+              <span
+                className={`grid size-12 shrink-0 place-items-center rounded-2xl text-2xl font-black shadow-sm ${
+                  answeredCorrectly
+                    ? 'bg-emerald-500 text-white'
+                    : 'bg-rose-500 text-white'
+                }`}
+                aria-hidden="true"
+              >
+                {answeredCorrectly ? '✓' : '×'}
+              </span>
+
+              <div className="min-w-0 flex-1">
+                <p
+                  className={`text-xl font-black ${
+                    answeredCorrectly ? 'text-emerald-900' : 'text-rose-900'
+                  }`}
+                >
+                  {answeredCorrectly
+                    ? 'Odlično — odgovor je točan!'
+                    : 'Dobar pokušaj — ovo vrijedi zapamtiti.'}
+                </p>
+                {correctAnswer && (
+                  <p className="mt-2 text-sm font-semibold leading-6 text-ink-800">
+                    <span className="font-black">Točan odgovor:</span>{' '}
+                    {correctAnswer}
+                  </p>
+                )}
+                {session.explanation && (
+                  <p className="mt-2 max-w-2xl text-sm font-medium leading-6 text-ink-600">
+                    <span className="font-black text-ink-800">Zašto?</span>{' '}
+                    {session.explanation}
+                  </p>
+                )}
+                {!answeredCorrectly && (
+                  <p className="mt-2 text-xs font-bold text-rose-700">
+                    Izgubio si jedno srce, ali znanje ostaje.
+                  </p>
+                )}
+              </div>
+
+              <button
+                type="button"
+                onClick={session.nextQuestion}
+                className={`min-h-12 shrink-0 rounded-2xl border-2 px-6 py-3 font-black text-white transition hover:-translate-y-0.5 active:translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 ${
+                  answeredCorrectly
+                    ? 'border-emerald-800 bg-emerald-600 shadow-[0_4px_0_#065f46] hover:bg-emerald-700 active:shadow-[0_1px_0_#065f46] focus-visible:outline-emerald-800'
+                    : 'border-rose-800 bg-rose-600 shadow-[0_4px_0_#9f1239] hover:bg-rose-700 active:shadow-[0_1px_0_#9f1239] focus-visible:outline-rose-800'
                 }`}
               >
-                {session.selectedOptionIndex === session.correctOptionIndex
-                  ? 'Točno!'
-                  : correctAnswer
-                    ? `Nije točno. Točan odgovor: ${correctAnswer}`
-                    : 'Nije točno.'}
-              </p>
-              {session.explanation && (
-                <p className="mt-2 max-w-2xl text-sm font-medium leading-6 text-slate-700">
-                  {session.explanation}
-                </p>
-              )}
+                {session.questionIndex + 1 >= session.totalQuestions
+                  ? 'Prikaži rezultat'
+                  : 'Nastavi'}
+                <span className="ml-2" aria-hidden="true">
+                  →
+                </span>
+              </button>
             </div>
-            <button
-              type="button"
-              onClick={session.nextQuestion}
-              className="min-h-12 shrink-0 rounded-2xl bg-indigo-600 px-6 py-3 font-black text-white shadow-md shadow-indigo-200 transition hover:-translate-y-0.5 hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              {session.questionIndex + 1 >= session.totalQuestions
-                ? 'Prikaži rezultat'
-                : 'Sljedeće pitanje'}
-            </button>
-          </div>
-        </div>
-      )}
+          </section>
+        )}
+      </div>
     </div>
   );
 }
@@ -175,7 +271,7 @@ function SessionLoading({ label }: { label: string }) {
       aria-live="polite"
     >
       <span
-        className="h-11 w-11 animate-spin rounded-full border-4 border-indigo-100 border-t-indigo-600"
+        className="h-11 w-11 animate-spin rounded-full border-4 border-brand-100 border-t-brand-600"
         aria-hidden="true"
       />
       <p className="font-bold text-slate-600">{label}</p>
@@ -189,7 +285,7 @@ export function LessonPage() {
 
   if (!topic) {
     return (
-      <div className="mx-auto max-w-xl rounded-[2rem] border border-rose-200 bg-white p-8 text-center shadow-sm sm:p-10">
+      <div className="mx-auto max-w-xl rounded-[2rem] border-2 border-rose-200 bg-white p-8 text-center shadow-[0_6px_0_#fecdd3] sm:p-10">
         <p className="text-5xl" aria-hidden="true">
           🧭
         </p>
@@ -202,7 +298,7 @@ export function LessonPage() {
         </p>
         <Link
           to="/"
-          className="mt-6 inline-flex min-h-12 items-center justify-center rounded-2xl bg-indigo-600 px-6 py-3 font-black text-white transition hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          className="game-button game-button-primary mt-6 px-6 py-3"
         >
           Pogledaj teme
         </Link>

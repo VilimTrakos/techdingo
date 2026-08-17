@@ -66,117 +66,205 @@ function ScoreStrikeSession({
   const answeredCorrectly =
     session.isAnswered &&
     session.selectedOptionIndex === session.correctOptionIndex;
+  const timedOut = session.isAnswered && session.selectedOptionIndex === null;
   const correctAnswer =
     question && session.correctOptionIndex !== null
       ? question.options[session.correctOptionIndex]
       : null;
 
   return (
-    <div className="mx-auto max-w-3xl space-y-5 pb-8">
-      <header className="space-y-4">
-        <div className="flex flex-wrap items-center justify-between gap-3">
+    <div className="mx-auto max-w-4xl space-y-6 pb-8">
+      <header className="overflow-hidden rounded-[2rem] border-2 border-amber-300 bg-white shadow-[0_6px_0_#fcd34d,0_16px_34px_rgba(23,32,42,0.07)]">
+        <div className="flex items-center justify-between gap-3 border-b-2 border-amber-200 bg-gradient-to-r from-amber-50 via-white to-orange-50 px-4 py-3 sm:px-6">
           <Link
             to="/"
-            className="inline-flex min-h-11 items-center rounded-xl px-2 text-sm font-black text-slate-600 transition hover:bg-slate-100 hover:text-amber-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"
+            className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-xl px-2 text-sm font-black text-ink-600 transition hover:bg-white hover:text-amber-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"
             aria-label="Prekini Score Strike i vrati se na početnu"
           >
-            <span aria-hidden="true">←</span>&nbsp; Početna
-          </Link>
-          <div className="flex items-center gap-2 sm:gap-3">
-            <div
-              className="rounded-2xl border border-slate-200 bg-white px-4 py-2 text-right shadow-sm"
-              aria-live="polite"
-              aria-label={`${session.score} bodova`}
+            <span
+              className="grid size-7 place-items-center rounded-lg bg-white text-base shadow-sm"
+              aria-hidden="true"
             >
-              <span className="block text-[0.65rem] font-black uppercase tracking-wider text-slate-600">
-                Bodovi
-              </span>
-              <span className="text-xl font-black tabular-nums text-slate-900">
-                {session.score}
-              </span>
-            </div>
-            <ComboBadge combo={session.combo} />
+              ←
+            </span>
+            <span className="hidden sm:inline">Izađi</span>
+          </Link>
+
+          <div className="min-w-0 text-center">
+            <p className="text-[0.65rem] font-black uppercase tracking-[0.2em] text-amber-700">
+              Brzinski izazov
+            </p>
+            <p className="truncate text-base font-black text-ink-950 sm:text-lg">
+              Score Strike · {topicLabel}
+            </p>
           </div>
+
+          <ComboBadge combo={session.combo} />
         </div>
 
-        <ProgressBar
-          value={session.questionIndex + (session.isAnswered ? 1 : 0)}
-          max={session.totalQuestions}
-          label={`Napredak izazova: pitanje ${displayQuestionNumber} od ${session.totalQuestions}`}
-        />
-        <Timer
-          remainingMs={session.timeRemainingMs}
-          totalMs={session.timeTotalMs}
-        />
+        <div className="grid gap-5 p-4 sm:grid-cols-[auto_1fr] sm:items-stretch sm:p-6">
+          <div
+            className="flex items-center justify-between gap-5 rounded-2xl border-2 border-amber-300 bg-amber-50 px-5 py-4 shadow-[0_3px_0_#fcd34d] sm:min-w-44 sm:flex-col sm:items-start sm:justify-center sm:gap-1"
+            role="status"
+            aria-live="polite"
+            aria-label={`${session.score} bodova`}
+          >
+            <div>
+              <span className="block text-[0.65rem] font-black uppercase tracking-[0.18em] text-amber-700">
+                Rezultat
+              </span>
+              <span className="mt-1 block text-4xl font-black tabular-nums tracking-tight text-amber-800">
+                {session.score.toLocaleString('hr-HR')}
+              </span>
+            </div>
+            <div
+              className="rounded-xl bg-white/80 px-3 py-2 text-right sm:w-full sm:text-left"
+              aria-label={`Pitanje ${displayQuestionNumber} od ${session.totalQuestions}`}
+            >
+              <span className="block text-[0.6rem] font-black uppercase tracking-wider text-ink-600">
+                Pitanje
+              </span>
+              <span className="text-sm font-black tabular-nums text-ink-800">
+                {displayQuestionNumber} / {session.totalQuestions}
+              </span>
+            </div>
+          </div>
+
+          <div className="flex min-w-0 flex-col justify-center gap-5">
+            <div className="rounded-2xl border-2 border-sky-200 bg-sky-50/60 p-4 shadow-[0_3px_0_#bae6fd]">
+              <Timer
+                remainingMs={session.timeRemainingMs}
+                totalMs={session.timeTotalMs}
+              />
+              <p className="mt-3 text-xs font-bold text-ink-600">
+                Brži odgovor donosi više bodova. Ne dopusti da timer dođe do
+                nule!
+              </p>
+            </div>
+            <ProgressBar
+              value={session.questionIndex + (session.isAnswered ? 1 : 0)}
+              max={session.totalQuestions}
+              label="Napredak izazova"
+              showValue
+            />
+          </div>
+        </div>
       </header>
 
       {question && (
-        <QuestionCard
-          eyebrow={`Score Strike · ${topicLabel} · ${displayQuestionNumber}/${session.totalQuestions}`}
-          question={question.question}
-        >
+        <div className="relative">
           <div
-            className="grid gap-3"
-            role="group"
-            aria-label="Ponuđeni odgovori"
+            className="pointer-events-none absolute -inset-2 -z-10 rounded-[2rem] bg-gradient-to-br from-amber-100/90 via-transparent to-orange-100/70 blur-lg"
+            aria-hidden="true"
+          />
+          <QuestionCard
+            key={`${topicId}-${session.questionIndex}`}
+            eyebrow={`Odgovori brzo · ${topicLabel}`}
+            question={question.question}
           >
-            {question.options.map((option, index) => {
-              let optionState:
-                | 'idle'
-                | 'selected'
-                | 'correct'
-                | 'incorrect'
-                | 'disabled' = 'idle';
+            <div
+              className="grid gap-3"
+              role="group"
+              aria-label={`Ponuđeni odgovori za pitanje ${displayQuestionNumber}`}
+            >
+              {question.options.map((option, index) => {
+                let optionState:
+                  | 'idle'
+                  | 'selected'
+                  | 'correct'
+                  | 'incorrect'
+                  | 'disabled' = 'idle';
 
-              if (session.isAnswered) {
-                if (index === session.correctOptionIndex) {
-                  optionState = 'correct';
-                } else if (index === session.selectedOptionIndex) {
-                  optionState = 'incorrect';
-                } else {
-                  optionState = 'disabled';
+                if (session.isAnswered) {
+                  if (index === session.correctOptionIndex) {
+                    optionState = 'correct';
+                  } else if (index === session.selectedOptionIndex) {
+                    optionState = 'incorrect';
+                  } else {
+                    optionState = 'disabled';
+                  }
                 }
-              }
 
-              return (
-                <OptionButton
-                  key={`${index}-${option}`}
-                  index={index}
-                  state={optionState}
-                  disabled={session.isAnswered}
-                  onClick={() => session.answerQuestion(index)}
-                >
-                  {option}
-                </OptionButton>
-              );
-            })}
-          </div>
-        </QuestionCard>
+                return (
+                  <OptionButton
+                    key={`${index}-${option}`}
+                    index={index}
+                    state={optionState}
+                    disabled={session.isAnswered}
+                    onClick={() => session.answerQuestion(index)}
+                  >
+                    {option}
+                  </OptionButton>
+                );
+              })}
+            </div>
+          </QuestionCard>
+        </div>
       )}
 
-      <div className="min-h-20" aria-live="polite" aria-atomic="true">
+      <div className="min-h-24" aria-live="assertive" aria-atomic="true">
         {session.isAnswered && (
-          <div
-            className={`rounded-2xl border p-4 ${
+          <section
+            className={`${
               answeredCorrectly
-                ? 'border-emerald-200 bg-emerald-50 text-emerald-900'
-                : 'border-rose-200 bg-rose-50 text-rose-900'
-            }`}
-            role="status"
+                ? 'session-correct border-emerald-200 bg-emerald-50'
+                : timedOut
+                  ? 'session-incorrect border-amber-200 bg-amber-50'
+                  : 'session-incorrect border-rose-200 bg-rose-50'
+            } overflow-hidden rounded-3xl border-2 shadow-[0_5px_0_rgba(23,32,42,0.12)]`}
+            aria-label="Povratna informacija o odgovoru"
           >
-            <p className="font-black">
-              {answeredCorrectly
-                ? 'Točno — combo raste!'
-                : correctAnswer
-                  ? `Nije točno. Točan odgovor: ${correctAnswer}`
-                  : 'Nije točno.'}
-            </p>
-            {session.explanation && (
-              <p className="mt-1 text-sm font-medium leading-6 text-slate-700">
-                {session.explanation}
-              </p>
-            )}
-          </div>
+            <div className="flex items-start gap-4 p-4 sm:p-5">
+              <span
+                className={`grid size-11 shrink-0 place-items-center rounded-2xl text-xl font-black shadow-sm ${
+                  answeredCorrectly
+                    ? 'bg-emerald-500 text-white'
+                    : timedOut
+                      ? 'bg-amber-500 text-slate-950'
+                      : 'bg-rose-500 text-white'
+                }`}
+                aria-hidden="true"
+              >
+                {answeredCorrectly ? '⚡' : timedOut ? '⌛' : '×'}
+              </span>
+
+              <div className="min-w-0 flex-1">
+                <p
+                  className={`text-lg font-black ${
+                    answeredCorrectly
+                      ? 'text-emerald-900'
+                      : timedOut
+                        ? 'text-amber-900'
+                        : 'text-rose-900'
+                  }`}
+                >
+                  {answeredCorrectly
+                    ? 'Brzo i točno — combo raste!'
+                    : timedOut
+                      ? 'Vrijeme je isteklo — sljedeće pitanje stiže!'
+                      : 'Combo se resetira — idemo dalje!'}
+                </p>
+                {correctAnswer && (
+                  <p className="mt-1 text-sm font-semibold leading-5 text-ink-800">
+                    <span className="font-black">Točan odgovor:</span>{' '}
+                    {correctAnswer}
+                  </p>
+                )}
+                {session.explanation && (
+                  <p className="mt-1 text-xs font-medium leading-5 text-ink-600">
+                    {session.explanation}
+                  </p>
+                )}
+              </div>
+
+              <span
+                className="hidden shrink-0 self-center text-xs font-black uppercase tracking-wider text-ink-600 sm:block"
+                aria-hidden="true"
+              >
+                Sljedeće →
+              </span>
+            </div>
+          </section>
         )}
       </div>
     </div>
@@ -190,7 +278,7 @@ export function ScoreStrikePage() {
 
   if (!topic && !isMixed) {
     return (
-      <div className="mx-auto max-w-xl rounded-[2rem] border border-rose-200 bg-white p-8 text-center shadow-sm sm:p-10">
+      <div className="mx-auto max-w-xl rounded-[2rem] border-2 border-rose-200 bg-white p-8 text-center shadow-[0_6px_0_#fecdd3] sm:p-10">
         <p className="text-5xl" aria-hidden="true">
           ⏱️
         </p>
@@ -202,7 +290,7 @@ export function ScoreStrikePage() {
         </p>
         <Link
           to="/"
-          className="mt-6 inline-flex min-h-12 items-center justify-center rounded-2xl bg-amber-500 px-6 py-3 font-black text-slate-950 transition hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"
+          className="game-button game-button-boss mt-6 px-6 py-3"
         >
           Povratak na teme
         </Link>
