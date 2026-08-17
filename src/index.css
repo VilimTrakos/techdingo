@@ -378,6 +378,15 @@ a {
   animation: answer-shake 360ms ease-out both;
 }
 
+.result-confetti-piece {
+  position: absolute;
+  top: -1.25rem;
+  width: 0.55rem;
+  height: 0.95rem;
+  opacity: 0;
+  animation: confetti-fall 1.9s cubic-bezier(0.18, 0.75, 0.35, 1) both;
+}
+
 @media (min-width: 640px) {
   .game-stat {
     padding: 0.75rem 0.8rem;
@@ -513,6 +522,23 @@ a {
   100% {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes confetti-fall {
+  0% {
+    opacity: 0;
+    transform: translateY(-2rem) rotate(0deg);
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(38rem) rotate(620deg);
   }
 }
 
