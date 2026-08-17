@@ -1,0 +1,327 @@
+[
+  {
+    "id": "frontend-001-html-css-js",
+    "topic": "frontend",
+    "question": "Koja je razlika između HTML-a, CSS-a i JavaScripta?",
+    "options": [
+      "HTML definira strukturu/sadržaj stranice, CSS definira izgled/stiliranje, JavaScript dodaje interaktivnost i dinamičko ponašanje",
+      "HTML i CSS su programski jezici, a JavaScript je jezik za oblikovanje",
+      "CSS definira strukturu stranice, a HTML se koristi samo za stiliranje",
+      "Sve tri tehnologije rade identičnu stvar, razlikuje se samo sintaksa"
+    ],
+    "correctIndex": 0,
+    "explanation": "To je klasična podjela odgovornosti na webu: HTML = sadržaj/struktura, CSS = prezentacija, JS = ponašanje."
+  },
+  {
+    "id": "frontend-002-dom",
+    "topic": "frontend",
+    "question": "Što je DOM (Document Object Model)?",
+    "options": [
+      "Stablasta reprezentacija HTML dokumenta u memoriji preglednika, koju JavaScript može čitati i mijenjati",
+      "Poseban format datoteke za spremanje CSS stilova",
+      "Server koji generira HTML stranice prije slanja pregledniku",
+      "Biblioteka za rad s bazama podataka u pregledniku"
+    ],
+    "correctIndex": 0,
+    "explanation": "DOM predstavlja HTML strukturu kao stablo objekata (node-ova) koje JavaScript može čitati, dodavati, mijenjati ili brisati, a preglednik zatim ponovno iscrtava stranicu."
+  },
+  {
+    "id": "frontend-003-let-const-var",
+    "topic": "frontend",
+    "question": "Koja je razlika između let, const i var u JavaScriptu?",
+    "options": [
+      "var ima function scope i može se redeklarirati, let ima block scope i može se mijenjati, const ima block scope i ne može se ponovno dodijeliti",
+      "let i const su zastarjele, a var je jedini moderni način deklariranja varijabli",
+      "var i let rade identično, a const se koristi samo za funkcije",
+      "Razlika je samo u brzini izvršavanja koda"
+    ],
+    "correctIndex": 0,
+    "explanation": "var je 'hoistan' na vrh funkcije i podložan poznatim greškama zbog function scopea; let/const uvode block scope i sigurnije ponašanje, pri čemu const sprječava ponovnu dodjelu (ali ne čini objekt immutable)."
+  },
+  {
+    "id": "frontend-004-equality-operators",
+    "topic": "frontend",
+    "question": "Koja je razlika između == i === u JavaScriptu?",
+    "options": [
+      "== uspoređuje vrijednosti uz automatsku pretvorbu tipa (type coercion), === uspoređuje i vrijednost i tip bez pretvorbe",
+      "=== se koristi samo za brojeve, a == samo za stringove",
+      "== je novija i preporučena sintaksa, === je zastarjela",
+      "Nema razlike, oba operatora rade identično u svim slučajevima"
+    ],
+    "correctIndex": 0,
+    "explanation": "Npr. 0 == '0' je true zbog pretvorbe tipa, dok je 0 === '0' false jer su tipovi različiti (number vs string) - zato se === preporučuje kao sigurniji izbor."
+  },
+  {
+    "id": "frontend-005-null-vs-undefined",
+    "topic": "frontend",
+    "question": "Koja je razlika između null i undefined?",
+    "options": [
+      "undefined znači da varijabli još nije dodijeljena vrijednost, null je eksplicitna vrijednost koju programer namjerno dodjeljuje da označi 'nema vrijednosti'",
+      "null i undefined su potpuno isti tip podatka i uvijek se ponašaju identično",
+      "undefined se koristi samo u funkcijama, a null samo u objektima",
+      "null označava grešku u kodu, dok undefined označava uspješno izvršavanje"
+    ],
+    "correctIndex": 0,
+    "explanation": "JavaScript automatski dodjeljuje undefined nedeklariranim/nepostavljenim varijablama, dok null programer eksplicitno postavlja kao 'namjerno prazna vrijednost'."
+  },
+  {
+    "id": "frontend-006-event-bubbling",
+    "topic": "frontend",
+    "question": "Što je event bubbling?",
+    "options": [
+      "Mehanizam kod kojeg se event, nakon što se okine na ciljanom elementu, širi prema gore kroz roditeljske elemente sve do vrha dokumenta",
+      "Tehnika za grupiranje više eventova u jedan poziv radi optimizacije",
+      "Proces kojim preglednik automatski briše event listenere nakon 1 sekunde",
+      "Način na koji CSS animacije mijenjaju veličinu elementa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kad kliknete na element unutar drugog elementa, event prvo okine handler na tom elementu, a zatim 'buble-a' prema gore kroz sve roditelje (osim ako se pozove stopPropagation)."
+  },
+  {
+    "id": "frontend-007-event-propagation",
+    "topic": "frontend",
+    "question": "Što je event propagation i koje faze uključuje?",
+    "options": [
+      "Cjelokupan proces putovanja eventa kroz DOM - faza hvatanja (capturing) od vrha prema cilju, faza na cilju (target), i faza mjehurenja (bubbling) natrag prema vrhu",
+      "Proces koji se odnosi isključivo na slanje podataka na server",
+      "Automatsko generiranje novih HTML elemenata na temelju korisničke interakcije",
+      "Mehanizam koji sprječava da se ijedan event ikad okine dvaput"
+    ],
+    "correctIndex": 0,
+    "explanation": "Event propagation opisuje cijeli put eventa kroz DOM stablo, a bubbling (širenje prema gore) je samo jedna od njegove tri faze - druga je capturing (širenje prema dolje prije nego stigne do cilja)."
+  },
+  {
+    "id": "frontend-008-callback-functions",
+    "topic": "frontend",
+    "question": "Što su callback funkcije?",
+    "options": [
+      "Funkcije koje se predaju kao argument drugoj funkciji i pozivaju se kasnije, nakon što se dogodi određeni događaj ili završi neka operacija",
+      "Funkcije koje se automatski pozivaju svake sekunde bez potrebe za pozivom",
+      "Posebna vrsta funkcija koje se mogu pozvati samo unutar CSS-a",
+      "Funkcije koje uvijek vraćaju Promise objekt"
+    ],
+    "correctIndex": 0,
+    "explanation": "Callback je uobičajen obrazac u JavaScriptu za rukovanje asinkronim operacijama (npr. addEventListener('click', callback) ili setTimeout(callback, 1000))."
+  },
+  {
+    "id": "frontend-009-promise",
+    "topic": "frontend",
+    "question": "Što je Promise u JavaScriptu?",
+    "options": [
+      "Objekt koji predstavlja eventualni rezultat (uspjeh ili neuspjeh) asinkrone operacije, s tri moguća stanja: pending, fulfilled i rejected",
+      "Sintaksa za deklariranje konstanti koje se ne mogu mijenjati",
+      "Funkcija koja se izvršava isključivo sinkrono i blokira izvršavanje",
+      "Poseban tip petlje za iteriranje kroz nizove"
+    ],
+    "correctIndex": 0,
+    "explanation": "Promise omogućuje čitljivije rukovanje asinkronim kodom pomoću .then()/.catch() lanaca (ili async/await) umjesto ugniježđenih callbackova."
+  },
+  {
+    "id": "frontend-010-async-await",
+    "topic": "frontend",
+    "question": "Što rade ključne riječi async i await?",
+    "options": [
+      "async označava da funkcija uvijek vraća Promise, a await unutar te funkcije pauzira izvršavanje dok se Promise ne razriješi, čineći asinkroni kod čitljivim kao sinkroni",
+      "async i await se koriste isključivo za rad s CSS animacijama",
+      "await zaustavlja cijeli preglednik dok se stranica ne učita",
+      "async pretvara funkciju u sinkronu, a await je zastarjela sintaksa"
+    ],
+    "correctIndex": 0,
+    "explanation": "async/await je 'syntactic sugar' iznad Promisea - omogućuje pisanje asinkronog koda bez lanaca .then() poziva, uz zadržavanje neblokirajućeg ponašanja."
+  },
+  {
+    "id": "frontend-011-single-threaded",
+    "topic": "frontend",
+    "question": "Što znači da je JavaScript single-threaded jezik?",
+    "options": [
+      "JavaScript izvršava kod na jednoj glavnoj niti (call stacku) u jednom trenutku, pa se dva dijela JS koda ne mogu izvršavati istovremeno",
+      "JavaScript se može izvršavati samo u jednom pregledniku istovremeno",
+      "JavaScript ne podržava rad s više datoteka u istom projektu",
+      "Svaka JavaScript funkcija smije imati samo jedan parametar"
+    ],
+    "correctIndex": 0,
+    "explanation": "Postoji samo jedan call stack, pa se izvršavanje odvija sekvencijalno - asinkrone operacije (I/O, timeri) se delegiraju pregledniku/Node okruženju i vraćaju u red čekanja (event loop) kad su gotove."
+  },
+  {
+    "id": "frontend-012-event-loop",
+    "topic": "frontend",
+    "question": "Što je event loop?",
+    "options": [
+      "Mehanizam koji kontinuirano provjerava je li call stack prazan i, ako jest, prebacuje sljedeći callback iz reda čekanja (queue) na stack radi izvršavanja",
+      "Petlja koja se koristi za iteriranje kroz elemente niza (array)",
+      "CSS svojstvo koje ponavlja animaciju u beskonačnost",
+      "Funkcija koja se poziva samo jednom pri pokretanju aplikacije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Event loop omogućuje da single-threaded JavaScript obrađuje asinkrone operacije - dok se čeka rezultat (npr. mrežni poziv), glavna nit nije blokirana, a callback se izvršava tek kad se stack isprazni."
+  },
+  {
+    "id": "frontend-013-closure",
+    "topic": "frontend",
+    "question": "Što je closure (zatvaranje) u JavaScriptu?",
+    "options": [
+      "Funkcija koja 'pamti' varijable iz svog okružujućeg (leksičkog) opsega čak i nakon što se vanjska funkcija završi s izvršavanjem",
+      "Način zatvaranja preglednika iz JavaScript koda",
+      "Sintaksa za deklariranje privatnih CSS klasa",
+      "Funkcija koja se automatski poziva kad se stranica zatvori"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kad unutarnja funkcija koristi varijable iz vanjske funkcije, ona zadržava referencu na taj opseg i nakon što se vanjska funkcija izvrši - to je osnova za mnoge JS obrasce (npr. privatno stanje, memoizacija)."
+  },
+  {
+    "id": "frontend-014-scope",
+    "topic": "frontend",
+    "question": "Što je scope (opseg) varijable u JavaScriptu?",
+    "options": [
+      "Dio koda unutar kojeg je varijabla dostupna i vidljiva - može biti globalni, funkcijski (function scope) ili blokovni (block scope)",
+      "Vrijeme potrebno da se varijabla učita u preglednik",
+      "Broj puta koliko se varijabla može promijeniti tijekom izvršavanja",
+      "Veličina memorije koju varijabla zauzima"
+    ],
+    "correctIndex": 0,
+    "explanation": "Scope određuje gdje se u kodu neka varijabla može referencirati - let/const stvaraju block scope, var stvara function scope, a varijable deklarirane izvan svega su globalne."
+  },
+  {
+    "id": "frontend-015-hoisting",
+    "topic": "frontend",
+    "question": "Što je hoisting u JavaScriptu?",
+    "options": [
+      "Ponašanje pri kojem JavaScript engine 'podiže' deklaracije varijabli i funkcija na vrh njihovog opsega prije izvršavanja koda",
+      "Proces optimizacije slika prije prikaza na stranici",
+      "Tehnika za povećanje brzine učitavanja CSS datoteka",
+      "Mehanizam za automatsko generiranje dokumentacije iz koda"
+    ],
+    "correctIndex": 0,
+    "explanation": "Deklaracije funkcija i var varijabli se 'podižu' na vrh opsega (inicijalizacija ostaje na mjestu) - zato se funkcija može pozvati prije nego je deklarirana u kodu, dok su let/const u 'temporal dead zone' do same deklaracije."
+  },
+  {
+    "id": "frontend-016-destructuring",
+    "topic": "frontend",
+    "question": "Što je destructuring (destrukturiranje) u JavaScriptu?",
+    "options": [
+      "Sintaksa koja omogućuje raspakiravanje vrijednosti iz nizova ili svojstava iz objekata u zasebne varijable u jednom izrazu",
+      "Proces brisanja svih svojstava objekta odjednom",
+      "Način pretvaranja objekta u JSON string",
+      "Tehnika za spajanje dva objekta u jedan"
+    ],
+    "correctIndex": 0,
+    "explanation": "Primjer: const { name, age } = user; ili const [first, second] = arr; - čitljiviji je način izvlačenja podataka nego ručno pristupanje svakom svojstvu/indeksu."
+  },
+  {
+    "id": "frontend-017-spread-operator",
+    "topic": "frontend",
+    "question": "Čemu služi spread operator (...) u JavaScriptu?",
+    "options": [
+      "Raspakiravanje elemenata niza ili svojstava objekta na mjestu gdje se očekuje više elemenata/argumenata, npr. za kopiranje ili spajanje",
+      "Označava komentar u JavaScript kodu",
+      "Koristi se isključivo za matematičko množenje brojeva",
+      "Definira privatnu varijablu unutar klase"
+    ],
+    "correctIndex": 0,
+    "explanation": "Primjeri: [...arr1, ...arr2] spaja nizove, {...obj1, ...obj2} spaja objekte, a fn(...args) raspakira niz u pojedinačne argumente funkcije."
+  },
+  {
+    "id": "frontend-018-spa-vs-ssr",
+    "topic": "frontend",
+    "question": "Koja je razlika između SPA (Single Page Application) i klasične server-rendered aplikacije?",
+    "options": [
+      "SPA učita jednu HTML stranicu i zatim JavaScriptom dinamički mijenja sadržaj bez potpunog ponovnog učitavanja, dok server-rendered aplikacija generira novi HTML na serveru za svaku navigaciju",
+      "SPA se izvršava isključivo na serveru, a server-rendered aplikacija isključivo u pregledniku",
+      "Server-rendered aplikacije ne mogu koristiti JavaScript",
+      "Nema razlike u ponašanju, razlikuje se samo naziv arhitekture"
+    ],
+    "correctIndex": 0,
+    "explanation": "SPA (npr. React/Vue aplikacije) nudi bržu navigaciju bez ponovnog učitavanja stranice nakon početnog loada, dok server-rendered pristup (npr. klasični PHP) šalje potpuno nov HTML pri svakom zahtjevu - svaki pristup ima svoje prednosti (SEO, initial load, interaktivnost)."
+  },
+  {
+    "id": "frontend-019-box-model",
+    "topic": "frontend",
+    "question": "Što opisuje CSS box model?",
+    "options": [
+      "Način na koji se veličina svakog HTML elementa računa kroz slojeve: content, padding, border i margin",
+      "CSS svojstvo koje definira boju pozadine elementa",
+      "Model za organizaciju JavaScript datoteka u projektu",
+      "Tehnika za animiranje elemenata pri scrollanju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Svaki element se sastoji od sadržaja, unutarnjeg razmaka (padding), ruba (border) i vanjskog razmaka (margin) - box-sizing: border-box mijenja kako se ukupna širina/visina računa."
+  },
+  {
+    "id": "frontend-020-flexbox-vs-grid",
+    "topic": "frontend",
+    "question": "Kada je bolje koristiti CSS Flexbox, a kada CSS Grid?",
+    "options": [
+      "Flexbox je prilagođen jednodimenzionalnim rasporedima (redak ili stupac), dok je Grid namijenjen dvodimenzionalnim rasporedima (redci i stupci istovremeno)",
+      "Flexbox i Grid rade identičnu stvar i potpuno su zamjenjivi u svim situacijama",
+      "Grid se može koristiti samo unutar tablica, a Flexbox samo unutar formi",
+      "Flexbox je zastarjela tehnologija koju su u potpunosti zamijenili Grid"
+    ],
+    "correctIndex": 0,
+    "explanation": "Za raspored elemenata u jednom smjeru (npr. navigacijska traka) prirodniji je Flexbox; za složenije rasporede stranice s redcima i stupcima (npr. cijeli layout stranice) prirodniji je Grid."
+  },
+  {
+    "id": "frontend-021-storage-cookies",
+    "topic": "frontend",
+    "question": "Koja je razlika između localStorage, sessionStorage i cookiea?",
+    "options": [
+      "localStorage podaci ostaju trajno dok se ručno ne obrišu, sessionStorage se briše zatvaranjem taba, a cookie se šalje serveru sa svakim HTTP zahtjevom i može imati datum isteka",
+      "Sve tri tehnologije spremaju podatke isključivo na serveru",
+      "cookie se briše svaki put kad se osvježi (refresha) stranica",
+      "localStorage i sessionStorage se automatski šalju serveru kao cookie"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ključna razlika je u trajanju i vidljivosti serveru: cookie putuje sa svakim zahtjevom (pa se koristi npr. za sesije), dok su localStorage/sessionStorage dostupni samo u pregledniku putem JavaScripta."
+  },
+  {
+    "id": "frontend-022-debounce-vs-throttle",
+    "topic": "frontend",
+    "question": "Koja je razlika između debounce i throttle tehnika?",
+    "options": [
+      "Debounce odgađa izvršavanje funkcije dok ne prođe određeno vrijeme bez novog poziva (izvrši se samo zadnji poziv), throttle ograničava funkciju da se izvrši najviše jednom u zadanom vremenskom razdoblju",
+      "Debounce i throttle su sinonimi za istu tehniku optimizacije",
+      "Throttle se koristi isključivo za CSS animacije, debounce isključivo za HTTP pozive",
+      "Debounce povećava broj poziva funkcije, a throttle ih potpuno zaustavlja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tipičan primjer: debounce za search input (čekaj da korisnik prestane tipkati), throttle za scroll/resize event (izvrši najviše jednom svakih npr. 200ms)."
+  },
+  {
+    "id": "frontend-023-microtasks-macrotasks",
+    "topic": "frontend",
+    "question": "Koja je razlika između microtaskova i macrotaskova u JavaScript event loopu?",
+    "options": [
+      "Microtaskovi (npr. Promise callbackovi) se izvršavaju odmah nakon trenutnog sinkronog koda i prije sljedećeg macrotaska, dok se macrotaskovi (npr. setTimeout, event handleri) izvršavaju u sljedećim ciklusima event loopa",
+      "Macrotaskovi uvijek imaju prioritet nad microtaskovima",
+      "Microtaskovi se izvršavaju isključivo u Node.js, a macrotaskovi isključivo u pregledniku",
+      "Nema razlike, oba tipa taskova se izvršavaju identičnim redoslijedom"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nakon svakog macrotaska, event loop prvo isprazni CIJELI red microtaskova prije nego uzme sljedeći macrotask - zato se npr. Promise.resolve().then() izvrši prije setTimeout(fn, 0)."
+  },
+  {
+    "id": "frontend-024-react-keys",
+    "topic": "frontend",
+    "question": "Zašto React elementima renderiranima iz liste treba stabilan 'key' atribut?",
+    "options": [
+      "Kako bi React pouzdano pratio identitet svakog elementa između renderiranja i ispravno ažurirao samo ono što se promijenilo",
+      "Kako bi CSS selektori automatski postali specifičniji",
+      "Kako bi preglednik spremio listu u trajni cache",
+      "Kako bi svaki element dobio globalnu JavaScript varijablu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Stabilan key pomaže Reactovom reconcileru prepoznati koji su elementi dodani, uklonjeni ili premješteni, čime se izbjegavaju nepotrebna ponovna renderiranja i gubitak lokalnog stanja komponente."
+  },
+  {
+    "id": "frontend-025-safe-text-rendering",
+    "topic": "frontend",
+    "question": "Koji je najsigurniji zadani način prikaza korisnički unesenog teksta u React komponenti?",
+    "options": [
+      "Obična JSX interpolacija, npr. <p>{userText}</p>",
+      "Umetanje kroz dangerouslySetInnerHTML bez ikakve obrade",
+      "Ručno spajanje teksta u innerHTML string",
+      "Izvršavanje teksta kroz eval() prije prikaza"
+    ],
+    "correctIndex": 0,
+    "explanation": "React pri običnoj JSX interpolaciji automatski escapea sadržaj, čime sprječava XSS napade; izravno umetanje HTML-a (npr. dangerouslySetInnerHTML) zaobilazi tu zaštitu i zahtijeva pažljivu sanitizaciju."
+  }
+]

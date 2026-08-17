@@ -1,0 +1,288 @@
+[
+  {
+    "id": "backend-001-dependency-injection",
+    "topic": "backend",
+    "question": "Što je dependency injection?",
+    "options": [
+      "Dizajn obrazac u kojem objekt prima svoje ovisnosti izvana (npr. kroz konstruktor) umjesto da ih sam kreira, čime se smanjuje spregnutost i olakšava testiranje",
+      "Proces automatskog instaliranja npm paketa prilikom pokretanja aplikacije",
+      "Tehnika za ubrizgavanje SQL upita u aplikaciju radi brzine",
+      "Način spremanja konfiguracijskih varijabli u bazu podataka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Umjesto da klasa sama kreira svoje ovisnosti (npr. new Database()), one joj se 'injektiraju' izvana - to olakšava zamjenu implementacija (npr. mock u testovima) bez mijenjanja same klase."
+  },
+  {
+    "id": "backend-002-rest-api",
+    "topic": "backend",
+    "question": "Što je REST API?",
+    "options": [
+      "Arhitekturalni stil za dizajn web servisa koji koristi standardne HTTP metode nad resursima identificiranim URL-ovima, obično bez čuvanja stanja na serveru",
+      "Poseban programski jezik za pisanje backend aplikacija",
+      "Baza podataka optimizirana isključivo za spremanje JSON dokumenata",
+      "Protokol za enkripciju podataka između klijenta i servera"
+    ],
+    "correctIndex": 0,
+    "explanation": "REST (Representational State Transfer) definira principe poput korištenja HTTP metoda za operacije nad resursima, statelessness-a i standardiziranih odgovora (najčešće JSON)."
+  },
+  {
+    "id": "backend-003-http-methods",
+    "topic": "backend",
+    "question": "Kada se koriste GET, POST, PUT, PATCH i DELETE HTTP metode?",
+    "options": [
+      "GET dohvaća podatke, POST kreira novi resurs, PUT zamjenjuje cijeli resurs, PATCH djelomično ažurira resurs, DELETE briše resurs",
+      "Sve metode rade identičnu stvar, razlikuje se samo naziv u URL-u",
+      "GET se koristi za brisanje, a DELETE za dohvaćanje podataka",
+      "PATCH i PUT se koriste isključivo za autentikaciju korisnika"
+    ],
+    "correctIndex": 0,
+    "explanation": "Konvencija (ne prisila) HTTP metoda: GET = read, POST = create, PUT = full update/replace, PATCH = partial update, DELETE = remove - PUT i DELETE su tipično idempotentni, POST obično nije."
+  },
+  {
+    "id": "backend-004-http-status-codes",
+    "topic": "backend",
+    "question": "Koje kategorije HTTP statusnih kodova postoje i kada se koriste?",
+    "options": [
+      "1xx informativni, 2xx uspjeh (npr. 200 OK, 201 Created), 3xx preusmjeravanje, 4xx greška na strani klijenta (npr. 404 Not Found), 5xx greška na strani servera (npr. 500 Internal Server Error)",
+      "Statusni kodovi se koriste samo za greške, uspješni zahtjevi nemaju kod",
+      "4xx kodovi označavaju uspješne zahtjeve, a 2xx kodovi greške",
+      "Svaka kategorija kodova ima potpuno proizvoljno značenje ovisno o developeru"
+    ],
+    "correctIndex": 0,
+    "explanation": "Prva znamenka statusnog koda odmah govori o kategoriji odgovora, što olakšava rukovanje odgovorima na klijentskoj strani bez parsiranja tijela odgovora."
+  },
+  {
+    "id": "backend-005-authentication-vs-authorization",
+    "topic": "backend",
+    "question": "Koja je razlika između autentikacije i autorizacije?",
+    "options": [
+      "Autentikacija provjerava TKO je korisnik (npr. login), dok autorizacija provjerava ŠTO taj korisnik smije raditi (dozvole/permisije)",
+      "Autorizacija se odvija prije autentikacije u svakom sustavu",
+      "Autentikacija se odnosi samo na mobilne aplikacije, autorizacija samo na web aplikacije",
+      "To su sinonimi koji opisuju identičan proces provjere lozinke"
+    ],
+    "correctIndex": 0,
+    "explanation": "Prvo se korisnik autenticira (dokaže identitet, npr. e-mail+lozinka), a zatim se za svaku akciju provjerava autorizacija (ima li taj identitet dozvolu za tu akciju/resurs)."
+  },
+  {
+    "id": "backend-006-stateless",
+    "topic": "backend",
+    "question": "Što znači da je API stateless (bez stanja)?",
+    "options": [
+      "Svaki zahtjev mora sadržavati sve informacije potrebne za njegovu obradu - server ne pamti stanje prethodnih zahtjeva istog klijenta između poziva",
+      "API nikad ne vraća nikakav odgovor klijentu",
+      "API ne smije koristiti bazu podataka za spremanje podataka",
+      "Svaki zahtjev se automatski sprema u trajnu memoriju servera"
+    ],
+    "correctIndex": 0,
+    "explanation": "Statelessness olakšava skaliranje (bilo koji server instance može obraditi bilo koji zahtjev) jer server ne mora dijeliti session stanje - autentikacija se npr. rješava tokenom koji klijent šalje sa svakim zahtjevom."
+  },
+  {
+    "id": "backend-007-middleware",
+    "topic": "backend",
+    "question": "Što je middleware u kontekstu backend razvoja?",
+    "options": [
+      "Funkcija/sloj koji se izvršava između primanja HTTP zahtjeva i slanja odgovora, obično radi obrade poput autentikacije, logiranja ili validacije prije nego zahtjev stigne do glavne rute",
+      "Baza podataka koja se koristi isključivo za privremeno spremanje podataka",
+      "Alat za automatsko generiranje frontend komponenti",
+      "Naziv za server koji se nalazi fizički između dva podatkovna centra"
+    ],
+    "correctIndex": 0,
+    "explanation": "Middleware funkcije se ulančavaju (npr. u Express.js) - svaka može modificirati request/response ili prekinuti lanac (npr. vratiti 401 ako korisnik nije autenticiran) prije nego zahtjev stigne do route handlera."
+  },
+  {
+    "id": "backend-008-sync-vs-async",
+    "topic": "backend",
+    "question": "Koja je razlika između sinkronog i asinkronog izvršavanja koda?",
+    "options": [
+      "Sinkroni kod se izvršava redom, blokirajući daljnje izvršavanje dok se trenutna operacija ne završi; asinkroni kod omogućuje da se druge operacije nastave izvršavati dok se čeka rezultat (npr. mrežni poziv)",
+      "Asinkroni kod se uvijek izvršava sporije od sinkronog koda",
+      "Sinkroni kod se koristi isključivo na frontendu, asinkroni isključivo na backendu",
+      "Nema razlike u ponašanju, razlikuje se samo sintaksa pisanja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Asinkrono izvršavanje je ključno za I/O operacije (baza podataka, mrežni pozivi, čitanje datoteka) jer sprječava blokiranje cijele aplikacije dok se čeka spori vanjski resurs."
+  },
+  {
+    "id": "backend-009-race-condition",
+    "topic": "backend",
+    "question": "Što je race condition?",
+    "options": [
+      "Situacija u kojoj konačan ishod programa ovisi o nepredvidivom redoslijedu izvršavanja dva ili više paralelnih/konkurentnih procesa koji pristupaju istom dijeljenom resursu",
+      "Tehnika za ubrzavanje izvršavanja koda paralelizacijom",
+      "Greška koja se javlja isključivo pri kompajliranju koda",
+      "Naziv za automatsko testiranje performansi aplikacije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Primjer: dva zahtjeva istovremeno čitaju stanje računa, oba izračunaju novo stanje na temelju starog i zapišu ga - jedna promjena se 'izgubi' jer se procesi nisu ispravno sinkronizirali (rješava se npr. transakcijama, zaključavanjem ili atomičnim operacijama)."
+  },
+  {
+    "id": "backend-010-deadlock",
+    "topic": "backend",
+    "question": "Što je deadlock?",
+    "options": [
+      "Stanje u kojem dva ili više procesa/niti čekaju jedni druge da oslobode resurse koje drže, pa nijedan ne može nastaviti s izvršavanjem",
+      "Greška koja se javlja kad server primi previše zahtjeva odjednom",
+      "Sigurnosni mehanizam koji zaključava bazu podataka od neovlaštenog pristupa",
+      "Proces automatskog zaustavljanja aplikacije nakon isteka licence"
+    ],
+    "correctIndex": 0,
+    "explanation": "Klasičan primjer: proces A drži zaključan resurs 1 i čeka resurs 2, dok proces B drži zaključan resurs 2 i čeka resurs 1 - nijedan se ne može pomaknuti bez vanjske intervencije (timeout, detekcija ciklusa)."
+  },
+  {
+    "id": "backend-011-caching",
+    "topic": "backend",
+    "question": "Što je caching (predmemoriranje) i što znači invalidacija cachea?",
+    "options": [
+      "Caching sprema rezultate skupih operacija radi bržeg budućeg pristupa, a invalidacija cachea je proces uklanjanja/ažuriranja zastarjelih podataka iz predmemorije kad se izvorni podaci promijene",
+      "Caching je proces trajnog brisanja podataka iz baze radi uštede prostora",
+      "Invalidacija cachea se odnosi na provjeru valjanosti korisničke lozinke",
+      "Caching se može koristiti isključivo za slike i statične datoteke"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cache ubrzava sustav izbjegavanjem ponovnog računanja/dohvaćanja istih podataka, ali unosi izazov: ako se izvorni podatak promijeni, stara verzija u cacheu mora se osvježiti ili ukloniti - poznato kao jedan od 'dva najteža problema u informatici'."
+  },
+  {
+    "id": "backend-012-idempotency",
+    "topic": "backend",
+    "question": "Što znači da je HTTP metoda idempotentna?",
+    "options": [
+      "Višestruko ponavljanje istog zahtjeva ima isti učinak kao i jedan poziv - npr. GET, PUT i DELETE su idempotentni, dok POST općenito nije",
+      "Idempotentna metoda se može pozvati samo jednom u životnom vijeku aplikacije",
+      "Idempotentnost znači da metoda uvijek vraća status kod 200",
+      "Sve HTTP metode su po definiciji idempotentne"
+    ],
+    "correctIndex": 0,
+    "explanation": "PUT /users/5 s istim podacima uvijek rezultira istim stanjem bez obzira koliko se puta pozove, dok POST /users obično svaki put kreira novi resurs (novi id) - ovo je bitno za sigurno automatsko ponavljanje zahtjeva (retry) kod mrežnih grešaka."
+  },
+  {
+    "id": "backend-013-load-balancer",
+    "topic": "backend",
+    "question": "Što je load balancer i čemu služi?",
+    "options": [
+      "Komponenta koja raspoređuje dolazne zahtjeve na više server instanci kako bi se ravnomjerno rasporedilo opterećenje i povećala dostupnost sustava",
+      "Alat koji automatski piše kod za backend aplikaciju",
+      "Baza podataka optimizirana za spremanje velikih datoteka",
+      "Sigurnosni mehanizam koji šifrira lozinke korisnika"
+    ],
+    "correctIndex": 0,
+    "explanation": "Load balancer (npr. Nginx, HAProxy, cloud load balanceri) distribuira promet prema više instanci aplikacije, čime omogućuje horizontalno skaliranje i otpornost na pad pojedine instance."
+  },
+  {
+    "id": "backend-014-horizontal-vs-vertical-scaling",
+    "topic": "backend",
+    "question": "Koja je razlika između horizontalnog i vertikalnog skaliranja?",
+    "options": [
+      "Horizontalno skaliranje dodaje više server instanci (scale out), dok vertikalno skaliranje povećava resurse (CPU/RAM) postojećeg servera (scale up)",
+      "Vertikalno skaliranje se odnosi isključivo na skaliranje baze podataka",
+      "Horizontalno skaliranje znači smanjivanje broja servera radi uštede troškova",
+      "Nema razlike, oba pojma opisuju identičan proces"
+    ],
+    "correctIndex": 0,
+    "explanation": "Horizontalno skaliranje obično zahtijeva load balancer i stateless dizajn aplikacije, dok vertikalno skaliranje ima fizičku gornju granicu (koliko se resursa može dodati jednom stroju)."
+  },
+  {
+    "id": "backend-015-microservices-vs-monolith",
+    "topic": "backend",
+    "question": "Koja je razlika između mikroservisne arhitekture i monolitne aplikacije?",
+    "options": [
+      "Monolit je jedna aplikacija koja sadrži svu funkcionalnost i deploya se kao cjelina, dok mikroservisi dijele sustav na manje, neovisno deployane servise koji komuniciraju mrežno (npr. preko API-ja)",
+      "Mikroservisi mogu koristiti samo jedan programski jezik za cijeli sustav",
+      "Monolitna arhitektura ne podržava rad s bazom podataka",
+      "Nema stvarne razlike, mikroservisi su samo noviji naziv za monolit"
+    ],
+    "correctIndex": 0,
+    "explanation": "Mikroservisi olakšavaju neovisno skaliranje i deployanje dijelova sustava, ali uvode dodatnu složenost (mrežna komunikacija, distribuirane transakcije, monitoring) koju monolit nema."
+  },
+  {
+    "id": "backend-016-cors",
+    "topic": "backend",
+    "question": "Što je CORS (Cross-Origin Resource Sharing)?",
+    "options": [
+      "Sigurnosni mehanizam preglednika koji kontrolira smije li web stranica s jedne domene dohvaćati resurse s druge domene, putem posebnih HTTP zaglavlja koje server mora eksplicitno dopustiti",
+      "Protokol za enkripciju podataka koji se prenose preko interneta",
+      "Baza podataka za spremanje korisničkih sesija",
+      "Alat za automatsko testiranje performansi API-ja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez odgovarajućih CORS zaglavlja (npr. Access-Control-Allow-Origin) preglednik će blokirati JavaScript kod jedne domene da čita odgovor s druge domene, radi zaštite korisnika od zlonamjernih cross-origin zahtjeva."
+  },
+  {
+    "id": "backend-017-jwt-token-auth",
+    "topic": "backend",
+    "question": "Što je JWT i kako se koristi za autentikaciju temeljenu na tokenima?",
+    "options": [
+      "JSON Web Token je samostojeći, potpisan token koji sadrži podatke o korisniku (npr. identitet, dozvole) - klijent ga šalje sa svakim zahtjevom, a server ga verificira bez potrebe za čuvanjem stanja sesije",
+      "JWT je baza podataka namijenjena isključivo spremanju lozinki",
+      "JWT token se generira isključivo na klijentskoj strani i nikad se ne verificira",
+      "JWT zamjenjuje potrebu za HTTPS-om pri prijenosu osjetljivih podataka"
+    ],
+    "correctIndex": 0,
+    "explanation": "JWT se sastoji od headera, payloada i potpisa - budući da je potpisan (ne nužno enkriptiran), server može provjeriti njegovu autentičnost bez pristupa bazi, što odgovara stateless arhitekturi."
+  },
+  {
+    "id": "backend-018-message-queue",
+    "topic": "backend",
+    "question": "Što je message queue (red poruka) i zašto se koristi?",
+    "options": [
+      "Sustav koji omogućuje asinkronu komunikaciju između servisa slanjem poruka u red - pošiljatelj ne mora čekati da primatelj odmah obradi poruku, čime se sustavi razdvajaju (decouple) i postaju otporniji",
+      "Struktura podataka koja se koristi isključivo za sortiranje brojeva",
+      "Red poruka se koristi samo za slanje e-mail obavijesti korisnicima",
+      "Message queue zamjenjuje potrebu za bazom podataka u svim aplikacijama"
+    ],
+    "correctIndex": 0,
+    "explanation": "Primjeri (RabbitMQ, Kafka, SQS) omogućuju npr. da web server brzo odgovori korisniku, dok se dugotrajna obrada (slanje e-maila, generiranje izvještaja) odvija asinkrono u pozadini preko workera koji čitaju iz reda."
+  },
+  {
+    "id": "backend-019-n-plus-one",
+    "topic": "backend",
+    "question": "Što je N+1 query problem?",
+    "options": [
+      "Situacija u kojoj se za dohvaćanje N povezanih zapisa izvrši 1 upit za glavnu listu, a zatim dodatni upit za SVAKI pojedini povezani zapis (N dodatnih upita), umjesto da se sve dohvati u jednom optimiziranom upitu",
+      "Greška koja se javlja kad baza podataka ima više od jedne tablice",
+      "Tehnika optimizacije koja namjerno povećava broj upita radi boljih performansi",
+      "Problem koji se javlja isključivo kod NoSQL baza podataka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Klasičan primjer: dohvatiš listu od 50 postova (1 upit), pa za svaki post posebno dohvaćaš autora (50 dodatnih upita) - rješava se JOIN-ovima ili eager loadingom (npr. 'include' u ORM-u)."
+  },
+  {
+    "id": "backend-020-rate-limiting",
+    "topic": "backend",
+    "question": "Što je rate limiting i čemu služi?",
+    "options": [
+      "Tehnika ograničavanja broja zahtjeva koje klijent smije poslati API-ju u određenom vremenskom razdoblju, radi zaštite od preopterećenja i zloupotrebe (npr. brute-force napada)",
+      "Proces automatskog povećavanja brzine servera tijekom velikog prometa",
+      "Ograničenje broja redaka koje SQL upit smije vratiti",
+      "Tehnika za smanjenje veličine slika prije slanja klijentu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rate limiting (npr. 'maksimalno 100 zahtjeva po minuti po IP adresi') štiti server od preopterećenja i otežava napade poput brute-force pokušaja pogađanja lozinke."
+  },
+  {
+    "id": "backend-021-circuit-breaker",
+    "topic": "backend",
+    "question": "Koja je glavna svrha 'circuit breaker' obrasca u distribuiranim sustavima?",
+    "options": [
+      "Privremeno zaustaviti pozive prema servisu koji opetovano vraća greške, dok se ne oporavi",
+      "Šifrirati promet između mikroservisa",
+      "Trajno spremiti sve API odgovore radi audita",
+      "Zamijeniti autentikaciju rate limitingom"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nakon niza uzastopnih grešaka circuit breaker 'otvara krug' i brzo odbija nove pozive prema tom servisu (umjesto da čeka timeout), čime sprječava kaskadne kvarove, a povremeno propušta probni poziv da provjeri je li se servis oporavio."
+  },
+  {
+    "id": "backend-022-optimistic-concurrency",
+    "topic": "backend",
+    "question": "Kako optimistic concurrency control najčešće otkriva konflikt pri istovremenom ažuriranju istog zapisa?",
+    "options": [
+      "Usporedbom verzije ili timestamp vrijednosti zapisa u uvjetu UPDATE naredbe",
+      "Zaključavanjem cijele baze prije svakog čitanja",
+      "Ponovnim pokretanjem servera nakon svakog zapisa",
+      "Bezuvjetnim prihvaćanjem posljednjeg upisa, bez ikakve provjere"
+    ],
+    "correctIndex": 0,
+    "explanation": "UPDATE uspijeva samo ako je verzija/timestamp u bazi još uvijek jednaka onoj pročitanoj prije izmjene; ako se ne poklapa, znači da je netko drugi u međuvremenu promijenio zapis, pa aplikacija mora ponoviti operaciju."
+  }
+]

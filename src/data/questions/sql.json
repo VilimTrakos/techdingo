@@ -1,0 +1,314 @@
+[
+  {
+    "id": "sql-001-where-vs-having",
+    "topic": "sql",
+    "question": "Koja je razlika između WHERE i HAVING?",
+    "options": [
+      "WHERE filtrira retke prije grupiranja, HAVING filtrira grupe nakon GROUP BY",
+      "WHERE se koristi samo s UPDATE naredbama, HAVING samo sa SELECT naredbama",
+      "Nema razlike, to su sinonimi u SQL standardu",
+      "HAVING filtrira retke prije grupiranja, WHERE filtrira nakon GROUP BY"
+    ],
+    "correctIndex": 0,
+    "explanation": "WHERE djeluje na pojedinačne retke prije GROUP BY, dok HAVING filtrira već grupirane rezultate (npr. rezultate agregatnih funkcija)."
+  },
+  {
+    "id": "sql-002-join-types",
+    "topic": "sql",
+    "question": "Koja je razlika između INNER, LEFT, RIGHT i FULL OUTER JOIN-a?",
+    "options": [
+      "INNER vraća samo podudarajuće retke, LEFT dodaje sve iz lijeve tablice, RIGHT sve iz desne, FULL OUTER sve iz obje",
+      "Svi JOIN tipovi vraćaju identičan rezultat, razlikuje se samo brzina izvršavanja",
+      "LEFT JOIN vraća samo retke koji NE postoje u desnoj tablici",
+      "INNER JOIN spaja tablice bez uvjeta, dok ostali zahtijevaju ON klauzulu"
+    ],
+    "correctIndex": 0,
+    "explanation": "INNER JOIN = presjek; LEFT/RIGHT JOIN zadržavaju sve retke iz jedne strane i popunjavaju NULL gdje nema podudaranja; FULL OUTER JOIN kombinira oba."
+  },
+  {
+    "id": "sql-003-index",
+    "topic": "sql",
+    "question": "Što je indeks u bazi podataka i kada ga je dobro koristiti?",
+    "options": [
+      "Struktura podataka koja ubrzava pretraživanje po određenim stupcima, korisna kad se ti stupci često koriste u WHERE/JOIN/ORDER BY",
+      "Kopija cijele tablice koja se automatski briše nakon svakog upita",
+      "Mehanizam koji sprječava unos duplikata u bilo koji stupac tablice",
+      "Skripta koja se pokreće prije svakog INSERT-a radi validacije podataka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Indeks (npr. B-tree) ubrzava čitanje po cijenu sporijih INSERT/UPDATE/DELETE operacija i dodatnog prostora na disku, pa se koristi na stupcima koji se često filtriraju ili sortiraju."
+  },
+  {
+    "id": "sql-004-primary-vs-unique",
+    "topic": "sql",
+    "question": "Koja je razlika između PRIMARY KEY i UNIQUE constrainta?",
+    "options": [
+      "Tablica može imati samo jedan PRIMARY KEY i on ne dopušta NULL, dok UNIQUE stupaca može biti više i obično dopušta jedan NULL",
+      "UNIQUE se odnosi samo na cijele brojeve, PRIMARY KEY na sve tipove podataka",
+      "PRIMARY KEY se može mijenjati bez ograničenja, UNIQUE je nepromjenjiv",
+      "Nema razlike - oba osiguravaju identično ponašanje"
+    ],
+    "correctIndex": 0,
+    "explanation": "PRIMARY KEY jedinstveno identificira redak (implicitno NOT NULL + UNIQUE), a tablica ih smije imati samo jedan (može biti kompozitni); UNIQUE ograničenja mogu postojati na više stupaca."
+  },
+  {
+    "id": "sql-005-normalization",
+    "topic": "sql",
+    "question": "Što je normalizacija baze podataka i koje probleme rješava?",
+    "options": [
+      "Proces organiziranja podataka u tablice radi smanjenja redundancije i sprječavanja anomalija pri unosu/ažuriranju/brisanju",
+      "Postupak brisanja svih indeksa radi ubrzanja upita",
+      "Pretvaranje svih tekstualnih stupaca u velika slova radi konzistentnosti",
+      "Proces spajanja svih tablica u jednu radi jednostavnosti"
+    ],
+    "correctIndex": 0,
+    "explanation": "Normalizacija (1NF, 2NF, 3NF...) dijeli podatke tako da se svaka činjenica čuva samo na jednom mjestu, čime se smanjuje redundancija i rizik od nekonzistentnih podataka."
+  },
+  {
+    "id": "sql-006-transactions-acid",
+    "topic": "sql",
+    "question": "Što su transakcije i što označavaju ACID osobine?",
+    "options": [
+      "Transakcija je niz operacija koje se izvršavaju kao cjelina; ACID = Atomicity, Consistency, Isolation, Durability",
+      "Transakcija je naziv za svaki SELECT upit; ACID se odnosi na brzinu izvršavanja upita",
+      "ACID označava četiri tipa indeksa u relacijskim bazama",
+      "Transakcije se koriste isključivo za brisanje podataka"
+    ],
+    "correctIndex": 0,
+    "explanation": "ACID garantira da transakcija ili u potpunosti uspije ili u potpunosti propadne (atomičnost), da baza ostaje u ispravnom stanju, da se paralelne transakcije ne miješaju (izolacija) i da su promjene trajne nakon commita."
+  },
+  {
+    "id": "sql-007-delete-truncate-drop",
+    "topic": "sql",
+    "question": "Koja je razlika između DELETE, TRUNCATE i DROP naredbi?",
+    "options": [
+      "DELETE briše odabrane retke (može se rollbackati), TRUNCATE brzo prazni cijelu tablicu, DROP briše samu tablicu iz baze",
+      "Sve tri naredbe rade identičnu stvar, razlikuje se samo sintaksa",
+      "TRUNCATE briše samo strukturu tablice, a DELETE i DROP brišu podatke",
+      "DROP briše samo jedan redak, DELETE i TRUNCATE brišu cijelu bazu"
+    ],
+    "correctIndex": 0,
+    "explanation": "DELETE je DML naredba koja se logira po retku i može imati WHERE uvjet; TRUNCATE je brži DDL koji resetira tablicu ali zadržava strukturu; DROP potpuno uklanja tablicu (strukturu i podatke)."
+  },
+  {
+    "id": "sql-008-null-behavior",
+    "topic": "sql",
+    "question": "Kako se NULL ponaša u SQL upitima?",
+    "options": [
+      "NULL predstavlja nepoznatu vrijednost - usporedbe s NULL (npr. = NULL) uvijek daju UNKNOWN, pa se koristi IS NULL / IS NOT NULL",
+      "NULL je jednak praznom stringu '' u svim usporedbama",
+      "NULL se ponaša isto kao broj 0 u aritmetičkim operacijama",
+      "NULL vrijednosti se automatski isključuju iz svih agregatnih funkcija osim COUNT(*)"
+    ],
+    "correctIndex": 0,
+    "explanation": "NULL znači 'nepoznato', pa x = NULL nikad nije TRUE (uvijek UNKNOWN) - za provjeru se mora koristiti IS NULL ili IS NOT NULL."
+  },
+  {
+    "id": "sql-009-subquery",
+    "topic": "sql",
+    "question": "Što je podupit (subquery)?",
+    "options": [
+      "SQL upit ugniježđen unutar drugog upita, koji se koristi npr. u WHERE, FROM ili SELECT dijelu",
+      "Naredba koja automatski dijeli veliku tablicu na manje particije",
+      "Poseban tip indeksa koji ubrzava JOIN operacije",
+      "Upit koji se izvršava isključivo nakon COMMIT-a"
+    ],
+    "correctIndex": 0,
+    "explanation": "Podupit je SELECT unutar drugog upita - može vraćati jednu vrijednost, listu vrijednosti ili cijelu tablicu, ovisno o kontekstu u kojem se koristi."
+  },
+  {
+    "id": "sql-010-subquery-vs-join",
+    "topic": "sql",
+    "question": "Koja je razlika između podupita i JOIN-a?",
+    "options": [
+      "JOIN kombinira stupce iz više tablica u jedan rezultat, dok podupit obično vraća vrijednost/skup koji se koristi za filtriranje - JOIN je često (ali ne uvijek) brži jer optimizator ima više informacija",
+      "Podupit i JOIN uvijek daju identičan plan izvršavanja u svakoj bazi podataka",
+      "JOIN se može koristiti samo s dvije tablice, dok podupit nema ograničenja",
+      "Podupit mijenja podatke u bazi, dok JOIN samo čita podatke"
+    ],
+    "correctIndex": 0,
+    "explanation": "Oboje mogu riješiti isti problem, ali JOIN direktno spaja retke iz više tablica u rezultat, dok se podupit često koristi za filtriranje (npr. WHERE id IN (subquery)) - izbor ovisi o čitljivosti i planu izvršavanja."
+  },
+  {
+    "id": "sql-011-group-by",
+    "topic": "sql",
+    "question": "Čemu služi GROUP BY klauzula?",
+    "options": [
+      "Grupira retke s istom vrijednošću u navedenim stupcima kako bi se nad svakom grupom mogle primijeniti agregatne funkcije",
+      "Sortira rezultate upita silaznim redoslijedom",
+      "Uklanja duplikate iz rezultata bez potrebe za agregatnim funkcijama",
+      "Spaja dvije tablice po zajedničkom stupcu"
+    ],
+    "correctIndex": 0,
+    "explanation": "GROUP BY grupira retke po vrijednostima jednog ili više stupaca, a agregatne funkcije (COUNT, SUM...) se zatim računaju za svaku grupu posebno."
+  },
+  {
+    "id": "sql-012-aggregate-functions",
+    "topic": "sql",
+    "question": "Koje su najčešće agregatne funkcije u SQL-u i čemu služe?",
+    "options": [
+      "COUNT, SUM, AVG, MIN i MAX - računaju jednu vrijednost iz skupa redaka (npr. broj, zbroj, prosjek, minimum, maksimum)",
+      "SELECT, INSERT, UPDATE, DELETE - osnovne DML naredbe",
+      "AND, OR, NOT - logički operatori za WHERE klauzulu",
+      "VARCHAR, INT, DATE - tipovi podataka za stupce"
+    ],
+    "correctIndex": 0,
+    "explanation": "Agregatne funkcije sažimaju više redaka u jednu vrijednost, često u kombinaciji s GROUP BY."
+  },
+  {
+    "id": "sql-013-union-vs-union-all",
+    "topic": "sql",
+    "question": "Koja je razlika između UNION i UNION ALL?",
+    "options": [
+      "UNION spaja rezultate dva upita i uklanja duplikate, UNION ALL spaja rezultate i zadržava sve duplikate (pa je obično brži)",
+      "UNION ALL se može koristiti samo s dvije tablice iste veličine",
+      "UNION spaja stupce jedne tablice, a UNION ALL retke druge tablice",
+      "Nema stvarne razlike, UNION ALL je samo zastarjela sintaksa za UNION"
+    ],
+    "correctIndex": 0,
+    "explanation": "UNION interno radi dodatnu operaciju uklanjanja duplikata (slično DISTINCT), što ga čini sporijim od UNION ALL kad znamo da duplikati ne smetaju ili ih nema."
+  },
+  {
+    "id": "sql-014-foreign-key",
+    "topic": "sql",
+    "question": "Što je strani ključ (foreign key) i čemu služi?",
+    "options": [
+      "Stupac (ili skup stupaca) koji referencira primarni ključ druge tablice, čime se osigurava referencijalni integritet",
+      "Ključ koji se koristi za enkripciju osjetljivih podataka u tablici",
+      "Alternativni naziv za indeks na stupcu koji nije primarni ključ",
+      "Ključ koji automatski generira nasumične vrijednosti za primarni ključ"
+    ],
+    "correctIndex": 0,
+    "explanation": "Strani ključ sprječava unos vrijednosti koja ne postoji u referenciranoj tablici (npr. narudžba ne može imati customer_id koji ne postoji u tablici kupaca)."
+  },
+  {
+    "id": "sql-015-views",
+    "topic": "sql",
+    "question": "Što je view (pogled) u bazi podataka?",
+    "options": [
+      "Virtualna tablica definirana SQL upitom, koja se izvršava svaki put kad joj se pristupi, bez fizičkog spremanja vlastitih podataka",
+      "Fizička kopija tablice koja se automatski sinkronizira svaku sekundu",
+      "Naziv za backup cijele baze podataka",
+      "Poseban tip indeksa koji ubrzava SELECT upite"
+    ],
+    "correctIndex": 0,
+    "explanation": "View se ponaša kao tablica pri čitanju, ali podaci se dohvaćaju iz osnovnog upita u trenutku pristupa - korisno za pojednostavljenje složenih upita ili ograničavanje pristupa podacima."
+  },
+  {
+    "id": "sql-016-stored-procedure-vs-function",
+    "topic": "sql",
+    "question": "Koja je razlika između stored procedure i (SQL) funkcije?",
+    "options": [
+      "Funkcija mora vraćati vrijednost i može se koristiti unutar SELECT upita, dok procedura ne mora vraćati vrijednost i poziva se samostalno (može mijenjati podatke, upravljati transakcijama)",
+      "Procedura se izvršava na klijentu, a funkcija na serveru baze podataka",
+      "Funkcije se pišu u SQL-u, a procedure isključivo u Pythonu",
+      "Nema razlike, to su sinonimi u svim bazama podataka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Funkcije se ugrađuju u izraze (npr. SELECT mojaFunkcija(x)) i moraju vratiti vrijednost, dok su procedure samostalne rutine koje se pozivaju naredbom CALL/EXEC i mogu imati širi opseg (npr. upravljati transakcijama)."
+  },
+  {
+    "id": "sql-017-clustered-vs-nonclustered-index",
+    "topic": "sql",
+    "question": "Koja je razlika između clustered i non-clustered indeksa?",
+    "options": [
+      "Clustered indeks fizički određuje redoslijed podataka u tablici (tablica ga smije imati samo jedan), non-clustered indeks je zasebna struktura s pokazivačima na stvarne retke",
+      "Clustered indeks se koristi samo za tekstualne stupce, non-clustered samo za brojeve",
+      "Non-clustered indeks je uvijek brži od clustered indeksa u svim situacijama",
+      "Clustered indeks se automatski briše nakon svakog UPDATE-a"
+    ],
+    "correctIndex": 0,
+    "explanation": "Budući da clustered indeks određuje fizički poredak podataka, tablica može imati samo jedan; non-clustered indeksi se mogu dodavati u većem broju, ali zahtijevaju dodatni skok (lookup) do stvarnog retka."
+  },
+  {
+    "id": "sql-018-sql-injection",
+    "topic": "sql",
+    "question": "Što je SQL injection i kako ga se najčešće sprječava?",
+    "options": [
+      "Napad u kojem se zlonamjerni SQL kod ubacuje kroz korisnički unos; sprječava se parametriziranim upitima (prepared statements), a ne konkatenacijom stringova",
+      "Vrsta optimizacije upita koja ubrzava izvršavanje SELECT naredbi",
+      "Proces automatskog ubacivanja test podataka u razvojnu bazu",
+      "Greška koja se javlja isključivo kod korištenja NoSQL baza podataka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kad se korisnički unos direktno spaja u SQL string, napadač može ubaciti vlastiti SQL kod; parametrizirani upiti odvajaju kod od podataka i tako to sprječavaju."
+  },
+  {
+    "id": "sql-019-normal-forms",
+    "topic": "sql",
+    "question": "Što ukratko opisuju 1NF, 2NF i 3NF (normalne forme)?",
+    "options": [
+      "1NF traži atomične vrijednosti bez ponavljajućih grupa, 2NF uklanja djelomične ovisnosti o dijelu kompozitnog ključa, 3NF uklanja tranzitivne ovisnosti između ne-ključnih stupaca",
+      "1NF, 2NF i 3NF su tri različita tipa JOIN operacija",
+      "To su tri razine sigurnosnog pristupa podacima u bazi",
+      "Označavaju broj indeksa koje tablica smije imati"
+    ],
+    "correctIndex": 0,
+    "explanation": "Svaka viša normalna forma gradi se na prethodnoj i dodatno smanjuje redundanciju/anomalije, uz kompromis da upiti mogu zahtijevati više JOIN-ova."
+  },
+  {
+    "id": "sql-020-exists-vs-in",
+    "topic": "sql",
+    "question": "Koja je razlika između EXISTS i IN u WHERE klauzuli?",
+    "options": [
+      "EXISTS provjerava postoji li barem jedan redak koji zadovoljava podupit (često brži na velikim skupovima jer prestaje čim nađe podudaranje), IN uspoređuje vrijednost s listom/rezultatom podupita",
+      "IN se može koristiti samo s brojevima, a EXISTS samo s tekstom",
+      "EXISTS je zastarjela sintaksa koja se više ne podržava u modernim bazama",
+      "Nema nikakve razlike u ponašanju ili performansama"
+    ],
+    "correctIndex": 0,
+    "explanation": "EXISTS vraća TRUE/FALSE čim pronađe prvi podudarajući redak (short-circuit), dok IN uspoređuje vrijednost sa cijelim skupom rezultata - izbor ovisi o veličini podataka i optimizatoru konkretne baze."
+  },
+  {
+    "id": "sql-021-case-when",
+    "topic": "sql",
+    "question": "Čemu služi CASE WHEN izraz u SQL-u?",
+    "options": [
+      "Omogućuje uvjetnu logiku (if/else stil) unutar SQL upita, npr. za mapiranje vrijednosti ili uvjetno računanje unutar SELECT-a",
+      "Koristi se isključivo za definiranje novih tablica",
+      "Zamjenjuje potrebu za WHERE klauzulom u svim upitima",
+      "Služi za brisanje redaka koji zadovoljavaju određeni uvjet"
+    ],
+    "correctIndex": 0,
+    "explanation": "CASE WHEN uvjet THEN vrijednost ... ELSE vrijednost END vraća različitu vrijednost ovisno o uvjetu, slično switch/if-else konstruktu u programskim jezicima."
+  },
+  {
+    "id": "sql-022-varchar-vs-char",
+    "topic": "sql",
+    "question": "Koja je razlika između VARCHAR i CHAR tipova podataka?",
+    "options": [
+      "CHAR je fiksne duljine i popunjava se razmacima do definirane veličine, VARCHAR je varijabilne duljine i zauzima prostor prema stvarnom sadržaju",
+      "VARCHAR se koristi samo za brojeve, a CHAR samo za datume",
+      "CHAR može sadržavati neograničen broj znakova, a VARCHAR najviše 10",
+      "Nema razlike u spremanju podataka, razlikuje se samo naziv u različitim bazama"
+    ],
+    "correctIndex": 0,
+    "explanation": "CHAR(n) uvijek zauzima n znakova (popunjava razmacima), dok VARCHAR(n) zauzima onoliko koliko je stvarno upisano (do maksimuma n) - CHAR može biti brži za podatke fiksne duljine (npr. šifre), VARCHAR štedi prostor za varijabilne tekstove."
+  },
+  {
+    "id": "sql-023-window-functions-vs-group-by",
+    "topic": "sql",
+    "question": "Koja je ključna razlika između window (analitičke) funkcije i agregacije s GROUP BY?",
+    "options": [
+      "Window funkcija zadržava pojedinačne retke u rezultatu i uz njih dodaje izračunatu vrijednost, dok GROUP BY sažima retke u jedan redak po grupi",
+      "Samo window funkcija smije koristiti SUM ili AVG",
+      "GROUP BY uvijek vraća isti broj redaka kao ulazni skup podataka",
+      "Window funkcije se ne mogu kombinirati s ORDER BY klauzulom"
+    ],
+    "correctIndex": 0,
+    "explanation": "Window funkcija (npr. SUM() OVER (...)) računa vrijednost nad 'prozorom' povezanih redaka bez sažimanja svakog ulaznog retka u jedan grupni rezultat, za razliku od GROUP BY koji retke grupira i kolabira u sažete redove."
+  },
+  {
+    "id": "sql-024-isolation-levels",
+    "topic": "sql",
+    "question": "Koja je najniža standardna razina izolacije transakcije koja sprječava 'dirty read' (čitanje nepotvrđenih promjena)?",
+    "options": [
+      "READ UNCOMMITTED",
+      "READ COMMITTED",
+      "REPEATABLE READ",
+      "SERIALIZABLE"
+    ],
+    "correctIndex": 1,
+    "explanation": "READ COMMITTED ne dopušta čitanje promjena koje druga transakcija još nije potvrdila (commitala); više razine izolacije (REPEATABLE READ, SERIALIZABLE) dodatno sprječavaju i druge anomalije poput non-repeatable reada i phantom reada."
+  }
+]

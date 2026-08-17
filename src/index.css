@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Nunito Sans", "Avenir Next", Avenir, ui-rounded, system-ui, sans-serif;
+  --font-display: "Nunito Sans", "Avenir Next", Avenir, ui-rounded, system-ui, sans-serif;
+
+  --color-ink-950: #17202a;
+  --color-ink-800: #2f3b48;
+  --color-ink-600: #667382;
+  --color-ink-400: #96a0aa;
+  --color-cloud-50: #f8faf7;
+  --color-cloud-100: #f0f4ed;
+  --color-cloud-200: #e2e9df;
+
+  --color-brand-50: #f2fff4;
+  --color-brand-100: #dbfce1;
+  --color-brand-300: #82df91;
+  --color-brand-500: #3bb44a;
+  --color-brand-600: #249438;
+  --color-brand-700: #1e7430;
+
+  --color-sql: #8b5cf6;
+  --color-frontend: #168fd3;
+  --color-backend: #ee8a2c;
+  --color-heart: #ee4b5e;
+  --color-streak: #f5a524;
+  --color-xp: #7c5ce5;
+
+  --shadow-card: 0 4px 0 rgba(23, 32, 42, 0.1), 0 12px 32px rgba(23, 32, 42, 0.06);
+  --shadow-button: 0 4px 0 rgba(23, 32, 42, 0.16);
+
+  --animate-pop-in: pop-in 320ms cubic-bezier(0.2, 0.9, 0.3, 1.25) both;
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+:root {
+  font-family: var(--font-sans);
+  color: var(--color-ink-950);
+  background: var(--color-cloud-50);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+  background: var(--color-cloud-50);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(59, 180, 74, 0.09), transparent 30rem),
+    radial-gradient(circle at 100% 15%, rgba(139, 92, 246, 0.07), transparent 28rem),
+    var(--color-cloud-50);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  color: var(--color-ink-950);
+  background: var(--color-brand-100);
+}
+
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-brand-500) 65%, white);
+  outline-offset: 3px;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
