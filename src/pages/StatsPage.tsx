@@ -179,7 +179,7 @@ export function StatsPage() {
           </h2>
         </div>
 
-        <div className="grid gap-4 lg:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {TOPICS.map((topic) => {
             const progress = state.lessons[topic.id];
             const passes = progress?.passCount ?? 0;
@@ -252,7 +252,7 @@ export function StatsPage() {
           </h2>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
           {scoreStrikeTopics.map((topic) => {
             const progress = state.scoreStrike[topic.id];
             const bestScore = progress?.bestScore ?? 0;
