@@ -15,19 +15,24 @@ export interface TopicCardProps {
 
 const accentStyles: Record<string, { border: string; badge: string; glow: string }> = {
   sql: {
-    border: 'border-violet-200',
-    badge: 'bg-violet-50 text-violet-700 ring-violet-200',
-    glow: 'from-violet-100/80',
+    border: 'border-cyan-200',
+    badge: 'bg-cyan-50 text-cyan-800 ring-cyan-200',
+    glow: 'from-cyan-100/80',
   },
   frontend: {
-    border: 'border-sky-200',
-    badge: 'bg-sky-50 text-sky-700 ring-sky-200',
-    glow: 'from-sky-100/80',
+    border: 'border-amber-200',
+    badge: 'bg-amber-50 text-amber-800 ring-amber-200',
+    glow: 'from-amber-100/80',
   },
   backend: {
     border: 'border-orange-200',
     badge: 'bg-orange-50 text-orange-700 ring-orange-200',
     glow: 'from-orange-100/80',
+  },
+  general: {
+    border: 'border-brand-200',
+    badge: 'bg-brand-50 text-brand-800 ring-brand-200',
+    glow: 'from-brand-100/80',
   },
   mixed: {
     border: 'border-amber-200',
@@ -91,7 +96,7 @@ export function TopicCard({
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
         {lessonHref && (
           <Link
-            className="inline-flex min-h-11 items-center justify-center rounded-xl bg-indigo-600 px-4 py-2.5 text-center text-sm font-extrabold text-white shadow-sm transition hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="game-button game-button-primary"
             to={lessonHref}
           >
             Pokreni lekciju
@@ -99,7 +104,7 @@ export function TopicCard({
         )}
         {scoreStrikeHref && (
           <Link
-            className="inline-flex min-h-11 items-center justify-center rounded-xl border border-amber-300 bg-amber-50 px-4 py-2.5 text-center text-sm font-extrabold text-amber-800 transition hover:bg-amber-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500"
+            className="game-button game-button-secondary"
             to={scoreStrikeHref}
           >
             Score Strike
