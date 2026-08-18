@@ -1,20 +1,20 @@
-# TechDingo 🐕
+# TechDingo
 
 Gamificirana web aplikacija za uvježbavanje tehničkih intervju pitanja —
-SQL, Frontend i Backend. Duolingo-stil solo lekcije (srca, streak, XP) +
+SQL, Frontend, Backend i opći tehnički temelji. Solo lekcije (srca, streak, XP) +
 "Score Strike" brzinski mod (timer, bodovi, combo, osobni rekord).
 
-Potpuno statična aplikacija — bez backenda, bez baze podataka, sav napredak
-se sprema lokalno u tvom pregledniku (`localStorage`).
+Aplikacija radi potpuno lokalno i sprema napredak u `localStorage`, a opcionalna
+Supabase integracija omogućuje račun i sinkronizaciju između uređaja.
 
 ## Značajke
 
-- **Lekcije po temama** (SQL / Frontend / Backend) — svaka sesija nasumično
+- **Lekcije po temama** (SQL / Frontend / Backend / Opće) — svaka sesija
+  nasumično
   odabire 15-17 pitanja, 5 srca po pokušaju, dnevni streak i XP.
 - **Score Strike** — brzinski izazov s timerom po pitanju, bodovanjem,
   combo multiplikatorom i osobnim rekordom (po temi ili "sve teme" mix).
-- **65+ pitanja** o SQL-u, frontendu i backendu, s objašnjenjem nakon svakog
-  odgovora.
+- **220+ pitanja** kroz četiri područja, s objašnjenjem nakon svakog odgovora.
 - Otvoren za doprinose — dodavanje novih pitanja je pull request na jednu
   JSON datoteku, validiran automatski u CI-u.
 
