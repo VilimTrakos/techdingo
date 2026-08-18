@@ -4,10 +4,45 @@ import { XPBadge } from '../components/XPBadge';
 import { TOPICS } from '../data/topics';
 import { useProgress } from '../hooks/useProgress';
 
+const TOPIC_META: Record<
+  string,
+  {
+    icon: string;
+    surface: string;
+    scoreSurface: string;
+    fill: string;
+  }
+> = {
+  sql: {
+    icon: '▤',
+    surface: 'border-cyan-200 bg-cyan-50/70',
+    scoreSurface: 'border-cyan-200 bg-cyan-50',
+    fill: 'bg-cyan-500',
+  },
+  frontend: {
+    icon: '</>',
+    surface: 'border-amber-200 bg-amber-50/75',
+    scoreSurface: 'border-amber-200 bg-amber-50',
+    fill: 'bg-amber-500',
+  },
+  backend: {
+    icon: '⚙',
+    surface: 'border-orange-200 bg-orange-50/75',
+    scoreSurface: 'border-orange-200 bg-orange-50',
+    fill: 'bg-orange-500',
+  },
+  general: {
+    icon: '✦',
+    surface: 'border-brand-200 bg-brand-50/75',
+    scoreSurface: 'border-brand-200 bg-brand-50',
+    fill: 'bg-brand-500',
+  },
+};
+
+const FALLBACK_META = TOPIC_META.general;
+
 function pluralizeAttempts(value: number) {
-  if (value === 1) return 'pokušaj';
-  if (value >= 2 && value <= 4) return 'pokušaja';
-  return 'pokušaja';
+  return value === 1 ? 'pokušaj' : 'pokušaja';
 }
 
 export function StatsPage() {
@@ -24,205 +59,288 @@ export function StatsPage() {
     (total, progress) => total + progress.playCount,
     0,
   );
-  const hasActivity = totalPasses + totalFails + totalScoreStrikeRuns > 0;
+  const lessonAttempts = totalPasses + totalFails;
+  const lessonSuccessRate =
+    lessonAttempts > 0 ? Math.round((totalPasses / lessonAttempts) * 100) : 0;
+  const hasActivity = lessonAttempts + totalScoreStrikeRuns > 0;
+  const guideMarkSrc = `${import.meta.env.BASE_URL}tech-hedgehog.webp`;
   const scoreStrikeTopics = [
     ...TOPICS.map((topic) => ({ id: topic.id, label: topic.labelHr })),
     { id: 'mixed', label: 'Sve teme' },
   ];
 
   return (
-    <div className="space-y-8 pb-8">
-      <header className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-        <p className="text-sm font-black uppercase tracking-[0.18em] text-indigo-600">
-          Tvoj napredak
-        </p>
-        <div className="mt-2 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+    <div className="space-y-10 pb-10">
+      <header className="relative isolate overflow-hidden rounded-[2rem] border-2 border-brand-200 bg-gradient-to-br from-brand-50 via-white to-amber-50 p-6 shadow-[0_7px_0_#b8efc1,0_18px_45px_rgba(23,32,42,0.08)] sm:p-8">
+        <div
+          aria-hidden="true"
+          className="absolute -right-12 -top-14 -z-10 size-56 rounded-full bg-amber-200/50 blur-3xl"
+        />
+        <div className="grid gap-6 sm:grid-cols-[1fr_auto] sm:items-end">
           <div>
-            <h1 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
+            <p className="text-sm font-black uppercase tracking-[0.18em] text-brand-700">
+              Tvoja igra, tvoji brojevi
+            </p>
+            <h1 className="mt-2 text-4xl font-black tracking-tight text-ink-950 sm:text-5xl">
               Statistika
             </h1>
-            <p className="mt-2 max-w-2xl font-medium leading-7 text-slate-600">
-              Prati dovršene lekcije, niz aktivnosti i najbolje Score Strike
-              rezultate na ovom uređaju.
+            <p className="mt-3 max-w-2xl font-bold leading-7 text-ink-600">
+              Prati osvojeni XP, seriju učenja i osobne rekorde. Svaki pokušaj
+              gradi sljedeći korak.
             </p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              <StreakBadge streak={state.streak.current} />
+              <XPBadge xp={state.xpTotal} />
+            </div>
           </div>
-          <div className="flex flex-wrap gap-2">
-            <StreakBadge streak={state.streak.current} />
-            <XPBadge xp={state.xpTotal} />
+
+          <div
+            aria-hidden="true"
+            className="mx-auto grid size-32 place-items-center overflow-hidden rounded-[2rem] border-[3px] border-ink-950 bg-white shadow-[0_6px_0_#17202a] sm:mx-0 sm:size-36"
+          >
+            <img src={guideMarkSrc} alt="" className="size-[92%] object-contain" />
           </div>
         </div>
       </header>
 
       <section aria-labelledby="overview-heading">
-        <h2 id="overview-heading" className="sr-only">
-          Pregled rezultata
-        </h2>
+        <div className="mb-4 flex items-end justify-between gap-4">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-brand-700">
+              Brzi pregled
+            </p>
+            <h2 id="overview-heading" className="mt-1 text-2xl font-black text-ink-950">
+              Tvoj rezultat dosad
+            </h2>
+          </div>
+          <Link to="/" className="text-sm font-black text-brand-700 hover:underline">
+            Nastavi učiti →
+          </Link>
+        </div>
+
         <dl className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <StatCard
             label="Ukupni XP"
             value={state.xpTotal.toLocaleString('hr-HR')}
-            icon="⚡"
+            icon="✦"
+            tone="cyan"
           />
           <StatCard
             label="Trenutačni niz"
             value={`${state.streak.current} dana`}
             hint={`Najduži niz: ${state.streak.longest}`}
             icon="🔥"
+            tone="orange"
           />
           <StatCard
             label="Prođene lekcije"
             value={totalPasses.toString()}
-            hint={`${totalFails} neuspjelih pokušaja`}
-            icon="🎓"
+            hint={`${lessonSuccessRate}% uspješnosti`}
+            icon="✓"
+            tone="green"
           />
           <StatCard
             label="Score Strike runde"
             value={totalScoreStrikeRuns.toString()}
-            icon="⏱️"
+            icon="⚡"
+            tone="amber"
           />
         </dl>
       </section>
 
       {!hasActivity && (
-        <section className="rounded-[2rem] border border-dashed border-indigo-300 bg-indigo-50 p-8 text-center">
-          <p className="text-4xl" aria-hidden="true">
-            🚀
-          </p>
-          <h2 className="mt-3 text-2xl font-black text-slate-900">
-            Tvoja statistika čeka prvi rezultat
-          </h2>
-          <p className="mx-auto mt-2 max-w-lg font-medium leading-7 text-slate-600">
-            Završi lekciju ili Score Strike rundu i ovdje ćeš vidjeti svoj
-            napredak.
-          </p>
-          <Link
-            to="/"
-            className="mt-5 inline-flex min-h-12 items-center justify-center rounded-2xl bg-indigo-600 px-6 py-3 font-black text-white transition hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        <section className="rounded-[2rem] border-2 border-dashed border-brand-300 bg-brand-50 p-7 text-center shadow-[0_5px_0_#b8efc1] sm:p-9">
+          <span
+            className="mx-auto grid size-16 place-items-center rounded-2xl border-2 border-brand-700 bg-brand-200 text-3xl shadow-[0_4px_0_#1e7430]"
+            aria-hidden="true"
           >
-            Započni vježbu
+            ▶
+          </span>
+          <h2 className="mt-5 text-2xl font-black text-ink-950">
+            Prvi rezultat čeka na tebe
+          </h2>
+          <p className="mx-auto mt-2 max-w-lg font-semibold leading-7 text-ink-600">
+            Završi jednu kratku lekciju ili odigraj Score Strike rundu. Napredak
+            će se odmah pojaviti ovdje.
+          </p>
+          <Link to="/" className="game-button game-button-primary mt-6 px-7">
+            Započni prvu lekciju
           </Link>
         </section>
       )}
 
-      <div className="grid gap-6 xl:grid-cols-2">
-        <section
-          aria-labelledby="lessons-heading"
-          className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
-        >
-          <h2 id="lessons-heading" className="text-2xl font-black text-slate-900">
+      <section aria-labelledby="lessons-heading">
+        <div className="mb-5">
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-brand-700">
+            Put učenja
+          </p>
+          <h2 id="lessons-heading" className="mt-1 text-2xl font-black text-ink-950">
             Lekcije po temama
           </h2>
-          <div className="mt-5 divide-y divide-slate-100">
-            {TOPICS.map((topic) => {
-              const progress = state.lessons[topic.id];
-              const passes = progress?.passCount ?? 0;
-              const fails = progress?.failCount ?? 0;
-              const attempts = passes + fails;
-              const successRate = attempts > 0 ? Math.round((passes / attempts) * 100) : 0;
+        </div>
 
-              return (
-                <div
-                  key={topic.id}
-                  className="grid gap-3 py-5 first:pt-0 last:pb-0 sm:grid-cols-[1fr_auto] sm:items-center"
-                >
-                  <div>
-                    <h3 className="font-black text-slate-900">{topic.labelHr}</h3>
-                    <p className="mt-1 text-sm font-medium text-slate-500">
-                      {attempts} {pluralizeAttempts(attempts)} · {passes} uspješnih
-                    </p>
-                    <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
-                      <div
-                        className="h-full rounded-full bg-emerald-500 transition-[width]"
-                        style={{ width: `${successRate}%` }}
-                        role="progressbar"
-                        aria-label={`Uspješnost za ${topic.labelHr}`}
-                        aria-valuemin={0}
-                        aria-valuemax={100}
-                        aria-valuenow={successRate}
-                      />
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between gap-4 sm:block sm:text-right">
-                    <p className="text-2xl font-black tabular-nums text-emerald-600">
-                      {successRate}%
-                    </p>
-                    <Link
-                      to={`/lesson/${topic.id}`}
-                      className="text-sm font-black text-indigo-600 hover:text-indigo-800 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    >
-                      Vježbaj
-                    </Link>
-                  </div>
+        <div className="grid gap-4 lg:grid-cols-3">
+          {TOPICS.map((topic) => {
+            const progress = state.lessons[topic.id];
+            const passes = progress?.passCount ?? 0;
+            const fails = progress?.failCount ?? 0;
+            const attempts = passes + fails;
+            const successRate =
+              attempts > 0 ? Math.round((passes / attempts) * 100) : 0;
+            const meta = TOPIC_META[topic.id] ?? FALLBACK_META;
+
+            return (
+              <article
+                key={topic.id}
+                className={`rounded-[1.75rem] border-2 p-5 shadow-[0_5px_0_rgba(23,32,42,0.10)] ${meta.surface}`}
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <span
+                    className="grid size-12 place-items-center rounded-2xl border-2 border-ink-950 bg-white text-lg font-black text-ink-950 shadow-[0_3px_0_#17202a]"
+                    aria-hidden="true"
+                  >
+                    {meta.icon}
+                  </span>
+                  <span className="rounded-full bg-white/80 px-3 py-1 text-xs font-black text-ink-600">
+                    {attempts} {pluralizeAttempts(attempts)}
+                  </span>
                 </div>
-              );
-            })}
-          </div>
-        </section>
+                <h3 className="mt-5 text-2xl font-black text-ink-950">{topic.labelHr}</h3>
+                <p className="mt-1 text-sm font-bold text-ink-600">
+                  {passes} prolaza · {fails} za ponoviti
+                </p>
 
-        <section
-          aria-labelledby="scores-heading"
-          className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
-        >
-          <h2 id="scores-heading" className="text-2xl font-black text-slate-900">
-            Score Strike rekordi
+                <div className="mt-5 flex items-end justify-between gap-4">
+                  <p className="text-3xl font-black tabular-nums text-ink-950">
+                    {successRate}%
+                  </p>
+                  <p className="text-xs font-extrabold uppercase tracking-wider text-ink-600">
+                    Uspješnost
+                  </p>
+                </div>
+                <div className="mt-2 h-3 overflow-hidden rounded-full border border-black/5 bg-white/80">
+                  <div
+                    className={`h-full rounded-full transition-[width] ${meta.fill}`}
+                    style={{ width: `${successRate}%` }}
+                    role="progressbar"
+                    aria-label={`Uspješnost za ${topic.labelHr}`}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-valuenow={successRate}
+                  />
+                </div>
+
+                <Link
+                  to={`/lesson/${topic.id}`}
+                  className="game-button game-button-ghost mt-5 w-full"
+                >
+                  {attempts > 0 ? 'Ponovi lekciju' : 'Kreni učiti'}
+                </Link>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section aria-labelledby="scores-heading">
+        <div className="mb-5">
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-amber-800">
+            Osobni rekordi
+          </p>
+          <h2 id="scores-heading" className="mt-1 text-2xl font-black text-ink-950">
+            Score Strike
           </h2>
-          <div className="mt-5 divide-y divide-slate-100">
-            {scoreStrikeTopics.map((topic) => {
-              const progress = state.scoreStrike[topic.id];
-              const bestScore = progress?.bestScore ?? 0;
-              const playCount = progress?.playCount ?? 0;
+        </div>
 
-              return (
-                <div
-                  key={topic.id}
-                  className="flex items-center justify-between gap-4 py-5 first:pt-0 last:pb-0"
-                >
-                  <div>
-                    <h3 className="font-black text-slate-900">{topic.label}</h3>
-                    <p className="mt-1 text-sm font-medium text-slate-500">
-                      {playCount} odigranih rundi
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-2xl font-black tabular-nums text-amber-600">
-                      {bestScore.toLocaleString('hr-HR')}
-                    </p>
-                    <Link
-                      to={`/score-strike/${topic.id}`}
-                      className="text-sm font-black text-indigo-600 hover:text-indigo-800 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    >
-                      Igraj
-                    </Link>
-                  </div>
+        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          {scoreStrikeTopics.map((topic) => {
+            const progress = state.scoreStrike[topic.id];
+            const bestScore = progress?.bestScore ?? 0;
+            const playCount = progress?.playCount ?? 0;
+            const meta =
+              topic.id === 'mixed'
+                ? {
+                    icon: '🏆',
+                    scoreSurface: 'border-amber-300 bg-amber-100',
+                  }
+                : TOPIC_META[topic.id] ?? FALLBACK_META;
+
+            return (
+              <Link
+                key={topic.id}
+                to={`/score-strike/${topic.id}`}
+                className={`group rounded-3xl border-2 p-5 shadow-[0_4px_0_rgba(23,32,42,0.12)] transition hover:-translate-y-1 hover:shadow-[0_7px_0_rgba(23,32,42,0.12)] active:translate-y-0 ${meta.scoreSurface}`}
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-xl font-black text-ink-950" aria-hidden="true">
+                    {meta.icon}
+                  </span>
+                  <span className="text-xs font-black uppercase tracking-wider text-ink-600">
+                    {playCount} rundi
+                  </span>
                 </div>
-              );
-            })}
-          </div>
-        </section>
-      </div>
+                <h3 className="mt-5 font-black text-ink-950">{topic.label}</h3>
+                <p className="mt-1 text-3xl font-black tabular-nums text-ink-950">
+                  {bestScore.toLocaleString('hr-HR')}
+                </p>
+                <p className="mt-3 text-sm font-black text-ink-600 group-hover:text-ink-950">
+                  Igraj ponovno →
+                </p>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
     </div>
   );
 }
+
+type StatCardTone = 'green' | 'cyan' | 'amber' | 'orange';
 
 type StatCardProps = {
   label: string;
   value: string;
   hint?: string;
   icon: string;
+  tone: StatCardTone;
 };
 
-function StatCard({ label, value, hint, icon }: StatCardProps) {
+const STAT_TONES: Record<StatCardTone, { card: string; icon: string }> = {
+  green: {
+    card: 'border-brand-200 bg-brand-50',
+    icon: 'border-brand-700 bg-brand-200 text-brand-800 shadow-[0_3px_0_#1e7430]',
+  },
+  cyan: {
+    card: 'border-cyan-200 bg-cyan-50',
+    icon: 'border-cyan-700 bg-cyan-200 text-cyan-950 shadow-[0_3px_0_#0e7490]',
+  },
+  amber: {
+    card: 'border-amber-200 bg-amber-50',
+    icon: 'border-amber-700 bg-amber-200 text-amber-950 shadow-[0_3px_0_#b45309]',
+  },
+  orange: {
+    card: 'border-orange-200 bg-orange-50',
+    icon: 'border-orange-800 bg-orange-200 text-orange-950 shadow-[0_3px_0_#9a3412]',
+  },
+};
+
+function StatCard({ label, value, hint, icon, tone }: StatCardProps) {
+  const colors = STAT_TONES[tone];
+
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+    <div
+      className={`rounded-[1.65rem] border-2 p-5 shadow-[0_5px_0_rgba(23,32,42,0.10)] ${colors.card}`}
+    >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <dt className="text-sm font-bold text-slate-500">{label}</dt>
-          <dd className="mt-2 text-3xl font-black tabular-nums text-slate-900">
-            {value}
-          </dd>
-          {hint && <dd className="mt-1 text-xs font-semibold text-slate-600">{hint}</dd>}
+          <dt className="text-sm font-black text-ink-600">{label}</dt>
+          <dd className="mt-2 text-3xl font-black tabular-nums text-ink-950">{value}</dd>
+          {hint && <dd className="mt-1 text-xs font-extrabold text-ink-600">{hint}</dd>}
         </div>
-        <span className="text-2xl" aria-hidden="true">
+        <span
+          className={`grid size-11 place-items-center rounded-2xl border-2 text-lg font-black ${colors.icon}`}
+          aria-hidden="true"
+        >
           {icon}
         </span>
       </div>
