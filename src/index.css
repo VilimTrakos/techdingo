@@ -46,12 +46,13 @@
   --color-brand-700: #1e7430;
   --color-brand-800: #185d28;
 
-  --color-sql: #8b5cf6;
-  --color-frontend: #168fd3;
-  --color-backend: #ee8a2c;
+  --color-sql: #22d3ee;
+  --color-frontend: #fbbf24;
+  --color-backend: #f97316;
+  --color-general: #3bb44a;
   --color-heart: #ee4b5e;
   --color-streak: #f5a524;
-  --color-xp: #7c5ce5;
+  --color-xp: #06b6d4;
 
   --shadow-card: 0 4px 0 rgba(23, 32, 42, 0.1), 0 12px 32px rgba(23, 32, 42, 0.06);
   --shadow-button: 0 4px 0 rgba(23, 32, 42, 0.16);
