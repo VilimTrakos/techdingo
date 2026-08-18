@@ -26,6 +26,11 @@ const TOPIC_META: Record<
     icon: '⚙',
     tone: 'backend',
   },
+  general: {
+    description: 'Strukture podataka, Big-O, SOLID, Git i testiranje.',
+    icon: '✦',
+    tone: 'general',
+  },
 };
 
 export function HomePage() {
@@ -194,7 +199,7 @@ export function HomePage() {
             Score Strike finale
           </h2>
           <p className="mx-auto mt-3 max-w-xl font-semibold leading-7 text-ink-600">
-            SQL, Frontend i Backend u jednoj brzoj rundi. Složi combo,
+            SQL, Frontend, Backend i Opće u jednoj brzoj rundi. Složi combo,
             pobijedi sat i postavi novi osobni rekord.
           </p>
           <p className="mt-4 text-sm font-black text-amber-900">
