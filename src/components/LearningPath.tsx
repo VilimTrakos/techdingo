@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export type LearningPathTone = 'sql' | 'frontend' | 'backend';
+export type LearningPathTone = 'sql' | 'frontend' | 'backend' | 'general';
 
 export interface LearningPathItem {
   id: string;
@@ -39,6 +39,12 @@ const toneStyles: Record<
     card: 'border-orange-200 bg-orange-50/75',
     badge: 'bg-orange-100 text-orange-950',
     iconSurface: 'bg-orange-100 text-orange-950',
+  },
+  general: {
+    node: 'border-brand-700 bg-brand-500 text-white shadow-[0_7px_0_#1e7430]',
+    card: 'border-brand-200 bg-brand-50/75',
+    badge: 'bg-brand-100 text-brand-800',
+    iconSurface: 'bg-brand-100 text-brand-800',
   },
 };
 
