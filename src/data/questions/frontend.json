@@ -348,5 +348,705 @@
     "correctIndex": 0,
     "explanation": "React pri običnoj JSX interpolaciji automatski escapea sadržaj, čime sprječava XSS napade; izravno umetanje HTML-a (npr. dangerouslySetInnerHTML) zaobilazi tu zaštitu i zahtijeva pažljivu sanitizaciju.",
     "difficulty": "medium"
+  },
+  {
+    "id": "frontend-026-native-button-semantics",
+    "topic": "frontend",
+    "question": "Koji je najbolji HTML element za kontrolu koja izvršava radnju „Spremi”, ali ne vodi na novu stranicu?",
+    "options": [
+      "<a href='#'>Spremi</a>",
+      "<button type='button'>Spremi</button>",
+      "<div tabindex='0' onclick='save()'>Spremi</div>",
+      "<span onclick='save()'>Spremi</span>"
+    ],
+    "correctIndex": 1,
+    "explanation": "Button već ima odgovarajuću semantiku, fokus i podršku za tipkovnicu; link je namijenjen navigaciji, a div i span zahtijevaju ručnu implementaciju pristupačnosti.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-027-label-control-association",
+    "topic": "frontend",
+    "question": "Kako se vidljiva oznaka obrasca ispravno povezuje s poljem za unos e-maila?",
+    "options": [
+      "Placeholderom unutar input elementa",
+      "Postavljanjem podebljanog teksta neposredno prije inputa",
+      "Elementom <label for='email'> povezanim s <input id='email'>",
+      "Dodavanjem title atributa samo na input"
+    ],
+    "correctIndex": 2,
+    "explanation": "Vrijednost for na labelu mora odgovarati id-u kontrole, čime polje dobiva pristupačno ime, a klik na oznaku fokusira polje.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-028-decorative-image-alt",
+    "topic": "frontend",
+    "question": "Kako označiti sliku koja je potpuno dekorativna i ne prenosi korisniku nikakvu informaciju?",
+    "options": [
+      "Dodati prazan alt atribut: alt=''",
+      "Potpuno izostaviti alt atribut",
+      "U alt upisati naziv slikovne datoteke",
+      "Dodati role='img' bez pristupačnog imena"
+    ],
+    "correctIndex": 0,
+    "explanation": "Prazan alt govori asistivnoj tehnologiji da preskoči dekorativnu sliku; izostavljen alt može uzrokovati čitanje naziva datoteke.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-029-css-source-order",
+    "topic": "frontend",
+    "question": "Dva CSS pravila istog porijekla i jednake specifičnosti postavljaju različitu boju istom elementu. Koje pravilo pobjeđuje?",
+    "options": [
+      "Pravilo s kraćim selektorom",
+      "Pravilo koje se prvo pojavljuje u stylesheetu",
+      "Preglednik nasumično odabire jedno pravilo",
+      "Pravilo koje se kasnije pojavljuje u stylesheetu"
+    ],
+    "correctIndex": 3,
+    "explanation": "Kada su porijeklo, važnost i specifičnost jednaki, kaskada daje prednost deklaraciji koja dolazi kasnije.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-030-rem-root-font-size",
+    "topic": "frontend",
+    "question": "U odnosu na što se računa CSS jedinica rem?",
+    "options": [
+      "U odnosu na širinu roditeljskog elementa",
+      "U odnosu na visinu viewporta",
+      "U odnosu na veličinu fonta korijenskog html elementa",
+      "U odnosu na omjer fizičkih piksela zaslona"
+    ],
+    "correctIndex": 2,
+    "explanation": "Jedan rem jednak je izračunatoj veličini fonta korijenskog html elementa, pa omogućuje dosljedno skaliranje sučelja.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-031-prevent-default",
+    "topic": "frontend",
+    "question": "Što radi event.preventDefault() u DOM event handleru?",
+    "options": [
+      "Trajno uklanja handler s elementa",
+      "Sprječava zadanu radnju preglednika povezanu s događajem",
+      "Zaustavlja širenje događaja kroz DOM",
+      "Otkazuje sve buduće događaje istog tipa"
+    ],
+    "correctIndex": 1,
+    "explanation": "preventDefault sprječava zadano ponašanje poput slanja forme ili otvaranja linka, ali sam po sebi ne zaustavlja propagaciju događaja.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-032-data-attributes-dataset",
+    "topic": "frontend",
+    "question": "Koji je standardni način spremanja prilagođenog podatka na HTML element i čitanja tog podatka JavaScriptom?",
+    "options": [
+      "Dodati nestandardni atribut userId i čitati element.userId",
+      "Spremiti vrijednost isključivo u localStorage",
+      "Definirati CSS varijablu --user-id",
+      "Dodati data-user-id i čitati element.dataset.userId"
+    ],
+    "correctIndex": 3,
+    "explanation": "HTML data-* atributi namijenjeni su prilagođenim podacima, a DOMStringMap dostupan kroz dataset pretvara kebab-case u camelCase.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-033-http-status-groups",
+    "topic": "frontend",
+    "question": "Što općenito označavaju HTTP statusni kodovi iz skupine 2xx?",
+    "options": [
+      "Zahtjev je uspješno obrađen ili prihvaćen",
+      "Klijent mora slijediti preusmjeravanje",
+      "Klijent je uvijek poslao neispravan zahtjev",
+      "Server je naišao na internu pogrešku"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kodovi 2xx označavaju uspješan ishod zahtjeva, primjerice 200 OK, 201 Created ili 204 No Content.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-034-react-props-state",
+    "topic": "frontend",
+    "question": "Koja tvrdnja najbolje opisuje razliku između propsa i statea u React komponenti?",
+    "options": [
+      "Komponenta slobodno mijenja props, dok state može mijenjati samo roditelj",
+      "State uvijek dolazi sa servera, a props postoje samo tijekom builda",
+      "Props su ulazi koje daje roditelj, dok komponenta posjeduje state i ažuriranjem statea pokreće novi render",
+      "Props i state dva su naziva za potpuno isti mehanizam"
+    ],
+    "correctIndex": 2,
+    "explanation": "Props se tretiraju kao read-only ulazi komponente, dok state predstavlja promjenjive podatke koje React prati i koristi pri renderiranju.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-035-react-controlled-input",
+    "topic": "frontend",
+    "question": "Što čini tekstualni input kontroliranom React komponentom?",
+    "options": [
+      "Input koristi samo defaultValue i nikad nema onChange handler",
+      "Vrijednost inputa dolazi iz React statea, a onChange ažurira taj state",
+      "Vrijednost se nakon svakog rendera ručno čita iz DOM-a",
+      "Input sprema vrijednost u običnu lokalnu varijablu"
+    ],
+    "correctIndex": 1,
+    "explanation": "Kod kontroliranog inputa React state predstavlja izvor istine: value prikazuje state, a onChange ga ažurira.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-036-heading-hierarchy",
+    "topic": "frontend",
+    "question": "Sekcija stranice ima naslov h2, a svaka kartica unutar nje zaseban naslov. Kako označiti naslov kartice ako ga dizajn treba prikazati malim tekstom?",
+    "options": [
+      "Koristiti h1 jer veličinu određuje važnost kartice",
+      "Koristiti h4 kako bi preglednik automatski prikazao manji font",
+      "Koristiti p jer kartice ne bi trebale imati naslove",
+      "Koristiti h3 prema strukturi dokumenta, a izgled podesiti CSS-om"
+    ],
+    "correctIndex": 3,
+    "explanation": "Razina naslova treba pratiti hijerarhiju sadržaja, ne željenu veličinu fonta; vizualni stil neovisno se određuje CSS-om.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-037-modal-focus-management",
+    "topic": "frontend",
+    "question": "Koje ponašanje fokusa očekujemo od pristupačnog modalnog dijaloga?",
+    "options": [
+      "Pri otvaranju fokus ulazi u dijalog, Tab ostaje unutar njega, a zatvaranjem se fokus vraća na element koji ga je otvorio",
+      "Fokus ostaje na sadržaju iza dijaloga kako se korisnik ne bi zbunio",
+      "Tab treba slobodno prelaziti između dijaloga i sadržaja u pozadini",
+      "Otvaranje dijaloga treba ponovno učitati stranicu i fokusirati body"
+    ],
+    "correctIndex": 0,
+    "explanation": "Modal treba premjestiti i zadržati fokus unutar aktivnog dijaloga te ga nakon zatvaranja vratiti na smisleno mjesto, obično na okidač.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-038-where-specificity",
+    "topic": "frontend",
+    "question": "Koja je posebnost CSS pseudo-klase :where() u izračunu specifičnosti?",
+    "options": [
+      "Uvijek ima veću specifičnost od ID selektora",
+      "Preuzima najveću specifičnost među selektorima u svojoj listi",
+      "Sama pseudo-klasa i svi selektori unutar nje doprinose nultom specifičnošću",
+      "Potpuno isključuje CSS kaskadu za odabrane elemente"
+    ],
+    "correctIndex": 2,
+    "explanation": ":where() omogućuje grupiranje i precizno ciljanje bez povećavanja specifičnosti, što olakšava kasnije nadjačavanje stilova.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-039-stacking-context",
+    "topic": "frontend",
+    "question": "Zašto element sa z-index: 999 može ostati ispod susjednog elementa sa z-index: 2?",
+    "options": [
+      "Preglednici ograničavaju z-index na vrijednost 99",
+      "Element je unutar zasebnog stacking contexta čiji se cijeli sloj nalazi ispod stacking contexta susjeda",
+      "z-index radi samo na elementima s position: absolute",
+      "CSS transform trajno onemogućuje z-index svim potomcima"
+    ],
+    "correctIndex": 1,
+    "explanation": "z-index potomka uspoređuje se unutar njegova stacking contexta; visoka lokalna vrijednost ne može preskočiti vanjski stacking context koji je složen iznad njegova roditelja.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-040-event-delegation",
+    "topic": "frontend",
+    "question": "Što je event delegation i zašto je koristan kod dinamičke liste?",
+    "options": [
+      "Kopiranje istog event handlera na svaki element nakon svakog rendera",
+      "Slanje svih DOM događaja u Web Worker",
+      "Zaustavljanje bubblinga na svakom djetetu liste",
+      "Postavljanje jednog handlera na zajedničkog pretka koji pomoću event.target prepoznaje aktivirano dijete"
+    ],
+    "correctIndex": 3,
+    "explanation": "Delegacija koristi bubbling pa jedan handler može obraditi postojeću i naknadno dodanu djecu bez zasebnog listenera na svakom elementu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-041-abort-controller-fetch",
+    "topic": "frontend",
+    "question": "Kako otkazati fetch zahtjev koji više nije potreban, primjerice nakon promjene upita za pretraživanje?",
+    "options": [
+      "Proslijediti AbortController.signal fetchu i pozvati controller.abort()",
+      "Pozvati clearTimeout nad Promiseom koji fetch vraća",
+      "Postaviti response.ok na false",
+      "Obrisati URL iz varijable nakon slanja zahtjeva"
+    ],
+    "correctIndex": 0,
+    "explanation": "AbortController šalje signal otkazivanja API-ju fetch; otkazani zahtjev odbacuje Promise odgovarajućom pogreškom koju kod može obraditi.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-042-fetch-http-errors",
+    "topic": "frontend",
+    "question": "Kako fetch najčešće reagira kada server uredno vrati HTTP 404 ili 500 odgovor?",
+    "options": [
+      "Automatski ponavlja zahtjev dok ne dobije 2xx odgovor",
+      "Vraća null umjesto Response objekta",
+      "Razrješava Promise s Response objektom pa aplikacija treba provjeriti response.ok ili status",
+      "Uvijek odbacuje Promise jednako kao kod mrežne pogreške"
+    ],
+    "correctIndex": 2,
+    "explanation": "fetch odbacuje Promise kod mrežnih i sličnih transportnih pogrešaka, ali HTTP error statusi i dalje su valjani odgovori koje treba eksplicitno provjeriti.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-043-cors-preflight",
+    "topic": "frontend",
+    "question": "Čemu služi CORS preflight zahtjev koji preglednik šalje metodom OPTIONS?",
+    "options": [
+      "Preuzima sadržaj resursa prije stvarnog GET zahtjeva radi cacheiranja",
+      "Provjerava dopušta li server planiranu cross-origin metodu, zaglavlja i origin prije slanja stvarnog zahtjeva",
+      "Automatski autentificira korisnika bez slanja vjerodajnica",
+      "Pretvara cross-origin zahtjev u same-origin zahtjev"
+    ],
+    "correctIndex": 1,
+    "explanation": "Za zahtjeve koji nisu CORS-simple preglednik prvo OPTIONS zahtjevom provjerava serverova Access-Control dopuštenja.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-044-effect-cleanup",
+    "topic": "frontend",
+    "question": "Zašto useEffect često vraća cleanup funkciju?",
+    "options": [
+      "Kako bi komponenta prestala prihvaćati nove propse",
+      "Kako bi React preskočio sve buduće rendere komponente",
+      "Kako bi se state automatski vratio na početnu vrijednost nakon rendera",
+      "Kako bi se prije ponovnog efekta ili unmounta uklonili listeneri, pretplate, timeri i drugi vanjski resursi"
+    ],
+    "correctIndex": 3,
+    "explanation": "Cleanup sprječava curenje resursa i zastarjele callbackove tako da poništi ono što je prethodno izvođenje efekta postavilo.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-045-testing-accessible-queries",
+    "topic": "frontend",
+    "question": "Zašto je u testu korisničkog sučelja često bolje pronaći gumb po ulozi i pristupačnom imenu nego po CSS klasi?",
+    "options": [
+      "Test tako provjerava ponašanje i semantiku koju korisnik doživljava te je otporniji na promjene implementacijskih stilova",
+      "Upit po ulozi automatski popravlja sve accessibility pogreške",
+      "CSS klase nisu dostupne u testnom DOM-u",
+      "Upit po ulozi uklanja potrebu za simuliranjem korisničke interakcije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Upit poput getByRole('button', { name: /spremi/i }) odražava način na koji korisnici i asistivna tehnologija pronalaze kontrolu, bez vezivanja testa uz stil.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-046-grid-minmax-zero",
+    "topic": "frontend",
+    "question": "Zašto se u CSS Grid rasporedu često koristi minmax(0, 1fr) umjesto samog 1fr za stupac s dugim sadržajem?",
+    "options": [
+      "Jer 1fr uvijek predstavlja fiksnu širinu od jednog piksela",
+      "Jer minmax(0, 1fr) automatski uključuje overflow: hidden",
+      "Jer automatski minimum 1fr traga može poštovati min-content širinu, dok nulti minimum dopušta tragu da se stvarno smanji unutar dostupnog prostora",
+      "Jer vrijednost 0 uklanja grid gap između stupaca"
+    ],
+    "correctIndex": 2,
+    "explanation": "Grid trag s 1fr ima automatski minimum koji dugi sadržaj može proširiti izvan kontejnera; minmax(0, 1fr) dopušta skupljanje ispod min-content širine.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "frontend-047-accessible-name-precedence",
+    "topic": "frontend",
+    "question": "Koje će pristupačno ime imati <button aria-label='Spremi' aria-labelledby='save-label'>💾</button> ako element s id='save-label' sadrži tekst „Spremi promjene”?",
+    "options": [
+      "💾",
+      "Spremi promjene",
+      "Spremi",
+      "Spremi Spremi promjene"
+    ],
+    "correctIndex": 1,
+    "explanation": "aria-labelledby ima prednost nad aria-labelom i sadržajem gumba, pa se ime uzima iz teksta referenciranog elementa.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "frontend-048-layout-thrashing",
+    "topic": "frontend",
+    "question": "Zašto petlja koja naizmjenično mijenja style.width elementa i odmah čita njegov offsetWidth može ozbiljno usporiti prikaz?",
+    "options": [
+      "Svako čitanje offsetWidth pokreće novi HTTP zahtjev",
+      "Promjena inline stila briše element iz DOM-a i ponovno ga stvara",
+      "JavaScript engine za svaki element pokreće garbage collection",
+      "Izmjenjivanje DOM upisa i geometrijskih čitanja može prisiliti preglednik na ponavljane sinkrone izračune layouta"
+    ],
+    "correctIndex": 3,
+    "explanation": "Čitanje geometrije nakon promjene stila može prisilno isprazniti pending layout; grupiranje svih čitanja prije svih upisa smanjuje layout thrashing.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "frontend-049-react-memo-referential-equality",
+    "topic": "frontend",
+    "question": "Zašto komponenta omotana u React.memo može ponovno renderirati kada roditelj svaki put šalje config={{ theme: 'dark' }} i onClick={() => save()}?",
+    "options": [
+      "Svaki render stvara nove reference objekta i funkcije, pa plitka usporedba propsa vidi promjenu",
+      "React.memo radi samo s class komponentama",
+      "Inline propsi automatski mijenjaju key djeteta",
+      "Preglednikov cache poništava Reactovu memoizaciju"
+    ],
+    "correctIndex": 0,
+    "explanation": "React.memo uspoređuje svaki prop pomoću referencijalne jednakosti; stabilniji API ili opravdani useMemo/useCallback mogu pomoći kada mjerenje pokaže stvaran problem.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "frontend-050-etag-conditional-request",
+    "topic": "frontend",
+    "question": "Kako preglednik i server koriste ETag za provjeru je li cacheirani resurs još uvijek svjež?",
+    "options": [
+      "Preglednik šalje ETag u URL-u, a server uvijek vraća cijeli resurs",
+      "Server sprema ETag samo u cookie i preskače HTTP cache",
+      "Preglednik šalje If-None-Match s poznatim ETagom; server može odgovoriti 304 bez tijela pa se koristi cacheirana reprezentacija",
+      "ETag određuje koliko JavaScript memorije resurs smije zauzeti"
+    ],
+    "correctIndex": 2,
+    "explanation": "ETag je validator reprezentacije: podudaranje u uvjetnom zahtjevu omogućuje odgovor 304 Not Modified i ponovnu uporabu lokalno spremljenog sadržaja.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "frontend-051-form-button-default-submit",
+    "topic": "frontend",
+    "question": "Kako spriječiti da gumb „Prikaži pomoć” unutar forme nenamjerno pošalje formu?",
+    "options": [
+      "Dodati gumbu atribut method='button'",
+      "Premjestiti gumb u label element",
+      "Postaviti type='button' jer je zadani tip buttona u formi submit",
+      "Ukloniti name atribute sa svih polja"
+    ],
+    "correctIndex": 2,
+    "explanation": "Button unutar forme zadano je submit kontrola, pa radnje koje ne šalju formu trebaju eksplicitno koristiti type='button'.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-052-fieldset-legend-radio-group",
+    "topic": "frontend",
+    "question": "Kako semantički grupirati više radio gumba koji zajedno odgovaraju na pitanje „Način dostave”?",
+    "options": [
+      "Omotati ih u fieldset i opis grupe staviti u legend",
+      "Svakom radio gumbu dati isti id",
+      "Staviti ih u div bez zajedničkog naslova",
+      "Dodati placeholder svakom radio gumbu"
+    ],
+    "correctIndex": 0,
+    "explanation": "fieldset i legend daju grupi kontrola zajedničko semantičko ime koje asistivna tehnologija najavljuje uz pojedine opcije.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-053-form-autocomplete-purpose",
+    "topic": "frontend",
+    "question": "Čemu služi HTML atribut autocomplete s vrijednostima poput email ili new-password?",
+    "options": [
+      "Automatski šalje formu čim korisnik unese valjanu vrijednost",
+      "Pretvara svako polje u obavezno polje",
+      "Sprema unesene vrijednosti u JavaScript varijable aplikacije",
+      "Opisuje svrhu polja kako bi preglednik i password manager mogli ponuditi prikladno automatsko popunjavanje"
+    ],
+    "correctIndex": 3,
+    "explanation": "Ispravne autocomplete vrijednosti pomažu pregledniku, password managerima i korisnicima asistivne tehnologije razumjeti svrhu polja.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-054-responsive-media-query",
+    "topic": "frontend",
+    "question": "Što CSS media query najčešće omogućuje u responzivnom dizajnu?",
+    "options": [
+      "Promjenu HTML sadržaja na serveru prema vrsti baze podataka",
+      "Primjenu stilova samo kada medijski uvjet, poput minimalne širine viewporta, odgovara",
+      "Automatsko komprimiranje svih slika na stranici",
+      "Izvršavanje JavaScript funkcije pri svakoj promjeni veličine"
+    ],
+    "correctIndex": 1,
+    "explanation": "Media query uvjetno primjenjuje CSS prema značajkama uređaja ili viewporta, primjerice pomoću min-width ili prefers-color-scheme.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-055-css-gap-spacing",
+    "topic": "frontend",
+    "question": "Koja je prednost CSS svojstva gap za razmak između stavki u Flexbox ili Grid kontejneru?",
+    "options": [
+      "Dodaje razmak i oko vanjskog ruba cijelog kontejnera",
+      "Mijenja širinu stavki bez obzira na raspoloživi prostor",
+      "Dodaje razmak samo između stavki bez potrebe za uklanjanjem margine s prve ili zadnje stavke",
+      "Automatski pretvara jednodimenzionalni raspored u dvodimenzionalni"
+    ],
+    "correctIndex": 2,
+    "explanation": "gap pripada kontejneru i stvara razmak između njegovih redaka ili stupaca, bez neželjenih vanjskih margina.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-056-optional-chaining",
+    "topic": "frontend",
+    "question": "Što omogućuje optional chaining operator ?. u JavaScriptu?",
+    "options": [
+      "Siguran pristup dubljem svojstvu ili pozivu koji vraća undefined ako je prethodna vrijednost null ili undefined",
+      "Automatsko stvaranje svih svojstava koja nedostaju",
+      "Pretvaranje svakog svojstva objekta u obavezno",
+      "Hvatanje svih iznimki nastalih unutar izraza"
+    ],
+    "correctIndex": 0,
+    "explanation": "Izraz user.profile?.name ne baca pogrešku ako je profile null ili undefined, nego daje undefined.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-057-nullish-coalescing",
+    "topic": "frontend",
+    "question": "Po čemu se operator ?? razlikuje od operatora || pri odabiru zadane vrijednosti?",
+    "options": [
+      "?? radi samo s brojevima, a || samo sa stringovima",
+      "?? vraća zadanu vrijednost za svaku falsy vrijednost",
+      "|| čuva vrijednosti 0, false i prazan string, a ?? ih zamjenjuje",
+      "?? koristi zadanu vrijednost samo za null ili undefined, pa čuva 0, false i prazan string"
+    ],
+    "correctIndex": 3,
+    "explanation": "Nullish coalescing reagira samo na odsutnost vrijednosti, dok || reagira na sve falsy vrijednosti.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-058-dom-content-loaded",
+    "topic": "frontend",
+    "question": "Koja je osnovna razlika između događaja DOMContentLoaded i window load?",
+    "options": [
+      "load se uvijek događa prije nego što preglednik parsira HTML",
+      "DOMContentLoaded se događa nakon parsiranja dokumenta, dok load čeka i resurse poput slika",
+      "DOMContentLoaded se aktivira samo za SPA aplikacije",
+      "Oba događaja uvijek se aktiviraju u istom trenutku"
+    ],
+    "correctIndex": 1,
+    "explanation": "DOMContentLoaded označava da je DOM spreman, dok load dodatno čeka završetak učitavanja ovisnih resursa stranice.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-059-react-immutable-array-state",
+    "topic": "frontend",
+    "question": "Kako ispravno promijeniti jednu stavku niza spremljenog u React stateu?",
+    "options": [
+      "Promijeniti objekt unutar postojećeg niza i ne pozvati setter",
+      "Pozvati push na postojećem nizu i setteru predati istu referencu",
+      "Setteru predati novi niz, primjerice funkcionalnim updateom koji koristi map",
+      "Izravno dodijeliti novu vrijednost varijabli statea"
+    ],
+    "correctIndex": 2,
+    "explanation": "Nova referenca niza i promijenjene stavke omogućuje Reactu pouzdano uočiti promjenu bez mutiranja prethodnog statea.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-060-responsive-images-srcset",
+    "topic": "frontend",
+    "question": "Kako srcset i sizes pomažu pri prikazu responzivne slike?",
+    "options": [
+      "Pregledniku opisuju dostupne inačice slike i očekivanu prikaznu širinu kako bi mogao odabrati prikladan resurs",
+      "Prisiljavaju preglednik da uvijek preuzme najveću sliku",
+      "Pretvaraju raster sliku u SVG tijekom učitavanja",
+      "Odgađaju preuzimanje slike dok korisnik ne klikne na nju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Preglednik kombinira kandidate iz srcseta, podatke iz sizes i gustoću zaslona kako bi odabrao dovoljno kvalitetnu, ali ne nepotrebno veliku sliku.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-061-css-container-queries",
+    "topic": "frontend",
+    "question": "Kada su CSS container queries korisnije od media queries?",
+    "options": [
+      "Kada stil mora ovisiti isključivo o operacijskom sustavu korisnika",
+      "Kada treba dohvatiti dimenzije elementa iz JavaScripta",
+      "Kada se stil cijele stranice smije promijeniti samo pri ispisu",
+      "Kada se komponenta treba prilagoditi veličini svojeg kontejnera, ne cijelog viewporta"
+    ],
+    "correctIndex": 3,
+    "explanation": "Container queries omogućuju da ista komponenta reagira na prostor koji stvarno ima u različitim dijelovima layouta.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-062-prefers-reduced-motion",
+    "topic": "frontend",
+    "question": "Kako bi sučelje trebalo reagirati na prefers-reduced-motion: reduce?",
+    "options": [
+      "Ubrzati sve animacije kako bi kraće trajale",
+      "Smanjiti ili ukloniti nebitno kretanje uz očuvanje funkcionalnosti i razumljivog feedbacka",
+      "Sakriti sav sadržaj koji inače koristi prijelaze",
+      "Onemogućiti korisniku promjenu te postavke"
+    ],
+    "correctIndex": 1,
+    "explanation": "Preferencija reduced motion služi korisnicima kojima kretanje smeta; animacije treba ublažiti bez uklanjanja važnih informacija.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-063-typescript-unknown-vs-any",
+    "topic": "frontend",
+    "question": "Koja je ključna razlika između tipova unknown i any u TypeScriptu?",
+    "options": [
+      "unknown može sadržavati samo objekte, a any samo primitivne vrijednosti",
+      "any zahtijeva provjeru tipa prije svake operacije",
+      "unknown zahtijeva sužavanje ili provjeru prije uporabe, dok any uglavnom zaobilazi provjeru tipova",
+      "unknown i any ponašaju se identično pri provjeri tipova"
+    ],
+    "correctIndex": 2,
+    "explanation": "Oba tipa mogu primiti proizvoljnu vrijednost, ali unknown čuva sigurnost jer ga kod mora suziti prije pristupa svojstvima ili poziva.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-064-typescript-discriminated-union",
+    "topic": "frontend",
+    "question": "Što omogućuje TypeScript discriminated union s članovima koji imaju literal svojstvo poput kind: 'loading' ili kind: 'success'?",
+    "options": [
+      "Provjera svojstva kind može precizno suziti tip i učiniti podatke odgovarajuće varijante dostupnima",
+      "Sve varijante automatski dobivaju sva međusobna svojstva",
+      "Tipovi se pretvaraju u klase tijekom izvršavanja",
+      "Union dopušta samo jednu vrijednost u cijeloj aplikaciji"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zajednički diskriminator daje compileru pouzdanu osnovu za narrowing u switch ili if granama.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-065-history-pushstate-popstate",
+    "topic": "frontend",
+    "question": "Kako History API omogućuje SPA navigaciju bez potpunog ponovnog učitavanja stranice?",
+    "options": [
+      "pushState šalje novi HTML dokument sa servera pri svakoj navigaciji",
+      "popstate se aktivira samo nakon osvježavanja preglednika",
+      "pushState automatski aktivira popstate u istom pozivu",
+      "pushState dodaje zapis i mijenja URL bez reloada, a popstate obrađuje kretanje kroz povijest poput Back i Forward"
+    ],
+    "correctIndex": 3,
+    "explanation": "Aplikacija sama renderira sadržaj nakon pushStatea, dok popstate služi za reakciju na korisnikovo kretanje kroz postojeću povijest.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-066-content-security-policy",
+    "topic": "frontend",
+    "question": "Kako Content Security Policy može ublažiti posljedice XSS ranjivosti?",
+    "options": [
+      "Automatski sanitizira svaki string prije spremanja u bazu",
+      "Ograničava dopuštene izvore i načine izvršavanja sadržaja poput skripti, primjerice pomoću noncea ili hashova",
+      "Sakriva JavaScript source code od korisnika",
+      "Zamjenjuje potrebu za escapeanjem i sanitizacijom nepouzdanog sadržaja"
+    ],
+    "correctIndex": 1,
+    "explanation": "CSP je dodatni obrambeni sloj koji može blokirati neodobrene skripte, ali ne zamjenjuje sigurno rukovanje nepouzdanim unosom.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-067-react-derived-state",
+    "topic": "frontend",
+    "question": "Komponenta prima firstName i lastName kao propse. Koji je najbolji zadani način dobivanja fullName vrijednosti?",
+    "options": [
+      "Spremiti fullName u globalnu varijablu izvan komponente",
+      "Kopirati propse u state samo pri prvom renderu",
+      "Izračunati fullName tijekom rendera, umjesto dupliciranja podataka u stateu i sinkroniziranja efektom",
+      "Mijenjati primljene propse kako bi sadržavali fullName"
+    ],
+    "correctIndex": 2,
+    "explanation": "Vrijednost koja se izravno i jeftino izvodi iz trenutnih propsa ne treba zaseban state jer bi stvorila dodatni izvor istine.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-068-disabled-readonly-form-data",
+    "topic": "frontend",
+    "question": "Kako se disabled i readonly tekstualne kontrole razlikuju pri standardnom slanju HTML forme?",
+    "options": [
+      "Disabled kontrola obično se ne šalje, dok se readonly kontrola šalje, ali korisnik ne može mijenjati njezinu vrijednost",
+      "Readonly kontrola se ne šalje, dok se disabled kontrola uvijek šalje",
+      "Obje se uvijek šalju i ponašaju potpuno jednako",
+      "Nijedna se ne prikazuje u DOM-u nakon slanja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Disabled kontrola nije uspješna form control i izostaje iz podataka forme; readonly vrijednost ostaje uključena u slanje.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "frontend-069-fixed-containing-block-transform",
+    "topic": "frontend",
+    "question": "Zašto element s position: fixed ponekad ostaje vezan uz pomicanje određenog pretka umjesto uz viewport?",
+    "options": [
+      "Svaki flex kontejner automatski pretvara fixed u static",
+      "Fixed elementi uvijek su pozicionirani prema najbližem roditelju",
+      "z-index pretka mijenja position: fixed u position: absolute",
+      "Svojstvo poput transform na pretku može uspostaviti containing block za fixed potomka"
+    ],
+    "correctIndex": 3,
+    "explanation": "Određena svojstva, uključujući transform, mogu učiniti pretka containing blockom pa se fixed potomak pozicionira u odnosu na njega.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "frontend-070-animation-compositor-properties",
+    "topic": "frontend",
+    "question": "Zašto se za glatke UI animacije često preferiraju transform i opacity umjesto animiranja width, height ili top?",
+    "options": [
+      "transform i opacity uvijek troše nula memorije",
+      "Promjene transformacije i prozirnosti često se mogu obraditi kompozicijom bez ponovnog layouta, dok geometrijska svojstva mogu pokrenuti skuplje faze renderiranja",
+      "width i height nisu animabilna CSS svojstva",
+      "transform automatski smanjuje broj React rendera"
+    ],
+    "correctIndex": 1,
+    "explanation": "Animacije transformacije i opacityja često ostaju na compositoru, dok promjene geometrije mogu zahtijevati layout i paint.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "frontend-071-postmessage-origin-validation",
+    "topic": "frontend",
+    "question": "Koji je siguran obrazac za razmjenu osjetljivih poruka između prozora pomoću postMessage?",
+    "options": [
+      "Uvijek koristiti targetOrigin='*' i vjerovati svakom primljenom payloadu",
+      "Provjeravati samo event.data jer origin nije moguće krivotvoriti",
+      "Slati na točno očekivani targetOrigin te pri primitku provjeriti event.origin, po potrebi event.source i strukturu podataka",
+      "Spremiti poruku u localStorage bez provjere pošiljatelja"
+    ],
+    "correctIndex": 2,
+    "explanation": "Točan targetOrigin sprječava slanje pogrešnom odredištu, a validacija origin-a, izvora i payloada sprječava prihvaćanje poruka nepouzdanih stranica.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "frontend-072-typescript-never-exhaustiveness",
+    "topic": "frontend",
+    "question": "Kako tip never pomaže provjeriti da switch obrađuje sve varijante discriminated uniona?",
+    "options": [
+      "Default grana može proslijediti preostalu vrijednost funkciji koja prima never, pa nova neobrađena varijanta uzrokuje compile-time grešku",
+      "never automatski dodaje nedostajuće case grane u generirani JavaScript",
+      "never pretvara sve članove uniona u optional svojstva",
+      "Default grana s never ignorira sve buduće varijante bez upozorenja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nakon iscrpnog narrowinga ne bi smjela ostati vrijednost; assertNever obrazac zato otkriva novu varijantu koju switch nije obradio.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "frontend-073-indexeddb-transaction-lifetime",
+    "topic": "frontend",
+    "question": "Zašto je rizično usred aktivne IndexedDB transakcije awaitati nepovezanu asinkronu operaciju poput fetch zahtjeva?",
+    "options": [
+      "IndexedDB automatski pretvara fetch odgovor u string",
+      "Fetch uvijek briše object store koji transakcija koristi",
+      "Await mijenja mode transakcije iz readwrite u readonly",
+      "Transakcija se može automatski commitati kada nema aktivnih IndexedDB zahtjeva, pa nakon awaita više nije aktivna"
+    ],
+    "correctIndex": 3,
+    "explanation": "IndexedDB transakcije imaju životni vijek vezan uz svoj red zahtjeva; nepovezani async rad često treba završiti prije otvaranja transakcije ili u zasebnom koraku.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "frontend-074-react-start-transition",
+    "topic": "frontend",
+    "question": "Kako smisleno koristiti React startTransition kada tipkanje u polje pokreće skupo filtriranje velike liste?",
+    "options": [
+      "Ažuriranje vrijednosti kontroliranog inputa staviti u transition, a listu ažurirati sinkrono",
+      "Vrijednost inputa ažurirati kao hitnu promjenu, a skupo ažuriranje rezultata označiti transitionom koji React može odgoditi ili prekinuti",
+      "Svaki onChange omotati u setTimeout umjesto korištenja React statea",
+      "Transition koristiti kako bi mrežni zahtjev automatski postao brži"
+    ],
+    "correctIndex": 1,
+    "explanation": "Unos mora ostati neposredno responzivan, dok se nehitno renderiranje teških rezultata može označiti kao transition.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "frontend-075-testing-async-committed-ui",
+    "topic": "frontend",
+    "question": "Koji pristup najpouzdanije testira rezultat asinkrone React interakcije koja može završiti nakon više rendera?",
+    "options": [
+      "Nakon klika čekati fiksnih 100 ms pa pretpostaviti da je UI gotov",
+      "Čitati internu state varijablu komponente odmah nakon poziva handlera",
+      "Awaitati korisničku akciju, zatim pomoću findBy ili waitFor čekati korisniku vidljivu završnu promjenu u DOM-u",
+      "Provjeriti samo da je mock funkcija definirana, bez provjere sučelja"
+    ],
+    "correctIndex": 2,
+    "explanation": "Čekanje opažljivog završnog stanja uklanja vremenske pretpostavke i provjerava ponašanje koje korisnik stvarno vidi.",
+    "difficulty": "hard"
   }
 ]

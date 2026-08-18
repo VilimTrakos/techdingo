@@ -334,5 +334,705 @@
     "correctIndex": 1,
     "explanation": "READ COMMITTED ne dopušta čitanje promjena koje druga transakcija još nije potvrdila (commitala); više razine izolacije (REPEATABLE READ, SERIALIZABLE) dodatno sprječavaju i druge anomalije poput non-repeatable reada i phantom reada.",
     "difficulty": "hard"
+  },
+  {
+    "id": "sql-025-ddl-vs-dml",
+    "topic": "sql",
+    "question": "Koji primjer ispravno razlikuje DDL i DML naredbe?",
+    "options": [
+      "DDL mijenja pojedinačne retke, dok DML mijenja isključivo indekse",
+      "DDL naredbe poput CREATE i ALTER definiraju strukturu baze, dok DML naredbe poput INSERT i UPDATE mijenjaju podatke u retcima",
+      "DDL i DML su sinonimi; razlikuju se samo po proizvođaču baze",
+      "COMMIT i ROLLBACK su DDL, a CREATE TABLE je DML"
+    ],
+    "correctIndex": 1,
+    "explanation": "DDL opisuje ili mijenja strukturu objekata baze, primjerice tablica, dok DML umeće, ažurira ili briše podatke spremljene u tim objektima.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-026-select-distinct",
+    "topic": "sql",
+    "question": "Što radi SELECT DISTINCT kada se odabire više stupaca?",
+    "options": [
+      "Sortira svaki odabrani stupac uzlazno",
+      "Trajno briše duplikate iz izvorne tablice",
+      "Vraća samo retke u kojima nijedan odabrani stupac nije NULL",
+      "U rezultatu zadržava samo jedinstvene kombinacije vrijednosti svih odabranih stupaca"
+    ],
+    "correctIndex": 3,
+    "explanation": "DISTINCT uklanja duplicirane kombinacije odabranih izraza samo iz rezultata upita; ne mijenja podatke u tablici.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-027-order-by-columns",
+    "topic": "sql",
+    "question": "Kako se tumači ORDER BY prezime ASC, datum_zaposlenja DESC?",
+    "options": [
+      "Rezultat se prvo sortira po prezimenu uzlazno, a retci s istim prezimenom zatim po datumu silazno",
+      "Rezultat se prvo sortira po datumu, a prezime se koristi samo ako je datum NULL",
+      "Oba stupca sortiraju se silazno jer posljednji smjer vrijedi za cijelu klauzulu",
+      "Redoslijed stupaca u ORDER BY klauzuli nema utjecaja na rezultat"
+    ],
+    "correctIndex": 0,
+    "explanation": "ORDER BY primjenjuje ključeve slijeva nadesno: drugi stupac razrješava poredak samo među retcima koji imaju jednaku vrijednost prvog.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-028-like-wildcards",
+    "topic": "sql",
+    "question": "Što u standardnom SQL LIKE uzorku predstavljaju znakovi % i _?",
+    "options": [
+      "% predstavlja točno jedan znak, a _ bilo koji broj znakova",
+      "Oba znaka predstavljaju samo doslovne znakove % i _",
+      "% predstavlja niz od nula ili više znakova, a _ točno jedan znak",
+      "% predstavlja samo znamenke, a _ samo slova"
+    ],
+    "correctIndex": 2,
+    "explanation": "U LIKE uzorku % odgovara proizvoljno dugom nizu znakova, uključujući prazan niz, dok _ odgovara jednom znaku.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-029-between-boundaries",
+    "topic": "sql",
+    "question": "Što znači uvjet cijena BETWEEN 10 AND 20?",
+    "options": [
+      "Vrijednost mora biti veća od 10 i manja od 20, bez granica",
+      "Uvjet uključuje obje granice i ekvivalentan je cijena >= 10 AND cijena <= 20",
+      "Uvjet uključuje 10, ali uvijek isključuje 20",
+      "BETWEEN radi samo s datumima, ne i s brojevima"
+    ],
+    "correctIndex": 1,
+    "explanation": "BETWEEN je uključiv na donjoj i gornjoj granici; pritom prva granica treba biti donja, a druga gornja vrijednost raspona.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-030-not-null",
+    "topic": "sql",
+    "question": "Što NOT NULL ograničenje doista jamči za stupac?",
+    "options": [
+      "Svaka vrijednost mora biti jedinstvena",
+      "Tekstualna vrijednost ne smije biti prazan string",
+      "Brojčana vrijednost mora biti veća od nule",
+      "Stupac ne smije sadržavati SQL NULL, ali može sadržavati vrijednosti poput praznog stringa ili nule"
+    ],
+    "correctIndex": 3,
+    "explanation": "NOT NULL zabranjuje nepoznatu ili odsutnu SQL vrijednost NULL; ostale poslovne uvjete treba izraziti zasebnim CHECK ili drugim ograničenjem.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-031-column-default",
+    "topic": "sql",
+    "question": "Kada se pri INSERT-u koristi zadana DEFAULT vrijednost stupca?",
+    "options": [
+      "Kada je stupac izostavljen iz INSERT-a ili se za njega izričito navede ključna riječ DEFAULT",
+      "Kad god se izričito unese NULL, čak i ako stupac dopušta NULL",
+      "Samo nakon UPDATE naredbe nad postojećim retkom",
+      "Samo ako na stupcu postoji i UNIQUE ograničenje"
+    ],
+    "correctIndex": 0,
+    "explanation": "DEFAULT daje vrijednost kad INSERT ne zada stupac ili zatraži DEFAULT; izričito uneseni NULL ostaje NULL ako ga ograničenja dopuštaju.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-032-check-null",
+    "topic": "sql",
+    "question": "Zašto CHECK (cijena > 0) obično treba kombinirati s NOT NULL ako je cijena obavezna?",
+    "options": [
+      "CHECK se provjerava samo pri DELETE naredbi",
+      "NOT NULL automatski ubrzava svaku agregaciju nad stupcem",
+      "CHECK odbija FALSE, ali izraz s NULL može dati UNKNOWN i proći; NOT NULL zasebno zabranjuje NULL",
+      "CHECK može uspoređivati samo tekst, a NOT NULL samo brojeve"
+    ],
+    "correctIndex": 2,
+    "explanation": "U SQL trovrijednosnoj logici CHECK je zadovoljen kad uvjet nije FALSE, pa NULL može proizvesti UNKNOWN; obaveznost vrijednosti zato se izražava s NOT NULL.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-033-count-null",
+    "topic": "sql",
+    "question": "Koja je razlika između COUNT(*) i COUNT(email) nad istim skupom redaka?",
+    "options": [
+      "COUNT(*) broji samo retke s barem jednom ne-NULL vrijednošću",
+      "COUNT(*) broji sve retke, dok COUNT(email) broji samo retke u kojima email nije NULL",
+      "COUNT(email) uvijek vraća veći rezultat jer broji znakove u adresi",
+      "Nema razlike čak ni kada email sadrži NULL"
+    ],
+    "correctIndex": 1,
+    "explanation": "COUNT(*) broji retke neovisno o njihovim vrijednostima, dok COUNT(izraz) zanemaruje retke u kojima je rezultat izraza NULL.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-034-many-to-many",
+    "topic": "sql",
+    "question": "Kako se u relacijskoj bazi najčešće modelira veza više-prema-više, primjerice studenti i kolegiji?",
+    "options": [
+      "Popis svih kolegija sprema se kao tekst u jednom stupcu tablice studenata",
+      "Obje se tablice spajaju bez ključeva u jednu široku tablicu",
+      "Na svaku se tablicu dodaje po jedan stupac s proizvoljnim ID-em druge tablice",
+      "Uvodi se spojna tablica s vanjskim ključevima prema obje tablice i jedinstvenošću njihova para"
+    ],
+    "correctIndex": 3,
+    "explanation": "Spojna tablica predstavlja svaku vezu jednim retkom; par vanjskih ključeva obično je kompozitni primarni ključ ili ima UNIQUE ograničenje.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-035-self-join",
+    "topic": "sql",
+    "question": "Kada je SELF JOIN prikladan i zašto se koriste aliasi tablice?",
+    "options": [
+      "Kad retke tablice treba povezati s drugim retcima iste tablice, primjerice zaposlenika s nadređenim; aliasi razlikuju dvije uloge tablice",
+      "Samo kad tablica nema primarni ključ; aliasi tada stvaraju privremeni ključ",
+      "Kad treba ukloniti sve duplikate bez DISTINCT-a",
+      "Isključivo za spajanje tablica iz dviju različitih baza"
+    ],
+    "correctIndex": 0,
+    "explanation": "SELF JOIN istu tablicu navodi više puta pod različitim aliasima, što omogućuje povezivanje hijerarhijskih ili drugih međusobno povezanih redaka.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-036-left-join-filter",
+    "topic": "sql",
+    "question": "Zašto uvjet nad desnom tablicom u WHERE dijelu može promijeniti rezultat LEFT JOIN-a?",
+    "options": [
+      "WHERE se izvršava prije FROM dijela pa desna tablica još ne postoji",
+      "Takav uvjet samo mijenja redoslijed rezultata, ne i broj redaka",
+      "WHERE uvjet može odbaciti NULL-proširene retke bez podudaranja; stavljanje uvjeta u ON može ih sačuvati",
+      "LEFT JOIN sintaktički ne dopušta WHERE klauzulu"
+    ],
+    "correctIndex": 2,
+    "explanation": "Nakon LEFT JOIN-a nepodudarni desni stupci imaju NULL. Predikat poput desna.aktivna = TRUE u WHERE-u nije TRUE za te retke pa ih uklanja, dok isti predikat u ON-u i dalje čuva lijeve retke.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-037-not-in-null",
+    "topic": "sql",
+    "question": "Koja je zamka izraza vrijednost NOT IN (podupit) ako podupit može vratiti NULL?",
+    "options": [
+      "NULL se automatski pretvara u nulu pa rezultat može sadržavati lažna podudaranja",
+      "Ako nema jednakog retka, ali skup sadrži NULL, rezultat može biti UNKNOWN umjesto TRUE pa WHERE ne vraća očekivane retke",
+      "NOT IN tada uvijek baca sintaktičku grešku",
+      "NULL uzrokuje da NOT IN postane isto što i IN"
+    ],
+    "correctIndex": 1,
+    "explanation": "Zbog trovrijednosne logike usporedba s NULL nije TRUE ni FALSE. Za anti-spajanje je često sigurniji korelirani NOT EXISTS ili prethodno uklanjanje NULL vrijednosti iz podupita.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-038-conditional-aggregation",
+    "topic": "sql",
+    "question": "Koji izraz u standardnom SQL-u broji samo narudžbe sa statusom 'plaćeno' unutar svake grupe?",
+    "options": [
+      "SUM(status = 'plaćeno')",
+      "COUNT(*) WHERE status = 'plaćeno'",
+      "GROUP BY COUNT(status = 'plaćeno')",
+      "SUM(CASE WHEN status = 'plaćeno' THEN 1 ELSE 0 END)"
+    ],
+    "correctIndex": 3,
+    "explanation": "CASE pretvara svaki redak u 1 ili 0, a SUM ih zbraja unutar grupe; taj obrazac omogućuje više uvjetnih agregata u jednom upitu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-039-cte-scope",
+    "topic": "sql",
+    "question": "Što je CTE definiran klauzulom WITH?",
+    "options": [
+      "Imenovani rezultat upita dostupan unutar jedne SQL naredbe, koristan za čitljivost i kao osnova rekurzivnih upita",
+      "Trajna tablica koja ostaje spremljena nakon COMMIT-a",
+      "Indeks koji se automatski gradi za svaki podupit",
+      "Transakcija koja uvijek koristi SERIALIZABLE izolaciju"
+    ],
+    "correctIndex": 0,
+    "explanation": "CTE daje ime međurezultatu u opsegu jedne naredbe. Sam po sebi ne jamči materijalizaciju ni bolje performanse jer to ovisi o optimizatoru.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-040-correlated-subquery",
+    "topic": "sql",
+    "question": "Po čemu se korelirani podupit razlikuje od nekoreliranog?",
+    "options": [
+      "Može vratiti samo jedan stupac i jedan redak",
+      "Uvijek se izvršava brže od ekvivalentnog JOIN-a",
+      "Referencira stupac vanjskog upita pa se logički vrednuje u kontekstu svakog vanjskog retka, iako ga optimizator može preoblikovati",
+      "Mora mijenjati podatke naredbom UPDATE ili DELETE"
+    ],
+    "correctIndex": 2,
+    "explanation": "Korelacija nastaje kada unutarnji upit ovisi o trenutačnom retku vanjskog upita; stvarni plan može izbjeći doslovno ponovno izvođenje optimizacijom.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-041-window-ranking",
+    "topic": "sql",
+    "question": "Kako se ROW_NUMBER, RANK i DENSE_RANK razlikuju kada postoje izjednačene vrijednosti u ORDER BY dijelu prozora?",
+    "options": [
+      "Sve tri funkcije daju isti broj svim retcima i nikad nemaju praznine",
+      "ROW_NUMBER daje jedinstven redni broj, RANK dijeli rang uz praznine nakon izjednačenja, a DENSE_RANK dijeli rang bez praznina",
+      "RANK nema praznine, a DENSE_RANK nakon izjednačenja preskače rangove",
+      "ROW_NUMBER radi samo uz GROUP BY, a preostale dvije samo bez njega"
+    ],
+    "correctIndex": 1,
+    "explanation": "Povezani retci dobivaju isti RANK ili DENSE_RANK; RANK zatim preskače zauzete pozicije, dok DENSE_RANK nastavlja sljedećim cijelim rangom.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-042-transaction-savepoint",
+    "topic": "sql",
+    "question": "Čemu služi SAVEPOINT unutar transakcije?",
+    "options": [
+      "Trajno potvrđuje sve dotadašnje promjene kao COMMIT",
+      "Mijenja razinu izolacije samo za sljedeći SELECT",
+      "Zaključava cijelu bazu do kraja sesije",
+      "Označava točku na koju se može djelomično vratiti bez poništavanja cijele transakcije"
+    ],
+    "correctIndex": 3,
+    "explanation": "SAVEPOINT omogućuje ROLLBACK TO SAVEPOINT, čime se poništava kasniji dio rada, a transakcija ostaje aktivna za nastavak ili konačni COMMIT.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-043-composite-btree-index",
+    "topic": "sql",
+    "question": "Koje je opće pravilo za tipični kompozitni B-tree indeks na stupcima (a, b)?",
+    "options": [
+      "Najkorisniji je za uvjete koji počinju vodećim stupcem a, primjerice a ili kombinaciju a i b; uvjet samo nad b često ga ne može učinkovito suziti",
+      "Jednako je učinkovit za svaki stupac neovisno o njihovu redoslijedu",
+      "Može ubrzati samo INSERT, ali ne i SELECT",
+      "Automatski jamči jedinstvenost para (a, b) bez UNIQUE deklaracije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Redoslijed ključeva važan je kod B-tree indeksa: vodeći stupci najčešće određuju raspon skeniranja. Pojedini optimizatori imaju iznimke, ali indeks samo na (a, b) nije općenita zamjena za indeks na b.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-044-sargable-date-filter",
+    "topic": "sql",
+    "question": "Bez funkcijskog indeksa, koji uvjet planer najlakše može pretvoriti u raspon nad običnim indeksom na created_at?",
+    "options": [
+      "EXTRACT(YEAR FROM created_at) = 2026",
+      "CAST(created_at AS CHAR(4)) = '2026'",
+      "created_at >= DATE '2026-01-01' AND created_at < DATE '2027-01-01'",
+      "created_at + INTERVAL '0' DAY = created_at"
+    ],
+    "correctIndex": 2,
+    "explanation": "Izravni poluotvoreni raspon nad indeksiranim stupcem je sargabilan i uključuje cijelu godinu; funkcija ili pretvorba nad stupcem često otežava uporabu običnog indeksa.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-045-recursive-cte",
+    "topic": "sql",
+    "question": "Koja struktura ispravno opisuje rekurzivni CTE za prolazak hijerarhije?",
+    "options": [
+      "Sadrži samo rekurzivni SELECT koji se poziva bez početnog skupa",
+      "Ima početni (anchor) upit, zatim UNION ALL i rekurzivni dio koji referencira CTE te uvjet ili podatke koji konačno zaustavljaju širenje",
+      "Mora ručno kreirati trajnu tablicu za svaku razinu stabla",
+      "Rekurzija se prema SQL standardu uvijek automatski zaustavlja nakon dvije razine"
+    ],
+    "correctIndex": 1,
+    "explanation": "Početni dio daje prvi skup redaka, a rekurzivni dio iterativno proizvodi sljedeće. Ispravan odnos ili uvjet završetka nužan je da upit ne širi ciklus unedogled.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sql-046-window-rows-range",
+    "topic": "sql",
+    "question": "Koja je bitna razlika između ROWS i RANGE okvira prozorske funkcije s ORDER BY?",
+    "options": [
+      "ROWS se smije koristiti samo s tekstom, a RANGE samo s brojevima",
+      "RANGE uvijek obuhvaća cijelu particiju, neovisno o granicama",
+      "ROWS grupira rezultat kao GROUP BY, dok RANGE zadržava retke",
+      "ROWS određuje okvir po pozicijama redaka u uređenom prozoru, dok RANGE granice veže uz vrijednosti sortiranja i može zajedno uključiti peer retke"
+    ],
+    "correctIndex": 3,
+    "explanation": "ROWS broji pojedinačne pozicije, dok RANGE promatra vrijednosti ORDER BY izraza; retci jednaki po tim izrazima čine peer grupu i mogu zajedno ući u okvir.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sql-047-covering-index",
+    "topic": "sql",
+    "question": "Što znači da je indeks pokrivajući (covering) za određeni upit?",
+    "options": [
+      "Indeks sadrži sve stupce potrebne za filtriranje i rezultat tog upita pa sustav može izvesti index-only scan ako ostali uvjeti implementacije to dopuštaju",
+      "Indeks fizički sadrži cijelu tablicu i zato uvijek zamjenjuje backup",
+      "Indeks automatski pokriva svaki budući stupac dodan tablici",
+      "Riječ je isključivo o UNIQUE indeksu nad svim stupcima tablice"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kad su svi potrebni podaci dostupni iz indeksa, planer može izbjeći ili smanjiti čitanje tabličnih stranica; stvarna korist ovisi o sustavu, vidljivosti redaka i obrascu upita.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sql-048-planner-cardinality",
+    "topic": "sql",
+    "question": "Zašto su procjene kardinalnosti važne planeru upita?",
+    "options": [
+      "Određuju dopušteni broj stupaca u tablici",
+      "Služe samo za formatiranje brojeva u rezultatu",
+      "Procjenjuju koliko će redaka proći kroz dijelove plana, što utječe na redoslijed JOIN-ova, algoritme i izbor indeksa; loše statistike mogu dovesti do lošeg plana",
+      "Jamče da svaki SELECT vrati točno procijenjeni broj redaka"
+    ],
+    "correctIndex": 2,
+    "explanation": "Planer uspoređuje troškove mogućih planova na temelju procijenjenih količina podataka. Zastarjele statistike ili korelirani stupci mogu ozbiljno iskriviti te procjene.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sql-049-serializable-write-skew",
+    "topic": "sql",
+    "question": "Dvije transakcije pročitaju isto poslovno pravilo, zatim promijene različite retke tako da ga zajedno prekrše (write skew). Koji pristup daje najjače standardno jamstvo protiv takve anomalije?",
+    "options": [
+      "READ COMMITTED bez dodatnih provjera",
+      "SERIALIZABLE transakcije uz spremnost aplikacije da ponovi transakciju nakon serialization failure pogreške",
+      "READ UNCOMMITTED i COMMIT nakon svakog SELECT-a",
+      "Korištenje autocommita za svaku pojedinačnu naredbu"
+    ],
+    "correctIndex": 1,
+    "explanation": "SERIALIZABLE zahtijeva ishod ekvivalentan nekom serijskom izvršavanju. Sustav zato može prekinuti jednu konfliktnu transakciju, a aplikacija mora ponoviti cijelu transakciju.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sql-050-exact-decimal",
+    "topic": "sql",
+    "question": "Koji je tip primjereniji za novčani iznos kada je važna točna decimalna aritmetika?",
+    "options": [
+      "FLOAT jer svaki decimalni broj sprema potpuno točno",
+      "DECIMAL(p, s) ili NUMERIC(p, s), uz odgovarajuću preciznost i skalu",
+      "CHAR jer tekstualni zapis automatski podržava aritmetiku",
+      "INTEGER bez obzira na najmanju novčanu jedinicu i potreban raspon"
+    ],
+    "correctIndex": 1,
+    "explanation": "DECIMAL i NUMERIC namijenjeni su točnim decimalnim vrijednostima, dok su FLOAT, REAL i DOUBLE PRECISION približni binarni tipovi koji mogu uvoditi pogreške zaokruživanja.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-051-date-vs-timestamp",
+    "topic": "sql",
+    "question": "Koji je standardni SQL tip najprikladniji za datum rođenja ako vrijeme dana nije podatak koji želimo spremiti?",
+    "options": [
+      "TIMESTAMP WITH TIME ZONE",
+      "INTERVAL",
+      "VARCHAR",
+      "DATE"
+    ],
+    "correctIndex": 3,
+    "explanation": "DATE predstavlja kalendarski datum bez vremena dana i vremenske zone, pa jasnije modelira rođendan od vremenske oznake ili tekstualnog zapisa.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-052-surrogate-key",
+    "topic": "sql",
+    "question": "Što je surogatni ključ i koji je čest razlog za njegovu uporabu?",
+    "options": [
+      "Umjetni identifikator bez poslovnog značenja koji može ostati stabilan i kad se poslovni atributi promijene",
+      "Prirodni poslovni atribut koji se mora mijenjati pri svakoj izmjeni retka",
+      "Ključ sastavljen isključivo od svih tekstualnih stupaca tablice",
+      "Zamjena za sva UNIQUE i FOREIGN KEY ograničenja u cijeloj bazi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Surogatni ključ, primjerice generirani ID, odvaja identitet retka od promjenjivih poslovnih podataka; stvarnu poslovnu jedinstvenost i dalje treba zaštititi odgovarajućim UNIQUE ograničenjem.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-053-on-delete-cascade",
+    "topic": "sql",
+    "question": "Što radi referencijalna akcija ON DELETE CASCADE?",
+    "options": [
+      "Zabranjuje svako brisanje retka iz podređene tablice",
+      "Postavlja primarni ključ roditelja na NULL",
+      "Pri brisanju roditeljskog retka automatski briše retke koji ga referenciraju tim vanjskim ključem",
+      "Kopira obrisani roditeljski redak u svaku podređenu tablicu"
+    ],
+    "correctIndex": 2,
+    "explanation": "CASCADE prenosi brisanje na povezane podređene retke. Primjeren je kada njihov životni ciklus stvarno ovisi o roditelju, a treba ga koristiti oprezno zbog mogućeg velikog lanca brisanja.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-054-on-delete-set-null",
+    "topic": "sql",
+    "question": "Koji je preduvjet da ON DELETE SET NULL uspješno postavi referencu podređenog retka na NULL?",
+    "options": [
+      "Referencirajući stupac mora ujedno biti primarni ključ",
+      "Stupci koje akcija postavlja na NULL moraju dopuštati NULL i ne smiju time prekršiti druga ograničenja",
+      "Roditeljska tablica ne smije imati nijedan indeks",
+      "Transakcija mora koristiti READ UNCOMMITTED izolaciju"
+    ],
+    "correctIndex": 1,
+    "explanation": "SET NULL ne može završiti ako je ciljni stupac NOT NULL ili novo stanje krši drugo ograničenje; tada se brisanje roditelja odbija.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-055-intersect-except",
+    "topic": "sql",
+    "question": "Što u standardnom SQL-u vraćaju INTERSECT i EXCEPT?",
+    "options": [
+      "INTERSECT spaja stupce, a EXCEPT ih preimenuje",
+      "INTERSECT vraća sve retke iz prvog upita, a EXCEPT sve iz drugog",
+      "Obje operacije uvijek zadržavaju sve duplikate",
+      "INTERSECT vraća retke zajedničke obama rezultatima, a EXCEPT retke prvog rezultata kojih nema u drugom; bez ALL uklanjaju se duplikati"
+    ],
+    "correctIndex": 3,
+    "explanation": "INTERSECT računa presjek, a EXCEPT razliku skupova. INTERSECT ALL i EXCEPT ALL uzimaju u obzir i broj ponavljanja kada ih konkretni sustav podržava.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-056-commit-rollback",
+    "topic": "sql",
+    "question": "Koja je osnovna razlika između COMMIT i ROLLBACK?",
+    "options": [
+      "COMMIT potvrđuje promjene transakcije, a ROLLBACK poništava nepotvrđene promjene te transakcije",
+      "COMMIT samo čita podatke, a ROLLBACK stvara novu tablicu",
+      "ROLLBACK trajno potvrđuje promjene, a COMMIT ih poništava",
+      "Obje naredbe služe isključivo za upravljanje korisničkim ovlastima"
+    ],
+    "correctIndex": 0,
+    "explanation": "COMMIT završava transakciju i čini njezine promjene trajnim. ROLLBACK odustaje od cijele transakcije, dok ROLLBACK TO SAVEPOINT poništava samo njezin kasniji dio.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-057-least-privilege-grant",
+    "topic": "sql",
+    "question": "Koja dodjela ovlasti najbolje slijedi načelo najmanjih ovlasti za račun koji samo izrađuje izvještaje?",
+    "options": [
+      "Dodijeliti mu vlasništvo nad cijelom bazom",
+      "Dodijeliti ALL PRIVILEGES nad svim tablicama i budućim objektima",
+      "Dodijeliti samo SELECT nad potrebnim tablicama ili pogledima, bez nepotrebnih ovlasti pisanja i administracije",
+      "Dijeliti administratorski račun s ostalim servisima"
+    ],
+    "correctIndex": 2,
+    "explanation": "GRANT treba ograničiti na nužne objekte i operacije. Uskraćivanje INSERT, UPDATE, DELETE i administrativnih ovlasti smanjuje posljedice pogreške ili kompromitacije računa.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-058-time-zone-instant",
+    "topic": "sql",
+    "question": "Kako je najrobustnije modelirati točan trenutak online sastanka za korisnike u različitim vremenskim zonama?",
+    "options": [
+      "Spremiti samo lokalni tekst poput '10:00' bez datuma i zone",
+      "Spremiti jednoznačan trenutak time-zone-aware tipom ili normaliziran u UTC, a zasebno čuvati IANA zonu ako treba rekonstruirati izvorna ili ponavljajuća lokalna pravila",
+      "Spremiti samo DATE jer se vrijeme može izračunati iz korisničkog imena",
+      "Za svakog korisnika trajno duplicirati isti događaj kao formatirani lokalni string"
+    ],
+    "correctIndex": 1,
+    "explanation": "Jednoznačan instant omogućuje pouzdanu konverziju prikaza, dok naziv zone čuva pravila poput ljetnog računanja vremena. Točna semantika time-zone tipova razlikuje se među bazama i mora se provjeriti.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-059-calendar-interval",
+    "topic": "sql",
+    "question": "Zašto dodavanje intervala od jednog kalendarskog mjeseca nije općenito isto što i dodavanje 30 dana?",
+    "options": [
+      "SQL intervali ne mogu sadržavati mjesece",
+      "Svaki kalendarski mjesec prema standardu traje točno 28 dana",
+      "Dodavanje mjeseca uvijek uklanja vremenski dio vrijednosti",
+      "Mjeseci imaju različit broj dana, pa kalendarsko pomicanje mjeseca i fiksni broj dana mogu završiti na različitim datumima"
+    ],
+    "correctIndex": 3,
+    "explanation": "Kalendarske jedinice i fiksna trajanja nisu zamjenjivi. Ponašanje na kraju mjeseca i preko promjene ljetnog vremena treba provjeriti za konkretnu bazu i poslovno pravilo.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-060-set-operation-compatibility",
+    "topic": "sql",
+    "question": "Koji uvjet moraju zadovoljiti upiti povezani s UNION, INTERSECT ili EXCEPT?",
+    "options": [
+      "Moraju vraćati isti broj stupaca, a odgovarajući stupci po poziciji moraju imati kompatibilne tipove",
+      "Moraju koristiti iste nazive tablica i identične aliase",
+      "Svaki upit mora vratiti jednak broj redaka",
+      "Svi odabrani stupci moraju biti primarni ključevi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Skupovne operacije uparuju stupce po položaju, ne po nazivu. Broj stupaca mora biti jednak, a implementacija mora moći odrediti zajednički kompatibilan tip za svaki par.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-061-deferrable-constraint",
+    "topic": "sql",
+    "question": "Što omogućuje ograničenje označeno kao DEFERRABLE INITIALLY DEFERRED?",
+    "options": [
+      "Ograničenje se trajno isključuje za sve buduće transakcije",
+      "Provjerava se tek nakon prvog SELECT-a u sesiji",
+      "Njegova se provjera može odgoditi do COMMIT-a, pa međukoraci transakcije smiju privremeno biti nevaljani ako je konačno stanje valjano",
+      "Automatski pretvara svaki vanjski ključ u ON DELETE CASCADE"
+    ],
+    "correctIndex": 2,
+    "explanation": "Odgođena provjera korisna je za povezane izmjene koje tek zajedno stvaraju valjano stanje. Koje vrste ograničenja podržavaju odgodu razlikuje se među sustavima.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-062-select-for-update",
+    "topic": "sql",
+    "question": "Čemu u sustavima koji ga podržavaju služi SELECT ... FOR UPDATE unutar transakcije?",
+    "options": [
+      "Omogućuje čitanje bez ikakvih zaključavanja čak i tijekom brisanja",
+      "Zaključava odabrane retke protiv konfliktnih izmjena ili zaključavanja dok transakcija ne završi",
+      "Trajno mijenja sve odabrane retke bez UPDATE naredbe",
+      "Automatski postavlja izolaciju cijele baze na SERIALIZABLE"
+    ],
+    "correctIndex": 1,
+    "explanation": "FOR UPDATE služi obrascu pročitaj-pa-promijeni: konkurentni pisci istih redaka moraju čekati ili dobivaju pogrešku, ovisno o opcijama i implementaciji. Zaključavanje treba držati što kraće.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-063-explain-analyze",
+    "topic": "sql",
+    "question": "U bazama koje koriste te nazive, koja je važna razlika između EXPLAIN i EXPLAIN ANALYZE?",
+    "options": [
+      "EXPLAIN mijenja podatke, a EXPLAIN ANALYZE uvijek poništava transakciju",
+      "EXPLAIN prikazuje samo rezultat upita, a ANALYZE samo strukturu tablice",
+      "EXPLAIN ANALYZE nikad ne izvršava upit pa je siguran za svaki DELETE",
+      "EXPLAIN prikazuje procijenjeni plan, dok EXPLAIN ANALYZE izvršava naredbu i dodaje stvarna vremena i broj redaka"
+    ],
+    "correctIndex": 3,
+    "explanation": "Stvarno izvršavanje omogućuje usporedbu procjena i mjerenja, ali kod naredbi koje mijenjaju podatke može proizvesti stvarne promjene ako ih transakcija ne poništi. Sintaksa se razlikuje među bazama.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-064-nested-loop-join",
+    "topic": "sql",
+    "question": "Kada je nested-loop join često dobar izbor planera?",
+    "options": [
+      "Kada je vanjski skup malen, a za svaki njegov redak unutarnji skup ima jeftin indeksirani dohvat",
+      "Isključivo kada obje tablice nemaju nijedan indeks",
+      "Uvijek za dvije vrlo velike tablice bez selektivnog filtra",
+      "Samo za FULL OUTER JOIN nad tekstualnim stupcima"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nested loop ponavlja unutarnji dohvat za retke vanjskog ulaza. To je učinkovito uz malo ponavljanja i brz lookup, ali može biti vrlo skupo kada su oba ulaza velika.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-065-materialized-view",
+    "topic": "sql",
+    "question": "Koja je glavna razlika između običnog i materijaliziranog pogleda?",
+    "options": [
+      "Obični pogled uvijek sprema fizičku kopiju rezultata, a materijalizirani nikad",
+      "Materijalizirani pogled služi samo za dodjelu korisničkih ovlasti",
+      "Materijalizirani pogled fizički sprema rezultat upita pa čitanje može biti brže, ali podatke treba osvježavati i mogu zastarjeti",
+      "Materijalizirani pogled automatski zamjenjuje sve indekse osnovnih tablica"
+    ],
+    "correctIndex": 2,
+    "explanation": "Materijalizacija mijenja svježinu za brzinu čitanja. Način, cijena i mogućnost konkurentnog ili inkrementalnog osvježavanja ovise o konkretnoj bazi.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-066-partition-pruning",
+    "topic": "sql",
+    "question": "Što je partition pruning?",
+    "options": [
+      "Brisanje svih starih particija pri svakom SELECT-u",
+      "Isključivanje particija za koje planer ili izvršitelj može dokazati da ne mogu sadržavati retke tražene uvjetom nad particijskim ključem",
+      "Automatsko spajanje svih particija u jednu fizičku datoteku",
+      "Zamjena svakog lokalnog indeksa jednim tekstualnim stupcem"
+    ],
+    "correctIndex": 1,
+    "explanation": "Pruning smanjuje količinu podataka za skeniranje. Najbolje radi kada se predikati upita mogu povezati s pravilima particioniranja; sam indeks nije isto što i pruning.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-067-composite-fk-match-full",
+    "topic": "sql",
+    "question": "Što kod kompozitnog vanjskog ključa znači SQL MATCH FULL, ako ga baza podržava?",
+    "options": [
+      "Dovoljno je da bilo koji jedan stupac ključa odgovara roditeljskom retku",
+      "Svi stupci vanjskog ključa automatski postaju UNIQUE",
+      "Svaki NULL automatski se pretvara u zadanu vrijednost roditelja",
+      "Referenca može izostati samo ako su svi njezini stupci NULL; mješavina NULL i ne-NULL vrijednosti nije dopušten bijeg od provjere"
+    ],
+    "correctIndex": 3,
+    "explanation": "MATCH FULL sprječava djelomično popunjenu kompozitnu referencu: ili je cijela referenca odsutna ili svi stupci zajedno moraju odgovarati referenciranom ključu.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sql-068-deadlock-handling",
+    "topic": "sql",
+    "question": "Kako tipično nastaje deadlock i kako ga aplikacija treba ublažiti?",
+    "options": [
+      "Transakcije drže zaključavanja koja druga treba i čekaju se u ciklusu; dosljedan redoslijed zaključavanja smanjuje rizik, a transakciju koju baza prekine treba sigurno ponoviti",
+      "Nastaje kad jedan SELECT nema ORDER BY; rješava se dodavanjem DISTINCT-a",
+      "Nastaje isključivo zbog premalog VARCHAR stupca; rješava se većim tipom",
+      "Baza ga nikad ne može otkriti pa se proces servera uvijek mora ručno ugasiti"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sustavi obično otkrivaju ciklus čekanja i prekidaju jednu transakciju. Kratke transakcije, isti redoslijed pribavljanja zaključavanja i retry cijele transakcije čine obradu robusnijom.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sql-069-lost-update",
+    "topic": "sql",
+    "question": "Dvije transakcije pročitaju vrijednost 100, obje izračunaju 110 i obje je upišu, pa se jedan porast izgubi. Kako se taj lost update može spriječiti?",
+    "options": [
+      "Dodavanjem ORDER BY u početni SELECT",
+      "Pretvaranjem broja u VARCHAR prije spremanja",
+      "Atomarnim UPDATE izrazom poput vrijednost = vrijednost + 10 ili kontrolom konkurentnosti zaključavanjem odnosno provjerom verzije uz retry",
+      "Korištenjem UNION ALL između dviju transakcija"
+    ],
+    "correctIndex": 2,
+    "explanation": "Obrazac pročitaj-izračunaj-upiši mora zaštititi pretpostavljeno staro stanje. Atomarna izmjena u bazi ili provjera verzije odnosno zaključavanje sprječava tiho prepisivanje tuđeg rezultata.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sql-070-join-algorithms",
+    "topic": "sql",
+    "question": "Koja usporedba hash i merge join algoritma je najtočnija za equi-join?",
+    "options": [
+      "Hash join zahtijeva oba ulaza unaprijed sortirana, dok merge join uvijek gradi hash tablicu",
+      "Hash join obično gradi hash strukturu nad jednim ulazom i ne traži prethodni poredak, dok merge join može učinkovito prolaziti ulazima uređenima po ključu spajanja",
+      "Oba algoritma rade samo kada vanjski ulaz ima najviše jedan redak",
+      "Merge join nikada ne može iskoristiti poredak dobiven indeksom"
+    ],
+    "correctIndex": 1,
+    "explanation": "Hash join troši memoriju za hash strukturu i može prelijevati na disk, dok merge join treba odgovarajući poredak, dobiven indeksom ili sortiranjem. Izbor ovisi o veličini, memoriji i dostupnom poretku.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sql-071-plan-disk-spill",
+    "topic": "sql",
+    "question": "Što obično znači kada stvarni execution plan prijavi da je Sort ili Hash operacija koristila privremeni disk odnosno više batch-eva?",
+    "options": [
+      "Da planer nije izvršio nijedan dio upita",
+      "Da je baza automatski stvorila trajni indeks za rezultat",
+      "Da je rezultat upita nužno logički netočan",
+      "Da međurezultat nije obrađen samo u dodijeljenoj memoriji pa je korištena privremena pohrana, što može znatno povećati I/O"
+    ],
+    "correctIndex": 3,
+    "explanation": "Disk spill često upućuje na velik međurezultat ili premalo radne memorije. Treba smanjiti retke ranijim filtriranjem, razmotriti prikladan indeks ili oprezno podesiti memoriju; nazivi metrika ovise o bazi.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sql-072-partial-index",
+    "topic": "sql",
+    "question": "Kada partial odnosno filtered indeks može biti koristan i koje je ključno ograničenje?",
+    "options": [
+      "Indeksira samo retke koji zadovoljavaju predikat, primjerice otvorene naloge; upit ga koristi tek kad planer može zaključiti da njegov uvjet podrazumijeva predikat indeksa",
+      "Indeksira nasumičan dio tablice i zato odgovara svakom mogućem upitu",
+      "Automatski uključuje sve buduće stupce bez dodatnog prostora",
+      "Jamči da se svaki parametrizirani upit može povezati s bilo kojim predikatom"
+    ],
+    "correctIndex": 0,
+    "explanation": "Manji specijalizirani indeks štedi prostor i trošak održavanja za često tražen podskup. Podrška i sposobnost dokazivanja podudarnosti predikata ovise o optimizatoru konkretne baze.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sql-073-partition-key-skew",
+    "topic": "sql",
+    "question": "Zašto loše odabran particijski ključ može pogoršati performanse i održavanje?",
+    "options": [
+      "Jer particioniranje automatski isključuje sva zaključavanja",
+      "Jer svaka particija prema definiciji mora imati jednak broj redaka",
+      "Jer neravnomjerna raspodjela može stvoriti vruću ili preveliku particiju, a upiti bez korisnog predikata nad ključem i dalje mogu skenirati mnogo particija",
+      "Jer particionirana tablica nikad ne može imati lokalne indekse"
+    ],
+    "correctIndex": 2,
+    "explanation": "Dobar ključ prati obrasce filtriranja i ravnomjerno raspoređuje podatke i upise. Granularnost, broj particija, jedinstvena ograničenja i dostupne strategije razlikuju se među bazama.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sql-074-row-level-security",
+    "topic": "sql",
+    "question": "Što row-level security politika dodaje običnim ovlastima nad tablicom u bazama koje je podržavaju?",
+    "options": [
+      "Automatski šifrira svaki stupac i uklanja potrebu za TLS-om",
+      "Ograničava koje retke određena uloga smije vidjeti ili mijenjati, uz postojeće objektne ovlasti; pravila za vlasnike i bypass uloge ovise o bazi",
+      "Pretvara svaki SELECT u materijalizirani pogled",
+      "Daje svim korisnicima administratorske ovlasti samo nad vlastitim retcima"
+    ],
+    "correctIndex": 1,
+    "explanation": "RLS provodi predikat pristupa unutar baze i može biti dodatni sloj obrane za višekorisničke podatke. Ne zamjenjuje autentikaciju, pažljivu dodjelu GRANT ovlasti ni sigurnost aplikacije.",
+    "difficulty": "hard"
   }
 ]

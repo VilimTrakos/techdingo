@@ -306,5 +306,355 @@
     "correctIndex": 0,
     "explanation": "UPDATE uspijeva samo ako je verzija/timestamp u bazi još uvijek jednaka onoj pročitanoj prije izmjene; ako se ne poklapa, znači da je netko drugi u međuvremenu promijenio zapis, pa aplikacija mora ponoviti operaciju.",
     "difficulty": "hard"
+  },
+  {
+    "id": "backend-023-https-data-in-transit",
+    "topic": "backend",
+    "question": "Što HTTPS dodaje u odnosu na obični HTTP?",
+    "options": [
+      "Automatsku kompresiju svakog API odgovora",
+      "TLS zaštitu povjerljivosti i integriteta prometa te provjeru identiteta servera certifikatom",
+      "Automatsku validaciju svih podataka koje korisnik pošalje",
+      "Trajno spremanje svakog zahtjeva na serveru"
+    ],
+    "correctIndex": 1,
+    "explanation": "HTTPS koristi TLS kako bi šifrirao promet, otkrio izmjene tijekom prijenosa i potvrdio identitet servera. Ne uklanja potrebu za sigurnom validacijom i autorizacijom u aplikaciji.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-024-content-type-header",
+    "topic": "backend",
+    "question": "Čemu služi HTTP zaglavlje Content-Type?",
+    "options": [
+      "Određuje maksimalan broj zahtjeva koje klijent smije poslati",
+      "Identificira prijavljenog korisnika",
+      "Opisuje medijski format tijela zahtjeva ili odgovora, primjerice application/json",
+      "Određuje koliko dugo mrežna veza mora ostati otvorena"
+    ],
+    "correctIndex": 2,
+    "explanation": "Content-Type govori primatelju kako treba protumačiti tijelo poruke. Primjerice, application/json označava JSON sadržaj.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-025-api-pagination",
+    "topic": "backend",
+    "question": "Zašto API obično paginira veliki popis rezultata?",
+    "options": [
+      "Kako bi ograničio veličinu pojedinog odgovora te smanjio latenciju, potrošnju memorije i opterećenje baze",
+      "Kako bi bez dodatnih mehanizama zajamčio da se podaci nikad ne promijene između stranica",
+      "Kako bi uklonio potrebu za autorizacijom pojedinih zapisa",
+      "Kako bi cijeli skup rezultata uvijek stao u jedan mrežni paket"
+    ],
+    "correctIndex": 0,
+    "explanation": "Paginacija vraća ograničen broj zapisa po pozivu, što čuva resurse klijenta i servera. Stabilnost između stranica zahtijeva dodatno pažljivo sortiranje ili cursor pristup.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-026-password-hashing",
+    "topic": "backend",
+    "question": "Kako bi backend trebao spremati korisničke lozinke?",
+    "options": [
+      "Reverzibilno ih šifrirati jednim zajedničkim ključem",
+      "Pretvoriti ih u Base64 tekst",
+      "Spremiti brzi hash bez salta radi lakše usporedbe",
+      "Spremiti rezultat sporog, saltanog algoritma za lozinke poput Argon2id, bcrypta ili scrypta"
+    ],
+    "correctIndex": 3,
+    "explanation": "Spori algoritam i jedinstveni salt otežavaju masovno pogađanje ukradenih hash vrijednosti. Server pri prijavi uspoređuje hash, a izvornu lozinku ne mora moći vratiti.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-027-least-privilege",
+    "topic": "backend",
+    "question": "Što znači sigurnosno načelo najmanjih ovlasti?",
+    "options": [
+      "Svaki servis dobiva administratorske ovlasti kako ga dozvole ne bi blokirale",
+      "Korisnik ili servis dobiva samo dozvole potrebne za svoj trenutačni posao",
+      "Dozvole se provjeravaju samo pri prvoj prijavi korisnika",
+      "Svi interni servisi automatski se smatraju pouzdanima"
+    ],
+    "correctIndex": 1,
+    "explanation": "Ograničavanje ovlasti smanjuje štetu ako račun ili servis bude kompromitiran. Dozvole se trebaju redovito provjeravati i ukidati kada više nisu potrebne.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-028-database-index-tradeoff",
+    "topic": "backend",
+    "question": "Koji je tipičan kompromis pri dodavanju indeksa u bazu podataka?",
+    "options": [
+      "Indeks stvara potpunu sigurnosnu kopiju tablice",
+      "Indeks jamči konstantno vrijeme svakog mogućeg upita",
+      "Indeks može ubrzati čitanja, ali zauzima prostor i može usporiti upise",
+      "Indeks automatski šifrira stupce koje obuhvaća"
+    ],
+    "correctIndex": 2,
+    "explanation": "Indeks pomaže bazi brže pronaći retke, ali ga treba održavati pri INSERT, UPDATE i DELETE operacijama. Zato previše ili loše odabranih indeksa može štetiti performansama.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-029-transaction-atomicity",
+    "topic": "backend",
+    "question": "Što atomarnost transakcije jamči?",
+    "options": [
+      "Sve operacije transakcije uspiju zajedno ili se nijedna ne primijeni",
+      "Transakcija smije čitati nepotvrđene promjene drugih transakcija",
+      "Svaki zapis transakcije automatski se replicira u drugi podatkovni centar",
+      "Sve se transakcije moraju izvršavati paralelno"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ako jedan korak ne uspije, cijela se transakcija poništava. Primjerice, prijenos novca ne smije teretiti jedan račun bez odobravanja drugoga.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-030-structured-logging",
+    "topic": "backend",
+    "question": "Koja je glavna prednost strukturiranih logova?",
+    "options": [
+      "Automatski šifriraju sve osjetljive podatke",
+      "Bilježe samo neobrađene tekstove iznimki",
+      "Zamjenjuju potrebu za metrikama i distribuiranim tragovima",
+      "Zapisuju događaje u strojno pretraživa polja poput razine, vremena, servisa i request ID-a"
+    ],
+    "correctIndex": 3,
+    "explanation": "Strukturirana polja olakšavaju filtriranje, agregaciju i povezivanje događaja između servisa. Osjetljive podatke i dalje treba izostaviti ili maskirati.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-031-health-check-endpoint",
+    "topic": "backend",
+    "question": "Čemu služi health-check endpoint backend servisa?",
+    "options": [
+      "Provjerava jačinu korisničkih lozinki",
+      "Omogućuje load balanceru ili orkestratoru da procijeni može li instanca primati promet",
+      "Izvodi puni test opterećenja pri svakom pozivu",
+      "Potpuno zamjenjuje logove, metrike i alarme"
+    ],
+    "correctIndex": 1,
+    "explanation": "Health check pomaže automatski ukloniti neispravnu instancu iz prometa ili je ponovno pokrenuti. Liveness i readiness provjere često imaju različite svrhe.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-032-dead-letter-queue",
+    "topic": "backend",
+    "question": "Čemu služi dead-letter queue u sustavu razmjene poruka?",
+    "options": [
+      "Daje svim novim porukama najveći prioritet",
+      "Trajno arhivira svaku uspješno obrađenu poruku",
+      "Izolira poruke koje se nakon više pokušaja ne mogu uspješno obraditi",
+      "Šalje sinkroni HTTP odgovor izravno pošiljatelju"
+    ],
+    "correctIndex": 2,
+    "explanation": "Problematična poruka premješta se iz glavnog reda kako ne bi stalno blokirala obradu. Nakon analize može se ispraviti, ponovno poslati ili kontrolirano odbaciti.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-033-compatible-api-evolution",
+    "topic": "backend",
+    "question": "API mora preimenovati obavezno polje koje već koriste postojeći klijenti. Koji pristup najbolje čuva kompatibilnost unatrag?",
+    "options": [
+      "Odmah ukloniti staro polje i očekivati da se svi klijenti istodobno ažuriraju",
+      "Privremeno podržati staro i novo polje ili uvesti novu verziju ugovora, označiti staro kao zastarjelo i ukloniti ga tek nakon migracije klijenata",
+      "Nasumično vraćati staro ili novo polje kako bi se klijenti postupno prilagodili",
+      "Za zahtjeve starih klijenata vraćati status 500 bez dodatnog objašnjenja"
+    ],
+    "correctIndex": 1,
+    "explanation": "Kompatibilna evolucija API-ja preferira aditivne promjene i razdoblje migracije. Preimenovanje ili uklanjanje postojećeg polja zahtijeva deprecaciju ili novu verziju kako se aktivni klijenti ne bi iznenada pokvarili.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "backend-034-refresh-token-rotation",
+    "topic": "backend",
+    "question": "Kako rotacija refresh tokena smanjuje rizik njegove krađe?",
+    "options": [
+      "Refresh token izdaje se bez roka valjanosti",
+      "Isti access token ostaje valjan nakon svake obnove",
+      "Svaka uporaba izdaje novi refresh token, a ponovna uporaba staroga može pokrenuti opoziv cijele token obitelji",
+      "Klijent uz refresh token ponovno šalje korisničku lozinku"
+    ],
+    "correctIndex": 2,
+    "explanation": "Jednokratna rotacija ograničava replay ukradenog tokena. Ako legitimni klijent i napadač pokušaju koristiti isti stari token, server može prepoznati ponovnu uporabu i opozvati sesiju.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "backend-035-csrf-cookie-auth",
+    "topic": "backend",
+    "question": "Koja je primjerena zaštita od CSRF napada kada se autentikacija temelji na cookieju koji preglednik automatski šalje?",
+    "options": [
+      "Osloniti se isključivo na CORS postavke",
+      "Koristiti odgovarajući SameSite cookie te anti-CSRF token ili provjeru Origin zaglavlja za zahtjeve koji mijenjaju stanje",
+      "Sve operacije koje mijenjaju stanje prebaciti na GET",
+      "Sakriti HTML gumb koji pokreće osjetljivu operaciju"
+    ],
+    "correctIndex": 1,
+    "explanation": "CSRF iskorištava automatsko slanje cookieja sa zlonamjerne stranice. SameSite, anti-CSRF token i provjera izvora zahtjeva sprječavaju prihvaćanje takvog poziva.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "backend-036-cache-stampede",
+    "topic": "backend",
+    "question": "Kako se može ublažiti cache stampede kada popularan ključ istekne i mnogo zahtjeva istodobno krene prema bazi?",
+    "options": [
+      "Svim ključevima postaviti potpuno isti trenutak isteka",
+      "Povećavati broj ponovnih pokušaja bez ikakvog ograničenja",
+      "Brisati cijeli cache prije svakog čitanja",
+      "Dopustiti samo jednom workeru osvježavanje ključa te koristiti jitter ili stale-while-revalidate"
+    ],
+    "correctIndex": 3,
+    "explanation": "Single-flight ili kratka brava sprječava paralelno računanje iste vrijednosti, a nasumično odstupanje isteka i posluživanje kratko zastarjele vrijednosti smanjuju nagli val prema izvoru.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "backend-037-payment-idempotency-key",
+    "topic": "backend",
+    "question": "Klijent nakon timeouta ne zna je li POST zahtjev za naplatu uspio. Kako sigurno ponoviti zahtjev bez dvostruke naplate?",
+    "options": [
+      "Ponovno poslati isti jedinstveni idempotency key, a server uz taj ključ spremiti i vratiti isti rezultat operacije",
+      "Promijeniti zahtjev u GET i ponovno izvršiti naplatu",
+      "Za svaki ponovni pokušaj generirati novi ključ",
+      "Pretpostaviti da timeout uvijek znači da server nije obradio zahtjev"
+    ],
+    "correctIndex": 0,
+    "explanation": "Server atomarno povezuje idempotency key s ishodom prve obrade. Ponovljeni zahtjev s istim ključem vraća poznati ishod umjesto stvaranja nove naplate.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "backend-038-at-least-once-consumer",
+    "topic": "backend",
+    "question": "Broker jamči at-least-once isporuku pa istu poruku može poslati više puta. Kako consumer treba zaštititi poslovnu operaciju od duplikata?",
+    "options": [
+      "Potvrditi poruku prije nego što započne obrada",
+      "Pretpostaviti da broker ipak nikad neće ponoviti poruku",
+      "Obradu učiniti idempotentnom ili atomarno evidentirati jedinstveni ID već obrađene poruke",
+      "Uspoređivati samo duljinu tijela susjednih poruka"
+    ],
+    "correctIndex": 2,
+    "explanation": "Consumer mora moći prepoznati ponovnu isporuku ili sigurno ponoviti učinak. Evidencija poruke i poslovna promjena trebaju biti u istoj transakcijskoj granici kada je to moguće.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "backend-039-transactional-outbox",
+    "topic": "backend",
+    "question": "Koji problem rješava transactional outbox obrazac?",
+    "options": [
+      "Automatski invalidira sve cacheve nakon svakog čitanja",
+      "U istoj lokalnoj transakciji sprema poslovnu promjenu i zapis događaja koji zaseban relay naknadno objavljuje",
+      "Šifrira poruku prije spremanja u bazu",
+      "Sinkrono kopira cijelu bazu u svaki servis"
+    ],
+    "correctIndex": 1,
+    "explanation": "Outbox uklanja opasan dual-write između baze i brokera: ili se zajedno spreme poslovni podatak i događaj, ili se ne spremi nijedno. Relay zatim pouzdano objavljuje događaj.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "backend-040-read-replica-lag",
+    "topic": "backend",
+    "question": "Korisnik odmah nakon uspješnog upisa čita podatak s asinkrone read replike i vidi staru vrijednost. Kako osigurati read-after-write iskustvo?",
+    "options": [
+      "Povećati TTL cachea za taj zapis",
+      "Ponoviti isti upit na istoj replici bez ograničenja",
+      "Prepustiti klijentu da lokalno sortira odgovor",
+      "Privremeno usmjeriti čitanje na primary ili koristiti token sesijske konzistentnosti dok replika ne sustigne upis"
+    ],
+    "correctIndex": 3,
+    "explanation": "Asinkrona replikacija uvodi replication lag. Čitanje s izvora zapisa ili čekanje potvrđene pozicije replike omogućuje da korisnik vidi vlastiti dovršeni upis.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "backend-041-distributed-trace-context",
+    "topic": "backend",
+    "question": "Kako distribuirani tracing povezuje jedan korisnički zahtjev kroz više servisa?",
+    "options": [
+      "Propagira trace i span identifikatore kroz mrežna zaglavlja te bilježi spanove za pojedine operacije",
+      "Zahtijeva da svi servisi rade na istom fizičkom serveru",
+      "Uspoređuje samo lokalne timestampove bez zajedničkog identifikatora",
+      "Sprema puna tijela svih zahtjeva u javni log"
+    ],
+    "correctIndex": 0,
+    "explanation": "Propagirani kontekst omogućuje backendu za observability složiti spanove u jedan trag i pronaći gdje su nastali latencija ili greška.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "backend-042-backpressure",
+    "topic": "backend",
+    "question": "Što backpressure znači u sustavu gdje proizvođač šalje posao brže nego što ga potrošač može obraditi?",
+    "options": [
+      "Proizvođač bez ograničenja povećava broj ponovnih pokušaja",
+      "Potrošač trajno odbacuje svaki novi posao čim se red prvi put popuni",
+      "Sustav usporava ili ograničava proizvođača i koristi ograničene redove ili konkurentnost",
+      "Svi zahtjevi preusmjeravaju se u cache za autentikaciju"
+    ],
+    "correctIndex": 2,
+    "explanation": "Backpressure sprječava nekontroliran rast reda, memorije i latencije. Može se provesti ograničenjem protoka, bounded queueom ili signalom proizvođaču da uspori.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "backend-043-quorum-overlap",
+    "topic": "backend",
+    "question": "U klasteru s N=5 replika zapis se potvrđuje nakon W=3 replike, a čitanje kontaktira R=3 replike. Zašto quorum čitanje može susresti potvrđenu verziju zapisa?",
+    "options": [
+      "Zato što i R i W pojedinačno moraju biti jednaki N",
+      "Zato što vrijedi R + W > N pa se skupovi replika za čitanje i potvrđeni upis moraju preklapati",
+      "Zato što sve replike uvijek imaju savršeno sinkronizirane fizičke satove",
+      "Zato što quorum potpuno onemogućuje mrežne particije"
+    ],
+    "correctIndex": 1,
+    "explanation": "Budući da je 3 + 3 veće od 5, barem jedna kontaktirana replika pripada i skupu koji je potvrdio upis. Sustav zatim mora ispravno usporediti verzije i odabrati noviju.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "backend-044-saga-compensation",
+    "topic": "backend",
+    "question": "Kako saga obrazac upravlja poslovnim procesom koji obuhvaća narudžbu, naplatu i rezervaciju zalihe u različitim servisima bez zajedničke ACID transakcije?",
+    "options": [
+      "Drži jednu globalnu bravu nad svim servisima do kraja procesa",
+      "Sprema sve međurezultate samo u zajednički cache",
+      "Beskonačno ponavlja cijeli proces bez bilježenja koraka",
+      "Izvršava niz lokalnih transakcija i pri neuspjehu pokreće definirane kompenzacijske akcije"
+    ],
+    "correctIndex": 3,
+    "explanation": "Saga svaki dovršeni korak potvrđuje lokalno, a neuspjeh kasnijeg koraka pokreće poslovnu kompenzaciju, primjerice povrat naplate ili oslobađanje zalihe.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "backend-045-fencing-tokens",
+    "topic": "backend",
+    "question": "Worker s vremenski ograničenim leaseom zastane, lease istekne i novi worker preuzme posao. Kako fencing token sprječava da se stari worker nakon oporavka ponovno upiše preko novoga?",
+    "options": [
+      "Svaki novi lease dobiva veći monotoni token, a resurs odbija operacije sa starijim tokenom",
+      "Lease se postavlja na beskonačno trajanje",
+      "Workeri uspoređuju samo vlastite lokalne satove",
+      "Stari worker briše cache prije svakog upisa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Lease sam ne može zaustaviti pauziranog starog vlasnika. Resurs koji provjerava rastući fencing token pouzdano odbija zakašnjele operacije prethodnog vlasnika.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "backend-046-consistent-hashing",
+    "topic": "backend",
+    "question": "Zašto consistent hashing smanjuje premještanje cache ključeva kada se doda ili ukloni server?",
+    "options": [
+      "Svaki server uvijek čuva potpunu kopiju svih ključeva",
+      "Ključevi se raspoređuju prema vremenu kada su nastali",
+      "Čvorovi i ključevi mapiraju se na prsten pa se uglavnom premješta samo susjedni raspon ključeva",
+      "Jedan centralni server ručno prepisuje sve ključeve pri svakoj promjeni"
+    ],
+    "correctIndex": 2,
+    "explanation": "Promjena člana utječe na ograničen dio hash prstena umjesto na gotovo sve ključeve kao kod običnog modulo raspoređivanja. Virtualni čvorovi dodatno poboljšavaju ravnotežu.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "backend-047-metrics-cardinality",
+    "topic": "backend",
+    "question": "Zašto je user_id obično loš izbor za label u sustavu vremenskih metrika?",
+    "options": [
+      "Metrički sustavi uopće ne podržavaju tekstualne labele",
+      "Svaka različita vrijednost stvara novu vremensku seriju pa velik broj korisnika naglo povećava memoriju, pohranu i cijenu upita",
+      "Labela automatski onemogućuje agregiranje svih drugih dimenzija",
+      "Dodavanje user_id vrijednosti uvijek mijenja counter u gauge"
+    ],
+    "correctIndex": 1,
+    "explanation": "Neograničene dimenzije stvaraju eksploziju kardinalnosti. Za pojedinačne korisnike prikladniji su logovi ili traceovi, dok metrike trebaju ograničene labele poput rute i statusne klase.",
+    "difficulty": "hard"
   }
 ]
