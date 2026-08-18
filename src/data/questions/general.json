@@ -1,0 +1,352 @@
+[
+  {
+    "id": "general-001-big-o-growth",
+    "topic": "general",
+    "question": "Što Big-O notacija prvenstveno opisuje?",
+    "options": [
+      "Točno trajanje algoritma u milisekundama na svakom računalu",
+      "Broj redaka izvornog koda algoritma",
+      "Kako vrijeme izvršavanja ili potrošnja prostora raste s veličinom ulaza, zanemarujući konstante i manje značajne članove",
+      "Je li rezultat algoritma funkcionalno ispravan"
+    ],
+    "correctIndex": 2,
+    "explanation": "Big-O opisuje asimptotski rast resursa u odnosu na veličinu ulaza. Ne daje točno vrijeme jer ono ovisi o implementaciji, hardveru i podacima.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-002-array-index-access",
+    "topic": "general",
+    "question": "Koja je uobičajena vremenska složenost pristupa elementu klasičnog polja po poznatom indeksu?",
+    "options": [
+      "O(1)",
+      "O(log n)",
+      "O(n)",
+      "O(n²)"
+    ],
+    "correctIndex": 0,
+    "explanation": "Adresa elementa računa se iz početne adrese polja i indeksa, pa pristup ne zahtijeva prolazak kroz prethodne elemente.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-003-stack-lifo",
+    "topic": "general",
+    "question": "Koje pravilo određuje redoslijed uklanjanja elemenata iz stoga?",
+    "options": [
+      "Prvi dodan, prvi uklonjen",
+      "Elementi se uklanjaju nasumično",
+      "Uvijek se prvo uklanja najmanji element",
+      "Posljednji dodan, prvi uklonjen"
+    ],
+    "correctIndex": 3,
+    "explanation": "Stog koristi LIFO redoslijed: operacija push dodaje na vrh, a pop uklanja element s vrha.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-004-queue-fifo",
+    "topic": "general",
+    "question": "Koje pravilo koristi obična struktura podataka red?",
+    "options": [
+      "Posljednji dodan, prvi uklonjen",
+      "Prvi dodan, prvi uklonjen",
+      "Element s najvećom vrijednošću uvijek izlazi prvi",
+      "Svaki se element može ukloniti samo jednom godišnje"
+    ],
+    "correctIndex": 1,
+    "explanation": "Običan red koristi FIFO poredak: elementi se dodaju na kraj, a uklanjaju s početka.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-005-set-uniqueness",
+    "topic": "general",
+    "question": "Koje je temeljno svojstvo strukture podataka skup?",
+    "options": [
+      "Svaki element mora imati zaseban brojčani indeks",
+      "Elementi su uvijek automatski sortirani",
+      "Ne sadrži duplikate prema svojem pravilu jednakosti",
+      "Može sadržavati samo parove ključa i vrijednosti"
+    ],
+    "correctIndex": 2,
+    "explanation": "Skup predstavlja kolekciju jedinstvenih elemenata i posebno je koristan za brzu provjeru pripadnosti i uklanjanje duplikata.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-006-encapsulation",
+    "topic": "general",
+    "question": "Što enkapsulacija znači u objektno orijentiranom dizajnu?",
+    "options": [
+      "Skrivanje unutarnjeg stanja i detalja implementacije iza jasno definiranog javnog sučelja",
+      "Pretvaranje svake funkcije u globalnu funkciju",
+      "Obavezno nasljeđivanje svih klasa iz jedne bazne klase",
+      "Spremanje svih podataka objekta u tekstualnu datoteku"
+    ],
+    "correctIndex": 0,
+    "explanation": "Enkapsulacija ograničava izravnu ovisnost korisnika objekta o njegovoj implementaciji i omogućuje čuvanje valjanih invarijanti stanja.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-007-git-commit",
+    "topic": "general",
+    "question": "Što predstavlja Git commit?",
+    "options": [
+      "Potpunu sigurnosnu kopiju svakog necommitiranog dokumenta na računalu",
+      "Automatski spoj svih udaljenih grana",
+      "Popis konflikata koje Git nije pokušao riješiti",
+      "Identificiranu snimku praćenih promjena s metapodacima i vezom na prethodnu povijest"
+    ],
+    "correctIndex": 3,
+    "explanation": "Commit bilježi određeno stanje projekta i njegove roditeljske commitove, čime nastaje povijest koju je moguće pregledavati, uspoređivati i dijeliti.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-008-unit-test",
+    "topic": "general",
+    "question": "Što dobar jedinični test najčešće provjerava?",
+    "options": [
+      "Cijeli produkcijski sustav zajedno sa svim vanjskim servisima",
+      "Malu jedinicu ponašanja brzo i što izoliranije od sporih vanjskih ovisnosti",
+      "Isključivo izgled korisničkog sučelja na jednom monitoru",
+      "Radi li aplikacija pod maksimalnim produkcijskim opterećenjem"
+    ],
+    "correctIndex": 1,
+    "explanation": "Jedinični test daje brzu i preciznu povratnu informaciju o malom dijelu ponašanja. Integraciju s bazama, mrežom i servisima pokrivaju druge vrste testova.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-009-intention-revealing-names",
+    "topic": "general",
+    "question": "Koje je obilježje dobrog naziva varijable ili funkcije?",
+    "options": [
+      "Uvijek je dug najmanje pedeset znakova",
+      "Sadrži tip podatka čak i kada se taj tip jasno vidi iz konteksta",
+      "Jasno izražava namjeru i značenje u domeni bez potrebe za pogađanjem",
+      "Koristi samo kratice kako bi kod zauzimao manje prostora"
+    ],
+    "correctIndex": 2,
+    "explanation": "Naziv treba objasniti ulogu podatka ili ponašanja. Jasni nazivi smanjuju potrebu za komentarima koji samo prepričavaju kod.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-010-functional-vs-nonfunctional",
+    "topic": "general",
+    "question": "Koja je razlika između funkcionalnih i nefunkcionalnih zahtjeva sustava?",
+    "options": [
+      "Funkcionalni opisuju što sustav radi, a nefunkcionalni ograničenja i kvalitete poput latencije, dostupnosti i sigurnosti",
+      "Funkcionalni se odnose samo na frontend, a nefunkcionalni samo na backend",
+      "Nefunkcionalni zahtjevi nisu mjerljivi niti utječu na arhitekturu",
+      "Funkcionalni zahtjevi vrijede samo tijekom razvoja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Obje vrste oblikuju dizajn: funkcionalni zahtjevi definiraju sposobnosti sustava, a nefunkcionalni očekivanu kvalitetu i operativna ograničenja.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-011-binary-search",
+    "topic": "general",
+    "question": "Zašto standardno binarno pretraživanje u sortiranom polju s O(1) pristupom po indeksu ima vremensku složenost O(log n)?",
+    "options": [
+      "Jer redom uspoređuje svaki element polja",
+      "Jer za svaki element unaprijed izračuna hash vrijednost",
+      "Jer sortiranost omogućuje pronalazak bilo kojeg elementa bez usporedbe",
+      "Jer nakon svake usporedbe odbacuje polovicu preostalog intervala, a srednjem elementu pristupa u O(1)"
+    ],
+    "correctIndex": 3,
+    "explanation": "Broj kandidata prepolovi se u svakom koraku, pa je potrebno približno log₂(n) usporedbi. Pretpostavka učinkovitog pristupa po indeksu važna je za ukupnu složenost.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-012-hash-collision",
+    "topic": "general",
+    "question": "Što je hash kolizija u hash tablici?",
+    "options": [
+      "Situacija u kojoj dvije niti zauvijek čekaju isti zaključani resurs",
+      "Situacija u kojoj različiti ključevi dobiju isti hash položaj, što tablica mora riješiti primjerice ulančavanjem ili otvorenim adresiranjem",
+      "Pokušaj umetanja dviju jednakih vrijednosti u obično polje",
+      "Obavezno ponovno računanje svih hash vrijednosti pri svakom čitanju"
+    ],
+    "correctIndex": 1,
+    "explanation": "Broj mogućih ključeva veći je od broja položaja pa su kolizije očekivane. Ispravna hash tablica razlikuje ključeve i nakon kolizije.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-013-bfs-queue",
+    "topic": "general",
+    "question": "Zašto pretraživanje grafa u širinu obično koristi red?",
+    "options": [
+      "FIFO red obrađuje čvorove po rastućim razinama udaljenosti, pa BFS u netežinskom grafu nalazi put s najmanje bridova",
+      "Red automatski sortira čvorove prema njihovoj memorijskoj adresi",
+      "BFS mora uvijek prvo obraditi posljednji otkriveni čvor",
+      "Red sprječava postojanje ciklusa u ulaznom grafu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Čvorovi otkriveni na jednoj razini obrađuju se prije čvorova sljedeće razine. Skup posjećenih čvorova zasebno sprječava beskonačno ponavljanje kroz cikluse.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-014-composition-over-inheritance",
+    "topic": "general",
+    "question": "Kada je kompozicija često bolji izbor od nasljeđivanja?",
+    "options": [
+      "Kada dvije klase slučajno imaju nekoliko redaka sličnog koda",
+      "Kada želimo da svaka komponenta može pristupati globalnom promjenjivom stanju",
+      "Kada objekt koristi zamjenjiva ponašanja koja nisu pravi odnos vrste „jest”, nego odnos „ima”",
+      "Kada želimo onemogućiti testiranje pojedinih dijelova objekta"
+    ],
+    "correctIndex": 2,
+    "explanation": "Kompozicija sastavlja objekt od manjih suradnika i omogućuje neovisnu zamjenu ponašanja bez stvaranja krhke hijerarhije nasljeđivanja.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-015-single-responsibility",
+    "topic": "general",
+    "question": "Klasa istodobno validira narudžbu, sprema je, oblikuje PDF i šalje e-mail. Koje SOLID načelo najizravnije krši?",
+    "options": [
+      "Open/Closed Principle, jer klasa nema nijednu podklasu",
+      "Liskov Substitution Principle, jer klasa nema virtualnu metodu",
+      "Interface Segregation Principle, jer koristi više od jednog objekta",
+      "Single Responsibility Principle, jer ima više nepovezanih razloga za promjenu"
+    ],
+    "correctIndex": 3,
+    "explanation": "Promjena pravila validacije, pohrane, PDF formata ili slanja e-maila može zasebno mijenjati istu klasu. Odgovornosti treba razdvojiti prema razlozima promjene.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-016-liskov-substitution",
+    "topic": "general",
+    "question": "Što zahtijeva Liskov Substitution Principle?",
+    "options": [
+      "Podtip mora kopirati svaku internu implementacijsku pojedinost baznog tipa",
+      "Vrijednost podtipa mora se moći koristiti gdje se očekuje bazni tip bez kršenja obećanog ponašanja",
+      "Bazni tip smije imati samo jedan podtip",
+      "Podtip ne smije dodati nijednu novu metodu"
+    ],
+    "correctIndex": 1,
+    "explanation": "Podtip mora poštovati ugovor baznog tipa, uključujući očekivane rezultate i invarijante. Samo sintaktičko nasljeđivanje nije dovoljno.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-017-git-merge-vs-rebase",
+    "topic": "general",
+    "question": "Koja je ključna razlika između Git merge i Git rebase operacije?",
+    "options": [
+      "Merge obično povezuje povijesti novim commitom, dok rebase ponovno primjenjuje commitove na novu bazu i mijenja njihove identifikatore",
+      "Rebase samo preuzima datoteke s remotea, a merge ih samo šalje",
+      "Merge uvijek briše izvornu granu, dok je rebase uvijek zadržava",
+      "Operacije proizvode potpuno jednaku povijest i jednake commit identifikatore"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rebase može dati linearniju povijest, ali prepisuje commitove pa ga treba oprezno koristiti nad već dijeljenom poviješću. Merge čuva postojeće commitove.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-018-integration-test",
+    "topic": "general",
+    "question": "Što integracijski test prvenstveno provjerava?",
+    "options": [
+      "Samo jednu čistu funkciju bez suradnika",
+      "Je li izvorni kod sintaktički valjan",
+      "Suradnju više stvarnih komponenti ili važnu granicu poput pristupa bazi, datotečnom sustavu ili API-ju",
+      "Ponašanje sustava isključivo pod ekstremnim opterećenjem"
+    ],
+    "correctIndex": 2,
+    "explanation": "Integracijski test otkriva probleme u ugovorima i povezivanju komponenti koje izolirani jedinični testovi ne mogu vidjeti.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-019-latency-vs-throughput",
+    "topic": "general",
+    "question": "Koja je razlika između latencije i propusnosti sustava?",
+    "options": [
+      "To su dva naziva za istu metriku",
+      "Latencija je vrijeme potrebno za jednu operaciju, a propusnost broj dovršenih operacija u jedinici vremena",
+      "Visoka propusnost automatski jamči nisku latenciju svakog zahtjeva",
+      "Latencija mjeri količinu pohranjenih podataka, a propusnost broj servera"
+    ],
+    "correctIndex": 1,
+    "explanation": "Sustav može imati visoku ukupnu propusnost, a ipak lošu latenciju pojedinog zahtjeva. Obje metrike treba mjeriti u odnosu na očekivano opterećenje.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-020-cohesion-and-coupling",
+    "topic": "general",
+    "question": "Što se u modularnom dizajnu obično smatra poželjnom kombinacijom?",
+    "options": [
+      "Niska kohezija unutar modula i mnogo izravnih ovisnosti među modulima",
+      "Visoka kohezija povezanih odgovornosti unutar modula i niska spregnutost između modula",
+      "Jedan modul koji sadrži sve odgovornosti sustava",
+      "Kružne ovisnosti kako bi svaki modul mogao izravno pozvati svaki drugi"
+    ],
+    "correctIndex": 1,
+    "explanation": "Kohezivan modul ima jasnu svrhu, a slaba spregnutost ograničava širenje promjena i olakšava neovisno testiranje i zamjenu modula.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-021-amortized-dynamic-array",
+    "topic": "general",
+    "question": "Zašto se dodavanje na kraj dinamičkog polja smatra amortizirano O(1), iako je povremeno proširenje O(n)?",
+    "options": [
+      "Kapacitet se tipično povećava geometrijski, pa se trošak rijetkih kopiranja raspodijeli na mnogo jeftinih dodavanja",
+      "Proširenje nikada ne kopira postojeće elemente",
+      "Svako dodavanje izvodi binarno pretraživanje",
+      "O(n) i O(1) znače isto za dinamička polja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ako se kapacitet primjerice udvostručuje, skupa proširenja događaju se sve rjeđe. Prosječni trošak po operaciji kroz dugi niz dodavanja ostaje konstantan.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "general-022-dijkstra-negative-weights",
+    "topic": "general",
+    "question": "Zašto standardni Dijkstrin algoritam nije ispravan za graf s bridovima negativne težine?",
+    "options": [
+      "Ne može raditi na grafu koji sadrži bilo kakav ciklus",
+      "Zahtijeva da svaki čvor ima jednak broj susjeda",
+      "Može prerano smatrati udaljenost konačnom, iako je kasniji put s negativnim bridom može dodatno smanjiti",
+      "Može pronaći samo najdulji, a nikad najkraći put"
+    ],
+    "correctIndex": 2,
+    "explanation": "Dijkstra se oslanja na to da nastavak puta ne može smanjiti već potvrđenu najmanju udaljenost. Negativne težine krše tu pretpostavku; prikladan je primjerice Bellman-Ford.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "general-023-git-bisect",
+    "topic": "general",
+    "question": "Kako Git bisect pomaže pronaći commit koji je uveo regresiju?",
+    "options": [
+      "Ručno pregledava svaki commit od najstarijeg prema najnovijem",
+      "Binarnim pretraživanjem povijesti koristi označene dobre i loše commitove te rezultat testa kako bi suzio problematični raspon",
+      "Automatski spaja sve grane dok konflikt ne nestane",
+      "Prepisuje poruke commitova prema rezultatu lintera"
+    ],
+    "correctIndex": 1,
+    "explanation": "Svaka provjera približno prepolovi preostali raspon kandidata, pa je potrebno oko O(log n) testiranja umjesto linearnog pregleda povijesti.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "general-024-property-based-testing",
+    "topic": "general",
+    "question": "Što razlikuje property-based testiranje od testova temeljenih samo na nekoliko ručno zadanih primjera?",
+    "options": [
+      "Provjerava isključivo izgled spremljenih snapshotova",
+      "Ne izvršava testirani kod, nego samo provjerava tipove",
+      "Namjerno mijenja produkcijski kod kako bi izmjerilo kvalitetu testova",
+      "Generira mnogo ulaza iz zadanog prostora, provjerava opća svojstva i često smanjuje pronađeni protuprimjer"
+    ],
+    "correctIndex": 3,
+    "explanation": "Umjesto provjere samo poznatih izlaza, definiraju se invarijante koje moraju vrijediti za širok raspon podataka. Shrinking pomaže pronaći najmanji ulaz koji reproducira grešku.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "general-025-capacity-estimation",
+    "topic": "general",
+    "question": "Servis očekuje 12 milijuna zahtjeva dnevno, prosječni odgovor od 20 KB i vršno opterećenje četiri puta veće od prosjeka. Koja je razumna početna procjena prije dodavanja sigurnosne rezerve?",
+    "options": [
+      "Oko 139 zahtjeva u sekundi prosječno, 556 u vrhu i približno 240 GB izlaznih podataka dnevno",
+      "Oko 12 milijuna zahtjeva u sekundi prosječno, 48 milijuna u vrhu i 20 GB dnevno",
+      "Oko 3472 zahtjeva u sekundi prosječno, 13.888 u vrhu i 2,4 TB dnevno",
+      "Oko 139 zahtjeva u sekundi i u prosjeku i u vrhu te ukupno 20 KB dnevno"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dan ima 86.400 sekundi, pa je 12 milijuna zahtjeva oko 139 RPS; faktor vrha daje oko 556 RPS. Množenje broja odgovora s 20 KB daje približno 240 GB dnevno prije protokolskog overheada.",
+    "difficulty": "hard"
+  }
+]

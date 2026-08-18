@@ -2,6 +2,7 @@ import type { Question } from '../types/question';
 import sqlQuestions from './questions/sql.json';
 import frontendQuestions from './questions/frontend.json';
 import backendQuestions from './questions/backend.json';
+import generalQuestions from './questions/general.json';
 
 export interface TopicDefinition {
   id: string;
@@ -13,6 +14,7 @@ export const TOPICS: TopicDefinition[] = [
   { id: 'sql', labelHr: 'SQL', questions: sqlQuestions as Question[] },
   { id: 'frontend', labelHr: 'Frontend', questions: frontendQuestions as Question[] },
   { id: 'backend', labelHr: 'Backend', questions: backendQuestions as Question[] },
+  { id: 'general', labelHr: 'Opće', questions: generalQuestions as Question[] },
 ];
 
 export function getTopic(topicId: string): TopicDefinition | undefined {
