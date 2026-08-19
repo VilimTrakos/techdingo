@@ -348,34 +348,8 @@ $$;
 
 grant execute on function public.submit_pvp_result(uuid, int, jsonb) to authenticated;
 
--- ============================================================
--- Realtime Authorization za privatan Broadcast kanal po meču
--- (kanal "pvp:match:<id>", kreiran client-side s { config: { private: true } }).
--- Bez ovoga bi bilo tko s anon key-em (svatko, po dizajnu javan) mogao
--- prisluškivati ili krivotvoriti evente u TUĐEM meču - table RLS na
--- pvp_matches ovo NE štiti jer je Broadcast zaseban autorizacijski sloj.
--- ============================================================
-
-alter table realtime.messages enable row level security;
-
-create policy "pvp match participants can read broadcast"
-  on realtime.messages for select
-  to authenticated
-  using (
-    exists (
-      select 1 from public.pvp_matches m
-      where realtime.topic() = 'pvp:match:' || m.id::text
-        and auth.uid() in (m.player1_id, m.player2_id)
-    )
-  );
-
-create policy "pvp match participants can send broadcast"
-  on realtime.messages for insert
-  to authenticated
-  with check (
-    exists (
-      select 1 from public.pvp_matches m
-      where realtime.topic() = 'pvp:match:' || m.id::text
-        and auth.uid() in (m.player1_id, m.player2_id)
-    )
-  );
+-- Realtime Authorization za privatan Broadcast kanal po PvP meču je u
+-- 0002_pvp_realtime_authorization.sql - NE pokreći je još (vidi komentar u
+-- toj datoteci, treba je zajedno s Fazom D/PvP UI-om, i traži drugačiji
+-- pristup od direktnog ALTER/CREATE POLICY nad realtime.messages jer taj
+-- pristup puca s "must be owner of table messages" na hostanom Supabaseu).
