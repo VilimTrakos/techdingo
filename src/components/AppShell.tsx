@@ -1,6 +1,8 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { useProgress } from '../hooks/useProgress';
+import { resolveHearts } from '../state/hearts';
 import { AuthControl } from './AuthControl';
+import { HeartsDisplay } from './HeartsDisplay';
 import { StreakBadge } from './StreakBadge';
 import { XPBadge } from './XPBadge';
 
@@ -13,7 +15,8 @@ const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   ].join(' ');
 
 export function AppShell() {
-  const { state } = useProgress();
+  const { state, refillHearts } = useProgress();
+  const hearts = resolveHearts(state.hearts).balance;
   const markSrc = `${import.meta.env.BASE_URL}tech-hedgehog.webp`;
 
   return (
@@ -49,6 +52,16 @@ export function AppShell() {
             <StreakBadge streak={state.streak.current} />
             <XPBadge xp={state.xpTotal} />
           </div>
+
+          <button
+            type="button"
+            onClick={refillHearts}
+            className="rounded-2xl transition hover:-translate-y-0.5 active:translate-y-0.5"
+            aria-label={`Preostala srca: ${hearts} od 5. Klikni za testno punjenje.`}
+            title="Testni prečac: napuni srca"
+          >
+            <HeartsDisplay hearts={hearts} />
+          </button>
 
           <AuthControl />
         </div>

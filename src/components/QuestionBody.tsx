@@ -18,12 +18,20 @@ export function QuestionBody({ prepared, isAnswered, onAnswer, questionNumber }:
   return (
     <div>
       {prepared.question.code && (
-        <pre
-          className="mb-4 overflow-x-auto rounded-2xl border-2 border-ink-800 bg-ink-950 p-4 text-sm leading-6 text-cloud-50"
-          aria-label="Isječak koda uz pitanje"
-        >
-          <code>{prepared.question.code}</code>
-        </pre>
+        <div className="mb-5 overflow-hidden rounded-2xl border-[3px] border-ink-800 bg-ink-950 shadow-[0_5px_0_#667382]">
+          <div className="flex items-center gap-1.5 border-b border-white/10 bg-white/5 px-4 py-2" aria-hidden="true">
+            <span className="size-2.5 rounded-full bg-rose-400" />
+            <span className="size-2.5 rounded-full bg-amber-400" />
+            <span className="size-2.5 rounded-full bg-brand-300" />
+            <span className="ml-2 text-[0.65rem] font-black uppercase tracking-[0.18em] text-cloud-200">Kod</span>
+          </div>
+          <pre
+            className="overflow-x-auto p-4 text-sm leading-6 text-cloud-50"
+            aria-label="Isječak koda uz pitanje"
+          >
+            <code>{prepared.question.code}</code>
+          </pre>
+        </div>
       )}
       {prepared.kind === 'single' && (
         <SingleBody prepared={prepared} isAnswered={isAnswered} onAnswer={onAnswer} questionNumber={questionNumber} />
@@ -201,6 +209,7 @@ function FillBody({
           blankCursor++;
           const slotIndex = blankCursor;
           const word = placed[slotIndex];
+          const isCorrectWord = word === prepared.question.answers[slotIndex];
           return (
             <span key={`seg-${i}`}>
               {word !== null ? (
@@ -208,7 +217,13 @@ function FillBody({
                   type="button"
                   disabled={isAnswered}
                   onClick={() => removeAt(slotIndex)}
-                  className="mx-1 inline-flex min-h-8 items-center rounded-lg border-2 border-brand-300 bg-brand-100 px-2.5 font-black text-brand-800 disabled:cursor-default"
+                  className={`mx-1 inline-flex min-h-8 items-center rounded-lg border-2 px-2.5 font-black shadow-[0_2px_0_currentColor] transition disabled:cursor-default ${
+                    isAnswered
+                      ? isCorrectWord
+                        ? 'border-emerald-500 bg-emerald-100 text-emerald-800'
+                        : 'border-rose-500 bg-rose-100 text-rose-800'
+                      : 'border-brand-300 bg-brand-100 text-brand-800 hover:-translate-y-0.5'
+                  }`}
                   aria-label={`Praznina ${slotIndex + 1}: ${word}. Klikni za uklanjanje.`}
                 >
                   {word}
@@ -234,7 +249,7 @@ function FillBody({
             type="button"
             disabled={isAnswered || usedWords.has(word)}
             onClick={() => placeWord(word)}
-            className="min-h-10 rounded-xl border-2 border-cloud-200 bg-white px-3.5 py-2 font-mono text-sm font-black text-ink-950 shadow-[0_3px_0_rgba(23,32,42,0.12)] transition hover:-translate-y-0.5 hover:border-brand-300 active:translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-35 disabled:shadow-none"
+            className="min-h-10 rounded-xl border-2 border-cloud-200 bg-white px-3.5 py-2 font-mono text-sm font-black text-ink-950 shadow-[0_3px_0_rgba(23,32,42,0.12)] transition hover:-translate-y-0.5 hover:border-brand-300 active:translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-30 disabled:shadow-none"
           >
             {word}
           </button>
@@ -280,13 +295,21 @@ function OrderBody({
             Ovdje slaži korake…
           </li>
         )}
-        {ordered.map((step, i) => (
-          <li key={step}>
+        {ordered.map((step, i) => {
+          const isCorrectStep = step === prepared.question.steps[i];
+          return (
+            <li key={step}>
             <button
               type="button"
               disabled={isAnswered}
               onClick={() => setOrdered((prev) => prev.filter((s) => s !== step))}
-              className="flex w-full items-center gap-3 rounded-xl border-2 border-brand-300 bg-white px-4 py-2.5 text-left font-bold text-ink-950 shadow-[0_3px_0_#b8efc1] transition hover:border-rose-300 disabled:cursor-default disabled:hover:border-brand-300"
+              className={`flex w-full items-center gap-3 rounded-xl border-2 px-4 py-2.5 text-left font-bold shadow-[0_3px_0_#b8efc1] transition disabled:cursor-default ${
+                isAnswered
+                  ? isCorrectStep
+                    ? 'border-emerald-500 bg-emerald-50 text-emerald-950'
+                    : 'border-rose-500 bg-rose-50 text-rose-950'
+                  : 'border-brand-300 bg-white text-ink-950 hover:-translate-y-0.5 hover:border-rose-300'
+              }`}
             >
               <span className="grid size-7 shrink-0 place-items-center rounded-lg bg-brand-100 text-sm font-black text-brand-800" aria-hidden="true">
                 {i + 1}
@@ -295,9 +318,15 @@ function OrderBody({
               {!isAnswered && (
                 <span className="text-ink-400" aria-hidden="true">×</span>
               )}
+              {isAnswered && (
+                <span className="text-xl font-black" aria-hidden="true">
+                  {isCorrectStep ? '✓' : '×'}
+                </span>
+              )}
             </button>
-          </li>
-        ))}
+            </li>
+          );
+        })}
       </ol>
 
       {remaining.length > 0 && (
