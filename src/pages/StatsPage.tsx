@@ -3,6 +3,7 @@ import { StreakBadge } from '../components/StreakBadge';
 import { XPBadge } from '../components/XPBadge';
 import { TOPICS } from '../data/topics';
 import { useProgress } from '../hooks/useProgress';
+import { ACHIEVEMENTS } from '../lib/achievements';
 
 const TOPIC_META: Record<
   string,
@@ -68,6 +69,7 @@ export function StatsPage() {
     ...TOPICS.map((topic) => ({ id: topic.id, label: topic.labelHr })),
     { id: 'mixed', label: 'Sve teme' },
   ];
+  const earnedAchievements = ACHIEVEMENTS.filter((achievement) => achievement.earned(state));
 
   return (
     <div className="space-y-10 pb-10">
@@ -181,9 +183,11 @@ export function StatsPage() {
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {TOPICS.map((topic) => {
-            const progress = state.lessons[topic.id];
-            const passes = progress?.passCount ?? 0;
-            const fails = progress?.failCount ?? 0;
+            const topicLessonEntries = Object.entries(state.lessons)
+              .filter(([key]) => key === topic.id || key.startsWith(`${topic.id}/`))
+              .map(([, progress]) => progress);
+            const passes = topicLessonEntries.reduce((total, progress) => total + progress.passCount, 0);
+            const fails = topicLessonEntries.reduce((total, progress) => total + progress.failCount, 0);
             const attempts = passes + fails;
             const successRate =
               attempts > 0 ? Math.round((passes / attempts) * 100) : 0;
@@ -231,11 +235,64 @@ export function StatsPage() {
                 </div>
 
                 <Link
-                  to={`/lesson/${topic.id}`}
+                  to={`/topic/${topic.id}`}
                   className="game-button game-button-ghost mt-5 w-full"
                 >
                   {attempts > 0 ? 'Ponovi lekciju' : 'Kreni učiti'}
                 </Link>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section aria-labelledby="achievements-heading">
+        <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-violet-700">
+              Kolekcija uspjeha
+            </p>
+            <h2 id="achievements-heading" className="mt-1 text-2xl font-black text-ink-950">
+              Značke
+            </h2>
+          </div>
+          <p className="rounded-full border-2 border-violet-200 bg-violet-50 px-4 py-2 text-sm font-black text-violet-800">
+            {earnedAchievements.length}/{ACHIEVEMENTS.length} osvojeno
+          </p>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {ACHIEVEMENTS.map((achievement) => {
+            const earned = achievement.earned(state);
+            return (
+              <article
+                key={achievement.id}
+                className={`relative overflow-hidden rounded-[1.75rem] border-2 p-5 transition ${
+                  earned
+                    ? 'border-violet-300 bg-gradient-to-br from-violet-50 via-white to-amber-50 shadow-[0_5px_0_#c4b5fd]'
+                    : 'border-cloud-200 bg-cloud-50 text-ink-400 grayscale'
+                }`}
+              >
+                {earned && <span className="absolute right-3 top-3 text-lg" aria-label="Osvojeno">✓</span>}
+                <span
+                  className={`grid size-14 place-items-center rounded-2xl border-2 text-3xl ${
+                    earned
+                      ? 'border-violet-500 bg-white shadow-[0_4px_0_#8b5cf6]'
+                      : 'border-cloud-200 bg-cloud-100 opacity-55'
+                  }`}
+                  aria-hidden="true"
+                >
+                  {achievement.icon}
+                </span>
+                <h3 className={`mt-5 text-lg font-black ${earned ? 'text-ink-950' : 'text-ink-400'}`}>
+                  {achievement.labelHr}
+                </h3>
+                <p className={`mt-1 text-sm font-bold leading-6 ${earned ? 'text-ink-600' : 'text-ink-400'}`}>
+                  {achievement.description}
+                </p>
+                <p className={`mt-3 text-xs font-black uppercase tracking-[0.12em] ${earned ? 'text-violet-700' : 'text-ink-400'}`}>
+                  {earned ? 'Osvojeno' : 'Zaključano'}
+                </p>
               </article>
             );
           })}

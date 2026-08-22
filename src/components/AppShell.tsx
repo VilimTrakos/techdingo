@@ -34,21 +34,24 @@ export function AppShell() {
             >
               <img src={markSrc} alt="" className="size-full object-contain p-0.5" />
             </span>
-            <span className="hidden text-xl font-black tracking-tight text-ink-950 min-[520px]:inline">
+            <span className="hidden text-xl font-black tracking-tight text-ink-950 lg:inline">
               Tech<span className="text-brand-600">Dingo</span>
             </span>
           </NavLink>
 
-          <nav className="ml-auto flex items-center gap-0.5 sm:gap-1" aria-label="Glavna navigacija">
+          <nav className="order-3 flex w-full items-center justify-center gap-0.5 border-t border-cloud-200/70 pt-2 sm:order-none sm:ml-auto sm:w-auto sm:border-0 sm:pt-0" aria-label="Glavna navigacija">
             <NavLink to="/" end className={navLinkClass}>
               Uči
             </NavLink>
             <NavLink to="/stats" className={navLinkClass}>
               Statistika
             </NavLink>
+            <NavLink to="/leaderboard" className={navLinkClass}>
+              Ljestvica
+            </NavLink>
           </nav>
 
-          <div className="ml-1 hidden items-center gap-2 sm:flex" aria-label="Tvoj napredak">
+          <div className="ml-auto hidden items-center gap-2 lg:flex" aria-label="Tvoj napredak">
             <StreakBadge streak={state.streak.current} />
             <XPBadge xp={state.xpTotal} />
           </div>
