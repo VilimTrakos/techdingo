@@ -782,5 +782,81 @@
     "explanation": "Bloomov filter postavlja bitove pomoću više hash funkcija. Ako neki potreban bit nije postavljen, element sigurno nije dodan; ako su svi postavljeni, možda ih je postavila kombinacija drugih elemenata, pa je potrebna provjera u stvarnom spremištu.",
     "difficulty": "hard",
     "unitId": "strukture-podataka"
+  },
+  {
+    "id": "general-101-code-nested-loop-complexity",
+    "topic": "general",
+    "unitId": "algoritmi",
+    "question": "Koja je vremenska složenost ovog koda u odnosu na n?",
+    "code": "for (let i = 1; i < n; i *= 2) {\n  for (let j = 0; j < n; j++) posao(i, j);\n}",
+    "options": [
+      "O(log n)",
+      "O(n)",
+      "O(n log n)",
+      "O(n²)"
+    ],
+    "correctIndex": 2,
+    "explanation": "Vanjska petlja udvostručuje i pa ima O(log n) iteracija, dok unutarnja svaki put radi n koraka. Umnoženo daje O(n log n).",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-102-git-force-with-lease",
+    "topic": "general",
+    "unitId": "git-verzioniranje",
+    "question": "Zašto je `git push --force-with-lease` sigurniji od običnog `--force` nakon namjernog rebasea vlastite grane?",
+    "options": [
+      "Odbija prepisivanje ako udaljena grana više nije na očekivanom commitu, čime štiti tuđe nove promjene koje nisi dohvatio",
+      "Jamči da branch nikada nije prepisan",
+      "Automatski spaja sve udaljene commitove bez konflikta",
+      "Šalje samo netrackane datoteke"
+    ],
+    "correctIndex": 0,
+    "explanation": "Lease provjerava poznato stanje udaljene reference prije prepisivanja. I dalje prepisuje povijest, pa zahtijeva dogovor, ali sprječava slijepo gaženje neočekivanog rada.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "general-103-multi-code-review-signal",
+    "topic": "general",
+    "unitId": "testiranje-kvaliteta",
+    "kind": "multi",
+    "question": "Koji komentari u code reviewu tipično daju koristan i djelotvoran signal?",
+    "options": [
+      "Objašnjavaju konkretan rizik ili prekršeni ugovor",
+      "Razlikuju obaveznu ispravku od neblokirajućeg prijedloga",
+      "Predlažu primjer ili smjer rješenja kada nije očit",
+      "Napadaju autora umjesto promjene",
+      "Traže promjenu samo zato što je reviewer osobno piše drukčije, bez dogovorenog pravila"
+    ],
+    "correctIndexes": [0, 1, 2],
+    "explanation": "Dobar review govori o kodu, kontekstu i posljedici te jasno komunicira prioritet. Osobni napadi i neobrazložene preferencije otežavaju suradnju.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-104-fill-git-unstage",
+    "topic": "general",
+    "unitId": "git-verzioniranje",
+    "kind": "fill",
+    "question": "Dopuni naredbu koja uklanja datoteku iz staging area bez brisanja njezinih promjena iz working treeja:",
+    "text": "git ___ --___ src/app.ts",
+    "answers": ["restore", "staged"],
+    "distractors": ["clean", "hard", "delete"],
+    "explanation": "git restore --staged vraća verziju u indexu prema HEAD-u, dok lokalne izmjene datoteke ostaju u working treeju.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-105-order-debugging-loop",
+    "topic": "general",
+    "unitId": "testiranje-kvaliteta",
+    "kind": "order",
+    "question": "Poredaj discipliniran tok dijagnosticiranja regresije:",
+    "steps": [
+      "Pouzdano reproduciraj problem i zabilježi očekivano ponašanje",
+      "Smanji problem na najmanji relevantan slučaj",
+      "Postavi hipotezu na temelju dokaza",
+      "Izvedi ciljanu provjeru koja može opovrgnuti hipotezu",
+      "Ispravi uzrok i dodaj regression test"
+    ],
+    "explanation": "Reprodukcija i smanjivanje daju stabilnu osnovu. Hipoteze treba testirati ciljano, a popravak zaključati testom koji bi prije njega padao.",
+    "difficulty": "medium"
   }
 ]

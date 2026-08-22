@@ -1129,5 +1129,81 @@
     "explanation": "Serijalizabilan raspored ne mora poštovati redoslijed koji je korisnik promatrao u stvarnom vremenu. Stroga serializability kombinira transakcijsku serijalizabilnost s real-time zahtjevom linearizabilnosti.",
     "difficulty": "hard",
     "unitId": "otpornost-distribuirani"
+  },
+  {
+    "id": "backend-101-code-middleware-next",
+    "topic": "backend",
+    "unitId": "arhitektura",
+    "question": "Zašto zahtjev prema `/api/profil` ostaje visjeti kada je korisnik prijavljen?",
+    "code": "function auth(req, res, next) {\n  if (!req.user) return res.status(401).end();\n  // korisnik postoji\n}\napp.use('/api', auth);",
+    "options": [
+      "Middleware u uspješnoj grani ne poziva next() niti šalje odgovor",
+      "HTTP 401 smije se koristiti samo za POST",
+      "Middleware mora uvijek izbrisati req.user",
+      "Ruta `/api` ne smije imati pod-rute"
+    ],
+    "correctIndex": 0,
+    "explanation": "Middleware mora završiti odgovor ili predati kontrolu sljedećem handleru. U prikazu prijavljeni korisnik ne ulazi u 401 granu, ali ni ne poziva next().",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-102-hedged-requests-tradeoff",
+    "topic": "backend",
+    "unitId": "otpornost-distribuirani",
+    "question": "Koji je glavni kompromis hedged request tehnike za smanjenje tail latencije?",
+    "options": [
+      "Nakon kratkog odmaka šalje se dodatna kopija sporog zahtjeva i koristi prvi odgovor, ali se povećava opterećenje i operacija mora biti sigurna za duplikate",
+      "Svaki zahtjev trajno se sprema u cache bez isteka",
+      "Tehnika uklanja potrebu za timeoutima i limitima",
+      "Svi odgovori moraju stići prije nego se bilo koji vrati klijentu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rezervna kopija može zaobići neuobičajeno spor čvor, ali troši dodatni kapacitet. Primjenjuje se selektivno, često na idempotentna čitanja.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "backend-103-multi-observability-alert",
+    "topic": "backend",
+    "unitId": "observability",
+    "kind": "multi",
+    "question": "Koje osobine pomažu da produkcijski alert bude operativno koristan?",
+    "options": [
+      "Veže se uz korisnički utjecaj ili relevantan SLO signal",
+      "Sadrži poveznicu na runbook ili prve korake dijagnoze",
+      "Ima jasno definiranog vlasnika i kanal eskalacije",
+      "Aktivira se za svaki pojedinačni debug log",
+      "Namjerno skriva pogođeni servis"
+    ],
+    "correctIndexes": [0, 1, 2],
+    "explanation": "Dobar alert je djelotvoran: opisuje stvaran simptom, usmjerava prema dijagnozi i ima vlasnika. Preosjetljivi alerti stvaraju zamor i zanemarivanje signala.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "backend-104-fill-http-conditional-get",
+    "topic": "backend",
+    "unitId": "http-api",
+    "kind": "fill",
+    "question": "Dopuni uvjetni HTTP GET tok s validatorom cachea:",
+    "text": "Server vrati validator u zaglavlju ___; klijent ga u idućem zahtjevu šalje kroz ___; nepromijenjen resurs može dobiti status ___.",
+    "answers": ["ETag", "If-None-Match", "304"],
+    "distractors": ["Location", "If-Match", "201"],
+    "explanation": "ETag identificira verziju reprezentacije. If-None-Match omogućuje provjeru, a 304 Not Modified kaže klijentu da ponovno koristi spremljeno tijelo.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "backend-105-order-incident-response",
+    "topic": "backend",
+    "unitId": "observability",
+    "kind": "order",
+    "question": "Poredaj razuman tok odgovora na produkcijski incident:",
+    "steps": [
+      "Potvrdi incident i procijeni korisnički utjecaj",
+      "Stabiliziraj sustav sigurnom mitigacijom",
+      "Prikupi dokaze i pronađi korijenski uzrok",
+      "Implementiraj i verificiraj trajni popravak",
+      "Napiši blameless postmortem i dogovori preventivne akcije"
+    ],
+    "explanation": "Prvo treba razumjeti opseg i vratiti uslugu u sigurno stanje. Duboka analiza, trajni popravak i organizacijsko učenje slijede nakon stabilizacije.",
+    "difficulty": "medium"
   }
 ]

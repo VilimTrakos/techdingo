@@ -1566,5 +1566,84 @@
     "correctIndex": 0,
     "explanation": "var ima funkcijski scope pa sve tri arrow funkcije dijele ISTU varijablu i. Kad se timeouti izvrše (nakon petlje), i je već 3. S let bi svaka iteracija imala vlastiti i pa bi ispis bio 0 1 2.",
     "difficulty": "hard"
+  },
+  {
+    "id": "frontend-105-code-optional-chaining",
+    "topic": "frontend",
+    "unitId": "js-jezik",
+    "question": "Što će se ispisati bez bacanja iznimke?",
+    "code": "const korisnik = { profil: null };\nconsole.log(korisnik.profil?.ime ?? 'Gost');",
+    "options": [
+      "Gost",
+      "null",
+      "undefined",
+      "TypeError"
+    ],
+    "correctIndex": 0,
+    "explanation": "Optional chaining zaustavlja pristup kada je profil null i daje undefined, a nullish coalescing tada vraća zadanu vrijednost 'Gost'.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-106-aria-live-status",
+    "topic": "frontend",
+    "unitId": "pristupacnost-testiranje",
+    "question": "Kako pristupačno objaviti poruku 'Spremljeno' koja se pojavi nakon asinkrone akcije bez premještanja fokusa?",
+    "options": [
+      "Ažurirati postojeće područje s role=status ili aria-live=polite",
+      "Dodati poruku samo u CSS pseudo-element ::after",
+      "Promijeniti document.title svake milisekunde",
+      "Sakriti poruku atributom aria-hidden=true"
+    ],
+    "correctIndex": 0,
+    "explanation": "Polite live region čitaču ekrana objavljuje novu poruku kada je prikladno, bez prekidanja korisnika ili prisilnog pomicanja fokusa.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-107-microtask-before-timer",
+    "topic": "frontend",
+    "unitId": "asinkroni-js",
+    "question": "Zašto se callback već razriješenog Promisea tipično izvrši prije setTimeout callbacka s odgodom 0?",
+    "options": [
+      "Promise reaction ide u microtask red koji se prazni nakon aktualnog stacka prije sljedećeg taska",
+      "setTimeout uvijek čeka najmanje jednu minutu",
+      "Promise callback izvršava se sinkrono prije ostatka funkcije",
+      "Timer callback ulazi u CSS render pipeline"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nakon što se call stack isprazni, event loop prazni microtask queue prije uzimanja sljedećeg taska poput timer callbacka.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "frontend-108-multi-semantic-controls",
+    "topic": "frontend",
+    "unitId": "osnove-weba",
+    "kind": "multi",
+    "question": "Koje su prednosti korištenja nativnog `<button>` elementa umjesto klikabilnog `<div>` elementa?",
+    "options": [
+      "Ima ugrađenu tipkovničku aktivaciju",
+      "Ima odgovarajuću semantičku ulogu za asistivne tehnologije",
+      "Može prirodno primiti fokus",
+      "Automatski šalje svaki mrežni zahtjev kao JSON",
+      "Nikada ne treba vidljivo fokusno stanje"
+    ],
+    "correctIndexes": [0, 1, 2],
+    "explanation": "Nativni button već donosi semantiku, fokus i Space/Enter ponašanje. I dalje ga treba ispravno stilizirati, uključujući vidljiv fokus.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-109-order-browser-render",
+    "topic": "frontend",
+    "unitId": "performanse",
+    "kind": "order",
+    "question": "Poredaj pojednostavljene korake od HTML-a i CSS-a do prikaza piksela:",
+    "steps": [
+      "Parsiranje HTML-a u DOM",
+      "Parsiranje CSS-a u CSSOM",
+      "Izrada render treeja",
+      "Layout geometrije elemenata",
+      "Paint i compositing"
+    ],
+    "explanation": "Preglednik spaja DOM i CSSOM u render tree, izračunava geometriju u layoutu te zatim iscrtava i sastavlja slojeve.",
+    "difficulty": "medium"
   }
 ]

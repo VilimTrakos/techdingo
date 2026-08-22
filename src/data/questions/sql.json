@@ -1571,5 +1571,80 @@
     "explanation": "Dobra dekompozicija ne smije izgubiti informaciju niti stvarati spurious tuples pri rekonstrukciji. Ako uz to čuva ovisnosti, ključna se pravila mogu provoditi lokalno nad nastalim relacijama, bez skupog JOIN-a.",
     "difficulty": "hard",
     "unitId": "kljucevi-i-dizajn"
+  },
+  {
+    "id": "sql-105-code-coalesce",
+    "topic": "sql",
+    "unitId": "tipovi-i-null",
+    "question": "Koju vrijednost vraća ovaj izraz?",
+    "code": "SELECT COALESCE(NULL, NULL, 'TechDingo', 'Rezerva');",
+    "options": [
+      "NULL",
+      "TechDingo",
+      "Rezerva",
+      "Pogrešku jer COALESCE prima samo dva argumenta"
+    ],
+    "correctIndex": 1,
+    "explanation": "COALESCE vraća prvi argument koji nije NULL. Prva dva argumenta su NULL, pa rezultat postaje 'TechDingo'.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-106-deferrable-constraint",
+    "topic": "sql",
+    "unitId": "kljucevi-i-dizajn",
+    "question": "Kada je odgodiva (DEFERRABLE) provjera ograničenja posebno korisna?",
+    "options": [
+      "Kada privremeno međustanje unutar transakcije krši ograničenje, ali konačno stanje prije COMMIT-a mora biti valjano",
+      "Kada ograničenje više nikada ne želimo provjeravati",
+      "Kada SELECT treba automatski preskočiti zaključane retke",
+      "Kada svaki stupac treba pretvoriti u tekst"
+    ],
+    "correctIndex": 0,
+    "explanation": "Odgodivo ograničenje može se provjeriti na kraju transakcije umjesto nakon svake naredbe. Time se omogućuju složene, ali konačno konzistentne izmjene.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-107-window-frame-running-total",
+    "topic": "sql",
+    "unitId": "agregacija-i-window",
+    "question": "Što je potrebno dodati window agregaciji SUM kako bi računala tekući zbroj od početka particije do trenutačnog retka?",
+    "options": [
+      "ORDER BY unutar OVER izraza i odgovarajući frame do CURRENT ROW",
+      "Samo DISTINCT izvan SELECT-a",
+      "CROSS JOIN iste tablice bez uvjeta",
+      "HAVING bez GROUP BY-a"
+    ],
+    "correctIndex": 0,
+    "explanation": "Redoslijed definira slijed retka, a window frame određuje koji prethodni retci ulaze u zbroj. Eksplicitni ROWS frame izbjegava iznenađenja s jednakim vrijednostima poretka.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sql-108-multi-transaction-boundaries",
+    "topic": "sql",
+    "unitId": "transakcije",
+    "kind": "multi",
+    "question": "Koje tvrdnje o granicama transakcije uobičajeno vrijede?",
+    "options": [
+      "COMMIT čini dovršene promjene transakcije trajno potvrđenima",
+      "ROLLBACK poništava nepotvrđene promjene aktualne transakcije",
+      "SAVEPOINT omogućuje djelomičan povrat unutar transakcije",
+      "Svaki SELECT automatski zaključava cijelu bazu za pisanje",
+      "COMMIT poništava sva ograničenja integriteta"
+    ],
+    "correctIndexes": [0, 1, 2],
+    "explanation": "COMMIT potvrđuje, ROLLBACK poništava, a SAVEPOINT daje međutočku povrata. Točna zaključavanja SELECT-a ovise o bazi i izolaciji, ali ne znače automatsko zaključavanje cijele baze.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-109-fill-insert-columns",
+    "topic": "sql",
+    "unitId": "izmjene-podataka",
+    "kind": "fill",
+    "question": "Dopuni INSERT koji navodi ciljane stupce i njihove vrijednosti:",
+    "text": "INSERT ___ korisnici (ime, dob) ___ ('Ana', 28);",
+    "answers": ["INTO", "VALUES"],
+    "distractors": ["FROM", "SET", "RETURN"],
+    "explanation": "INSERT INTO odabire ciljnu tablicu i stupce, a VALUES daje vrijednosti istim redoslijedom.",
+    "difficulty": "easy"
   }
 ]
