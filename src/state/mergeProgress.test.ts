@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { mergeProgress, mergeStreak } from './mergeProgress';
-import { createDefaultProgressState, type ProgressStateV1 } from './progressTypes';
+import { createDefaultProgressState, type ProgressState } from './progressTypes';
 
 describe('mergeStreak', () => {
   it('kad je jedna strana nikad-aktivna, pobjeđuje ona druga', () => {
@@ -32,7 +32,7 @@ describe('mergeStreak', () => {
 });
 
 describe('mergeProgress', () => {
-  function stateWith(overrides: Partial<ProgressStateV1>): ProgressStateV1 {
+  function stateWith(overrides: Partial<ProgressState>): ProgressState {
     return { ...createDefaultProgressState(), ...overrides };
   }
 
@@ -44,15 +44,15 @@ describe('mergeProgress', () => {
 
   it('po-temi passCount/failCount/playCount su max, ne sum (idempotentnost)', () => {
     const local = stateWith({
-      lessons: { sql: { passCount: 3, failCount: 1, recentQuestionIds: ['a'] } },
+      lessons: { sql: { passCount: 3, failCount: 1, recentQuestionIds: ['a'], struggledQuestionIds: [] } },
       scoreStrike: { sql: { bestScore: 500, bestAtISO: '2026-01-05T00:00:00Z', playCount: 2, recentQuestionIds: ['x'] } },
     });
     const remote = stateWith({
-      lessons: { sql: { passCount: 5, failCount: 0, recentQuestionIds: ['b'] } },
+      lessons: { sql: { passCount: 5, failCount: 0, recentQuestionIds: ['b'], struggledQuestionIds: [] } },
       scoreStrike: { sql: { bestScore: 300, bestAtISO: '2026-01-01T00:00:00Z', playCount: 4, recentQuestionIds: ['y'] } },
     });
     const merged = mergeProgress(local, remote);
-    expect(merged.lessons.sql).toEqual({ passCount: 5, failCount: 1, recentQuestionIds: ['b'] });
+    expect(merged.lessons.sql).toEqual({ passCount: 5, failCount: 1, recentQuestionIds: ['b'], struggledQuestionIds: [] });
     expect(merged.scoreStrike.sql).toEqual({ bestScore: 500, bestAtISO: '2026-01-05T00:00:00Z', playCount: 4, recentQuestionIds: ['y'] });
   });
 
@@ -60,7 +60,7 @@ describe('mergeProgress', () => {
     const state = stateWith({
       xpTotal: 200,
       streak: { current: 3, longest: 5, lastCompletedDateISO: '2026-01-10' },
-      lessons: { sql: { passCount: 2, failCount: 1, recentQuestionIds: ['a'] } },
+      lessons: { sql: { passCount: 2, failCount: 1, recentQuestionIds: ['a'], struggledQuestionIds: [] } },
     });
     const merged = mergeProgress(state, state);
     expect(merged.xpTotal).toBe(200);
@@ -69,8 +69,8 @@ describe('mergeProgress', () => {
   });
 
   it('teme koje postoje samo na jednoj strani se čuvaju u potpunosti', () => {
-    const local = stateWith({ lessons: { sql: { passCount: 1, failCount: 0, recentQuestionIds: [] } } });
-    const remote = stateWith({ lessons: { frontend: { passCount: 2, failCount: 0, recentQuestionIds: [] } } });
+    const local = stateWith({ lessons: { sql: { passCount: 1, failCount: 0, recentQuestionIds: [], struggledQuestionIds: [] } } });
+    const remote = stateWith({ lessons: { frontend: { passCount: 2, failCount: 0, recentQuestionIds: [], struggledQuestionIds: [] } } });
     const merged = mergeProgress(local, remote);
     expect(Object.keys(merged.lessons).sort()).toEqual(['frontend', 'sql']);
   });

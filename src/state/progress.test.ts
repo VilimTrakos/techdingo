@@ -6,27 +6,27 @@ describe('recordLessonResult', () => {
   it('prolaz (passed) dodaje XP, povećava passCount i produžuje streak', () => {
     const state = createDefaultProgressState();
     const now = new Date('2026-02-01T10:00:00');
-    const next = recordLessonResult(state, 'sql', { passed: true, correctCount: 12, questionIds: ['a', 'b'] }, now);
+    const next = recordLessonResult(state, 'sql', { passed: true, correctCount: 12, questionIds: ['a', 'b'], wrongQuestionIds: [] }, now);
 
     expect(next.xpTotal).toBe(120);
-    expect(next.lessons.sql).toEqual({ passCount: 1, failCount: 0, recentQuestionIds: ['a', 'b'] });
+    expect(next.lessons.sql).toEqual({ passCount: 1, failCount: 0, recentQuestionIds: ['a', 'b'], struggledQuestionIds: [] });
     expect(next.streak.current).toBe(1);
   });
 
   it('neuspjeh (failed) ne daje XP niti mijenja streak', () => {
     const state = createDefaultProgressState();
     const now = new Date('2026-02-01T10:00:00');
-    const next = recordLessonResult(state, 'sql', { passed: false, correctCount: 4, questionIds: ['a'] }, now);
+    const next = recordLessonResult(state, 'sql', { passed: false, correctCount: 4, questionIds: ['a'], wrongQuestionIds: ['a'] }, now);
 
     expect(next.xpTotal).toBe(0);
-    expect(next.lessons.sql).toEqual({ passCount: 0, failCount: 1, recentQuestionIds: ['a'] });
+    expect(next.lessons.sql).toEqual({ passCount: 0, failCount: 1, recentQuestionIds: ['a'], struggledQuestionIds: ['a'] });
     expect(next.streak.current).toBe(0);
   });
 
   it('ne mutira ulazno stanje', () => {
     const state = createDefaultProgressState();
     const now = new Date('2026-02-01T10:00:00');
-    recordLessonResult(state, 'sql', { passed: true, correctCount: 5, questionIds: [] }, now);
+    recordLessonResult(state, 'sql', { passed: true, correctCount: 5, questionIds: [], wrongQuestionIds: [] }, now);
     expect(state.xpTotal).toBe(0);
     expect(state.lessons).toEqual({});
   });

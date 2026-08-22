@@ -1,4 +1,4 @@
-import type { ProgressStateV1, TopicLessonProgress, TopicScoreStrikeProgress } from './progressTypes';
+import type { ProgressState, TopicLessonProgress, TopicScoreStrikeProgress } from './progressTypes';
 import type { Streak } from './streak';
 import { daysBetween } from './streak';
 
@@ -39,6 +39,7 @@ function mergeLessonProgress(a: TopicLessonProgress | undefined, b: TopicLessonP
     passCount: Math.max(a.passCount, b.passCount),
     failCount: Math.max(a.failCount, b.failCount),
     recentQuestionIds: aTotal >= bTotal ? a.recentQuestionIds : b.recentQuestionIds,
+    struggledQuestionIds: aTotal >= bTotal ? a.struggledQuestionIds : b.struggledQuestionIds,
   };
 }
 
@@ -61,23 +62,27 @@ function mergeScoreStrikeProgress(
  * Spaja lokalno i cloud stanje pri loginu na novom/drugom uređaju. Idempotentno
  * (max/streak-day-diff, ne sum) - siguran za ponovljeni poziv. Ne mutira ulaze.
  */
-export function mergeProgress(local: ProgressStateV1, remote: ProgressStateV1, now: Date = new Date()): ProgressStateV1 {
-  const lessons: ProgressStateV1['lessons'] = {};
+export function mergeProgress(local: ProgressState, remote: ProgressState, now: Date = new Date()): ProgressState {
+  const lessons: ProgressState['lessons'] = {};
   for (const topicId of new Set([...Object.keys(local.lessons), ...Object.keys(remote.lessons)])) {
     lessons[topicId] = mergeLessonProgress(local.lessons[topicId], remote.lessons[topicId]);
   }
 
-  const scoreStrike: ProgressStateV1['scoreStrike'] = {};
+  const scoreStrike: ProgressState['scoreStrike'] = {};
   for (const topicId of new Set([...Object.keys(local.scoreStrike), ...Object.keys(remote.scoreStrike)])) {
     scoreStrike[topicId] = mergeScoreStrikeProgress(local.scoreStrike[topicId], remote.scoreStrike[topicId]);
   }
 
   return {
-    version: 1,
+    version: 2,
     xpTotal: Math.max(local.xpTotal, remote.xpTotal),
     streak: mergeStreak(local.streak, remote.streak),
     lessons,
     scoreStrike,
+    // Srca i dnevni izazov su NAMJERNO lokalni po uređaju (ne sinkroniziraju
+    // se) - merge uvijek zadržava lokalnu stranu da login ne resetira zalihu.
+    hearts: local.hearts,
+    dailyChallenge: local.dailyChallenge,
     updatedAtISO: now.toISOString(),
   };
 }

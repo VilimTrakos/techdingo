@@ -1,12 +1,18 @@
 import { useCallback, useSyncExternalStore } from 'react';
 import { loadProgress, saveProgress } from '../state/storage';
 import {
+  grantHeartsOnState,
+  recordDailyChallengeResult as recordDailyChallengeResultPure,
   recordLessonResult as recordLessonResultPure,
   recordScoreStrikeResult as recordScoreStrikeResultPure,
+  resolveHeartsOnState,
+  spendHeartOnState,
+  type DailyChallengeResultInput,
   type LessonResultInput,
   type ScoreStrikeResultInput,
 } from '../state/progress';
-import type { ProgressStateV1 } from '../state/progressTypes';
+import { MAX_HEARTS } from '../state/progressTypes';
+import type { ProgressState } from '../state/progressTypes';
 import { getCurrentUserId, registerOnLogin } from '../state/authUserRef';
 import { mergeAndSyncOnLogin, pushCloudProgress } from '../state/cloudSync';
 
@@ -15,10 +21,10 @@ import { mergeAndSyncOnLogin, pushCloudProgress } from '../state/cloudSync';
  * osigurava da se SVE komponente koje pozovu useProgress() re-renderiraju
  * kad bilo koja od njih zapiše promjenu, bez potrebe za Providerom u stablu.
  */
-let state: ProgressStateV1 = loadProgress();
+let state: ProgressState = loadProgress();
 const listeners = new Set<() => void>();
 
-function setState(next: ProgressStateV1, options: { skipCloudPush?: boolean } = {}): void {
+function setState(next: ProgressState, options: { skipCloudPush?: boolean } = {}): void {
   state = next;
   saveProgress(state);
   for (const listener of listeners) listener();
@@ -48,7 +54,7 @@ function subscribe(listener: () => void): () => void {
   return () => listeners.delete(listener);
 }
 
-function getSnapshot(): ProgressStateV1 {
+function getSnapshot(): ProgressState {
   return state;
 }
 
@@ -68,5 +74,40 @@ export function useProgress() {
     [],
   );
 
-  return { state: snapshot, recordLessonResult, recordScoreStrikeResult };
+  const recordDailyChallengeResult = useCallback((input: DailyChallengeResultInput) => {
+    setState(recordDailyChallengeResultPure(state, input));
+  }, []);
+
+  // Srca se ne sinkroniziraju u cloud (lokalno po uređaju) - skipCloudPush
+  // izbjegava besmislen mrežni upsert na svako potrošeno/regenerirano srce.
+  const spendHeart = useCallback(() => {
+    setState(spendHeartOnState(state), { skipCloudPush: true });
+  }, []);
+
+  /** Nagrada za (stub) reklamu: +1 srce. */
+  const grantAdHeart = useCallback(() => {
+    setState(grantHeartsOnState(state, 1), { skipCloudPush: true });
+  }, []);
+
+  /** Testni shortcut (klik na srca u headeru): puni refill. */
+  const refillHearts = useCallback(() => {
+    setState(grantHeartsOnState(state, MAX_HEARTS), { skipCloudPush: true });
+  }, []);
+
+  /** Materijalizira lijenu regeneraciju (poziva se pri ulasku na ekrane sa srcima). */
+  const syncHearts = useCallback(() => {
+    const next = resolveHeartsOnState(state);
+    if (next !== state) setState(next, { skipCloudPush: true });
+  }, []);
+
+  return {
+    state: snapshot,
+    recordLessonResult,
+    recordScoreStrikeResult,
+    recordDailyChallengeResult,
+    spendHeart,
+    grantAdHeart,
+    refillHearts,
+    syncHearts,
+  };
 }

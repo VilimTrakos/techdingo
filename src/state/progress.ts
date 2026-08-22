@@ -1,28 +1,52 @@
-import type { ProgressStateV1 } from './progressTypes';
-import { applyStreak } from './streak';
+import type { ProgressState } from './progressTypes';
+import { grantHearts, resolveHearts, spendHeart } from './hearts';
+import { applyStreak, toLocalDateISO } from './streak';
 import { xpForLesson, xpForScoreStrike } from '../lib/xp';
+
+/** Koliko krivo odgovorenih pitanja pamtimo po ključu za prioritetno ponavljanje. */
+const MAX_STRUGGLED_IDS = 12;
 
 export interface LessonResultInput {
   passed: boolean;
   correctCount: number;
   questionIds: string[];
+  /** Pitanja krivo odgovorena u ovoj sesiji - ulaze u prioritetno ponavljanje. */
+  wrongQuestionIds: string[];
 }
 
 /** Čista funkcija: vraća NOVO stanje (ne mutira ulaz), za lakše testiranje i predvidljiv React re-render. */
 export function recordLessonResult(
-  state: ProgressStateV1,
-  topicId: string,
+  state: ProgressState,
+  lessonKey: string,
   input: LessonResultInput,
   now: Date = new Date(),
-): ProgressStateV1 {
-  const existing = state.lessons[topicId] ?? { passCount: 0, failCount: 0, recentQuestionIds: [] };
+): ProgressState {
+  const existing = state.lessons[lessonKey] ?? {
+    passCount: 0,
+    failCount: 0,
+    recentQuestionIds: [],
+    struggledQuestionIds: [],
+  };
+
+  // Krivo odgovorena pitanja idu na početak liste ponavljanja; točno
+  // odgovorena ispadaju iz nje (naučeno). Bez duplikata, ograničene duljine.
+  const answeredCorrectly = new Set(
+    input.questionIds.filter((id) => !input.wrongQuestionIds.includes(id)),
+  );
+  const struggledQuestionIds = [
+    ...new Set([
+      ...input.wrongQuestionIds,
+      ...existing.struggledQuestionIds.filter((id) => !answeredCorrectly.has(id)),
+    ]),
+  ].slice(0, MAX_STRUGGLED_IDS);
 
   const lessons = {
     ...state.lessons,
-    [topicId]: {
+    [lessonKey]: {
       passCount: existing.passCount + (input.passed ? 1 : 0),
       failCount: existing.failCount + (input.passed ? 0 : 1),
       recentQuestionIds: input.questionIds,
+      struggledQuestionIds,
     },
   };
 
@@ -44,7 +68,7 @@ export interface ScoreStrikeResultInput {
 }
 
 export interface ScoreStrikeRecordOutcome {
-  state: ProgressStateV1;
+  state: ProgressState;
   isNewBest: boolean;
 }
 
@@ -53,7 +77,7 @@ export interface ScoreStrikeRecordOutcome {
  * sesija" za streak i XP svrhe) - jedino best score se ažurira uvjetno.
  */
 export function recordScoreStrikeResult(
-  state: ProgressStateV1,
+  state: ProgressState,
   topicIdOrMixed: string,
   input: ScoreStrikeResultInput,
   now: Date = new Date(),
@@ -80,7 +104,7 @@ export function recordScoreStrikeResult(
   const xpGained = xpForScoreStrike(input.score);
   const streak = applyStreak(state.streak, now);
 
-  const newState: ProgressStateV1 = {
+  const newState: ProgressState = {
     ...state,
     xpTotal: state.xpTotal + xpGained,
     streak,
@@ -89,4 +113,57 @@ export function recordScoreStrikeResult(
   };
 
   return { state: newState, isNewBest };
+}
+
+/** Potroši jedno srce (kriv odgovor u lekciji). */
+export function spendHeartOnState(state: ProgressState, now: Date = new Date()): ProgressState {
+  return { ...state, hearts: spendHeart(state.hearts, now), updatedAtISO: now.toISOString() };
+}
+
+/** Dodaj srca (nagrada za reklamu = 1, testni refill = MAX). */
+export function grantHeartsOnState(
+  state: ProgressState,
+  amount: number,
+  now: Date = new Date(),
+): ProgressState {
+  return {
+    ...state,
+    hearts: grantHearts(state.hearts, amount, now),
+    updatedAtISO: now.toISOString(),
+  };
+}
+
+/** Materijaliziraj lijenu regeneraciju u state (npr. pri pokretanju lekcije). */
+export function resolveHeartsOnState(state: ProgressState, now: Date = new Date()): ProgressState {
+  const resolved = resolveHearts(state.hearts, now);
+  if (
+    resolved.balance === state.hearts.balance &&
+    resolved.lastRegenAtISO === state.hearts.lastRegenAtISO
+  ) {
+    return state;
+  }
+  return { ...state, hearts: resolved, updatedAtISO: now.toISOString() };
+}
+
+export interface DailyChallengeResultInput {
+  score: number;
+}
+
+/** Zabilježi odigran dnevni izazov (jednom dnevno - poziva se tek nakon dovršetka). */
+export function recordDailyChallengeResult(
+  state: ProgressState,
+  input: DailyChallengeResultInput,
+  now: Date = new Date(),
+): ProgressState {
+  return {
+    ...state,
+    xpTotal: state.xpTotal + xpForScoreStrike(input.score),
+    streak: applyStreak(state.streak, now),
+    dailyChallenge: {
+      lastPlayedDateISO: toLocalDateISO(now),
+      lastScore: input.score,
+      bestScore: Math.max(state.dailyChallenge.bestScore, input.score),
+    },
+    updatedAtISO: now.toISOString(),
+  };
 }

@@ -1,4 +1,4 @@
-import { createDefaultProgressState, type ProgressStateV1 } from './progressTypes';
+import { createDefaultProgressState, type ProgressState } from './progressTypes';
 import { migrate } from './migrations';
 
 const STORAGE_KEY = 'techdingo:progress:v1';
@@ -8,7 +8,7 @@ const STORAGE_KEY = 'techdingo:progress:v1';
  * exceeded, storage onemogućen) - u tom slučaju aplikacija radi dalje s
  * in-memory stanjem, samo se napredak ne perzistira preko reloada.
  */
-export function loadProgress(): ProgressStateV1 {
+export function loadProgress(): ProgressState {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw === null) return createDefaultProgressState();
@@ -19,7 +19,7 @@ export function loadProgress(): ProgressStateV1 {
   }
 }
 
-export function saveProgress(state: ProgressStateV1): void {
+export function saveProgress(state: ProgressState): void {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   } catch (err) {

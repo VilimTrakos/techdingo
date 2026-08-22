@@ -1,6 +1,6 @@
 import { supabase } from './supabaseClient';
 import { mergeProgress } from './mergeProgress';
-import type { ProgressStateV1 } from './progressTypes';
+import type { ProgressState } from './progressTypes';
 
 interface ProgressRow {
   xp_total: number;
@@ -26,7 +26,7 @@ interface ScoreStrikeProgressRow {
 }
 
 /** `null` ako korisnik još nema cloud red (npr. prvi login nakon registracije). */
-export async function fetchCloudProgress(userId: string): Promise<ProgressStateV1 | null> {
+export async function fetchCloudProgress(userId: string): Promise<ProgressState | null> {
   if (!supabase) return null;
 
   const [{ data: progressRow }, { data: lessonRows }, { data: scoreStrikeRows }] = await Promise.all([
@@ -37,16 +37,19 @@ export async function fetchCloudProgress(userId: string): Promise<ProgressStateV
 
   if (!progressRow) return null;
 
-  const lessons: ProgressStateV1['lessons'] = {};
+  const lessons: ProgressState['lessons'] = {};
   for (const row of lessonRows ?? []) {
     lessons[row.topic_id] = {
       passCount: row.pass_count,
       failCount: row.fail_count,
       recentQuestionIds: row.recent_question_ids ?? [],
+      // Ne sinkronizira se u cloud - merge svejedno zadržava lokalnu stranu
+      // kad je lokalno aktivnija (vidi mergeLessonProgress).
+      struggledQuestionIds: [],
     };
   }
 
-  const scoreStrike: ProgressStateV1['scoreStrike'] = {};
+  const scoreStrike: ProgressState['scoreStrike'] = {};
   for (const row of scoreStrikeRows ?? []) {
     scoreStrike[row.topic_id] = {
       bestScore: row.best_score,
@@ -57,7 +60,7 @@ export async function fetchCloudProgress(userId: string): Promise<ProgressStateV
   }
 
   return {
-    version: 1,
+    version: 2,
     xpTotal: progressRow.xp_total,
     streak: {
       current: progressRow.streak_current,
@@ -66,6 +69,10 @@ export async function fetchCloudProgress(userId: string): Promise<ProgressStateV
     },
     lessons,
     scoreStrike,
+    // Srca i dnevni izazov se ne sinkroniziraju (lokalno po uređaju) -
+    // mergeProgress uvijek uzima lokalnu stranu, ovi defaulti nikad ne pobjeđuju.
+    hearts: { balance: 5, lastRegenAtISO: null },
+    dailyChallenge: { lastPlayedDateISO: null, lastScore: 0, bestScore: 0 },
     updatedAtISO: progressRow.updated_at,
   };
 }
@@ -77,7 +84,7 @@ export async function fetchCloudProgress(userId: string): Promise<ProgressStateV
  * drugi. Prihvatljivo za v1 (login se ne događa često), fast-follow ako
  * postane stvaran problem u praksi.
  */
-export async function pushCloudProgress(userId: string, state: ProgressStateV1): Promise<void> {
+export async function pushCloudProgress(userId: string, state: ProgressState): Promise<void> {
   if (!supabase) return;
 
   await supabase.from('progress').upsert({
@@ -118,7 +125,7 @@ export async function pushCloudProgress(userId: string, state: ProgressStateV1):
  * napredak postaje početno cloud stanje (ništa se ne gubi). Postoji cloud
  * red -> mergeProgress (idempotentno, max/streak-day-diff pravila).
  */
-export async function mergeAndSyncOnLogin(userId: string, localState: ProgressStateV1): Promise<ProgressStateV1> {
+export async function mergeAndSyncOnLogin(userId: string, localState: ProgressState): Promise<ProgressState> {
   const remoteState = await fetchCloudProgress(userId);
   const merged = remoteState ? mergeProgress(localState, remoteState) : localState;
   await pushCloudProgress(userId, merged);
