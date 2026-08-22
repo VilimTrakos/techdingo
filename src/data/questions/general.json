@@ -140,6 +140,132 @@
     "difficulty": "easy"
   },
   {
+    "id": "general-026-linked-list-access",
+    "topic": "general",
+    "question": "Zašto pristup k-tom elementu jednostruko povezane liste obično traje O(k), odnosno O(n) u najgorem slučaju?",
+    "options": [
+      "Jer lista prije svakog čitanja mora sortirati sve elemente",
+      "Jer čvorovi ne nude izravan pristup po indeksu pa treba slijediti poveznice od početka",
+      "Jer se svaki element uvijek nalazi u zasebnoj datoteci",
+      "Jer lista može sadržavati samo jedan element u memoriji"
+    ],
+    "correctIndex": 1,
+    "explanation": "Povezana lista nema adresnu aritmetiku za proizvoljan indeks kao polje. Do željenog čvora dolazi se prolaskom kroz prethodne čvorove, iako umetanje uz već poznat čvor može biti O(1).",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-027-map-key-value",
+    "topic": "general",
+    "question": "Koja je osnovna svrha strukture podataka mapa odnosno rječnik?",
+    "options": [
+      "Pohranjivanje vrijednosti pridruženih jedinstvenim ključevima kako bi ih se dohvaćalo prema ključu",
+      "Čuvanje elemenata isključivo redoslijedom njihova umetanja",
+      "Automatsko izvođenje svake vrijednosti kao programske funkcije",
+      "Jamčenje da su sve spremljene vrijednosti međusobno različite"
+    ],
+    "correctIndex": 0,
+    "explanation": "Mapa povezuje svaki ključ s vrijednošću, primjerice korisnički ID s korisničkim zapisom. Implementacija može biti hash tablica, uravnoteženo stablo ili druga struktura, pa složenost i poredak ovise o izboru.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-028-recursion-base-case",
+    "topic": "general",
+    "question": "Koja je uloga baznog slučaja u rekurzivnoj funkciji?",
+    "options": [
+      "Pretvara svaki rekurzivni algoritam u O(1)",
+      "Automatski sprema rezultat u globalnu varijablu",
+      "Određuje uvjet u kojem funkcija vraća rezultat bez novog rekurzivnog poziva",
+      "Jamči da funkcija nikada ne koristi stog poziva"
+    ],
+    "correctIndex": 2,
+    "explanation": "Bazni slučaj zaustavlja rekurzivno razlaganje problema. Ako ga nema ili mu se ulaz ne približava, pozivi se nastavljaju dok se ne iscrpi raspoloživi stog ili drugi resurs.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-029-immutability",
+    "topic": "general",
+    "question": "Što znači da je vrijednost ili objekt nepromjenjiv (immutable)?",
+    "options": [
+      "Može se izmijeniti samo iz druge niti",
+      "Njegovo se vidljivo stanje nakon stvaranja ne mijenja; za drukčije stanje stvara se nova vrijednost",
+      "Mora biti spremljen isključivo na disku",
+      "Ne može se proslijediti funkciji kao argument"
+    ],
+    "correctIndex": 1,
+    "explanation": "Nepromjenjive vrijednosti smanjuju broj mogućih promjena dijeljenog stanja, što olakšava zaključivanje, testiranje i sigurno dijeljenje. Cijena može biti stvaranje dodatnih objekata, ovisno o implementaciji.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-030-git-branch-reference",
+    "topic": "general",
+    "question": "Što je lokalna grana u Gitu?",
+    "options": [
+      "Potpuna zasebna kopija cijelog repozitorija za svaki commit",
+      "Mapa u kojoj Git automatski čuva samo binarne datoteke",
+      "Neizmjenjiva oznaka koja se nikada ne pomiče",
+      "Pokretna referenca na commit koja se obično pomakne na novi commit kada se na toj grani commita"
+    ],
+    "correctIndex": 3,
+    "explanation": "Grana je lagana referenca na vrh jedne razvojne linije, a ne fizička kopija projekta. Tag se češće koristi kao stabilna oznaka određenog commita.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-031-code-review",
+    "topic": "general",
+    "question": "Koja je važna svrha pregleda koda (code reviewa)?",
+    "options": [
+      "Zamijeniti sve automatizirane testove i statičke provjere",
+      "Osigurati da samo autor razumije promjenu",
+      "Otkrivati probleme u ispravnosti i održavanju te dijeliti kontekst prije spajanja promjene",
+      "Automatski dokazati da kod nema nijednu moguću grešku"
+    ],
+    "correctIndex": 2,
+    "explanation": "Pregled koda daje ljudsku provjeru namjere, dizajna, čitljivosti i rizika te širi znanje u timu. Nadopunjuje automatizirane provjere, ali ih ne zamjenjuje niti može dokazati potpunu ispravnost.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-032-compiler-interpreter",
+    "topic": "general",
+    "question": "Koja tvrdnja razumno razlikuje prevođenje i interpretiranje programa?",
+    "options": [
+      "Prevoditelj pretvara program u drugi oblik prije ili tijekom izvođenja, dok interpreter izvršava naredbe preko njihove reprezentacije; stvarni sustavi često kombiniraju oba pristupa",
+      "Interpretirani program nikada ne prolazi nikakvu analizu ili prevođenje",
+      "Prevedeni program prema definiciji nema pogrešaka",
+      "Interpreter radi samo s tekstualnim datotekama, a prevoditelj samo s brojevima"
+    ],
+    "correctIndex": 0,
+    "explanation": "Granica nije uvijek stroga: virtualni strojevi, bytecode i JIT prevođenje kombiniraju tehnike. Ključna razlika je kako i kada se izvorni program pretvara u oblik koji se izvršava.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-033-finally-cleanup",
+    "topic": "general",
+    "question": "Čemu u jezicima koji ga podržavaju služi finally blok uz obradu iznimki?",
+    "options": [
+      "Izvršava se samo kada u try bloku nema iznimke",
+      "Pretvara svaku iznimku u uspješan rezultat",
+      "Ponovno pokreće cijeli program nakon pogreške",
+      "Služi za čišćenje koje se treba pokušati izvršiti neovisno o tome je li try blok normalno završio ili bacio iznimku"
+    ],
+    "correctIndex": 3,
+    "explanation": "Finally je prikladan za oslobađanje resursa poput zaključavanja ili ručno otvorenih datoteka. Mnogi jezici nude i sigurnije konstrukte za upravljanje resursima koje se oslanjaju na isti princip determinističkog čišćenja.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-034-semantic-versioning",
+    "topic": "general",
+    "question": "Prema konvenciji semantičkog verzioniranja MAJOR.MINOR.PATCH, koja promjena tipično povećava PATCH broj?",
+    "options": [
+      "Nekompatibilna promjena javnog API-ja",
+      "Nova kompatibilna funkcionalnost",
+      "Kompatibilan ispravak greške bez nove javne funkcionalnosti",
+      "Potpuna promjena programskog jezika bez obzira na javni API"
+    ],
+    "correctIndex": 2,
+    "explanation": "SemVer koristi PATCH za kompatibilne ispravke, MINOR za novu unatrag kompatibilnu funkcionalnost, a MAJOR za nekompatibilnu promjenu javnog API-ja. To je obećana konvencija projekta, ne automatsko jamstvo alata.",
+    "difficulty": "easy"
+  },
+  {
     "id": "general-011-binary-search",
     "topic": "general",
     "question": "Zašto standardno binarno pretraživanje u sortiranom polju s O(1) pristupom po indeksu ima vremensku složenost O(log n)?",
@@ -280,6 +406,146 @@
     "difficulty": "medium"
   },
   {
+    "id": "general-035-stable-sort",
+    "topic": "general",
+    "question": "Što znači da je algoritam sortiranja stabilan?",
+    "options": [
+      "Uvijek radi u O(n) vremenu",
+      "Ne koristi nikakvu dodatnu memoriju",
+      "Elementi koji su jednaki prema ključu sortiranja zadržavaju međusobni redoslijed iz ulaza",
+      "Rezultat ostaje sortiran čak i nakon dodavanja novih elemenata"
+    ],
+    "correctIndex": 2,
+    "explanation": "Stabilnost je važna kada zapisi imaju dodatne podatke ili kada se sortira u više koraka. Nakon stabilnog sortiranja po novom ključu ostaje očuvan prethodni poredak među jednakim ključevima.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-036-binary-heap",
+    "topic": "general",
+    "question": "Koja je tipična složenost osnovnih operacija binarnog heapa koji se koristi kao prioritetni red?",
+    "options": [
+      "Pregled elementa najvišeg prioriteta O(1), a umetanje i uklanjanje tog elementa O(log n)",
+      "Sve operacije, uključujući pronalazak proizvoljne vrijednosti, zajamčeno su O(1)",
+      "Umetanje je O(n²), a uklanjanje uvijek O(1)",
+      "Heap održava sve elemente potpuno sortirane pa je obilazak sortiranog niza uvijek O(1)"
+    ],
+    "correctIndex": 0,
+    "explanation": "Korijen heapa sadrži minimum ili maksimum, pa je njegov pregled konstantan. Umetanje i uklanjanje popravljaju svojstvo heapa duž visine stabla, koja je O(log n); proizvoljno pretraživanje nije glavna prednost heapa.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-037-dependency-inversion",
+    "topic": "general",
+    "question": "Što preporučuje Dependency Inversion Principle?",
+    "options": [
+      "Moduli visoke razine trebaju izravno stvarati svaku konkretnu infrastrukturalnu ovisnost",
+      "Moduli visoke i niske razine trebaju ovisiti o prikladnim apstrakcijama, a detalji implementacije prilagoditi se tim ugovorima",
+      "Svaka apstrakcija mora imati točno jednu implementaciju",
+      "Ovisnosti se moraju učitavati isključivo iz globalnih varijabli"
+    ],
+    "correctIndex": 1,
+    "explanation": "Poslovna pravila ne bi trebala biti čvrsto vezana uz konkretnu bazu, mrežni klijent ili datotečni sustav. Dependency injection je česta tehnika povezivanja implementacija s apstrakcijama, ali nije samo načelo.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-038-stub-vs-mock",
+    "topic": "general",
+    "question": "Koja je uobičajena razlika između stuba i mocka u testiranju?",
+    "options": [
+      "Stub uvijek koristi stvarnu produkcijsku bazu, a mock nikada ne vraća vrijednost",
+      "Mock može testirati samo privatne metode, a stub samo javne",
+      "Pojmovi nužno znače potpuno istu stvar u svakom alatu",
+      "Stub prvenstveno daje unaprijed određene odgovore, dok mock često dodatno provjerava očekivane pozive i interakcije"
+    ],
+    "correctIndex": 3,
+    "explanation": "Oba su test doubles, ali stub tipično kontrolira ulaz suradnika, dok mock postavlja očekivanja o komunikaciji. Terminologija pojedinih biblioteka razlikuje se, pa je važnije jasno opisati ulogu zamjene.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-039-race-condition",
+    "topic": "general",
+    "question": "Što je race condition u konkurentnom programu?",
+    "options": [
+      "Greška pri kojoj rezultat ovisi o nepredvidivom redoslijedu isprepletenih pristupa dijeljenom stanju",
+      "Namjerno paralelno izvođenje dvaju potpuno neovisnih izračuna",
+      "Situacija u kojoj jedna funkcija ima previše parametara",
+      "Usporedba brzine dvaju algoritama na istom računalu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ako operacije nad dijeljenim stanjem nisu pravilno sinkronizirane, različita ispreplitanja mogu dati različite ili nevaljane rezultate. Rješenja uključuju zaključavanja, atomske operacije, nepromjenjive poruke ili uklanjanje dijeljenog mutabilnog stanja.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-040-idempotent-operation",
+    "topic": "general",
+    "question": "Što znači da je operacija idempotentna?",
+    "options": [
+      "Mora završiti u točno jednoj milisekundi",
+      "Može se primijeniti više puta s istim namjeravanim učinkom na stanje kao da je primijenjena jednom",
+      "Nikada ne smije vratiti pogrešku klijentu",
+      "Svaki poziv mora stvoriti novi resurs"
+    ],
+    "correctIndex": 1,
+    "explanation": "Idempotentnost olakšava sigurno ponavljanje nakon timeouta ili prekida veze. Odgovor i sporedni metapodaci ne moraju nužno biti identični, ali namjeravani učinak na stanje ne smije se nekontrolirano umnožavati.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-041-cache-invalidation",
+    "topic": "general",
+    "question": "Zašto je invalidacija cachea važna nakon promjene izvornog podatka?",
+    "options": [
+      "Jer cache nakon svakog čitanja trajno briše izvorni podatak",
+      "Jer invalidacija automatski povećava kapacitet baze",
+      "Jer inače cache može nastaviti posluživati zastarjelu vrijednost; strategija mora uzeti u obzir redoslijed upisa, kvarove i konkurentne zahtjeve",
+      "Jer se bez invalidacije nijedna vrijednost ne može serijalizirati"
+    ],
+    "correctIndex": 2,
+    "explanation": "Cache je kopija čija se svježina mora uskladiti s izvorom istine. TTL ograničava trajanje zastarjelosti, a obrasci poput cache-aside zahtijevaju pažljivo ažuriranje ili uklanjanje zapisa nakon promjene.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-042-process-vs-thread",
+    "topic": "general",
+    "question": "Koja je tipična razlika između procesa i niti istog procesa?",
+    "options": [
+      "Niti uvijek imaju zasebne operacijske sustave",
+      "Procesi nužno dijele sve globalne varijable bez zaštite",
+      "Nit se može izvršavati samo kada nema memorije",
+      "Proces obično ima vlastiti adresni prostor, dok niti unutar procesa dijele njegovu memoriju i resurse uz zasebne stogove izvršavanja"
+    ],
+    "correctIndex": 3,
+    "explanation": "Odvajanje procesa daje jaču izolaciju uz skuplju komunikaciju, dok niti lakše dijele podatke, ali zato zahtijevaju sinkronizaciju. Točni resursi i raspoređivanje ovise o operacijskom sustavu i runtimeu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-043-observability-signals",
+    "topic": "general",
+    "question": "Kako se logovi, metrike i distribuirani tragovi međusobno nadopunjuju?",
+    "options": [
+      "Metrike pokazuju trendove i alarme, logovi daju zapise događaja, a tragovi povezuju tijek pojedinog zahtjeva kroz više komponenti",
+      "Sva tri signala uvijek sadrže potpuno iste podatke",
+      "Tragovi služe samo za spremanje izvornog koda, a logovi samo za mjerenje CPU-a",
+      "Ako postoje metrike, pogreške više nije potrebno bilježiti"
+    ],
+    "correctIndex": 0,
+    "explanation": "Metrika često otkriva da problem postoji, trag pokazuje gdje zahtjev troši vrijeme ili griješi, a strukturirani log daje detaljan kontekst događaja. Korelacijski identifikatori pomažu povezati te signale.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-044-circuit-breaker",
+    "topic": "general",
+    "question": "Koja je svrha circuit breaker obrasca pri pozivanju nestabilnog udaljenog servisa?",
+    "options": [
+      "Beskonačno ponavljati svaki neuspjeli poziv bez odgode",
+      "Trajno spremiti svaki odgovor u cache bez roka valjanosti",
+      "Nakon dovoljno neuspjeha privremeno brzo odbijati pozive, a zatim kontroliranim probnim pozivima provjeriti oporavak servisa",
+      "Pretvoriti mrežni poziv u lokalnu funkciju bez ikakve ovisnosti"
+    ],
+    "correctIndex": 2,
+    "explanation": "Otvoreni circuit breaker sprječava gomilanje sporih poziva prema već problematičnoj ovisnosti. Nakon odmaka prelazi u probno stanje; timeouti, ograničeni retry i fallback politike nadopunjuju obrazac.",
+    "difficulty": "medium"
+  },
+  {
     "id": "general-021-amortized-dynamic-array",
     "topic": "general",
     "question": "Zašto se dodavanje na kraj dinamičkog polja smatra amortizirano O(1), iako je povremeno proširenje O(n)?",
@@ -347,6 +613,90 @@
     ],
     "correctIndex": 0,
     "explanation": "Dan ima 86.400 sekundi, pa je 12 milijuna zahtjeva oko 139 RPS; faktor vrha daje oko 556 RPS. Množenje broja odgovora s 20 KB daje približno 240 GB dnevno prije protokolskog overheada.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "general-045-topological-sort",
+    "topic": "general",
+    "question": "Što znači ako Kahnov algoritam za topološko sortiranje obradi manje čvorova nego što ih usmjereni graf sadrži?",
+    "options": [
+      "Graf ima više od jedne povezane komponente pa rezultat nužno nije moguć",
+      "U preostalom dijelu postoji usmjereni ciklus, pa topološki poredak svih čvorova ne postoji",
+      "Svi bridovi imaju negativnu težinu",
+      "Algoritam je pronašao jedinstven najkraći put"
+    ],
+    "correctIndex": 1,
+    "explanation": "Kahnov algoritam opetovano uklanja čvorove ulaznog stupnja nula. Ako nijedan takav čvor ne ostane, a dio grafa nije obrađen, taj dio sadrži ciklus; topološki poredak postoji samo za DAG.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "general-046-union-find-optimization",
+    "topic": "general",
+    "question": "Zašto kombinacija path compressiona i union by rank odnosno size čini Union-Find učinkovitim?",
+    "options": [
+      "Svaki skup unaprijed pretvara u potpuno sortirano polje",
+      "Jamči strogo O(1) vrijeme svake pojedine operacije bez ikakvih pretpostavki",
+      "Uklanja potrebu za predstavnikom skupa",
+      "Održava stabla plitkima pa niz m operacija ima gotovo konstantan amortizirani trošak, preciznije vezan uz inverznu Ackermannovu funkciju"
+    ],
+    "correctIndex": 3,
+    "explanation": "Union by rank ili size priključuje manje stablo većemu, a path compression pri find operaciji približava posjećene čvorove korijenu. Zajedno daju amortizirano O(α(n)) po operaciji.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "general-047-consistent-hashing",
+    "topic": "general",
+    "question": "Koja je glavna prednost consistent hashinga pri dodavanju ili uklanjanju čvora distribuiranog cachea?",
+    "options": [
+      "Premješta se samo dio ključeva blizu promijenjenog položaja umjesto gotovo svih ključeva kao kod običnog hash(key) mod N",
+      "Jamči da nijedan fizički čvor nikada neće imati više od jednog ključa",
+      "Uklanja svaku potrebu za replikacijom i obradom kvarova",
+      "Automatski šifrira ključeve prije mrežnog prijenosa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ključevi i čvorovi raspoređuju se po kružnom prostoru, pa promjena članstva utječe na ograničeni raspon. Virtualni čvorovi pomažu ravnomjernijoj raspodjeli i lakšem ponderiranju kapaciteta.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "general-048-cap-partition",
+    "topic": "general",
+    "question": "Kako je najpreciznije tumačiti CAP teorem tijekom mrežne particije?",
+    "options": [
+      "Svaki distribuirani sustav u svakom trenutku smije imati samo dvije od tri osobine",
+      "Ako nema mrežne particije, sustav ne može biti ni konzistentan ni dostupan",
+      "Dok particija sprječava komunikaciju, sustav ne može istodobno jamčiti linearnu konzistentnost i odgovor svakom zahtjevu; mora žrtvovati jednu od tih garancija",
+      "CAP dokazuje da se podaci nikada ne mogu replicirati"
+    ],
+    "correctIndex": 2,
+    "explanation": "Partition tolerance opisuje realnost prekida komunikacije među čvorovima. Tijekom takvog prekida sustav bira odbiti ili odgoditi dio zahtjeva radi konzistentnosti, ili odgovoriti uz rizik da replike privremeno odstupaju.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "general-049-amdahls-law",
+    "topic": "general",
+    "question": "Ako se 80% vremena programa može beskonačno ubrzati paralelizacijom, koje maksimalno ukupno ubrzanje predviđa Amdahlov zakon?",
+    "options": [
+      "Najviše 1,25 puta",
+      "Najviše 4 puta",
+      "Ubrzanje je neograničeno jer se većina programa paralelizira",
+      "Najviše 5 puta, jer neubrzivih 20% ostaje donja granica ukupnog vremena"
+    ],
+    "correctIndex": 3,
+    "explanation": "Uz beskonačno ubrzanje paralelnog dijela ostaje serijskih 0,2 početnog vremena. Maksimalno ubrzanje zato je 1 / 0,2 = 5, bez obzira na broj dodatnih procesora.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "general-050-bloom-filter",
+    "topic": "general",
+    "question": "Koju garanciju daje pravilno korišten Bloomov filter bez brisanja elemenata?",
+    "options": [
+      "Odgovor „možda postoji” može biti lažno pozitivan, ali odgovor „sigurno ne postoji” nema lažno negativnih rezultata",
+      "Svaki odgovor točno dokazuje postoji li element i vraća njegovu spremljenu vrijednost",
+      "Lažno negativni rezultati su česti, a lažno pozitivni nisu mogući",
+      "Elemente uvijek čuva u potpuno sortiranom redoslijedu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bloomov filter postavlja bitove pomoću više hash funkcija. Ako neki potreban bit nije postavljen, element sigurno nije dodan; ako su svi postavljeni, možda ih je postavila kombinacija drugih elemenata, pa je potrebna provjera u stvarnom spremištu.",
     "difficulty": "hard"
   }
 ]
