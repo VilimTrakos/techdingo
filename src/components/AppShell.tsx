@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { useProgress } from '../hooks/useProgress';
+import { AuthControl } from './AuthControl';
 import { StreakBadge } from './StreakBadge';
 import { XPBadge } from './XPBadge';
 
@@ -48,6 +49,8 @@ export function AppShell() {
             <StreakBadge streak={state.streak.current} />
             <XPBadge xp={state.xpTotal} />
           </div>
+
+          <AuthControl />
         </div>
       </header>
 
