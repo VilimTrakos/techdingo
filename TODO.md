@@ -1,5 +1,26 @@
 # TODO — sljedeći koraci
 
+## 0. Duolingo restruktura (2026-08-22) — NAPRAVLJENO, u polish fazi
+
+Veliki krug po korisnikovom feedbacku, sve pushano i smoke-testirano:
+- Podteme/"units" (`src/data/units.ts`): tema → 6-10 cjelina, otključavanje
+  redom, vlastiti put po temi (`#/topic/:id`), kratke unit lekcije
+  (`#/lesson/:topicId/:unitId`, 8-10 pitanja s ponavljanjem).
+- Trajna srca (ProgressStateV2): globalna zaliha 5, regen 1/4h (lijeno,
+  `src/state/hearts.ts`), tvrdi gate za lekcije (HeartsGate: countdown,
+  stub reklama +1 ♥, testni refill). Srca/daily su device-local (ne syncaju).
+- 4 vrste pitanja: single (+opcionalni `code` blok), multi, fill (word
+  bank), order. `lib/questionKinds.ts` = prep/grade; `QuestionBody.tsx` =
+  render. Sheme objavljene Codexu u AGENT_NOTES.txt.
+- Spaced repetition light: krivi odgovori → `struggledQuestionIds` →
+  do 30% iduće sesije.
+- Dnevni izazov `#/daily`: seeded (lib/daily.ts), isti za sve, 1×/dan.
+
+Otvoreno iz ovog kruga: Codex radi UI polish (HomePage/TopicPage/
+HeartsGate/QuestionBody + hearts badge u AppShell header s klik-refill) i
+sadržaj (backend/general → 100+, novi tipovi u svim temama). Pravi ad
+network umjesto stub reklame = kasnije.
+
 ## 1. Supabase backend (računi, sinkronizacija, leaderboard, live PvP)
 
 **Status: ŽIVO i verificirano (2026-08-22).** Migracija `0001_init.sql` i
