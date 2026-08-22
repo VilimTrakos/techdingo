@@ -285,6 +285,26 @@
     "unitId": "git-verzioniranje"
   },
   {
+    "id": "general-901-fill-git-osnove",
+    "topic": "general",
+    "unitId": "git-verzioniranje",
+    "kind": "fill",
+    "question": "Dopuni tipičan Git tok rada:",
+    "text": "git ___ .  →  git ___ -m \"opis promjene\"  →  git ___ origin main",
+    "answers": [
+      "add",
+      "commit",
+      "push"
+    ],
+    "distractors": [
+      "merge",
+      "clone",
+      "status"
+    ],
+    "explanation": "add priprema promjene u staging, commit ih trajno bilježi lokalno s porukom, a push šalje lokalne commitove na udaljeni repozitorij.",
+    "difficulty": "easy"
+  },
+  {
     "id": "general-011-binary-search",
     "topic": "general",
     "question": "Zašto standardno binarno pretraživanje u sortiranom polju s O(1) pristupom po indeksu ima vremensku složenost O(log n)?",
@@ -583,6 +603,20 @@
     "explanation": "Otvoreni circuit breaker sprječava gomilanje sporih poziva prema već problematičnoj ovisnosti. Nakon odmaka prelazi u probno stanje; timeouti, ograničeni retry i fallback politike nadopunjuju obrazac.",
     "difficulty": "medium",
     "unitId": "sustavi-koncepti"
+  },
+  {
+    "id": "general-902-order-tdd-ciklus",
+    "topic": "general",
+    "unitId": "testiranje-kvaliteta",
+    "kind": "order",
+    "question": "Poredaj korake TDD (red-green-refactor) ciklusa:",
+    "steps": [
+      "Napiši test koji pada (red)",
+      "Napiši minimalan kod da test prođe (green)",
+      "Refaktoriraj kod uz zelene testove"
+    ],
+    "explanation": "TDD kreće od testa koji definira željeno ponašanje i pada. Zatim se piše najmanji kod koji ga čini zelenim, pa se kod uređuje dok testovi čuvaju ponašanje.",
+    "difficulty": "medium"
   },
   {
     "id": "general-021-amortized-dynamic-array",

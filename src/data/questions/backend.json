@@ -390,6 +390,22 @@
     "unitId": "observability"
   },
   {
+    "id": "backend-901-order-http-zahtjev",
+    "topic": "backend",
+    "unitId": "http-api",
+    "kind": "order",
+    "question": "Poredaj korake tipičnog HTTPS zahtjeva od preglednika do odgovora:",
+    "steps": [
+      "DNS razrješenje domene u IP adresu",
+      "TCP + TLS handshake",
+      "Slanje HTTP zahtjeva",
+      "Server obrađuje zahtjev",
+      "Server vraća HTTP odgovor"
+    ],
+    "explanation": "Prije ikakvog HTTP prometa preglednik mora saznati IP (DNS) i uspostaviti šifriranu vezu (TCP pa TLS). Tek onda putuje zahtjev, server ga obradi i vrati odgovor.",
+    "difficulty": "easy"
+  },
+  {
     "id": "backend-001-dependency-injection",
     "topic": "backend",
     "question": "Što je dependency injection?",
@@ -838,6 +854,26 @@
     "explanation": "Primjerice, SLO od 99,9% ostavlja 0,1% budžeta za neuspjehe. Visok burn rate upozorava da će se budžet potrošiti znatno prije kraja mjernog razdoblja.",
     "difficulty": "medium",
     "unitId": "observability"
+  },
+  {
+    "id": "backend-902-multi-jwt-tvrdnje",
+    "topic": "backend",
+    "unitId": "autentikacija-sigurnost",
+    "kind": "multi",
+    "question": "Koje tvrdnje o JWT tokenima vrijede?",
+    "options": [
+      "Payload je samo base64-kodiran, ne šifriran",
+      "Potpis štiti integritet sadržaja tokena",
+      "Server mora čuvati svaki izdani token u bazi",
+      "Istekli token se ne može \"poništiti\" bez dodatnog mehanizma"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      3
+    ],
+    "explanation": "JWT je potpisan (integritet), ali payload svatko može dekodirati - nikad ne stavljaj tajne u njega. Glavna prednost je što server NE mora čuvati stanje, ali zato opoziv prije isteka traži dodatan mehanizam (blacklist, kratki TTL + refresh).",
+    "difficulty": "medium"
   },
   {
     "id": "backend-009-race-condition",

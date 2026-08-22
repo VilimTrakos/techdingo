@@ -570,6 +570,44 @@
     "unitId": "pristupacnost-testiranje"
   },
   {
+    "id": "frontend-901-fill-dom-listener",
+    "topic": "frontend",
+    "unitId": "dom-eventovi",
+    "kind": "fill",
+    "question": "Dopuni kod koji dohvaća gumb i veže klik handler:",
+    "text": "document.___(\"#kupi\").___(\"click\", handleClick);",
+    "answers": [
+      "querySelector",
+      "addEventListener"
+    ],
+    "distractors": [
+      "getElementById",
+      "dispatchEvent",
+      "appendChild"
+    ],
+    "explanation": "querySelector prima CSS selektor (\"#kupi\"), a addEventListener veže handler na event. getElementById bi radio samo bez \"#\" prefiksa, a dispatchEvent/appendChild rade nešto sasvim drugo.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-904-multi-let-const",
+    "topic": "frontend",
+    "unitId": "js-jezik",
+    "kind": "multi",
+    "question": "Koje tvrdnje o let i const vrijede?",
+    "options": [
+      "Obje deklaracije imaju blokovski scope",
+      "const objekt se ne može mijenjati iznutra (mutirati)",
+      "let se smije ponovno dodijeliti (reassign)",
+      "Obje su podložne hoistingu s vrijednošću undefined"
+    ],
+    "correctIndexes": [
+      0,
+      2
+    ],
+    "explanation": "let i const su blokovski scopane. const brani samo ponovnu DODJELU - svojstva objekta i dalje se smiju mijenjati. Za razliku od var, u temporal dead zone su do inicijalizacije (nisu undefined).",
+    "difficulty": "easy"
+  },
+  {
     "id": "frontend-006-event-bubbling",
     "topic": "frontend",
     "question": "Što je event bubbling?",
@@ -1140,6 +1178,20 @@
     "unitId": "pristupacnost-testiranje"
   },
   {
+    "id": "frontend-902-order-event-faze",
+    "topic": "frontend",
+    "unitId": "dom-eventovi",
+    "kind": "order",
+    "question": "Poredaj faze DOM event propagacije:",
+    "steps": [
+      "Capturing (od window prema cilju)",
+      "Target (na samom elementu)",
+      "Bubbling (od cilja prema window)"
+    ],
+    "explanation": "Event prvo putuje od window/document prema ciljanom elementu (capturing), aktivira se na cilju (target), pa se penje natrag prema window (bubbling) - tu ga hvataju delegirani handleri.",
+    "difficulty": "medium"
+  },
+  {
     "id": "frontend-012-event-loop",
     "topic": "frontend",
     "question": "Što je event loop?",
@@ -1498,5 +1550,21 @@
     "explanation": "Transferable objekti poput ArrayBuffera mogu promijeniti vlasnika bez skupog kopiranja; nakon prijenosa pošiljatelj više ne može koristiti prenesenu memoriju.",
     "difficulty": "hard",
     "unitId": "performanse"
+  },
+  {
+    "id": "frontend-903-code-var-petlja",
+    "topic": "frontend",
+    "unitId": "js-jezik",
+    "question": "Što ispisuje ovaj kod?",
+    "code": "for (var i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 0);\n}",
+    "options": [
+      "3 3 3",
+      "0 1 2",
+      "0 0 0",
+      "undefined undefined undefined"
+    ],
+    "correctIndex": 0,
+    "explanation": "var ima funkcijski scope pa sve tri arrow funkcije dijele ISTU varijablu i. Kad se timeouti izvrše (nakon petlje), i je već 3. S let bi svaka iteracija imala vlastiti i pa bi ispis bio 0 1 2.",
+    "difficulty": "hard"
   }
 ]

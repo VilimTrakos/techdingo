@@ -570,6 +570,25 @@
     "unitId": "izmjene-podataka"
   },
   {
+    "id": "sql-901-fill-osnovni-upit",
+    "topic": "sql",
+    "unitId": "osnove-upita",
+    "kind": "fill",
+    "question": "Dopuni upit koji dohvaća imena punoljetnih korisnika:",
+    "text": "SELECT ime ___ korisnici ___ dob >= 18;",
+    "answers": [
+      "FROM",
+      "WHERE"
+    ],
+    "distractors": [
+      "GROUP",
+      "HAVING",
+      "ORDER"
+    ],
+    "explanation": "FROM određuje tablicu iz koje čitamo, a WHERE filtrira retke prije bilo kakvog grupiranja. GROUP i HAVING koriste se tek uz agregaciju, ORDER uz sortiranje.",
+    "difficulty": "easy"
+  },
+  {
     "id": "sql-003-index",
     "topic": "sql",
     "question": "Što je indeks u bazi podataka i kada ga je dobro koristiti?",
@@ -1138,6 +1157,60 @@
     "explanation": "Jedinstveno ograničenje i atomska naredba za umetanje ili obradu konflikta zatvaraju utrku između provjere i upisa. Konkretna sintaksa, primjerice ON CONFLICT ili MERGE, i detalji konkurentnosti ovise o bazi.",
     "difficulty": "medium",
     "unitId": "izmjene-podataka"
+  },
+  {
+    "id": "sql-902-order-izvrsavanje-upita",
+    "topic": "sql",
+    "unitId": "agregacija-i-window",
+    "kind": "order",
+    "question": "Poredaj logičke faze izvršavanja SELECT upita:",
+    "steps": [
+      "FROM / JOIN",
+      "WHERE",
+      "GROUP BY",
+      "HAVING",
+      "SELECT",
+      "ORDER BY"
+    ],
+    "explanation": "Baza prvo sastavi izvor podataka (FROM/JOIN), filtrira retke (WHERE), grupira ih (GROUP BY), filtrira grupe (HAVING), tek onda računa izraze iz SELECT liste i na kraju sortira rezultat.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-903-code-having-count",
+    "topic": "sql",
+    "unitId": "agregacija-i-window",
+    "question": "Što vraća ovaj upit?",
+    "code": "SELECT odjel, COUNT(*) AS broj\nFROM zaposlenici\nWHERE placa > 5000\nGROUP BY odjel\nHAVING COUNT(*) > 3;",
+    "options": [
+      "Odjele koji imaju više od 3 zaposlenika s plaćom većom od 5000",
+      "Sve zaposlenike s plaćom većom od 5000",
+      "Odjele s više od 3 zaposlenika, bez obzira na plaću",
+      "Broj svih odjela u tablici"
+    ],
+    "correctIndex": 0,
+    "explanation": "WHERE prvo zadrži samo retke s plaćom > 5000, GROUP BY ih grupira po odjelu, a HAVING zadrži samo grupe (odjele) u kojima je nakon filtriranja ostalo više od 3 retka.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-904-multi-index-tvrdnje",
+    "topic": "sql",
+    "unitId": "indeksi-performanse",
+    "kind": "multi",
+    "question": "Koje tvrdnje o B-tree indeksima vrijede?",
+    "options": [
+      "Ubrzavaju pretraživanje po indeksiranom stupcu",
+      "Ubrzavaju svaki INSERT u tablicu",
+      "Zauzimaju dodatni prostor na disku",
+      "Mogu pokrivati više stupaca (composite)",
+      "Automatski se stvaraju za svaki stupac"
+    ],
+    "correctIndexes": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Indeks ubrzava čitanje, ali svaki upis mora ažurirati i indeks (usporava INSERT/UPDATE) i troši prostor. Composite indeksi postoje; automatski se tipično stvara samo indeks za PRIMARY KEY/UNIQUE.",
+    "difficulty": "medium"
   },
   {
     "id": "sql-017-clustered-vs-nonclustered-index",
