@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { TOPICS } from '../data/topics';
 import { getUnitsForTopic, unitProgressKey } from '../data/units';
 import { useProgress } from '../hooks/useProgress';
+import { toLocalDateISO } from '../state/streak';
 
 const TOPIC_META: Record<
   string,
@@ -67,6 +68,7 @@ export function HomePage() {
     ? `Nastavi: ${currentCard.topic.labelHr}`
     : 'Pokreni završni izazov';
   const guideMarkSrc = `${import.meta.env.BASE_URL}tech-hedgehog.webp`;
+  const dailyPlayedToday = state.dailyChallenge.lastPlayedDateISO === toLocalDateISO();
 
   return (
     <div className="space-y-14 pb-10 sm:space-y-20">
@@ -156,6 +158,43 @@ export function HomePage() {
             ✦
           </span>
         </div>
+      </section>
+
+      <section aria-labelledby="daily-heading" className="mx-auto max-w-4xl">
+        <Link
+          to="/daily"
+          className={`flex flex-col items-center gap-4 rounded-[2rem] border-2 p-6 text-center shadow-card transition duration-200 hover:-translate-y-1 hover:shadow-lg sm:flex-row sm:text-left ${
+            dailyPlayedToday
+              ? 'border-cloud-200 bg-cloud-50'
+              : 'border-violet-300 bg-gradient-to-r from-violet-50 via-white to-fuchsia-50'
+          }`}
+        >
+          <span
+            className={`grid size-14 shrink-0 place-items-center rounded-2xl text-2xl ${
+              dailyPlayedToday ? 'bg-cloud-100' : 'bg-violet-100'
+            }`}
+            aria-hidden="true"
+          >
+            {dailyPlayedToday ? '✅' : '📅'}
+          </span>
+          <div className="min-w-0 flex-1">
+            <h2 id="daily-heading" className="text-xl font-black tracking-tight text-ink-950 sm:text-2xl">
+              Dnevni izazov
+            </h2>
+            <p className="mt-1 text-sm font-semibold leading-6 text-ink-600">
+              {dailyPlayedToday
+                ? `Danas riješeno: ${state.dailyChallenge.lastScore.toLocaleString('hr-HR')} bodova. Novi izazov stiže sutra!`
+                : '10 pitanja iz svih tema, ista za sve igrače. Jednom dnevno — ne troši srca.'}
+            </p>
+          </div>
+          <span
+            className={`shrink-0 rounded-full px-4 py-2 text-xs font-black uppercase tracking-wider ${
+              dailyPlayedToday ? 'bg-cloud-100 text-ink-400' : 'bg-violet-600 text-white'
+            }`}
+          >
+            {dailyPlayedToday ? 'Riješeno' : 'Igraj sad'}
+          </span>
+        </Link>
       </section>
 
       <section
