@@ -11,7 +11,8 @@
     ],
     "correctIndex": 0,
     "explanation": "To je klasična podjela odgovornosti na webu: HTML = sadržaj/struktura, CSS = prezentacija, JS = ponašanje.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "osnove-weba"
   },
   {
     "id": "frontend-002-dom",
@@ -25,7 +26,8 @@
     ],
     "correctIndex": 0,
     "explanation": "DOM predstavlja HTML strukturu kao stablo objekata (node-ova) koje JavaScript može čitati, dodavati, mijenjati ili brisati, a preglednik zatim ponovno iscrtava stranicu.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "dom-eventovi"
   },
   {
     "id": "frontend-003-let-const-var",
@@ -39,7 +41,8 @@
     ],
     "correctIndex": 0,
     "explanation": "var je 'hoistan' na vrh funkcije i podložan poznatim greškama zbog function scopea; let/const uvode block scope i sigurnije ponašanje, pri čemu const sprječava ponovnu dodjelu (ali ne čini objekt immutable).",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "js-jezik"
   },
   {
     "id": "frontend-004-equality-operators",
@@ -53,7 +56,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Npr. 0 == '0' je true zbog pretvorbe tipa, dok je 0 === '0' false jer su tipovi različiti (number vs string) - zato se === preporučuje kao sigurniji izbor.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "js-jezik"
   },
   {
     "id": "frontend-005-null-vs-undefined",
@@ -67,7 +71,8 @@
     ],
     "correctIndex": 0,
     "explanation": "JavaScript automatski dodjeljuje undefined nedeklariranim/nepostavljenim varijablama, dok null programer eksplicitno postavlja kao 'namjerno prazna vrijednost'.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "js-jezik"
   },
   {
     "id": "frontend-008-callback-functions",
@@ -81,7 +86,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Callback je uobičajen obrazac u JavaScriptu za rukovanje asinkronim operacijama (npr. addEventListener('click', callback) ili setTimeout(callback, 1000)).",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "js-jezik"
   },
   {
     "id": "frontend-016-destructuring",
@@ -95,7 +101,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Primjer: const { name, age } = user; ili const [first, second] = arr; - čitljiviji je način izvlačenja podataka nego ručno pristupanje svakom svojstvu/indeksu.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "js-jezik"
   },
   {
     "id": "frontend-017-spread-operator",
@@ -109,7 +116,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Primjeri: [...arr1, ...arr2] spaja nizove, {...obj1, ...obj2} spaja objekte, a fn(...args) raspakira niz u pojedinačne argumente funkcije.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "js-jezik"
   },
   {
     "id": "frontend-019-box-model",
@@ -123,7 +131,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Svaki element se sastoji od sadržaja, unutarnjeg razmaka (padding), ruba (border) i vanjskog razmaka (margin) - box-sizing: border-box mijenja kako se ukupna širina/visina računa.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "css-layout"
   },
   {
     "id": "frontend-020-flexbox-vs-grid",
@@ -137,7 +146,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Za raspored elemenata u jednom smjeru (npr. navigacijska traka) prirodniji je Flexbox; za složenije rasporede stranice s redcima i stupcima (npr. cijeli layout stranice) prirodniji je Grid.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "css-layout"
   },
   {
     "id": "frontend-026-native-button-semantics",
@@ -151,7 +161,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Button već ima odgovarajuću semantiku, fokus i podršku za tipkovnicu; link je namijenjen navigaciji, a div i span zahtijevaju ručnu implementaciju pristupačnosti.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "osnove-weba"
   },
   {
     "id": "frontend-027-label-control-association",
@@ -165,7 +176,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Vrijednost for na labelu mora odgovarati id-u kontrole, čime polje dobiva pristupačno ime, a klik na oznaku fokusira polje.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "osnove-weba"
   },
   {
     "id": "frontend-028-decorative-image-alt",
@@ -179,7 +191,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Prazan alt govori asistivnoj tehnologiji da preskoči dekorativnu sliku; izostavljen alt može uzrokovati čitanje naziva datoteke.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "osnove-weba"
   },
   {
     "id": "frontend-029-css-source-order",
@@ -193,7 +206,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Kada su porijeklo, važnost i specifičnost jednaki, kaskada daje prednost deklaraciji koja dolazi kasnije.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "css-layout"
   },
   {
     "id": "frontend-030-rem-root-font-size",
@@ -207,7 +221,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Jedan rem jednak je izračunatoj veličini fonta korijenskog html elementa, pa omogućuje dosljedno skaliranje sučelja.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "css-layout"
   },
   {
     "id": "frontend-031-prevent-default",
@@ -221,7 +236,8 @@
     ],
     "correctIndex": 1,
     "explanation": "preventDefault sprječava zadano ponašanje poput slanja forme ili otvaranja linka, ali sam po sebi ne zaustavlja propagaciju događaja.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "dom-eventovi"
   },
   {
     "id": "frontend-032-data-attributes-dataset",
@@ -235,7 +251,8 @@
     ],
     "correctIndex": 3,
     "explanation": "HTML data-* atributi namijenjeni su prilagođenim podacima, a DOMStringMap dostupan kroz dataset pretvara kebab-case u camelCase.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "dom-eventovi"
   },
   {
     "id": "frontend-033-http-status-groups",
@@ -249,7 +266,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Kodovi 2xx označavaju uspješan ishod zahtjeva, primjerice 200 OK, 201 Created ili 204 No Content.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "mreza-sigurnost"
   },
   {
     "id": "frontend-034-react-props-state",
@@ -263,7 +281,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Props se tretiraju kao read-only ulazi komponente, dok state predstavlja promjenjive podatke koje React prati i koristi pri renderiranju.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "react"
   },
   {
     "id": "frontend-035-react-controlled-input",
@@ -277,7 +296,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Kod kontroliranog inputa React state predstavlja izvor istine: value prikazuje state, a onChange ga ažurira.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "react"
   },
   {
     "id": "frontend-051-form-button-default-submit",
@@ -291,7 +311,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Button unutar forme zadano je submit kontrola, pa radnje koje ne šalju formu trebaju eksplicitno koristiti type='button'.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "osnove-weba"
   },
   {
     "id": "frontend-052-fieldset-legend-radio-group",
@@ -305,7 +326,8 @@
     ],
     "correctIndex": 0,
     "explanation": "fieldset i legend daju grupi kontrola zajedničko semantičko ime koje asistivna tehnologija najavljuje uz pojedine opcije.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "osnove-weba"
   },
   {
     "id": "frontend-053-form-autocomplete-purpose",
@@ -319,7 +341,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Ispravne autocomplete vrijednosti pomažu pregledniku, password managerima i korisnicima asistivne tehnologije razumjeti svrhu polja.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "osnove-weba"
   },
   {
     "id": "frontend-054-responsive-media-query",
@@ -333,7 +356,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Media query uvjetno primjenjuje CSS prema značajkama uređaja ili viewporta, primjerice pomoću min-width ili prefers-color-scheme.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "css-layout"
   },
   {
     "id": "frontend-055-css-gap-spacing",
@@ -347,7 +371,8 @@
     ],
     "correctIndex": 2,
     "explanation": "gap pripada kontejneru i stvara razmak između njegovih redaka ili stupaca, bez neželjenih vanjskih margina.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "css-layout"
   },
   {
     "id": "frontend-056-optional-chaining",
@@ -361,7 +386,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Izraz user.profile?.name ne baca pogrešku ako je profile null ili undefined, nego daje undefined.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "js-jezik"
   },
   {
     "id": "frontend-057-nullish-coalescing",
@@ -375,7 +401,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Nullish coalescing reagira samo na odsutnost vrijednosti, dok || reagira na sve falsy vrijednosti.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "js-jezik"
   },
   {
     "id": "frontend-058-dom-content-loaded",
@@ -389,7 +416,8 @@
     ],
     "correctIndex": 1,
     "explanation": "DOMContentLoaded označava da je DOM spreman, dok load dodatno čeka završetak učitavanja ovisnih resursa stranice.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "dom-eventovi"
   },
   {
     "id": "frontend-059-react-immutable-array-state",
@@ -403,7 +431,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Nova referenca niza i promijenjene stavke omogućuje Reactu pouzdano uočiti promjenu bez mutiranja prethodnog statea.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "react"
   },
   {
     "id": "frontend-076-document-language",
@@ -417,7 +446,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Ispravan lang pomaže asistivnoj tehnologiji odabrati pravila izgovora te alatima poput provjere pravopisa razumjeti jezik sadržaja.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "osnove-weba"
   },
   {
     "id": "frontend-077-css-custom-properties",
@@ -431,7 +461,8 @@
     ],
     "correctIndex": 0,
     "explanation": "CSS custom properties definiraju se imenima koja počinju s --, a koriste se funkcijom var(); sudjeluju u kaskadi i mogu se nasljeđivati.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "css-layout"
   },
   {
     "id": "frontend-078-array-filter",
@@ -445,7 +476,8 @@
     ],
     "correctIndex": 3,
     "explanation": "filter prolazi kroz elemente i vraća novi niz samo s onima koji zadovoljavaju uvjet; izvorni niz sam po sebi ne mijenja.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "js-jezik"
   },
   {
     "id": "frontend-079-native-lazy-image",
@@ -459,7 +491,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Nativni lazy loading omogućuje pregledniku odgodu nekritičnih slika izvan viewporta, čime se može smanjiti početni mrežni promet.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "performanse"
   },
   {
     "id": "frontend-080-json-parse-stringify",
@@ -473,7 +506,8 @@
     ],
     "correctIndex": 2,
     "explanation": "JSON.stringify služi serijalizaciji podržanih JavaScript vrijednosti, dok JSON.parse analizira valjani JSON tekst i iz njega stvara odgovarajuću vrijednost.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "js-jezik"
   },
   {
     "id": "frontend-081-relative-absolute-positioning",
@@ -487,7 +521,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Absolute element pozicionira se prema najbližem odgovarajućem pozicioniranom pretku; pritom ne zauzima svoje uobičajeno mjesto u normalnom toku.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "css-layout"
   },
   {
     "id": "frontend-082-details-summary",
@@ -501,7 +536,8 @@
     ],
     "correctIndex": 3,
     "explanation": "details s elementom summary pruža ugrađenu disclosure interakciju dostupnu mišem i tipkovnicom bez izrade osnovnog ponašanja JavaScriptom.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "osnove-weba"
   },
   {
     "id": "frontend-083-react-fragment",
@@ -515,7 +551,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Fragment zadovoljava potrebu da komponenta vrati grupu elemenata, ali ne stvara dodatni wrapper u rezultirajućem DOM-u.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "react"
   },
   {
     "id": "frontend-084-aria-current-page",
@@ -529,7 +566,8 @@
     ],
     "correctIndex": 2,
     "explanation": "aria-current='page' asistivnoj tehnologiji označava koja je stavka u skupu linkova trenutačna, bez uklanjanja standardne semantike linka.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "pristupacnost-testiranje"
   },
   {
     "id": "frontend-006-event-bubbling",
@@ -543,7 +581,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Kad kliknete na element unutar drugog elementa, event prvo okine handler na tom elementu, a zatim 'buble-a' prema gore kroz sve roditelje (osim ako se pozove stopPropagation).",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "dom-eventovi"
   },
   {
     "id": "frontend-007-event-propagation",
@@ -557,7 +596,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Event propagation opisuje cijeli put eventa kroz DOM stablo, a bubbling (širenje prema gore) je samo jedna od njegove tri faze - druga je capturing (širenje prema dolje prije nego stigne do cilja).",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "dom-eventovi"
   },
   {
     "id": "frontend-009-promise",
@@ -571,7 +611,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Promise omogućuje čitljivije rukovanje asinkronim kodom pomoću .then()/.catch() lanaca (ili async/await) umjesto ugniježđenih callbackova.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "asinkroni-js"
   },
   {
     "id": "frontend-010-async-await",
@@ -585,7 +626,8 @@
     ],
     "correctIndex": 0,
     "explanation": "async/await je 'syntactic sugar' iznad Promisea - omogućuje pisanje asinkronog koda bez lanaca .then() poziva, uz zadržavanje neblokirajućeg ponašanja.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "asinkroni-js"
   },
   {
     "id": "frontend-011-single-threaded",
@@ -599,7 +641,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Postoji samo jedan call stack, pa se izvršavanje odvija sekvencijalno - asinkrone operacije (I/O, timeri) se delegiraju pregledniku/Node okruženju i vraćaju u red čekanja (event loop) kad su gotove.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "asinkroni-js"
   },
   {
     "id": "frontend-014-scope",
@@ -613,7 +656,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Scope određuje gdje se u kodu neka varijabla može referencirati - let/const stvaraju block scope, var stvara function scope, a varijable deklarirane izvan svega su globalne.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "js-jezik"
   },
   {
     "id": "frontend-015-hoisting",
@@ -627,7 +671,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Deklaracije funkcija i var varijabli se 'podižu' na vrh opsega (inicijalizacija ostaje na mjestu) - zato se funkcija može pozvati prije nego je deklarirana u kodu, dok su let/const u 'temporal dead zone' do same deklaracije.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "js-jezik"
   },
   {
     "id": "frontend-018-spa-vs-ssr",
@@ -641,7 +686,8 @@
     ],
     "correctIndex": 0,
     "explanation": "SPA (npr. React/Vue aplikacije) nudi bržu navigaciju bez ponovnog učitavanja stranice nakon početnog loada, dok server-rendered pristup (npr. klasični PHP) šalje potpuno nov HTML pri svakom zahtjevu - svaki pristup ima svoje prednosti (SEO, initial load, interaktivnost).",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "mreza-sigurnost"
   },
   {
     "id": "frontend-021-storage-cookies",
@@ -655,7 +701,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Ključna razlika je u trajanju i vidljivosti serveru: cookie putuje sa svakim zahtjevom (pa se koristi npr. za sesije), dok su localStorage/sessionStorage dostupni samo u pregledniku putem JavaScripta.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "mreza-sigurnost"
   },
   {
     "id": "frontend-022-debounce-vs-throttle",
@@ -669,7 +716,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Tipičan primjer: debounce za search input (čekaj da korisnik prestane tipkati), throttle za scroll/resize event (izvrši najviše jednom svakih npr. 200ms).",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "asinkroni-js"
   },
   {
     "id": "frontend-024-react-keys",
@@ -683,7 +731,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Stabilan key pomaže Reactovom reconcileru prepoznati koji su elementi dodani, uklonjeni ili premješteni, čime se izbjegavaju nepotrebna ponovna renderiranja i gubitak lokalnog stanja komponente.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "react"
   },
   {
     "id": "frontend-025-safe-text-rendering",
@@ -697,7 +746,8 @@
     ],
     "correctIndex": 0,
     "explanation": "React pri običnoj JSX interpolaciji automatski escapea sadržaj, čime sprječava XSS napade; izravno umetanje HTML-a (npr. dangerouslySetInnerHTML) zaobilazi tu zaštitu i zahtijeva pažljivu sanitizaciju.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "mreza-sigurnost"
   },
   {
     "id": "frontend-036-heading-hierarchy",
@@ -711,7 +761,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Razina naslova treba pratiti hijerarhiju sadržaja, ne željenu veličinu fonta; vizualni stil neovisno se određuje CSS-om.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "pristupacnost-testiranje"
   },
   {
     "id": "frontend-037-modal-focus-management",
@@ -725,7 +776,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Modal treba premjestiti i zadržati fokus unutar aktivnog dijaloga te ga nakon zatvaranja vratiti na smisleno mjesto, obično na okidač.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "pristupacnost-testiranje"
   },
   {
     "id": "frontend-038-where-specificity",
@@ -739,7 +791,8 @@
     ],
     "correctIndex": 2,
     "explanation": ":where() omogućuje grupiranje i precizno ciljanje bez povećavanja specifičnosti, što olakšava kasnije nadjačavanje stilova.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "css-layout"
   },
   {
     "id": "frontend-039-stacking-context",
@@ -753,7 +806,8 @@
     ],
     "correctIndex": 1,
     "explanation": "z-index potomka uspoređuje se unutar njegova stacking contexta; visoka lokalna vrijednost ne može preskočiti vanjski stacking context koji je složen iznad njegova roditelja.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "css-layout"
   },
   {
     "id": "frontend-040-event-delegation",
@@ -767,7 +821,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Delegacija koristi bubbling pa jedan handler može obraditi postojeću i naknadno dodanu djecu bez zasebnog listenera na svakom elementu.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "dom-eventovi"
   },
   {
     "id": "frontend-041-abort-controller-fetch",
@@ -781,7 +836,8 @@
     ],
     "correctIndex": 0,
     "explanation": "AbortController šalje signal otkazivanja API-ju fetch; otkazani zahtjev odbacuje Promise odgovarajućom pogreškom koju kod može obraditi.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "mreza-sigurnost"
   },
   {
     "id": "frontend-042-fetch-http-errors",
@@ -795,7 +851,8 @@
     ],
     "correctIndex": 2,
     "explanation": "fetch odbacuje Promise kod mrežnih i sličnih transportnih pogrešaka, ali HTTP error statusi i dalje su valjani odgovori koje treba eksplicitno provjeriti.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "mreza-sigurnost"
   },
   {
     "id": "frontend-043-cors-preflight",
@@ -809,7 +866,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Za zahtjeve koji nisu CORS-simple preglednik prvo OPTIONS zahtjevom provjerava serverova Access-Control dopuštenja.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "mreza-sigurnost"
   },
   {
     "id": "frontend-044-effect-cleanup",
@@ -823,7 +881,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Cleanup sprječava curenje resursa i zastarjele callbackove tako da poništi ono što je prethodno izvođenje efekta postavilo.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "react"
   },
   {
     "id": "frontend-045-testing-accessible-queries",
@@ -837,7 +896,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Upit poput getByRole('button', { name: /spremi/i }) odražava način na koji korisnici i asistivna tehnologija pronalaze kontrolu, bez vezivanja testa uz stil.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "pristupacnost-testiranje"
   },
   {
     "id": "frontend-060-responsive-images-srcset",
@@ -851,7 +911,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Preglednik kombinira kandidate iz srcseta, podatke iz sizes i gustoću zaslona kako bi odabrao dovoljno kvalitetnu, ali ne nepotrebno veliku sliku.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "performanse"
   },
   {
     "id": "frontend-061-css-container-queries",
@@ -865,7 +926,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Container queries omogućuju da ista komponenta reagira na prostor koji stvarno ima u različitim dijelovima layouta.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "css-layout"
   },
   {
     "id": "frontend-062-prefers-reduced-motion",
@@ -879,7 +941,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Preferencija reduced motion služi korisnicima kojima kretanje smeta; animacije treba ublažiti bez uklanjanja važnih informacija.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "pristupacnost-testiranje"
   },
   {
     "id": "frontend-063-typescript-unknown-vs-any",
@@ -893,7 +956,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Oba tipa mogu primiti proizvoljnu vrijednost, ali unknown čuva sigurnost jer ga kod mora suziti prije pristupa svojstvima ili poziva.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "js-jezik"
   },
   {
     "id": "frontend-064-typescript-discriminated-union",
@@ -907,7 +971,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Zajednički diskriminator daje compileru pouzdanu osnovu za narrowing u switch ili if granama.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "js-jezik"
   },
   {
     "id": "frontend-065-history-pushstate-popstate",
@@ -921,7 +986,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Aplikacija sama renderira sadržaj nakon pushStatea, dok popstate služi za reakciju na korisnikovo kretanje kroz postojeću povijest.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "mreza-sigurnost"
   },
   {
     "id": "frontend-066-content-security-policy",
@@ -935,7 +1001,8 @@
     ],
     "correctIndex": 1,
     "explanation": "CSP je dodatni obrambeni sloj koji može blokirati neodobrene skripte, ali ne zamjenjuje sigurno rukovanje nepouzdanim unosom.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "mreza-sigurnost"
   },
   {
     "id": "frontend-067-react-derived-state",
@@ -949,7 +1016,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Vrijednost koja se izravno i jeftino izvodi iz trenutnih propsa ne treba zaseban state jer bi stvorila dodatni izvor istine.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "react"
   },
   {
     "id": "frontend-085-async-vs-defer-scripts",
@@ -963,7 +1031,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Async skripte izvršavaju se čim se preuzmu i mogu prekinuti parsiranje, dok se defer skripte izvršavaju nakon parsiranja redoslijedom u dokumentu, prije DOMContentLoaded.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "performanse"
   },
   {
     "id": "frontend-086-passive-event-listener",
@@ -977,7 +1046,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Pasivni listener omogućuje pregledniku ranije započeti scroll; preventDefault u takvom handleru ne može otkazati zadanu radnju.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "dom-eventovi"
   },
   {
     "id": "frontend-087-css-clamp-fluid-value",
@@ -991,7 +1061,8 @@
     ],
     "correctIndex": 1,
     "explanation": "clamp(minimum, preferred, maximum) omogućuje fluidnu vrijednost uz donju i gornju granicu, bez nužno definiranih media query breakpointa.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "css-layout"
   },
   {
     "id": "frontend-088-react-useref-behavior",
@@ -1005,7 +1076,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Ref objekt zadržava isti identitet između rendera, a promjena njegova current svojstva ne pokreće render, pa je pogodan za DOM čvorove i podatke koji nisu dio prikaza.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "react"
   },
   {
     "id": "frontend-089-react-functional-state-update",
@@ -1019,7 +1091,8 @@
     ],
     "correctIndex": 0,
     "explanation": "React može grupirati ažuriranja, a vrijednost count u postojećem handleru ostaje snapshot; funkcionalni updateri obrađuju se redom nad prethodnim rezultatom.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "react"
   },
   {
     "id": "frontend-090-url-search-params",
@@ -1033,7 +1106,8 @@
     ],
     "correctIndex": 3,
     "explanation": "URLSearchParams nudi get, set i append te provodi form-url-encoded serijalizaciju, čime se izbjegavaju pogreške s razmacima i posebnim znakovima.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "mreza-sigurnost"
   },
   {
     "id": "frontend-091-service-worker-cache-versioning",
@@ -1047,7 +1121,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Cache-first vraća pronađenu lokalnu reprezentaciju prije mreže; verzioniranje i čišćenje u install/activate životnom ciklusu sprječavaju trajno posluživanje starih asseta.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "mreza-sigurnost"
   },
   {
     "id": "frontend-092-live-region-status",
@@ -1061,7 +1136,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Live regija koja postoji prije promjene omogućuje čitaču zaslona najaviti novi status bez prekidanja korisnikova fokusa; role='status' ima prikladno nenametljivo ponašanje.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "pristupacnost-testiranje"
   },
   {
     "id": "frontend-012-event-loop",
@@ -1075,7 +1151,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Event loop omogućuje da single-threaded JavaScript obrađuje asinkrone operacije - dok se čeka rezultat (npr. mrežni poziv), glavna nit nije blokirana, a callback se izvršava tek kad se stack isprazni.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "asinkroni-js"
   },
   {
     "id": "frontend-013-closure",
@@ -1089,7 +1166,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Kad unutarnja funkcija koristi varijable iz vanjske funkcije, ona zadržava referencu na taj opseg i nakon što se vanjska funkcija izvrši - to je osnova za mnoge JS obrasce (npr. privatno stanje, memoizacija).",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "js-jezik"
   },
   {
     "id": "frontend-023-microtasks-macrotasks",
@@ -1103,7 +1181,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Nakon svakog macrotaska, event loop prvo isprazni CIJELI red microtaskova prije nego uzme sljedeći macrotask - zato se npr. Promise.resolve().then() izvrši prije setTimeout(fn, 0).",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "asinkroni-js"
   },
   {
     "id": "frontend-046-grid-minmax-zero",
@@ -1117,7 +1196,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Grid trag s 1fr ima automatski minimum koji dugi sadržaj može proširiti izvan kontejnera; minmax(0, 1fr) dopušta skupljanje ispod min-content širine.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "css-layout"
   },
   {
     "id": "frontend-047-accessible-name-precedence",
@@ -1131,7 +1211,8 @@
     ],
     "correctIndex": 1,
     "explanation": "aria-labelledby ima prednost nad aria-labelom i sadržajem gumba, pa se ime uzima iz teksta referenciranog elementa.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "pristupacnost-testiranje"
   },
   {
     "id": "frontend-048-layout-thrashing",
@@ -1145,7 +1226,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Čitanje geometrije nakon promjene stila može prisilno isprazniti pending layout; grupiranje svih čitanja prije svih upisa smanjuje layout thrashing.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "performanse"
   },
   {
     "id": "frontend-049-react-memo-referential-equality",
@@ -1159,7 +1241,8 @@
     ],
     "correctIndex": 0,
     "explanation": "React.memo uspoređuje svaki prop pomoću referencijalne jednakosti; stabilniji API ili opravdani useMemo/useCallback mogu pomoći kada mjerenje pokaže stvaran problem.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "react"
   },
   {
     "id": "frontend-050-etag-conditional-request",
@@ -1173,7 +1256,8 @@
     ],
     "correctIndex": 2,
     "explanation": "ETag je validator reprezentacije: podudaranje u uvjetnom zahtjevu omogućuje odgovor 304 Not Modified i ponovnu uporabu lokalno spremljenog sadržaja.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "mreza-sigurnost"
   },
   {
     "id": "frontend-068-disabled-readonly-form-data",
@@ -1187,7 +1271,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Disabled kontrola nije uspješna form control i izostaje iz podataka forme; readonly vrijednost ostaje uključena u slanje.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "osnove-weba"
   },
   {
     "id": "frontend-069-fixed-containing-block-transform",
@@ -1201,7 +1286,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Određena svojstva, uključujući transform, mogu učiniti pretka containing blockom pa se fixed potomak pozicionira u odnosu na njega.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "css-layout"
   },
   {
     "id": "frontend-070-animation-compositor-properties",
@@ -1215,7 +1301,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Animacije transformacije i opacityja često ostaju na compositoru, dok promjene geometrije mogu zahtijevati layout i paint.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "performanse"
   },
   {
     "id": "frontend-071-postmessage-origin-validation",
@@ -1229,7 +1316,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Točan targetOrigin sprječava slanje pogrešnom odredištu, a validacija origin-a, izvora i payloada sprječava prihvaćanje poruka nepouzdanih stranica.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "mreza-sigurnost"
   },
   {
     "id": "frontend-072-typescript-never-exhaustiveness",
@@ -1243,7 +1331,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Nakon iscrpnog narrowinga ne bi smjela ostati vrijednost; assertNever obrazac zato otkriva novu varijantu koju switch nije obradio.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "js-jezik"
   },
   {
     "id": "frontend-073-indexeddb-transaction-lifetime",
@@ -1257,7 +1346,8 @@
     ],
     "correctIndex": 3,
     "explanation": "IndexedDB transakcije imaju životni vijek vezan uz svoj red zahtjeva; nepovezani async rad često treba završiti prije otvaranja transakcije ili u zasebnom koraku.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "mreza-sigurnost"
   },
   {
     "id": "frontend-074-react-start-transition",
@@ -1271,7 +1361,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Unos mora ostati neposredno responzivan, dok se nehitno renderiranje teških rezultata može označiti kao transition.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "react"
   },
   {
     "id": "frontend-075-testing-async-committed-ui",
@@ -1285,7 +1376,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Čekanje opažljivog završnog stanja uklanja vremenske pretpostavke i provjerava ponašanje koje korisnik stvarno vidi.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "pristupacnost-testiranje"
   },
   {
     "id": "frontend-093-css-cascade-layers",
@@ -1299,7 +1391,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Za normalne deklaracije prioritet cascade layera odlučuje prije specifičnosti; specifičnost se uspoređuje tek između pravila unutar layera istog prioriteta.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "css-layout"
   },
   {
     "id": "frontend-094-css-subgrid-alignment",
@@ -1313,7 +1406,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Subgrid ne stvara neovisne tragove na odabranoj osi, nego koristi tragove grida iznad sebe, pa se sadržaj ugniježđenih komponenti može zajednički poravnati.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "css-layout"
   },
   {
     "id": "frontend-095-weakmap-garbage-collection",
@@ -1327,7 +1421,8 @@
     ],
     "correctIndex": 1,
     "explanation": "WeakMap prihvaća objekte kao ključeve i ne drži ih snažno dostupnima; zato njegovi zapisi nisu enumerabilni i njihov životni vijek prati dostupnost ključa.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "js-jezik"
   },
   {
     "id": "frontend-096-react-interval-stale-closure",
@@ -1341,7 +1436,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Callback zatvara count iz rendera u kojem je effect postavljen; funkcionalni updater čita aktualnu prethodnu vrijednost, a cleanup sprječava da interval preživi unmount.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "react"
   },
   {
     "id": "frontend-097-ssr-hydration-consistency",
@@ -1355,7 +1451,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Hydration veže React uz postojeći serverov DOM i očekuje isti početni rezultat; vrijeme i browser-only podaci trebaju kontroliran početni fallback te naknadno ažuriranje na klijentu.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "react"
   },
   {
     "id": "frontend-098-shadow-dom-event-retargeting",
@@ -1369,7 +1466,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Retargeting čuva enkapsulaciju tako da vanjski kod vidi host kao target, dok composed određuje smije li događaj prijeći granicu, a composedPath otvorenog shadow root-a opisuje njegov put.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "dom-eventovi"
   },
   {
     "id": "frontend-099-preload-vs-prefetch",
@@ -1383,7 +1481,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Preload je snažan signal za resurs potreban na aktualnoj stranici i zahtijeva odgovarajući as atribut, dok je prefetch spekulativan signal za vjerojatnu buduću uporabu.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "mreza-sigurnost"
   },
   {
     "id": "frontend-100-worker-transferable-buffer",
@@ -1397,6 +1496,7 @@
     ],
     "correctIndex": 2,
     "explanation": "Transferable objekti poput ArrayBuffera mogu promijeniti vlasnika bez skupog kopiranja; nakon prijenosa pošiljatelj više ne može koristiti prenesenu memoriju.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "performanse"
   }
 ]

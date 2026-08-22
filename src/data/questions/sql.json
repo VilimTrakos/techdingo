@@ -11,7 +11,8 @@
     ],
     "correctIndex": 0,
     "explanation": "WHERE djeluje na pojedinačne retke prije GROUP BY, dok HAVING filtrira već grupirane rezultate (npr. rezultate agregatnih funkcija).",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "agregacija-i-window"
   },
   {
     "id": "sql-002-join-types",
@@ -25,7 +26,8 @@
     ],
     "correctIndex": 0,
     "explanation": "INNER JOIN = presjek; LEFT/RIGHT JOIN zadržavaju sve retke iz jedne strane i popunjavaju NULL gdje nema podudaranja; FULL OUTER JOIN kombinira oba.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "spajanje-i-skupovi"
   },
   {
     "id": "sql-004-primary-vs-unique",
@@ -39,7 +41,8 @@
     ],
     "correctIndex": 0,
     "explanation": "PRIMARY KEY jedinstveno identificira redak (implicitno NOT NULL + UNIQUE), a tablica ih smije imati samo jedan (može biti kompozitni); UNIQUE ograničenja mogu postojati na više stupaca.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "kljucevi-i-dizajn"
   },
   {
     "id": "sql-007-delete-truncate-drop",
@@ -53,7 +56,8 @@
     ],
     "correctIndex": 0,
     "explanation": "DELETE je DML naredba koja se logira po retku i može imati WHERE uvjet; TRUNCATE je brži DDL koji resetira tablicu ali zadržava strukturu; DROP potpuno uklanja tablicu (strukturu i podatke).",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "izmjene-podataka"
   },
   {
     "id": "sql-009-subquery",
@@ -67,7 +71,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Podupit je SELECT unutar drugog upita - može vraćati jednu vrijednost, listu vrijednosti ili cijelu tablicu, ovisno o kontekstu u kojem se koristi.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "podupiti-pogledi"
   },
   {
     "id": "sql-011-group-by",
@@ -81,7 +86,8 @@
     ],
     "correctIndex": 0,
     "explanation": "GROUP BY grupira retke po vrijednostima jednog ili više stupaca, a agregatne funkcije (COUNT, SUM...) se zatim računaju za svaku grupu posebno.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "agregacija-i-window"
   },
   {
     "id": "sql-012-aggregate-functions",
@@ -95,7 +101,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Agregatne funkcije sažimaju više redaka u jednu vrijednost, često u kombinaciji s GROUP BY.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "agregacija-i-window"
   },
   {
     "id": "sql-013-union-vs-union-all",
@@ -109,7 +116,8 @@
     ],
     "correctIndex": 0,
     "explanation": "UNION interno radi dodatnu operaciju uklanjanja duplikata (slično DISTINCT), što ga čini sporijim od UNION ALL kad znamo da duplikati ne smetaju ili ih nema.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "spajanje-i-skupovi"
   },
   {
     "id": "sql-014-foreign-key",
@@ -123,7 +131,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Strani ključ sprječava unos vrijednosti koja ne postoji u referenciranoj tablici (npr. narudžba ne može imati customer_id koji ne postoji u tablici kupaca).",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "kljucevi-i-dizajn"
   },
   {
     "id": "sql-021-case-when",
@@ -137,7 +146,8 @@
     ],
     "correctIndex": 0,
     "explanation": "CASE WHEN uvjet THEN vrijednost ... ELSE vrijednost END vraća različitu vrijednost ovisno o uvjetu, slično switch/if-else konstruktu u programskim jezicima.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "osnove-upita"
   },
   {
     "id": "sql-022-varchar-vs-char",
@@ -151,7 +161,8 @@
     ],
     "correctIndex": 0,
     "explanation": "CHAR(n) uvijek zauzima n znakova (popunjava razmacima), dok VARCHAR(n) zauzima onoliko koliko je stvarno upisano (do maksimuma n) - CHAR može biti brži za podatke fiksne duljine (npr. šifre), VARCHAR štedi prostor za varijabilne tekstove.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "tipovi-i-null"
   },
   {
     "id": "sql-025-ddl-vs-dml",
@@ -165,7 +176,8 @@
     ],
     "correctIndex": 1,
     "explanation": "DDL opisuje ili mijenja strukturu objekata baze, primjerice tablica, dok DML umeće, ažurira ili briše podatke spremljene u tim objektima.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "izmjene-podataka"
   },
   {
     "id": "sql-026-select-distinct",
@@ -179,7 +191,8 @@
     ],
     "correctIndex": 3,
     "explanation": "DISTINCT uklanja duplicirane kombinacije odabranih izraza samo iz rezultata upita; ne mijenja podatke u tablici.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "osnove-upita"
   },
   {
     "id": "sql-027-order-by-columns",
@@ -193,7 +206,8 @@
     ],
     "correctIndex": 0,
     "explanation": "ORDER BY primjenjuje ključeve slijeva nadesno: drugi stupac razrješava poredak samo među retcima koji imaju jednaku vrijednost prvog.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "osnove-upita"
   },
   {
     "id": "sql-028-like-wildcards",
@@ -207,7 +221,8 @@
     ],
     "correctIndex": 2,
     "explanation": "U LIKE uzorku % odgovara proizvoljno dugom nizu znakova, uključujući prazan niz, dok _ odgovara jednom znaku.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "osnove-upita"
   },
   {
     "id": "sql-029-between-boundaries",
@@ -221,7 +236,8 @@
     ],
     "correctIndex": 1,
     "explanation": "BETWEEN je uključiv na donjoj i gornjoj granici; pritom prva granica treba biti donja, a druga gornja vrijednost raspona.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "osnove-upita"
   },
   {
     "id": "sql-030-not-null",
@@ -235,7 +251,8 @@
     ],
     "correctIndex": 3,
     "explanation": "NOT NULL zabranjuje nepoznatu ili odsutnu SQL vrijednost NULL; ostale poslovne uvjete treba izraziti zasebnim CHECK ili drugim ograničenjem.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "kljucevi-i-dizajn"
   },
   {
     "id": "sql-031-column-default",
@@ -249,7 +266,8 @@
     ],
     "correctIndex": 0,
     "explanation": "DEFAULT daje vrijednost kad INSERT ne zada stupac ili zatraži DEFAULT; izričito uneseni NULL ostaje NULL ako ga ograničenja dopuštaju.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "kljucevi-i-dizajn"
   },
   {
     "id": "sql-032-check-null",
@@ -263,7 +281,8 @@
     ],
     "correctIndex": 2,
     "explanation": "U SQL trovrijednosnoj logici CHECK je zadovoljen kad uvjet nije FALSE, pa NULL može proizvesti UNKNOWN; obaveznost vrijednosti zato se izražava s NOT NULL.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "tipovi-i-null"
   },
   {
     "id": "sql-033-count-null",
@@ -277,7 +296,8 @@
     ],
     "correctIndex": 1,
     "explanation": "COUNT(*) broji retke neovisno o njihovim vrijednostima, dok COUNT(izraz) zanemaruje retke u kojima je rezultat izraza NULL.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "tipovi-i-null"
   },
   {
     "id": "sql-034-many-to-many",
@@ -291,7 +311,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Spojna tablica predstavlja svaku vezu jednim retkom; par vanjskih ključeva obično je kompozitni primarni ključ ili ima UNIQUE ograničenje.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "kljucevi-i-dizajn"
   },
   {
     "id": "sql-050-exact-decimal",
@@ -305,7 +326,8 @@
     ],
     "correctIndex": 1,
     "explanation": "DECIMAL i NUMERIC namijenjeni su točnim decimalnim vrijednostima, dok su FLOAT, REAL i DOUBLE PRECISION približni binarni tipovi koji mogu uvoditi pogreške zaokruživanja.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "tipovi-i-null"
   },
   {
     "id": "sql-051-date-vs-timestamp",
@@ -319,7 +341,8 @@
     ],
     "correctIndex": 3,
     "explanation": "DATE predstavlja kalendarski datum bez vremena dana i vremenske zone, pa jasnije modelira rođendan od vremenske oznake ili tekstualnog zapisa.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "tipovi-i-null"
   },
   {
     "id": "sql-052-surrogate-key",
@@ -333,7 +356,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Surogatni ključ, primjerice generirani ID, odvaja identitet retka od promjenjivih poslovnih podataka; stvarnu poslovnu jedinstvenost i dalje treba zaštititi odgovarajućim UNIQUE ograničenjem.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "kljucevi-i-dizajn"
   },
   {
     "id": "sql-053-on-delete-cascade",
@@ -347,7 +371,8 @@
     ],
     "correctIndex": 2,
     "explanation": "CASCADE prenosi brisanje na povezane podređene retke. Primjeren je kada njihov životni ciklus stvarno ovisi o roditelju, a treba ga koristiti oprezno zbog mogućeg velikog lanca brisanja.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "kljucevi-i-dizajn"
   },
   {
     "id": "sql-054-on-delete-set-null",
@@ -361,7 +386,8 @@
     ],
     "correctIndex": 1,
     "explanation": "SET NULL ne može završiti ako je ciljni stupac NOT NULL ili novo stanje krši drugo ograničenje; tada se brisanje roditelja odbija.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "kljucevi-i-dizajn"
   },
   {
     "id": "sql-055-intersect-except",
@@ -375,7 +401,8 @@
     ],
     "correctIndex": 3,
     "explanation": "INTERSECT računa presjek, a EXCEPT razliku skupova. INTERSECT ALL i EXCEPT ALL uzimaju u obzir i broj ponavljanja kada ih konkretni sustav podržava.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "spajanje-i-skupovi"
   },
   {
     "id": "sql-056-commit-rollback",
@@ -389,7 +416,8 @@
     ],
     "correctIndex": 0,
     "explanation": "COMMIT završava transakciju i čini njezine promjene trajnim. ROLLBACK odustaje od cijele transakcije, dok ROLLBACK TO SAVEPOINT poništava samo njezin kasniji dio.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "transakcije"
   },
   {
     "id": "sql-057-least-privilege-grant",
@@ -403,7 +431,8 @@
     ],
     "correctIndex": 2,
     "explanation": "GRANT treba ograničiti na nužne objekte i operacije. Uskraćivanje INSERT, UPDATE, DELETE i administrativnih ovlasti smanjuje posljedice pogreške ili kompromitacije računa.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "sigurnost"
   },
   {
     "id": "sql-075-insert-column-list",
@@ -417,7 +446,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Izričit popis stupaca jasno određuje kamo ide svaka vrijednost i omogućuje da se ostali stupci popune zadanim vrijednostima ili s NULL ako je dopušten. Time je naredba čitljivija i manje osjetljiva na promjene strukture tablice.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "izmjene-podataka"
   },
   {
     "id": "sql-076-update-without-where",
@@ -431,7 +461,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Bez WHERE uvjeta UPDATE obuhvaća svaki redak ciljne tablice. Zato prije masovne izmjene treba provjeriti uvjet odgovarajućim SELECT-om i, kada je moguće, raditi unutar kontrolirane transakcije.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "izmjene-podataka"
   },
   {
     "id": "sql-077-select-alias",
@@ -445,7 +476,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Alias mijenja oznaku stupca ili tablice samo unutar konteksta upita. AS iznos_poreza daje čitljiv naziv izračunatoj vrijednosti, ali ne mijenja definiciju izvorne tablice.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "osnove-upita"
   },
   {
     "id": "sql-078-coalesce",
@@ -459,7 +491,8 @@
     ],
     "correctIndex": 3,
     "explanation": "COALESCE redom provjerava argumente i vraća prvi koji nije NULL. U ovom primjeru prednost ima nadimak, zatim ime, a tekst 'Nepoznato' služi kao konačna zamjena.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "tipovi-i-null"
   },
   {
     "id": "sql-079-cross-join",
@@ -473,7 +506,8 @@
     ],
     "correctIndex": 2,
     "explanation": "CROSS JOIN kombinira svaki redak prve tablice sa svakim retkom druge. Zato rezultat ima m × n redaka i može vrlo brzo narasti ako je takvo kombiniranje nenamjerno.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "spajanje-i-skupovi"
   },
   {
     "id": "sql-080-cast-conversion",
@@ -487,7 +521,8 @@
     ],
     "correctIndex": 0,
     "explanation": "CAST radi eksplicitnu pretvorbu izraza za potrebe naredbe, primjerice teksta u broj. Ne mijenja shemu tablice, a ponašanje neuspjele pretvorbe i dostupni tipovi ovise o sustavu baze.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "tipovi-i-null"
   },
   {
     "id": "sql-081-and-or-precedence",
@@ -501,7 +536,8 @@
     ],
     "correctIndex": 3,
     "explanation": "NOT ima viši prioritet od AND, a AND viši od OR. Iako je navedeno tumačenje standardno, zagrade su poželjne jer jasno izražavaju namjeru i smanjuju rizik pogrešnog čitanja.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "osnove-upita"
   },
   {
     "id": "sql-082-current-date",
@@ -515,7 +551,8 @@
     ],
     "correctIndex": 1,
     "explanation": "CURRENT_DATE daje trenutačni datum prema vremenskom kontekstu sesije ili sustava baze, bez vremena dana. Detalji trenutka osvježavanja vrijednosti tijekom transakcije mogu se razlikovati među bazama.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "tipovi-i-null"
   },
   {
     "id": "sql-083-insert-select",
@@ -529,7 +566,8 @@
     ],
     "correctIndex": 2,
     "explanation": "INSERT ... SELECT prenosi skup redaka dobiven upitom u ciljnu tablicu. Broj i tipovi izraza iz SELECT-a moraju odgovarati navedenim ciljnim stupcima, a izvorni se retci time sami ne brišu.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "izmjene-podataka"
   },
   {
     "id": "sql-003-index",
@@ -543,7 +581,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Indeks (npr. B-tree) ubrzava čitanje po cijenu sporijih INSERT/UPDATE/DELETE operacija i dodatnog prostora na disku, pa se koristi na stupcima koji se često filtriraju ili sortiraju.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "indeksi-performanse"
   },
   {
     "id": "sql-005-normalization",
@@ -557,7 +596,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Normalizacija (1NF, 2NF, 3NF...) dijeli podatke tako da se svaka činjenica čuva samo na jednom mjestu, čime se smanjuje redundancija i rizik od nekonzistentnih podataka.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "kljucevi-i-dizajn"
   },
   {
     "id": "sql-006-transactions-acid",
@@ -571,7 +611,8 @@
     ],
     "correctIndex": 0,
     "explanation": "ACID garantira da transakcija ili u potpunosti uspije ili u potpunosti propadne (atomičnost), da baza ostaje u ispravnom stanju, da se paralelne transakcije ne miješaju (izolacija) i da su promjene trajne nakon commita.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "transakcije"
   },
   {
     "id": "sql-008-null-behavior",
@@ -585,7 +626,8 @@
     ],
     "correctIndex": 0,
     "explanation": "NULL znači 'nepoznato', pa x = NULL nikad nije TRUE (uvijek UNKNOWN) - za provjeru se mora koristiti IS NULL ili IS NOT NULL.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "tipovi-i-null"
   },
   {
     "id": "sql-010-subquery-vs-join",
@@ -599,7 +641,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Oboje mogu riješiti isti problem, ali JOIN direktno spaja retke iz više tablica u rezultat, dok se podupit često koristi za filtriranje (npr. WHERE id IN (subquery)) - izbor ovisi o čitljivosti i planu izvršavanja.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "spajanje-i-skupovi"
   },
   {
     "id": "sql-015-views",
@@ -613,7 +656,8 @@
     ],
     "correctIndex": 0,
     "explanation": "View se ponaša kao tablica pri čitanju, ali podaci se dohvaćaju iz osnovnog upita u trenutku pristupa - korisno za pojednostavljenje složenih upita ili ograničavanje pristupa podacima.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "podupiti-pogledi"
   },
   {
     "id": "sql-016-stored-procedure-vs-function",
@@ -627,7 +671,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Funkcije se ugrađuju u izraze (npr. SELECT mojaFunkcija(x)) i moraju vratiti vrijednost, dok su procedure samostalne rutine koje se pozivaju naredbom CALL/EXEC i mogu imati širi opseg (npr. upravljati transakcijama).",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "podupiti-pogledi"
   },
   {
     "id": "sql-018-sql-injection",
@@ -641,7 +686,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Kad se korisnički unos direktno spaja u SQL string, napadač može ubaciti vlastiti SQL kod; parametrizirani upiti odvajaju kod od podataka i tako to sprječavaju.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "sigurnost"
   },
   {
     "id": "sql-020-exists-vs-in",
@@ -655,7 +701,8 @@
     ],
     "correctIndex": 0,
     "explanation": "EXISTS vraća TRUE/FALSE čim pronađe prvi podudarajući redak (short-circuit), dok IN uspoređuje vrijednost sa cijelim skupom rezultata - izbor ovisi o veličini podataka i optimizatoru konkretne baze.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "podupiti-pogledi"
   },
   {
     "id": "sql-035-self-join",
@@ -669,7 +716,8 @@
     ],
     "correctIndex": 0,
     "explanation": "SELF JOIN istu tablicu navodi više puta pod različitim aliasima, što omogućuje povezivanje hijerarhijskih ili drugih međusobno povezanih redaka.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "spajanje-i-skupovi"
   },
   {
     "id": "sql-036-left-join-filter",
@@ -683,7 +731,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Nakon LEFT JOIN-a nepodudarni desni stupci imaju NULL. Predikat poput desna.aktivna = TRUE u WHERE-u nije TRUE za te retke pa ih uklanja, dok isti predikat u ON-u i dalje čuva lijeve retke.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "spajanje-i-skupovi"
   },
   {
     "id": "sql-037-not-in-null",
@@ -697,7 +746,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Zbog trovrijednosne logike usporedba s NULL nije TRUE ni FALSE. Za anti-spajanje je često sigurniji korelirani NOT EXISTS ili prethodno uklanjanje NULL vrijednosti iz podupita.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "tipovi-i-null"
   },
   {
     "id": "sql-038-conditional-aggregation",
@@ -711,7 +761,8 @@
     ],
     "correctIndex": 3,
     "explanation": "CASE pretvara svaki redak u 1 ili 0, a SUM ih zbraja unutar grupe; taj obrazac omogućuje više uvjetnih agregata u jednom upitu.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "agregacija-i-window"
   },
   {
     "id": "sql-039-cte-scope",
@@ -725,7 +776,8 @@
     ],
     "correctIndex": 0,
     "explanation": "CTE daje ime međurezultatu u opsegu jedne naredbe. Sam po sebi ne jamči materijalizaciju ni bolje performanse jer to ovisi o optimizatoru.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "podupiti-pogledi"
   },
   {
     "id": "sql-040-correlated-subquery",
@@ -739,7 +791,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Korelacija nastaje kada unutarnji upit ovisi o trenutačnom retku vanjskog upita; stvarni plan može izbjeći doslovno ponovno izvođenje optimizacijom.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "podupiti-pogledi"
   },
   {
     "id": "sql-041-window-ranking",
@@ -753,7 +806,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Povezani retci dobivaju isti RANK ili DENSE_RANK; RANK zatim preskače zauzete pozicije, dok DENSE_RANK nastavlja sljedećim cijelim rangom.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "agregacija-i-window"
   },
   {
     "id": "sql-042-transaction-savepoint",
@@ -767,7 +821,8 @@
     ],
     "correctIndex": 3,
     "explanation": "SAVEPOINT omogućuje ROLLBACK TO SAVEPOINT, čime se poništava kasniji dio rada, a transakcija ostaje aktivna za nastavak ili konačni COMMIT.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "transakcije"
   },
   {
     "id": "sql-043-composite-btree-index",
@@ -781,7 +836,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Redoslijed ključeva važan je kod B-tree indeksa: vodeći stupci najčešće određuju raspon skeniranja. Pojedini optimizatori imaju iznimke, ali indeks samo na (a, b) nije općenita zamjena za indeks na b.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "indeksi-performanse"
   },
   {
     "id": "sql-044-sargable-date-filter",
@@ -795,7 +851,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Izravni poluotvoreni raspon nad indeksiranim stupcem je sargabilan i uključuje cijelu godinu; funkcija ili pretvorba nad stupcem često otežava uporabu običnog indeksa.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "indeksi-performanse"
   },
   {
     "id": "sql-058-time-zone-instant",
@@ -809,7 +866,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Jednoznačan instant omogućuje pouzdanu konverziju prikaza, dok naziv zone čuva pravila poput ljetnog računanja vremena. Točna semantika time-zone tipova razlikuje se među bazama i mora se provjeriti.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "tipovi-i-null"
   },
   {
     "id": "sql-059-calendar-interval",
@@ -823,7 +881,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Kalendarske jedinice i fiksna trajanja nisu zamjenjivi. Ponašanje na kraju mjeseca i preko promjene ljetnog vremena treba provjeriti za konkretnu bazu i poslovno pravilo.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "tipovi-i-null"
   },
   {
     "id": "sql-060-set-operation-compatibility",
@@ -837,7 +896,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Skupovne operacije uparuju stupce po položaju, ne po nazivu. Broj stupaca mora biti jednak, a implementacija mora moći odrediti zajednički kompatibilan tip za svaki par.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "spajanje-i-skupovi"
   },
   {
     "id": "sql-061-deferrable-constraint",
@@ -851,7 +911,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Odgođena provjera korisna je za povezane izmjene koje tek zajedno stvaraju valjano stanje. Koje vrste ograničenja podržavaju odgodu razlikuje se među sustavima.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "kljucevi-i-dizajn"
   },
   {
     "id": "sql-062-select-for-update",
@@ -865,7 +926,8 @@
     ],
     "correctIndex": 1,
     "explanation": "FOR UPDATE služi obrascu pročitaj-pa-promijeni: konkurentni pisci istih redaka moraju čekati ili dobivaju pogrešku, ovisno o opcijama i implementaciji. Zaključavanje treba držati što kraće.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "transakcije"
   },
   {
     "id": "sql-063-explain-analyze",
@@ -879,7 +941,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Stvarno izvršavanje omogućuje usporedbu procjena i mjerenja, ali kod naredbi koje mijenjaju podatke može proizvesti stvarne promjene ako ih transakcija ne poništi. Sintaksa se razlikuje među bazama.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "indeksi-performanse"
   },
   {
     "id": "sql-064-nested-loop-join",
@@ -893,7 +956,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Nested loop ponavlja unutarnji dohvat za retke vanjskog ulaza. To je učinkovito uz malo ponavljanja i brz lookup, ali može biti vrlo skupo kada su oba ulaza velika.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "indeksi-performanse"
   },
   {
     "id": "sql-065-materialized-view",
@@ -907,7 +971,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Materijalizacija mijenja svježinu za brzinu čitanja. Način, cijena i mogućnost konkurentnog ili inkrementalnog osvježavanja ovise o konkretnoj bazi.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "podupiti-pogledi"
   },
   {
     "id": "sql-066-partition-pruning",
@@ -921,7 +986,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Pruning smanjuje količinu podataka za skeniranje. Najbolje radi kada se predikati upita mogu povezati s pravilima particioniranja; sam indeks nije isto što i pruning.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "indeksi-performanse"
   },
   {
     "id": "sql-084-select-alias-where",
@@ -935,7 +1001,8 @@
     ],
     "correctIndex": 1,
     "explanation": "U logičkom redoslijedu obrade FROM i WHERE prethode izračunu SELECT liste. Zato se alias SELECT izraza obično može koristiti u ORDER BY, ali ne i u WHERE klauzuli iste razine.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "osnove-upita"
   },
   {
     "id": "sql-085-nullif-zero",
@@ -949,7 +1016,8 @@
     ],
     "correctIndex": 3,
     "explanation": "NULLIF(a, b) vraća NULL kada su a i b jednaki. Ako je broj_narudzbi nula, nazivnik postaje NULL i aritmetički rezultat je NULL; po potrebi se završni NULL može posebno obraditi s COALESCE.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "tipovi-i-null"
   },
   {
     "id": "sql-086-lag-lead",
@@ -963,7 +1031,8 @@
     ],
     "correctIndex": 0,
     "explanation": "LAG dohvaća vrijednost iz ranijeg, a LEAD iz kasnijeg retka unutar particije i poretka definiranog u OVER klauzuli. Korisne su, primjerice, za računanje promjene u odnosu na prethodni dan.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "agregacija-i-window"
   },
   {
     "id": "sql-087-window-partition",
@@ -977,7 +1046,8 @@
     ],
     "correctIndex": 2,
     "explanation": "PARTITION BY ponovno pokreće izračun prozorske funkcije za svaku logičku skupinu. Za razliku od GROUP BY, ulazni retci ostaju zasebni u rezultatu.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "agregacija-i-window"
   },
   {
     "id": "sql-088-grouping-sets",
@@ -991,7 +1061,8 @@
     ],
     "correctIndex": 0,
     "explanation": "GROUPING SETS omogućuje izračun više grupnih presjeka u jednom rezultatu. ROLLUP i CUBE sažeti su oblici za česte hijerarhijske odnosno kombinatorne skupove grupiranja.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "agregacija-i-window"
   },
   {
     "id": "sql-089-keyset-pagination",
@@ -1005,7 +1076,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Keyset pristup koristi uvjet nad vrijednostima posljednjeg retka, primjerice (created_at, id) < (?, ?), uz odgovarajući indeks i deterministički poredak. Nedostatak mu je teži proizvoljan skok na udaljenu stranicu.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "indeksi-performanse"
   },
   {
     "id": "sql-090-collation",
@@ -1019,7 +1091,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Collation određuje kako se znakovi uspoređuju i uređuju. Rezultat i mogućnost uporabe određenog indeksa mogu ovisiti o podudarnosti collationa upita i indeksa; dostupna pravila ovise o bazi.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "tipovi-i-null"
   },
   {
     "id": "sql-091-generated-column",
@@ -1033,7 +1106,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Generirani stupac centralizira izvedenu vrijednost poput ukupne cijene ili normaliziranog teksta. Dopušteni izrazi, način spremanja i mogućnost indeksiranja razlikuju se među sustavima.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "kljucevi-i-dizajn"
   },
   {
     "id": "sql-092-constraint-vs-trigger",
@@ -1047,7 +1121,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Deklarativna ograničenja izravno opisuju valjano stanje podataka i vidljiva su alatima i optimizatoru. Triggeri su opravdani za složeniju logiku, ali mogu imati skriven redoslijed i nuspojave.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "kljucevi-i-dizajn"
   },
   {
     "id": "sql-093-atomic-upsert",
@@ -1061,7 +1136,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Jedinstveno ograničenje i atomska naredba za umetanje ili obradu konflikta zatvaraju utrku između provjere i upisa. Konkretna sintaksa, primjerice ON CONFLICT ili MERGE, i detalji konkurentnosti ovise o bazi.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "izmjene-podataka"
   },
   {
     "id": "sql-017-clustered-vs-nonclustered-index",
@@ -1075,7 +1151,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Budući da clustered indeks određuje fizički poredak podataka, tablica može imati samo jedan; non-clustered indeksi se mogu dodavati u većem broju, ali zahtijevaju dodatni skok (lookup) do stvarnog retka.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "indeksi-performanse"
   },
   {
     "id": "sql-019-normal-forms",
@@ -1089,7 +1166,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Svaka viša normalna forma gradi se na prethodnoj i dodatno smanjuje redundanciju/anomalije, uz kompromis da upiti mogu zahtijevati više JOIN-ova.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "kljucevi-i-dizajn"
   },
   {
     "id": "sql-023-window-functions-vs-group-by",
@@ -1103,7 +1181,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Window funkcija (npr. SUM() OVER (...)) računa vrijednost nad 'prozorom' povezanih redaka bez sažimanja svakog ulaznog retka u jedan grupni rezultat, za razliku od GROUP BY koji retke grupira i kolabira u sažete redove.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "agregacija-i-window"
   },
   {
     "id": "sql-024-isolation-levels",
@@ -1117,7 +1196,8 @@
     ],
     "correctIndex": 1,
     "explanation": "READ COMMITTED ne dopušta čitanje promjena koje druga transakcija još nije potvrdila (commitala); više razine izolacije (REPEATABLE READ, SERIALIZABLE) dodatno sprječavaju i druge anomalije poput non-repeatable reada i phantom reada.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "transakcije"
   },
   {
     "id": "sql-045-recursive-cte",
@@ -1131,7 +1211,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Početni dio daje prvi skup redaka, a rekurzivni dio iterativno proizvodi sljedeće. Ispravan odnos ili uvjet završetka nužan je da upit ne širi ciklus unedogled.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "podupiti-pogledi"
   },
   {
     "id": "sql-046-window-rows-range",
@@ -1145,7 +1226,8 @@
     ],
     "correctIndex": 3,
     "explanation": "ROWS broji pojedinačne pozicije, dok RANGE promatra vrijednosti ORDER BY izraza; retci jednaki po tim izrazima čine peer grupu i mogu zajedno ući u okvir.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "agregacija-i-window"
   },
   {
     "id": "sql-047-covering-index",
@@ -1159,7 +1241,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Kad su svi potrebni podaci dostupni iz indeksa, planer može izbjeći ili smanjiti čitanje tabličnih stranica; stvarna korist ovisi o sustavu, vidljivosti redaka i obrascu upita.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "indeksi-performanse"
   },
   {
     "id": "sql-048-planner-cardinality",
@@ -1173,7 +1256,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Planer uspoređuje troškove mogućih planova na temelju procijenjenih količina podataka. Zastarjele statistike ili korelirani stupci mogu ozbiljno iskriviti te procjene.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "indeksi-performanse"
   },
   {
     "id": "sql-049-serializable-write-skew",
@@ -1187,7 +1271,8 @@
     ],
     "correctIndex": 1,
     "explanation": "SERIALIZABLE zahtijeva ishod ekvivalentan nekom serijskom izvršavanju. Sustav zato može prekinuti jednu konfliktnu transakciju, a aplikacija mora ponoviti cijelu transakciju.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "transakcije"
   },
   {
     "id": "sql-067-composite-fk-match-full",
@@ -1201,7 +1286,8 @@
     ],
     "correctIndex": 3,
     "explanation": "MATCH FULL sprječava djelomično popunjenu kompozitnu referencu: ili je cijela referenca odsutna ili svi stupci zajedno moraju odgovarati referenciranom ključu.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "kljucevi-i-dizajn"
   },
   {
     "id": "sql-068-deadlock-handling",
@@ -1215,7 +1301,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Sustavi obično otkrivaju ciklus čekanja i prekidaju jednu transakciju. Kratke transakcije, isti redoslijed pribavljanja zaključavanja i retry cijele transakcije čine obradu robusnijom.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "transakcije"
   },
   {
     "id": "sql-069-lost-update",
@@ -1229,7 +1316,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Obrazac pročitaj-izračunaj-upiši mora zaštititi pretpostavljeno staro stanje. Atomarna izmjena u bazi ili provjera verzije odnosno zaključavanje sprječava tiho prepisivanje tuđeg rezultata.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "transakcije"
   },
   {
     "id": "sql-070-join-algorithms",
@@ -1243,7 +1331,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Hash join troši memoriju za hash strukturu i može prelijevati na disk, dok merge join treba odgovarajući poredak, dobiven indeksom ili sortiranjem. Izbor ovisi o veličini, memoriji i dostupnom poretku.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "indeksi-performanse"
   },
   {
     "id": "sql-071-plan-disk-spill",
@@ -1257,7 +1346,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Disk spill često upućuje na velik međurezultat ili premalo radne memorije. Treba smanjiti retke ranijim filtriranjem, razmotriti prikladan indeks ili oprezno podesiti memoriju; nazivi metrika ovise o bazi.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "indeksi-performanse"
   },
   {
     "id": "sql-072-partial-index",
@@ -1271,7 +1361,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Manji specijalizirani indeks štedi prostor i trošak održavanja za često tražen podskup. Podrška i sposobnost dokazivanja podudarnosti predikata ovise o optimizatoru konkretne baze.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "indeksi-performanse"
   },
   {
     "id": "sql-073-partition-key-skew",
@@ -1285,7 +1376,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Dobar ključ prati obrasce filtriranja i ravnomjerno raspoređuje podatke i upise. Granularnost, broj particija, jedinstvena ograničenja i dostupne strategije razlikuju se među bazama.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "indeksi-performanse"
   },
   {
     "id": "sql-074-row-level-security",
@@ -1299,7 +1391,8 @@
     ],
     "correctIndex": 1,
     "explanation": "RLS provodi predikat pristupa unutar baze i može biti dodatni sloj obrane za višekorisničke podatke. Ne zamjenjuje autentikaciju, pažljivu dodjelu GRANT ovlasti ni sigurnost aplikacije.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "sigurnost"
   },
   {
     "id": "sql-094-join-fanout-aggregation",
@@ -1313,7 +1406,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Ako narudžba ima tri stavke i dvije uplate, zajednički JOIN može proizvesti šest kombinacija. Zbroj iz jedne podređene tablice tada se ponavlja za retke druge, pa preagregiranje sprječava fanout pogrešku.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "spajanje-i-skupovi"
   },
   {
     "id": "sql-095-mvcc-long-transaction",
@@ -1327,7 +1421,8 @@
     ],
     "correctIndex": 0,
     "explanation": "MVCC čitateljima daje konzistentnu snimku bez blokiranja svakog pisca, ali stare verzije moraju ostati dostupne dok ih aktivna snimka možda treba. Duga transakcija zato može odgoditi vacuum ili drugo čišćenje i pridonijeti bloatu.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "transakcije"
   },
   {
     "id": "sql-096-wal-checkpoint",
@@ -1341,7 +1436,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Write-ahead pravilo omogućuje potvrdu transakcije nakon sigurnog zapisa potrebnog loga, bez trenutnog zapisivanja svake izmijenjene stranice. Checkpoint ograničava koliko se loga mora ponovno primijeniti nakon pada, uz detalje ovisne o sustavu.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "transakcije"
   },
   {
     "id": "sql-097-online-not-null-migration",
@@ -1355,7 +1451,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Postupna migracija odvaja promjenu sheme od dugog backfilla i omogućuje kompatibilnost stare i nove verzije aplikacije. Točne mogućnosti online validacije i zaključavanja treba provjeriti za konkretnu bazu.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "sigurnost"
   },
   {
     "id": "sql-098-lateral-join",
@@ -1369,7 +1466,8 @@
     ],
     "correctIndex": 2,
     "explanation": "LATERAL se logički vrednuje u kontekstu retka prethodne FROM stavke. Time elegantno izražava korelirane tablične rezultate, poput TOP-N djece po roditelju; naziv i sintaksa razlikuju se među bazama.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "spajanje-i-skupovi"
   },
   {
     "id": "sql-099-two-phase-commit",
@@ -1383,7 +1481,8 @@
     ],
     "correctIndex": 0,
     "explanation": "U prepare fazi sudionik obećava da kasnije može provesti konačnu odluku, a u drugoj fazi dobiva COMMIT ili ROLLBACK. To daje atomarnost među sudionicima, ali može blokirati i zahtijeva oporavak neodlučenih transakcija.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "transakcije"
   },
   {
     "id": "sql-100-lossless-dependency",
@@ -1397,6 +1496,7 @@
     ],
     "correctIndex": 3,
     "explanation": "Dobra dekompozicija ne smije izgubiti informaciju niti stvarati spurious tuples pri rekonstrukciji. Ako uz to čuva ovisnosti, ključna se pravila mogu provoditi lokalno nad nastalim relacijama, bez skupog JOIN-a.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "kljucevi-i-dizajn"
   }
 ]

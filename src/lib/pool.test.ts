@@ -10,6 +10,7 @@ function makeQuestions(count: number, topic = 'test', difficulty?: Difficulty): 
   return Array.from({ length: count }, (_, i) => ({
     id: `${topic}-${i}`,
     topic,
+    unitId: 'test-unit',
     question: `Pitanje ${i}?`,
     options: ['a', 'b', 'c', 'd'] as [string, string, string, string],
     correctIndex: (i % 4) as 0 | 1 | 2 | 3,

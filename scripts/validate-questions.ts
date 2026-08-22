@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { basename, join } from 'node:path';
 import { QuestionArraySchema } from '../src/data/schema';
+import { getUnit, getUnitsForTopic } from '../src/data/units';
 import { MIN_SESSION_SIZE } from '../src/lib/pool';
 
 const QUESTIONS_DIR = join(import.meta.dirname, '..', 'src', 'data', 'questions');
@@ -43,13 +44,27 @@ function main(): void {
       );
     }
 
+    const unitCounts = new Map<string, number>();
     for (const q of parsed.data) {
       if (q.topic !== expectedTopic) {
         errors.push(`Pitanje "${q.id}" ima topic "${q.topic}", a nalazi se u datoteci "${file}" (očekivano "${expectedTopic}").`);
       }
+      if (!getUnit(expectedTopic, q.unitId)) {
+        errors.push(`Pitanje "${q.id}" ima unitId "${q.unitId}" koji ne postoji u src/data/units.ts za temu "${expectedTopic}".`);
+      } else {
+        unitCounts.set(q.unitId, (unitCounts.get(q.unitId) ?? 0) + 1);
+      }
       const existing = idToFiles.get(q.id) ?? [];
       existing.push(file);
       idToFiles.set(q.id, existing);
+    }
+
+    // Svaka registrirana cjelina mora imati barem jedno pitanje - prazna
+    // cjelina bi na putu učenja bila mrtav, neprelaziv čvor.
+    for (const unit of getUnitsForTopic(expectedTopic)) {
+      if (!unitCounts.has(unit.id)) {
+        errors.push(`Cjelina "${unit.id}" iz src/data/units.ts nema nijedno pitanje u "${file}".`);
+      }
     }
 
     if (errors.length > 0) {

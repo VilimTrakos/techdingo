@@ -11,7 +11,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Big-O opisuje asimptotski rast resursa u odnosu na veličinu ulaza. Ne daje točno vrijeme jer ono ovisi o implementaciji, hardveru i podacima.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "algoritmi"
   },
   {
     "id": "general-002-array-index-access",
@@ -25,7 +26,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Adresa elementa računa se iz početne adrese polja i indeksa, pa pristup ne zahtijeva prolazak kroz prethodne elemente.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "strukture-podataka"
   },
   {
     "id": "general-003-stack-lifo",
@@ -39,7 +41,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Stog koristi LIFO redoslijed: operacija push dodaje na vrh, a pop uklanja element s vrha.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "strukture-podataka"
   },
   {
     "id": "general-004-queue-fifo",
@@ -53,7 +56,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Običan red koristi FIFO poredak: elementi se dodaju na kraj, a uklanjaju s početka.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "strukture-podataka"
   },
   {
     "id": "general-005-set-uniqueness",
@@ -67,7 +71,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Skup predstavlja kolekciju jedinstvenih elemenata i posebno je koristan za brzu provjeru pripadnosti i uklanjanje duplikata.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "strukture-podataka"
   },
   {
     "id": "general-006-encapsulation",
@@ -81,7 +86,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Enkapsulacija ograničava izravnu ovisnost korisnika objekta o njegovoj implementaciji i omogućuje čuvanje valjanih invarijanti stanja.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "oop-dizajn"
   },
   {
     "id": "general-007-git-commit",
@@ -95,7 +101,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Commit bilježi određeno stanje projekta i njegove roditeljske commitove, čime nastaje povijest koju je moguće pregledavati, uspoređivati i dijeliti.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "git-verzioniranje"
   },
   {
     "id": "general-008-unit-test",
@@ -109,7 +116,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Jedinični test daje brzu i preciznu povratnu informaciju o malom dijelu ponašanja. Integraciju s bazama, mrežom i servisima pokrivaju druge vrste testova.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "testiranje-kvaliteta"
   },
   {
     "id": "general-009-intention-revealing-names",
@@ -123,7 +131,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Naziv treba objasniti ulogu podatka ili ponašanja. Jasni nazivi smanjuju potrebu za komentarima koji samo prepričavaju kod.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "oop-dizajn"
   },
   {
     "id": "general-010-functional-vs-nonfunctional",
@@ -137,7 +146,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Obje vrste oblikuju dizajn: funkcionalni zahtjevi definiraju sposobnosti sustava, a nefunkcionalni očekivanu kvalitetu i operativna ograničenja.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "sustavi-koncepti"
   },
   {
     "id": "general-026-linked-list-access",
@@ -151,7 +161,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Povezana lista nema adresnu aritmetiku za proizvoljan indeks kao polje. Do željenog čvora dolazi se prolaskom kroz prethodne čvorove, iako umetanje uz već poznat čvor može biti O(1).",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "strukture-podataka"
   },
   {
     "id": "general-027-map-key-value",
@@ -165,7 +176,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Mapa povezuje svaki ključ s vrijednošću, primjerice korisnički ID s korisničkim zapisom. Implementacija može biti hash tablica, uravnoteženo stablo ili druga struktura, pa složenost i poredak ovise o izboru.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "strukture-podataka"
   },
   {
     "id": "general-028-recursion-base-case",
@@ -179,7 +191,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Bazni slučaj zaustavlja rekurzivno razlaganje problema. Ako ga nema ili mu se ulaz ne približava, pozivi se nastavljaju dok se ne iscrpi raspoloživi stog ili drugi resurs.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "algoritmi"
   },
   {
     "id": "general-029-immutability",
@@ -193,7 +206,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Nepromjenjive vrijednosti smanjuju broj mogućih promjena dijeljenog stanja, što olakšava zaključivanje, testiranje i sigurno dijeljenje. Cijena može biti stvaranje dodatnih objekata, ovisno o implementaciji.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "oop-dizajn"
   },
   {
     "id": "general-030-git-branch-reference",
@@ -207,7 +221,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Grana je lagana referenca na vrh jedne razvojne linije, a ne fizička kopija projekta. Tag se češće koristi kao stabilna oznaka određenog commita.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "git-verzioniranje"
   },
   {
     "id": "general-031-code-review",
@@ -221,7 +236,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Pregled koda daje ljudsku provjeru namjere, dizajna, čitljivosti i rizika te širi znanje u timu. Nadopunjuje automatizirane provjere, ali ih ne zamjenjuje niti može dokazati potpunu ispravnost.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "testiranje-kvaliteta"
   },
   {
     "id": "general-032-compiler-interpreter",
@@ -235,7 +251,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Granica nije uvijek stroga: virtualni strojevi, bytecode i JIT prevođenje kombiniraju tehnike. Ključna razlika je kako i kada se izvorni program pretvara u oblik koji se izvršava.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "sustavi-koncepti"
   },
   {
     "id": "general-033-finally-cleanup",
@@ -249,7 +266,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Finally je prikladan za oslobađanje resursa poput zaključavanja ili ručno otvorenih datoteka. Mnogi jezici nude i sigurnije konstrukte za upravljanje resursima koje se oslanjaju na isti princip determinističkog čišćenja.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "sustavi-koncepti"
   },
   {
     "id": "general-034-semantic-versioning",
@@ -263,7 +281,8 @@
     ],
     "correctIndex": 2,
     "explanation": "SemVer koristi PATCH za kompatibilne ispravke, MINOR za novu unatrag kompatibilnu funkcionalnost, a MAJOR za nekompatibilnu promjenu javnog API-ja. To je obećana konvencija projekta, ne automatsko jamstvo alata.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "git-verzioniranje"
   },
   {
     "id": "general-011-binary-search",
@@ -277,7 +296,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Broj kandidata prepolovi se u svakom koraku, pa je potrebno približno log₂(n) usporedbi. Pretpostavka učinkovitog pristupa po indeksu važna je za ukupnu složenost.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "algoritmi"
   },
   {
     "id": "general-012-hash-collision",
@@ -291,7 +311,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Broj mogućih ključeva veći je od broja položaja pa su kolizije očekivane. Ispravna hash tablica razlikuje ključeve i nakon kolizije.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "strukture-podataka"
   },
   {
     "id": "general-013-bfs-queue",
@@ -305,7 +326,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Čvorovi otkriveni na jednoj razini obrađuju se prije čvorova sljedeće razine. Skup posjećenih čvorova zasebno sprječava beskonačno ponavljanje kroz cikluse.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "algoritmi"
   },
   {
     "id": "general-014-composition-over-inheritance",
@@ -319,7 +341,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Kompozicija sastavlja objekt od manjih suradnika i omogućuje neovisnu zamjenu ponašanja bez stvaranja krhke hijerarhije nasljeđivanja.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "oop-dizajn"
   },
   {
     "id": "general-015-single-responsibility",
@@ -333,7 +356,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Promjena pravila validacije, pohrane, PDF formata ili slanja e-maila može zasebno mijenjati istu klasu. Odgovornosti treba razdvojiti prema razlozima promjene.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "oop-dizajn"
   },
   {
     "id": "general-016-liskov-substitution",
@@ -347,7 +371,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Podtip mora poštovati ugovor baznog tipa, uključujući očekivane rezultate i invarijante. Samo sintaktičko nasljeđivanje nije dovoljno.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "oop-dizajn"
   },
   {
     "id": "general-017-git-merge-vs-rebase",
@@ -361,7 +386,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Rebase može dati linearniju povijest, ali prepisuje commitove pa ga treba oprezno koristiti nad već dijeljenom poviješću. Merge čuva postojeće commitove.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "git-verzioniranje"
   },
   {
     "id": "general-018-integration-test",
@@ -375,7 +401,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Integracijski test otkriva probleme u ugovorima i povezivanju komponenti koje izolirani jedinični testovi ne mogu vidjeti.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "testiranje-kvaliteta"
   },
   {
     "id": "general-019-latency-vs-throughput",
@@ -389,7 +416,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Sustav može imati visoku ukupnu propusnost, a ipak lošu latenciju pojedinog zahtjeva. Obje metrike treba mjeriti u odnosu na očekivano opterećenje.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "sustavi-koncepti"
   },
   {
     "id": "general-020-cohesion-and-coupling",
@@ -403,7 +431,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Kohezivan modul ima jasnu svrhu, a slaba spregnutost ograničava širenje promjena i olakšava neovisno testiranje i zamjenu modula.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "oop-dizajn"
   },
   {
     "id": "general-035-stable-sort",
@@ -417,7 +446,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Stabilnost je važna kada zapisi imaju dodatne podatke ili kada se sortira u više koraka. Nakon stabilnog sortiranja po novom ključu ostaje očuvan prethodni poredak među jednakim ključevima.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "algoritmi"
   },
   {
     "id": "general-036-binary-heap",
@@ -431,7 +461,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Korijen heapa sadrži minimum ili maksimum, pa je njegov pregled konstantan. Umetanje i uklanjanje popravljaju svojstvo heapa duž visine stabla, koja je O(log n); proizvoljno pretraživanje nije glavna prednost heapa.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "strukture-podataka"
   },
   {
     "id": "general-037-dependency-inversion",
@@ -445,7 +476,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Poslovna pravila ne bi trebala biti čvrsto vezana uz konkretnu bazu, mrežni klijent ili datotečni sustav. Dependency injection je česta tehnika povezivanja implementacija s apstrakcijama, ali nije samo načelo.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "oop-dizajn"
   },
   {
     "id": "general-038-stub-vs-mock",
@@ -459,7 +491,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Oba su test doubles, ali stub tipično kontrolira ulaz suradnika, dok mock postavlja očekivanja o komunikaciji. Terminologija pojedinih biblioteka razlikuje se, pa je važnije jasno opisati ulogu zamjene.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "testiranje-kvaliteta"
   },
   {
     "id": "general-039-race-condition",
@@ -473,7 +506,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Ako operacije nad dijeljenim stanjem nisu pravilno sinkronizirane, različita ispreplitanja mogu dati različite ili nevaljane rezultate. Rješenja uključuju zaključavanja, atomske operacije, nepromjenjive poruke ili uklanjanje dijeljenog mutabilnog stanja.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "sustavi-koncepti"
   },
   {
     "id": "general-040-idempotent-operation",
@@ -487,7 +521,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Idempotentnost olakšava sigurno ponavljanje nakon timeouta ili prekida veze. Odgovor i sporedni metapodaci ne moraju nužno biti identični, ali namjeravani učinak na stanje ne smije se nekontrolirano umnožavati.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "sustavi-koncepti"
   },
   {
     "id": "general-041-cache-invalidation",
@@ -501,7 +536,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Cache je kopija čija se svježina mora uskladiti s izvorom istine. TTL ograničava trajanje zastarjelosti, a obrasci poput cache-aside zahtijevaju pažljivo ažuriranje ili uklanjanje zapisa nakon promjene.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "sustavi-koncepti"
   },
   {
     "id": "general-042-process-vs-thread",
@@ -515,7 +551,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Odvajanje procesa daje jaču izolaciju uz skuplju komunikaciju, dok niti lakše dijele podatke, ali zato zahtijevaju sinkronizaciju. Točni resursi i raspoređivanje ovise o operacijskom sustavu i runtimeu.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "sustavi-koncepti"
   },
   {
     "id": "general-043-observability-signals",
@@ -529,7 +566,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Metrika često otkriva da problem postoji, trag pokazuje gdje zahtjev troši vrijeme ili griješi, a strukturirani log daje detaljan kontekst događaja. Korelacijski identifikatori pomažu povezati te signale.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "sustavi-koncepti"
   },
   {
     "id": "general-044-circuit-breaker",
@@ -543,7 +581,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Otvoreni circuit breaker sprječava gomilanje sporih poziva prema već problematičnoj ovisnosti. Nakon odmaka prelazi u probno stanje; timeouti, ograničeni retry i fallback politike nadopunjuju obrazac.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "sustavi-koncepti"
   },
   {
     "id": "general-021-amortized-dynamic-array",
@@ -557,7 +596,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Ako se kapacitet primjerice udvostručuje, skupa proširenja događaju se sve rjeđe. Prosječni trošak po operaciji kroz dugi niz dodavanja ostaje konstantan.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "strukture-podataka"
   },
   {
     "id": "general-022-dijkstra-negative-weights",
@@ -571,7 +611,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Dijkstra se oslanja na to da nastavak puta ne može smanjiti već potvrđenu najmanju udaljenost. Negativne težine krše tu pretpostavku; prikladan je primjerice Bellman-Ford.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "algoritmi"
   },
   {
     "id": "general-023-git-bisect",
@@ -585,7 +626,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Svaka provjera približno prepolovi preostali raspon kandidata, pa je potrebno oko O(log n) testiranja umjesto linearnog pregleda povijesti.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "git-verzioniranje"
   },
   {
     "id": "general-024-property-based-testing",
@@ -599,7 +641,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Umjesto provjere samo poznatih izlaza, definiraju se invarijante koje moraju vrijediti za širok raspon podataka. Shrinking pomaže pronaći najmanji ulaz koji reproducira grešku.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "testiranje-kvaliteta"
   },
   {
     "id": "general-025-capacity-estimation",
@@ -613,7 +656,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Dan ima 86.400 sekundi, pa je 12 milijuna zahtjeva oko 139 RPS; faktor vrha daje oko 556 RPS. Množenje broja odgovora s 20 KB daje približno 240 GB dnevno prije protokolskog overheada.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "sustavi-koncepti"
   },
   {
     "id": "general-045-topological-sort",
@@ -627,7 +671,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Kahnov algoritam opetovano uklanja čvorove ulaznog stupnja nula. Ako nijedan takav čvor ne ostane, a dio grafa nije obrađen, taj dio sadrži ciklus; topološki poredak postoji samo za DAG.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "algoritmi"
   },
   {
     "id": "general-046-union-find-optimization",
@@ -641,7 +686,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Union by rank ili size priključuje manje stablo većemu, a path compression pri find operaciji približava posjećene čvorove korijenu. Zajedno daju amortizirano O(α(n)) po operaciji.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "strukture-podataka"
   },
   {
     "id": "general-047-consistent-hashing",
@@ -655,7 +701,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Ključevi i čvorovi raspoređuju se po kružnom prostoru, pa promjena članstva utječe na ograničeni raspon. Virtualni čvorovi pomažu ravnomjernijoj raspodjeli i lakšem ponderiranju kapaciteta.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "sustavi-koncepti"
   },
   {
     "id": "general-048-cap-partition",
@@ -669,7 +716,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Partition tolerance opisuje realnost prekida komunikacije među čvorovima. Tijekom takvog prekida sustav bira odbiti ili odgoditi dio zahtjeva radi konzistentnosti, ili odgovoriti uz rizik da replike privremeno odstupaju.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "sustavi-koncepti"
   },
   {
     "id": "general-049-amdahls-law",
@@ -683,7 +731,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Uz beskonačno ubrzanje paralelnog dijela ostaje serijskih 0,2 početnog vremena. Maksimalno ubrzanje zato je 1 / 0,2 = 5, bez obzira na broj dodatnih procesora.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "algoritmi"
   },
   {
     "id": "general-050-bloom-filter",
@@ -697,6 +746,7 @@
     ],
     "correctIndex": 0,
     "explanation": "Bloomov filter postavlja bitove pomoću više hash funkcija. Ako neki potreban bit nije postavljen, element sigurno nije dodan; ako su svi postavljeni, možda ih je postavila kombinacija drugih elemenata, pa je potrebna provjera u stvarnom spremištu.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "strukture-podataka"
   }
 ]

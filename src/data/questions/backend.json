@@ -11,7 +11,8 @@
     ],
     "correctIndex": 0,
     "explanation": "REST (Representational State Transfer) definira principe poput korištenja HTTP metoda za operacije nad resursima, statelessness-a i standardiziranih odgovora (najčešće JSON).",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "http-api"
   },
   {
     "id": "backend-003-http-methods",
@@ -25,7 +26,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Konvencija (ne prisila) HTTP metoda: GET = read, POST = create, PUT = full update/replace, PATCH = partial update, DELETE = remove - PUT i DELETE su tipično idempotentni, POST obično nije.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "http-api"
   },
   {
     "id": "backend-004-http-status-codes",
@@ -39,7 +41,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Prva znamenka statusnog koda odmah govori o kategoriji odgovora, što olakšava rukovanje odgovorima na klijentskoj strani bez parsiranja tijela odgovora.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "http-api"
   },
   {
     "id": "backend-005-authentication-vs-authorization",
@@ -53,7 +56,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Prvo se korisnik autenticira (dokaže identitet, npr. e-mail+lozinka), a zatim se za svaku akciju provjerava autorizacija (ima li taj identitet dozvolu za tu akciju/resurs).",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "autentikacija-sigurnost"
   },
   {
     "id": "backend-020-rate-limiting",
@@ -67,7 +71,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Rate limiting (npr. 'maksimalno 100 zahtjeva po minuti po IP adresi') štiti server od preopterećenja i otežava napade poput brute-force pokušaja pogađanja lozinke.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "otpornost-distribuirani"
   },
   {
     "id": "backend-023-https-data-in-transit",
@@ -81,7 +86,8 @@
     ],
     "correctIndex": 1,
     "explanation": "HTTPS koristi TLS kako bi šifrirao promet, otkrio izmjene tijekom prijenosa i potvrdio identitet servera. Ne uklanja potrebu za sigurnom validacijom i autorizacijom u aplikaciji.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "autentikacija-sigurnost"
   },
   {
     "id": "backend-024-content-type-header",
@@ -95,7 +101,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Content-Type govori primatelju kako treba protumačiti tijelo poruke. Primjerice, application/json označava JSON sadržaj.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "http-api"
   },
   {
     "id": "backend-025-api-pagination",
@@ -109,7 +116,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Paginacija vraća ograničen broj zapisa po pozivu, što čuva resurse klijenta i servera. Stabilnost između stranica zahtijeva dodatno pažljivo sortiranje ili cursor pristup.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "http-api"
   },
   {
     "id": "backend-026-password-hashing",
@@ -123,7 +131,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Spori algoritam i jedinstveni salt otežavaju masovno pogađanje ukradenih hash vrijednosti. Server pri prijavi uspoređuje hash, a izvornu lozinku ne mora moći vratiti.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "autentikacija-sigurnost"
   },
   {
     "id": "backend-027-least-privilege",
@@ -137,7 +146,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Ograničavanje ovlasti smanjuje štetu ako račun ili servis bude kompromitiran. Dozvole se trebaju redovito provjeravati i ukidati kada više nisu potrebne.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "autentikacija-sigurnost"
   },
   {
     "id": "backend-028-database-index-tradeoff",
@@ -151,7 +161,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Indeks pomaže bazi brže pronaći retke, ali ga treba održavati pri INSERT, UPDATE i DELETE operacijama. Zato previše ili loše odabranih indeksa može štetiti performansama.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "baze-podataka"
   },
   {
     "id": "backend-029-transaction-atomicity",
@@ -165,7 +176,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Ako jedan korak ne uspije, cijela se transakcija poništava. Primjerice, prijenos novca ne smije teretiti jedan račun bez odobravanja drugoga.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "baze-podataka"
   },
   {
     "id": "backend-030-structured-logging",
@@ -179,7 +191,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Strukturirana polja olakšavaju filtriranje, agregaciju i povezivanje događaja između servisa. Osjetljive podatke i dalje treba izostaviti ili maskirati.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "observability"
   },
   {
     "id": "backend-031-health-check-endpoint",
@@ -193,7 +206,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Health check pomaže automatski ukloniti neispravnu instancu iz prometa ili je ponovno pokrenuti. Liveness i readiness provjere često imaju različite svrhe.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "observability"
   },
   {
     "id": "backend-032-dead-letter-queue",
@@ -207,7 +221,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Problematična poruka premješta se iz glavnog reda kako ne bi stalno blokirala obradu. Nakon analize može se ispraviti, ponovno poslati ili kontrolirano odbaciti.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "poruke-redovi"
   },
   {
     "id": "backend-048-openapi-contract",
@@ -221,7 +236,8 @@
     ],
     "correctIndex": 1,
     "explanation": "OpenAPI opis može služiti za dokumentaciju, generiranje klijenata i validaciju ugovora. Implementaciju ipak treba provjeravati kako se ne bi razišla s opisom.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "http-api"
   },
   {
     "id": "backend-049-http-204-no-content",
@@ -235,7 +251,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Status 204 označava uspješnu obradu bez tijela odgovora. Koristan je kada klijentu nije potrebno slati reprezentaciju rezultata.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "http-api"
   },
   {
     "id": "backend-050-http-401-vs-403",
@@ -249,7 +266,8 @@
     ],
     "correctIndex": 0,
     "explanation": "401 upućuje klijenta da se ispravno autenticira, dok 403 znači da za traženu radnju nema dopuštenje ili je server odbija.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "autentikacija-sigurnost"
   },
   {
     "id": "backend-051-secrets-outside-source-control",
@@ -263,7 +281,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Tajne ne pripadaju repozitoriju, imageu ni logovima. Centralno upravljanje olakšava kontrolu pristupa, audit i rotaciju bez promjene izvornog koda.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "autentikacija-sigurnost"
   },
   {
     "id": "backend-052-encryption-at-rest",
@@ -277,7 +296,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Enkripcija u mirovanju štiti pohranjeni medij i kopije podataka. Mora se kombinirati s TLS-om, kontrolom pristupa i sigurnim upravljanjem ključevima.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "autentikacija-sigurnost"
   },
   {
     "id": "backend-053-database-schema-migrations",
@@ -291,7 +311,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Migracije bilježe redoslijed promjena baze i omogućuju da razvojno, testno i produkcijsko okruženje dođu do očekivane verzije sheme.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "baze-podataka"
   },
   {
     "id": "backend-054-backup-vs-replication",
@@ -305,7 +326,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Replikacija prvenstveno pomaže dostupnosti i raspodjeli čitanja. Backup čuva neovisnu povijesnu točku potrebnu za oporavak od logičke pogreške ili gubitka podataka.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "baze-podataka"
   },
   {
     "id": "backend-055-cache-ttl",
@@ -319,7 +341,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Kraći TTL smanjuje trajanje zastarjelih podataka, ali povećava opterećenje izvora. Dulji TTL daje više pogodaka cachea uz veći rizik zastarjelosti.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "kesiranje-skaliranje"
   },
   {
     "id": "backend-056-queue-acknowledgement",
@@ -333,7 +356,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Ako potvrda ne stigne, broker poruku može ponovno isporučiti. Potvrđivanje prije završetka poslovne operacije može uzrokovati gubitak posla pri padu consumera.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "poruke-redovi"
   },
   {
     "id": "backend-057-container-image-vs-container",
@@ -347,7 +371,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Isti nepromjenjivi image može pokrenuti više containera. Container dodaje proces, mrežu i privremeni zapisivi sloj nad imageom.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "arhitektura"
   },
   {
     "id": "backend-058-slo-target",
@@ -361,7 +386,8 @@
     ],
     "correctIndex": 0,
     "explanation": "SLI je izmjerena karakteristika servisa, a SLO njezina ciljana vrijednost. SLA je zaseban sporazum koji može uključivati vanjske obveze i penale.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "unitId": "observability"
   },
   {
     "id": "backend-001-dependency-injection",
@@ -375,7 +401,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Umjesto da klasa sama kreira svoje ovisnosti (npr. new Database()), one joj se 'injektiraju' izvana - to olakšava zamjenu implementacija (npr. mock u testovima) bez mijenjanja same klase.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "arhitektura"
   },
   {
     "id": "backend-006-stateless",
@@ -389,7 +416,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Statelessness olakšava skaliranje (bilo koji server instance može obraditi bilo koji zahtjev) jer server ne mora dijeliti session stanje - autentikacija se npr. rješava tokenom koji klijent šalje sa svakim zahtjevom.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "arhitektura"
   },
   {
     "id": "backend-007-middleware",
@@ -403,7 +431,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Middleware funkcije se ulančavaju (npr. u Express.js) - svaka može modificirati request/response ili prekinuti lanac (npr. vratiti 401 ako korisnik nije autenticiran) prije nego zahtjev stigne do route handlera.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "arhitektura"
   },
   {
     "id": "backend-008-sync-vs-async",
@@ -417,7 +446,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Asinkrono izvršavanje je ključno za I/O operacije (baza podataka, mrežni pozivi, čitanje datoteka) jer sprječava blokiranje cijele aplikacije dok se čeka spori vanjski resurs.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "arhitektura"
   },
   {
     "id": "backend-011-caching",
@@ -431,7 +461,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Cache ubrzava sustav izbjegavanjem ponovnog računanja/dohvaćanja istih podataka, ali unosi izazov: ako se izvorni podatak promijeni, stara verzija u cacheu mora se osvježiti ili ukloniti - poznato kao jedan od 'dva najteža problema u informatici'.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "kesiranje-skaliranje"
   },
   {
     "id": "backend-012-idempotency",
@@ -445,7 +476,8 @@
     ],
     "correctIndex": 0,
     "explanation": "PUT /users/5 s istim podacima uvijek rezultira istim stanjem bez obzira koliko se puta pozove, dok POST /users obično svaki put kreira novi resurs (novi id) - ovo je bitno za sigurno automatsko ponavljanje zahtjeva (retry) kod mrežnih grešaka.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "otpornost-distribuirani"
   },
   {
     "id": "backend-013-load-balancer",
@@ -459,7 +491,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Load balancer (npr. Nginx, HAProxy, cloud load balanceri) distribuira promet prema više instanci aplikacije, čime omogućuje horizontalno skaliranje i otpornost na pad pojedine instance.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "kesiranje-skaliranje"
   },
   {
     "id": "backend-014-horizontal-vs-vertical-scaling",
@@ -473,7 +506,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Horizontalno skaliranje obično zahtijeva load balancer i stateless dizajn aplikacije, dok vertikalno skaliranje ima fizičku gornju granicu (koliko se resursa može dodati jednom stroju).",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "kesiranje-skaliranje"
   },
   {
     "id": "backend-015-microservices-vs-monolith",
@@ -487,7 +521,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Mikroservisi olakšavaju neovisno skaliranje i deployanje dijelova sustava, ali uvode dodatnu složenost (mrežna komunikacija, distribuirane transakcije, monitoring) koju monolit nema.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "arhitektura"
   },
   {
     "id": "backend-016-cors",
@@ -501,7 +536,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Bez odgovarajućih CORS zaglavlja (npr. Access-Control-Allow-Origin) preglednik će blokirati JavaScript kod jedne domene da čita odgovor s druge domene, radi zaštite korisnika od zlonamjernih cross-origin zahtjeva.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "http-api"
   },
   {
     "id": "backend-017-jwt-token-auth",
@@ -515,7 +551,8 @@
     ],
     "correctIndex": 0,
     "explanation": "JWT se sastoji od headera, payloada i potpisa - budući da je potpisan (ne nužno enkriptiran), server može provjeriti njegovu autentičnost bez pristupa bazi, što odgovara stateless arhitekturi.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "autentikacija-sigurnost"
   },
   {
     "id": "backend-018-message-queue",
@@ -529,7 +566,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Primjeri (RabbitMQ, Kafka, SQS) omogućuju npr. da web server brzo odgovori korisniku, dok se dugotrajna obrada (slanje e-maila, generiranje izvještaja) odvija asinkrono u pozadini preko workera koji čitaju iz reda.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "poruke-redovi"
   },
   {
     "id": "backend-033-compatible-api-evolution",
@@ -543,7 +581,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Kompatibilna evolucija API-ja preferira aditivne promjene i razdoblje migracije. Preimenovanje ili uklanjanje postojećeg polja zahtijeva deprecaciju ili novu verziju kako se aktivni klijenti ne bi iznenada pokvarili.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "http-api"
   },
   {
     "id": "backend-034-refresh-token-rotation",
@@ -557,7 +596,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Jednokratna rotacija ograničava replay ukradenog tokena. Ako legitimni klijent i napadač pokušaju koristiti isti stari token, server može prepoznati ponovnu uporabu i opozvati sesiju.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "autentikacija-sigurnost"
   },
   {
     "id": "backend-035-csrf-cookie-auth",
@@ -571,7 +611,8 @@
     ],
     "correctIndex": 1,
     "explanation": "CSRF iskorištava automatsko slanje cookieja sa zlonamjerne stranice. SameSite, anti-CSRF token i provjera izvora zahtjeva sprječavaju prihvaćanje takvog poziva.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "autentikacija-sigurnost"
   },
   {
     "id": "backend-036-cache-stampede",
@@ -585,7 +626,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Single-flight ili kratka brava sprječava paralelno računanje iste vrijednosti, a nasumično odstupanje isteka i posluživanje kratko zastarjele vrijednosti smanjuju nagli val prema izvoru.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "kesiranje-skaliranje"
   },
   {
     "id": "backend-037-payment-idempotency-key",
@@ -599,7 +641,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Server atomarno povezuje idempotency key s ishodom prve obrade. Ponovljeni zahtjev s istim ključem vraća poznati ishod umjesto stvaranja nove naplate.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "otpornost-distribuirani"
   },
   {
     "id": "backend-038-at-least-once-consumer",
@@ -613,7 +656,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Consumer mora moći prepoznati ponovnu isporuku ili sigurno ponoviti učinak. Evidencija poruke i poslovna promjena trebaju biti u istoj transakcijskoj granici kada je to moguće.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "poruke-redovi"
   },
   {
     "id": "backend-039-transactional-outbox",
@@ -627,7 +671,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Outbox uklanja opasan dual-write između baze i brokera: ili se zajedno spreme poslovni podatak i događaj, ili se ne spremi nijedno. Relay zatim pouzdano objavljuje događaj.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "poruke-redovi"
   },
   {
     "id": "backend-040-read-replica-lag",
@@ -641,7 +686,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Asinkrona replikacija uvodi replication lag. Čitanje s izvora zapisa ili čekanje potvrđene pozicije replike omogućuje da korisnik vidi vlastiti dovršeni upis.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "baze-podataka"
   },
   {
     "id": "backend-041-distributed-trace-context",
@@ -655,7 +701,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Propagirani kontekst omogućuje backendu za observability složiti spanove u jedan trag i pronaći gdje su nastali latencija ili greška.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "observability"
   },
   {
     "id": "backend-042-backpressure",
@@ -669,7 +716,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Backpressure sprječava nekontroliran rast reda, memorije i latencije. Može se provesti ograničenjem protoka, bounded queueom ili signalom proizvođaču da uspori.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "poruke-redovi"
   },
   {
     "id": "backend-059-consumer-driven-contract-tests",
@@ -683,7 +731,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Provider može rano otkriti da promjena odgovora ili zahtjeva krši ugovor aktivnog consumera, bez potrebe za pokretanjem cijelog distribuiranog sustava.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "http-api"
   },
   {
     "id": "backend-060-oauth-pkce",
@@ -697,7 +746,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Napadaču presretnuti authorization code nije dovoljan jer nema jednokratni verifier. Authorization server pri zamjeni koda provjerava odgovara li verifier ranije poslanom challengeu.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "autentikacija-sigurnost"
   },
   {
     "id": "backend-061-zero-downtime-secret-rotation",
@@ -711,7 +761,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Kontrolirano preklapanje omogućuje postupni rollout. Nakon potvrde da svi consumeri koriste novu vjerodajnicu, staru treba opozvati i evidentirati završetak rotacije.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "autentikacija-sigurnost"
   },
   {
     "id": "backend-062-database-connection-pool",
@@ -725,7 +776,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Veze i istodobni upiti troše ograničene resurse baze. Prevelik pool često povećava čekanje i ruši propusnost umjesto da je poboljša.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "baze-podataka"
   },
   {
     "id": "backend-063-cache-aside-stale-repopulation",
@@ -739,7 +791,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Verzija zapisa omogućuje cacheu da prepozna zakašnjeli rezultat i ne zamijeni novije stanje starijim. Kratak TTL može ograničiti štetu, ali sam ne uklanja utrku.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "kesiranje-skaliranje"
   },
   {
     "id": "backend-064-partition-key-ordering",
@@ -753,7 +806,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Broker tipično jamči redoslijed unutar particije, ne globalno. Stabilan ključ agregata omogućuje redoslijed po narudžbi uz paralelizam među različitim ključevima.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "poruke-redovi"
   },
   {
     "id": "backend-065-rolling-deployment-draining",
@@ -767,7 +821,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Readiness sprječava prerano usmjeravanje prometa, dok draining i dovoljno termination grace vremena omogućuju staroj instanci da dovrši aktivne zahtjeve.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "arhitektura"
   },
   {
     "id": "backend-066-error-budget-burn-rate",
@@ -781,7 +836,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Primjerice, SLO od 99,9% ostavlja 0,1% budžeta za neuspjehe. Visok burn rate upozorava da će se budžet potrošiti znatno prije kraja mjernog razdoblja.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "unitId": "observability"
   },
   {
     "id": "backend-009-race-condition",
@@ -795,7 +851,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Primjer: dva zahtjeva istovremeno čitaju stanje računa, oba izračunaju novo stanje na temelju starog i zapišu ga - jedna promjena se 'izgubi' jer se procesi nisu ispravno sinkronizirali (rješava se npr. transakcijama, zaključavanjem ili atomičnim operacijama).",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "otpornost-distribuirani"
   },
   {
     "id": "backend-010-deadlock",
@@ -809,7 +866,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Klasičan primjer: proces A drži zaključan resurs 1 i čeka resurs 2, dok proces B drži zaključan resurs 2 i čeka resurs 1 - nijedan se ne može pomaknuti bez vanjske intervencije (timeout, detekcija ciklusa).",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "otpornost-distribuirani"
   },
   {
     "id": "backend-019-n-plus-one",
@@ -823,7 +881,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Klasičan primjer: dohvatiš listu od 50 postova (1 upit), pa za svaki post posebno dohvaćaš autora (50 dodatnih upita) - rješava se JOIN-ovima ili eager loadingom (npr. 'include' u ORM-u).",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "baze-podataka"
   },
   {
     "id": "backend-021-circuit-breaker",
@@ -837,7 +896,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Nakon niza uzastopnih grešaka circuit breaker 'otvara krug' i brzo odbija nove pozive prema tom servisu (umjesto da čeka timeout), čime sprječava kaskadne kvarove, a povremeno propušta probni poziv da provjeri je li se servis oporavio.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "otpornost-distribuirani"
   },
   {
     "id": "backend-022-optimistic-concurrency",
@@ -851,7 +911,8 @@
     ],
     "correctIndex": 0,
     "explanation": "UPDATE uspijeva samo ako je verzija/timestamp u bazi još uvijek jednaka onoj pročitanoj prije izmjene; ako se ne poklapa, znači da je netko drugi u međuvremenu promijenio zapis, pa aplikacija mora ponoviti operaciju.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "otpornost-distribuirani"
   },
   {
     "id": "backend-043-quorum-overlap",
@@ -865,7 +926,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Budući da je 3 + 3 veće od 5, barem jedna kontaktirana replika pripada i skupu koji je potvrdio upis. Sustav zatim mora ispravno usporediti verzije i odabrati noviju.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "otpornost-distribuirani"
   },
   {
     "id": "backend-044-saga-compensation",
@@ -879,7 +941,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Saga svaki dovršeni korak potvrđuje lokalno, a neuspjeh kasnijeg koraka pokreće poslovnu kompenzaciju, primjerice povrat naplate ili oslobađanje zalihe.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "otpornost-distribuirani"
   },
   {
     "id": "backend-045-fencing-tokens",
@@ -893,7 +956,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Lease sam ne može zaustaviti pauziranog starog vlasnika. Resurs koji provjerava rastući fencing token pouzdano odbija zakašnjele operacije prethodnog vlasnika.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "otpornost-distribuirani"
   },
   {
     "id": "backend-046-consistent-hashing",
@@ -907,7 +971,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Promjena člana utječe na ograničen dio hash prstena umjesto na gotovo sve ključeve kao kod običnog modulo raspoređivanja. Virtualni čvorovi dodatno poboljšavaju ravnotežu.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "kesiranje-skaliranje"
   },
   {
     "id": "backend-047-metrics-cardinality",
@@ -921,7 +986,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Neograničene dimenzije stvaraju eksploziju kardinalnosti. Za pojedinačne korisnike prikladniji su logovi ili traceovi, dok metrike trebaju ograničene labele poput rute i statusne klase.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "observability"
   },
   {
     "id": "backend-067-expand-contract-migration",
@@ -935,7 +1001,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Expand-contract razdvaja kompatibilno dodavanje od kasnijeg uklanjanja. Svaka međufaza mora raditi sa svim verzijama aplikacije koje tada mogu primati promet.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "baze-podataka"
   },
   {
     "id": "backend-068-token-audience-validation",
@@ -949,7 +1016,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Valjan potpis potvrđuje izdavatelja i integritet, ali ne znači da je token namijenjen tom API-ju ili dopušta traženu radnju. Audience i scope sprječavaju zamjenu tokena između servisa.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "autentikacija-sigurnost"
   },
   {
     "id": "backend-069-envelope-encryption",
@@ -963,7 +1031,8 @@
     ],
     "correctIndex": 2,
     "explanation": "KMS ključ štiti manje data ključeve, dok se sami podaci šifriraju učinkovitim simetričnim ključem. Rotacija KMS ključa često zahtijeva ponovno omatanje ključeva, ne svih podataka.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "autentikacija-sigurnost"
   },
   {
     "id": "backend-070-mvcc-long-transaction",
@@ -977,7 +1046,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Dugovječni snapshot može zadržavati stare verzije redaka i odgađati vacuum ili garbage collection, što povećava bloat i trošak održavanja.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "baze-podataka"
   },
   {
     "id": "backend-071-event-sequence-gaps",
@@ -991,7 +1061,8 @@
     ],
     "correctIndex": 3,
     "explanation": "Sekvenca dodijeljena na autoritativnom mjestu daje determinističan poredak bez oslanjanja na nesinkronizirane satove. Consumer može odbaciti staru verziju ili zatražiti propuštene događaje.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "poruke-redovi"
   },
   {
     "id": "backend-072-retry-amplification",
@@ -1005,7 +1076,8 @@
     ],
     "correctIndex": 1,
     "explanation": "Neovisni retryji po slojevima multipliciraju broj poziva i dodatno opterećuju neispravnu ovisnost. Zajednički budžet i deadline ograničavaju ukupni rad, a jitter izbjegava sinkronizirane valove.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "otpornost-distribuirani"
   },
   {
     "id": "backend-073-linearizability-vs-serializability",
@@ -1019,6 +1091,7 @@
     ],
     "correctIndex": 2,
     "explanation": "Serijalizabilan raspored ne mora poštovati redoslijed koji je korisnik promatrao u stvarnom vremenu. Stroga serializability kombinira transakcijsku serijalizabilnost s real-time zahtjevom linearizabilnosti.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "unitId": "otpornost-distribuirani"
   }
 ]

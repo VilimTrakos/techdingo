@@ -9,6 +9,8 @@ export interface Question {
   id: string;
   /** Mora odgovarati temi (imenu datoteke) u kojoj se pitanje nalazi. */
   topic: TopicId;
+  /** Lekcijska cjelina (podtema) unutar teme - mora postojati u src/data/units.ts. */
+  unitId: string;
   question: string;
   /** Točno 4 ponuđena odgovora. */
   options: [string, string, string, string];

@@ -8,6 +8,7 @@ export const QuestionSchema = z
       .string()
       .regex(/^[a-z0-9-]+$/, 'id smije sadržavati samo mala slova, brojke i crtice'),
     topic: z.string().min(1),
+    unitId: z.string().min(1),
     question: z.string().min(1),
     options: z
       .array(z.string().min(1))
