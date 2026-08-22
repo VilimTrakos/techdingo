@@ -1,35 +1,39 @@
 import { Link } from 'react-router-dom';
-import {
-  LearningPath,
-  type LearningPathItem,
-  type LearningPathTone,
-} from '../components/LearningPath';
 import { TOPICS } from '../data/topics';
+import { getUnitsForTopic, unitProgressKey } from '../data/units';
 import { useProgress } from '../hooks/useProgress';
 
 const TOPIC_META: Record<
   string,
-  { description: string; icon: string; tone: LearningPathTone }
+  { description: string; icon: string; accent: string; iconSurface: string; progress: string }
 > = {
   sql: {
     description: 'Od prvog SELECT-a do pametnih indeksa i brzih upita.',
     icon: '▤',
-    tone: 'sql',
+    accent: 'border-cyan-200 bg-cyan-50/70 hover:border-cyan-400',
+    iconSurface: 'bg-cyan-100 text-cyan-900',
+    progress: 'bg-cyan-400',
   },
   frontend: {
     description: 'JavaScript, React, CSS i sve što korisnik vidi i dodiruje.',
     icon: '</>',
-    tone: 'frontend',
+    accent: 'border-amber-200 bg-amber-50/75 hover:border-amber-400',
+    iconSurface: 'bg-amber-100 text-amber-900',
+    progress: 'bg-amber-400',
   },
   backend: {
     description: 'API-ji, sigurnost, arhitektura i skaliranje sustava.',
     icon: '⚙',
-    tone: 'backend',
+    accent: 'border-orange-200 bg-orange-50/75 hover:border-orange-400',
+    iconSurface: 'bg-orange-100 text-orange-950',
+    progress: 'bg-orange-500',
   },
   general: {
     description: 'Strukture podataka, Big-O, SOLID, Git i testiranje.',
     icon: '✦',
-    tone: 'general',
+    accent: 'border-brand-200 bg-brand-50/75 hover:border-brand-400',
+    iconSurface: 'bg-brand-100 text-brand-800',
+    progress: 'bg-brand-500',
   },
 };
 
@@ -39,32 +43,30 @@ export function HomePage() {
     (total, topic) => total + topic.questions.length,
     0,
   );
-  const completedLessons = TOPICS.reduce(
-    (total, topic) => total + (state.lessons[topic.id]?.passCount ?? 0),
-    0,
-  );
-  const currentTopic =
-    TOPICS.find((topic) => (state.lessons[topic.id]?.passCount ?? 0) === 0) ?? null;
-  const primaryHref = currentTopic ? `/lesson/${currentTopic.id}` : '/score-strike/mixed';
-  const primaryLabel = currentTopic
-    ? `Nastavi: ${currentTopic.labelHr}`
-    : 'Pokreni završni izazov';
-  const guideMarkSrc = `${import.meta.env.BASE_URL}tech-hedgehog.webp`;
 
-  const pathItems: LearningPathItem[] = TOPICS.map((topic) => {
+  // Napredak po temi = broj prođenih cjelina (unit lekcija) unutar te teme.
+  const topicCards = TOPICS.map((topic) => {
+    const units = getUnitsForTopic(topic.id);
+    const unitsCompleted = units.filter(
+      (unit) => (state.lessons[unitProgressKey(topic.id, unit.id)]?.passCount ?? 0) > 0,
+    ).length;
     const meta = TOPIC_META[topic.id] ?? TOPIC_META.sql;
-
     return {
-      id: topic.id,
-      title: topic.labelHr,
-      description: meta.description,
-      icon: meta.icon,
-      tone: meta.tone,
-      questionCount: topic.questions.length,
-      passCount: state.lessons[topic.id]?.passCount ?? 0,
+      topic,
+      meta,
+      unitsCompleted,
+      unitsTotal: units.length,
       bestScore: state.scoreStrike[topic.id]?.bestScore ?? 0,
     };
   });
+
+  const completedLessons = topicCards.reduce((total, card) => total + card.unitsCompleted, 0);
+  const currentCard = topicCards.find((card) => card.unitsCompleted < card.unitsTotal) ?? null;
+  const primaryHref = currentCard ? `/topic/${currentCard.topic.id}` : '/score-strike/mixed';
+  const primaryLabel = currentCard
+    ? `Nastavi: ${currentCard.topic.labelHr}`
+    : 'Pokreni završni izazov';
+  const guideMarkSrc = `${import.meta.env.BASE_URL}tech-hedgehog.webp`;
 
   return (
     <div className="space-y-14 pb-10 sm:space-y-20">
@@ -169,18 +171,83 @@ export function HomePage() {
             id="path-heading"
             className="mt-2 text-3xl font-black tracking-tight text-ink-950 sm:text-4xl"
           >
-            Tvoj put učenja
+            Odaberi svoje područje
           </h2>
           <p className="mt-3 font-bold leading-7 text-ink-600">
-            Slijedi korake redom ili ponovi temu koju želiš ojačati. Svaka
-            sesija kreće lagano i završava pravim izazovom.
+            Svaka tema ima vlastiti put učenja: cjeline od osnova do naprednog,
+            otključavaju se redom kako napreduješ.
           </p>
           <p className="mt-3 text-sm font-extrabold text-brand-700">
-            {totalQuestions} pitanja · {TOPICS.length} područja · sve otključano
+            {totalQuestions} pitanja · {TOPICS.length} područja
           </p>
         </div>
 
-        <LearningPath items={pathItems} currentItemId={currentTopic?.id ?? null} />
+        <div className="mx-auto grid max-w-4xl gap-5 sm:grid-cols-2">
+          {topicCards.map(({ topic, meta, unitsCompleted, unitsTotal, bestScore }) => {
+            const progressPct = unitsTotal > 0 ? Math.round((unitsCompleted / unitsTotal) * 100) : 0;
+            return (
+              <Link
+                key={topic.id}
+                to={`/topic/${topic.id}`}
+                className={`group relative block rounded-3xl border-2 p-6 shadow-card transition duration-200 hover:-translate-y-1 hover:shadow-lg ${meta.accent}`}
+              >
+                <div className="flex items-start gap-4">
+                  <span
+                    className={`grid size-14 shrink-0 place-items-center rounded-2xl text-xl font-black ${meta.iconSurface}`}
+                    aria-hidden="true"
+                  >
+                    {meta.icon}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-2xl font-black tracking-tight text-ink-950">
+                      {topic.labelHr}
+                    </h3>
+                    <p className="mt-1 text-sm font-semibold leading-6 text-ink-600">
+                      {meta.description}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-5">
+                  <div className="flex items-center justify-between text-xs font-extrabold text-ink-600">
+                    <span>
+                      {unitsCompleted}/{unitsTotal} cjelina
+                    </span>
+                    <span>{topic.questions.length} pitanja</span>
+                  </div>
+                  <div
+                    className="mt-2 h-3 overflow-hidden rounded-full bg-white/80 ring-1 ring-inset ring-ink-400/15"
+                    role="progressbar"
+                    aria-valuenow={progressPct}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-label={`Napredak teme ${topic.labelHr}`}
+                  >
+                    <div
+                      className={`h-full rounded-full transition-all ${meta.progress}`}
+                      style={{ width: `${progressPct}%` }}
+                    />
+                  </div>
+                </div>
+
+                <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
+                  {bestScore > 0 ? (
+                    <span className="text-xs font-extrabold text-ink-600">
+                      <span aria-hidden="true">🏆</span> {bestScore.toLocaleString('hr-HR')} bodova
+                    </span>
+                  ) : (
+                    <span className="text-xs font-extrabold text-ink-400">
+                      Još nema rekorda
+                    </span>
+                  )}
+                  <span className="inline-flex items-center gap-1 text-sm font-black text-brand-700 transition group-hover:translate-x-0.5">
+                    Otvori put <span aria-hidden="true">→</span>
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
 
         <section
           aria-labelledby="boss-heading"

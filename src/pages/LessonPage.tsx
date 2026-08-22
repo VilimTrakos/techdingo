@@ -1,22 +1,35 @@
 import { Link, useParams } from 'react-router-dom';
 import { HeartsDisplay } from '../components/HeartsDisplay';
+import { HeartsGate } from '../components/HeartsGate';
 import { OptionButton } from '../components/OptionButton';
 import { ProgressBar } from '../components/ProgressBar';
 import { QuestionCard } from '../components/QuestionCard';
 import { ResultsSummary } from '../components/ResultsSummary';
 import { TOPICS } from '../data/topics';
+import { getUnit } from '../data/units';
 import { useLessonSession } from '../hooks/useLessonSession';
 
 type LessonSessionProps = {
   topicId: string;
   topicLabel: string;
+  unitId?: string;
+  /** Kamo vodi "Izađi" - put cjeline vodi natrag na svoju temu, ne na početnu. */
+  exitHref: string;
 };
 
-function LessonSession({ topicId, topicLabel }: LessonSessionProps) {
-  const session = useLessonSession(topicId);
+function LessonSession({ topicId, topicLabel, unitId, exitHref }: LessonSessionProps) {
+  const session = useLessonSession(topicId, unitId);
 
   if (session.status === 'loading') {
     return <SessionLoading label="Pripremamo tvoju lekciju…" />;
+  }
+
+  if (session.status === 'no-hearts') {
+    return (
+      <div className="py-6 sm:py-12">
+        <HeartsGate scoreStrikeHref={`/score-strike/${topicId}`} />
+      </div>
+    );
   }
 
   if (session.status === 'passed' || session.status === 'failed') {
@@ -32,7 +45,7 @@ function LessonSession({ topicId, topicLabel }: LessonSessionProps) {
           xpEarned={passed ? session.correctCount * 10 : 0}
           onRestart={session.restart}
           restartLabel={passed ? 'Vježbaj ponovno' : 'Pokušaj ponovno'}
-          homeHref="/"
+          homeHref={exitHref}
         >
           <p className="text-slate-600">
             {passed
@@ -62,9 +75,9 @@ function LessonSession({ topicId, topicLabel }: LessonSessionProps) {
       <header className="overflow-hidden rounded-[2rem] border-2 border-brand-200 bg-white shadow-[0_6px_0_#b8efc1,0_16px_34px_rgba(23,32,42,0.07)]">
         <div className="flex items-center justify-between gap-3 border-b-2 border-cloud-200 bg-gradient-to-r from-brand-50 via-white to-amber-50 px-4 py-3 sm:px-6">
           <Link
-            to="/"
+            to={exitHref}
             className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-xl px-2 text-sm font-black text-ink-600 transition hover:bg-white hover:text-brand-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600"
-            aria-label="Prekini lekciju i vrati se na početnu"
+            aria-label="Prekini lekciju i vrati se natrag"
           >
             <span
               className="grid size-7 place-items-center rounded-lg bg-white text-base shadow-sm"
@@ -280,10 +293,11 @@ function SessionLoading({ label }: { label: string }) {
 }
 
 export function LessonPage() {
-  const { topicId = '' } = useParams();
+  const { topicId = '', unitId } = useParams();
   const topic = TOPICS.find((candidate) => candidate.id === topicId);
+  const unit = topic && unitId ? getUnit(topic.id, unitId) : undefined;
 
-  if (!topic) {
+  if (!topic || (unitId && !unit)) {
     return (
       <div className="mx-auto max-w-xl rounded-[2rem] border-2 border-rose-200 bg-white p-8 text-center shadow-[0_6px_0_#fecdd3] sm:p-10">
         <p className="text-5xl" aria-hidden="true">
@@ -306,7 +320,14 @@ export function LessonPage() {
     );
   }
 
-  return <LessonSession topicId={topic.id} topicLabel={topic.labelHr} />;
+  return (
+    <LessonSession
+      topicId={topic.id}
+      topicLabel={unit ? `${topic.labelHr} · ${unit.labelHr}` : topic.labelHr}
+      unitId={unit?.id}
+      exitHref={unit ? `/topic/${topic.id}` : '/'}
+    />
+  );
 }
 
 export default LessonPage;
