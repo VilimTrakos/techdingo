@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { createDefaultProgressState } from './progressTypes';
-import { recordLessonResult, recordScoreStrikeResult } from './progress';
+import { recordLessonResult, recordReviewResult, recordScoreStrikeResult } from './progress';
 
 describe('recordLessonResult', () => {
   it('prolaz (passed) dodaje XP, povećava passCount i produžuje streak', () => {
@@ -65,5 +65,50 @@ describe('recordScoreStrikeResult', () => {
     const state = createDefaultProgressState();
     const { state: next } = recordScoreStrikeResult(state, 'mixed', { score: 0, questionIds: [] }, new Date('2026-02-01T10:00:00'));
     expect(next.streak.current).toBe(1);
+  });
+});
+
+describe('recordReviewResult', () => {
+  it('briše točno odgovorena pitanja iz SVIH lekcijskih ključeva', () => {
+    const base = createDefaultProgressState();
+    const state = {
+      ...base,
+      lessons: {
+        sql: { passCount: 1, failCount: 1, recentQuestionIds: [], struggledQuestionIds: ['a', 'b'] },
+        'sql/osnove': { passCount: 1, failCount: 0, recentQuestionIds: [], struggledQuestionIds: ['a', 'c'] },
+      },
+    };
+    const next = recordReviewResult(state, { correctQuestionIds: ['a'], correctCount: 1 }, new Date('2026-02-01T10:00:00'));
+    expect(next.lessons.sql.struggledQuestionIds).toEqual(['b']);
+    expect(next.lessons['sql/osnove'].struggledQuestionIds).toEqual(['c']);
+  });
+
+  it('krivo odgovorena ostaju na popisu', () => {
+    const base = createDefaultProgressState();
+    const state = {
+      ...base,
+      lessons: {
+        sql: { passCount: 1, failCount: 1, recentQuestionIds: [], struggledQuestionIds: ['a', 'b'] },
+      },
+    };
+    const next = recordReviewResult(state, { correctQuestionIds: [], correctCount: 0 }, new Date('2026-02-01T10:00:00'));
+    expect(next.lessons.sql.struggledQuestionIds).toEqual(['a', 'b']);
+  });
+
+  it('dodaje 10 XP po ispravljenom pitanju i produžuje niz', () => {
+    const state = createDefaultProgressState();
+    const next = recordReviewResult(state, { correctQuestionIds: ['a', 'b'], correctCount: 2 }, new Date('2026-02-01T10:00:00'));
+    expect(next.xpTotal).toBe(20);
+    expect(next.streak.current).toBe(1);
+  });
+
+  it('ne mutira ulazno stanje', () => {
+    const base = createDefaultProgressState();
+    const state = {
+      ...base,
+      lessons: { sql: { passCount: 1, failCount: 1, recentQuestionIds: [], struggledQuestionIds: ['a'] } },
+    };
+    recordReviewResult(state, { correctQuestionIds: ['a'], correctCount: 1 }, new Date('2026-02-01T10:00:00'));
+    expect(state.lessons.sql.struggledQuestionIds).toEqual(['a']);
   });
 });

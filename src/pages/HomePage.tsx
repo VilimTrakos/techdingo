@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { TOPICS } from '../data/topics';
 import { getUnitsForTopic, unitProgressKey } from '../data/units';
 import { useProgress } from '../hooks/useProgress';
+import { countStruggledQuestions } from '../lib/review';
 import { toLocalDateISO } from '../state/streak';
 
 const TOPIC_META: Record<
@@ -73,6 +74,7 @@ export function HomePage() {
     : 'Pokreni završni izazov';
   const guideMarkSrc = `${import.meta.env.BASE_URL}tech-hedgehog.webp`;
   const dailyPlayedToday = state.dailyChallenge.lastPlayedDateISO === toLocalDateISO();
+  const struggledCount = countStruggledQuestions(state);
 
   return (
     <div className="space-y-14 pb-10 sm:space-y-20">
@@ -199,6 +201,33 @@ export function HomePage() {
             {dailyPlayedToday ? 'Riješeno' : 'Igraj sad'}
           </span>
         </Link>
+
+        {struggledCount > 0 && (
+          <Link
+            to="/review"
+            className="mt-4 flex flex-col items-center gap-4 rounded-[2rem] border-2 border-rose-300 bg-gradient-to-r from-rose-50 via-white to-amber-50 p-6 text-center shadow-card transition duration-200 hover:-translate-y-1 hover:shadow-lg sm:flex-row sm:text-left"
+          >
+            <span
+              className="grid size-14 shrink-0 place-items-center rounded-2xl bg-rose-100 text-2xl"
+              aria-hidden="true"
+            >
+              🔁
+            </span>
+            <div className="min-w-0 flex-1">
+              <h2 className="text-xl font-black tracking-tight text-ink-950 sm:text-2xl">
+                Ponovi greške
+              </h2>
+              <p className="mt-1 text-sm font-semibold leading-6 text-ink-600">
+                {struggledCount}{' '}
+                {struggledCount === 1 ? 'pitanje čeka' : struggledCount < 5 ? 'pitanja čekaju' : 'pitanja čeka'}{' '}
+                na ponavljanje. Točan odgovor briše pitanje s popisa — ne troši srca.
+              </p>
+            </div>
+            <span className="shrink-0 rounded-full bg-rose-600 px-4 py-2 text-xs font-black uppercase tracking-wider text-white">
+              Vježbaj
+            </span>
+          </Link>
+        )}
       </section>
 
       <section

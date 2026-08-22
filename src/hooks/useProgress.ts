@@ -4,11 +4,13 @@ import {
   grantHeartsOnState,
   recordDailyChallengeResult as recordDailyChallengeResultPure,
   recordLessonResult as recordLessonResultPure,
+  recordReviewResult as recordReviewResultPure,
   recordScoreStrikeResult as recordScoreStrikeResultPure,
   resolveHeartsOnState,
   spendHeartOnState,
   type DailyChallengeResultInput,
   type LessonResultInput,
+  type ReviewResultInput,
   type ScoreStrikeResultInput,
 } from '../state/progress';
 import { MAX_HEARTS } from '../state/progressTypes';
@@ -78,6 +80,10 @@ export function useProgress() {
     setState(recordDailyChallengeResultPure(state, input));
   }, []);
 
+  const recordReviewResult = useCallback((input: ReviewResultInput) => {
+    setState(recordReviewResultPure(state, input));
+  }, []);
+
   // Srca se ne sinkroniziraju u cloud (lokalno po uređaju) - skipCloudPush
   // izbjegava besmislen mrežni upsert na svako potrošeno/regenerirano srce.
   const spendHeart = useCallback(() => {
@@ -105,6 +111,7 @@ export function useProgress() {
     recordLessonResult,
     recordScoreStrikeResult,
     recordDailyChallengeResult,
+    recordReviewResult,
     spendHeart,
     grantAdHeart,
     refillHearts,

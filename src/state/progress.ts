@@ -167,3 +167,43 @@ export function recordDailyChallengeResult(
     updatedAtISO: now.toISOString(),
   };
 }
+
+export interface ReviewResultInput {
+  /** Pitanja točno odgovorena u ponavljanju - brišu se iz liste za ponavljanje. */
+  correctQuestionIds: string[];
+  correctCount: number;
+}
+
+/**
+ * Zabilježi sesiju ponavljanja grešaka. Za razliku od lekcije, ovdje pitanja
+ * dolaze iz VIŠE lekcijskih ključeva odjednom, pa točno odgovorena moramo
+ * ukloniti iz svakog ključa u kojem se nalaze (ista greška može biti
+ * zabilježena i pod temom i pod cjelinom).
+ *
+ * Krivo odgovorena ostaju gdje jesu - već su na popisu, nema ih smisla
+ * duplirati ni premještati.
+ */
+export function recordReviewResult(
+  state: ProgressState,
+  input: ReviewResultInput,
+  now: Date = new Date(),
+): ProgressState {
+  const learned = new Set(input.correctQuestionIds);
+
+  const lessons: ProgressState['lessons'] = {};
+  for (const [key, lesson] of Object.entries(state.lessons)) {
+    const remaining = lesson.struggledQuestionIds.filter((id) => !learned.has(id));
+    lessons[key] =
+      remaining.length === lesson.struggledQuestionIds.length
+        ? lesson
+        : { ...lesson, struggledQuestionIds: remaining };
+  }
+
+  return {
+    ...state,
+    xpTotal: state.xpTotal + xpForLesson(true, input.correctCount),
+    streak: applyStreak(state.streak, now),
+    lessons,
+    updatedAtISO: now.toISOString(),
+  };
+}
