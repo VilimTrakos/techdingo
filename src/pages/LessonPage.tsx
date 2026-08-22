@@ -1,13 +1,21 @@
 import { Link, useParams } from 'react-router-dom';
 import { HeartsDisplay } from '../components/HeartsDisplay';
 import { HeartsGate } from '../components/HeartsGate';
-import { OptionButton } from '../components/OptionButton';
 import { ProgressBar } from '../components/ProgressBar';
+import { QuestionBody } from '../components/QuestionBody';
 import { QuestionCard } from '../components/QuestionCard';
 import { ResultsSummary } from '../components/ResultsSummary';
 import { TOPICS } from '../data/topics';
 import { getUnit } from '../data/units';
+import { correctAnswerText } from '../lib/questionKinds';
 import { useLessonSession } from '../hooks/useLessonSession';
+
+const KIND_EYEBROW: Record<string, string> = {
+  single: 'Odaberi jedan odgovor',
+  multi: 'Odaberi sve točne',
+  fill: 'Popuni prazninu',
+  order: 'Poredaj korake',
+};
 
 type LessonSessionProps = {
   topicId: string;
@@ -57,18 +65,14 @@ function LessonSession({ topicId, topicLabel, unitId, exitHref }: LessonSessionP
     );
   }
 
-  const question = session.currentQuestion;
+  const prepared = session.prepared;
   const displayQuestionNumber = Math.min(
     session.questionIndex + 1,
     session.totalQuestions,
   );
   const correctAnswer =
-    question && session.correctOptionIndex !== null
-      ? question.options[session.correctOptionIndex]
-      : null;
-  const answeredCorrectly =
-    session.isAnswered &&
-    session.selectedOptionIndex === session.correctOptionIndex;
+    prepared && session.isAnswered ? correctAnswerText(prepared) : null;
+  const answeredCorrectly = session.isAnswered && session.lastAnswerCorrect === true;
 
   return (
     <div className="mx-auto max-w-4xl space-y-6 pb-8">
@@ -148,7 +152,7 @@ function LessonSession({ topicId, topicLabel, unitId, exitHref }: LessonSessionP
         </div>
       </header>
 
-      {question ? (
+      {prepared ? (
         <div className="relative">
           <div
             className="pointer-events-none absolute -inset-2 -z-10 rounded-[2rem] bg-gradient-to-br from-brand-100/80 via-transparent to-cyan-100/70 blur-lg"
@@ -156,45 +160,16 @@ function LessonSession({ topicId, topicLabel, unitId, exitHref }: LessonSessionP
           />
           <QuestionCard
             key={`${topicId}-${session.questionIndex}`}
-            eyebrow={`Odaberi jedan odgovor · ${topicLabel}`}
-            question={question.question}
+            eyebrow={`${KIND_EYEBROW[prepared.kind]} · ${topicLabel}`}
+            question={prepared.question.question}
           >
-            <div
-              className="grid gap-3"
-              role="group"
-              aria-label={`Ponuđeni odgovori za pitanje ${displayQuestionNumber}`}
-            >
-              {question.options.map((option, index) => {
-                let optionState:
-                  | 'idle'
-                  | 'selected'
-                  | 'correct'
-                  | 'incorrect'
-                  | 'disabled' = 'idle';
-
-                if (session.isAnswered) {
-                  if (index === session.correctOptionIndex) {
-                    optionState = 'correct';
-                  } else if (index === session.selectedOptionIndex) {
-                    optionState = 'incorrect';
-                  } else {
-                    optionState = 'disabled';
-                  }
-                }
-
-                return (
-                  <OptionButton
-                    key={`${index}-${option}`}
-                    index={index}
-                    state={optionState}
-                    disabled={session.isAnswered}
-                    onClick={() => session.answerQuestion(index)}
-                  >
-                    {option}
-                  </OptionButton>
-                );
-              })}
-            </div>
+            <QuestionBody
+              key={`body-${topicId}-${session.questionIndex}`}
+              prepared={prepared}
+              isAnswered={session.isAnswered}
+              onAnswer={session.answerQuestion}
+              questionNumber={displayQuestionNumber}
+            />
           </QuestionCard>
         </div>
       ) : (

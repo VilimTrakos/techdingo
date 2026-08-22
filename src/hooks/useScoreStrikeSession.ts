@@ -1,18 +1,17 @@
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { getQuestionsForScoreStrike } from '../data/topics';
-import { randomSessionSize, selectSessionPool, shuffleOptions } from '../lib/pool';
-import { SCORE_STRIKE_QUESTION_TIME_MS, scoreAnswer } from '../lib/scoring';
-import type { Question } from '../types/question';
+import { randomSessionSize, selectSessionPool } from '../lib/pool';
+import {
+  gradeAnswer,
+  prepareQuestion,
+  type AnswerPayload,
+  type PreparedQuestion,
+} from '../lib/questionKinds';
+import { questionTimeMs, scoreAnswer } from '../lib/scoring';
 import { useCountdown } from './useCountdown';
 import { useProgress } from './useProgress';
 
 const AUTO_ADVANCE_MS = 1100;
-
-interface PreparedQuestion {
-  question: Question;
-  options: string[];
-  correctIndex: number;
-}
 
 type Status = 'loading' | 'playing' | 'finished';
 
@@ -23,12 +22,13 @@ interface State {
   score: number;
   combo: number;
   isAnswered: boolean;
-  selectedOptionIndex: number | null;
+  /** null i isAnswered=true znači istek vremena. */
+  lastAnswerCorrect: boolean | null;
 }
 
 type Action =
   | { type: 'INIT'; questions: PreparedQuestion[] }
-  | { type: 'ANSWER'; optionIndex: number; remainingMs: number }
+  | { type: 'ANSWER'; correct: boolean; remainingMs: number; totalMs: number }
   | { type: 'TIMEOUT' }
   | { type: 'NEXT' }
   | { type: 'RESET' };
@@ -41,7 +41,7 @@ function createIdleState(): State {
     score: 0,
     combo: 0,
     isAnswered: false,
-    selectedOptionIndex: null,
+    lastAnswerCorrect: null,
   };
 }
 
@@ -51,25 +51,23 @@ function reducer(state: State, action: Action): State {
       return { ...createIdleState(), status: 'playing', questions: action.questions };
     case 'ANSWER': {
       if (state.status !== 'playing' || state.isAnswered) return state;
-      const current = state.questions[state.questionIndex];
-      const correct = action.optionIndex === current.correctIndex;
       const { pointsAwarded, newCombo } = scoreAnswer({
-        correct,
+        correct: action.correct,
         remainingMs: action.remainingMs,
-        totalMs: SCORE_STRIKE_QUESTION_TIME_MS,
+        totalMs: action.totalMs,
         comboBeforeAnswer: state.combo,
       });
       return {
         ...state,
         isAnswered: true,
-        selectedOptionIndex: action.optionIndex,
+        lastAnswerCorrect: action.correct,
         score: state.score + pointsAwarded,
         combo: newCombo,
       };
     }
     case 'TIMEOUT': {
       if (state.status !== 'playing' || state.isAnswered) return state;
-      return { ...state, isAnswered: true, selectedOptionIndex: null, combo: 0 };
+      return { ...state, isAnswered: true, lastAnswerCorrect: null, combo: 0 };
     }
     case 'NEXT': {
       if (state.status !== 'playing') return state;
@@ -77,7 +75,7 @@ function reducer(state: State, action: Action): State {
       if (nextIndex >= state.questions.length) {
         return { ...state, status: 'finished' };
       }
-      return { ...state, questionIndex: nextIndex, isAnswered: false, selectedOptionIndex: null };
+      return { ...state, questionIndex: nextIndex, isAnswered: false, lastAnswerCorrect: null };
     }
     case 'RESET':
       return createIdleState();
@@ -102,14 +100,10 @@ export function useScoreStrikeSession(topicIdOrMixed: string) {
     const recentIds = progress.scoreStrike[topicIdOrMixed]?.recentQuestionIds ?? [];
     const size = randomSessionSize();
     const picked = selectSessionPool(pool, recentIds, size);
-    const prepared: PreparedQuestion[] = picked.map((q) => {
-      const { options, correctIndex } = shuffleOptions(q);
-      return { question: q, options, correctIndex };
-    });
 
     recordedRef.current = false;
     setIsNewBest(false);
-    dispatch({ type: 'INIT', questions: prepared });
+    dispatch({ type: 'INIT', questions: picked.map(prepareQuestion) });
     // Namjerno bez `progress` u deps - vidi useLessonSession za obrazloženje.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [topicIdOrMixed, restartNonce]);
@@ -133,44 +127,51 @@ export function useScoreStrikeSession(topicIdOrMixed: string) {
       recordedRef.current = true;
       const { isNewBest: newBest } = recordScoreStrikeResult(topicIdOrMixed, {
         score: state.score,
-        questionIds: state.questions.map((q) => q.question.id),
+        questionIds: [...new Set(state.questions.map((q) => q.question.id))],
       });
       setIsNewBest(newBest);
     }
   }, [state.status, state.score, state.questions, topicIdOrMixed, recordScoreStrikeResult]);
 
+  const current: PreparedQuestion | null = state.questions[state.questionIndex] ?? null;
+  // Složenije vrste pitanja (multi/fill/order) dobivaju više vremena.
+  const timeTotalMs = current ? questionTimeMs(current.kind) : questionTimeMs('single');
+
   const timeRemainingMs = useCountdown(
-    SCORE_STRIKE_QUESTION_TIME_MS,
+    timeTotalMs,
     state.questionIndex,
     state.status === 'playing' && !state.isAnswered,
     () => dispatch({ type: 'TIMEOUT' }),
   );
 
-  const answerQuestion = useCallback((optionIndex: number) => {
-    const elapsed = Date.now() - questionStartedAtRef.current;
-    const remainingMs = Math.max(0, SCORE_STRIKE_QUESTION_TIME_MS - elapsed);
-    dispatch({ type: 'ANSWER', optionIndex, remainingMs });
-  }, []);
+  const answerQuestion = useCallback(
+    (payload: AnswerPayload) => {
+      if (state.status !== 'playing' || state.isAnswered || !current) return;
+      const correct = gradeAnswer(current, payload);
+      const elapsed = Date.now() - questionStartedAtRef.current;
+      const totalMs = questionTimeMs(current.kind);
+      const remainingMs = Math.max(0, totalMs - elapsed);
+      dispatch({ type: 'ANSWER', correct, remainingMs, totalMs });
+    },
+    [state.status, state.isAnswered, current],
+  );
 
   const restart = useCallback(() => {
     setRestartNonce((n) => n + 1);
   }, []);
 
-  const current = state.questions[state.questionIndex];
-
   return {
     status: state.status,
     questionIndex: state.questionIndex,
     totalQuestions: state.questions.length,
-    currentQuestion: current ? { question: current.question.question, options: current.options } : null,
+    prepared: current,
     isAnswered: state.isAnswered,
-    selectedOptionIndex: state.selectedOptionIndex,
-    correctOptionIndex: state.isAnswered && current ? current.correctIndex : null,
+    lastAnswerCorrect: state.lastAnswerCorrect,
     explanation: state.isAnswered ? current?.question.explanation : undefined,
     score: state.score,
     combo: state.combo,
     timeRemainingMs,
-    timeTotalMs: SCORE_STRIKE_QUESTION_TIME_MS,
+    timeTotalMs,
     isNewBest,
     answerQuestion,
     restart,

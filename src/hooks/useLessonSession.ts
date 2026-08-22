@@ -1,21 +1,15 @@
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { getTopic } from '../data/topics';
 import { unitProgressKey } from '../data/units';
+import { randomSessionSize, randomUnitSessionSize, selectSessionPool } from '../lib/pool';
 import {
-  randomSessionSize,
-  randomUnitSessionSize,
-  selectSessionPool,
-  shuffleOptions,
-} from '../lib/pool';
+  gradeAnswer,
+  prepareQuestion,
+  type AnswerPayload,
+  type PreparedQuestion,
+} from '../lib/questionKinds';
 import { resolveHearts } from '../state/hearts';
-import type { Question } from '../types/question';
 import { useProgress } from './useProgress';
-
-interface PreparedQuestion {
-  question: Question;
-  options: string[];
-  correctIndex: number;
-}
 
 type Status = 'loading' | 'no-hearts' | 'playing' | 'passed' | 'failed';
 
@@ -27,13 +21,13 @@ interface State {
   correctCount: number;
   wrongQuestionIds: string[];
   isAnswered: boolean;
-  selectedOptionIndex: number | null;
+  lastAnswerCorrect: boolean | null;
 }
 
 type Action =
   | { type: 'INIT'; questions: PreparedQuestion[]; hearts: number }
   | { type: 'NO_HEARTS' }
-  | { type: 'ANSWER'; optionIndex: number }
+  | { type: 'ANSWER'; correct: boolean }
   | { type: 'NEXT' }
   | { type: 'RESET' };
 
@@ -46,7 +40,7 @@ function createIdleState(): State {
     correctCount: 0,
     wrongQuestionIds: [],
     isAnswered: false,
-    selectedOptionIndex: null,
+    lastAnswerCorrect: null,
   };
 }
 
@@ -64,14 +58,13 @@ function reducer(state: State, action: Action): State {
     case 'ANSWER': {
       if (state.status !== 'playing' || state.isAnswered) return state;
       const current = state.questions[state.questionIndex];
-      const correct = action.optionIndex === current.correctIndex;
-      const hearts = correct ? state.hearts : state.hearts - 1;
+      const hearts = action.correct ? state.hearts : state.hearts - 1;
       return {
         ...state,
         isAnswered: true,
-        selectedOptionIndex: action.optionIndex,
-        correctCount: state.correctCount + (correct ? 1 : 0),
-        wrongQuestionIds: correct
+        lastAnswerCorrect: action.correct,
+        correctCount: state.correctCount + (action.correct ? 1 : 0),
+        wrongQuestionIds: action.correct
           ? state.wrongQuestionIds
           : [...new Set([...state.wrongQuestionIds, current.question.id])],
         hearts,
@@ -84,7 +77,7 @@ function reducer(state: State, action: Action): State {
       if (nextIndex >= state.questions.length) {
         return { ...state, status: 'passed' };
       }
-      return { ...state, questionIndex: nextIndex, isAnswered: false, selectedOptionIndex: null };
+      return { ...state, questionIndex: nextIndex, isAnswered: false, lastAnswerCorrect: null };
     }
     case 'RESET':
       return createIdleState();
@@ -137,13 +130,9 @@ export function useLessonSession(topicId: string, unitId?: string) {
       priorityIds,
       allowRepeats: Boolean(unitId),
     });
-    const prepared: PreparedQuestion[] = picked.map((q) => {
-      const { options, correctIndex } = shuffleOptions(q);
-      return { question: q, options, correctIndex };
-    });
 
     recordedRef.current = false;
-    dispatch({ type: 'INIT', questions: prepared, hearts: heartsAvailable });
+    dispatch({ type: 'INIT', questions: picked.map(prepareQuestion), hearts: heartsAvailable });
     // Namjerno bez `progress` u deps - inače bi zapisivanje rezultata na
     // kraju sesije (koje mijenja progress store) ponovno pokrenulo init.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -162,14 +151,14 @@ export function useLessonSession(topicId: string, unitId?: string) {
   }, [state.status, state.correctCount, state.questions, state.wrongQuestionIds, lessonKey, recordLessonResult]);
 
   const answerQuestion = useCallback(
-    (optionIndex: number) => {
+    (payload: AnswerPayload) => {
       const current = state.questions[state.questionIndex];
-      if (state.status === 'playing' && !state.isAnswered && current) {
-        if (optionIndex !== current.correctIndex) {
-          spendHeart(); // trajna zaliha - greška se pamti i nakon lekcije
-        }
-        dispatch({ type: 'ANSWER', optionIndex });
+      if (state.status !== 'playing' || state.isAnswered || !current) return;
+      const correct = gradeAnswer(current, payload);
+      if (!correct) {
+        spendHeart(); // trajna zaliha - greška se pamti i nakon lekcije
       }
+      dispatch({ type: 'ANSWER', correct });
     },
     [state.status, state.isAnswered, state.questions, state.questionIndex, spendHeart],
   );
@@ -182,17 +171,16 @@ export function useLessonSession(topicId: string, unitId?: string) {
     setRestartNonce((n) => n + 1);
   }, []);
 
-  const current = state.questions[state.questionIndex];
+  const current: PreparedQuestion | null = state.questions[state.questionIndex] ?? null;
 
   return {
     status: state.status,
     questionIndex: state.questionIndex,
     totalQuestions: state.questions.length,
     hearts: state.hearts,
-    currentQuestion: current ? { question: current.question.question, options: current.options } : null,
+    prepared: current,
     isAnswered: state.isAnswered,
-    selectedOptionIndex: state.selectedOptionIndex,
-    correctOptionIndex: state.isAnswered && current ? current.correctIndex : null,
+    lastAnswerCorrect: state.lastAnswerCorrect,
     explanation: state.isAnswered ? current?.question.explanation : undefined,
     correctCount: state.correctCount,
     answerQuestion,

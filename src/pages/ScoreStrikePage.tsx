@@ -1,11 +1,12 @@
 import { Link, useParams } from 'react-router-dom';
 import { ComboBadge } from '../components/ComboBadge';
-import { OptionButton } from '../components/OptionButton';
 import { ProgressBar } from '../components/ProgressBar';
+import { QuestionBody } from '../components/QuestionBody';
 import { QuestionCard } from '../components/QuestionCard';
 import { ResultsSummary } from '../components/ResultsSummary';
 import { Timer } from '../components/Timer';
 import { TOPICS } from '../data/topics';
+import { correctAnswerText } from '../lib/questionKinds';
 import { useScoreStrikeSession } from '../hooks/useScoreStrikeSession';
 
 type ScoreStrikeSessionProps = {
@@ -58,19 +59,15 @@ function ScoreStrikeSession({
     );
   }
 
-  const question = session.currentQuestion;
+  const prepared = session.prepared;
   const displayQuestionNumber = Math.min(
     session.questionIndex + 1,
     session.totalQuestions,
   );
-  const answeredCorrectly =
-    session.isAnswered &&
-    session.selectedOptionIndex === session.correctOptionIndex;
-  const timedOut = session.isAnswered && session.selectedOptionIndex === null;
+  const answeredCorrectly = session.isAnswered && session.lastAnswerCorrect === true;
+  const timedOut = session.isAnswered && session.lastAnswerCorrect === null;
   const correctAnswer =
-    question && session.correctOptionIndex !== null
-      ? question.options[session.correctOptionIndex]
-      : null;
+    prepared && session.isAnswered ? correctAnswerText(prepared) : null;
 
   return (
     <div className="mx-auto max-w-4xl space-y-6 pb-8">
@@ -151,7 +148,7 @@ function ScoreStrikeSession({
         </div>
       </header>
 
-      {question && (
+      {prepared && (
         <div className="relative">
           <div
             className="pointer-events-none absolute -inset-2 -z-10 rounded-[2rem] bg-gradient-to-br from-amber-100/90 via-transparent to-orange-100/70 blur-lg"
@@ -160,44 +157,15 @@ function ScoreStrikeSession({
           <QuestionCard
             key={`${topicId}-${session.questionIndex}`}
             eyebrow={`Odgovori brzo · ${topicLabel}`}
-            question={question.question}
+            question={prepared.question.question}
           >
-            <div
-              className="grid gap-3"
-              role="group"
-              aria-label={`Ponuđeni odgovori za pitanje ${displayQuestionNumber}`}
-            >
-              {question.options.map((option, index) => {
-                let optionState:
-                  | 'idle'
-                  | 'selected'
-                  | 'correct'
-                  | 'incorrect'
-                  | 'disabled' = 'idle';
-
-                if (session.isAnswered) {
-                  if (index === session.correctOptionIndex) {
-                    optionState = 'correct';
-                  } else if (index === session.selectedOptionIndex) {
-                    optionState = 'incorrect';
-                  } else {
-                    optionState = 'disabled';
-                  }
-                }
-
-                return (
-                  <OptionButton
-                    key={`${index}-${option}`}
-                    index={index}
-                    state={optionState}
-                    disabled={session.isAnswered}
-                    onClick={() => session.answerQuestion(index)}
-                  >
-                    {option}
-                  </OptionButton>
-                );
-              })}
-            </div>
+            <QuestionBody
+              key={`body-${topicId}-${session.questionIndex}`}
+              prepared={prepared}
+              isAnswered={session.isAnswered}
+              onAnswer={session.answerQuestion}
+              questionNumber={displayQuestionNumber}
+            />
           </QuestionCard>
         </div>
       )}

@@ -128,15 +128,5 @@ export function selectSessionPool(
   return selected;
 }
 
-export interface ShuffledOptions {
-  options: string[];
-  correctIndex: number;
-}
-
-/** Miješa redoslijed opcija za jedno pitanje; ne perzistira se, računa se po sesiji. */
-export function shuffleOptions(question: Question): ShuffledOptions {
-  const indices = shuffle([0, 1, 2, 3]);
-  const options = indices.map((i) => question.options[i]);
-  const correctIndex = indices.indexOf(question.correctIndex);
-  return { options, correctIndex };
-}
+// Miješanje opcija/koraka po vrsti pitanja živi u lib/questionKinds.ts
+// (prepareQuestion) - pool.ts se bavi samo ODABIROM pitanja za sesiju.

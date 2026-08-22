@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { MAX_SESSION_SIZE, MIN_SESSION_SIZE, randomSessionSize, selectSessionPool, shuffleOptions } from './pool';
+import { MAX_SESSION_SIZE, MIN_SESSION_SIZE, randomSessionSize, selectSessionPool } from './pool';
 import type { Difficulty, Question } from '../types/question';
 
 const DIFFICULTY_RANK: Record<Difficulty, number> = { easy: 0, medium: 1, hard: 2 };
@@ -92,16 +92,5 @@ describe('selectSessionPool', () => {
     for (const q of selected) counts[q.difficulty]++;
     expect(counts.easy).toBe(2);
     expect(counts.medium + counts.hard).toBe(13);
-  });
-});
-
-describe('shuffleOptions', () => {
-  it('sadrži identičan skup opcija i ispravno prati correctIndex', () => {
-    const question = makeQuestions(1)[0];
-    for (let i = 0; i < 20; i++) {
-      const { options, correctIndex } = shuffleOptions(question);
-      expect(new Set(options)).toEqual(new Set(question.options));
-      expect(options[correctIndex]).toBe(question.options[question.correctIndex]);
-    }
   });
 });

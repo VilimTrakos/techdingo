@@ -1,8 +1,22 @@
+import type { QuestionKind } from '../types/question';
+
 export const SCORE_STRIKE_BASE_POINTS = 100;
 export const SCORE_STRIKE_MAX_SPEED_BONUS = 50;
 export const SCORE_STRIKE_COMBO_STEP = 0.1;
 export const SCORE_STRIKE_COMBO_CAP = 10;
 export const SCORE_STRIKE_QUESTION_TIME_MS = 10_000;
+
+/** Složenije vrste pitanja dobivaju više vremena po pitanju. */
+const KIND_TIME_MS: Record<QuestionKind, number> = {
+  single: SCORE_STRIKE_QUESTION_TIME_MS,
+  multi: 15_000,
+  fill: 20_000,
+  order: 20_000,
+};
+
+export function questionTimeMs(kind: QuestionKind): number {
+  return KIND_TIME_MS[kind] ?? SCORE_STRIKE_QUESTION_TIME_MS;
+}
 
 /** Multiplikator na temelju combo brojača PRIJE ovog odgovora (raste 10% po uzastopnom točnom, kapa na +100%). */
 export function comboMultiplier(comboBeforeAnswer: number): number {
