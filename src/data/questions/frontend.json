@@ -95,9 +95,9 @@
     "question": "Što je destructuring (destrukturiranje) u JavaScriptu?",
     "options": [
       "Sintaksa koja omogućuje raspakiravanje vrijednosti iz nizova ili svojstava iz objekata u zasebne varijable u jednom izrazu",
-      "Proces brisanja svih svojstava objekta odjednom",
-      "Način pretvaranja objekta u JSON string",
-      "Tehnika za spajanje dva objekta u jedan"
+      "Postupak koji prolazi sva svojstva objekta, briše ih iz izvornog objekta i njihove vrijednosti premješta u zasebne globalne varijable",
+      "Sintaksa koja serijalizira objekt u JSON tekst i pritom automatski stvara lokalnu varijablu za svako svojstvo pronađeno u rezultatu",
+      "Tehnika koja spaja dva objekta u jedan tako da zadržava samo svojstva prisutna u oba izvora i odbacuje sva ostala svojstva"
     ],
     "correctIndex": 0,
     "explanation": "Primjer: const { name, age } = user; ili const [first, second] = arr; - čitljiviji je način izvlačenja podataka nego ručno pristupanje svakom svojstvu/indeksu.",
@@ -110,9 +110,9 @@
     "question": "Čemu služi spread operator (...) u JavaScriptu?",
     "options": [
       "Raspakiravanje elemenata niza ili svojstava objekta na mjestu gdje se očekuje više elemenata/argumenata, npr. za kopiranje ili spajanje",
-      "Označava komentar u JavaScript kodu",
-      "Koristi se isključivo za matematičko množenje brojeva",
-      "Definira privatnu varijablu unutar klase"
+      "Označava višeredni komentar u JavaScriptu i uzrokuje da runtime preskoči sve elemente niza ili svojstva objekta navedena nakon operatora",
+      "Izvodi matematičko množenje svih elemenata kolekcije te vraća jedan broj, ali se ne može koristiti s objektima ni argumentima funkcije",
+      "Definira privatnu varijablu klase koja se kopira u svaku instancu i ostaje nedostupna metodama naslijeđenih klasa"
     ],
     "correctIndex": 0,
     "explanation": "Primjeri: [...arr1, ...arr2] spaja nizove, {...obj1, ...obj2} spaja objekte, a fn(...args) raspakira niz u pojedinačne argumente funkcije.",
@@ -734,9 +734,9 @@
     "question": "Koja je razlika između localStorage, sessionStorage i cookiea?",
     "options": [
       "localStorage podaci ostaju trajno dok se ručno ne obrišu, sessionStorage se briše zatvaranjem taba, a cookie se šalje serveru sa svakim HTTP zahtjevom i može imati datum isteka",
-      "Sve tri tehnologije spremaju podatke isključivo na serveru",
-      "cookie se briše svaki put kad se osvježi (refresha) stranica",
-      "localStorage i sessionStorage se automatski šalju serveru kao cookie"
+      "Sve tri tehnologije podatke spremaju isključivo na serveru; razlikuju se samo po tome koristi li server memoriju procesa, datoteku ili relacijsku bazu podataka",
+      "localStorage se briše zatvaranjem taba, sessionStorage ostaje trajno, a svaki cookie nestaje pri osvježavanju stranice bez obzira na svoj datum isteka",
+      "localStorage i sessionStorage automatski se šalju uz svaki HTTP zahtjev, dok cookie ostaje samo u JavaScript memoriji aktivnog taba i nikad ne ide serveru"
     ],
     "correctIndex": 0,
     "explanation": "Ključna razlika je u trajanju i vidljivosti serveru: cookie putuje sa svakim zahtjevom (pa se koristi npr. za sesije), dok su localStorage/sessionStorage dostupni samo u pregledniku putem JavaScripta.",
@@ -1228,9 +1228,9 @@
     "question": "Koja je razlika između microtaskova i macrotaskova u JavaScript event loopu?",
     "options": [
       "Microtaskovi (npr. Promise callbackovi) se izvršavaju odmah nakon trenutnog sinkronog koda i prije sljedećeg macrotaska, dok se macrotaskovi (npr. setTimeout, event handleri) izvršavaju u sljedećim ciklusima event loopa",
-      "Macrotaskovi uvijek imaju prioritet nad microtaskovima",
-      "Microtaskovi se izvršavaju isključivo u Node.js, a macrotaskovi isključivo u pregledniku",
-      "Nema razlike, oba tipa taskova se izvršavaju identičnim redoslijedom"
+      "Macrotaskovi poput timera uvijek se izvrše prije svih Promise callbackova, a microtask red provjerava se tek kada više nema nijednog timera ni korisničkog događaja",
+      "Microtaskovi postoje samo u Node.js procesu i izvršavaju I/O callbackove, dok preglednik poznaje samo macrotaskove za Promise, timer i DOM događaje",
+      "Microtask i macrotask red obrađuju se naizmjenično po jedan callback bez prioriteta; nazivi opisuju očekivano trajanje funkcije, a ne mjesto u event loopu"
     ],
     "correctIndex": 0,
     "explanation": "Nakon svakog macrotaska, event loop prvo isprazni CIJELI red microtaskova prije nego uzme sljedeći macrotask - zato se npr. Promise.resolve().then() izvrši prije setTimeout(fn, 0).",
@@ -1347,10 +1347,10 @@
     "topic": "frontend",
     "question": "Zašto se za glatke UI animacije često preferiraju transform i opacity umjesto animiranja width, height ili top?",
     "options": [
-      "transform i opacity uvijek troše nula memorije",
+      "transform i opacity preglednik uvijek izvršava bez korištenja memorije ili grafičkog procesora, pa njihovo animiranje nema nikakav trošak renderiranja",
       "Promjene transformacije i prozirnosti često se mogu obraditi kompozicijom bez ponovnog layouta, dok geometrijska svojstva mogu pokrenuti skuplje faze renderiranja",
-      "width i height nisu animabilna CSS svojstva",
-      "transform automatski smanjuje broj React rendera"
+      "width i height nisu animabilna CSS svojstva, dok transform i opacity jedini podržavaju prijelaze između numeričkih vrijednosti u modernim preglednicima",
+      "transform automatski sprječava React renderiranje komponente tijekom animacije, dok width i top pri svakom frameu ponovno pokreću cijelo React stablo"
     ],
     "correctIndex": 1,
     "explanation": "Animacije transformacije i opacityja često ostaju na compositoru, dok promjene geometrije mogu zahtijevati layout i paint.",

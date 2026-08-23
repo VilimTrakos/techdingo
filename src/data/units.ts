@@ -44,6 +44,16 @@ export const UNITS: Record<string, UnitDefinition[]> = {
     { id: 'otpornost-distribuirani', topicId: 'backend', labelHr: 'Otpornost i distribuirani sustavi', description: 'Retry, circuit breaker, konsenzus i konkurentnost.' },
     { id: 'observability', topicId: 'backend', labelHr: 'Observability', description: 'Logovi, metrike, tragovi i SLO ciljevi.' },
   ],
+  devops: [
+    { id: 'linux-shell', topicId: 'devops', labelHr: 'Linux i shell', description: 'Naredbe, dozvole, procesi i cijevi.' },
+    { id: 'kontejneri', topicId: 'devops', labelHr: 'Kontejneri', description: 'Docker, imagei, slojevi i volumeni.' },
+    { id: 'ci-cd', topicId: 'devops', labelHr: 'CI/CD', description: 'Pipeline, testovi, artefakti i tajne.' },
+    { id: 'orkestracija', topicId: 'devops', labelHr: 'Orkestracija', description: 'Kubernetes: podovi, servisi i rollout.' },
+    { id: 'deploy-strategije', topicId: 'devops', labelHr: 'Deploy strategije', description: 'Blue-green, canary, flagovi i povratak.' },
+    { id: 'infrastruktura-kao-kod', topicId: 'devops', labelHr: 'Infrastruktura kao kod', description: 'Deklarativni opis, state i drift.' },
+    { id: 'cloud-osnove', topicId: 'devops', labelHr: 'Osnove oblaka', description: 'Regije, IAM, serverless i troškovi.' },
+    { id: 'nadzor-produkcije', topicId: 'devops', labelHr: 'Nadzor produkcije', description: 'Alarmi, SLO, dežurstvo i postmortem.' },
+  ],
   general: [
     { id: 'strukture-podataka', topicId: 'general', labelHr: 'Strukture podataka', description: 'Polja, stogovi, redovi, mape i stabla.' },
     { id: 'algoritmi', topicId: 'general', labelHr: 'Algoritmi', description: 'Big-O, pretraživanje, sortiranje i grafovi.' },

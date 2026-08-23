@@ -456,9 +456,9 @@
     "question": "Koja je razlika između sinkronog i asinkronog izvršavanja koda?",
     "options": [
       "Sinkroni kod se izvršava redom, blokirajući daljnje izvršavanje dok se trenutna operacija ne završi; asinkroni kod omogućuje da se druge operacije nastave izvršavati dok se čeka rezultat (npr. mrežni poziv)",
-      "Asinkroni kod se uvijek izvršava sporije od sinkronog koda",
-      "Sinkroni kod se koristi isključivo na frontendu, asinkroni isključivo na backendu",
-      "Nema razlike u ponašanju, razlikuje se samo sintaksa pisanja"
+      "Sinkroni kod uvijek koristi jednu jezgru procesora, dok asinkroni kod svaku operaciju automatski šalje na zasebnu jezgru i zato nikada ne blokira ostatak programa",
+      "Sinkroni kod namijenjen je samo izračunima u pregledniku, dok se asinkroni kod koristi samo na serveru za pristup bazama i udaljenim servisima",
+      "Sinkrono i asinkrono izvršavanje imaju jednak redoslijed i blokiranje; razlikuju se samo po tome koristi li se ključna riječ async u potpisu funkcije"
     ],
     "correctIndex": 0,
     "explanation": "Asinkrono izvršavanje je ključno za I/O operacije (baza podataka, mrežni pozivi, čitanje datoteka) jer sprječava blokiranje cijele aplikacije dok se čeka spori vanjski resurs.",
@@ -531,9 +531,9 @@
     "question": "Koja je razlika između mikroservisne arhitekture i monolitne aplikacije?",
     "options": [
       "Monolit je jedna aplikacija koja sadrži svu funkcionalnost i deploya se kao cjelina, dok mikroservisi dijele sustav na manje, neovisno deployane servise koji komuniciraju mrežno (npr. preko API-ja)",
-      "Mikroservisi mogu koristiti samo jedan programski jezik za cijeli sustav",
-      "Monolitna arhitektura ne podržava rad s bazom podataka",
-      "Nema stvarne razlike, mikroservisi su samo noviji naziv za monolit"
+      "Mikroservisi moraju koristiti jedan programski jezik i jednu zajedničku bazu, dok monolit svakoj funkcionalnosti dopušta zaseban jezik, spremište i neovisan deploy",
+      "Monolit se sastoji od više procesa koji se uvijek zasebno deployaju, dok mikroservisi moraju biti zapakirani u jednu izvršnu datoteku i dijeliti isti životni ciklus",
+      "Mikroservisi i monolit imaju jednaku granicu deploya; razlika je samo u broju direktorija izvornog koda i načinu imenovanja modula unutar repozitorija"
     ],
     "correctIndex": 0,
     "explanation": "Mikroservisi olakšavaju neovisno skaliranje i deployanje dijelova sustava, ali uvode dodatnu složenost (mrežna komunikacija, distribuirane transakcije, monitoring) koju monolit nema.",
@@ -546,9 +546,9 @@
     "question": "Što je CORS (Cross-Origin Resource Sharing)?",
     "options": [
       "Sigurnosni mehanizam preglednika koji kontrolira smije li web stranica s jedne domene dohvaćati resurse s druge domene, putem posebnih HTTP zaglavlja koje server mora eksplicitno dopustiti",
-      "Protokol za enkripciju podataka koji se prenose preko interneta",
-      "Baza podataka za spremanje korisničkih sesija",
-      "Alat za automatsko testiranje performansi API-ja"
+      "Transportni protokol koji šifrira sav promet između preglednika i servera te zamjenjuje TLS certifikate posebnim zaglavljima koja šalje klijent",
+      "Serverski mehanizam za spremanje korisničkih sesija između različitih domena, pri čemu preglednik automatski dijeli sve cookieje s povezanim stranicama",
+      "Alat preglednika koji mjeri performanse udaljenih API-ja i blokira svaki odgovor čije je trajanje veće od vrijednosti navedene u HTTP zaglavlju"
     ],
     "correctIndex": 0,
     "explanation": "Bez odgovarajućih CORS zaglavlja (npr. Access-Control-Allow-Origin) preglednik će blokirati JavaScript kod jedne domene da čita odgovor s druge domene, radi zaštite korisnika od zlonamjernih cross-origin zahtjeva.",
@@ -881,9 +881,9 @@
     "question": "Što je race condition?",
     "options": [
       "Situacija u kojoj konačan ishod programa ovisi o nepredvidivom redoslijedu izvršavanja dva ili više paralelnih/konkurentnih procesa koji pristupaju istom dijeljenom resursu",
-      "Tehnika za ubrzavanje izvršavanja koda paralelizacijom",
-      "Greška koja se javlja isključivo pri kompajliranju koda",
-      "Naziv za automatsko testiranje performansi aplikacije"
+      "Tehnika u kojoj se posao namjerno pokreće na više dretvi, a runtime uvijek spaja njihove rezultate istim redoslijedom bez potrebe za sinkronizacijom",
+      "Pogreška koju prevoditelj prijavljuje kada dvije funkcije imaju isto ime, neovisno o tome pristupaju li dijeljenim podacima ili se izvršavaju konkurentno",
+      "Vrsta testa performansi u kojem više klijenata istodobno šalje zahtjeve, a pobjednikom se smatra instanca koja prva vrati rezultat bez obzira na stanje"
     ],
     "correctIndex": 0,
     "explanation": "Primjer: dva zahtjeva istovremeno čitaju stanje računa, oba izračunaju novo stanje na temelju starog i zapišu ga - jedna promjena se 'izgubi' jer se procesi nisu ispravno sinkronizirali (rješava se npr. transakcijama, zaključavanjem ili atomičnim operacijama).",
@@ -911,9 +911,9 @@
     "question": "Što je N+1 query problem?",
     "options": [
       "Situacija u kojoj se za dohvaćanje N povezanih zapisa izvrši 1 upit za glavnu listu, a zatim dodatni upit za SVAKI pojedini povezani zapis (N dodatnih upita), umjesto da se sve dohvati u jednom optimiziranom upitu",
-      "Greška koja se javlja kad baza podataka ima više od jedne tablice",
-      "Tehnika optimizacije koja namjerno povećava broj upita radi boljih performansi",
-      "Problem koji se javlja isključivo kod NoSQL baza podataka"
+      "Greška sheme koja nastaje kada baza sadrži N poslovnih tablica i jednu pomoćnu tablicu, pa planer više ne može odabrati indeks bez obzira na oblik upita",
+      "Optimizacija u kojoj aplikacija jedan veliki upit namjerno dijeli na N+1 paralelnih upita jer više manjih odlazaka do baze uvijek ima manju latenciju od jednog JOIN-a",
+      "Problem karakterističan samo za dokumentne NoSQL baze, gdje dohvat jednog dokumenta automatski pokreće dodatni upit za svako njegovo polje i ugrađenu vrijednost"
     ],
     "correctIndex": 0,
     "explanation": "Klasičan primjer: dohvatiš listu od 50 postova (1 upit), pa za svaki post posebno dohvaćaš autora (50 dodatnih upita) - rješava se JOIN-ovima ili eager loadingom (npr. 'include' u ORM-u).",

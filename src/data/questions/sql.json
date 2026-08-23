@@ -685,9 +685,9 @@
     "question": "Koja je razlika između stored procedure i (SQL) funkcije?",
     "options": [
       "Funkcija mora vraćati vrijednost i može se koristiti unutar SELECT upita, dok procedura ne mora vraćati vrijednost i poziva se samostalno (može mijenjati podatke, upravljati transakcijama)",
-      "Procedura se izvršava na klijentu, a funkcija na serveru baze podataka",
-      "Funkcije se pišu u SQL-u, a procedure isključivo u Pythonu",
-      "Nema razlike, to su sinonimi u svim bazama podataka"
+      "Procedura se izvršava u klijentskoj aplikaciji i uvijek vraća jednu skalarnu vrijednost, dok se funkcija izvršava na serveru i služi samo upravljanju transakcijama",
+      "Funkcija se mora pisati isključivo u standardnom SQL-u i smije mijenjati bilo koju tablicu, dok se procedura piše samo u Pythonu i ne može prihvatiti parametre",
+      "Funkcija i procedura imaju isti način poziva i ista pravila povratne vrijednosti u svim bazama; razlikuju se samo po ključnoj riječi korištenoj pri definiciji"
     ],
     "correctIndex": 0,
     "explanation": "Funkcije se ugrađuju u izraze (npr. SELECT mojaFunkcija(x)) i moraju vratiti vrijednost, dok su procedure samostalne rutine koje se pozivaju naredbom CALL/EXEC i mogu imati širi opseg (npr. upravljati transakcijama).",
@@ -715,9 +715,9 @@
     "question": "Koja je razlika između EXISTS i IN u WHERE klauzuli?",
     "options": [
       "EXISTS provjerava postoji li barem jedan redak koji zadovoljava podupit (često brži na velikim skupovima jer prestaje čim nađe podudaranje), IN uspoređuje vrijednost s listom/rezultatom podupita",
-      "IN se može koristiti samo s brojevima, a EXISTS samo s tekstom",
-      "EXISTS je zastarjela sintaksa koja se više ne podržava u modernim bazama",
-      "Nema nikakve razlike u ponašanju ili performansama"
+      "IN se može koristiti samo s numeričkim vrijednostima i uvijek zaustavlja podupit nakon prvog retka, dok EXISTS radi samo s tekstom i mora materijalizirati cijeli rezultat",
+      "EXISTS je zastarjela skraćenica za INNER JOIN koju moderne baze pretvaraju u IN, pa ne podržava korelirane podupite ni provjeru postojanja retka",
+      "IN i EXISTS imaju jednaku NULL semantiku i uvijek dobivaju isti plan izvršavanja; razlikuju se samo po tome piše li se stupac prije ili poslije podupita"
     ],
     "correctIndex": 0,
     "explanation": "EXISTS vraća TRUE/FALSE čim pronađe prvi podudarajući redak (short-circuit), dok IN uspoređuje vrijednost sa cijelim skupom rezultata - izbor ovisi o veličini podataka i optimizatoru konkretne baze.",
@@ -1234,9 +1234,9 @@
     "question": "Što ukratko opisuju 1NF, 2NF i 3NF (normalne forme)?",
     "options": [
       "1NF traži atomične vrijednosti bez ponavljajućih grupa, 2NF uklanja djelomične ovisnosti o dijelu kompozitnog ključa, 3NF uklanja tranzitivne ovisnosti između ne-ključnih stupaca",
-      "1NF, 2NF i 3NF su tri različita tipa JOIN operacija",
-      "To su tri razine sigurnosnog pristupa podacima u bazi",
-      "Označavaju broj indeksa koje tablica smije imati"
+      "1NF određuje način spajanja dviju tablica, 2NF bira vanjski JOIN, a 3NF uklanja retke bez podudaranja; forme se zato primjenjuju samo tijekom SELECT upita",
+      "1NF, 2NF i 3NF predstavljaju rastuće razine prava pristupa, od čitanja jedne tablice do izmjene cijele sheme, a dodjeljuju se korisnicima naredbom GRANT",
+      "Normalna forma određuje koliko indeksa tablica smije imati: jedan u 1NF, dva u 2NF i tri u 3NF, bez utjecaja na funkcijske ovisnosti stupaca"
     ],
     "correctIndex": 0,
     "explanation": "Svaka viša normalna forma gradi se na prethodnoj i dodatno smanjuje redundanciju/anomalije, uz kompromis da upiti mogu zahtijevati više JOIN-ova.",
@@ -1323,10 +1323,10 @@
     "topic": "sql",
     "question": "Zašto su procjene kardinalnosti važne planeru upita?",
     "options": [
-      "Određuju dopušteni broj stupaca u tablici",
-      "Služe samo za formatiranje brojeva u rezultatu",
+      "Određuju najveći dopušteni broj stupaca i redaka u tablici, pa planer odbija izvršiti upit kada procjena prijeđe ograničenje definirano u shemi",
+      "Služe za formatiranje brojčanih vrijednosti u rezultatu i odabir širine prikaza, ali ne utječu na redoslijed spajanja tablica ni pristupne metode",
       "Procjenjuju koliko će redaka proći kroz dijelove plana, što utječe na redoslijed JOIN-ova, algoritme i izbor indeksa; loše statistike mogu dovesti do lošeg plana",
-      "Jamče da svaki SELECT vrati točno procijenjeni broj redaka"
+      "Jamče da će svaki SELECT vratiti točno procijenjeni broj redaka; ako stvarni broj odstupa, baza poništava rezultat i automatski ponovno izvršava upit"
     ],
     "correctIndex": 2,
     "explanation": "Planer uspoređuje troškove mogućih planova na temelju procijenjenih količina podataka. Zastarjele statistike ili korelirani stupci mogu ozbiljno iskriviti te procjene.",
@@ -1383,10 +1383,10 @@
     "topic": "sql",
     "question": "Dvije transakcije pročitaju vrijednost 100, obje izračunaju 110 i obje je upišu, pa se jedan porast izgubi. Kako se taj lost update može spriječiti?",
     "options": [
-      "Dodavanjem ORDER BY u početni SELECT",
-      "Pretvaranjem broja u VARCHAR prije spremanja",
+      "Dodavanjem ORDER BY u početni SELECT kako bi obje transakcije pročitale redak istim redoslijedom i zato automatski spojile izračunate vrijednosti pri upisu",
+      "Pretvaranjem broja u VARCHAR prije spremanja jer tekstualni stupci zadržavaju obje konkurentne vrijednosti i baza ih kasnije sama pretvara u konačan zbroj",
       "Atomarnim UPDATE izrazom poput vrijednost = vrijednost + 10 ili kontrolom konkurentnosti zaključavanjem odnosno provjerom verzije uz retry",
-      "Korištenjem UNION ALL između dviju transakcija"
+      "Korištenjem UNION ALL između rezultata dviju transakcija, čime se njihove promjene kombiniraju u jedan skup prije nego što bilo koja transakcija napravi COMMIT"
     ],
     "correctIndex": 2,
     "explanation": "Obrazac pročitaj-izračunaj-upiši mora zaštititi pretpostavljeno staro stanje. Atomarna izmjena u bazi ili provjera verzije odnosno zaključavanje sprječava tiho prepisivanje tuđeg rezultata.",

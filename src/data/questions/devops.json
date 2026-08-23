@@ -1,0 +1,1313 @@
+[
+  {
+    "id": "devops-uvod-linux-shell",
+    "topic": "devops",
+    "unitId": "linux-shell",
+    "question": "Što je ljuska (shell) u Linuxu?",
+    "options": [
+      "Program koji prima naredbe i pokreće ih",
+      "Grafičko sučelje za rad s datotekama",
+      "Dio jezgre koji upravlja memorijom",
+      "Datotečni sustav u kojem su programi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Shell je posrednik: ti tipkaš naredbu, on je razumije i pokreće odgovarajući program. Bash je najrašireniji.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "devops-001-pwd",
+    "topic": "devops",
+    "unitId": "linux-shell",
+    "question": "Što ispisuje naredba `pwd`?",
+    "options": [
+      "Punu putanju direktorija u kojem jesi",
+      "Popis datoteka u trenutnom direktoriju",
+      "Ime prijavljenog korisnika i grupu",
+      "Verziju ljuske koja je pokrenuta"
+    ],
+    "correctIndex": 0,
+    "explanation": "pwd znači print working directory. Kad se izgubiš u stablu direktorija, to je prva naredba koju upišeš.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "devops-002-pipe",
+    "topic": "devops",
+    "unitId": "linux-shell",
+    "question": "Čemu služi znak `|` između dvije naredbe?",
+    "options": [
+      "Izlaz prve naredbe postaje ulaz druge",
+      "Obje naredbe pokreću se istovremeno",
+      "Druga se pokreće samo ako prva uspije",
+      "Izlaz obiju sprema se u istu datoteku"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cijev spaja naredbe u lanac. Uvjetno pokretanje 'samo ako prva uspije' radi znak && , ne cijev.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "devops-003-permissions",
+    "topic": "devops",
+    "unitId": "linux-shell",
+    "question": "U dozvolama `-rw-r--r--`, što smije netko tko nije ni vlasnik ni u grupi?",
+    "options": [
+      "Samo čitati datoteku",
+      "Čitati i mijenjati je",
+      "Mijenjati i pokretati je",
+      "Ne smije ništa s njom"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tri skupine po tri znaka: vlasnik, grupa, ostali. Ostali ovdje imaju r-- , dakle samo čitanje.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "devops-004-exit-code",
+    "topic": "devops",
+    "unitId": "linux-shell",
+    "question": "Što znači izlazni kod 0 nakon izvršene naredbe?",
+    "options": [
+      "Da je naredba uspješno završila",
+      "Da naredba nije pronađena na sustavu",
+      "Da je naredbu prekinuo signal izvana",
+      "Da naredba nije ispisala nikakav izlaz"
+    ],
+    "correctIndex": 0,
+    "explanation": "U Unixu je 0 uspjeh, a sve ostalo greška. Na tome počiva && , || i svaki CI korak koji pada.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-005-env-vars",
+    "topic": "devops",
+    "unitId": "linux-shell",
+    "question": "Zašto se tajne u shellu prosljeđuju kroz varijable okruženja, a ne kroz argumente naredbe?",
+    "options": [
+      "Argumenti su vidljivi svim korisnicima u popisu procesa",
+      "Argumenti imaju ograničenje od najviše 64 znaka",
+      "Varijable okruženja jedine se automatski šifriraju",
+      "Argumenti se ne prosljeđuju podprocesima naredbe"
+    ],
+    "correctIndex": 0,
+    "explanation": "`ps aux` prikazuje punu naredbenu liniju svakog procesa, pa lozinka u argumentu curi svakom korisniku na stroju.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-006-port-busy",
+    "topic": "devops",
+    "unitId": "linux-shell",
+    "question": "Aplikacija se ne pokreće jer je port 8080 zauzet, a ne znaš čime. Što je ispravan potez?",
+    "options": [
+      "Naći PID s `lsof -i :8080` pa zaustaviti taj proces",
+      "Pokrenuti `ping 8080` da vidiš odgovara li servis",
+      "Restartati mrežu jer se zauzeti port drukčije ne pušta",
+      "Promijeniti port aplikacije jer zauzeti se ne oslobađa"
+    ],
+    "correctIndex": 0,
+    "explanation": "lsof (ili ss -tulpn) mapira port na proces. Port se uvijek oslobodi gašenjem procesa koji ga drži.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-007-grep-find",
+    "topic": "devops",
+    "unitId": "linux-shell",
+    "kind": "multi",
+    "question": "Koje tvrdnje o `grep` i `find` su točne?",
+    "options": [
+      "grep pretražuje sadržaj datoteka",
+      "find pretražuje datoteke po imenu i svojstvima",
+      "grep mijenja datoteke u kojima nađe uzorak",
+      "find može pokrenuti naredbu nad rezultatom",
+      "grep radi samo nad jednom datotekom odjednom"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      3
+    ],
+    "explanation": "grep gleda unutra, find gleda u stablo direktorija. find -exec pokreće naredbu nad svakim pogotkom.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-008-redirect",
+    "topic": "devops",
+    "unitId": "linux-shell",
+    "kind": "fill",
+    "question": "Dopuni preusmjeravanje izlaza.",
+    "text": "Naredba `ls > popis.txt` ___ postojeći sadržaj datoteke, dok `ls ___ popis.txt` dopisuje na kraj.",
+    "answers": [
+      "prepisuje",
+      ">>"
+    ],
+    "distractors": [
+      "briše",
+      "|",
+      "2>"
+    ],
+    "explanation": "Jedan znak > prepisuje datoteku od nule, dva znaka >> dopisuju. Zamjena to dvoje zna nepovratno pobrisati log.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-009-top-ips",
+    "topic": "devops",
+    "unitId": "linux-shell",
+    "kind": "order",
+    "question": "Poredaj korake koji iz loga izvlače deset najčešćih IP adresa.",
+    "steps": [
+      "Ispiši sadržaj datoteke loga",
+      "Izdvoji stupac s IP adresom",
+      "Sortiraj retke da jednaki dođu jedan uz drugi",
+      "Prebroji ponavljanja svake adrese",
+      "Sortiraj po broju silazno i uzmi prvih deset"
+    ],
+    "explanation": "Klasičan lanac cat | awk | sort | uniq -c | sort -rn | head. Sortiranje PRIJE uniq je obavezno jer uniq broji samo susjedne retke.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-uvod-kontejneri",
+    "topic": "devops",
+    "unitId": "kontejneri",
+    "question": "Što je kontejner?",
+    "options": [
+      "Izolirano okruženje u kojem aplikacija radi",
+      "Virtualno računalo s vlastitom jezgrom",
+      "Direktorij u kojem stoji izvorni kod",
+      "Format za sažimanje velikih datoteka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kontejner pakira aplikaciju s njezinim ovisnostima i pokreće je izolirano, ali dijeli jezgru s domaćinom.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "devops-010-image-vs-container",
+    "topic": "devops",
+    "unitId": "kontejneri",
+    "question": "Koja je razlika između imagea i kontejnera?",
+    "options": [
+      "Image je nepromjenjivi predložak, kontejner je pokrenuta instanca",
+      "Kontejner je nepromjenjivi predložak, image je pokrenuta instanca",
+      "Image radi na Linuxu, a kontejner na svim sustavima jednako",
+      "To su dva imena za istu stvar u različitim alatima"
+    ],
+    "correctIndex": 0,
+    "explanation": "Odnos je kao klasa i objekt: iz jednog imagea može se pokrenuti proizvoljno mnogo kontejnera.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "devops-011-vm-vs-container",
+    "topic": "devops",
+    "unitId": "kontejneri",
+    "question": "Zašto se kontejner pokreće brže od virtualnog stroja?",
+    "options": [
+      "Dijeli jezgru domaćina pa ne diže vlastiti sustav",
+      "Drži cijelu aplikaciju u memoriji, ne na disku",
+      "Uvijek se pokreće na bržem hardveru od stroja",
+      "Preskače provjeru ovisnosti pri svakom pokretanju"
+    ],
+    "correctIndex": 0,
+    "explanation": "VM diže cijeli gostujući OS s vlastitom jezgrom. Kontejner je samo izolirani proces, pa starta u sekundi.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-012-layers",
+    "topic": "devops",
+    "unitId": "kontejneri",
+    "question": "Zašto se u Dockerfileu instalacija ovisnosti piše PRIJE kopiranja izvornog koda?",
+    "options": [
+      "Da se sloj s ovisnostima ne gradi ponovno pri svakoj izmjeni koda",
+      "Da ovisnosti dobiju veći prioritet pri pokretanju kontejnera",
+      "Jer Docker odbija kopirati kod prije instaliranih ovisnosti",
+      "Da se izvorni kod ne nađe u završnom imageu aplikacije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Docker kešira slojeve redom. Izmjena koda poništava samo slojeve ISPOD sebe, pa se instalacija ne ponavlja.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-013-volume",
+    "topic": "devops",
+    "unitId": "kontejneri",
+    "question": "Gdje ostaju podaci koje kontejner zapiše u vlastiti datotečni sustav?",
+    "options": [
+      "Nestaju kad se kontejner obriše",
+      "Trajno ostaju u imageu iz kojeg je nastao",
+      "Automatski se sinkroniziraju na domaćina",
+      "Sele se u sljedeći kontejner istog imagea"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sloj za pisanje živi koliko i kontejner. Za trajnost se koristi volumen ili bind mount prema domaćinu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-014-root-container",
+    "topic": "devops",
+    "unitId": "kontejneri",
+    "question": "Zašto se aplikaciju u kontejneru ne pokreće kao root?",
+    "options": [
+      "Jer proboj iz kontejnera tada napadaču daje veće ovlasti",
+      "Jer root korisnik u kontejneru troši više memorije",
+      "Jer Docker odbija pokrenuti kontejner koji radi kao root",
+      "Jer se kontejneri kao root ne mogu povezati u mrežu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Izolacija kontejnera nije savršena. USER u Dockerfileu je jeftina obrana u dubinu koja se često preskoči.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-015-dockerignore",
+    "topic": "devops",
+    "unitId": "kontejneri",
+    "question": "Čemu služi `.dockerignore`?",
+    "options": [
+      "Izuzima datoteke iz konteksta koji se šalje pri gradnji",
+      "Sprječava pokretanje navedenih procesa u kontejneru",
+      "Popisuje pakete koje ne treba instalirati u image",
+      "Skriva varijable okruženja od pokrenute aplikacije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez njega `node_modules` i `.git` putuju u build kontekst, pa gradnja traje dulje i tajne mogu završiti u imageu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-016-image-size",
+    "topic": "devops",
+    "unitId": "kontejneri",
+    "kind": "multi",
+    "question": "Što stvarno smanjuje veličinu Docker imagea?",
+    "options": [
+      "Višefazna gradnja koja u završni image nosi samo artefakt",
+      "Manja bazna slika, npr. alpine ili distroless",
+      "Brisanje datoteka u kasnijem sloju nego što su nastale",
+      "Spajanje više RUN naredbi u jednu, uz čišćenje u istom sloju",
+      "Pokretanje kontejnera s manje dodijeljene memorije"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      3
+    ],
+    "explanation": "Sloj se ne može smanjiti naknadno: obrisana datoteka i dalje leži u ranijem sloju. Čistiti se mora u ISTOM sloju.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-017-docker-cmd",
+    "topic": "devops",
+    "unitId": "kontejneri",
+    "kind": "fill",
+    "question": "Dopuni razliku dviju Dockerfile naredbi.",
+    "text": "Naredba ___ gradi novi sloj tijekom gradnje imagea, dok ___ definira što se pokreće kad kontejner krene.",
+    "answers": [
+      "RUN",
+      "CMD"
+    ],
+    "distractors": [
+      "COPY",
+      "FROM",
+      "EXPOSE"
+    ],
+    "explanation": "RUN se izvršava u vrijeme gradnje, CMD u vrijeme pokretanja. Zamjena to dvoje je najčešća greška u prvom Dockerfileu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-018-build-run",
+    "topic": "devops",
+    "unitId": "kontejneri",
+    "kind": "order",
+    "question": "Poredaj korake od izvornog koda do pokrenutog kontejnera.",
+    "steps": [
+      "Napiši Dockerfile s uputama za gradnju",
+      "Sagradi image iz Dockerfilea",
+      "Objavi image u registar ili ga zadrži lokalno",
+      "Pokreni kontejner iz tog imagea"
+    ],
+    "explanation": "Dockerfile je recept, image je rezultat gradnje, kontejner je pokrenuta instanca. Registar je samo mjesto gdje image čeka.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "devops-uvod-ci-cd",
+    "topic": "devops",
+    "unitId": "ci-cd",
+    "question": "Što radi CI (continuous integration)?",
+    "options": [
+      "Automatski gradi i testira kod pri svakoj promjeni",
+      "Automatski objavljuje aplikaciju korisnicima",
+      "Prati rad aplikacije nakon puštanja u rad",
+      "Sprema povijest svih promjena u kodu"
+    ],
+    "correctIndex": 0,
+    "explanation": "CI je robot koji nakon svakog pusha gradi i testira. Cilj je da se kvar otkrije za minute, a ne pred korisnikom.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "devops-019-ci-vs-cd",
+    "topic": "devops",
+    "unitId": "ci-cd",
+    "question": "Koja je razlika između CI i CD?",
+    "options": [
+      "CI gradi i testira promjenu, CD je isporučuje dalje",
+      "CD gradi i testira promjenu, CI je isporučuje dalje",
+      "CI radi na serveru, a CD isključivo na računalu programera",
+      "CI se pokreće ručno, a CD prema unaprijed zadanom rasporedu"
+    ],
+    "correctIndex": 0,
+    "explanation": "CI je 'je li ovo ispravno', CD je 'neka ovo dođe do korisnika'. Continuous delivery staje pred gumbom, deployment ne staje.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "devops-020-fast-pipeline",
+    "topic": "devops",
+    "unitId": "ci-cd",
+    "question": "Zašto se brzi testovi u pipelineu pokreću prije sporih?",
+    "options": [
+      "Da se očita greška javi za minutu, a ne za pola sata",
+      "Jer spori testovi pronalaze manje grešaka od brzih",
+      "Jer se spori testovi ne mogu pokretati paralelno",
+      "Da se ukupno vrijeme svih testova zbroji točnije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rani izlaz iz pipelinea štedi vrijeme svakome. To je poznato kao 'fail fast'.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-021-secrets-ci",
+    "topic": "devops",
+    "unitId": "ci-cd",
+    "question": "Kako se pristupni ključ ispravno daje CI pipelineu?",
+    "options": [
+      "Kroz tajnu pohranu CI sustava, ubačenu kao varijabla",
+      "Zapisan u konfiguracijskoj datoteci uz izvorni kod",
+      "Kroz komentar u pipelineu koji vidi samo tim",
+      "Poslan porukom osobi koja pokreće pipeline ručno"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tajna u repozitoriju ostaje u povijesti zauvijek, i nakon što je obrišeš. CI sustavi zato imaju vlastitu pohranu tajni.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-022-cache",
+    "topic": "devops",
+    "unitId": "ci-cd",
+    "question": "Što se u CI pipelineu tipično kešira između pokretanja?",
+    "options": [
+      "Preuzete ovisnosti projekta",
+      "Rezultati testova iz prošlog pokretanja",
+      "Izvorni kod aplikacije",
+      "Zapisi o tome tko je pokrenuo build"
+    ],
+    "correctIndex": 0,
+    "explanation": "Preuzimanje ovisnosti je često najsporiji korak, a rijetko se mijenja. Keširanje rezultata testova bi sakrilo prave padove.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-023-flaky",
+    "topic": "devops",
+    "unitId": "ci-cd",
+    "question": "Test u pipelineu ponekad padne bez ikakve promjene koda. Što je ispravan potez?",
+    "options": [
+      "Naći uzrok nestabilnosti, jer inače tim prestaje vjerovati testovima",
+      "Postaviti automatsko ponavljanje testa dok jednom ne prođe",
+      "Trajno isključiti taj test da pipeline više ne bude crven",
+      "Povećati vremensko ograničenje pipelinea na dvostruko"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nestabilan test truje cijeli sustav: kad crveno postane normalno, prava greška prođe nezapaženo. Uzrok je obično vrijeme, redoslijed ili dijeljeno stanje.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-024-branch-protection",
+    "topic": "devops",
+    "unitId": "ci-cd",
+    "question": "Čemu služi zaštita glavne grane u repozitoriju?",
+    "options": [
+      "Zahtijeva zelen build i pregled prije spajanja",
+      "Sprječava stvaranje novih grana iz glavne grane",
+      "Automatski vraća unatrag svaki spojeni commit",
+      "Ograničava broj commitova koje grana smije imati"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez toga je 'CI mora biti zelen' samo dogovor. Sa zaštitom je to pravilo koje platforma provodi.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-025-pipeline-stages",
+    "topic": "devops",
+    "unitId": "ci-cd",
+    "kind": "multi",
+    "question": "Što je uobičajeno u CI pipelineu web aplikacije?",
+    "options": [
+      "Provjera stila koda linterom",
+      "Pokretanje automatskih testova",
+      "Gradnja produkcijskog paketa",
+      "Ručno pisanje dokumentacije za izdanje",
+      "Provjera ranjivosti u ovisnostima"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Sve što je mehaničko i ponovljivo pripada pipelineu. Ono što traži ljudsku prosudbu ostaje izvan njega.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-026-artifact",
+    "topic": "devops",
+    "unitId": "ci-cd",
+    "kind": "fill",
+    "question": "Dopuni pojmove iz pipelinea.",
+    "text": "Rezultat gradnje koji se prosljeđuje sljedećim koracima zove se ___, a mjesto na koje se objavljuje spremni paket zove se ___.",
+    "answers": [
+      "artefakt",
+      "registar"
+    ],
+    "distractors": [
+      "okidač",
+      "dnevnik",
+      "grana"
+    ],
+    "explanation": "Artefakt je ono što je build proizveo, registar je polica na koju se to odloži da ga deploy može uzeti.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-027-pr-flow",
+    "topic": "devops",
+    "unitId": "ci-cd",
+    "kind": "order",
+    "question": "Poredaj korake od ideje do koda u glavnoj grani.",
+    "steps": [
+      "Otvori novu granu iz glavne",
+      "Napravi izmjenu i commitaj je",
+      "Otvori pull request prema glavnoj grani",
+      "Pričekaj zelen pipeline i pregled kolege",
+      "Spoji granu u glavnu"
+    ],
+    "explanation": "Pregled i zeleni pipeline dolaze PRIJE spajanja. Nakon spajanja provjera više nikoga ne štiti.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "devops-uvod-orkestracija",
+    "topic": "devops",
+    "unitId": "orkestracija",
+    "question": "Čemu služi orkestrator kontejnera poput Kubernetesa?",
+    "options": [
+      "Pokreće i nadzire kontejnere na više strojeva",
+      "Gradi kontejnerske imagee iz izvornog koda",
+      "Zamjenjuje potrebu za bazom podataka",
+      "Piše konfiguraciju aplikacije umjesto tima"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kad kontejnera ima više nego što se ručno prati, orkestrator preuzima raspoređivanje, skaliranje i oporavak.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "devops-028-pod",
+    "topic": "devops",
+    "unitId": "orkestracija",
+    "question": "Što je pod u Kubernetesu?",
+    "options": [
+      "Najmanja jedinica koja se raspoređuje, s jednim ili više kontejnera",
+      "Fizički server na kojem se izvršavaju svi kontejneri",
+      "Datoteka s opisom aplikacije koja se šalje u klaster",
+      "Mrežno pravilo koje određuje tko smije razgovarati s kim"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kubernetes ne raspoređuje kontejnere nego podove. Kontejneri u istom podu dijele mrežu i mogu dijeliti volumene.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "devops-029-deployment",
+    "topic": "devops",
+    "unitId": "orkestracija",
+    "question": "Što jamči Deployment objekt?",
+    "options": [
+      "Da u klasteru stalno radi zadani broj replika poda",
+      "Da se aplikacija automatski gradi pri svakoj promjeni",
+      "Da svaki pod dobije trajni disk vezan uz svoje ime",
+      "Da promet dolazi ravnomjerno na sve strojeve klastera"
+    ],
+    "correctIndex": 0,
+    "explanation": "Deployment je deklaracija željenog stanja. Ako pod padne, kontroler primijeti razliku i pokrene novi.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-030-service",
+    "topic": "devops",
+    "unitId": "orkestracija",
+    "question": "Zašto se podovima pristupa preko Servicea, a ne izravno po IP adresi?",
+    "options": [
+      "Jer podovi nastaju i nestaju, pa im se adrese stalno mijenjaju",
+      "Jer podovi nemaju vlastitu IP adresu unutar klastera",
+      "Jer Service šifrira promet koji ide prema podovima",
+      "Jer izravan pristup podu traži posebne ovlasti korisnika"
+    ],
+    "correctIndex": 0,
+    "explanation": "Service je stabilno ime i adresa ispred promjenjivog skupa podova. Bez njega bi klijent stalno gonio adrese u pokretu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-031-probes",
+    "topic": "devops",
+    "unitId": "orkestracija",
+    "question": "Koja je razlika između liveness i readiness sonde?",
+    "options": [
+      "Liveness restarta pod koji je zaglavio, readiness ga miče iz prometa",
+      "Readiness restarta pod koji je zaglavio, liveness ga miče iz prometa",
+      "Liveness se izvodi jednom pri pokretanju, readiness svakih sat vremena",
+      "Liveness provjerava mrežu, a readiness slobodno mjesto na disku"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pod koji se još diže je živ ali nije spreman. Zamjena to dvoje daje beskonačni ciklus restartanja pod opterećenjem.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-032-resource-limits",
+    "topic": "devops",
+    "unitId": "orkestracija",
+    "question": "Što se dogodi podu koji probije zadani memorijski limit?",
+    "options": [
+      "Bude ugašen i ponovno pokrenut",
+      "Nastavi raditi uz upozorenje u dnevniku",
+      "Automatski dobije više memorije od čvora",
+      "Bude premješten na drugi čvor klastera"
+    ],
+    "correctIndex": 0,
+    "explanation": "Probijanje memorijskog limita znači OOMKilled. Kod CPU-a je drukčije: tamo se pod usporava, ne gasi.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-033-declarative",
+    "topic": "devops",
+    "unitId": "orkestracija",
+    "question": "Što znači da je Kubernetes konfiguracija deklarativna?",
+    "options": [
+      "Opisuje željeno stanje, a sustav ga sam održava",
+      "Opisuje korake koje treba izvršiti zadanim redom",
+      "Piše se u posebnom programskom jeziku klastera",
+      "Primjenjuje se tek nakon ručne potvrde operatera"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kažeš 'želim tri replike', ne 'pokreni tri kontejnera'. Kontroler stalno uspoređuje stvarno sa željenim i ispravlja razliku.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-034-k8s-objects",
+    "topic": "devops",
+    "unitId": "orkestracija",
+    "kind": "multi",
+    "question": "Koje tvrdnje o objektima u Kubernetesu su točne?",
+    "options": [
+      "ConfigMap drži konfiguraciju odvojenu od imagea",
+      "Secret je namijenjen osjetljivim vrijednostima",
+      "Namespace logički dijeli resurse unutar klastera",
+      "Ingress se koristi za pohranu podataka aplikacije",
+      "Secret je po zadanom snažno šifriran na disku"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Secret je po zadanom samo base64 kodiran, ne šifriran. Za pravu zaštitu treba uključiti enkripciju u etcd ili vanjski trezor.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-035-scaling",
+    "topic": "devops",
+    "unitId": "orkestracija",
+    "kind": "fill",
+    "question": "Dopuni dvije vrste skaliranja.",
+    "text": "Dodavanje novih instanci aplikacije zove se ___ skaliranje, a davanje više procesora i memorije jednoj instanci zove se ___ skaliranje.",
+    "answers": [
+      "horizontalno",
+      "vertikalno"
+    ],
+    "distractors": [
+      "paralelno",
+      "linearno"
+    ],
+    "explanation": "Horizontalno ide u širinu i praktički nema strop, vertikalno ide u visinu i završava na najvećem dostupnom stroju.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-036-rollout",
+    "topic": "devops",
+    "unitId": "orkestracija",
+    "kind": "order",
+    "question": "Poredaj što se dogodi kad promijeniš verziju imagea u Deploymentu.",
+    "steps": [
+      "Kontroler primijeti razliku između željenog i stvarnog stanja",
+      "Pokreće se pod s novom verzijom",
+      "Novi pod prolazi readiness provjeru",
+      "Promet se preusmjerava na novi pod",
+      "Stari pod se gasi"
+    ],
+    "explanation": "Rolling update nikad ne gasi staro prije nego je novo spremno. Zato readiness sonda mora biti točna, inače promet ode u pod koji još ne radi.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-uvod-deploy",
+    "topic": "devops",
+    "unitId": "deploy-strategije",
+    "question": "Što znači deploy aplikacije?",
+    "options": [
+      "Puštanje nove verzije koda u rad",
+      "Pisanje testova za novu verziju koda",
+      "Spajanje grane u glavnu granu",
+      "Gradnja paketa iz izvornog koda"
+    ],
+    "correctIndex": 0,
+    "explanation": "Deploy je trenutak kad promjena dođe do korisnika. Sve strategije u ovoj cjelini bave se time kako da taj trenutak ne boli.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "devops-037-rollback",
+    "topic": "devops",
+    "unitId": "deploy-strategije",
+    "question": "Zašto je mogućnost povratka na prethodnu verziju važnija od savršenog testiranja?",
+    "options": [
+      "Jer se dio grešaka pojavi tek u produkciji",
+      "Jer testiranje nove verzije traje predugo",
+      "Jer korisnici traže staru verziju aplikacije",
+      "Jer se time smanjuje broj potrebnih servera"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nijedno testno okruženje nema pravi promet i prave podatke. Brz povratak pretvara incident od sata u minutu.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "devops-038-blue-green",
+    "topic": "devops",
+    "unitId": "deploy-strategije",
+    "question": "Kako radi blue-green deploy?",
+    "options": [
+      "Nova verzija se digne uz staru, pa se promet prebaci odjednom",
+      "Nova verzija se pušta postupno, po nekoliko posto prometa",
+      "Nova verzija se pušta samo internim korisnicima tvrtke",
+      "Nova verzija se instalira preko stare bez zaustavljanja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dva potpuna okruženja, prebacivanje jednim potezom, povratak jednako brz. Cijena je dvostruka infrastruktura na kratko.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-039-canary",
+    "topic": "devops",
+    "unitId": "deploy-strategije",
+    "question": "Što je canary deploy?",
+    "options": [
+      "Novu verziju prvo dobiva mali dio korisnika",
+      "Novu verziju dobivaju svi korisnici odjednom",
+      "Nova verzija se pušta noću kad je promet najmanji",
+      "Nova verzija se testira samo na kopiji produkcije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ime dolazi od kanarinca u rudniku: mali uzorak prvi osjeti problem. Ključno je da uz njega ide mjerenje, inače ne znaš je li dobro prošlo.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-040-feature-flag",
+    "topic": "devops",
+    "unitId": "deploy-strategije",
+    "question": "Što omogućuje feature flag?",
+    "options": [
+      "Da kod ode u produkciju, a značajka se uključi kasnije",
+      "Da se kod prevede brže jer se dio preskače",
+      "Da se stara verzija automatski obriše nakon deploya",
+      "Da se testovi pokrenu samo za promijenjeni dio koda"
+    ],
+    "correctIndex": 0,
+    "explanation": "Flag odvaja deploy od objave. Zahvaljujući tome nedovršena značajka može mirno živjeti u glavnoj grani.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-041-migration-order",
+    "topic": "devops",
+    "unitId": "deploy-strategije",
+    "question": "Aplikacija se deploya u više instanci, a migracija briše stupac koji stara verzija još čita. Kako izbjeći pad?",
+    "options": [
+      "Prvo pustiti kod koji ne treba stupac, pa ga tek onda obrisati",
+      "Prvo obrisati stupac, pa odmah zatim pustiti novi kod",
+      "Zaustaviti sve instance dok migracija ne završi do kraja",
+      "Obrisati stupac i vratiti ga ako neka instanca javi grešku"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tijekom rolling deploya stara i nova verzija rade istovremeno. Rušenje sheme mora doći u zasebnom, kasnijem koraku.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-042-zero-downtime",
+    "topic": "devops",
+    "unitId": "deploy-strategije",
+    "question": "Što je preduvjet za deploy bez prekida rada?",
+    "options": [
+      "Da stara i nova verzija mogu raditi istovremeno",
+      "Da deploy traje kraće od trideset sekundi",
+      "Da se aplikacija pokreće na jednom snažnom stroju",
+      "Da se baza podataka zaključa dok deploy traje"
+    ],
+    "correctIndex": 0,
+    "explanation": "Svaki postupni deploy ima trenutak u kojem obje verzije rade. Ako one ne mogu koegzistirati, prekid je neizbježan.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-043-immutable",
+    "topic": "devops",
+    "unitId": "deploy-strategije",
+    "question": "Što znači nepromjenjiva (immutable) infrastruktura?",
+    "options": [
+      "Server se ne mijenja nego zamjenjuje novim iz predloška",
+      "Server se nakon postavljanja više ne smije restartati",
+      "Konfiguracija servera čuva se samo u repozitoriju",
+      "Svaki server ima identičnu količinu memorije i diska"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zakrpavanje živog servera vodi u stanje koje nitko ne zna ponoviti. Zamjena instance uklanja tu klasu problema.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-044-safe-deploy",
+    "topic": "devops",
+    "unitId": "deploy-strategije",
+    "kind": "multi",
+    "question": "Što čini deploy sigurnijim?",
+    "options": [
+      "Automatski povratak na staro kad greške skoče",
+      "Postupno puštanje umjesto odjednom svima",
+      "Mjerenje ključnih pokazatelja tijekom puštanja",
+      "Deploy petkom navečer kad je promet najmanji",
+      "Mogućnost gašenja značajke bez novog deploya"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Petak navečer je klasična zamka: promet je manji, ali i broj ljudi koji mogu pomoći kad nešto pukne.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-045-strategies",
+    "topic": "devops",
+    "unitId": "deploy-strategije",
+    "kind": "fill",
+    "question": "Dopuni nazive strategija.",
+    "text": "Kad se promet prebaci s jednog potpunog okruženja na drugo, to je ___ deploy. Kad novu verziju prvo vidi mali postotak korisnika, to je ___ deploy.",
+    "answers": [
+      "blue-green",
+      "canary"
+    ],
+    "distractors": [
+      "rolling",
+      "big-bang"
+    ],
+    "explanation": "Blue-green mijenja sve odjednom ali se trenutačno vraća. Canary mijenja malo pa mjeri.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-046-incident",
+    "topic": "devops",
+    "unitId": "deploy-strategije",
+    "kind": "order",
+    "question": "Nakon deploya greške u produkciji naglo rastu. Poredaj postupak.",
+    "steps": [
+      "Vrati promet na prethodnu verziju",
+      "Potvrdi da su se greške smirile",
+      "Utvrdi što je u novoj verziji izazvalo greške",
+      "Popravi uzrok i ponovno pusti verziju"
+    ],
+    "explanation": "Prvo se zaustavlja šteta, tek onda istražuje. Traženje uzroka dok korisnici gledaju greške je najskuplji način rada.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-uvod-iac",
+    "topic": "devops",
+    "unitId": "infrastruktura-kao-kod",
+    "question": "Što znači infrastruktura kao kod?",
+    "options": [
+      "Serveri i mreže opisani su datotekama u repozitoriju",
+      "Aplikacija se piše u istom jeziku kao infrastruktura",
+      "Infrastruktura se postavlja kroz grafičko sučelje",
+      "Kod aplikacije živi na istom serveru kao baza"
+    ],
+    "correctIndex": 0,
+    "explanation": "Umjesto klikanja po konzoli, okruženje se opisuje datotekom. Time postaje pregledno, ponovljivo i podložno code reviewu.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "devops-047-idempotent",
+    "topic": "devops",
+    "unitId": "infrastruktura-kao-kod",
+    "question": "Što znači da je primjena konfiguracije idempotentna?",
+    "options": [
+      "Ponovno pokretanje ne mijenja ništa ako je sve već ispravno",
+      "Ponovno pokretanje uvijek stvara novu kopiju resursa",
+      "Konfiguracija se smije primijeniti samo jednom",
+      "Svaka primjena vraća infrastrukturu na početno stanje"
+    ],
+    "correctIndex": 0,
+    "explanation": "Idempotentnost je razlog zašto se IaC alat smije pokrenuti bilo kad. Skripta koja svaki put nešto doda tu osobinu nema.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-048-state",
+    "topic": "devops",
+    "unitId": "infrastruktura-kao-kod",
+    "question": "Zašto Terraform vodi state datoteku?",
+    "options": [
+      "Da zna koji stvarni resursi odgovaraju kojem opisu",
+      "Da ubrza prevođenje konfiguracije u naredbe",
+      "Da čuva povijest svih dosadašnjih promjena koda",
+      "Da spremi pristupne ključeve za cloud pružatelja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez statea alat ne zna razlikuje li se opis od stvarnosti ili resurs uopće ne postoji. Zato je state kritičan i drži se dijeljeno i zaključano.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-049-drift",
+    "topic": "devops",
+    "unitId": "infrastruktura-kao-kod",
+    "question": "Što je konfiguracijski drift?",
+    "options": [
+      "Stvarno stanje se razišlo od onoga opisanog u kodu",
+      "Konfiguracija se sporo primjenjuje na velikom klasteru",
+      "Ista konfiguracija daje različit rezultat u dvije regije",
+      "Datoteke konfiguracije razišle su se između grana"
+    ],
+    "correctIndex": 0,
+    "explanation": "Drift nastaje ručnim izmjenama 'samo na brzinu'. Sljedeća primjena koda ih tiho poništi, obično u najgorem trenutku.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-050-declarative-iac",
+    "topic": "devops",
+    "unitId": "infrastruktura-kao-kod",
+    "question": "Koja je prednost deklarativnog pristupa nad skriptom koja izvršava korake?",
+    "options": [
+      "Alat sam izračuna razliku do željenog stanja",
+      "Deklarativni opis se izvršava osjetno brže",
+      "Skripte se ne mogu držati u repozitoriju",
+      "Deklarativni opis ne treba pristupne ovlasti"
+    ],
+    "correctIndex": 0,
+    "explanation": "Skripta zna 'stvori server'. Deklaracija zna 'želim jedan server' i sama zaključi treba li ga stvoriti, promijeniti ili ostaviti.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-051-secrets-iac",
+    "topic": "devops",
+    "unitId": "infrastruktura-kao-kod",
+    "question": "Gdje se čuvaju lozinke koje infrastruktura treba?",
+    "options": [
+      "U namjenskom trezoru tajni, a u kodu stoji referenca",
+      "U konfiguracijskoj datoteci uz ostale postavke",
+      "U state datoteci koju alat ionako drži zaključanu",
+      "U varijablama koje se predaju kao argumenti naredbe"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tajna u repozitoriju ostaje u povijesti zauvijek. State datoteka je isto loše mjesto jer tajne u njoj završe u čistom tekstu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-052-modules",
+    "topic": "devops",
+    "unitId": "infrastruktura-kao-kod",
+    "question": "Čemu služe moduli u IaC alatima?",
+    "options": [
+      "Pakiraju ponovljivi dio infrastrukture pod jedno ime",
+      "Ubrzavaju primjenu tako što je izvršavaju paralelno",
+      "Dijele state datoteku na više manjih datoteka",
+      "Omogućuju pisanje konfiguracije u više jezika"
+    ],
+    "correctIndex": 0,
+    "explanation": "Modul je funkcija za infrastrukturu: opišeš mrežu jednom, pa je pozoveš za razvoj, test i produkciju s drugim parametrima.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-053-iac-benefits",
+    "topic": "devops",
+    "unitId": "infrastruktura-kao-kod",
+    "kind": "multi",
+    "question": "Što se dobiva time što je infrastruktura opisana kodom?",
+    "options": [
+      "Okruženje se može ponoviti od nule",
+      "Promjene prolaze kroz code review",
+      "Povijest promjena vidljiva je u gitu",
+      "Infrastruktura postaje jeftinija po definiciji",
+      "Razlike među okruženjima postaju vidljive"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Cijena ostaje ista - plaćaš isti hardver. Ono što se mijenja je preglednost i ponovljivost.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-054-plan-apply",
+    "topic": "devops",
+    "unitId": "infrastruktura-kao-kod",
+    "kind": "fill",
+    "question": "Dopuni dva koraka rada s IaC alatom.",
+    "text": "Korak ___ pokazuje što bi se promijenilo, bez diranja infrastrukture, a korak ___ te promjene stvarno primjenjuje.",
+    "answers": [
+      "plan",
+      "apply"
+    ],
+    "distractors": [
+      "init",
+      "destroy",
+      "import"
+    ],
+    "explanation": "Plan je pregled prije potpisa. Preskakanje plana je razlog zašto netko slučajno obriše produkcijsku bazu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-055-iac-flow",
+    "topic": "devops",
+    "unitId": "infrastruktura-kao-kod",
+    "kind": "order",
+    "question": "Poredaj siguran tok promjene infrastrukture.",
+    "steps": [
+      "Promijeni opis infrastrukture u kodu",
+      "Otvori pull request s tom promjenom",
+      "Pregledaj plan koji pokazuje razliku",
+      "Neka kolega odobri promjenu",
+      "Primijeni promjenu na okruženje"
+    ],
+    "explanation": "Plan se gleda PRIJE odobrenja, jer upravo on pokazuje pravu posljedicu. Kod često izgleda bezazleno, a plan kaže 'briše 3 resursa'.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-uvod-cloud",
+    "topic": "devops",
+    "unitId": "cloud-osnove",
+    "question": "Što znači da aplikacija radi u oblaku?",
+    "options": [
+      "Radi na tuđoj infrastrukturi koja se plaća po korištenju",
+      "Radi bez servera, isključivo u pregledniku korisnika",
+      "Radi na više računala u uredu povezanih u mrežu",
+      "Radi na serveru koji tvrtka posjeduje i održava"
+    ],
+    "correctIndex": 0,
+    "explanation": "Oblak nije ničije tuđe računalo manje nego točno to - uz razliku da ga plaćaš po satu i dobiješ ga za minutu.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "devops-056-regions-zones",
+    "topic": "devops",
+    "unitId": "cloud-osnove",
+    "question": "Zašto se aplikacija raspoređuje u više zona dostupnosti?",
+    "options": [
+      "Da ispad jednog podatkovnog centra ne sruši uslugu",
+      "Da se troškovi rasporede na više računa",
+      "Da korisnici iz svake države dobiju vlastitu kopiju",
+      "Da se podaci automatski dupliciraju u svaku regiju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zone su odvojeni podatkovni centri unutar iste regije, blizu jedan drugom. Regije su daleko i biraju se zbog blizine korisnika i propisa.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-057-iam",
+    "topic": "devops",
+    "unitId": "cloud-osnove",
+    "question": "Što je načelo najmanjih ovlasti?",
+    "options": [
+      "Svaka uloga dobiva samo ono što joj je nužno",
+      "Svaka uloga dobiva iste ovlasti radi jednostavnosti",
+      "Ovlasti se dodjeljuju tek nakon prvog incidenta",
+      "Ovlasti se dodjeljuju ljudima, nikad aplikacijama"
+    ],
+    "correctIndex": 0,
+    "explanation": "Preširoke ovlasti pretvaraju jednu ukradenu tajnu u potpuni pristup. Sužavanje je dosadno, ali je najjeftinija obrana.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-058-serverless",
+    "topic": "devops",
+    "unitId": "cloud-osnove",
+    "question": "Što znači serverless?",
+    "options": [
+      "Serveri postoje, ali ih ne postavljaš ni ne održavaš ti",
+      "Aplikacija radi bez ijednog servera, samo u pregledniku",
+      "Serveri se plaćaju unaprijed za cijelu godinu rada",
+      "Aplikacija se izvršava na uređaju svakog korisnika"
+    ],
+    "correctIndex": 0,
+    "explanation": "Serverless znači da ti brineš samo za kod, a pružatelj za sve ispod. Naplaćuje se po pozivu i trajanju, ne po satu rada stroja.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-059-cold-start",
+    "topic": "devops",
+    "unitId": "cloud-osnove",
+    "question": "Što je hladni start kod serverless funkcije?",
+    "options": [
+      "Kašnjenje prvog poziva jer se okruženje tek priprema",
+      "Greška koja nastane kad funkcija nema dovoljno memorije",
+      "Prvo pokretanje funkcije nakon njezine objave u oblak",
+      "Ponovno pokretanje funkcije nakon promjene konfiguracije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nakon razdoblja mirovanja pružatelj gasi instancu. Sljedeći poziv čeka da se okruženje digne - problem za rijetko pozivane, osjetljive rute.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-060-managed-service",
+    "topic": "devops",
+    "unitId": "cloud-osnove",
+    "question": "Koja je glavna prednost upravljane baze podataka nad vlastitom instalacijom?",
+    "options": [
+      "Sigurnosne kopije, zakrpe i replike su tuđa briga",
+      "Upravljana baza uvijek je jeftinija od vlastite",
+      "Upravljana baza podnosi neograničen broj upita",
+      "Upravljana baza ne treba indekse ni optimizaciju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Plaćaš da netko drugi drži dežurstvo. Upiti i shema ostaju tvoj problem - to ti nitko ne preuzima.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-061-lock-in",
+    "topic": "devops",
+    "unitId": "cloud-osnove",
+    "question": "Što je vendor lock-in?",
+    "options": [
+      "Ovisnost o uslugama koje se teško zamjenjuju drugima",
+      "Ograničenje broja korisnika po cloud računu",
+      "Zabrana pokretanja aplikacije izvan jedne regije",
+      "Ugovor koji obvezuje na minimalnu godišnju potrošnju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Što je usluga specifičnija, to je korisnija i to je teže otići. To nije nužno greška, samo odluka koju treba donijeti svjesno.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-062-cloud-cost",
+    "topic": "devops",
+    "unitId": "cloud-osnove",
+    "kind": "multi",
+    "question": "Što stvarno smanjuje račun za oblak?",
+    "options": [
+      "Gašenje testnih okruženja izvan radnog vremena",
+      "Automatsko skaliranje prema stvarnom prometu",
+      "Brisanje diskova i snimki koje nitko ne koristi",
+      "Prelazak na veće instance radi bolje iskoristivosti",
+      "Rezervacija kapaciteta za predvidivo, stalno opterećenje"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Veća instanca gotovo uvijek znači veći račun. Ušteda dolazi od gašenja neiskorištenog i od predvidljivosti.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-063-service-models",
+    "topic": "devops",
+    "unitId": "cloud-osnove",
+    "kind": "fill",
+    "question": "Dopuni modele cloud usluga.",
+    "text": "Kad zakupljuješ virtualne strojeve i sam sve postavljaš, to je ___. Kad dobiješ platformu i brineš samo za kod, to je ___.",
+    "answers": [
+      "IaaS",
+      "PaaS"
+    ],
+    "distractors": [
+      "SaaS",
+      "FaaS"
+    ],
+    "explanation": "Ljestvica ide od IaaS prema SaaS: što se više penješ, manje brineš i manje kontroliraš.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-064-lift-shift",
+    "topic": "devops",
+    "unitId": "cloud-osnove",
+    "kind": "order",
+    "question": "Poredaj korake selidbe aplikacije s vlastitog servera u oblak.",
+    "steps": [
+      "Popiši ovisnosti aplikacije i njezine podatke",
+      "Postavi ciljno okruženje u oblaku",
+      "Prebaci podatke i provjeri ispravnost",
+      "Preusmjeri dio prometa na novo okruženje",
+      "Ugasi stari server"
+    ],
+    "explanation": "Stari server se gasi ZADNJI. Dok se promet ne provjeri na novom okruženju, stari je jedini put natrag.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-uvod-nadzor",
+    "topic": "devops",
+    "unitId": "nadzor-produkcije",
+    "question": "Čemu služi nadzor produkcije?",
+    "options": [
+      "Da se problem primijeti prije nego ga prijave korisnici",
+      "Da se ubrza rad aplikacije pod velikim opterećenjem",
+      "Da se spriječi svaka moguća greška u aplikaciji",
+      "Da se zabilježi tko je i kada radio deploy"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nadzor ne sprječava kvarove nego skraćuje vrijeme do njihova otkrivanja. To je razlika između incidenta od pet minuta i od pet sati.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "devops-065-alert-fatigue",
+    "topic": "devops",
+    "unitId": "nadzor-produkcije",
+    "question": "Zašto je previše alarma jednako loše kao premalo?",
+    "options": [
+      "Jer se na stalne alarme prestane reagirati",
+      "Jer alarmi troše previše resursa na serveru",
+      "Jer sustav za alarme ima ograničen broj poruka",
+      "Jer se alarmi međusobno poništavaju u redu čekanja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Alarm koji ne traži radnju nije alarm nego šum. Kad ih je previše, pravi alarm prođe nezapaženo usred noći.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-066-slo",
+    "topic": "devops",
+    "unitId": "nadzor-produkcije",
+    "question": "Što je SLO?",
+    "options": [
+      "Zadani cilj kvalitete usluge, npr. 99,9% uspješnih zahtjeva",
+      "Ugovorna kazna koja se plaća korisniku nakon ispada",
+      "Najveće opterećenje koje sustav može podnijeti",
+      "Vrijeme koje tim ima za odgovor na prijavu greške"
+    ],
+    "correctIndex": 0,
+    "explanation": "SLO je unutarnji cilj, SLA je vanjsko obećanje s posljedicama. SLO se namjerno postavlja strože od SLA-a.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-067-error-budget",
+    "topic": "devops",
+    "unitId": "nadzor-produkcije",
+    "question": "Čemu služi error budget?",
+    "options": [
+      "Kvantificira koliko ispada je prihvatljivo prije usporavanja izdanja",
+      "Određuje koliko novca se izdvaja za popravak grešaka",
+      "Ograničava broj grešaka koje aplikacija smije zapisati",
+      "Mjeri koliko su testovi pokrili izvornog koda"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ako je cilj 99,9%, preostalih 0,1% je proračun za rizik. Dok ima proračuna, ide se brzo; kad se potroši, prioritet postaje stabilnost.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-068-postmortem",
+    "topic": "devops",
+    "unitId": "nadzor-produkcije",
+    "question": "Zašto se postmortem piše bez traženja krivca?",
+    "options": [
+      "Jer ljudi tada iskreno opisuju što se stvarno dogodilo",
+      "Jer je kriva osoba obično nepoznata nakon incidenta",
+      "Jer se krivnja ionako utvrđuje u zasebnom postupku",
+      "Jer bi inače dokument bio predugačak za čitanje"
+    ],
+    "correctIndex": 0,
+    "explanation": "Traženje krivca proizvodi uljepšane izvještaje, a onda se isti kvar ponovi. Cilj je popraviti sustav koji je greški dopustio da prođe.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-069-golden-signals",
+    "topic": "devops",
+    "unitId": "nadzor-produkcije",
+    "question": "Koja četiri pokazatelja se najčešće prate za uslugu?",
+    "options": [
+      "Kašnjenje, promet, greške i zasićenost",
+      "Kašnjenje, cijena, greške i broj korisnika",
+      "Promet, cijena, broj deploya i greške",
+      "Zasićenost, broj testova, promet i kašnjenje"
+    ],
+    "correctIndex": 0,
+    "explanation": "To su 'četiri zlatna signala'. Zajedno pokrivaju je li usluga spora, koliko je opterećena, koliko griješi i koliko joj je ostalo prostora.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-070-log-levels",
+    "topic": "devops",
+    "unitId": "nadzor-produkcije",
+    "question": "Kad se koristi razina ERROR u dnevniku?",
+    "options": [
+      "Kad operacija nije uspjela i netko to treba vidjeti",
+      "Kad se dogodi bilo koja neočekivana situacija",
+      "Kad se aplikacija pokreće ili gasi na serveru",
+      "Kad korisnik unese neispravan podatak u obrazac"
+    ],
+    "correctIndex": 0,
+    "explanation": "Neispravan unos je očekivan i ide u INFO ili WARN. Ako je sve ERROR, razine gube smisao i alarmi postanu neupotrebljivi.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "devops-071-good-alert",
+    "topic": "devops",
+    "unitId": "nadzor-produkcije",
+    "kind": "multi",
+    "question": "Što čini dobar alarm?",
+    "options": [
+      "Traži konkretnu radnju od osobe koju budi",
+      "Vezan je uz simptom koji korisnik osjeti",
+      "Ima jasno opisan postupak što napraviti",
+      "Javlja se čim jedan pod bude ponovno pokrenut",
+      "Ne javlja se za stanje koje se samo popravi"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Restart jednog poda je normalan rad sustava, ne incident. Alarm treba pratiti ono što korisnik osjeti, a ne svaki unutarnji događaj.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-072-mttr",
+    "topic": "devops",
+    "unitId": "nadzor-produkcije",
+    "kind": "fill",
+    "question": "Dopuni dvije mjere pouzdanosti.",
+    "text": "Prosječno vrijeme između dva kvara označava se s ___, a prosječno vrijeme potrebno za oporavak s ___.",
+    "answers": [
+      "MTBF",
+      "MTTR"
+    ],
+    "distractors": [
+      "SLA",
+      "RTO",
+      "RPO"
+    ],
+    "explanation": "Kod modernih sustava se više ulaže u smanjenje MTTR-a nego u produljenje MTBF-a: kvarovi su neizbježni, brzina oporavka nije.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "devops-073-oncall",
+    "topic": "devops",
+    "unitId": "nadzor-produkcije",
+    "kind": "order",
+    "question": "Poredaj korake dežurne osobe nakon alarma.",
+    "steps": [
+      "Potvrdi da si preuzeo alarm",
+      "Procijeni koliko su korisnici pogođeni",
+      "Zaustavi štetu, npr. povratkom na staru verziju",
+      "Obavijesti tim i zainteresirane strane",
+      "Napiši postmortem nakon što se stanje smiri"
+    ],
+    "explanation": "Prvo se potvrđuje preuzimanje da alarm ne eskalira dalje, pa se procjenjuje opseg. Uzrok se istražuje nakon što šteta stane.",
+    "difficulty": "medium"
+  }
+]

@@ -245,9 +245,9 @@
     "question": "Koja tvrdnja razumno razlikuje prevođenje i interpretiranje programa?",
     "options": [
       "Prevoditelj pretvara program u drugi oblik prije ili tijekom izvođenja, dok interpreter izvršava naredbe preko njihove reprezentacije; stvarni sustavi često kombiniraju oba pristupa",
-      "Interpretirani program nikada ne prolazi nikakvu analizu ili prevođenje",
-      "Prevedeni program prema definiciji nema pogrešaka",
-      "Interpreter radi samo s tekstualnim datotekama, a prevoditelj samo s brojevima"
+      "Interpretirani program izvršava se izravno bez ikakve analize ili međureprezentacije, dok prevedeni program uvijek postaje izvorni strojni kod prije pokretanja",
+      "Prevoditelj tijekom prevođenja dokazuje ispravnost cijelog programa, pa prevedeni program prema definiciji ne može sadržavati runtime ili logičke pogreške",
+      "Interpreter može obrađivati samo tekstualne skripte redak po redak, dok prevoditelj prihvaća isključivo numerički bytecode koji je već pripremio drugi alat"
     ],
     "correctIndex": 0,
     "explanation": "Granica nije uvijek stroga: virtualni strojevi, bytecode i JIT prevođenje kombiniraju tehnike. Ključna razlika je kako i kada se izvorni program pretvara u oblik koji se izvršava.",
@@ -259,9 +259,9 @@
     "topic": "general",
     "question": "Čemu u jezicima koji ga podržavaju služi finally blok uz obradu iznimki?",
     "options": [
-      "Izvršava se samo kada u try bloku nema iznimke",
-      "Pretvara svaku iznimku u uspješan rezultat",
-      "Ponovno pokreće cijeli program nakon pogreške",
+      "Izvršava se samo kada try blok završi bez iznimke, pa je prikladan za potvrđivanje uspješnog rezultata, ali ne i za oslobađanje resursa nakon pogreške",
+      "Automatski pretvara svaku iznimku u uspješan rezultat i vraća zadnju vrijednost iz try bloka, čak i kada nijedan catch blok nije obradio pogrešku",
+      "Ponovno pokreće cijeli try blok nakon pogreške sve dok se ne izvrši bez iznimke, zbog čega služi kao ugrađeni retry mehanizam jezika",
       "Služi za čišćenje koje se treba pokušati izvršiti neovisno o tome je li try blok normalno završio ili bacio iznimku"
     ],
     "correctIndex": 3,
@@ -564,9 +564,9 @@
     "topic": "general",
     "question": "Koja je tipična razlika između procesa i niti istog procesa?",
     "options": [
-      "Niti uvijek imaju zasebne operacijske sustave",
-      "Procesi nužno dijele sve globalne varijable bez zaštite",
-      "Nit se može izvršavati samo kada nema memorije",
+      "Svaka nit ima vlastiti operacijski sustav i adresni prostor, dok procesi unutar iste aplikacije uvijek dijele heap i sve otvorene datoteke bez izolacije",
+      "Procesi istog programa nužno dijele sve globalne varijable bez zaštite, dok niti komuniciraju samo slanjem poruka kroz mrežni socket između adresnih prostora",
+      "Nit je privremeni proces koji se pokreće samo kada glavnom procesu ponestane memorije, a nakon dodjele novog heap prostora ponovno postaje samostalan proces",
       "Proces obično ima vlastiti adresni prostor, dok niti unutar procesa dijele njegovu memoriju i resurse uz zasebne stogove izvršavanja"
     ],
     "correctIndex": 3,
@@ -624,9 +624,9 @@
     "question": "Zašto se dodavanje na kraj dinamičkog polja smatra amortizirano O(1), iako je povremeno proširenje O(n)?",
     "options": [
       "Kapacitet se tipično povećava geometrijski, pa se trošak rijetkih kopiranja raspodijeli na mnogo jeftinih dodavanja",
-      "Proširenje nikada ne kopira postojeće elemente",
-      "Svako dodavanje izvodi binarno pretraživanje",
-      "O(n) i O(1) znače isto za dinamička polja"
+      "Proširenje kopira postojeće elemente pri svakom dodavanju, ali kopiranje jednog elementa runtime uvijek računa kao ukupno O(1) bez obzira na veličinu polja",
+      "Svako dodavanje prvo izvodi binarno pretraživanje slobodnog mjesta, pa logaritamski trošak pretraživanja poništava linearni trošak povremenog kopiranja",
+      "O(n) proširenje i O(1) dodavanje smatraju se jednakima zato što Big-O zanemaruje sve operacije koje se ne događaju pri baš svakom pozivu metode"
     ],
     "correctIndex": 0,
     "explanation": "Ako se kapacitet primjerice udvostručuje, skupa proširenja događaju se sve rjeđe. Prosječni trošak po operaciji kroz dugi niz dodavanja ostaje konstantan.",
@@ -806,9 +806,9 @@
     "question": "Zašto je `git push --force-with-lease` sigurniji od običnog `--force` nakon namjernog rebasea vlastite grane?",
     "options": [
       "Odbija prepisivanje ako udaljena grana više nije na očekivanom commitu, čime štiti tuđe nove promjene koje nisi dohvatio",
-      "Jamči da branch nikada nije prepisan",
-      "Automatski spaja sve udaljene commitove bez konflikta",
-      "Šalje samo netrackane datoteke"
+      "Jamči da udaljena grana nikada neće biti prepisana jer svaki force push pretvara u običan fast-forward, čak i kada je lokalna povijest promijenjena rebaseom",
+      "Automatski spaja sve nove udaljene commitove u lokalnu granu bez konflikta, a zatim šalje merge rezultat neovisno o očekivanom stanju remote reference",
+      "Šalje samo netrackane datoteke koje nisu prisutne na serveru, dok postojeće commitove i reference ostavlja nepromijenjenima kako bi izbjegao gubitak podataka"
     ],
     "correctIndex": 0,
     "explanation": "Lease provjerava poznato stanje udaljene reference prije prepisivanja. I dalje prepisuje povijest, pa zahtijeva dogovor, ali sprječava slijepo gaženje neočekivanog rada.",
