@@ -191,7 +191,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Filtriranje uvijek propušta neki oblik zapisa. Parametrizacija baza tretira unos kao vrijednost, pa nema što protumačiti.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "sql-injection"
   },
   {
     "id": "sigurnost-011-command-injection",
@@ -307,7 +308,8 @@
       "shemu"
     ],
     "explanation": "Ista ideja vrijedi svugdje: kanal za podatke mora biti odvojen od kanala za naredbe.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "sql-injection"
   },
   {
     "id": "sigurnost-018-sqli-path",
@@ -323,7 +325,8 @@
       "Napadač dobije podatke koje ne bi smio vidjeti"
     ],
     "explanation": "Ranjivost nastaje u drugom koraku, ne u zadnjem. Zato se popravlja tamo, a ne dodavanjem provjera na kraju.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "conceptId": "sql-injection"
   },
   {
     "id": "sigurnost-uvod-xss",
@@ -429,7 +432,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Time otpada uvjet koji CSRF treba. Slanje samo preko HTTPS-a radi zastavica Secure, što je drugi problem.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "conceptId": "csrf-obrana"
   },
   {
     "id": "sigurnost-025-cookie-flags",
@@ -515,7 +519,8 @@
     ],
     "correctIndex": 0,
     "explanation": "SHA-256 je brz, a brzina je ovdje mana: napadač ih isproba milijarde u sekundi. Sporost je značajka, ne propust.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "hash-lozinki"
   },
   {
     "id": "sigurnost-029-salt",

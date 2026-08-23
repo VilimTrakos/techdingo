@@ -192,7 +192,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Odnos je kao klasa i objekt: iz jednog imagea može se pokrenuti proizvoljno mnogo kontejnera.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "conceptId": "image-vs-kontejner"
   },
   {
     "id": "devops-011-vm-vs-container",
@@ -856,7 +857,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Idempotentnost je razlog zašto se IaC alat smije pokrenuti bilo kad. Skripta koja svaki put nešto doda tu osobinu nema.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "idempotentnost"
   },
   {
     "id": "devops-048-state",
@@ -1034,7 +1036,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Preširoke ovlasti pretvaraju jednu ukradenu tajnu u potpuni pristup. Sužavanje je dosadno, ali je najjeftinija obrana.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "nacelo-najmanjih-ovlasti"
   },
   {
     "id": "devops-058-serverless",

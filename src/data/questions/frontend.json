@@ -1228,7 +1228,8 @@
     "correctIndex": 0,
     "explanation": "Kad unutarnja funkcija koristi varijable iz vanjske funkcije, ona zadržava referencu na taj opseg i nakon što se vanjska funkcija izvrši - to je osnova za mnoge JS obrasce (npr. privatno stanje, memoizacija).",
     "difficulty": "hard",
-    "unitId": "js-jezik"
+    "unitId": "js-jezik",
+    "conceptId": "zatvorenje"
   },
   {
     "id": "frontend-023-microtasks-macrotasks",

@@ -63,8 +63,10 @@ function main(): void {
   const warnings: string[] = [];
   const idToFiles = new Map<string, string[]>();
   let introTotal = 0;
-  let variantTotal = 0;
   let richKindTotal = 0;
+  // Koncepti se broje GLOBALNO: varijante iste činjenice namjerno smiju živjeti
+  // u različitim temama (npr. deadlock u backendu, jezicima i SQL-u).
+  const conceptQuestions = new Map<string, { kinds: Set<string>; count: number }>();
 
   for (const file of files) {
     const expectedTopic = basename(file, '.json');
@@ -96,7 +98,6 @@ function main(): void {
 
     const unitCounts = new Map<string, number>();
     const unitIntroCounts = new Map<string, number>();
-    const conceptCounts = new Map<string, number>();
     const lengthTells: { id: string; ratio: number }[] = [];
     let singleCount = 0;
     for (const q of parsed.data) {
@@ -114,7 +115,12 @@ function main(): void {
         }
       }
       if (q.kind && q.kind !== 'single') richKindTotal++;
-      if (q.conceptId) conceptCounts.set(q.conceptId, (conceptCounts.get(q.conceptId) ?? 0) + 1);
+      if (q.conceptId) {
+        const entry = conceptQuestions.get(q.conceptId) ?? { kinds: new Set<string>(), count: 0 };
+        entry.kinds.add(q.kind ?? 'single');
+        entry.count++;
+        conceptQuestions.set(q.conceptId, entry);
+      }
       if (q.topic !== expectedTopic) {
         errors.push(`Pitanje "${q.id}" ima topic "${q.topic}", a nalazi se u datoteci "${file}" (očekivano "${expectedTopic}").`);
       }
@@ -127,8 +133,6 @@ function main(): void {
       existing.push(file);
       idToFiles.set(q.id, existing);
     }
-
-    variantTotal += [...conceptCounts.values()].filter((n) => n > 1).length;
 
     if (lengthTells.length > 0 && LIST_LENGTH_TELLS) {
       console.log(`\n${file} - ${lengthTells.length} pitanja koja odaje duljina (najgore prvo):`);
@@ -187,11 +191,15 @@ function main(): void {
     console.warn('');
   }
 
+  const multiVariant = [...conceptQuestions.values()].filter((c) => c.count > 1).length;
+  const multiKind = [...conceptQuestions.values()].filter((c) => c.kinds.size > 1).length;
+
   if (reports.length === 0) {
     const totalQuestions = [...idToFiles.keys()].length;
     console.log(
       `✓ Sve datoteke pitanja su valjane (${files.length} tema, ${totalQuestions} pitanja ukupno).\n` +
-        `  uvodnih: ${introTotal} | posebnih vrsta (multi/fill/order): ${richKindTotal} | koncepata s više varijanti: ${variantTotal}`,
+        `  uvodnih: ${introTotal} | posebnih vrsta (multi/fill/order): ${richKindTotal} | ` +
+        `koncepata s više varijanti: ${multiVariant} (od toga ${multiKind} kroz više vrsta pitanja)`,
     );
     return;
   }

@@ -431,7 +431,7 @@
     "id": "sql-057-least-privilege-grant",
     "isIntro": true,
     "topic": "sql",
-    "conceptId": "sql-least-privilege",
+    "conceptId": "nacelo-najmanjih-ovlasti",
     "question": "Koja dodjela ovlasti najbolje slijedi načelo najmanjih ovlasti za račun koji samo izrađuje izvještaje?",
     "options": [
       "Samo SELECT nad potrebnim tablicama, bez ovlasti pisanja i administracije",
@@ -707,7 +707,7 @@
   {
     "id": "sql-018-sql-injection",
     "topic": "sql",
-    "conceptId": "sql-sql-injection",
+    "conceptId": "sql-injection",
     "question": "Što je SQL injection i kako ga se najčešće sprječava?",
     "options": [
       "Napad u kojem se zlonamjerni SQL kod ubacuje kroz korisnički unos; sprječava se parametriziranim upitima (prepared statements), a ne konkatenacijom stringova",
@@ -1387,7 +1387,8 @@
     "correctIndex": 0,
     "explanation": "Sustavi obično otkrivaju ciklus čekanja i prekidaju jednu transakciju. Kratke transakcije, isti redoslijed pribavljanja zaključavanja i retry cijele transakcije čine obradu robusnijom.",
     "difficulty": "hard",
-    "unitId": "transakcije"
+    "unitId": "transakcije",
+    "conceptId": "deadlock"
   },
   {
     "id": "sql-069-lost-update",
@@ -1567,7 +1568,8 @@
     "correctIndex": 0,
     "explanation": "U prepare fazi sudionik obećava da kasnije može provesti konačnu odluku, a u drugoj fazi dobiva COMMIT ili ROLLBACK. To daje atomarnost među sudionicima, ali može blokirati i zahtijeva oporavak neodlučenih transakcija.",
     "difficulty": "hard",
-    "unitId": "transakcije"
+    "unitId": "transakcije",
+    "conceptId": "dvofazno-potvrdivanje"
   },
   {
     "id": "sql-100-lossless-dependency",
@@ -1819,7 +1821,7 @@
     "id": "sql-uvod-sigurnost",
     "topic": "sql",
     "unitId": "sigurnost",
-    "conceptId": "sql-sql-injection",
+    "conceptId": "sql-injection",
     "isIntro": true,
     "question": "Što je SQL injection?",
     "options": [
@@ -1836,7 +1838,7 @@
     "id": "sql-120-uvod-least-privilege",
     "topic": "sql",
     "unitId": "sigurnost",
-    "conceptId": "sql-least-privilege",
+    "conceptId": "nacelo-najmanjih-ovlasti",
     "isIntro": true,
     "question": "Što znači načelo najmanjih ovlasti za račun baze podataka?",
     "options": [
@@ -1853,7 +1855,7 @@
     "id": "sql-121-multi-injection-defense",
     "topic": "sql",
     "unitId": "sigurnost",
-    "conceptId": "sql-sql-injection",
+    "conceptId": "sql-injection",
     "kind": "multi",
     "question": "Koje mjere izravno smanjuju rizik i posljedice SQL injectiona?",
     "options": [
@@ -1875,7 +1877,7 @@
     "id": "sql-122-fill-report-grant",
     "topic": "sql",
     "unitId": "sigurnost",
-    "conceptId": "sql-least-privilege",
+    "conceptId": "nacelo-najmanjih-ovlasti",
     "kind": "fill",
     "question": "Popuni dodjelu samo prava čitanja pogleda ulozi za izvještavanje.",
     "text": "GRANT ___ ___ mjesecni_izvjestaj ___ analiticar;",
@@ -1913,7 +1915,7 @@
     "id": "sql-124-code-parameter-binding",
     "topic": "sql",
     "unitId": "sigurnost",
-    "conceptId": "sql-sql-injection",
+    "conceptId": "sql-injection",
     "question": "Zašto je ovaj obrazac sigurniji od umetanja emaila izravno u SQL string?",
     "code": "db.query('SELECT id FROM korisnici WHERE email = $1', [email]);",
     "options": [
@@ -1940,7 +1942,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Indeks daje brži put do redaka, ali zauzima prostor i mora se ažurirati pri promjenama. Zato se dodaje prema stvarnim obrascima upita.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "conceptId": "kompromis-indeksa"
   },
   {
     "id": "sql-125-fill-update-null",

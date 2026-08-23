@@ -175,7 +175,8 @@
     "correctIndex": 0,
     "explanation": "Usput se širi znanje o sustavu, što je često vrjednije od uhvaćenih grešaka. Stil prepusti alatu, ne čovjeku.",
     "difficulty": "easy",
-    "isIntro": true
+    "isIntro": true,
+    "conceptId": "svrha-code-reviewa"
   },
   {
     "id": "praksa-010-pr-size",
@@ -287,7 +288,8 @@
       4
     ],
     "explanation": "Formatiranje se rješava alatom pri spremanju. Svaka minuta koju čovjek na to potroši oduzeta je od stvarnog pregleda.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "conceptId": "dobar-code-review"
   },
   {
     "id": "praksa-017-review-terms",
@@ -514,7 +516,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Prvi broj nije mjera važnosti nego upozorenje. Zato knjižnice s velikim brojem verzija često nisu 'nestabilne' nego samo poštene.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "semanticko-verzioniranje"
   },
   {
     "id": "praksa-029-changelog",
@@ -629,7 +632,8 @@
       "dodaje"
     ],
     "explanation": "Srednji broj je za nove mogućnosti koje ništa ne ruše.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "semanticko-verzioniranje"
   },
   {
     "id": "praksa-036-release-flow",

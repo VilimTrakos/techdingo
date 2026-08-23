@@ -135,7 +135,8 @@
     "correctIndex": 0,
     "explanation": "Spori algoritam i jedinstveni salt otežavaju masovno pogađanje ukradenih hash vrijednosti. Server pri prijavi uspoređuje hash, a izvornu lozinku ne mora moći vratiti.",
     "difficulty": "easy",
-    "unitId": "autentikacija-sigurnost"
+    "unitId": "autentikacija-sigurnost",
+    "conceptId": "hash-lozinki"
   },
   {
     "id": "backend-027-least-privilege",
@@ -150,7 +151,8 @@
     "correctIndex": 1,
     "explanation": "Ograničavanje ovlasti smanjuje štetu ako račun ili servis bude kompromitiran. Dozvole se trebaju redovito provjeravati i ukidati kada više nisu potrebne.",
     "difficulty": "easy",
-    "unitId": "autentikacija-sigurnost"
+    "unitId": "autentikacija-sigurnost",
+    "conceptId": "nacelo-najmanjih-ovlasti"
   },
   {
     "id": "backend-028-database-index-tradeoff",
@@ -165,7 +167,8 @@
     "correctIndex": 0,
     "explanation": "Indeks pomaže bazi brže pronaći retke, ali ga treba održavati pri INSERT, UPDATE i DELETE operacijama. Zato previše ili loše odabranih indeksa može štetiti performansama.",
     "difficulty": "easy",
-    "unitId": "baze-podataka"
+    "unitId": "baze-podataka",
+    "conceptId": "kompromis-indeksa"
   },
   {
     "id": "backend-029-transaction-atomicity",
@@ -347,7 +350,8 @@
     "correctIndex": 0,
     "explanation": "Kraći TTL smanjuje trajanje zastarjelih podataka, ali povećava opterećenje izvora. Dulji TTL daje više pogodaka cachea uz veći rizik zastarjelosti.",
     "difficulty": "easy",
-    "unitId": "kesiranje-skaliranje"
+    "unitId": "kesiranje-skaliranje",
+    "conceptId": "ttl-valjanost"
   },
   {
     "id": "backend-056-queue-acknowledgement",
@@ -379,7 +383,8 @@
     "correctIndex": 0,
     "explanation": "Isti nepromjenjivi image može pokrenuti više containera. Container dodaje proces, mrežu i privremeni zapisivi sloj nad imageom.",
     "difficulty": "easy",
-    "unitId": "arhitektura"
+    "unitId": "arhitektura",
+    "conceptId": "image-vs-kontejner"
   },
   {
     "id": "backend-058-slo-target",
@@ -501,7 +506,8 @@
     "correctIndex": 0,
     "explanation": "PUT /users/5 s istim podacima uvijek rezultira istim stanjem bez obzira koliko se puta pozove, dok POST /users obično svaki put kreira novi resurs (novi id) - ovo je bitno za sigurno automatsko ponavljanje zahtjeva (retry) kod mrežnih grešaka.",
     "difficulty": "medium",
-    "unitId": "otpornost-distribuirani"
+    "unitId": "otpornost-distribuirani",
+    "conceptId": "idempotentnost"
   },
   {
     "id": "backend-013-load-balancer",
@@ -531,7 +537,8 @@
     "correctIndex": 0,
     "explanation": "Horizontalno skaliranje obično zahtijeva load balancer i stateless dizajn aplikacije, dok vertikalno skaliranje ima fizičku gornju granicu (koliko se resursa može dodati jednom stroju).",
     "difficulty": "medium",
-    "unitId": "kesiranje-skaliranje"
+    "unitId": "kesiranje-skaliranje",
+    "conceptId": "smjer-skaliranja"
   },
   {
     "id": "backend-015-microservices-vs-monolith",
@@ -636,7 +643,8 @@
     "correctIndex": 1,
     "explanation": "CSRF iskorištava automatsko slanje cookieja sa zlonamjerne stranice. SameSite, anti-CSRF token i provjera izvora zahtjeva sprječavaju prihvaćanje takvog poziva.",
     "difficulty": "medium",
-    "unitId": "autentikacija-sigurnost"
+    "unitId": "autentikacija-sigurnost",
+    "conceptId": "csrf-obrana"
   },
   {
     "id": "backend-036-cache-stampede",
@@ -741,7 +749,8 @@
     "correctIndex": 0,
     "explanation": "Backpressure sprječava nekontroliran rast reda, memorije i latencije. Može se provesti ograničenjem protoka, bounded queueom ili signalom proizvođaču da uspori.",
     "difficulty": "medium",
-    "unitId": "poruke-redovi"
+    "unitId": "poruke-redovi",
+    "conceptId": "protupritisak"
   },
   {
     "id": "backend-059-consumer-driven-contract-tests",
@@ -896,7 +905,8 @@
     "correctIndex": 0,
     "explanation": "Primjer: dva zahtjeva istovremeno čitaju stanje računa, oba izračunaju novo stanje na temelju starog i zapišu ga - jedna promjena se 'izgubi' jer se procesi nisu ispravno sinkronizirali (rješava se npr. transakcijama, zaključavanjem ili atomičnim operacijama).",
     "difficulty": "hard",
-    "unitId": "otpornost-distribuirani"
+    "unitId": "otpornost-distribuirani",
+    "conceptId": "race-condition"
   },
   {
     "id": "backend-010-deadlock",
@@ -911,7 +921,8 @@
     "correctIndex": 0,
     "explanation": "Klasičan primjer: proces A drži zaključan resurs 1 i čeka resurs 2, dok proces B drži zaključan resurs 2 i čeka resurs 1 - nijedan se ne može pomaknuti bez vanjske intervencije (timeout, detekcija ciklusa).",
     "difficulty": "hard",
-    "unitId": "otpornost-distribuirani"
+    "unitId": "otpornost-distribuirani",
+    "conceptId": "deadlock"
   },
   {
     "id": "backend-019-n-plus-one",
@@ -941,7 +952,8 @@
     "correctIndex": 0,
     "explanation": "Nakon niza uzastopnih grešaka circuit breaker 'otvara krug' i brzo odbija nove pozive prema tom servisu (umjesto da čeka timeout), čime sprječava kaskadne kvarove, a povremeno propušta probni poziv da provjeri je li se servis oporavio.",
     "difficulty": "hard",
-    "unitId": "otpornost-distribuirani"
+    "unitId": "otpornost-distribuirani",
+    "conceptId": "circuit-breaker"
   },
   {
     "id": "backend-022-optimistic-concurrency",
@@ -986,7 +998,8 @@
     "correctIndex": 0,
     "explanation": "Saga svaki dovršeni korak potvrđuje lokalno, a neuspjeh kasnijeg koraka pokreće poslovnu kompenzaciju, primjerice povrat naplate ili oslobađanje zalihe.",
     "difficulty": "hard",
-    "unitId": "otpornost-distribuirani"
+    "unitId": "otpornost-distribuirani",
+    "conceptId": "saga-kompenzacija"
   },
   {
     "id": "backend-045-fencing-tokens",

@@ -838,7 +838,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Podjela mreže nije izbor nego činjenica koja se dogodi. Izbor postoji tek u tome što učiniti kad se dogodi.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "conceptId": "cap-teorem"
   },
   {
     "id": "arh-047-idempotency",
@@ -853,7 +854,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Isteklo vrijeme ne znači da posao nije obavljen. Bez idempotentnosti ponovljeni pokušaj naplati narudžbu dvaput.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "idempotentnost"
   },
   {
     "id": "arh-048-saga",
@@ -868,7 +870,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Prava distribuirana transakcija je preskupa i krhka. Saga je prihvaća stvarnost: kompenzira ono što se ne može poništiti.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "conceptId": "saga-kompenzacija"
   },
   {
     "id": "arh-049-two-phase-commit",
@@ -883,7 +886,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Sudionici čekaju odluku koja možda nikad ne stigne, držeći zaključavanja. Zato se u praksi izbjegava u korist sage.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "conceptId": "dvofazno-potvrdivanje"
   },
   {
     "id": "arh-050-outbox",
@@ -985,7 +989,8 @@
     "correctIndex": 0,
     "explanation": "Vertikalno je jednostavnije ali ima strop. Horizontalno nema strop, ali traži da aplikacija bude spremna za više instanci.",
     "difficulty": "easy",
-    "isIntro": true
+    "isIntro": true,
+    "conceptId": "smjer-skaliranja"
   },
   {
     "id": "arh-055-stateless",
@@ -1045,7 +1050,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Bez protupritiska red raste dok ne ponestane memorije i sve padne. Odbiti dio prometa je bolje od potpunog ispada.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "conceptId": "protupritisak"
   },
   {
     "id": "arh-059-thundering-herd",

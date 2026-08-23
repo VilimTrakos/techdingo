@@ -562,7 +562,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Promjena u roditelju tiho mijenja svu djecu, ponekad i nekoliko razina duboko. Kompozicija tu vezu čini vidljivom i zamjenjivom.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "conceptId": "kompozicija-vs-nasljedivanje"
   },
   {
     "id": "jezici-032-declarative-cost",
@@ -679,7 +680,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Utrka daje ispravan rezultat u devedeset devet od sto pokretanja. To je razlog zašto se otkriva tek u produkciji.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "race-condition"
   },
   {
     "id": "jezici-038-mutex",
@@ -709,7 +711,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Najjednostavnija obrana je zaključavati resurse uvijek istim redoslijedom. Time se ciklus čekanja ne može zatvoriti.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "conceptId": "deadlock"
   },
   {
     "id": "jezici-040-async-vs-thread",
@@ -1165,7 +1168,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Zatvorenje nosi svoju okolinu sa sobom. Zato brojač skriven u funkciji nastavi raditi i nakon što je vanjska funkcija završila.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "zatvorenje"
   },
   {
     "id": "jezici-065-scope",
@@ -1297,6 +1301,7 @@
       "Svaki poziv vraćene funkcije mijenja istu varijablu"
     ],
     "explanation": "Varijabla preživi kraj vanjske funkcije jer je unutarnja i dalje drži. To je jedini način da se u JavaScriptu dobije stvarno privatno stanje.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "conceptId": "zatvorenje"
   }
 ]

@@ -242,7 +242,8 @@
     "correctIndex": 0,
     "explanation": "Pregled koda daje ljudsku provjeru namjere, dizajna, čitljivosti i rizika te širi znanje u timu. Nadopunjuje automatizirane provjere, ali ih ne zamjenjuje niti može dokazati potpunu ispravnost.",
     "difficulty": "easy",
-    "unitId": "testiranje-kvaliteta"
+    "unitId": "testiranje-kvaliteta",
+    "conceptId": "svrha-code-reviewa"
   },
   {
     "id": "general-032-compiler-interpreter",
@@ -288,7 +289,8 @@
     "correctIndex": 0,
     "explanation": "SemVer koristi PATCH za kompatibilne ispravke, MINOR za novu unatrag kompatibilnu funkcionalnost, a MAJOR za nekompatibilnu promjenu javnog API-ja. To je obećana konvencija projekta, ne automatsko jamstvo alata.",
     "difficulty": "easy",
-    "unitId": "git-verzioniranje"
+    "unitId": "git-verzioniranje",
+    "conceptId": "semanticko-verzioniranje"
   },
   {
     "id": "general-901-fill-git-osnove",
@@ -368,7 +370,8 @@
     "correctIndex": 0,
     "explanation": "Kompozicija sastavlja objekt od manjih suradnika i omogućuje neovisnu zamjenu ponašanja bez stvaranja krhke hijerarhije nasljeđivanja.",
     "difficulty": "medium",
-    "unitId": "oop-dizajn"
+    "unitId": "oop-dizajn",
+    "conceptId": "kompozicija-vs-nasljedivanje"
   },
   {
     "id": "general-015-single-responsibility",
@@ -443,7 +446,8 @@
     "correctIndex": 1,
     "explanation": "Sustav može imati visoku ukupnu propusnost, a ipak lošu latenciju pojedinog zahtjeva. Obje metrike treba mjeriti u odnosu na očekivano opterećenje.",
     "difficulty": "medium",
-    "unitId": "sustavi-koncepti"
+    "unitId": "sustavi-koncepti",
+    "conceptId": "latencija-vs-propusnost"
   },
   {
     "id": "general-020-cohesion-and-coupling",
@@ -533,7 +537,8 @@
     "correctIndex": 0,
     "explanation": "Ako operacije nad dijeljenim stanjem nisu pravilno sinkronizirane, različita ispreplitanja mogu dati različite ili nevaljane rezultate. Rješenja uključuju zaključavanja, atomske operacije, nepromjenjive poruke ili uklanjanje dijeljenog mutabilnog stanja.",
     "difficulty": "medium",
-    "unitId": "sustavi-koncepti"
+    "unitId": "sustavi-koncepti",
+    "conceptId": "race-condition"
   },
   {
     "id": "general-040-idempotent-operation",
@@ -548,7 +553,8 @@
     "correctIndex": 1,
     "explanation": "Idempotentnost olakšava sigurno ponavljanje nakon timeouta ili prekida veze. Odgovor i sporedni metapodaci ne moraju nužno biti identični, ali namjeravani učinak na stanje ne smije se nekontrolirano umnožavati.",
     "difficulty": "medium",
-    "unitId": "sustavi-koncepti"
+    "unitId": "sustavi-koncepti",
+    "conceptId": "idempotentnost"
   },
   {
     "id": "general-041-cache-invalidation",
@@ -608,7 +614,8 @@
     "correctIndex": 2,
     "explanation": "Otvoreni circuit breaker sprječava gomilanje sporih poziva prema već problematičnoj ovisnosti. Nakon odmaka prelazi u probno stanje; timeouti, ograničeni retry i fallback politike nadopunjuju obrazac.",
     "difficulty": "medium",
-    "unitId": "sustavi-koncepti"
+    "unitId": "sustavi-koncepti",
+    "conceptId": "circuit-breaker"
   },
   {
     "id": "general-902-order-tdd-ciklus",
@@ -757,7 +764,8 @@
     "correctIndex": 2,
     "explanation": "Partition tolerance opisuje realnost prekida komunikacije među čvorovima. Tijekom takvog prekida sustav bira odbiti ili odgoditi dio zahtjeva radi konzistentnosti, ili odgovoriti uz rizik da replike privremeno odstupaju.",
     "difficulty": "hard",
-    "unitId": "sustavi-koncepti"
+    "unitId": "sustavi-koncepti",
+    "conceptId": "cap-teorem"
   },
   {
     "id": "general-049-amdahls-law",
@@ -1118,7 +1126,8 @@
       2
     ],
     "explanation": "Dobar review je specifičan, prioritetizira nalaze i ostaje usmjeren na promjenu. Automatizirani testovi ne zamjenjuju provjeru dizajna i namjere.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "conceptId": "dobar-code-review"
   },
   {
     "id": "general-111-multi-distributed-tradeoffs",

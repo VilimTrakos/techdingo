@@ -384,7 +384,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Nizak TTL znači brzu promjenu ali više upita. Zato se prije selidbe servera TTL unaprijed spusti.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "ttl-valjanost"
   },
   {
     "id": "mreze-022-propagation",
@@ -1165,7 +1166,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Deblji kabel ne skraćuje put. Zato veća propusnost ne pomaže aplikaciji koja radi mnogo malih zahtjeva zaredom.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "latencija-vs-propusnost"
   },
   {
     "id": "mreze-065-traceroute",
