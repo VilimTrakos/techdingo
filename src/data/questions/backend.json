@@ -457,8 +457,8 @@
     "options": [
       "Sinkroni kod se izvršava redom, blokirajući daljnje izvršavanje dok se trenutna operacija ne završi; asinkroni kod omogućuje da se druge operacije nastave izvršavati dok se čeka rezultat (npr. mrežni poziv)",
       "Sinkroni kod uvijek koristi jednu jezgru procesora, dok asinkroni kod svaku operaciju automatski šalje na zasebnu jezgru i zato nikada ne blokira ostatak programa",
-      "Sinkroni kod namijenjen je samo izračunima u pregledniku, dok se asinkroni kod koristi samo na serveru za pristup bazama i udaljenim servisima",
-      "Sinkrono i asinkrono izvršavanje imaju jednak redoslijed i blokiranje; razlikuju se samo po tome koristi li se ključna riječ async u potpisu funkcije"
+      "Sinkroni kod namijenjen je samo izračunima u pregledniku i uvijek završava prije povratka iz funkcije, dok se asinkroni kod koristi samo na serveru za pristup bazama i udaljenim servisima",
+      "Sinkrono i asinkrono izvršavanje imaju jednak redoslijed, trajanje i blokiranje pozivatelja; razlikuju se samo po tome koristi li se ključna riječ async u potpisu funkcije"
     ],
     "correctIndex": 0,
     "explanation": "Asinkrono izvršavanje je ključno za I/O operacije (baza podataka, mrežni pozivi, čitanje datoteka) jer sprječava blokiranje cijele aplikacije dok se čeka spori vanjski resurs.",
@@ -911,7 +911,7 @@
     "question": "Što je N+1 query problem?",
     "options": [
       "Situacija u kojoj se za dohvaćanje N povezanih zapisa izvrši 1 upit za glavnu listu, a zatim dodatni upit za SVAKI pojedini povezani zapis (N dodatnih upita), umjesto da se sve dohvati u jednom optimiziranom upitu",
-      "Greška sheme koja nastaje kada baza sadrži N poslovnih tablica i jednu pomoćnu tablicu, pa planer više ne može odabrati indeks bez obzira na oblik upita",
+      "Greška sheme koja nastaje kada baza sadrži N poslovnih tablica i jednu pomoćnu tablicu, pa planer više ne može odabrati indeks ni izvršiti spajanje bez obzira na oblik i selektivnost upita",
       "Optimizacija u kojoj aplikacija jedan veliki upit namjerno dijeli na N+1 paralelnih upita jer više manjih odlazaka do baze uvijek ima manju latenciju od jednog JOIN-a",
       "Problem karakterističan samo za dokumentne NoSQL baze, gdje dohvat jednog dokumenta automatski pokreće dodatni upit za svako njegovo polje i ugrađenu vrijednost"
     ],

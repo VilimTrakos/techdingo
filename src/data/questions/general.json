@@ -624,9 +624,9 @@
     "question": "Zašto se dodavanje na kraj dinamičkog polja smatra amortizirano O(1), iako je povremeno proširenje O(n)?",
     "options": [
       "Kapacitet se tipično povećava geometrijski, pa se trošak rijetkih kopiranja raspodijeli na mnogo jeftinih dodavanja",
-      "Proširenje kopira postojeće elemente pri svakom dodavanju, ali kopiranje jednog elementa runtime uvijek računa kao ukupno O(1) bez obzira na veličinu polja",
-      "Svako dodavanje prvo izvodi binarno pretraživanje slobodnog mjesta, pa logaritamski trošak pretraživanja poništava linearni trošak povremenog kopiranja",
-      "O(n) proširenje i O(1) dodavanje smatraju se jednakima zato što Big-O zanemaruje sve operacije koje se ne događaju pri baš svakom pozivu metode"
+      "Proširenje kopira elemente pri svakom dodavanju, ali runtime kopiranje cijelog polja uvijek računa kao ukupno O(1) bez obzira na veličinu",
+      "Svako dodavanje izvodi binarno pretraživanje mjesta, pa logaritamski trošak poništava linearni trošak povremenog kopiranja",
+      "O(n) i O(1) smatraju se jednakima zato što Big-O zanemaruje operacije koje se ne događaju pri svakom pozivu metode"
     ],
     "correctIndex": 0,
     "explanation": "Ako se kapacitet primjerice udvostručuje, skupa proširenja događaju se sve rjeđe. Prosječni trošak po operaciji kroz dugi niz dodavanja ostaje konstantan.",

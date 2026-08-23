@@ -1228,9 +1228,9 @@
     "question": "Koja je razlika između microtaskova i macrotaskova u JavaScript event loopu?",
     "options": [
       "Microtaskovi (npr. Promise callbackovi) se izvršavaju odmah nakon trenutnog sinkronog koda i prije sljedećeg macrotaska, dok se macrotaskovi (npr. setTimeout, event handleri) izvršavaju u sljedećim ciklusima event loopa",
-      "Macrotaskovi poput timera uvijek se izvrše prije svih Promise callbackova, a microtask red provjerava se tek kada više nema nijednog timera ni korisničkog događaja",
-      "Microtaskovi postoje samo u Node.js procesu i izvršavaju I/O callbackove, dok preglednik poznaje samo macrotaskove za Promise, timer i DOM događaje",
-      "Microtask i macrotask red obrađuju se naizmjenično po jedan callback bez prioriteta; nazivi opisuju očekivano trajanje funkcije, a ne mjesto u event loopu"
+      "Macrotaskovi poput timera uvijek se izvrše prije svih Promise callbackova, a microtask red provjerava se tek kada više nema nijednog timera, mrežnog callbacka ni korisničkog događaja u redu čekanja",
+      "Microtaskovi postoje samo u Node.js procesu i izvršavaju I/O i Promise callbackove, dok preglednik poznaje samo macrotaskove za Promise, timer, renderiranje i sve DOM događaje",
+      "Microtask i macrotask red obrađuju se naizmjenično po jedan callback bez prioriteta; nazivi opisuju očekivano trajanje i količinu rada funkcije, a ne mjesto ili redoslijed u event loopu"
     ],
     "correctIndex": 0,
     "explanation": "Nakon svakog macrotaska, event loop prvo isprazni CIJELI red microtaskova prije nego uzme sljedeći macrotask - zato se npr. Promise.resolve().then() izvrši prije setTimeout(fn, 0).",

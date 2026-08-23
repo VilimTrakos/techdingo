@@ -716,7 +716,7 @@
     "options": [
       "EXISTS provjerava postoji li barem jedan redak koji zadovoljava podupit (često brži na velikim skupovima jer prestaje čim nađe podudaranje), IN uspoređuje vrijednost s listom/rezultatom podupita",
       "IN se može koristiti samo s numeričkim vrijednostima i uvijek zaustavlja podupit nakon prvog retka, dok EXISTS radi samo s tekstom i mora materijalizirati cijeli rezultat",
-      "EXISTS je zastarjela skraćenica za INNER JOIN koju moderne baze pretvaraju u IN, pa ne podržava korelirane podupite ni provjeru postojanja retka",
+      "EXISTS je zastarjela skraćenica za INNER JOIN koju moderne baze uvijek pretvaraju u IN, pa ne podržava korelirane podupite, NULL vrijednosti ni provjeru postojanja retka",
       "IN i EXISTS imaju jednaku NULL semantiku i uvijek dobivaju isti plan izvršavanja; razlikuju se samo po tome piše li se stupac prije ili poslije podupita"
     ],
     "correctIndex": 0,
