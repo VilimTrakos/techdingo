@@ -1,47 +1,10 @@
 import { Link } from 'react-router-dom';
 import { TOPICS } from '../data/topics';
+import { getTopicMeta } from '../data/topicMeta';
 import { getUnitsForTopic, unitProgressKey } from '../data/units';
 import { useProgress } from '../hooks/useProgress';
 import { countStruggledQuestions } from '../lib/review';
 import { toLocalDateISO } from '../state/streak';
-
-const TOPIC_META: Record<
-  string,
-  { description: string; icon: string; accent: string; iconSurface: string; progress: string; shadow: string }
-> = {
-  sql: {
-    description: 'Od prvog SELECT-a do pametnih indeksa i brzih upita.',
-    icon: '▤',
-    accent: 'border-cyan-200 bg-cyan-50/70 hover:border-cyan-400',
-    iconSurface: 'bg-cyan-100 text-cyan-900',
-    progress: 'bg-cyan-400',
-    shadow: 'shadow-[0_6px_0_#a5f3fc,0_16px_36px_rgba(14,116,144,0.08)] hover:shadow-[0_9px_0_#67e8f9,0_20px_42px_rgba(14,116,144,0.12)]',
-  },
-  frontend: {
-    description: 'JavaScript, React, CSS i sve što korisnik vidi i dodiruje.',
-    icon: '</>',
-    accent: 'border-amber-200 bg-amber-50/75 hover:border-amber-400',
-    iconSurface: 'bg-amber-100 text-amber-900',
-    progress: 'bg-amber-400',
-    shadow: 'shadow-[0_6px_0_#fde68a,0_16px_36px_rgba(180,83,9,0.08)] hover:shadow-[0_9px_0_#fcd34d,0_20px_42px_rgba(180,83,9,0.12)]',
-  },
-  backend: {
-    description: 'API-ji, sigurnost, arhitektura i skaliranje sustava.',
-    icon: '⚙',
-    accent: 'border-orange-200 bg-orange-50/75 hover:border-orange-400',
-    iconSurface: 'bg-orange-100 text-orange-950',
-    progress: 'bg-orange-500',
-    shadow: 'shadow-[0_6px_0_#fed7aa,0_16px_36px_rgba(154,52,18,0.08)] hover:shadow-[0_9px_0_#fdba74,0_20px_42px_rgba(154,52,18,0.12)]',
-  },
-  general: {
-    description: 'Strukture podataka, Big-O, SOLID, Git i testiranje.',
-    icon: '✦',
-    accent: 'border-brand-200 bg-brand-50/75 hover:border-brand-400',
-    iconSurface: 'bg-brand-100 text-brand-800',
-    progress: 'bg-brand-500',
-    shadow: 'shadow-[0_6px_0_#b8efc1,0_16px_36px_rgba(30,116,48,0.08)] hover:shadow-[0_9px_0_#82df91,0_20px_42px_rgba(30,116,48,0.12)]',
-  },
-};
 
 export function HomePage() {
   const { state } = useProgress();
@@ -56,7 +19,7 @@ export function HomePage() {
     const unitsCompleted = units.filter(
       (unit) => (state.lessons[unitProgressKey(topic.id, unit.id)]?.passCount ?? 0) > 0,
     ).length;
-    const meta = TOPIC_META[topic.id] ?? TOPIC_META.sql;
+    const meta = getTopicMeta(topic.id);
     return {
       topic,
       meta,

@@ -1,46 +1,10 @@
 import { Link } from 'react-router-dom';
 import { StreakBadge } from '../components/StreakBadge';
 import { XPBadge } from '../components/XPBadge';
+import { getTopicMeta } from '../data/topicMeta';
 import { TOPICS } from '../data/topics';
 import { useProgress } from '../hooks/useProgress';
 import { ACHIEVEMENTS } from '../lib/achievements';
-
-const TOPIC_META: Record<
-  string,
-  {
-    icon: string;
-    surface: string;
-    scoreSurface: string;
-    fill: string;
-  }
-> = {
-  sql: {
-    icon: '▤',
-    surface: 'border-cyan-200 bg-cyan-50/70',
-    scoreSurface: 'border-cyan-200 bg-cyan-50',
-    fill: 'bg-cyan-500',
-  },
-  frontend: {
-    icon: '</>',
-    surface: 'border-amber-200 bg-amber-50/75',
-    scoreSurface: 'border-amber-200 bg-amber-50',
-    fill: 'bg-amber-500',
-  },
-  backend: {
-    icon: '⚙',
-    surface: 'border-orange-200 bg-orange-50/75',
-    scoreSurface: 'border-orange-200 bg-orange-50',
-    fill: 'bg-orange-500',
-  },
-  general: {
-    icon: '✦',
-    surface: 'border-brand-200 bg-brand-50/75',
-    scoreSurface: 'border-brand-200 bg-brand-50',
-    fill: 'bg-brand-500',
-  },
-};
-
-const FALLBACK_META = TOPIC_META.general;
 
 function pluralizeAttempts(value: number) {
   return value === 1 ? 'pokušaj' : 'pokušaja';
@@ -191,7 +155,7 @@ export function StatsPage() {
             const attempts = passes + fails;
             const successRate =
               attempts > 0 ? Math.round((passes / attempts) * 100) : 0;
-            const meta = TOPIC_META[topic.id] ?? FALLBACK_META;
+            const meta = getTopicMeta(topic.id);
 
             return (
               <article
@@ -320,7 +284,7 @@ export function StatsPage() {
                     icon: '🏆',
                     scoreSurface: 'border-amber-300 bg-amber-100',
                   }
-                : TOPIC_META[topic.id] ?? FALLBACK_META;
+                : getTopicMeta(topic.id);
 
             return (
               <Link
