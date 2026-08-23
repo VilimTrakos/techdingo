@@ -4,6 +4,7 @@ import frontendQuestions from './questions/frontend.json';
 import backendQuestions from './questions/backend.json';
 import generalQuestions from './questions/general.json';
 import devopsQuestions from './questions/devops.json';
+import mrezeQuestions from './questions/mreze.json';
 
 export interface TopicDefinition {
   id: string;
@@ -17,6 +18,7 @@ export const TOPICS: TopicDefinition[] = [
   { id: 'backend', labelHr: 'Backend', questions: backendQuestions as Question[] },
   { id: 'general', labelHr: 'Opće', questions: generalQuestions as Question[] },
   { id: 'devops', labelHr: 'DevOps', questions: devopsQuestions as Question[] },
+  { id: 'mreze', labelHr: 'Mreže', questions: mrezeQuestions as Question[] },
 ];
 
 export function getTopic(topicId: string): TopicDefinition | undefined {

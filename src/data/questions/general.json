@@ -4,10 +4,10 @@
     "topic": "general",
     "question": "Što Big-O notacija prvenstveno opisuje?",
     "options": [
-      "Točno trajanje algoritma u milisekundama na svakom računalu",
-      "Broj redaka izvornog koda algoritma",
+      "Točno trajanje algoritma u milisekundama na svakom računalu, uključujući brzinu procesora, jezik implementacije i trenutačno opterećenje sustava",
+      "Ukupan broj redaka izvornog koda algoritma nakon formatiranja, pri čemu kraći program po definiciji uvijek ima bolju Big-O složenost",
       "Kako vrijeme izvršavanja ili potrošnja prostora raste s veličinom ulaza, zanemarujući konstante i manje značajne članove",
-      "Je li rezultat algoritma funkcionalno ispravan"
+      "Je li rezultat algoritma funkcionalno ispravan za svaki mogući ulaz, bez ikakvog opisivanja vremena izvršavanja ili potrebnog dodatnog prostora"
     ],
     "correctIndex": 2,
     "explanation": "Big-O opisuje asimptotski rast resursa u odnosu na veličinu ulaza. Ne daje točno vrijeme jer ono ovisi o implementaciji, hardveru i podacima.",

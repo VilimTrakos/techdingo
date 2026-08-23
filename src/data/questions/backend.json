@@ -65,9 +65,9 @@
     "question": "Što je rate limiting i čemu služi?",
     "options": [
       "Tehnika ograničavanja broja zahtjeva koje klijent smije poslati API-ju u određenom vremenskom razdoblju, radi zaštite od preopterećenja i zloupotrebe (npr. brute-force napada)",
-      "Proces automatskog povećavanja brzine servera tijekom velikog prometa",
-      "Ograničenje broja redaka koje SQL upit smije vratiti",
-      "Tehnika za smanjenje veličine slika prije slanja klijentu"
+      "Proces automatskog povećavanja CPU frekvencije i broja serverskih instanci čim promet poraste, bez odbijanja ili odgađanja ijednog zahtjeva pojedinog klijenta",
+      "Ograničenje broja redaka koje svaki SQL upit smije vratiti, postavljeno globalno na API serveru kako bi se spriječilo korištenje JOIN-a nad velikim tablicama",
+      "Tehnika kompresije slika i ostalih odgovora prema propusnosti klijenta, pri čemu server smanjuje kvalitetu sadržaja umjesto broja dopuštenih zahtjeva"
     ],
     "correctIndex": 0,
     "explanation": "Rate limiting (npr. 'maksimalno 100 zahtjeva po minuti po IP adresi') štiti server od preopterećenja i otežava napade poput brute-force pokušaja pogađanja lozinke.",
@@ -441,9 +441,9 @@
     "question": "Što je middleware u kontekstu backend razvoja?",
     "options": [
       "Funkcija/sloj koji se izvršava između primanja HTTP zahtjeva i slanja odgovora, obično radi obrade poput autentikacije, logiranja ili validacije prije nego zahtjev stigne do glavne rute",
-      "Baza podataka koja se koristi isključivo za privremeno spremanje podataka",
-      "Alat za automatsko generiranje frontend komponenti",
-      "Naziv za server koji se nalazi fizički između dva podatkovna centra"
+      "Posebna baza podataka koja privremeno sprema tijelo svakog HTTP zahtjeva i automatski ga prosljeđuje ruti tek nakon što transakcija bude potvrđena",
+      "Alat koji iz definicije backend ruta automatski generira frontend komponente, validaciju obrazaca i klijentske stilove prije pokretanja servera",
+      "Zaseban proxy server koji mora fizički stajati između dva podatkovna centra i služi samo preusmjeravanju prometa, bez pristupa zahtjevu ili odgovoru"
     ],
     "correctIndex": 0,
     "explanation": "Middleware funkcije se ulančavaju (npr. u Express.js) - svaka može modificirati request/response ili prekinuti lanac (npr. vratiti 401 ako korisnik nije autenticiran) prije nego zahtjev stigne do route handlera.",
@@ -561,9 +561,9 @@
     "question": "Što je JWT i kako se koristi za autentikaciju temeljenu na tokenima?",
     "options": [
       "JSON Web Token je samostojeći, potpisan token koji sadrži podatke o korisniku (npr. identitet, dozvole) - klijent ga šalje sa svakim zahtjevom, a server ga verificira bez potrebe za čuvanjem stanja sesije",
-      "JWT je baza podataka namijenjena isključivo spremanju lozinki",
-      "JWT token se generira isključivo na klijentskoj strani i nikad se ne verificira",
-      "JWT zamjenjuje potrebu za HTTPS-om pri prijenosu osjetljivih podataka"
+      "JWT je distribuirana baza podataka za spremanje hashiranih lozinki i aktivnih sesija, a server pri svakom zahtjevu iz nje učitava cijeli korisnički zapis",
+      "JWT se uvijek generira isključivo na klijentu iz korisničke lozinke; server čita payload bez provjere potpisa jer je Base64URL kodiranje dovoljno za autentičnost",
+      "JWT šifrira sva zaglavlja i tijelo HTTP zahtjeva pa potpuno zamjenjuje HTTPS, čak i kada tokenov payload sadrži osjetljive podatke ili putuje javnom mrežom"
     ],
     "correctIndex": 0,
     "explanation": "JWT se sastoji od headera, payloada i potpisa - budući da je potpisan (ne nužno enkriptiran), server može provjeriti njegovu autentičnost bez pristupa bazi, što odgovara stateless arhitekturi.",
@@ -576,9 +576,9 @@
     "question": "Što je message queue (red poruka) i zašto se koristi?",
     "options": [
       "Sustav koji omogućuje asinkronu komunikaciju između servisa slanjem poruka u red - pošiljatelj ne mora čekati da primatelj odmah obradi poruku, čime se sustavi razdvajaju (decouple) i postaju otporniji",
-      "Struktura podataka koja se koristi isključivo za sortiranje brojeva",
-      "Red poruka se koristi samo za slanje e-mail obavijesti korisnicima",
-      "Message queue zamjenjuje potrebu za bazom podataka u svim aplikacijama"
+      "Struktura u memoriji koja služi isključivo sortiranju numeričkih vrijednosti prije sinkronog poziva drugog servisa i ne može preživjeti ponovno pokretanje procesa",
+      "Servis namijenjen samo slanju e-mail obavijesti, pri čemu pošiljatelj mora ostati blokiran dok primatelj ne potvrdi prikaz svake poruke korisniku",
+      "Trajna zamjena za svaku bazu podataka: svi servisi čuvaju konačno poslovno stanje samo u redu, a obrađene poruke zauvijek ostaju jedini izvor za upite"
     ],
     "correctIndex": 0,
     "explanation": "Primjeri (RabbitMQ, Kafka, SQS) omogućuju npr. da web server brzo odgovori korisniku, dok se dugotrajna obrada (slanje e-maila, generiranje izvještaja) odvija asinkrono u pozadini preko workera koji čitaju iz reda.",
@@ -1153,9 +1153,9 @@
     "question": "Koji je glavni kompromis hedged request tehnike za smanjenje tail latencije?",
     "options": [
       "Nakon kratkog odmaka šalje se dodatna kopija sporog zahtjeva i koristi prvi odgovor, ali se povećava opterećenje i operacija mora biti sigurna za duplikate",
-      "Svaki zahtjev trajno se sprema u cache bez isteka",
-      "Tehnika uklanja potrebu za timeoutima i limitima",
-      "Svi odgovori moraju stići prije nego se bilo koji vrati klijentu"
+      "Svaki zahtjev i svi njegovi odgovori trajno se spremaju u cache bez isteka, čime se smanjuje latencija bez dodatnog prometa prema ovisnom servisu",
+      "Dodatna kopija uklanja potrebu za timeoutima, ograničenjem konkurentnosti i otkazivanjem sporih pokušaja jer barem jedan zahtjev mora uspjeti",
+      "Klijent mora pričekati da stignu svi duplicirani odgovori i zatim ih spojiti, pa tehnika smanjuje opterećenje nauštrb veće tail latencije"
     ],
     "correctIndex": 0,
     "explanation": "Rezervna kopija može zaobići neuobičajeno spor čvor, ali troši dodatni kapacitet. Primjenjuje se selektivno, često na idempotentna čitanja.",

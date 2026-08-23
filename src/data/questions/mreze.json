@@ -1,0 +1,1298 @@
+[
+  {
+    "id": "mreze-uvod-osnove",
+    "topic": "mreze",
+    "unitId": "osnove-mreza",
+    "question": "Što je IP adresa?",
+    "options": [
+      "Broj koji identificira uređaj u mreži",
+      "Ime domene koje korisnik upisuje",
+      "Šifra kojom se štiti mrežni promet",
+      "Redni broj paketa u jednoj poruci"
+    ],
+    "correctIndex": 0,
+    "explanation": "IP adresa je poštanska adresa uređaja. Domena je samo lakše pamtljivo ime koje se u nju prevodi.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "mreze-001-port",
+    "topic": "mreze",
+    "unitId": "osnove-mreza",
+    "question": "Čemu služi broj porta?",
+    "options": [
+      "Razlikuje uslugu na istom uređaju",
+      "Razlikuje uređaje unutar iste mreže",
+      "Označava brzinu mrežne kartice",
+      "Određuje redoslijed slanja paketa"
+    ],
+    "correctIndex": 0,
+    "explanation": "IP adresa vodi do stroja, port do konkretnog programa na njemu. Zato web ide na 443, a SSH na 22.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "mreze-002-packet",
+    "topic": "mreze",
+    "unitId": "osnove-mreza",
+    "question": "Kako podaci putuju kroz mrežu?",
+    "options": [
+      "Razbijeni u pakete koji putuju odvojeno",
+      "Kao jedan neprekinuti tok od pošiljatelja",
+      "Kopirani na svaki uređaj u mreži redom",
+      "Sažeti u jednu datoteku pa poslani odjednom"
+    ],
+    "correctIndex": 0,
+    "explanation": "Paketi mogu ići različitim putevima i stići izvan redoslijeda. Slaganje natrag u red je posao višeg sloja, obično TCP-a.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "mreze-003-layers",
+    "topic": "mreze",
+    "unitId": "osnove-mreza",
+    "question": "Zašto je mreža podijeljena u slojeve?",
+    "options": [
+      "Da se svaki sloj može mijenjati neovisno o ostalima",
+      "Da promet kroz svaki sloj postane brži i sigurniji",
+      "Da se paketi mogu slati istovremeno kroz sve slojeve",
+      "Da svaki sloj može imati vlastitu IP adresu uređaja"
+    ],
+    "correctIndex": 0,
+    "explanation": "WiFi je zamijenio kabel, a HTTP nije morao znati za to. Slojevitost je razlog zašto se internet mogao mijenjati u hodu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-004-private-ip",
+    "topic": "mreze",
+    "unitId": "osnove-mreza",
+    "question": "Zašto uređaji u kućnoj mreži imaju adrese poput 192.168.x.x?",
+    "options": [
+      "To su privatne adrese koje se ne rutaju internetom",
+      "To su adrese rezervirane za bežične uređaje",
+      "To su privremene adrese dok se ne dobije prava",
+      "To su adrese koje označavaju najbrže uređaje"
+    ],
+    "correctIndex": 0,
+    "explanation": "Privatni rasponi postoje jer IPv4 adresa nema dovoljno. Router ih preko NAT-a prevodi u jednu javnu adresu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-005-nat",
+    "topic": "mreze",
+    "unitId": "osnove-mreza",
+    "question": "Što radi NAT na kućnom routeru?",
+    "options": [
+      "Prevodi privatne adrese u jednu javnu i pamti veze",
+      "Šifrira sav promet koji izlazi prema internetu",
+      "Dodjeljuje uređajima adrese pri spajanju na mrežu",
+      "Blokira pakete koji dolaze s nepoznatih adresa"
+    ],
+    "correctIndex": 0,
+    "explanation": "NAT vodi tablicu otvorenih veza da zna kome vratiti odgovor. Dodjelu adresa radi DHCP, a filtriranje vatrozid.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-006-ipv6",
+    "topic": "mreze",
+    "unitId": "osnove-mreza",
+    "question": "Zašto postoji IPv6?",
+    "options": [
+      "Jer je IPv4 adresa premalo za broj uređaja",
+      "Jer je IPv4 promet presporo putovao mrežom",
+      "Jer IPv4 ne podržava šifriranje prometa",
+      "Jer se IPv4 adrese ne mogu koristiti bežično"
+    ],
+    "correctIndex": 0,
+    "explanation": "IPv4 ima oko 4 milijarde adresa i one su potrošene. IPv6 ih ima toliko da praktički ne mogu ponestati.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-007-osi-layers",
+    "topic": "mreze",
+    "unitId": "osnove-mreza",
+    "kind": "multi",
+    "question": "Koje tvrdnje o mrežnim slojevima su točne?",
+    "options": [
+      "IP se bavi adresiranjem i rutanjem paketa",
+      "TCP i UDP rade iznad IP-a",
+      "HTTP je aplikacijski protokol",
+      "TLS zamjenjuje TCP pri sigurnoj vezi",
+      "Svaki sloj dodaje vlastito zaglavlje"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "TLS ne zamjenjuje TCP nego sjeda iznad njega. Zato HTTPS i dalje koristi TCP vezu, samo šifriranu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-008-address-port",
+    "topic": "mreze",
+    "unitId": "osnove-mreza",
+    "kind": "fill",
+    "question": "Dopuni kako se dolazi do usluge.",
+    "text": "Adresa ___ vodi do uređaja u mreži, a broj ___ do konkretne usluge na tom uređaju.",
+    "answers": [
+      "IP",
+      "porta"
+    ],
+    "distractors": [
+      "MAC",
+      "domene"
+    ],
+    "explanation": "Par adresa i port jednoznačno određuje krajnju točku veze. MAC adresa radi samo unutar lokalne mreže.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "mreze-009-packet-path",
+    "topic": "mreze",
+    "unitId": "osnove-mreza",
+    "kind": "order",
+    "question": "Poredaj put paketa od preglednika do udaljenog servera.",
+    "steps": [
+      "Preglednik preda podatke operativnom sustavu",
+      "Sustav pakira podatke i dodaje zaglavlja",
+      "Paket ide do kućnog routera",
+      "Router ga prosljeđuje prema pružatelju interneta",
+      "Paket stiže na server preko niza usmjerivača"
+    ],
+    "explanation": "Svaki korak dodaje ili čita svoje zaglavlje. Na odredištu se isti postupak odvija obrnutim redom.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-uvod-tcp-udp",
+    "topic": "mreze",
+    "unitId": "tcp-udp",
+    "question": "Koja je osnovna razlika između TCP-a i UDP-a?",
+    "options": [
+      "TCP jamči isporuku i redoslijed, UDP ne jamči",
+      "UDP jamči isporuku i redoslijed, TCP ne jamči",
+      "TCP radi samo lokalno, a UDP i preko interneta",
+      "TCP šifrira podatke, dok ih UDP šalje otvoreno"
+    ],
+    "correctIndex": 0,
+    "explanation": "TCP je preporučena pošiljka s potvrdom, UDP je razglednica. Ni jedan ni drugi ne šifriraju - to radi TLS.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "mreze-010-handshake",
+    "topic": "mreze",
+    "unitId": "tcp-udp",
+    "question": "Što se događa u TCP three-way handshakeu?",
+    "options": [
+      "Strane razmijene SYN, SYN-ACK i ACK prije podataka",
+      "Strane razmijene certifikate i dogovore šifru",
+      "Klijent tri puta pošalje isti paket radi sigurnosti",
+      "Server tri puta provjeri je li klijent ovlašten"
+    ],
+    "correctIndex": 0,
+    "explanation": "Handshake usklađuje početne brojeve sekvence i potvrđuje da obje strane mogu i slati i primati. Certifikati su TLS, ne TCP.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-011-udp-use",
+    "topic": "mreze",
+    "unitId": "tcp-udp",
+    "question": "Zašto video poziv radije koristi UDP nego TCP?",
+    "options": [
+      "Bolje je izgubiti sličicu nego čekati njezino ponavljanje",
+      "UDP šalje podatke kroz više mrežnih kartica odjednom",
+      "TCP ne podržava prijenos zvuka i slike u stvarnom vremenu",
+      "UDP paketi imaju veći prioritet kod svih usmjerivača"
+    ],
+    "correctIndex": 0,
+    "explanation": "TCP bi zastao dok ne ponovi izgubljeni paket i slika bi se zamrznula. Kod razgovora uživo kašnjenje boli više od gubitka.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-012-tcp-order",
+    "topic": "mreze",
+    "unitId": "tcp-udp",
+    "question": "Kako TCP osigurava ispravan redoslijed podataka?",
+    "options": [
+      "Numerira bajtove i slaže ih po broju na odredištu",
+      "Šalje pakete jedan po jedan i čeka svaki odgovor",
+      "Koristi isti put kroz mrežu za sve pakete veze",
+      "Zabranjuje usmjerivačima da mijenjaju redoslijed"
+    ],
+    "correctIndex": 0,
+    "explanation": "Paketi legitimno stižu izmiješano. Brojevi sekvence su razlog zašto aplikacija toga nikad nije svjesna.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-013-congestion",
+    "topic": "mreze",
+    "unitId": "tcp-udp",
+    "question": "Što TCP radi kad primijeti gubitak paketa?",
+    "options": [
+      "Usporava slanje jer gubitak tumači kao zagušenje",
+      "Ubrzava slanje da nadoknadi izgubljeno vrijeme",
+      "Prekida vezu i traži od aplikacije ponovni pokušaj",
+      "Prebacuje ostatak prijenosa na UDP kao pričuvu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kontrola zagušenja je razlog zašto se internet ne uruši pod opterećenjem. Na bežičnoj mreži to zna škoditi jer gubitak ne znači zagušenje.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-014-head-of-line",
+    "topic": "mreze",
+    "unitId": "tcp-udp",
+    "question": "Što je head-of-line blocking u TCP-u?",
+    "options": [
+      "Jedan izgubljeni segment zadržava sve one iza sebe",
+      "Prvi klijent u redu zauzme svu propusnost veze",
+      "Zaglavlje paketa je preveliko pa usporava prijenos",
+      "Server obrađuje zahtjeve strogo redom primitka"
+    ],
+    "correctIndex": 0,
+    "explanation": "TCP predaje aplikaciji podatke u redu, pa jedan rupičasti segment drži sve ostalo. Zato HTTP/3 ide na QUIC iznad UDP-a.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-015-keepalive",
+    "topic": "mreze",
+    "unitId": "tcp-udp",
+    "question": "Zašto se TCP veza drži otvorenom za više zahtjeva?",
+    "options": [
+      "Jer uspostava veze košta vremena za svaki zahtjev",
+      "Jer se otvorena veza naplaćuje jeftinije od nove",
+      "Jer se kroz jednu vezu smije poslati samo jedan paket",
+      "Jer zatvorena veza gubi podatke koji su još u putu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Handshake je puni obilazak mreže. Kod stotinu zahtjeva po stranici to je razlika između brze i spore aplikacije.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-016-tcp-features",
+    "topic": "mreze",
+    "unitId": "tcp-udp",
+    "kind": "multi",
+    "question": "Što TCP pruža, a UDP ne?",
+    "options": [
+      "Potvrdu primitka podataka",
+      "Ponovno slanje izgubljenog",
+      "Slaganje podataka u ispravan redoslijed",
+      "Kontrolu zagušenja mreže",
+      "Šifriranje sadržaja poruke"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explanation": "Šifriranje ne pruža ni jedan ni drugi - za to služi TLS iznad TCP-a, odnosno QUIC iznad UDP-a.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-017-protocol-choice",
+    "topic": "mreze",
+    "unitId": "tcp-udp",
+    "kind": "fill",
+    "question": "Dopuni izbor protokola.",
+    "text": "Za preuzimanje datoteke koristi se ___ jer svaki bajt mora stići, a za prijenos zvuka uživo često ___ jer kašnjenje smeta više od gubitka.",
+    "answers": [
+      "TCP",
+      "UDP"
+    ],
+    "distractors": [
+      "HTTP",
+      "ICMP"
+    ],
+    "explanation": "Pravilo je jednostavno: treba li ti potpunost, biraš TCP; treba li ti pravovremenost, biraš UDP.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-018-tcp-life",
+    "topic": "mreze",
+    "unitId": "tcp-udp",
+    "kind": "order",
+    "question": "Poredaj životni ciklus TCP veze.",
+    "steps": [
+      "Klijent šalje SYN",
+      "Server odgovara SYN-ACK",
+      "Klijent potvrđuje s ACK",
+      "Strane razmjenjuju podatke",
+      "Veza se uredno zatvara"
+    ],
+    "explanation": "Tri koraka za uspostavu, pa prijenos, pa zatvaranje. Zatvaranje je zapravo četverosmjerno, jer svaka strana zasebno javlja da je gotova.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-uvod-dns",
+    "topic": "mreze",
+    "unitId": "dns",
+    "question": "Čemu služi DNS?",
+    "options": [
+      "Prevodi imena domena u IP adrese",
+      "Šifrira promet između preglednika i servera",
+      "Sprema kopije stranica bliže korisniku",
+      "Dodjeljuje adrese uređajima u lokalnoj mreži"
+    ],
+    "correctIndex": 0,
+    "explanation": "DNS je imenik interneta. Bez njega bi svaku stranicu trebalo pamtiti po broju.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "mreze-019-a-record",
+    "topic": "mreze",
+    "unitId": "dns",
+    "question": "Što sadrži A zapis u DNS-u?",
+    "options": [
+      "IPv4 adresu na koju domena pokazuje",
+      "Ime drugog zapisa na koji se preusmjerava",
+      "Adresu poslužitelja elektroničke pošte",
+      "Slobodan tekst za provjeru vlasništva"
+    ],
+    "correctIndex": 0,
+    "explanation": "A vodi na IPv4, AAAA na IPv6, CNAME na drugo ime, MX na poštu, TXT na slobodan tekst.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "mreze-020-cname",
+    "topic": "mreze",
+    "unitId": "dns",
+    "question": "Kada se koristi CNAME zapis?",
+    "options": [
+      "Kad domena treba pokazivati na drugo ime, ne na adresu",
+      "Kad domena treba pokazivati na više adresa odjednom",
+      "Kad se domena privremeno gasi do daljnjega",
+      "Kad se domena seli kod drugog registrara"
+    ],
+    "correctIndex": 0,
+    "explanation": "CNAME je alias. Korisno je jer ciljno ime može mijenjati adresu, a tvoj zapis ostaje isti.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-021-ttl",
+    "topic": "mreze",
+    "unitId": "dns",
+    "question": "Što određuje TTL na DNS zapisu?",
+    "options": [
+      "Koliko dugo se odgovor smije čuvati u kešu",
+      "Koliko dugo domena vrijedi do isteka najma",
+      "Koliko zahtjeva domena smije primiti u minuti",
+      "Koliko dugo server čeka na odgovor od klijenta"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nizak TTL znači brzu promjenu ali više upita. Zato se prije selidbe servera TTL unaprijed spusti.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-022-propagation",
+    "topic": "mreze",
+    "unitId": "dns",
+    "question": "Zašto promjena DNS zapisa ne djeluje odmah svima?",
+    "options": [
+      "Jer razni razrješivači još drže stari odgovor u kešu",
+      "Jer se zapisi ručno prepisuju između poslužitelja",
+      "Jer nova adresa mora proći provjeru registrara",
+      "Jer se promjene primjenjuju jednom dnevno noću"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nema nikakve 'propagacije' u smislu širenja - postoji samo istek keša. Trajanje određuje TTL koji je vrijedio prije promjene.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-023-resolver",
+    "topic": "mreze",
+    "unitId": "dns",
+    "question": "Što radi rekurzivni razrješivač?",
+    "options": [
+      "Umjesto klijenta obilazi lanac poslužitelja do odgovora",
+      "Prevodi IP adresu natrag u ime domene kojoj pripada",
+      "Čuva zapise svih postojećih domena na jednom mjestu",
+      "Provjerava je li domena sigurna prije nego je otvoriš"
+    ],
+    "correctIndex": 0,
+    "explanation": "Klijent postavi jedno pitanje. Razrješivač onda ide korijenskim, TLD i autoritativnim poslužiteljima dok ne dobije odgovor.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-024-mx",
+    "topic": "mreze",
+    "unitId": "dns",
+    "question": "Zašto domena može imati više MX zapisa?",
+    "options": [
+      "Da pošta ima pričuvni poslužitelj ako prvi ne odgovara",
+      "Da svaki korisnik dobije vlastiti poslužitelj pošte",
+      "Da se poruke šalju istovremeno na sve poslužitelje",
+      "Da se domena može koristiti u više država odjednom"
+    ],
+    "correctIndex": 0,
+    "explanation": "MX zapisi imaju prioritet. Pošiljatelj pokušava redom, pa ispad glavnog poslužitelja ne znači izgubljenu poštu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-025-dns-records",
+    "topic": "mreze",
+    "unitId": "dns",
+    "kind": "multi",
+    "question": "Koje tvrdnje o DNS zapisima su točne?",
+    "options": [
+      "A zapis vodi na IPv4 adresu",
+      "AAAA zapis vodi na IPv6 adresu",
+      "TXT zapis se često koristi za provjeru vlasništva",
+      "CNAME smije stajati uz druge zapise na istom imenu",
+      "MX zapis usmjerava elektroničku poštu"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "CNAME na istom imenu isključuje ostale zapise. Zato se na korijenu domene obično ne smije koristiti.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-026-dns-flow",
+    "topic": "mreze",
+    "unitId": "dns",
+    "kind": "fill",
+    "question": "Dopuni tok DNS upita.",
+    "text": "Ako odgovor nije u ___, razrješivač pita autoritativni poslužitelj, a koliko dugo smije zadržati odgovor određuje ___.",
+    "answers": [
+      "kešu",
+      "TTL"
+    ],
+    "distractors": [
+      "zapisu",
+      "portu",
+      "zoni"
+    ],
+    "explanation": "Gotovo svaki DNS upit završi u kešu negdje na putu. Zato je TTL najvažniji broj kod svake promjene.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-027-domain-setup",
+    "topic": "mreze",
+    "unitId": "dns",
+    "kind": "order",
+    "question": "Poredaj korake postavljanja domene za novu aplikaciju.",
+    "steps": [
+      "Registriraj domenu kod registrara",
+      "Usmjeri domenu na DNS poslužitelje svog pružatelja",
+      "Dodaj A ili CNAME zapis prema aplikaciji",
+      "Pričekaj da istekne TTL prethodnog odgovora",
+      "Provjeri da domena razrješava na ispravnu adresu"
+    ],
+    "explanation": "Zapis se ne može dodati prije nego domena koristi tvoje DNS poslužitelje. Zadnji korak je provjera, ne pretpostavka.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-uvod-http",
+    "topic": "mreze",
+    "unitId": "http-protokol",
+    "question": "Što je HTTP?",
+    "options": [
+      "Pravila po kojima klijent i server razmjenjuju podatke",
+      "Jezik u kojem se pišu stranice i njihov sadržaj",
+      "Program koji poslužuje stranice korisnicima",
+      "Format u kojem se slike spremaju za web"
+    ],
+    "correctIndex": 0,
+    "explanation": "HTTP je dogovor o obliku zahtjeva i odgovora. HTML je sadržaj koji se tim dogovorom prenosi.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "mreze-028-status-classes",
+    "topic": "mreze",
+    "unitId": "http-protokol",
+    "question": "Što označava statusni kod koji počinje s 4?",
+    "options": [
+      "Grešku na strani klijenta",
+      "Grešku na strani servera",
+      "Uspješno obrađen zahtjev",
+      "Preusmjeravanje na drugu adresu"
+    ],
+    "correctIndex": 0,
+    "explanation": "2xx uspjeh, 3xx preusmjeravanje, 4xx krivnja klijenta, 5xx krivnja servera. Prva znamenka je cijela priča.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "mreze-029-idempotent-methods",
+    "topic": "mreze",
+    "unitId": "http-protokol",
+    "question": "Zašto se GET nikad ne smije koristiti za promjenu podataka?",
+    "options": [
+      "Jer ga preglednici i posrednici smiju ponoviti i keširati",
+      "Jer GET ne može nositi nikakve parametre uz sebe",
+      "Jer je GET sporiji od POST-a kod većine servera",
+      "Jer GET zahtjevi ne stižu do aplikacijskog koda"
+    ],
+    "correctIndex": 0,
+    "explanation": "Prefetch, retry i keš mogu GET ponoviti bez pitanja. Zbog toga su davno linkovi 'obriši' brisali sadržaj kad ih je pretraživač obišao.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-030-headers",
+    "topic": "mreze",
+    "unitId": "http-protokol",
+    "question": "Čemu služe zaglavlja u HTTP zahtjevu?",
+    "options": [
+      "Nose podatke o zahtjevu koji nisu sam sadržaj",
+      "Nose glavni sadržaj koji se šalje serveru",
+      "Određuju kojim putem paket ide kroz mrežu",
+      "Šifriraju tijelo zahtjeva prije slanja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zaglavlja govore tko šalje, što prihvaća, čime se autorizira i kako se sadržaj smije keširati.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-031-http2",
+    "topic": "mreze",
+    "unitId": "http-protokol",
+    "question": "Što je glavno poboljšanje HTTP/2 nad HTTP/1.1?",
+    "options": [
+      "Više istovremenih zahtjeva kroz jednu vezu",
+      "Obavezno šifriranje svakog pojedinog zahtjeva",
+      "Zamjena TCP-a bržim UDP prijenosom",
+      "Mogućnost slanja zahtjeva bez zaglavlja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Multipleksiranje uklanja potrebu za šest paralelnih veza i trikove poput spajanja slika u jednu. QUIC preko UDP-a dolazi tek s HTTP/3.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-032-http3",
+    "topic": "mreze",
+    "unitId": "http-protokol",
+    "question": "Zašto HTTP/3 koristi QUIC preko UDP-a?",
+    "options": [
+      "Da izgubljeni paket ne zadržava ostale tokove",
+      "Da se izbjegne potreba za šifriranjem prometa",
+      "Da se smanji broj zaglavlja u svakom zahtjevu",
+      "Da promet može ići i kroz mreže bez routera"
+    ],
+    "correctIndex": 0,
+    "explanation": "HTTP/2 je riješio blokiranje na razini HTTP-a, ali TCP je ostao usko grlo ispod njega. QUIC premješta redoslijed po toku.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-033-cache-headers",
+    "topic": "mreze",
+    "unitId": "http-protokol",
+    "question": "Što radi zaglavlje `Cache-Control: no-store`?",
+    "options": [
+      "Zabranjuje spremanje odgovora bilo gdje",
+      "Traži provjeru svježine prije svake upotrebe",
+      "Sprema odgovor samo u pregledniku korisnika",
+      "Briše sve prethodno spremljene odgovore"
+    ],
+    "correctIndex": 0,
+    "explanation": "no-store je za osjetljive odgovore. Za 'provjeri prije upotrebe' služi no-cache, što je česta zamjena pojmova.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-034-http-methods",
+    "topic": "mreze",
+    "unitId": "http-protokol",
+    "kind": "multi",
+    "question": "Koje tvrdnje o HTTP metodama su točne?",
+    "options": [
+      "GET ne bi smio mijenjati stanje na serveru",
+      "PUT je idempotentan, ponavljanje daje isti rezultat",
+      "POST se ne smatra idempotentnim",
+      "DELETE mora vratiti tijelo s obrisanim zapisom",
+      "PATCH mijenja samo dio resursa"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "DELETE često vraća 204 bez tijela. Idempotentnost je ključna jer o njoj ovisi smije li klijent sigurno ponoviti zahtjev.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-035-status-codes",
+    "topic": "mreze",
+    "unitId": "http-protokol",
+    "kind": "fill",
+    "question": "Dopuni statusne kodove.",
+    "text": "Kad korisnik nije prijavljen, server vraća ___, a kad je prijavljen ali nema pravo pristupa, vraća ___.",
+    "answers": [
+      "401",
+      "403"
+    ],
+    "distractors": [
+      "404",
+      "500",
+      "302"
+    ],
+    "explanation": "Imena zbunjuju: 401 se zove Unauthorized ali znači 'nisi se predstavio', a 403 Forbidden znači 'znam tko si, ali ne smiješ'.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-036-request-life",
+    "topic": "mreze",
+    "unitId": "http-protokol",
+    "kind": "order",
+    "question": "Poredaj što se dogodi kad upišeš adresu u preglednik.",
+    "steps": [
+      "Ime domene se razriješi u IP adresu",
+      "Uspostavi se veza sa serverom",
+      "Dogovori se sigurna TLS veza",
+      "Pošalje se HTTP zahtjev",
+      "Server vrati odgovor i preglednik ga prikaže"
+    ],
+    "explanation": "DNS pa TCP pa TLS pa HTTP. Svaki korak je puni obilazak mreže, zato ih moderni protokoli pokušavaju spojiti.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-uvod-tls",
+    "topic": "mreze",
+    "unitId": "tls-sigurna-veza",
+    "question": "Što HTTPS dodaje običnom HTTP-u?",
+    "options": [
+      "Šifriranu vezu i provjeru identiteta servera",
+      "Bržu isporuku sadržaja korisniku",
+      "Automatsku pohranu podataka u pregledniku",
+      "Zaštitu od grešaka u kodu aplikacije"
+    ],
+    "correctIndex": 0,
+    "explanation": "HTTPS je HTTP unutar TLS-a. Štiti promet u prijenosu, ali ne popravlja ranjivosti same aplikacije.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "mreze-037-certificate",
+    "topic": "mreze",
+    "unitId": "tls-sigurna-veza",
+    "question": "Što potvrđuje TLS certifikat?",
+    "options": [
+      "Da server doista pripada navedenoj domeni",
+      "Da je aplikacija na serveru bez ranjivosti",
+      "Da su podaci na serveru šifrirani na disku",
+      "Da server ima dovoljno brzu mrežnu vezu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Certifikat veže javni ključ uz ime domene i to jamči izdavatelj. O sigurnosti aplikacije ne govori ništa.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-038-ca",
+    "topic": "mreze",
+    "unitId": "tls-sigurna-veza",
+    "question": "Zašto preglednik vjeruje certifikatu?",
+    "options": [
+      "Jer ga je potpisalo tijelo kojem preglednik već vjeruje",
+      "Jer je certifikat poslan preko šifrirane veze",
+      "Jer je certifikat izdan za točno tu domenu",
+      "Jer certifikat sadrži javni ključ tog servera"
+    ],
+    "correctIndex": 0,
+    "explanation": "Povjerenje je lančano: korijenska tijela dolaze ugrađena u sustav i preglednik. Samopotpisani certifikat lanac nema, pa daje upozorenje.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-039-tls-handshake",
+    "topic": "mreze",
+    "unitId": "tls-sigurna-veza",
+    "question": "Što se postiže TLS handshakeom?",
+    "options": [
+      "Provjera servera i dogovor zajedničkog ključa",
+      "Prijenos lozinke korisnika do servera",
+      "Provjera je li klijent ovlašten za pristup",
+      "Sažimanje podataka prije njihova slanja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Asimetrična kriptografija služi samo za dogovor. Sam promet se zatim šifrira brzim simetričnim ključem.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-040-mixed-content",
+    "topic": "mreze",
+    "unitId": "tls-sigurna-veza",
+    "question": "Zašto preglednik blokira HTTP resurse na HTTPS stranici?",
+    "options": [
+      "Jer bi napadač preko njih mogao promijeniti stranicu",
+      "Jer se HTTP i HTTPS resursi ne mogu prikazati zajedno",
+      "Jer bi stranica time postala osjetno sporija",
+      "Jer HTTP resursi nemaju ispravan format zapisa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nešifrirana skripta na šifriranoj stranici poništava cijelu zaštitu: tko je može promijeniti, može i sve ostalo.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-041-hsts",
+    "topic": "mreze",
+    "unitId": "tls-sigurna-veza",
+    "question": "Što radi HSTS?",
+    "options": [
+      "Nalaže pregledniku da domenu ubuduće otvara samo preko HTTPS-a",
+      "Preusmjerava svaki HTTP zahtjev na HTTPS na strani servera",
+      "Automatski obnavlja certifikat prije nego istekne",
+      "Zabranjuje učitavanje resursa s drugih domena"
+    ],
+    "correctIndex": 0,
+    "explanation": "Preusmjeravanje na serveru štiti tek nakon prvog nezaštićenog zahtjeva. HSTS uklanja i taj prozor jer preglednik zapamti pravilo.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-042-cert-expiry",
+    "topic": "mreze",
+    "unitId": "tls-sigurna-veza",
+    "question": "Što se dogodi kad certifikat istekne?",
+    "options": [
+      "Preglednik prikaže upozorenje i blokira pristup",
+      "Veza nastavi raditi, samo bez šifriranja",
+      "Server automatski prijeđe na HTTP promet",
+      "Promet se preusmjeri na pričuvni certifikat"
+    ],
+    "correctIndex": 0,
+    "explanation": "Istek je jedan od najčešćih uzroka ispada, i potpuno predvidiv. Zato se obnova automatizira, a ne stavlja u kalendar.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-043-tls-protects",
+    "topic": "mreze",
+    "unitId": "tls-sigurna-veza",
+    "kind": "multi",
+    "question": "Od čega TLS štiti?",
+    "options": [
+      "Prisluškivanja prometa na putu",
+      "Neopaženog mijenjanja podataka u prijenosu",
+      "Lažnog predstavljanja servera",
+      "SQL injectiona u aplikaciji",
+      "Krađe podataka s ukradenog diska servera"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "TLS štiti podatke DOK PUTUJU. Sve što se događa na krajevima veze - u aplikaciji ili na disku - njegova je briga koliko i vremenska prognoza.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-044-crypto-pair",
+    "topic": "mreze",
+    "unitId": "tls-sigurna-veza",
+    "kind": "fill",
+    "question": "Dopuni ulogu ključeva u TLS-u.",
+    "text": "Za dogovor o zajedničkoj tajni koristi se ___ kriptografija, a sam promet se zatim šifrira bržom ___ kriptografijom.",
+    "answers": [
+      "asimetrična",
+      "simetrična"
+    ],
+    "distractors": [
+      "hash",
+      "kvantna"
+    ],
+    "explanation": "Asimetrična je sigurna ali spora, simetrična brza ali traži zajednički ključ. TLS uzima najbolje od oba.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-045-https-setup",
+    "topic": "mreze",
+    "unitId": "tls-sigurna-veza",
+    "kind": "order",
+    "question": "Poredaj korake postavljanja HTTPS-a na novoj domeni.",
+    "steps": [
+      "Usmjeri domenu na server",
+      "Zatraži certifikat za tu domenu",
+      "Dokaži izdavatelju da domenu kontroliraš",
+      "Postavi certifikat na server",
+      "Preusmjeri HTTP promet na HTTPS"
+    ],
+    "explanation": "Dokaz kontrole nad domenom traži da domena već pokazuje na tvoj server. Zato usmjeravanje ide prvo.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-uvod-realtime",
+    "topic": "mreze",
+    "unitId": "realtime",
+    "question": "Zašto običan HTTP zahtjev nije dobar za chat u stvarnom vremenu?",
+    "options": [
+      "Jer server ne može sam javiti klijentu da ima novosti",
+      "Jer HTTP ne može prenositi tekstualne poruke",
+      "Jer HTTP zahtjevi traju predugo za kratke poruke",
+      "Jer HTTP dopušta samo jedan zahtjev po korisniku"
+    ],
+    "correctIndex": 0,
+    "explanation": "HTTP je zamišljen tako da klijent pita, a server odgovara. Za poruke koje dolaze same treba drukčiji kanal.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "mreze-046-websocket",
+    "topic": "mreze",
+    "unitId": "realtime",
+    "question": "Što omogućuje WebSocket?",
+    "options": [
+      "Dvosmjernu vezu koja ostaje otvorena",
+      "Slanje više HTTP zahtjeva odjednom",
+      "Prijenos datoteka bez ograničenja veličine",
+      "Automatsko šifriranje svih poruka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nakon početnog HTTP rukovanja veza se nadograđuje i obje strane mogu slati kad god žele.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-047-sse",
+    "topic": "mreze",
+    "unitId": "realtime",
+    "question": "Kada je Server-Sent Events bolji izbor od WebSocketa?",
+    "options": [
+      "Kad podaci teku samo od servera prema klijentu",
+      "Kad klijent šalje više poruka nego što prima",
+      "Kad je potrebno prenositi binarne podatke",
+      "Kad veza mora raditi bez HTTP protokola"
+    ],
+    "correctIndex": 0,
+    "explanation": "SSE je jednosmjeran, radi preko običnog HTTP-a i sam se ponovno spaja. Za obavijesti i tijek događaja to je jednostavnije rješenje.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-048-polling",
+    "topic": "mreze",
+    "unitId": "realtime",
+    "question": "Koja je mana običnog pollinga svakih nekoliko sekundi?",
+    "options": [
+      "Većina zahtjeva vrati da nema ništa novo",
+      "Klijent ne može primiti više poruka odjednom",
+      "Server ne zna koji je klijent poslao zahtjev",
+      "Poruke stižu izvan redoslijeda slanja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Plaćaš pun zahtjev za odgovor 'ništa novo'. Uz mnogo klijenata to je ozbiljno opterećenje bez ikakve koristi.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-049-webhook",
+    "topic": "mreze",
+    "unitId": "realtime",
+    "question": "Kako radi webhook?",
+    "options": [
+      "Tuđi sustav pozove tvoj URL kad se nešto dogodi",
+      "Tvoj sustav u petlji provjerava tuđi API",
+      "Dva sustava drže stalno otvorenu vezu",
+      "Poruke se razmjenjuju preko dijeljene baze"
+    ],
+    "correctIndex": 0,
+    "explanation": "Webhook je obrnuti API poziv: umjesto da ti pitaš, oni jave. Zato tvoj kraj mora biti javno dostupan i mora provjeriti potpis.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-050-reconnect",
+    "topic": "mreze",
+    "unitId": "realtime",
+    "question": "Zašto se ponovno spajanje radi s rastućim razmakom i slučajnim pomakom?",
+    "options": [
+      "Da svi klijenti ne nasrnu na server u isti čas",
+      "Da se veza uspostavi brže nego stalnim pokušajima",
+      "Da server stigne obraditi poruke iz prošle veze",
+      "Da klijent zadrži isti identifikator sesije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nakon ispada svi klijenti pokušavaju istovremeno i obore server koji se tek digao. Slučajni pomak razbija taj val.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-051-scale-ws",
+    "topic": "mreze",
+    "unitId": "realtime",
+    "question": "Zašto je skaliranje WebSocket servera teže od običnog HTTP servera?",
+    "options": [
+      "Jer veza traje, pa je klijent vezan uz jednu instancu",
+      "Jer WebSocket promet ne prolazi kroz load balancer",
+      "Jer svaka poruka traži novu vezu prema serveru",
+      "Jer se WebSocket ne može koristiti preko HTTPS-a"
+    ],
+    "correctIndex": 0,
+    "explanation": "HTTP zahtjev može na bilo koju instancu. Otvorena veza ne može, pa je za poruke između instanci potreban zajednički kanal.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-052-realtime-choice",
+    "topic": "mreze",
+    "unitId": "realtime",
+    "kind": "multi",
+    "question": "Što je točno o izboru tehnologije za stvarno vrijeme?",
+    "options": [
+      "WebSocket je dvosmjeran",
+      "SSE radi preko običnog HTTP-a",
+      "Webhook zahtijeva javno dostupnu adresu",
+      "Polling je najučinkovitiji kod velikog broja klijenata",
+      "SSE se sam ponovno spaja nakon prekida"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Polling je najjednostavniji, ali i najrastrošniji. Njegova jedina prava prednost je što radi svugdje bez posebne podrške.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-053-realtime-terms",
+    "topic": "mreze",
+    "unitId": "realtime",
+    "kind": "fill",
+    "question": "Dopuni tehnologije stvarnog vremena.",
+    "text": "Za dvosmjernu trajnu vezu koristi se ___, a za jednosmjeran tok događaja od servera prema klijentu ___.",
+    "answers": [
+      "WebSocket",
+      "SSE"
+    ],
+    "distractors": [
+      "polling",
+      "webhook"
+    ],
+    "explanation": "Ako klijent ne mora slati kroz isti kanal, SSE je jeftiniji i jednostavniji izbor.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-054-ws-handshake",
+    "topic": "mreze",
+    "unitId": "realtime",
+    "kind": "order",
+    "question": "Poredaj uspostavu WebSocket veze.",
+    "steps": [
+      "Klijent pošalje HTTP zahtjev s traženjem nadogradnje",
+      "Server odgovori statusom 101",
+      "Veza prelazi na WebSocket protokol",
+      "Obje strane šalju poruke kad god žele"
+    ],
+    "explanation": "WebSocket počinje kao običan HTTP zahtjev. Status 101 znači 'mijenjamo protokol' i tek nakon njega vrijede WebSocket pravila.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-uvod-isporuka",
+    "topic": "mreze",
+    "unitId": "isporuka-prometa",
+    "question": "Čemu služi load balancer?",
+    "options": [
+      "Raspoređuje promet na više servera",
+      "Ubrzava izvršavanje koda na serveru",
+      "Sprema podatke bliže korisniku",
+      "Šifrira promet prema korisniku"
+    ],
+    "correctIndex": 0,
+    "explanation": "Load balancer je vratar ispred više jednakih servera. Ako jedan padne, promet ide ostalima.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "mreze-055-reverse-proxy",
+    "topic": "mreze",
+    "unitId": "isporuka-prometa",
+    "question": "Što radi reverse proxy?",
+    "options": [
+      "Prima zahtjeve umjesto servera i prosljeđuje ih dalje",
+      "Skriva identitet korisnika koji pregledava internet",
+      "Sprema podatke aplikacije umjesto baze podataka",
+      "Prevodi domenu u IP adresu prije slanja zahtjeva"
+    ],
+    "correctIndex": 0,
+    "explanation": "Forward proxy štiti klijenta, reverse proxy stoji pred serverom. Na njemu obično sjedi TLS, keš i ograničavanje prometa.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-056-cdn",
+    "topic": "mreze",
+    "unitId": "isporuka-prometa",
+    "question": "Kako CDN ubrzava stranicu?",
+    "options": [
+      "Poslužuje sadržaj s poslužitelja bližeg korisniku",
+      "Sažima kod aplikacije prije njegova slanja",
+      "Povećava propusnost korisnikove internetske veze",
+      "Preskače DNS upit za već posjećene stranice"
+    ],
+    "correctIndex": 0,
+    "explanation": "Brzina svjetla kroz optiku je tvrdo ograničenje. Jedini način da se skrati put je smanjiti udaljenost.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-057-sticky",
+    "topic": "mreze",
+    "unitId": "isporuka-prometa",
+    "question": "Zašto su ljepljive sesije na load balanceru problematične?",
+    "options": [
+      "Jer ispad instance izbaci sve korisnike vezane uz nju",
+      "Jer usporavaju raspoređivanje svakog novog zahtjeva",
+      "Jer se ne mogu koristiti zajedno s HTTPS prometom",
+      "Jer zahtijevaju da svi serveri budu iste snage"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ljepljivost je zakrpa za stanje spremljeno u memoriji instance. Ispravno rješenje je stanje izmjestiti u zajedničku pohranu.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-058-health-check",
+    "topic": "mreze",
+    "unitId": "isporuka-prometa",
+    "question": "Čemu služi provjera zdravlja na load balanceru?",
+    "options": [
+      "Da se promet ne šalje instanci koja ne radi",
+      "Da se izmjeri koliko je instanca opterećena",
+      "Da se instanca automatski ponovno pokrene",
+      "Da se zabilježi koliko je zahtjeva obradila"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez provjere zdravlja balancer i dalje šalje promet u mrtvu instancu. Zato provjera mora stvarno testirati aplikaciju, ne samo port.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-059-cache-invalidation",
+    "topic": "mreze",
+    "unitId": "isporuka-prometa",
+    "question": "Kako se osigurava da korisnik dobije novu verziju datoteke s CDN-a?",
+    "options": [
+      "Ime datoteke se mijenja pri svakoj izmjeni sadržaja",
+      "CDN se ručno očisti nakon svakog deploya",
+      "Datotekama se postavi vrlo kratko trajanje keša",
+      "Korisnicima se poruči da osvježe stranicu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Otisak sadržaja u imenu znači da nova verzija ima novi URL, pa keš nema što poništavati. Zato se ta datoteka smije keširati godinu dana.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-060-rate-limit",
+    "topic": "mreze",
+    "unitId": "isporuka-prometa",
+    "question": "Čemu služi ograničavanje broja zahtjeva?",
+    "options": [
+      "Štiti uslugu od preopterećenja i zloupotrebe",
+      "Ubrzava obradu zahtjeva koji prođu granicu",
+      "Smanjuje veličinu odgovora koji se šalju",
+      "Sprječava krađu podataka iz baze podataka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez ograničenja jedan klijent u petlji može srušiti uslugu svima. Odgovor je status 429 uz zaglavlje koje kaže kada smije ponovno.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-061-edge",
+    "topic": "mreze",
+    "unitId": "isporuka-prometa",
+    "kind": "multi",
+    "question": "Što se tipično radi na rubu mreže, prije aplikacije?",
+    "options": [
+      "Prekid TLS veze",
+      "Keširanje statičnog sadržaja",
+      "Ograničavanje broja zahtjeva",
+      "Poslovna logika naplate",
+      "Preusmjeravanje s HTTP-a na HTTPS"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Rub radi ono što je isto za sve zahtjeve. Poslovna logika ostaje u aplikaciji jer ovisi o podacima i pravilima.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-062-proxy-terms",
+    "topic": "mreze",
+    "unitId": "isporuka-prometa",
+    "kind": "fill",
+    "question": "Dopuni vrste posrednika.",
+    "text": "Posrednik koji štiti i predstavlja klijenta zove se ___ proxy, a onaj koji stoji ispred servera zove se ___ proxy.",
+    "answers": [
+      "forward",
+      "reverse"
+    ],
+    "distractors": [
+      "load",
+      "edge"
+    ],
+    "explanation": "Ista tehnologija, suprotna strana veze. Nginx se najčešće koristi upravo kao reverse proxy.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-063-request-edge",
+    "topic": "mreze",
+    "unitId": "isporuka-prometa",
+    "kind": "order",
+    "question": "Poredaj put zahtjeva do aplikacije u modernoj postavi.",
+    "steps": [
+      "Zahtjev stiže na CDN najbliži korisniku",
+      "CDN provjerava ima li odgovor u kešu",
+      "Zahtjev ide dalje na load balancer",
+      "Load balancer bira zdravu instancu aplikacije",
+      "Aplikacija obradi zahtjev i vrati odgovor"
+    ],
+    "explanation": "Svaki sloj pokušava odgovoriti sam. Najbrži zahtjev je onaj koji nikad ne stigne do aplikacije.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-uvod-dijagnostika",
+    "topic": "mreze",
+    "unitId": "dijagnostika-mreze",
+    "question": "Što provjerava naredba `ping`?",
+    "options": [
+      "Je li udaljeni uređaj dostupan i koliko brzo odgovara",
+      "Radi li web aplikacija na udaljenom uređaju",
+      "Koliki je promet prema udaljenom uređaju",
+      "Koji su portovi otvoreni na uređaju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ping mjeri dostupnost i kašnjenje na mrežnoj razini. Da aplikacija radi ne govori ništa - server može odgovarati dok je usluga mrtva.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "mreze-064-latency-bandwidth",
+    "topic": "mreze",
+    "unitId": "dijagnostika-mreze",
+    "question": "Koja je razlika između kašnjenja i propusnosti?",
+    "options": [
+      "Kašnjenje je koliko se čeka, propusnost koliko stane",
+      "Propusnost je koliko se čeka, kašnjenje koliko stane",
+      "Kašnjenje se mjeri na serveru, propusnost kod korisnika",
+      "To su dva naziva za istu osobinu mrežne veze"
+    ],
+    "correctIndex": 0,
+    "explanation": "Deblji kabel ne skraćuje put. Zato veća propusnost ne pomaže aplikaciji koja radi mnogo malih zahtjeva zaredom.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-065-traceroute",
+    "topic": "mreze",
+    "unitId": "dijagnostika-mreze",
+    "question": "Što pokazuje `traceroute`?",
+    "options": [
+      "Usmjerivače kroz koje paket prolazi do odredišta",
+      "Sve aplikacije koje koriste mrežnu vezu",
+      "Količinu podataka poslanu prema odredištu",
+      "Popis otvorenih veza na lokalnom uređaju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kad je veza spora, traceroute pokazuje na kojem skoku kašnjenje skoči. To je razlika između 'naš problem' i 'problem kod pružatelja'.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-066-timeout",
+    "topic": "mreze",
+    "unitId": "dijagnostika-mreze",
+    "question": "Zašto svaki mrežni poziv mora imati vremensko ograničenje?",
+    "options": [
+      "Jer bi inače dretva čekala odgovor koji možda nikad ne dođe",
+      "Jer mrežni pozivi bez ograničenja troše više prometa",
+      "Jer server odbija zahtjeve koji nemaju zadan timeout",
+      "Jer se bez ograničenja odgovor ne može keširati"
+    ],
+    "correctIndex": 0,
+    "explanation": "Poziv bez ograničenja je najtiši način da se sruši servis: resursi se troše čekajući, dok ne ponestane dretvi ili veza.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-067-dns-vs-connect",
+    "topic": "mreze",
+    "unitId": "dijagnostika-mreze",
+    "question": "Stranica se ne otvara, a `ping` po IP adresi radi. Gdje je najvjerojatnije problem?",
+    "options": [
+      "U razrješavanju imena domene",
+      "U kabelu između uređaja i routera",
+      "U TCP kontroli zagušenja",
+      "U vremenskoj zoni na serveru"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ako mrežni sloj radi po adresi, a po imenu ne, ostaje DNS. To je prvi korak podjele problema na pola.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-068-connection-refused",
+    "topic": "mreze",
+    "unitId": "dijagnostika-mreze",
+    "question": "Što znači greška 'connection refused'?",
+    "options": [
+      "Server je dostupan, ali na tom portu ništa ne sluša",
+      "Server nije dostupan jer je mreža prekinuta",
+      "Vatrozid je tiho odbacio paket bez odgovora",
+      "Veza je uspostavljena, ali je odgovor prazan"
+    ],
+    "correctIndex": 0,
+    "explanation": "Odbijanje je aktivan odgovor, dakle stroj je tu. Vatrozid koji tiho odbacuje paket daje istek vremena, ne odbijanje.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-069-mtu",
+    "topic": "mreze",
+    "unitId": "dijagnostika-mreze",
+    "question": "Što je MTU?",
+    "options": [
+      "Najveća veličina paketa koja stane kroz vezu",
+      "Najveći broj veza koje uređaj podnosi",
+      "Najduže vrijeme koje paket smije putovati",
+      "Najveća brzina prijenosa mrežne kartice"
+    ],
+    "correctIndex": 0,
+    "explanation": "Prevelik paket se mora rascjepkati ili odbaciti. Neusklađen MTU daje bizarne kvarove: mali zahtjevi rade, veliki tiho zastanu.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-070-slow-page",
+    "topic": "mreze",
+    "unitId": "dijagnostika-mreze",
+    "kind": "multi",
+    "question": "Što provjeriti kad je stranica spora samo nekim korisnicima?",
+    "options": [
+      "Kašnjenje do najbližeg poslužitelja",
+      "Razrješavanje domene kod tih korisnika",
+      "Zemljopisnu udaljenost od podatkovnog centra",
+      "Broj redaka koda u aplikaciji",
+      "Gubitak paketa na njihovoj vezi"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Kad je problem samo kod nekih, uzrok je gotovo uvijek na putu, a ne u aplikaciji - inače bi bilo sporo svima.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "mreze-071-diag-tools",
+    "topic": "mreze",
+    "unitId": "dijagnostika-mreze",
+    "kind": "fill",
+    "question": "Dopuni alate za dijagnostiku.",
+    "text": "Za provjeru dostupnosti i kašnjenja koristi se ___, a za prikaz svih skokova do odredišta ___.",
+    "answers": [
+      "ping",
+      "traceroute"
+    ],
+    "distractors": [
+      "curl",
+      "netstat"
+    ],
+    "explanation": "Ping odgovara na 'je li živo', traceroute na 'gdje se gubi'. Zajedno pokrivaju većinu prvih pitanja.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mreze-072-debug-order",
+    "topic": "mreze",
+    "unitId": "dijagnostika-mreze",
+    "kind": "order",
+    "question": "Poredaj dijagnostiku nedostupne aplikacije, od najnižeg sloja prema gore.",
+    "steps": [
+      "Provjeri razrješava li se domena u adresu",
+      "Provjeri je li uređaj dostupan po toj adresi",
+      "Provjeri sluša li nešto na traženom portu",
+      "Provjeri odgovara li aplikacija na HTTP zahtjev",
+      "Provjeri vraća li odgovor očekivani sadržaj"
+    ],
+    "explanation": "Ide se odozdo prema gore jer svaki sloj ovisi o onome ispod. Preskakanje redoslijeda znači traženje greške na krivom mjestu.",
+    "difficulty": "hard"
+  }
+]

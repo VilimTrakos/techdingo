@@ -54,6 +54,16 @@ export const UNITS: Record<string, UnitDefinition[]> = {
     { id: 'cloud-osnove', topicId: 'devops', labelHr: 'Osnove oblaka', description: 'Regije, IAM, serverless i troškovi.' },
     { id: 'nadzor-produkcije', topicId: 'devops', labelHr: 'Nadzor produkcije', description: 'Alarmi, SLO, dežurstvo i postmortem.' },
   ],
+  mreze: [
+    { id: 'osnove-mreza', topicId: 'mreze', labelHr: 'Osnove mreža', description: 'IP adrese, portovi, paketi i slojevi.' },
+    { id: 'tcp-udp', topicId: 'mreze', labelHr: 'TCP i UDP', description: 'Pouzdanost, handshake i zagušenje.' },
+    { id: 'dns', topicId: 'mreze', labelHr: 'DNS', description: 'Zapisi, TTL, keš i razrješavanje imena.' },
+    { id: 'http-protokol', topicId: 'mreze', labelHr: 'HTTP protokol', description: 'Metode, statusi, zaglavlja i HTTP/2-3.' },
+    { id: 'tls-sigurna-veza', topicId: 'mreze', labelHr: 'TLS i HTTPS', description: 'Certifikati, handshake i povjerenje.' },
+    { id: 'realtime', topicId: 'mreze', labelHr: 'Stvarno vrijeme', description: 'WebSocket, SSE, polling i webhookovi.' },
+    { id: 'isporuka-prometa', topicId: 'mreze', labelHr: 'Isporuka prometa', description: 'Load balanceri, proxy, CDN i limiti.' },
+    { id: 'dijagnostika-mreze', topicId: 'mreze', labelHr: 'Dijagnostika', description: 'Ping, traceroute, kašnjenje i timeouti.' },
+  ],
   general: [
     { id: 'strukture-podataka', topicId: 'general', labelHr: 'Strukture podataka', description: 'Polja, stogovi, redovi, mape i stabla.' },
     { id: 'algoritmi', topicId: 'general', labelHr: 'Algoritmi', description: 'Big-O, pretraživanje, sortiranje i grafovi.' },

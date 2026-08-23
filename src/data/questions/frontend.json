@@ -659,9 +659,9 @@
     "question": "Što rade ključne riječi async i await?",
     "options": [
       "async označava da funkcija uvijek vraća Promise, a await unutar te funkcije pauzira izvršavanje dok se Promise ne razriješi, čineći asinkroni kod čitljivim kao sinkroni",
-      "async i await se koriste isključivo za rad s CSS animacijama",
-      "await zaustavlja cijeli preglednik dok se stranica ne učita",
-      "async pretvara funkciju u sinkronu, a await je zastarjela sintaksa"
+      "async i await služe isključivo pokretanju CSS animacija iz JavaScripta; async bira animirani element, a await čeka završetak njegova transition događaja",
+      "await blokira glavnu dretvu i cijeli preglednik dok se Promise ne razriješi, pa se tijekom čekanja ne mogu obrađivati klikovi, renderiranje ni drugi zadaci",
+      "async pretvara funkciju u potpuno sinkronu operaciju koja vraća običnu vrijednost, dok je await zastarjela zamjena za ključnu riječ return"
     ],
     "correctIndex": 0,
     "explanation": "async/await je 'syntactic sugar' iznad Promisea - omogućuje pisanje asinkronog koda bez lanaca .then() poziva, uz zadržavanje neblokirajućeg ponašanja.",
@@ -719,9 +719,9 @@
     "question": "Koja je razlika između SPA (Single Page Application) i klasične server-rendered aplikacije?",
     "options": [
       "SPA učita jednu HTML stranicu i zatim JavaScriptom dinamički mijenja sadržaj bez potpunog ponovnog učitavanja, dok server-rendered aplikacija generira novi HTML na serveru za svaku navigaciju",
-      "SPA se izvršava isključivo na serveru, a server-rendered aplikacija isključivo u pregledniku",
-      "Server-rendered aplikacije ne mogu koristiti JavaScript",
-      "Nema razlike u ponašanju, razlikuje se samo naziv arhitekture"
+      "SPA se izvršava isključivo na serveru i za svaku navigaciju šalje potpuni HTML, dok server-rendered aplikacija radi samo u pregledniku i nikada ne traži novi dokument",
+      "Server-rendered aplikacija ne može koristiti JavaScript ni naknadno postati interaktivna, dok SPA mora sav sadržaj izgraditi prije prvog HTTP odgovora servera",
+      "SPA i server-rendered aplikacija imaju isti navigacijski i rendering ciklus; razlikuju se samo po nazivu alata kojim je početni HTML minificiran"
     ],
     "correctIndex": 0,
     "explanation": "SPA (npr. React/Vue aplikacije) nudi bržu navigaciju bez ponovnog učitavanja stranice nakon početnog loada, dok server-rendered pristup (npr. klasični PHP) šalje potpuno nov HTML pri svakom zahtjevu - svaki pristup ima svoje prednosti (SEO, initial load, interaktivnost).",
@@ -749,9 +749,9 @@
     "question": "Koja je razlika između debounce i throttle tehnika?",
     "options": [
       "Debounce odgađa izvršavanje funkcije dok ne prođe određeno vrijeme bez novog poziva (izvrši se samo zadnji poziv), throttle ograničava funkciju da se izvrši najviše jednom u zadanom vremenskom razdoblju",
-      "Debounce i throttle su sinonimi za istu tehniku optimizacije",
-      "Throttle se koristi isključivo za CSS animacije, debounce isključivo za HTTP pozive",
-      "Debounce povećava broj poziva funkcije, a throttle ih potpuno zaustavlja"
+      "Debounce i throttle jednako izvršavaju svaki primljeni poziv nakon fiksne odgode; razlikuju se samo po nazivu timera koji preglednik koristi interno",
+      "Throttle odgađa obradu dok pozivi potpuno ne prestanu, a debounce dopušta najviše jedan poziv po intervalu; oba se mogu koristiti samo za CSS animacije",
+      "Debounce namjerno povećava broj izvršavanja grupiranjem jednog događaja u više callbackova, dok throttle nakon prvog poziva trajno zaustavlja funkciju"
     ],
     "correctIndex": 0,
     "explanation": "Tipičan primjer: debounce za search input (čekaj da korisnik prestane tipkati), throttle za scroll/resize event (izvrši najviše jednom svakih npr. 200ms).",
@@ -1198,9 +1198,9 @@
     "question": "Što je event loop?",
     "options": [
       "Mehanizam koji kontinuirano provjerava je li call stack prazan i, ako jest, prebacuje sljedeći callback iz reda čekanja (queue) na stack radi izvršavanja",
-      "Petlja koja se koristi za iteriranje kroz elemente niza (array)",
-      "CSS svojstvo koje ponavlja animaciju u beskonačnost",
-      "Funkcija koja se poziva samo jednom pri pokretanju aplikacije"
+      "Posebna JavaScript petlja koja redom iterira elemente svakog niza i automatski paralelizira callback za svaki element bez korištenja reda zadataka",
+      "CSS mehanizam koji ponavlja animaciju u beskonačnost i između frameova premješta deklaracije iz stylesheet reda na JavaScript call stack",
+      "Funkcija koja se poziva samo jednom pri pokretanju aplikacije kako bi učitala sve buduće event handlere prije nego preglednik započne renderiranje"
     ],
     "correctIndex": 0,
     "explanation": "Event loop omogućuje da single-threaded JavaScript obrađuje asinkrone operacije - dok se čeka rezultat (npr. mrežni poziv), glavna nit nije blokirana, a callback se izvršava tek kad se stack isprazni.",
@@ -1242,10 +1242,10 @@
     "topic": "frontend",
     "question": "Zašto se u CSS Grid rasporedu često koristi minmax(0, 1fr) umjesto samog 1fr za stupac s dugim sadržajem?",
     "options": [
-      "Jer 1fr uvijek predstavlja fiksnu širinu od jednog piksela",
-      "Jer minmax(0, 1fr) automatski uključuje overflow: hidden",
+      "Jer 1fr uvijek predstavlja fiksnu širinu od jednog piksela, dok minmax pretvara taj piksel u razmjerni udio širine roditelja bez obzira na sadržaj",
+      "Jer minmax(0, 1fr) automatski postavlja overflow: hidden na grid i svu njegovu djecu, pa dugi sadržaj više ne sudjeluje u izračunu širine traga",
       "Jer automatski minimum 1fr traga može poštovati min-content širinu, dok nulti minimum dopušta tragu da se stvarno smanji unutar dostupnog prostora",
-      "Jer vrijednost 0 uklanja grid gap između stupaca"
+      "Jer početna vrijednost 0 uklanja grid gap između svih stupaca i prebacuje razmak u 1fr dio, čime se sadržaj može smanjiti bez promjene minimuma"
     ],
     "correctIndex": 2,
     "explanation": "Grid trag s 1fr ima automatski minimum koji dugi sadržaj može proširiti izvan kontejnera; minmax(0, 1fr) dopušta skupljanje ispod min-content širine.",
