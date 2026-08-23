@@ -6,11 +6,15 @@ import {
   type AnswerPayload,
   type PreparedQuestion,
 } from '../lib/questionKinds';
-import { MAX_REVIEW_SESSION_SIZE, collectStruggledQuestions } from '../lib/review';
+import {
+  MAX_REVIEW_SESSION_SIZE,
+  collectStruggledQuestions,
+  countStruggledQuestions,
+} from '../lib/review';
 import { conceptOf } from '../types/question';
 import { useProgress } from './useProgress';
 
-type Status = 'loading' | 'empty' | 'playing' | 'finished';
+type Status = 'loading' | 'empty' | 'playing' | 'finished' | 'load-failed';
 
 interface State {
   status: Status;
@@ -28,6 +32,7 @@ interface State {
 type Action =
   | { type: 'INIT'; questions: PreparedQuestion[] }
   | { type: 'EMPTY' }
+  | { type: 'LOAD_FAILED' }
   | { type: 'ANSWER'; correct: boolean; questionId: string; conceptId: string }
   | { type: 'NEXT' };
 
@@ -51,6 +56,8 @@ function reducer(state: State, action: Action): State {
       return { ...createIdleState(), status: 'playing', questions: action.questions };
     case 'EMPTY':
       return { ...createIdleState(), status: 'empty' };
+    case 'LOAD_FAILED':
+      return { ...createIdleState(), status: 'load-failed' };
     case 'ANSWER': {
       if (state.status !== 'playing' || state.isAnswered) return state;
       return {
@@ -104,21 +111,39 @@ export function useReviewSession() {
   progressRef.current = progress;
 
   // Broj preostalih grešaka čitamo iz ŽIVOG stanja (za prikaz nakon sesije).
-  const remainingAfterSession = collectStruggledQuestions(progress).length;
+  // Ide preko indeksa, pa je točan i prije nego ijedna tema bude dovučena.
+  const remainingAfterSession = countStruggledQuestions(progress);
 
   useEffect(() => {
-    const struggled = collectStruggledQuestions(progressRef.current);
-    if (struggled.length === 0) {
-      dispatch({ type: 'EMPTY' });
-      return;
-    }
-    // Lakša pitanja prva - ista progresija kao u lekcijama.
-    const picked = shuffle(struggled)
-      .slice(0, MAX_REVIEW_SESSION_SIZE)
-      .sort((a, b) => (DIFFICULTY_RANK[a.difficulty] ?? 1) - (DIFFICULTY_RANK[b.difficulty] ?? 1));
+    // Sesija čeka da stignu teme u kojima greške žive (chunk po temi).
+    // `cancelled` sprječava dispatch nakon što je komponenta otišla ili je
+    // korisnik u međuvremenu pokrenuo restart.
+    let cancelled = false;
 
-    recordedRef.current = false;
-    dispatch({ type: 'INIT', questions: picked.map(prepareQuestion) });
+    collectStruggledQuestions(progressRef.current)
+      .then((struggled) => {
+        if (cancelled) return;
+        if (struggled.length === 0) {
+          dispatch({ type: 'EMPTY' });
+          return;
+        }
+        // Lakša pitanja prva - ista progresija kao u lekcijama.
+        const picked = shuffle(struggled)
+          .slice(0, MAX_REVIEW_SESSION_SIZE)
+          .sort((a, b) => (DIFFICULTY_RANK[a.difficulty] ?? 1) - (DIFFICULTY_RANK[b.difficulty] ?? 1));
+
+        recordedRef.current = false;
+        dispatch({ type: 'INIT', questions: picked.map(prepareQuestion) });
+      })
+      .catch((err) => {
+        if (cancelled) return;
+        console.error('techdingo: dohvat pitanja za ponavljanje nije uspio.', err);
+        dispatch({ type: 'LOAD_FAILED' });
+      });
+
+    return () => {
+      cancelled = true;
+    };
     // Namjerno bez `progress` u deps - zapisivanje rezultata mijenja progress
     // store i inače bi restartalo sesiju usred nje.
     // eslint-disable-next-line react-hooks/exhaustive-deps

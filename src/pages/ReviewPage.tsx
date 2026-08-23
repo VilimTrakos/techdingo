@@ -3,6 +3,7 @@ import { ProgressBar } from '../components/ProgressBar';
 import { QuestionBody } from '../components/QuestionBody';
 import { QuestionCard } from '../components/QuestionCard';
 import { correctAnswerText } from '../lib/questionKinds';
+import { QuestionsLoadError } from '../components/QuestionsLoadError';
 import { useReviewSession } from '../hooks/useReviewSession';
 
 export function ReviewPage() {
@@ -22,6 +23,10 @@ export function ReviewPage() {
         <p className="font-bold text-ink-600">Skupljamo tvoje greške…</p>
       </div>
     );
+  }
+
+  if (session.status === 'load-failed') {
+    return <QuestionsLoadError onRetry={session.restart} />;
   }
 
   if (session.status === 'empty') {
