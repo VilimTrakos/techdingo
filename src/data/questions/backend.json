@@ -35,9 +35,9 @@
     "question": "Koje kategorije HTTP statusnih kodova postoje i kada se koriste?",
     "options": [
       "1xx informativni, 2xx uspjeh (npr. 200 OK, 201 Created), 3xx preusmjeravanje, 4xx greška na strani klijenta (npr. 404 Not Found), 5xx greška na strani servera (npr. 500 Internal Server Error)",
-      "Statusni kodovi se koriste samo za greške, uspješni zahtjevi nemaju kod",
-      "4xx kodovi označavaju uspješne zahtjeve, a 2xx kodovi greške",
-      "Svaka kategorija kodova ima potpuno proizvoljno značenje ovisno o developeru"
+      "Statusni kodovi koriste se samo za neuspješne zahtjeve: klijentske pogreške dobivaju 1xx, serverske 2xx, a uspješni odgovori šalju se bez statusne linije",
+      "1xx označava trajna preusmjeravanja, 2xx greške klijenta, 3xx greške servera, 4xx uspjeh, a 5xx informativne odgovore koji još nemaju tijelo",
+      "Kategorije nemaju standardizirano značenje; svaki API sam određuje predstavlja li pojedini raspon uspjeh, preusmjeravanje ili pogrešku"
     ],
     "correctIndex": 0,
     "explanation": "Prva znamenka statusnog koda odmah govori o kategoriji odgovora, što olakšava rukovanje odgovorima na klijentskoj strani bez parsiranja tijela odgovora.",
@@ -426,9 +426,9 @@
     "question": "Što znači da je API stateless (bez stanja)?",
     "options": [
       "Svaki zahtjev mora sadržavati sve informacije potrebne za njegovu obradu - server ne pamti stanje prethodnih zahtjeva istog klijenta između poziva",
-      "API nikad ne vraća nikakav odgovor klijentu",
-      "API ne smije koristiti bazu podataka za spremanje podataka",
-      "Svaki zahtjev se automatski sprema u trajnu memoriju servera"
+      "API nikada ne vraća odgovor klijentu nego samo zapisuje zahtjev u red, a klijent rezultat mora naknadno dohvatiti iz zajedničke memorije procesa",
+      "API ne smije koristiti bazu, cache ni drugo trajno spremište; svi poslovni podaci moraju postojati samo tijekom obrade jednog HTTP zahtjeva",
+      "Server automatski trajno sprema cijeli prethodni zahtjev za svakog klijenta, pa sljedeći poziv može izostaviti autentikaciju i ostale podatke"
     ],
     "correctIndex": 0,
     "explanation": "Statelessness olakšava skaliranje (bilo koji server instance može obraditi bilo koji zahtjev) jer server ne mora dijeliti session stanje - autentikacija se npr. rješava tokenom koji klijent šalje sa svakim zahtjevom.",
@@ -471,9 +471,9 @@
     "question": "Što je caching (predmemoriranje) i što znači invalidacija cachea?",
     "options": [
       "Caching sprema rezultate skupih operacija radi bržeg budućeg pristupa, a invalidacija cachea je proces uklanjanja/ažuriranja zastarjelih podataka iz predmemorije kad se izvorni podaci promijene",
-      "Caching je proces trajnog brisanja podataka iz baze radi uštede prostora",
-      "Invalidacija cachea se odnosi na provjeru valjanosti korisničke lozinke",
-      "Caching se može koristiti isključivo za slike i statične datoteke"
+      "Caching trajno premješta rijetko korištene podatke iz baze u sporiju arhivu radi uštede prostora, a invalidacija ih nepovratno briše iz oba spremišta",
+      "Caching sprema korisničke lozinke u memoriju procesa, a invalidacija provjerava jesu li njihove hash vrijednosti još valjane nakon svake prijave",
+      "Caching se može koristiti samo za slike i statične datoteke preglednika; rezultati upita, API odgovori i izračuni ne smiju se predmemorirati"
     ],
     "correctIndex": 0,
     "explanation": "Cache ubrzava sustav izbjegavanjem ponovnog računanja/dohvaćanja istih podataka, ali unosi izazov: ako se izvorni podatak promijeni, stara verzija u cacheu mora se osvježiti ili ukloniti - poznato kao jedan od 'dva najteža problema u informatici'.",
@@ -501,9 +501,9 @@
     "question": "Što je load balancer i čemu služi?",
     "options": [
       "Komponenta koja raspoređuje dolazne zahtjeve na više server instanci kako bi se ravnomjerno rasporedilo opterećenje i povećala dostupnost sustava",
-      "Alat koji automatski piše kod za backend aplikaciju",
-      "Baza podataka optimizirana za spremanje velikih datoteka",
-      "Sigurnosni mehanizam koji šifrira lozinke korisnika"
+      "Alat koji iz jednog ulaznog zahtjeva automatski generira kopije backend aplikacije, ali ne sudjeluje u mrežnom rutiranju ni provjeri zdravlja instanci",
+      "Distribuirana baza optimizirana za velike datoteke koja dijeli svaki zapis na sve servere, a zahtjeve uvijek šalje instanci s najvećom količinom podataka",
+      "Sigurnosni mehanizam koji raspoređuje dijelove korisničke lozinke na više servera i zatim ih spaja radi autentikacije svakog dolaznog zahtjeva"
     ],
     "correctIndex": 0,
     "explanation": "Load balancer (npr. Nginx, HAProxy, cloud load balanceri) distribuira promet prema više instanci aplikacije, čime omogućuje horizontalno skaliranje i otpornost na pad pojedine instance.",
@@ -695,9 +695,9 @@
     "topic": "backend",
     "question": "Korisnik odmah nakon uspješnog upisa čita podatak s asinkrone read replike i vidi staru vrijednost. Kako osigurati read-after-write iskustvo?",
     "options": [
-      "Povećati TTL cachea za taj zapis",
-      "Ponoviti isti upit na istoj replici bez ograničenja",
-      "Prepustiti klijentu da lokalno sortira odgovor",
+      "Povećati TTL cachea za taj zapis kako bi replika dobila stariju spremljenu vrijednost i koristila je sve dok se asinkroni prijenos promjene ne završi",
+      "Bez ograničenja ponavljati isti upit na istoj replici jer svaki SELECT automatski ubrzava replikaciju upravo tog retka s primary instance",
+      "Prepustiti klijentu da lokalno sortira primljene retke prema vremenu odgovora, čime će zastarjela vrijednost biti zamijenjena najnovijom bez dodatnog čitanja",
       "Privremeno usmjeriti čitanje na primary ili koristiti token sesijske konzistentnosti dok replika ne sustigne upis"
     ],
     "correctIndex": 3,

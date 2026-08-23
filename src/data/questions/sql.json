@@ -395,9 +395,9 @@
     "topic": "sql",
     "question": "Što u standardnom SQL-u vraćaju INTERSECT i EXCEPT?",
     "options": [
-      "INTERSECT spaja stupce, a EXCEPT ih preimenuje",
-      "INTERSECT vraća sve retke iz prvog upita, a EXCEPT sve iz drugog",
-      "Obje operacije uvijek zadržavaju sve duplikate",
+      "INTERSECT spaja stupce dvaju rezultata kao JOIN, dok EXCEPT samo preimenuje stupce prvog rezultata imenima iz drugog bez filtriranja redaka",
+      "INTERSECT vraća sve retke prvog upita koji ne postoje u drugom, dok EXCEPT vraća samo retke koji su zajednički obama rezultatima",
+      "Obje operacije uvijek zadržavaju sve duplikate i ne zahtijevaju kompatibilan broj ni tipove stupaca jer uspoređuju samo primarne ključeve",
       "INTERSECT vraća retke zajedničke obama rezultatima, a EXCEPT retke prvog rezultata kojih nema u drugom; bez ALL uklanjaju se duplikati"
     ],
     "correctIndex": 3,
@@ -670,9 +670,9 @@
     "question": "Što je view (pogled) u bazi podataka?",
     "options": [
       "Virtualna tablica definirana SQL upitom, koja se izvršava svaki put kad joj se pristupi, bez fizičkog spremanja vlastitih podataka",
-      "Fizička kopija tablice koja se automatski sinkronizira svaku sekundu",
-      "Naziv za backup cijele baze podataka",
-      "Poseban tip indeksa koji ubrzava SELECT upite"
+      "Fizička kopija tablice koja se automatski sinkronizira svake sekunde i uvijek zauzima jednak prostor kao izvorna tablica, neovisno o definiciji pogleda",
+      "Potpuna sigurnosna kopija baze koja se stvara naredbom CREATE VIEW i može vratiti sve tablice nakon kvara bez zasebnog backup postupka",
+      "Poseban fizički indeks koji sprema rezultat SELECT upita u sortiranom obliku i automatski se koristi pri svakoj promjeni izvornih redaka"
     ],
     "correctIndex": 0,
     "explanation": "View se ponaša kao tablica pri čitanju, ali podaci se dohvaćaju iz osnovnog upita u trenutku pristupa - korisno za pojednostavljenje složenih upita ili ograničavanje pristupa podacima.",
@@ -1014,10 +1014,10 @@
     "topic": "sql",
     "question": "Zašto se alias definiran u SELECT listi najčešće ne može koristiti u WHERE klauzuli iste razine upita?",
     "options": [
-      "Jer WHERE smije uspoređivati samo fizičke primarne ključeve",
+      "Jer WHERE smije uspoređivati samo fizičke primarne ključeve i izvorne stupce tablice, a ne izraze, funkcije ili druga izvedena imena",
       "Jer se WHERE logički obrađuje prije SELECT liste, pa alias još nije dostupan; izraz se može ponoviti ili izdvojiti u podupit odnosno CTE",
-      "Jer aliasi vrijede isključivo unutar INSERT naredbi",
-      "Jer WHERE automatski uklanja sve imenovane izraze"
+      "Jer aliasi vrijede isključivo unutar INSERT naredbi i nakon izvršavanja postaju trajna imena stupaca, dok SELECT alias nema vidljivost ni u jednoj klauzuli",
+      "Jer WHERE prije usporedbe automatski uklanja svaki imenovani izraz iz rezultata, čak i kada alias dolazi iz podupita ili CTE-a koji je već obrađen"
     ],
     "correctIndex": 1,
     "explanation": "U logičkom redoslijedu obrade FROM i WHERE prethode izračunu SELECT liste. Zato se alias SELECT izraza obično može koristiti u ORDER BY, ali ne i u WHERE klauzuli iste razine.",
@@ -1149,10 +1149,10 @@
     "topic": "sql",
     "question": "Zašto je atomski UPSERT sigurniji od obrasca SELECT-pa-INSERT pri konkurentnom stvaranju istog poslovnog ključa?",
     "options": [
-      "Jer UPSERT isključuje sva UNIQUE ograničenja prije umetanja",
+      "Jer UPSERT privremeno isključuje sva UNIQUE ograničenja prije umetanja i nakon COMMIT-a zadržava samo posljednji od konkurentnih duplikata",
       "Jer baza u jednoj naredbi rješava konflikt nad odgovarajućim jedinstvenim ključem, dok dva odvojena klijenta nakon SELECT-a mogu oba zaključiti da redak ne postoji",
-      "Jer UPSERT uvijek briše postojeći redak prije svakog čitanja",
-      "Jer SELECT-pa-INSERT prema SQL pravilima nikada ne smije biti u transakciji"
+      "Jer UPSERT uvijek briše postojeći redak prije provjere konflikta i zato dva klijenta ne mogu istodobno vidjeti istu vrijednost poslovnog ključa",
+      "Jer SELECT-pa-INSERT prema SQL pravilima ne smije biti unutar transakcije, dok UPSERT automatski zaključava cijelu tablicu do završetka sesije"
     ],
     "correctIndex": 1,
     "explanation": "Jedinstveno ograničenje i atomska naredba za umetanje ili obradu konflikta zatvaraju utrku između provjere i upisa. Konkretna sintaksa, primjerice ON CONFLICT ili MERGE, i detalji konkurentnosti ovise o bazi.",
@@ -1249,9 +1249,9 @@
     "question": "Koja je ključna razlika između window (analitičke) funkcije i agregacije s GROUP BY?",
     "options": [
       "Window funkcija zadržava pojedinačne retke u rezultatu i uz njih dodaje izračunatu vrijednost, dok GROUP BY sažima retke u jedan redak po grupi",
-      "Samo window funkcija smije koristiti SUM ili AVG",
-      "GROUP BY uvijek vraća isti broj redaka kao ulazni skup podataka",
-      "Window funkcije se ne mogu kombinirati s ORDER BY klauzulom"
+      "Samo window funkcija smije koristiti SUM ili AVG, dok GROUP BY podržava isključivo COUNT i ne može računati agregate nad numeričkim stupcima",
+      "GROUP BY uvijek zadržava svaki pojedinačni ulazni redak i samo mu dodaje vrijednost grupe, dok window funkcija sažima cijelu grupu u jedan redak",
+      "Window funkcija ne može sadržavati PARTITION BY ni ORDER BY jer redoslijed i granice prozora uvijek određuje vanjski GROUP BY upita"
     ],
     "correctIndex": 0,
     "explanation": "Window funkcija (npr. SUM() OVER (...)) računa vrijednost nad 'prozorom' povezanih redaka bez sažimanja svakog ulaznog retka u jedan grupni rezultat, za razliku od GROUP BY koji retke grupira i kolabira u sažete redove.",

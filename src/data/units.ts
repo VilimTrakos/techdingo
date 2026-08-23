@@ -64,6 +64,16 @@ export const UNITS: Record<string, UnitDefinition[]> = {
     { id: 'isporuka-prometa', topicId: 'mreze', labelHr: 'Isporuka prometa', description: 'Load balanceri, proxy, CDN i limiti.' },
     { id: 'dijagnostika-mreze', topicId: 'mreze', labelHr: 'Dijagnostika', description: 'Ping, traceroute, kašnjenje i timeouti.' },
   ],
+  sigurnost: [
+    { id: 'osnove-sigurnosti', topicId: 'sigurnost', labelHr: 'Osnove sigurnosti', description: 'Načela, prijetnje i obrana u dubinu.' },
+    { id: 'injekcije', topicId: 'sigurnost', labelHr: 'Injekcije', description: 'SQL, naredbe, predlošci i obrane.' },
+    { id: 'xss-csrf', topicId: 'sigurnost', labelHr: 'XSS i CSRF', description: 'Napadi u pregledniku, kolačići i CSP.' },
+    { id: 'autentikacija-sesije', topicId: 'sigurnost', labelHr: 'Prijava i sesije', description: 'Lozinke, sažimanje, MFA i tokeni.' },
+    { id: 'autorizacija', topicId: 'sigurnost', labelHr: 'Autorizacija', description: 'Uloge, IDOR i podizanje ovlasti.' },
+    { id: 'kriptografija-praksa', topicId: 'sigurnost', labelHr: 'Kriptografija u praksi', description: 'Hash, sol, ključevi i HMAC.' },
+    { id: 'tajne-i-ovisnosti', topicId: 'sigurnost', labelHr: 'Tajne i ovisnosti', description: 'Trezori, opskrbni lanac i ranjivi paketi.' },
+    { id: 'privatnost', topicId: 'sigurnost', labelHr: 'Privatnost', description: 'Osobni podaci, rokovi i curenja.' },
+  ],
   general: [
     { id: 'strukture-podataka', topicId: 'general', labelHr: 'Strukture podataka', description: 'Polja, stogovi, redovi, mape i stabla.' },
     { id: 'algoritmi', topicId: 'general', labelHr: 'Algoritmi', description: 'Big-O, pretraživanje, sortiranje i grafovi.' },

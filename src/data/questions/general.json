@@ -324,10 +324,10 @@
     "topic": "general",
     "question": "Što je hash kolizija u hash tablici?",
     "options": [
-      "Situacija u kojoj dvije niti zauvijek čekaju isti zaključani resurs",
+      "Situacija u kojoj dvije niti zauvijek čekaju isti zaključani resurs jer je njihova hash vrijednost jednaka adresi mutexa u memoriji",
       "Situacija u kojoj različiti ključevi dobiju isti hash položaj, što tablica mora riješiti primjerice ulančavanjem ili otvorenim adresiranjem",
-      "Pokušaj umetanja dviju jednakih vrijednosti u obično polje",
-      "Obavezno ponovno računanje svih hash vrijednosti pri svakom čitanju"
+      "Pokušaj umetanja dviju jednakih vrijednosti u obično polje, koji runtime mora odbiti jer polja po definiciji dopuštaju samo jedinstvene elemente",
+      "Obavezno ponovno računanje hash vrijednosti svih postojećih ključeva pri svakom čitanju, čak i kada se kapacitet tablice nije promijenio"
     ],
     "correctIndex": 1,
     "explanation": "Broj mogućih ključeva veći je od broja položaja pa su kolizije očekivane. Ispravna hash tablica razlikuje ključeve i nakon kolizije.",
@@ -414,10 +414,10 @@
     "topic": "general",
     "question": "Što integracijski test prvenstveno provjerava?",
     "options": [
-      "Samo jednu čistu funkciju bez suradnika",
-      "Je li izvorni kod sintaktički valjan",
+      "Samo jednu čistu funkciju potpuno izoliranu od baze, datotečnog sustava, mreže i svih stvarnih suradnika pomoću testnih zamjena",
+      "Je li cijeli izvorni kod sintaktički valjan i može li ga prevoditelj parsirati, bez pokretanja komponenti ili provjere njihove suradnje",
       "Suradnju više stvarnih komponenti ili važnu granicu poput pristupa bazi, datotečnom sustavu ili API-ju",
-      "Ponašanje sustava isključivo pod ekstremnim opterećenjem"
+      "Ponašanje cijelog sustava isključivo pod ekstremnim opterećenjem, bez provjere funkcionalne suradnje komponenti pri uobičajenom prometu"
     ],
     "correctIndex": 2,
     "explanation": "Integracijski test otkriva probleme u ugovorima i povezivanju komponenti koje izolirani jedinični testovi ne mogu vidjeti.",
@@ -653,10 +653,10 @@
     "topic": "general",
     "question": "Kako Git bisect pomaže pronaći commit koji je uveo regresiju?",
     "options": [
-      "Ručno pregledava svaki commit od najstarijeg prema najnovijem",
+      "Redom ručno pregledava svaki commit od najstarijeg do najnovijeg i zaustavlja se na prvoj promijenjenoj datoteci bez pokretanja testa",
       "Binarnim pretraživanjem povijesti koristi označene dobre i loše commitove te rezultat testa kako bi suzio problematični raspon",
-      "Automatski spaja sve grane dok konflikt ne nestane",
-      "Prepisuje poruke commitova prema rezultatu lintera"
+      "Automatski spaja sve grane u jednu privremenu granu i ponavlja merge sve dok konflikt ne nestane, pa zadnji merge commit označava regresiju",
+      "Prepisuje poruke svih commitova prema rezultatu lintera i zatim pronalazi prvi commit čija nova poruka sadrži naziv neuspjelog pravila"
     ],
     "correctIndex": 1,
     "explanation": "Svaka provjera približno prepolovi preostali raspon kandidata, pa je potrebno oko O(log n) testiranja umjesto linearnog pregleda povijesti.",
@@ -743,10 +743,10 @@
     "topic": "general",
     "question": "Kako je najpreciznije tumačiti CAP teorem tijekom mrežne particije?",
     "options": [
-      "Svaki distribuirani sustav u svakom trenutku smije imati samo dvije od tri osobine",
-      "Ako nema mrežne particije, sustav ne može biti ni konzistentan ni dostupan",
+      "Svaki distribuirani sustav u svakom trenutku mora trajno odabrati samo dvije od tri osobine, čak i kada mreža radi normalno i nema particije",
+      "Ako mrežne particije nema, sustav ne može istodobno pružiti konzistentne odgovore i dostupnost jer CAP nalaže isti kompromis pri svakom zahtjevu",
       "Dok particija sprječava komunikaciju, sustav ne može istodobno jamčiti linearnu konzistentnost i odgovor svakom zahtjevu; mora žrtvovati jednu od tih garancija",
-      "CAP dokazuje da se podaci nikada ne mogu replicirati"
+      "CAP dokazuje da se podaci ne mogu replicirati između čvorova bez gubitka svih triju osobina, pa distribuirana baza mora imati samo jednu kopiju"
     ],
     "correctIndex": 2,
     "explanation": "Partition tolerance opisuje realnost prekida komunikacije među čvorovima. Tijekom takvog prekida sustav bira odbiti ili odgoditi dio zahtjeva radi konzistentnosti, ili odgovoriti uz rizik da replike privremeno odstupaju.",
@@ -758,9 +758,9 @@
     "topic": "general",
     "question": "Ako se 80% vremena programa može beskonačno ubrzati paralelizacijom, koje maksimalno ukupno ubrzanje predviđa Amdahlov zakon?",
     "options": [
-      "Najviše 1,25 puta",
-      "Najviše 4 puta",
-      "Ubrzanje je neograničeno jer se većina programa paralelizira",
+      "Najviše 1,25 puta, jer paralelnih 80% određuje preostali udio vremena nakon beskonačnog ubrzanja",
+      "Najviše 4 puta, jer se ubrzivi dio od 80% dijeli s neubrzivih 20% bez uključivanja serijskog dijela u ukupno vrijeme",
+      "Ubrzanje je neograničeno jer je većina programa paralelizirana, pa preostalih 20% vremena nestaje kada broj procesora teži beskonačnosti",
       "Najviše 5 puta, jer neubrzivih 20% ostaje donja granica ukupnog vremena"
     ],
     "correctIndex": 3,

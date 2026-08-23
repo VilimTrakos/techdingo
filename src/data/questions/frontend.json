@@ -628,9 +628,9 @@
     "question": "Što je event propagation i koje faze uključuje?",
     "options": [
       "Cjelokupan proces putovanja eventa kroz DOM - faza hvatanja (capturing) od vrha prema cilju, faza na cilju (target), i faza mjehurenja (bubbling) natrag prema vrhu",
-      "Proces koji se odnosi isključivo na slanje podataka na server",
-      "Automatsko generiranje novih HTML elemenata na temelju korisničke interakcije",
-      "Mehanizam koji sprječava da se ijedan event ikad okine dvaput"
+      "Proces slanja DOM događaja na server kroz faze zahtjeva, odgovora i ponovnog renderiranja, bez prolaska događaja kroz pretke ciljnog elementa",
+      "Automatsko stvaranje novih HTML elemenata tijekom korisničke interakcije, pri čemu capturing gradi element, target ga umeće, a bubbling uklanja",
+      "Mehanizam koji osigurava da se svaki događaj izvrši samo na ciljnom elementu i nikada ne dođe do njegovih roditelja ni registriranih capture listenera"
     ],
     "correctIndex": 0,
     "explanation": "Event propagation opisuje cijeli put eventa kroz DOM stablo, a bubbling (širenje prema gore) je samo jedna od njegove tri faze - druga je capturing (širenje prema dolje prije nego stigne do cilja).",
@@ -643,9 +643,9 @@
     "question": "Što je Promise u JavaScriptu?",
     "options": [
       "Objekt koji predstavlja eventualni rezultat (uspjeh ili neuspjeh) asinkrone operacije, s tri moguća stanja: pending, fulfilled i rejected",
-      "Sintaksa za deklariranje konstanti koje se ne mogu mijenjati",
-      "Funkcija koja se izvršava isključivo sinkrono i blokira izvršavanje",
-      "Poseban tip petlje za iteriranje kroz nizove"
+      "Sintaksa za deklariranje konstante čija se vrijednost naknadno postavlja samo jednom, bez stanja pending, fulfilled ili rejected i bez callbackova",
+      "Funkcija koja se uvijek izvršava sinkrono i blokira call stack sve dok udaljena operacija ne vrati rezultat ili baci iznimku pozivatelju",
+      "Posebna petlja koja prolazi niz u budućem event-loop ciklusu i vraća sva tri stanja iteracije: pending, fulfilled i rejected"
     ],
     "correctIndex": 0,
     "explanation": "Promise omogućuje čitljivije rukovanje asinkronim kodom pomoću .then()/.catch() lanaca (ili async/await) umjesto ugniježđenih callbackova.",
@@ -689,9 +689,9 @@
     "question": "Što je scope (opseg) varijable u JavaScriptu?",
     "options": [
       "Dio koda unutar kojeg je varijabla dostupna i vidljiva - može biti globalni, funkcijski (function scope) ili blokovni (block scope)",
-      "Vrijeme potrebno da se varijabla učita u preglednik",
-      "Broj puta koliko se varijabla može promijeniti tijekom izvršavanja",
-      "Veličina memorije koju varijabla zauzima"
+      "Vrijeme tijekom kojeg varijabla ostaje učitana u memoriji preglednika, od deklaracije do završetka mrežnog zahtjeva koji ju je stvorio",
+      "Najveći broj izmjena varijable dopušten tijekom izvršavanja, koji određuju ključne riječi var, let i const neovisno o mjestu deklaracije",
+      "Količina memorije koju varijabla zauzima u heapu ili na stogu, izražena granicama globalnog, funkcijskog i blokovnog prostora"
     ],
     "correctIndex": 0,
     "explanation": "Scope određuje gdje se u kodu neka varijabla može referencirati - let/const stvaraju block scope, var stvara function scope, a varijable deklarirane izvan svega su globalne.",
@@ -1213,9 +1213,9 @@
     "question": "Što je closure (zatvaranje) u JavaScriptu?",
     "options": [
       "Funkcija koja 'pamti' varijable iz svog okružujućeg (leksičkog) opsega čak i nakon što se vanjska funkcija završi s izvršavanjem",
-      "Način zatvaranja preglednika iz JavaScript koda",
-      "Sintaksa za deklariranje privatnih CSS klasa",
-      "Funkcija koja se automatski poziva kad se stranica zatvori"
+      "API kojim JavaScript zatvara prozor preglednika i briše sve lokalne varijable vanjske funkcije čim njezino izvršavanje završi",
+      "Sintaksa za privatnu CSS klasu koja ostaje vidljiva samo elementima stvorenima unutar iste funkcije i nestaje nakon njezina povratka",
+      "Funkcija registrirana na događaj zatvaranja stranice koja se automatski poziva nakon unload faze i tada dobiva pristup ugašenom scopeu"
     ],
     "correctIndex": 0,
     "explanation": "Kad unutarnja funkcija koristi varijable iz vanjske funkcije, ona zadržava referencu na taj opseg i nakon što se vanjska funkcija izvrši - to je osnova za mnoge JS obrasce (npr. privatno stanje, memoizacija).",
@@ -1497,9 +1497,9 @@
     "topic": "frontend",
     "question": "Zašto React hydration može prijaviti nepodudaranje ako komponenta tijekom rendera prikazuje Date.now() ili uz provjeru postojanja windowa čita localStorage?",
     "options": [
-      "Hydration zabranjuje prikaz brojeva i stringova u komponentama",
-      "Server tijekom SSR-a automatski briše sve tekstualne čvorove",
-      "Hydration uvijek zahtijeva da se cijela aplikacija renderira dvaput na serveru",
+      "Hydration zabranjuje prikaz brojeva, datuma i stringova u komponentama jer može povezati event handlere samo s praznim elementima bez tekstualnih čvorova",
+      "Server tijekom SSR-a automatski briše sve tekstualne čvorove i localStorage vrijednosti, pa klijent uvijek mora proizvesti prazan početni markup",
+      "Hydration zahtijeva da se aplikacija dvaput renderira na serveru s različitim vremenom, a klijent se zatim mora podudarati samo s drugim HTML rezultatom",
       "Početni klijentski prikaz može se razlikovati od serverova HTML-a; početni markup treba biti deterministički, a klijentsku vrijednost primijeniti nakon hydrationa"
     ],
     "correctIndex": 3,
