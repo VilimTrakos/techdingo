@@ -346,9 +346,9 @@
     "question": "Zašto pretraživanje grafa u širinu obično koristi red?",
     "options": [
       "FIFO red obrađuje čvorove po rastućim razinama udaljenosti, pa BFS u netežinskom grafu nalazi put s najmanje bridova",
-      "Red automatski sortira čvorove prema njihovoj memorijskoj adresi",
-      "BFS mora uvijek prvo obraditi posljednji otkriveni čvor",
-      "Red sprječava postojanje ciklusa u ulaznom grafu"
+      "Red automatski sortira čvorove prema njihovoj memorijskoj adresi, pa su prostorno bliži čvorovi ujedno bliži početku grafa",
+      "BFS mora prvo obraditi posljednji otkriveni čvor kako bi se što dublje udaljio prije povratka na ostale čvorove iste razine",
+      "Korištenje reda uklanja cikluse iz ulaznog grafa prije obilaska, pa zaseban skup posjećenih čvorova nikada nije potreban"
     ],
     "correctIndex": 0,
     "explanation": "Čvorovi otkriveni na jednoj razini obrađuju se prije čvorova sljedeće razine. Skup posjećenih čvorova zasebno sprječava beskonačno ponavljanje kroz cikluse.",
@@ -465,10 +465,10 @@
     "topic": "general",
     "question": "Što znači da je algoritam sortiranja stabilan?",
     "options": [
-      "Uvijek radi u O(n) vremenu",
-      "Ne koristi nikakvu dodatnu memoriju",
+      "Uvijek radi u O(n) vremenu neovisno o algoritmu, veličini ulaza i početnom poretku elemenata s jednakim ključem",
+      "Ne koristi dodatnu memoriju jer stabilnost znači da algoritam sve elemente obavezno sortira na mjestu u izvornom polju",
       "Elementi koji su jednaki prema ključu sortiranja zadržavaju međusobni redoslijed iz ulaza",
-      "Rezultat ostaje sortiran čak i nakon dodavanja novih elemenata"
+      "Rezultat ostaje potpuno sortiran nakon naknadnog dodavanja novih elemenata bez ponovnog pokretanja algoritma ili umetanja na pravo mjesto"
     ],
     "correctIndex": 2,
     "explanation": "Stabilnost je važna kada zapisi imaju dodatne podatke ili kada se sortira u više koraka. Nakon stabilnog sortiranja po novom ključu ostaje očuvan prethodni poredak među jednakim ključevima.",
@@ -586,9 +586,9 @@
     "question": "Kako se logovi, metrike i distribuirani tragovi međusobno nadopunjuju?",
     "options": [
       "Metrike pokazuju trendove i alarme, logovi daju zapise događaja, a tragovi povezuju tijek pojedinog zahtjeva kroz više komponenti",
-      "Sva tri signala uvijek sadrže potpuno iste podatke",
-      "Tragovi služe samo za spremanje izvornog koda, a logovi samo za mjerenje CPU-a",
-      "Ako postoje metrike, pogreške više nije potrebno bilježiti"
+      "Sva tri signala sadrže potpuno jednake događaje, dimenzije i vremenske oznake, pa je dovoljno proizvoljno odabrati samo jedan format",
+      "Tragovi spremaju izvorni kod svake funkcije, logovi mjere samo CPU, a metrike povezuju pojedine mrežne pozive kroz servise",
+      "Ako postoje agregirane metrike, pojedinačne pogreške i kontekst zahtjeva više nije potrebno zapisivati jer ih prosjek može rekonstruirati"
     ],
     "correctIndex": 0,
     "explanation": "Metrika često otkriva da problem postoji, trag pokazuje gdje zahtjev troši vrijeme ili griješi, a strukturirani log daje detaljan kontekst događaja. Korelacijski identifikatori pomažu povezati te signale.",
@@ -600,10 +600,10 @@
     "topic": "general",
     "question": "Koja je svrha circuit breaker obrasca pri pozivanju nestabilnog udaljenog servisa?",
     "options": [
-      "Beskonačno ponavljati svaki neuspjeli poziv bez odgode",
-      "Trajno spremiti svaki odgovor u cache bez roka valjanosti",
+      "Beskonačno ponavljati svaki neuspjeli poziv bez odgode dok udaljeni servis napokon ne odgovori, neovisno o opterećenju i roku klijenta",
+      "Trajno spremiti svaki uspješan i neuspješan odgovor u cache bez roka valjanosti kako novi zahtjevi više ne bi kontaktirali servis",
       "Nakon dovoljno neuspjeha privremeno brzo odbijati pozive, a zatim kontroliranim probnim pozivima provjeriti oporavak servisa",
-      "Pretvoriti mrežni poziv u lokalnu funkciju bez ikakve ovisnosti"
+      "Pretvoriti mrežni poziv u lokalnu funkciju koja uvijek vraća zadnju poznatu vrijednost i time uklanja svaku potrebu za udaljenim servisom"
     ],
     "correctIndex": 2,
     "explanation": "Otvoreni circuit breaker sprječava gomilanje sporih poziva prema već problematičnoj ovisnosti. Nakon odmaka prelazi u probno stanje; timeouti, ograničeni retry i fallback politike nadopunjuju obrazac.",
@@ -644,10 +644,10 @@
     "topic": "general",
     "question": "Zašto standardni Dijkstrin algoritam nije ispravan za graf s bridovima negativne težine?",
     "options": [
-      "Ne može raditi na grafu koji sadrži bilo kakav ciklus",
-      "Zahtijeva da svaki čvor ima jednak broj susjeda",
+      "Ne može raditi na grafu koji sadrži bilo kakav ciklus jer prioritetni red ne može ponovno posjetiti čvor nakon prvog obilaska",
+      "Zahtijeva da svaki čvor ima jednak broj susjeda kako bi udaljenosti rasle jednako u svakoj razini pretraživanja",
       "Može prerano smatrati udaljenost konačnom, iako je kasniji put s negativnim bridom može dodatno smanjiti",
-      "Može pronaći samo najdulji, a nikad najkraći put"
+      "Uvijek pronalazi najdulji put umjesto najkraćeg čim graf sadrži negativan brid, čak i kada taj brid nije na putu do cilja"
     ],
     "correctIndex": 2,
     "explanation": "Dijkstra se oslanja na to da nastavak puta ne može smanjiti već potvrđenu najmanju udaljenost. Negativne težine krše tu pretpostavku; prikladan je primjerice Bellman-Ford.",

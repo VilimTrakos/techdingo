@@ -83,9 +83,9 @@
     "question": "Što su callback funkcije?",
     "options": [
       "Funkcije koje se predaju kao argument drugoj funkciji i pozivaju se kasnije, nakon što se dogodi određeni događaj ili završi neka operacija",
-      "Funkcije koje se automatski pozivaju svake sekunde bez potrebe za pozivom",
-      "Posebna vrsta funkcija koje se mogu pozvati samo unutar CSS-a",
-      "Funkcije koje uvijek vraćaju Promise objekt"
+      "Funkcije koje runtime automatski poziva svake sekunde nakon deklaracije, bez registracije događaja, timera ili prosljeđivanja drugoj funkciji",
+      "Posebne funkcije dostupne samo unutar CSS izraza, gdje preglednik njima računa vrijednosti svojstava nakon završetka JavaScript operacije",
+      "Funkcije koje po definiciji uvijek vraćaju Promise, čak i kada ih druga funkcija pozove odmah i očekuje običnu sinkronu povratnu vrijednost"
     ],
     "correctIndex": 0,
     "explanation": "Callback je uobičajen obrazac u JavaScriptu za rukovanje asinkronim operacijama (npr. addEventListener('click', callback) ili setTimeout(callback, 1000)).",
@@ -386,9 +386,9 @@
     "question": "Što omogućuje optional chaining operator ?. u JavaScriptu?",
     "options": [
       "Siguran pristup dubljem svojstvu ili pozivu koji vraća undefined ako je prethodna vrijednost null ili undefined",
-      "Automatsko stvaranje svih svojstava koja nedostaju",
-      "Pretvaranje svakog svojstva objekta u obavezno",
-      "Hvatanje svih iznimki nastalih unutar izraza"
+      "Automatsko stvaranje svakog svojstva koje nedostaje u lancu, s praznim objektom kao vrijednošću, prije nego JavaScript nastavi pristup",
+      "Pretvaranje svih opcionalnih svojstava objekta u obavezna tijekom izvođenja, tako da pristup uvijek vraća vrijednost umjesto undefined",
+      "Hvatanje svih iznimki unutar cijelog izraza, uključujući pogreške iz gettera i pozvane funkcije, te njihovo pretvaranje u undefined"
     ],
     "correctIndex": 0,
     "explanation": "Izraz user.profile?.name ne baca pogrešku ako je profile null ili undefined, nego daje undefined.",
@@ -536,9 +536,9 @@
     "topic": "frontend",
     "question": "Koji HTML elementi daju nativnu otvarajuću i zatvarajuću sekciju za sadržaj poput dodatnih detalja?",
     "options": [
-      "article i header",
-      "dialog i caption",
-      "section i label",
+      "article i header, pri čemu klik na header automatski skriva ostatak article sadržaja",
+      "dialog i caption, jer caption nativno otvara ili zatvara modalni dialog bez JavaScripta",
+      "section i label, gdje label mijenja otvoreno stanje sekcije kada mu se postavi atribut for",
       "details i njegov prvi summary element"
     ],
     "correctIndex": 3,
@@ -712,9 +712,9 @@
     "question": "Što je hoisting u JavaScriptu?",
     "options": [
       "Ponašanje pri kojem JavaScript engine 'podiže' deklaracije varijabli i funkcija na vrh njihovog opsega prije izvršavanja koda",
-      "Proces optimizacije slika prije prikaza na stranici",
-      "Tehnika za povećanje brzine učitavanja CSS datoteka",
-      "Mehanizam za automatsko generiranje dokumentacije iz koda"
+      "Proces kojim preglednik prije prikaza premješta sve slike na vrh dokumenta i unaprijed računa njihove dimenzije radi bržeg renderiranja",
+      "Tehnika koja deklaracije iz CSS datoteke podiže u JavaScript scope kako bi stilovi bili dostupni prije parsiranja HTML dokumenta",
+      "Mehanizam koji iz deklaracija funkcija automatski generira dokumentaciju i premješta komentare na vrh modula prije izvršavanja koda"
     ],
     "correctIndex": 0,
     "explanation": "Deklaracije funkcija i var varijabli se 'podižu' na vrh opsega (inicijalizacija ostaje na mjestu) - zato se funkcija može pozvati prije nego je deklarirana u kodu, dok su let/const u 'temporal dead zone' do same deklaracije.",
@@ -1550,10 +1550,10 @@
     "topic": "frontend",
     "question": "Kako velik ArrayBuffer učinkovito poslati Web Workeru bez kopiranja cijelog sadržaja?",
     "options": [
-      "Pretvoriti buffer u JSON pa ga ponovno parsirati u workeru",
-      "Spremiti buffer u cookie koji worker automatski čita",
+      "Pretvoriti svaki bajt buffera u JSON broj, poslati cijeli string workeru i ondje ga ponovno parsirati u novi ArrayBuffer bez kopiranja",
+      "Spremiti buffer u cookie preglednika koji worker automatski čita kao zajedničku memoriju, bez serijalizacije i ograničenja veličine",
       "Predati buffer u transfer listi poziva postMessage; vlasništvo se prenosi, a izvorni buffer na pošiljatelju postaje detached",
-      "Dodati buffer URL-u workera kao query parametar"
+      "Dodati sirove bajtove buffera URL-u workera kao query parametar, nakon čega obje strane zadržavaju isto vlasništvo nad izvornom memorijom"
     ],
     "correctIndex": 2,
     "explanation": "Transferable objekti poput ArrayBuffera mogu promijeniti vlasnika bez skupog kopiranja; nakon prijenosa pošiljatelj više ne može koristiti prenesenu memoriju.",

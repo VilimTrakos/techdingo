@@ -6,9 +6,9 @@
     "question": "Što je REST API?",
     "options": [
       "Arhitekturalni stil za dizajn web servisa koji koristi standardne HTTP metode nad resursima identificiranim URL-ovima, obično bez čuvanja stanja na serveru",
-      "Poseban programski jezik za pisanje backend aplikacija",
-      "Baza podataka optimizirana isključivo za spremanje JSON dokumenata",
-      "Protokol za enkripciju podataka između klijenta i servera"
+      "Poseban programski jezik za izradu backend aplikacija koji umjesto HTTP metoda koristi vlastite naredbe za čitanje i izmjenu resursa",
+      "Baza podataka namijenjena isključivo JSON dokumentima, u kojoj svaki URL predstavlja fizičku tablicu i automatski sprema stanje korisničke sesije",
+      "Mrežni protokol koji šifrira promet između klijenta i servera te zamjenjuje TLS certifikate pravilnim imenovanjem URL resursa"
     ],
     "correctIndex": 0,
     "explanation": "REST (Representational State Transfer) definira principe poput korištenja HTTP metoda za operacije nad resursima, statelessness-a i standardiziranih odgovora (najčešće JSON).",
@@ -419,9 +419,9 @@
     "question": "Što je dependency injection?",
     "options": [
       "Dizajn obrazac u kojem objekt prima svoje ovisnosti izvana (npr. kroz konstruktor) umjesto da ih sam kreira, čime se smanjuje spregnutost i olakšava testiranje",
-      "Proces automatskog instaliranja npm paketa prilikom pokretanja aplikacije",
-      "Tehnika za ubrizgavanje SQL upita u aplikaciju radi brzine",
-      "Način spremanja konfiguracijskih varijabli u bazu podataka"
+      "Proces kojim runtime pri pokretanju automatski instalira i ažurira sve vanjske pakete, a zatim ih izravno umeće u privatna polja svakog objekta",
+      "Tehnika kojom objekt sam gradi SQL stringove i ubrizgava ih u bazu, čime uklanja potrebu za odvojenim repozitorijima i testnim zamjenama",
+      "Način spremanja svih konfiguracijskih vrijednosti u bazu unutar konstruktora objekta, tako da se ovisnosti ne moraju prosljeđivati izvana"
     ],
     "correctIndex": 0,
     "explanation": "Umjesto da klasa sama kreira svoje ovisnosti (npr. new Database()), one joj se 'injektiraju' izvana - to olakšava zamjenu implementacija (npr. mock u testovima) bez mijenjanja same klase.",
@@ -628,10 +628,10 @@
     "topic": "backend",
     "question": "Koja je primjerena zaštita od CSRF napada kada se autentikacija temelji na cookieju koji preglednik automatski šalje?",
     "options": [
-      "Osloniti se isključivo na CORS postavke",
+      "Osloniti se isključivo na CORS postavke jer one sprječavaju preglednik da pošalje cookie uz svaki zahtjev pokrenut s druge stranice",
       "Koristiti odgovarajući SameSite cookie te anti-CSRF token ili provjeru Origin zaglavlja za zahtjeve koji mijenjaju stanje",
-      "Sve operacije koje mijenjaju stanje prebaciti na GET",
-      "Sakriti HTML gumb koji pokreće osjetljivu operaciju"
+      "Sve operacije koje mijenjaju stanje prebaciti na GET kako ih preglednik ne bi smatrao obrascima i zato uz njih ne bi automatski poslao autentikacijski cookie",
+      "Sakriti HTML gumb koji pokreće osjetljivu operaciju jer napadačka stranica bez vidljive kontrole ne može sastaviti jednak mrežni zahtjev"
     ],
     "correctIndex": 1,
     "explanation": "CSRF iskorištava automatsko slanje cookieja sa zlonamjerne stranice. SameSite, anti-CSRF token i provjera izvora zahtjeva sprječavaju prihvaćanje takvog poziva.",
@@ -688,10 +688,10 @@
     "topic": "backend",
     "question": "Koji problem rješava transactional outbox obrazac?",
     "options": [
-      "Automatski invalidira sve cacheve nakon svakog čitanja",
+      "Automatski invalidira sve cacheve nakon svakog čitanja i time jamči da objavljeni događaj uvijek sadrži vrijednost koja je upravo dohvaćena iz baze",
       "U istoj lokalnoj transakciji sprema poslovnu promjenu i zapis događaja koji zaseban relay naknadno objavljuje",
-      "Šifrira poruku prije spremanja u bazu",
-      "Sinkrono kopira cijelu bazu u svaki servis"
+      "Šifrira poruku prije spremanja u bazu i šalje ključ brokeru u istoj mrežnoj operaciji, bez povezivanja objave s poslovnom transakcijom",
+      "Sinkrono kopira cijelu bazu u svaki servis prije COMMIT-a, pa svaki potrošač odmah ima jednaku lokalnu kopiju bez zasebnog relay procesa"
     ],
     "correctIndex": 1,
     "explanation": "Outbox uklanja opasan dual-write između baze i brokera: ili se zajedno spreme poslovni podatak i događaj, ili se ne spremi nijedno. Relay zatim pouzdano objavljuje događaj.",
@@ -763,10 +763,10 @@
     "topic": "backend",
     "question": "Kako PKCE štiti OAuth Authorization Code flow javnog klijenta koji ne može sigurno čuvati client secret?",
     "options": [
-      "Šifrira korisničku lozinku unutar access tokena",
+      "Šifrira korisničku lozinku unutar access tokena i dopušta authorization serveru da je kasnije dešifrira umjesto provjere verifiera",
       "Klijent unaprijed šalje challenge izveden iz slučajnog verifiera, a authorization code može zamijeniti samo uz izvorni verifier",
-      "Produžuje valjanost authorization codea na neograničeno vrijeme",
-      "Omogućuje korištenje istog authorization codea više puta"
+      "Produžuje valjanost authorization codea na neograničeno vrijeme kako bi ga javni klijent mogao zamijeniti nakon ponovnog pokretanja bez lokalnog stanja",
+      "Omogućuje da se isti authorization code zamijeni više puta, ali samo s jednakog redirect URI-ja i bez dokazivanja da ga koristi izvorni klijent"
     ],
     "correctIndex": 1,
     "explanation": "Napadaču presretnuti authorization code nije dovoljan jer nema jednokratni verifier. Authorization server pri zamjeni koda provjerava odgovara li verifier ranije poslanom challengeu.",

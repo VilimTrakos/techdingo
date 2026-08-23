@@ -711,9 +711,9 @@
     "question": "Što je SQL injection i kako ga se najčešće sprječava?",
     "options": [
       "Napad u kojem se zlonamjerni SQL kod ubacuje kroz korisnički unos; sprječava se parametriziranim upitima (prepared statements), a ne konkatenacijom stringova",
-      "Vrsta optimizacije upita koja ubrzava izvršavanje SELECT naredbi",
-      "Proces automatskog ubacivanja test podataka u razvojnu bazu",
-      "Greška koja se javlja isključivo kod korištenja NoSQL baza podataka"
+      "Optimizacija u kojoj baza umeće dodatne SQL izraze u SELECT kako bi ranije koristila indeks i smanjila broj pročitanih redaka",
+      "Automatizirani postupak ubacivanja testnih podataka u razvojnu bazu kroz pripremljene naredbe prije pokretanja integracijskih testova",
+      "Pogreška ograničena na NoSQL baze, gdje korisnički dokument može promijeniti strukturu kolekcije, dok je SQL siguran bez parametrizacije"
     ],
     "correctIndex": 0,
     "explanation": "Kad se korisnički unos direktno spaja u SQL string, napadač može ubaciti vlastiti SQL kod; parametrizirani upiti odvajaju kod od podataka i tako to sprječavaju.",
@@ -861,9 +861,9 @@
     "question": "Koje je opće pravilo za tipični kompozitni B-tree indeks na stupcima (a, b)?",
     "options": [
       "Najkorisniji je za uvjete koji počinju vodećim stupcem a, primjerice a ili kombinaciju a i b; uvjet samo nad b često ga ne može učinkovito suziti",
-      "Jednako je učinkovit za svaki stupac neovisno o njihovu redoslijedu",
-      "Može ubrzati samo INSERT, ali ne i SELECT",
-      "Automatski jamči jedinstvenost para (a, b) bez UNIQUE deklaracije"
+      "Jednako učinkovito sužava pretragu po a, samo po b ili po oba stupca jer planer prije korištenja indeksa uvijek promijeni njihov redoslijed",
+      "Može ubrzati samo INSERT raspoređivanjem novih redaka, dok SELECT ne može čitati kompozitni indeks bez skeniranja cijele tablice",
+      "Automatski jamči jedinstvenost para (a, b) i odbija duplikate čak i kada indeks nije deklariran kao UNIQUE"
     ],
     "correctIndex": 0,
     "explanation": "Redoslijed ključeva važan je kod B-tree indeksa: vodeći stupci najčešće određuju raspon skeniranja. Pojedini optimizatori imaju iznimke, ali indeks samo na (a, b) nije općenita zamjena za indeks na b.",
@@ -1145,10 +1145,10 @@
     "topic": "sql",
     "question": "Kada je deklarativno ograničenje obično bolji izbor od triggera?",
     "options": [
-      "Kada treba poslati HTTP zahtjev nakon svake promjene",
-      "Kada treba mijenjati nepovezane retke složenim proceduralnim pravilom",
+      "Kada nakon svake promjene treba poslati HTTP zahtjev udaljenom servisu, jer CHECK ograničenje može pouzdano izvoditi mrežne nuspojave",
+      "Kada treba mijenjati više nepovezanih redaka složenim proceduralnim pravilom koje se ne može izraziti uvjetom nad novim retkom",
       "Kada se pravilo može izravno izraziti kao NOT NULL, CHECK, UNIQUE ili FOREIGN KEY, jer je namjera jasnija i baza ga može dosljedno provoditi",
-      "Kada baza ne podržava nijednu vrstu ograničenja"
+      "Kada baza ne podržava NOT NULL, CHECK, UNIQUE ni FOREIGN KEY, jer nepostojeće deklarativno ograničenje ipak ima prednost pred triggerom"
     ],
     "correctIndex": 2,
     "explanation": "Deklarativna ograničenja izravno opisuju valjano stanje podataka i vidljiva su alatima i optimizatoru. Triggeri su opravdani za složeniju logiku, ali mogu imati skriven redoslijed i nuspojave.",
@@ -1440,9 +1440,9 @@
     "question": "Kada partial odnosno filtered indeks može biti koristan i koje je ključno ograničenje?",
     "options": [
       "Indeksira samo retke koji zadovoljavaju predikat, primjerice otvorene naloge; upit ga koristi tek kad planer može zaključiti da njegov uvjet podrazumijeva predikat indeksa",
-      "Indeksira nasumičan dio tablice i zato odgovara svakom mogućem upitu",
-      "Automatski uključuje sve buduće stupce bez dodatnog prostora",
-      "Jamči da se svaki parametrizirani upit može povezati s bilo kojim predikatom"
+      "Indeksira nasumično odabrane retke tablice i zato jednako dobro odgovara svakom upitu, bez obzira na njegov WHERE uvjet",
+      "Automatski uključuje sve sadašnje i buduće stupce tablice bez dodatnog prostora, pa može potpuno zamijeniti kompozitne i covering indekse",
+      "Jamči da planer svaki parametrizirani uvjet može dokazano povezati s predikatom indeksa, čak i kada vrijednost parametra nije poznata pri planiranju"
     ],
     "correctIndex": 0,
     "explanation": "Manji specijalizirani indeks štedi prostor i trošak održavanja za često tražen podskup. Podrška i sposobnost dokazivanja podudarnosti predikata ovise o optimizatoru konkretne baze.",
@@ -1454,10 +1454,10 @@
     "topic": "sql",
     "question": "Zašto loše odabran particijski ključ može pogoršati performanse i održavanje?",
     "options": [
-      "Jer particioniranje automatski isključuje sva zaključavanja",
-      "Jer svaka particija prema definiciji mora imati jednak broj redaka",
+      "Jer particioniranje automatski isključuje zaključavanja nad vrućom particijom, pa konkurentni upisi mogu zaobići sva pravila izolacije",
+      "Jer svaka particija mora imati točno jednak broj redaka, a baza pri svakom INSERT-u sinkrono premješta podatke dok se broj ne izjednači",
       "Jer neravnomjerna raspodjela može stvoriti vruću ili preveliku particiju, a upiti bez korisnog predikata nad ključem i dalje mogu skenirati mnogo particija",
-      "Jer particionirana tablica nikad ne može imati lokalne indekse"
+      "Jer particionirana tablica ne može imati lokalne indekse ni pruning, pa svaki upit mora skenirati sve particije bez obzira na predikat"
     ],
     "correctIndex": 2,
     "explanation": "Dobar ključ prati obrasce filtriranja i ravnomjerno raspoređuje podatke i upise. Granularnost, broj particija, jedinstvena ograničenja i dostupne strategije razlikuju se među bazama.",
