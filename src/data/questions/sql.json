@@ -935,10 +935,10 @@
     "topic": "sql",
     "question": "Što omogućuje ograničenje označeno kao DEFERRABLE INITIALLY DEFERRED?",
     "options": [
-      "Ograničenje se trajno isključuje za sve buduće transakcije",
-      "Provjerava se tek nakon prvog SELECT-a u sesiji",
+      "Ograničenje se nakon prve odgode trajno isključuje za sve buduće transakcije i više se ne provjerava pri COMMIT-u",
+      "Ograničenje se provjerava tek nakon prvog SELECT-a u sesiji, neovisno o tome završava li transakcija s COMMIT ili ROLLBACK",
       "Njegova se provjera može odgoditi do COMMIT-a, pa međukoraci transakcije smiju privremeno biti nevaljani ako je konačno stanje valjano",
-      "Automatski pretvara svaki vanjski ključ u ON DELETE CASCADE"
+      "Oznaka automatski pretvara svaki vanjski ključ u ON DELETE CASCADE kako međukoraci brisanja ne bi prekršili referencijalni integritet"
     ],
     "correctIndex": 2,
     "explanation": "Odgođena provjera korisna je za povezane izmjene koje tek zajedno stvaraju valjano stanje. Koje vrste ograničenja podržavaju odgodu razlikuje se među sustavima.",
@@ -1010,10 +1010,10 @@
     "topic": "sql",
     "question": "Što je partition pruning?",
     "options": [
-      "Brisanje svih starih particija pri svakom SELECT-u",
+      "Brisanje svih starih particija pri svakom SELECT-u kako izvršitelj ne bi morao provjeravati sadrže li tražene retke",
       "Isključivanje particija za koje planer ili izvršitelj može dokazati da ne mogu sadržavati retke tražene uvjetom nad particijskim ključem",
-      "Automatsko spajanje svih particija u jednu fizičku datoteku",
-      "Zamjena svakog lokalnog indeksa jednim tekstualnim stupcem"
+      "Automatsko spajanje svih particija u jednu fizičku datoteku prije izvršavanja upita, čime se uklanja potreba za predikatom nad ključem",
+      "Zamjena svih lokalnih indeksa jednim tekstualnim stupcem koji navodi particije dopuštene za svaki mogući upit"
     ],
     "correctIndex": 1,
     "explanation": "Pruning smanjuje količinu podataka za skeniranje. Najbolje radi kada se predikati upita mogu povezati s pravilima particioniranja; sam indeks nije isto što i pruning.",
@@ -1115,10 +1115,10 @@
     "topic": "sql",
     "question": "Na što utječe collation odabran za tekstualni stupac ili izraz?",
     "options": [
-      "Samo na najveću dopuštenu duljinu teksta",
+      "Samo na najveću dopuštenu duljinu tekstualne vrijednosti i broj bajtova koje stupac može zauzeti, bez utjecaja na usporedbu",
       "Na pravila usporedbe i sortiranja teksta, uključujući jezični poredak te često osjetljivost na velika slova i naglaske",
-      "Na broj transakcija koje baza može istodobno izvršiti",
-      "Na automatsku enkripciju svake spremljene vrijednosti"
+      "Na broj transakcija koje baza smije istodobno izvršiti nad tekstualnim stupcem te redoslijed kojim dobivaju zaključavanja",
+      "Na automatsku enkripciju svake spremljene vrijednosti i odabir ključa prema jeziku teksta, ali ne na sortiranje ili jednakost"
     ],
     "correctIndex": 1,
     "explanation": "Collation određuje kako se znakovi uspoređuju i uređuju. Rezultat i mogućnost uporabe određenog indeksa mogu ovisiti o podudarnosti collationa upita i indeksa; dostupna pravila ovise o bazi.",
@@ -1320,9 +1320,9 @@
     "question": "Što znači da je indeks pokrivajući (covering) za određeni upit?",
     "options": [
       "Indeks sadrži sve stupce potrebne za filtriranje i rezultat tog upita pa sustav može izvesti index-only scan ako ostali uvjeti implementacije to dopuštaju",
-      "Indeks fizički sadrži cijelu tablicu i zato uvijek zamjenjuje backup",
-      "Indeks automatski pokriva svaki budući stupac dodan tablici",
-      "Riječ je isključivo o UNIQUE indeksu nad svim stupcima tablice"
+      "Indeks fizički sadrži cijelu tablicu sa svim redcima i verzijama te zato uvijek može zamijeniti backup i heap podatke",
+      "Indeks automatski pokriva svaki stupac koji se naknadno doda tablici, bez promjene definicije ili dodatnog prostora",
+      "Pokrivajući indeks mora biti UNIQUE nad svim stupcima tablice, neovisno o tome koje stupce konkretni upit filtrira ili vraća"
     ],
     "correctIndex": 0,
     "explanation": "Kad su svi potrebni podaci dostupni iz indeksa, planer može izbjeći ili smanjiti čitanje tabličnih stranica; stvarna korist ovisi o sustavu, vidljivosti redaka i obrascu upita.",
@@ -1514,9 +1514,9 @@
     "topic": "sql",
     "question": "Koja tvrdnja najbolje opisuje odnos write-ahead loga (WAL) i checkpointa?",
     "options": [
-      "Checkpoint znači da se prije svakog COMMIT-a mora prepisati cijela baza",
-      "WAL služi samo za zapis SELECT upita, a checkpoint samo za provjeru sintakse",
-      "Nakon checkpointa oporavak više nikad ne treba čitati transakcijski dnevnik",
+      "Checkpoint znači da se prije svakog COMMIT-a mora prepisati cijela baza u novu datoteku, nakon čega se WAL trajno isključuje",
+      "WAL zapisuje samo tekst SELECT upita radi audita, dok checkpoint provjerava njihovu sintaksu prije izvođenja bez spremanja podatkovnih stranica",
+      "Nakon checkpointa oporavak nikada ne treba čitati nijedan kasniji zapis transakcijskog dnevnika jer checkpoint unaprijed sadrži buduće promjene",
       "Promjena se najprije dovoljno zabilježi u trajnom dnevniku prije podatkovnih stranica; checkpoint povremeno približava stranice na disku stanju dnevnika i skraćuje potreban oporavak"
     ],
     "correctIndex": 3,

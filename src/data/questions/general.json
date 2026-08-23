@@ -144,9 +144,9 @@
     "question": "Koja je razlika između funkcionalnih i nefunkcionalnih zahtjeva sustava?",
     "options": [
       "Funkcionalni opisuju što sustav radi, a nefunkcionalni ograničenja i kvalitete poput latencije, dostupnosti i sigurnosti",
-      "Funkcionalni se odnose samo na frontend, a nefunkcionalni samo na backend",
-      "Nefunkcionalni zahtjevi nisu mjerljivi niti utječu na arhitekturu",
-      "Funkcionalni zahtjevi vrijede samo tijekom razvoja"
+      "Funkcionalni zahtjevi opisuju samo frontend ponašanje, dok nefunkcionalni vrijede isključivo za backend i infrastrukturu",
+      "Nefunkcionalni zahtjevi po definiciji nisu mjerljivi i ne utječu na izbor arhitekture, kapaciteta ili sigurnosnih kontrola",
+      "Funkcionalni zahtjevi vrijede samo tijekom razvoja, a nakon produkcijskog deploya zamjenjuju ih nefunkcionalna operativna pravila"
     ],
     "correctIndex": 0,
     "explanation": "Obje vrste oblikuju dizajn: funkcionalni zahtjevi definiraju sposobnosti sustava, a nefunkcionalni očekivanu kvalitetu i operativna ograničenja.",
@@ -390,10 +390,10 @@
     "topic": "general",
     "question": "Što zahtijeva Liskov Substitution Principle?",
     "options": [
-      "Podtip mora kopirati svaku internu implementacijsku pojedinost baznog tipa",
+      "Podtip mora kopirati svaku internu implementacijsku pojedinost baznog tipa, uključujući privatna polja i algoritme koji nisu dio javnog ugovora",
       "Vrijednost podtipa mora se moći koristiti gdje se očekuje bazni tip bez kršenja obećanog ponašanja",
-      "Bazni tip smije imati samo jedan podtip",
-      "Podtip ne smije dodati nijednu novu metodu"
+      "Bazni tip smije imati samo jedan podtip kako bi svaki pozivatelj unaprijed znao točnu konkretnu implementaciju koju će dobiti",
+      "Podtip ne smije dodati nijednu novu metodu ili stanje, čak i kada time ne mijenja preduvjete, postuvjete ni ponašanje baznog ugovora"
     ],
     "correctIndex": 1,
     "explanation": "Podtip mora poštovati ugovor baznog tipa, uključujući očekivane rezultate i invarijante. Samo sintaktičko nasljeđivanje nije dovoljno.",
@@ -406,9 +406,9 @@
     "question": "Koja je ključna razlika između Git merge i Git rebase operacije?",
     "options": [
       "Merge obično povezuje povijesti novim commitom, dok rebase ponovno primjenjuje commitove na novu bazu i mijenja njihove identifikatore",
-      "Rebase samo preuzima datoteke s remotea, a merge ih samo šalje",
-      "Merge uvijek briše izvornu granu, dok je rebase uvijek zadržava",
-      "Operacije proizvode potpuno jednaku povijest i jednake commit identifikatore"
+      "Rebase samo preuzima datoteke s remotea bez promjene povijesti, dok merge isključivo šalje lokalne datoteke na udaljeni repozitorij",
+      "Merge nakon povezivanja povijesti uvijek briše izvornu granu, dok rebase zadržava sve reference i nikada ne mijenja identifikatore commitova",
+      "Obje operacije proizvode jednaku topologiju povijesti i iste commit identifikatore; razlika je samo u zadanoj poruci završnog commita"
     ],
     "correctIndex": 0,
     "explanation": "Rebase može dati linearniju povijest, ali prepisuje commitove pa ga treba oprezno koristiti nad već dijeljenom poviješću. Merge čuva postojeće commitove.",
@@ -435,10 +435,10 @@
     "topic": "general",
     "question": "Koja je razlika između latencije i propusnosti sustava?",
     "options": [
-      "To su dva naziva za istu metriku",
+      "To su dva naziva za jednaku metriku koja uvijek raste ili pada zajedno i može se izraziti istom jedinicom vremena po zahtjevu",
       "Latencija je vrijeme potrebno za jednu operaciju, a propusnost broj dovršenih operacija u jedinici vremena",
-      "Visoka propusnost automatski jamči nisku latenciju svakog zahtjeva",
-      "Latencija mjeri količinu pohranjenih podataka, a propusnost broj servera"
+      "Visoka propusnost automatski jamči nisku latenciju svakog pojedinog zahtjeva, čak i kada sustav obrađuje velike batch-eve ili ima duge redove čekanja",
+      "Latencija mjeri količinu podataka spremljenih po zahtjevu, dok propusnost predstavlja ukupan broj servera dostupnih u sustavu"
     ],
     "correctIndex": 1,
     "explanation": "Sustav može imati visoku ukupnu propusnost, a ipak lošu latenciju pojedinog zahtjeva. Obje metrike treba mjeriti u odnosu na očekivano opterećenje.",
@@ -735,9 +735,9 @@
     "question": "Koja je glavna prednost consistent hashinga pri dodavanju ili uklanjanju čvora distribuiranog cachea?",
     "options": [
       "Premješta se samo dio ključeva blizu promijenjenog položaja umjesto gotovo svih ključeva kao kod običnog hash(key) mod N",
-      "Jamči da nijedan fizički čvor nikada neće imati više od jednog ključa",
-      "Uklanja svaku potrebu za replikacijom i obradom kvarova",
-      "Automatski šifrira ključeve prije mrežnog prijenosa"
+      "Jamči da fizički čvor nikada neće držati više od jednog ključa jer hash prsten svakom položaju može dodijeliti samo jednu vrijednost",
+      "Uklanja potrebu za replikacijom, virtualnim čvorovima i obradom kvarova jer se svaki ključ nakon promjene članstva sam vraća na stari čvor",
+      "Automatski šifrira ključeve prije mrežnog prijenosa i koristi rezultat kao dokaz identiteta čvora koji ih smije pohraniti"
     ],
     "correctIndex": 0,
     "explanation": "Ključevi i čvorovi raspoređuju se po kružnom prostoru, pa promjena članstva utječe na ograničeni raspon. Virtualni čvorovi pomažu ravnomjernijoj raspodjeli i lakšem ponderiranju kapaciteta.",

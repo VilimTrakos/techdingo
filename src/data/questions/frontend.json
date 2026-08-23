@@ -37,9 +37,9 @@
     "question": "Koja je razlika između let, const i var u JavaScriptu?",
     "options": [
       "var ima function scope i može se redeklarirati, let ima block scope i može se mijenjati, const ima block scope i ne može se ponovno dodijeliti",
-      "let i const su zastarjele, a var je jedini moderni način deklariranja varijabli",
-      "var i let rade identično, a const se koristi samo za funkcije",
-      "Razlika je samo u brzini izvršavanja koda"
+      "let i const zastarjele su deklaracije s function scopeom, dok je var jedini moderni oblik s block scopeom i zabranjenom redeklaracijom",
+      "var i let imaju jednako blokovno područje i pravila redeklaracije, dok se const može koristiti samo za imenovane funkcije, ne i druge vrijednosti",
+      "Sve tri deklaracije imaju ista pravila scopea i dodjele; razlikuju se samo po brzini pristupa varijabli nakon optimizacije JavaScript enginea"
     ],
     "correctIndex": 0,
     "explanation": "var je 'hoistan' na vrh funkcije i podložan poznatim greškama zbog function scopea; let/const uvode block scope i sigurnije ponašanje, pri čemu const sprječava ponovnu dodjelu (ali ne čini objekt immutable).",
@@ -67,9 +67,9 @@
     "question": "Koja je razlika između null i undefined?",
     "options": [
       "undefined znači da varijabli još nije dodijeljena vrijednost, null je eksplicitna vrijednost koju programer namjerno dodjeljuje da označi 'nema vrijednosti'",
-      "null i undefined su potpuno isti tip podatka i uvijek se ponašaju identično",
-      "undefined se koristi samo u funkcijama, a null samo u objektima",
-      "null označava grešku u kodu, dok undefined označava uspješno izvršavanje"
+      "null i undefined isti su tip i jednako se ponašaju u svim strogim usporedbama, serijalizaciji, default parametrima i operatorima",
+      "undefined je dopušten samo kao povratna vrijednost funkcije, a null samo kao svojstvo objekta; izvan tih mjesta runtime baca pogrešku",
+      "null uvijek označava neobrađenu pogrešku, dok undefined označava uspješno izvršavanje i ne može predstavljati svojstvo koje ne postoji"
     ],
     "correctIndex": 0,
     "explanation": "JavaScript automatski dodjeljuje undefined nedeklariranim/nepostavljenim varijablama, dok null programer eksplicitno postavlja kao 'namjerno prazna vrijednost'.",
@@ -682,9 +682,9 @@
     "question": "Što znači da je JavaScript single-threaded jezik?",
     "options": [
       "JavaScript izvršava kod na jednoj glavnoj niti (call stacku) u jednom trenutku, pa se dva dijela JS koda ne mogu izvršavati istovremeno",
-      "JavaScript se može izvršavati samo u jednom pregledniku istovremeno",
-      "JavaScript ne podržava rad s više datoteka u istom projektu",
-      "Svaka JavaScript funkcija smije imati samo jedan parametar"
+      "JavaScript aplikacija može se izvršavati samo u jednom prozoru preglednika istodobno, pa otvaranje drugog taba zaustavlja prvi runtime",
+      "JavaScript projekt ne može sadržavati više datoteka ili modula jer jedna glavna nit dopušta učitavanje samo jednog izvornog teksta",
+      "Svaka JavaScript funkcija smije primiti samo jedan argument i izvršiti samo jednu naredbu po event-loop ciklusu"
     ],
     "correctIndex": 0,
     "explanation": "Postoji samo jedan call stack, pa se izvršavanje odvija sekvencijalno - asinkrone operacije (I/O, timeri) se delegiraju pregledniku/Node okruženju i vraćaju u red čekanja (event loop) kad su gotove.",
@@ -772,9 +772,9 @@
     "question": "Zašto React elementima renderiranima iz liste treba stabilan 'key' atribut?",
     "options": [
       "Kako bi React pouzdano pratio identitet svakog elementa između renderiranja i ispravno ažurirao samo ono što se promijenilo",
-      "Kako bi CSS selektori automatski postali specifičniji",
-      "Kako bi preglednik spremio listu u trajni cache",
-      "Kako bi svaki element dobio globalnu JavaScript varijablu"
+      "Kako bi CSS selektori svakog retka automatski dobili veću specifičnost i sačuvali stil nakon promjene poretka elemenata",
+      "Kako bi preglednik trajno spremio cijelu listu i njezino lokalno stanje u HTTP cache između renderiranja i ponovnog učitavanja stranice",
+      "Kako bi svaki element liste dobio globalnu JavaScript varijablu pod imenom keya koju druge komponente mogu izravno mijenjati"
     ],
     "correctIndex": 0,
     "explanation": "Stabilan key pomaže Reactovom reconcileru prepoznati koji su elementi dodani, uklonjeni ili premješteni, čime se izbjegavaju nepotrebna ponovna renderiranja i gubitak lokalnog stanja komponente.",
@@ -1326,9 +1326,9 @@
     "question": "Kako se disabled i readonly tekstualne kontrole razlikuju pri standardnom slanju HTML forme?",
     "options": [
       "Disabled kontrola obično se ne šalje, dok se readonly kontrola šalje, ali korisnik ne može mijenjati njezinu vrijednost",
-      "Readonly kontrola se ne šalje, dok se disabled kontrola uvijek šalje",
-      "Obje se uvijek šalju i ponašaju potpuno jednako",
-      "Nijedna se ne prikazuje u DOM-u nakon slanja"
+      "Readonly kontrola izostavlja se iz podataka forme, dok se disabled kontrola uvijek šalje jer preglednik njezinu vrijednost smatra potvrđenom",
+      "Obje kontrole uvijek se šalju i imaju jednako ponašanje fokusa i uređivanja; atributi mijenjaju samo njihov zadani vizualni stil",
+      "Nakon slanja nijedna kontrola više se ne prikazuje u DOM-u jer preglednik automatski uklanja sva polja koja korisnik nije mogao mijenjati"
     ],
     "correctIndex": 0,
     "explanation": "Disabled kontrola nije uspješna form control i izostaje iz podataka forme; readonly vrijednost ostaje uključena u slanje.",

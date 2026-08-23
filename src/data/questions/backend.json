@@ -494,9 +494,9 @@
     "question": "Što znači da je HTTP metoda idempotentna?",
     "options": [
       "Višestruko ponavljanje istog zahtjeva ima isti učinak kao i jedan poziv - npr. GET, PUT i DELETE su idempotentni, dok POST općenito nije",
-      "Idempotentna metoda se može pozvati samo jednom u životnom vijeku aplikacije",
-      "Idempotentnost znači da metoda uvijek vraća status kod 200",
-      "Sve HTTP metode su po definiciji idempotentne"
+      "Idempotentna metoda smije se pozvati samo jednom tijekom životnog vijeka resursa jer bi svaki ponovljeni poziv nužno stvorio novi učinak",
+      "Idempotentnost znači da metoda pri svakom pozivu mora vratiti status 200 i jednako tijelo odgovora, čak i ako se stanje resursa promijenilo",
+      "Sve HTTP metode idempotentne su po definiciji jer protokol automatski uklanja duple zahtjeve prije nego dođu do aplikacije"
     ],
     "correctIndex": 0,
     "explanation": "PUT /users/5 s istim podacima uvijek rezultira istim stanjem bez obzira koliko se puta pozove, dok POST /users obično svaki put kreira novi resurs (novi id) - ovo je bitno za sigurno automatsko ponavljanje zahtjeva (retry) kod mrežnih grešaka.",
@@ -524,9 +524,9 @@
     "question": "Koja je razlika između horizontalnog i vertikalnog skaliranja?",
     "options": [
       "Horizontalno skaliranje dodaje više server instanci (scale out), dok vertikalno skaliranje povećava resurse (CPU/RAM) postojećeg servera (scale up)",
-      "Vertikalno skaliranje se odnosi isključivo na skaliranje baze podataka",
-      "Horizontalno skaliranje znači smanjivanje broja servera radi uštede troškova",
-      "Nema razlike, oba pojma opisuju identičan proces"
+      "Vertikalno skaliranje znači dodavanje novih baza i aplikacijskih instanci, dok horizontalno povećava CPU i memoriju jednog postojećeg servera",
+      "Horizontalno skaliranje smanjuje broj servera radi uštede troška, dok vertikalno raspoređuje isti promet na više jednakih instanci",
+      "Oba pojma opisuju dodavanje resursa istoj fizičkoj instanci; razlikuju se samo po smjeru u kojem se server prikazuje na arhitektonskom dijagramu"
     ],
     "correctIndex": 0,
     "explanation": "Horizontalno skaliranje obično zahtijeva load balancer i stateless dizajn aplikacije, dok vertikalno skaliranje ima fizičku gornju granicu (koliko se resursa može dodati jednom stroju).",
@@ -794,9 +794,9 @@
     "question": "Zašto database connection pool treba imati ograničenu veličinu umjesto otvaranja neograničenog broja veza?",
     "options": [
       "Previše paralelnih veza može iscrpiti bazu, pa pool treba uskladiti s njezinim kapacitetom te imati čekanje i timeout",
-      "Svaka veza automatski duplicira cijelu bazu",
-      "Baza može prihvatiti samo jednu vezu neovisno o opterećenju",
-      "Veličina poola uvijek mora biti jednaka broju tablica"
+      "Svaka otvorena veza automatski duplicira cijelu bazu u memoriji aplikacije, pa broj veza mora biti ograničen veličinom dostupnog diska",
+      "Baza može prihvatiti samo jednu aktivnu vezu neovisno o konfiguraciji i opterećenju, dok pool ostale zahtjeve trajno odbacuje",
+      "Veličina poola mora biti jednaka broju tablica jer svaka veza tijekom cijelog života može pristupati samo jednoj unaprijed dodijeljenoj tablici"
     ],
     "correctIndex": 0,
     "explanation": "Veze i istodobni upiti troše ograničene resurse baze. Prevelik pool često povećava čekanje i ruši propusnost umjesto da je poboljša.",
@@ -838,10 +838,10 @@
     "topic": "backend",
     "question": "Koji postupak smanjuje prekide i gubitak aktivnih zahtjeva tijekom rolling deploymenta?",
     "options": [
-      "Odmah ugasiti sve stare instance pa početi graditi nove",
-      "Slati promet novoj instanci prije nego završi pokretanje",
+      "Odmah ugasiti sve stare instance prije gradnje novih kako nijedan aktivni zahtjev ne bi dobio odgovor iz prethodne verzije aplikacije",
+      "Početi slati puni promet novoj instanci prije završetka pokretanja kako bi prvi zahtjevi ujedno poslužili kao readiness provjera",
       "Pustiti novu instancu u promet tek nakon readiness provjere, a staru prvo ukloniti iz prometa i omogućiti joj graceful drain",
-      "Istodobno mijenjati DNS zapis za svaki pojedini zahtjev"
+      "Za svaki pojedini zahtjev promijeniti DNS zapis između stare i nove instance, bez uklanjanja nezdravih instanci iz aktivnog prometa"
     ],
     "correctIndex": 2,
     "explanation": "Readiness sprječava prerano usmjeravanje prometa, dok draining i dovoljno termination grace vremena omogućuju staroj instanci da dovrši aktivne zahtjeve.",
@@ -1113,10 +1113,10 @@
     "topic": "backend",
     "question": "Servis A zove B, B zove C, a svaki sloj samostalno izvodi tri ponovna pokušaja. Kako spriječiti da kvar C-a izazove multiplicirani retry storm?",
     "options": [
-      "Ukloniti sve timeoutove kako zahtjevi nikad ne bi odustali",
+      "Ukloniti sve timeoutove kako nijedan sloj ne bi odustao, pa svaki zahtjev može čekati dok se servis C ne oporavi bez pokretanja novih pokušaja",
       "Propagirati krajnji deadline, ograničiti zajednički retry budget, ponavljati na prikladnom sloju te koristiti backoff s jitterom",
-      "Na svakom sloju povećati broj pokušaja proporcionalno dubini poziva",
-      "Sve greške odmah pretvoriti u uspješan odgovor"
+      "Na svakom sloju povećati broj pokušaja proporcionalno dubini poziva kako bi najudaljeniji servis dobio najviše prilika za obradu istog zahtjeva",
+      "Sve greške pretvoriti u uspješan odgovor na prvom sloju, bez bilježenja ili prekidanja poziva koji se još uvijek ponavljaju u pozadini"
     ],
     "correctIndex": 1,
     "explanation": "Neovisni retryji po slojevima multipliciraju broj poziva i dodatno opterećuju neispravnu ovisnost. Zajednički budžet i deadline ograničavaju ukupni rad, a jitter izbjegava sinkronizirane valove.",
