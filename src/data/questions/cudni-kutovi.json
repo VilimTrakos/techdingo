@@ -1138,5 +1138,117 @@
     ],
     "explanation": "Zaustavljanje na drugom koraku daje popravak jednog buga. Tek treći korak daje popravak cijele klase problema.",
     "difficulty": "hard"
+  },
+  {
+    "id": "cudni-uvod2-brojevi",
+    "topic": "cudni-kutovi",
+    "unitId": "brojevi",
+    "isIntro": true,
+    "question": "Zašto decimalni broj ponekad nije moguće potpuno točno zapisati binarnim floating-point formatom?",
+    "options": [
+      "Jer konačan broj bitova može prikazati samo ograničen skup vrijednosti",
+      "Jer procesor prije računanja uvijek zaokruži svaki broj na cijeli broj",
+      "Jer binarni zapis podržava samo pozitivne vrijednosti veće od jedan",
+      "Jer se decimalne znamenke tijekom spremanja pretvaraju u tekstualne znakove"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kao što se 1/3 ne može konačno zapisati decimalno, mnogi decimalni razlomci nemaju konačan binarni zapis. Zato nastaju male pogreške reprezentacije.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cudni-uvod2-tekst",
+    "topic": "cudni-kutovi",
+    "unitId": "tekst-i-znakovi",
+    "isIntro": true,
+    "question": "Što je Unicode code point?",
+    "options": [
+      "Broj koji predstavlja apstraktni znak u Unicode standardu",
+      "Broj bajtova koje svaki znak mora zauzeti u svakoj datoteci",
+      "Pozicija znaka na zaslonu nakon odabira fonta i veličine",
+      "Kodna stranica koja uvijek koristi točno jedan bajt po znaku"
+    ],
+    "correctIndex": 0,
+    "explanation": "Code point identificira znak, primjerice U+0041 za A. Kodiranje poput UTF-8 određuje kako se taj broj zapisuje u bajtove.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cudni-uvod2-vrijeme",
+    "topic": "cudni-kutovi",
+    "unitId": "vrijeme",
+    "isIntro": true,
+    "question": "Čemu u računalnim sustavima služi UTC?",
+    "options": [
+      "Daje zajedničku vremensku referencu neovisnu o lokalnoj zoni",
+      "Automatski određuje radno vrijeme korisnika prema njegovoj adresi",
+      "Jamči da svaki kalendarski dan svugdje počinje u istom trenutku",
+      "Pretvara svako trajanje u broj mjeseci jednake duljine"
+    ],
+    "correctIndex": 0,
+    "explanation": "UTC je zajednička osnova za vremenske trenutke. Lokalna zona i pravila ljetnog vremena primjenjuju se tek pri prikazu korisniku.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cudni-uvod2-regex",
+    "topic": "cudni-kutovi",
+    "unitId": "regex-i-parsiranje",
+    "isIntro": true,
+    "question": "Što opisuje regularni izraz?",
+    "options": [
+      "Uzorak prema kojem se tekst može pretraživati ili provjeravati",
+      "Potpunu gramatiku svakog programskog jezika bez dodatnog parsera",
+      "Redoslijed kojim baza izvršava relacijske operacije nad tablicama",
+      "Pravilo za pretvaranje binarnih podataka u sliku ili zvuk"
+    ],
+    "correctIndex": 0,
+    "explanation": "Regex je jezik uzoraka koristan za pretragu i jednostavnu validaciju teksta. Složene ugniježđene gramatike obično zahtijevaju parser.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cudni-uvod2-bitovi",
+    "topic": "cudni-kutovi",
+    "unitId": "bitovi-i-memorija",
+    "isIntro": true,
+    "question": "Koja je osnovna razlika između bita i bajta?",
+    "options": [
+      "Bit je jedna binarna znamenka, a bajt je skup od osam bitova",
+      "Bit uvijek sprema jedan znak, a bajt uvijek sprema cijeli broj",
+      "Bajt je polovica bita kada se podatak komprimira u memoriji",
+      "Bit i bajt su dva naziva za potpuno jednaku količinu podataka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bit može biti 0 ili 1. Bajt u modernim sustavima sadrži osam bitova i osnovna je adresabilna jedinica memorije.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cudni-uvod2-slucajnost",
+    "topic": "cudni-kutovi",
+    "unitId": "slucajnost-i-id",
+    "isIntro": true,
+    "question": "Što znači da je generator slučajnih brojeva pseudoslučajan?",
+    "options": [
+      "Deterministički algoritam iz početnog stanja proizvodi niz koji izgleda slučajno",
+      "Svaki broj dolazi iz fizičkog procesa i ne ovisi o početnom stanju",
+      "Generator može vratiti samo brojeve koji se nikada prije nisu pojavili",
+      "Rezultat je uvijek siguran za lozinke bez obzira na algoritam i seed"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pseudoslučajni generator ponavlja isti niz za isti seed. Za sigurnosne svrhe potreban je kriptografski siguran generator s kvalitetnom entropijom.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "cudni-uvod2-bugovi",
+    "topic": "cudni-kutovi",
+    "unitId": "slavni-bugovi",
+    "isIntro": true,
+    "question": "Zašto se proučavaju poznati povijesni softverski kvarovi?",
+    "options": [
+      "Otkrivaju ponavljajuće tehničke i organizacijske uzroke kvarova",
+      "Dokazuju da se moderna programska oprema više ne mora testirati",
+      "Pokazuju da je za svaki kvar odgovoran samo jedan pogrešan redak",
+      "Omogućuju kopiranje starog rješenja bez provjere novog konteksta"
+    ],
+    "correctIndex": 0,
+    "explanation": "Veliki kvarovi često kombiniraju loše pretpostavke, nedostatne provjere i komunikacijske propuste. Njihove pouke pomažu graditi bolje zaštitne slojeve.",
+    "difficulty": "easy"
   }
 ]

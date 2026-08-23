@@ -616,6 +616,7 @@
   },
   {
     "id": "sigurnost-035-authn-authz",
+    "isIntro": true,
     "topic": "sigurnost",
     "unitId": "autentikacija-sesije",
     "kind": "fill",
@@ -1295,5 +1296,101 @@
     ],
     "explanation": "Rokovi teku od trenutka saznanja, ne od kraja istrage. Zato utvrđivanje opsega ne smije čekati da sve bude riješeno.",
     "difficulty": "hard"
+  },
+  {
+    "id": "sigurnost-uvod2-injekcije",
+    "topic": "sigurnost",
+    "unitId": "injekcije",
+    "isIntro": true,
+    "question": "Kada nastaje injekcijska ranjivost?",
+    "options": [
+      "Kada se nepouzdan unos protumači kao dio naredbe ili upita",
+      "Kada aplikacija odbije unos koji ne odgovara očekivanom formatu",
+      "Kada server šifrira promet prije slanja odgovora korisniku",
+      "Kada baza koristi indeks za pronalaženje traženog retka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Injekcija miješa podatke s jezikom naredbe. Parametrizacija, siguran API i allowlist dinamičke strukture drže te dvije uloge odvojenima.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sigurnost-uvod2-xss",
+    "topic": "sigurnost",
+    "unitId": "xss-csrf",
+    "isIntro": true,
+    "question": "Što je osnovna posljedica XSS ranjivosti?",
+    "options": [
+      "Napadačev skript može se izvršiti u kontekstu korisnikove stranice",
+      "Baza automatski dopušta napadaču izvršavanje proizvoljnog SQL upita",
+      "TLS certifikat servera prestaje vrijediti za sve buduće posjetitelje",
+      "Operacijski sustav briše korisnikove datoteke bez pokretanja preglednika"
+    ],
+    "correctIndex": 0,
+    "explanation": "XSS omogućuje izvođenje napadačkog JavaScripta pod originom aplikacije. Sigurno kodiranje izlaza i izbjegavanje opasnih HTML sinkova ključne su obrane.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sigurnost-uvod2-autorizacija",
+    "topic": "sigurnost",
+    "unitId": "autorizacija",
+    "isIntro": true,
+    "question": "Na koje pitanje odgovara autorizacija?",
+    "options": [
+      "Smije li ovaj identificirani subjekt izvršiti traženu radnju nad resursom",
+      "Je li unesena lozinka zapisana jednakim fontom kao korisničko ime",
+      "Može li DNS pronaći IP adresu servera koji poslužuje aplikaciju",
+      "Je li odgovor dovoljno brzo stigao do korisnikova preglednika"
+    ],
+    "correctIndex": 0,
+    "explanation": "Autentikacija utvrđuje identitet, a autorizacija provjerava dopuštenje za konkretnu akciju i objekt. Provjera mora biti na serveru.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sigurnost-uvod2-kriptografija",
+    "topic": "sigurnost",
+    "unitId": "kriptografija-praksa",
+    "isIntro": true,
+    "question": "Koja je osnovna razlika između enkripcije i hashiranja?",
+    "options": [
+      "Enkripcija je reverzibilna s ključem, a hashiranje je jednosmjerno",
+      "Hashiranje se uvijek može poništiti istim ključem kojim je izračunato",
+      "Enkripcija ne koristi ključeve i uvijek daje izlaz jednake duljine",
+      "Obje operacije služe samo kompresiji podataka prije mrežnog prijenosa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Enkripcija štiti podatak koji kasnije treba pročitati. Kriptografski hash daje sažetak i koristi se za integritet te uz posebne KDF-ove za lozinke.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sigurnost-uvod2-tajne",
+    "topic": "sigurnost",
+    "unitId": "tajne-i-ovisnosti",
+    "isIntro": true,
+    "question": "Što se u aplikacijskoj sigurnosti smatra tajnom?",
+    "options": [
+      "Vrijednost čije bi otkrivanje omogućilo neovlašten pristup ili potpisivanje",
+      "Svaki javni naziv paketa naveden u datoteci ovisnosti projekta",
+      "Broj verzije aplikacije prikazan korisniku u sučelju",
+      "Dokumentacija javnog API-ja namijenjena integracijskim partnerima"
+    ],
+    "correctIndex": 0,
+    "explanation": "Lozinke, API ključevi i privatni ključevi tipične su tajne. Treba ih držati izvan izvornog koda, ograničiti i redovito rotirati.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sigurnost-uvod2-privatnost",
+    "topic": "sigurnost",
+    "unitId": "privatnost",
+    "isIntro": true,
+    "question": "Što znači minimizacija osobnih podataka?",
+    "options": [
+      "Prikupljati i čuvati samo podatke potrebne za jasno određenu svrhu",
+      "Prikupiti sve dostupne podatke pa ih sakriti od korisnika u sučelju",
+      "Trajno čuvati svaki podatak jer bi jednom mogao postati koristan",
+      "Zamijeniti korisnikovo ime nadimkom, ali zadržati sve ostale identifikatore"
+    ],
+    "correctIndex": 0,
+    "explanation": "Manje prikupljenih podataka znači manji rizik i lakše upravljanje životnim ciklusom. Potreba, svrha i rok čuvanja trebaju biti poznati unaprijed.",
+    "difficulty": "easy"
   }
 ]

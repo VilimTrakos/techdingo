@@ -1803,5 +1803,21 @@
     "correctIndex": 0,
     "explanation": "Performanse su vrijeme do prvog prikaza i odzivnost nakon toga. Optimizacija je uvijek odgovor na mjerenje, ne na osjećaj.",
     "difficulty": "easy"
+  },
+  {
+    "id": "frontend-uvod2-asinkroni-js",
+    "topic": "frontend",
+    "unitId": "asinkroni-js",
+    "isIntro": true,
+    "question": "Zašto JavaScript koristi redove zadataka za asinkrone callbackove?",
+    "options": [
+      "Omogućuju da se callback izvrši kada call stack postane slobodan",
+      "Omogućuju da svaki callback istodobno mijenja isti DOM bez redoslijeda",
+      "Pretvaraju svaku asinkronu operaciju u blokirajuću sinkronu funkciju",
+      "Jamče da mrežni odgovor stiže prije koda koji je pokrenuo zahtjev"
+    ],
+    "correctIndex": 0,
+    "explanation": "Runtime stavlja spremne callbackove u odgovarajuće redove. Event loop ih prenosi na call stack kada trenutačni sinkroni posao završi.",
+    "difficulty": "easy"
   }
 ]

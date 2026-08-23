@@ -1913,5 +1913,21 @@
     "correctIndex": 0,
     "explanation": "Vezani parametar tretira email kao podatak neovisno o njegovu sadržaju. Enkripcija prometa i najmanje ovlasti zasebni su slojevi zaštite.",
     "difficulty": "medium"
+  },
+  {
+    "id": "sql-uvod2-indeksi",
+    "topic": "sql",
+    "unitId": "indeksi-performanse",
+    "isIntro": true,
+    "question": "Koji je glavni kompromis pri dodavanju indeksa?",
+    "options": [
+      "Čitanja mogu biti brža, ali upisi i održavanje indeksa imaju dodatni trošak",
+      "Svaki indeks smanjuje zauzeće diska jer briše duplicirane vrijednosti",
+      "Indeks ubrzava samo INSERT, dok SELECT uvijek čita cijelu tablicu",
+      "Dodavanje indeksa automatski mijenja poslovna pravila i sadržaj redaka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Indeks daje brži put do redaka, ali zauzima prostor i mora se ažurirati pri promjenama. Zato se dodaje prema stvarnim obrascima upita.",
+    "difficulty": "easy"
   }
 ]

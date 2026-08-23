@@ -1314,5 +1314,53 @@
     ],
     "explanation": "Prvo se potvrđuje preuzimanje da alarm ne eskalira dalje, pa se procjenjuje opseg. Uzrok se istražuje nakon što šteta stane.",
     "difficulty": "medium"
+  },
+  {
+    "id": "devops-uvod2-iac",
+    "topic": "devops",
+    "unitId": "infrastruktura-kao-kod",
+    "isIntro": true,
+    "question": "Što znači infrastruktura kao kod (IaC)?",
+    "options": [
+      "Infrastruktura se opisuje verzioniranim deklaracijama koje alati primjenjuju",
+      "Svaki server ručno se podešava prema uputama koje nisu spremljene u repozitoriju",
+      "Aplikacijski kod automatski zamjenjuje operacijski sustav i mrežnu opremu",
+      "Konfiguracija postoji samo u administratorskom sučelju cloud providera"
+    ],
+    "correctIndex": 0,
+    "explanation": "IaC omogućuje ponovljivu, pregledljivu i automatiziranu izgradnju infrastrukture. Definicije se mogu reviewati i verzionirati poput aplikacijskog koda.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "devops-uvod2-cloud",
+    "topic": "devops",
+    "unitId": "cloud-osnove",
+    "isIntro": true,
+    "question": "Što u cloudu znači model dijeljene odgovornosti?",
+    "options": [
+      "Provider i korisnik štite različite slojeve usluge prema odabranom modelu",
+      "Provider preuzima svu sigurnost aplikacije, podataka i korisničkih računa",
+      "Korisnik mora održavati fizički podatkovni centar koji koristi cloud usluga",
+      "Odgovornosti se nasumično mijenjaju pri svakom pokretanju nove instance"
+    ],
+    "correctIndex": 0,
+    "explanation": "Provider tipično štiti fizičku infrastrukturu, dok korisnik i dalje odgovara za svoje podatke, identitete i konfiguraciju. Granica ovisi o IaaS/PaaS/SaaS modelu.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "devops-uvod2-nadzor",
+    "topic": "devops",
+    "unitId": "nadzor-produkcije",
+    "isIntro": true,
+    "question": "Čemu služi nadzor produkcijskog sustava?",
+    "options": [
+      "Otkriva stanje, kvarove i degradaciju pomoću mjerljivih signala",
+      "Jamči da se kvar nikada neće dogoditi nakon uspješnog deploya",
+      "Zamjenjuje testiranje jer promet automatski ispravlja pogreške u kodu",
+      "Prikuplja samo broj korisnika bez podataka o latenciji i pogreškama"
+    ],
+    "correctIndex": 0,
+    "explanation": "Metrike, logovi i tragovi pomažu otkriti i objasniti probleme. Dobar nadzor povezuje tehničke signale s korisničkim učinkom.",
+    "difficulty": "easy"
   }
 ]

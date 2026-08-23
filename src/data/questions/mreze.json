@@ -1297,5 +1297,85 @@
     ],
     "explanation": "Ide se odozdo prema gore jer svaki sloj ovisi o onome ispod. Preskakanje redoslijeda znači traženje greške na krivom mjestu.",
     "difficulty": "hard"
+  },
+  {
+    "id": "mreze-uvod2-tcp",
+    "topic": "mreze",
+    "unitId": "tcp-udp",
+    "isIntro": true,
+    "question": "Što TCP pruža aplikaciji iznad IP-a?",
+    "options": [
+      "Pouzdan i uređen tok bajtova između dviju krajnjih točaka",
+      "Jamstvo da svaki paket putuje fizički istom rutom kroz mrežu",
+      "Automatsko šifriranje sadržaja bez TLS-a ili drugog protokola",
+      "Adresiranje domena i pretvaranje njihovih naziva u IP adrese"
+    ],
+    "correctIndex": 0,
+    "explanation": "TCP numerira, potvrđuje i po potrebi ponovno šalje podatke kako bi aplikacija dobila uređeni tok. Ne pruža enkripciju sam po sebi.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "mreze-uvod2-tls",
+    "topic": "mreze",
+    "unitId": "tls-sigurna-veza",
+    "isIntro": true,
+    "question": "Koji je osnovni cilj TLS-a?",
+    "options": [
+      "Zaštititi povjerljivost i integritet prometa te potvrditi identitet servera",
+      "Ubrzati svaki mrežni zahtjev uklanjanjem uspostave veze i provjere certifikata",
+      "Pretvoriti naziv domene u IP adresu prije slanja prvog paketa",
+      "Zamijeniti autentikaciju korisnika automatskim stvaranjem računa"
+    ],
+    "correctIndex": 0,
+    "explanation": "TLS šifrira vezu, otkriva izmjene prometa i certifikatom pomaže klijentu potvrditi server. Korisnička autentikacija zaseban je sloj.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "mreze-uvod2-realtime",
+    "topic": "mreze",
+    "unitId": "realtime",
+    "isIntro": true,
+    "question": "Čemu služi WebSocket veza?",
+    "options": [
+      "Omogućuje dugotrajnu dvosmjernu komunikaciju klijenta i servera",
+      "Šalje samo jedan odgovor nakon kojeg se veza obavezno trajno zatvara",
+      "Sprema poruke u bazu bez potrebe za mrežnim poslužiteljem",
+      "Zamjenjuje TLS vlastitim algoritmom za šifriranje svakog framea"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nakon početnog HTTP handshaka obje strane mogu slati poruke kroz otvorenu vezu. To je korisno za chat, prisutnost i druge brze nadogradnje.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "mreze-uvod2-isporuka",
+    "topic": "mreze",
+    "unitId": "isporuka-prometa",
+    "isIntro": true,
+    "question": "Čemu služi load balancer?",
+    "options": [
+      "Raspoređuje dolazni promet među dostupnim instancama usluge",
+      "Pretvara privatne podatke u šifrirani oblik bez upravljanja prometom",
+      "Pohranjuje sve odgovore trajno kako serveri više ne bi bili potrebni",
+      "Dodjeljuje naziv domene svakoj datoteci koju aplikacija poslužuje"
+    ],
+    "correctIndex": 0,
+    "explanation": "Load balancer bira zdravu instancu za zahtjev i time pomaže skaliranju i dostupnosti. Algoritam može uzeti u obzir veze, težine i zdravlje.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "mreze-uvod2-dijagnostika",
+    "topic": "mreze",
+    "unitId": "dijagnostika-mreze",
+    "isIntro": true,
+    "question": "Što prvo pokušavamo utvrditi mrežnom dijagnostikom?",
+    "options": [
+      "Na kojem sloju i dijelu puta nastaje kvar ili usporenje",
+      "Koji programski jezik koristi udaljeni server za svaku rutu",
+      "Koju boju korisničkog sučelja prikazuje klijent tijekom zahtjeva",
+      "Koliko redaka izvornog koda ima mrežni driver operacijskog sustava"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sustavna dijagnostika odvaja DNS, povezivanje, TLS, aplikacijski protokol i udaljeni servis. Time se izbjegava nasumično mijenjanje konfiguracije.",
+    "difficulty": "easy"
   }
 ]
