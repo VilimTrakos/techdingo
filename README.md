@@ -1,20 +1,31 @@
 # TechDingo
 
 Gamificirana web aplikacija za uvježbavanje tehničkih intervju pitanja —
-SQL, Frontend, Backend i opći tehnički temelji. Solo lekcije (srca, streak, XP) +
-"Score Strike" brzinski mod (timer, bodovi, combo, osobni rekord).
+SQL, Frontend, Backend i opći tehnički temelji. Duolingo-stil put učenja s
+cjelinama, srcima, nizom i XP-om, plus "Score Strike" brzinski mod.
 
 Aplikacija radi potpuno lokalno i sprema napredak u `localStorage`, a opcionalna
-Supabase integracija omogućuje račun i sinkronizaciju između uređaja.
+Supabase integracija omogućuje račun, sinkronizaciju između uređaja i ljestvicu.
 
 ## Značajke
 
-- **Lekcije po temama** (SQL / Frontend / Backend / Opće) — svaka sesija
-  nasumično
-  odabire 15-17 pitanja, 5 srca po pokušaju, dnevni streak i XP.
-- **Score Strike** — brzinski izazov s timerom po pitanju, bodovanjem,
-  combo multiplikatorom i osobnim rekordom (po temi ili "sve teme" mix).
-- **220+ pitanja** kroz četiri područja, s objašnjenjem nakon svakog odgovora.
+- **Put učenja po temama** — svaka tema (SQL / Frontend / Backend / Opće) dijeli
+  se na cjeline poredane od osnova prema naprednom, koje se otključavaju redom.
+- **Četiri vrste pitanja** — klasičan izbor, "odaberi sve točne", popunjavanje
+  praznina iz banke riječi i slaganje koraka u točan redoslijed; uz opcionalni
+  isječak koda.
+- **Razmaknuto ponavljanje** — gradivo se vraća kroz više lekcija u sve većim
+  razmacima dok se stvarno ne zapamti, a promašaj ga vraća na početak.
+- **Ponovi greške** — zaseban mod koji vježba isključivo pitanja koja si
+  promašio; ne troši srca.
+- **Trajna srca** — zaliha od 5 koja se dijeli kroz sve lekcije i regenerira
+  jedno svaka 4 sata.
+- **Score Strike** — brzinski izazov s timerom, combo multiplikatorom i osobnim
+  rekordom (po temi ili "sve teme" mix).
+- **Dnevni izazov** — 10 pitanja iz svih tema, ista za sve igrače, jednom dnevno.
+- **Ljestvica i značke** — javna ljestvica po temama (uz račun) i lokalna
+  postignuća.
+- **350+ pitanja** kroz četiri područja, s objašnjenjem nakon svakog odgovora.
 - Otvoren za doprinose — dodavanje novih pitanja je pull request na jednu
   JSON datoteku, validiran automatski u CI-u.
 

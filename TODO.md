@@ -54,9 +54,11 @@ i u kodu (`src/state/cloudSync.ts`, `src/state/mergeProgress.ts`,
 
 Codex (drugi AI agent, radi paralelno na istom repou) radi na vizualnom
 redizajnu i širenju baze pitanja prema cilju 100+ po temi. Trenutno stanje
-(2026-08-22, nakon integracije svih do sad primljenih Codex batcheva):
-**SQL 100, Frontend 100, Backend 73, Opće 50 = 323 pitanja ukupno.**
-SQL i Frontend su dosegli cilj od 100+; Backend i Opće još trebaju rasti.
+(2026-08-22): **SQL 109, Frontend 109, Backend 80, Opće 57 = 355 pitanja.**
+
+Otvoreno: nove vrste pitanja su tek ~6% sadržaja (mehanika postoji, igrač je
+rijetko vidi), a tanke cjeline (SQL `sigurnost` ima 4 pitanja) uzrokuju
+ponavljanje istog pitanja unutar jedne lekcije. Cilj je ≥10 po cjelini.
 
 Detaljna koordinacijska povijest (tko je što radio, otvorena pitanja) živi
 u `AGENT_NOTES.txt` u rootu repozitorija — namjerno NIJE u gitu (vidi
@@ -70,14 +72,35 @@ u odgovarajuću `src/data/questions/<tema>.json`, sortiraj easy→medium→hard,
 pokreni `npm run validate:questions`, regeneriraj
 `supabase/seed_questions_meta.sql` (`npx tsx scripts/generate-question-metadata-seed.ts`).
 
-## 3. Spaced repetition (još nije započeto)
+## 3. Razmaknuto ponavljanje — NAPRAVLJENO (2026-08-22)
 
-Korisnik je eksplicitno tražio da se pitanja lagano ponavljaju kroz lekcije
-radi pamćenja (Duolingo stil), odvojeno od difficulty-ordering rada koji je
-već gotov. Treba dizajnirati i implementirati u `src/lib/pool.ts` /
-`src/state/progress.ts` — nije počelo.
+Leitner kutije po `conceptId` (`src/lib/scheduling.ts`), razmaci 0/1/3/7/16/35
+dana. Lekcija rezervira do 40% mjesta za dospjele koncepte. State je V3;
+migracija V2→V3 pretvara postojeće greške u koncepte koji odmah dospijevaju.
+Pitanja mogu dijeliti `conceptId` kao varijante iste činjenice — sadržaj za
+to je delegiran Codexu (ZADATAK H).
 
-## 4. Linkovi
+## 4. Spremnost za prave korisnike — NAPRAVLJENO (2026-08-22)
+
+Oporavak lozinke (`#/auth/recovery`), ponovno slanje potvrde, brisanje računa,
+hrvatske poruke o greškama, ErrorBoundary, validacija imena na serveru
+(migracija 0004), sinkronizacija popisa grešaka (migracija 0003), čišćenje
+napretka pri odjavi (spriječeno miješanje računa na dijeljenom uređaju).
+
+**Migracije koje treba pokrenuti u Supabase SQL Editoru:**
+`0003_lesson_struggled_ids.sql` i `0004_profile_hardening.sql`.
+**Također:** dodati `<produkcijski-url>/#/auth/recovery` i
+`http://localhost:5173/#/auth/recovery` u Supabase → Authentication →
+URL Configuration → Redirect URLs, inače oporavak lozinke neće raditi.
+
+## 5. Otvoreno / namjerno odgođeno
+
+PWA + push podsjetnici (traži service worker, tablicu pretplata, Edge
+Function i raspored — plus Supabase CLI setup); PvP (backend stoji, klijenta
+nema, migracija 0002 blokirana); postavke/reset napretka; i18n; dark mode;
+zvukovi; komponentni i hook testovi; a11y dorada (timer bez najave).
+
+## 6. Linkovi
 
 - Repo: https://github.com/VilimTrakos/techdingo
 - Live app: https://vilimtrakos.github.io/techdingo/
