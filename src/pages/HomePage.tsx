@@ -8,10 +8,7 @@ import { toLocalDateISO } from '../state/streak';
 
 export function HomePage() {
   const { state } = useProgress();
-  const totalQuestions = TOPICS.reduce(
-    (total, topic) => total + topic.questions.length,
-    0,
-  );
+  const totalQuestions = TOPICS.reduce((total, topic) => total + topic.questionCount, 0);
 
   // Napredak po temi = broj prođenih cjelina (unit lekcija) unutar te teme.
   const topicCards = TOPICS.map((topic) => {
@@ -248,7 +245,7 @@ export function HomePage() {
                     <span>
                       {unitsCompleted}/{unitsTotal} cjelina
                     </span>
-                    <span>{topic.questions.length} pitanja</span>
+                    <span>{topic.questionCount} pitanja</span>
                   </div>
                   <div
                     className="mt-2 h-3 overflow-hidden rounded-full bg-white/80 ring-1 ring-inset ring-ink-400/15"

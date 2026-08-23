@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { getTopic } from '../data/topics';
+import { getTopic, getUnitQuestionCounts } from '../data/topics';
 import { getUnitsForTopic, unitProgressKey } from '../data/units';
 import { useProgress } from '../hooks/useProgress';
 
@@ -64,10 +64,7 @@ export function TopicPage() {
   const units = getUnitsForTopic(topic.id);
   const tone = TOPIC_TONE[topic.id] ?? FALLBACK_TONE;
 
-  const questionCountByUnit = new Map<string, number>();
-  for (const q of topic.questions) {
-    questionCountByUnit.set(q.unitId, (questionCountByUnit.get(q.unitId) ?? 0) + 1);
-  }
+  const questionCountByUnit = getUnitQuestionCounts(topic.id);
 
   const passCounts = units.map(
     (unit) => state.lessons[unitProgressKey(topic.id, unit.id)]?.passCount ?? 0,
@@ -95,7 +92,7 @@ export function TopicPage() {
           {topic.labelHr}
         </h1>
         <p className="mt-2 font-bold text-ink-600">
-          {units.length} cjelina · {topic.questions.length} pitanja · prolazi cjeline redom
+          {units.length} cjelina · {topic.questionCount} pitanja · prolazi cjeline redom
         </p>
         <div className="mx-auto mt-4 flex max-w-md items-center gap-3 rounded-2xl border-2 border-white/90 bg-white/65 px-4 py-3 text-left shadow-sm backdrop-blur-sm">
           <span className="text-2xl" aria-hidden="true">{allDone ? '🏆' : '🗺️'}</span>
