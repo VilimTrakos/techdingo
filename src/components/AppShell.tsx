@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { useProgress } from '../hooks/useProgress';
+import { countStruggledQuestions } from '../lib/review';
 import { resolveHearts } from '../state/hearts';
 import { AuthControl } from './AuthControl';
 import { HeartsDisplay } from './HeartsDisplay';
@@ -17,6 +18,7 @@ const navLinkClass = ({ isActive }: { isActive: boolean }) =>
 export function AppShell() {
   const { state, refillHearts } = useProgress();
   const hearts = resolveHearts(state.hearts).balance;
+  const reviewCount = countStruggledQuestions(state);
   const markSrc = `${import.meta.env.BASE_URL}tech-hedgehog.webp`;
 
   return (
@@ -49,6 +51,11 @@ export function AppShell() {
             <NavLink to="/leaderboard" className={navLinkClass}>
               Ljestvica
             </NavLink>
+            {reviewCount > 0 && (
+              <NavLink to="/review" className={navLinkClass}>
+                Ponovi <span aria-label={`${reviewCount} pitanja čeka`}>({reviewCount})</span>
+              </NavLink>
+            )}
           </nav>
 
           <div className="ml-auto hidden items-center gap-2 lg:flex" aria-label="Tvoj napredak">
