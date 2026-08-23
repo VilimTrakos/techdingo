@@ -1872,5 +1872,187 @@
     ],
     "explanation": "Ne pokreće svaka promjena sve faze, ali geometrijske promjene često zahtijevaju style, layout i paint prije kompozicije.",
     "difficulty": "medium"
+  },
+  {
+    "id": "frontend-110-code-event-loop-order",
+    "topic": "frontend",
+    "unitId": "asinkroni-js",
+    "question": "Kojim se redoslijedom ispisuju slova?",
+    "code": "console.log('A');\nsetTimeout(() => console.log('B'), 0);\nPromise.resolve().then(() => console.log('C'));\nconsole.log('D');",
+    "options": [
+      "A, B, C, D",
+      "A, D, C, B",
+      "A, C, D, B",
+      "C, A, D, B"
+    ],
+    "correctIndex": 1,
+    "explanation": "Sinkroni kod ispisuje A pa D, Promise callback ide u microtask red, a timer u kasniji task red.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-111-code-react-batched-update",
+    "topic": "frontend",
+    "unitId": "react",
+    "question": "Ako je count na početku 0, koja će vrijednost tipično biti prikazana nakon jednog klika?",
+    "code": "function handleClick() {\n  setCount(count + 1);\n  setCount(count + 1);\n}",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "Ovisi samo o brzini procesora"
+    ],
+    "correctIndex": 1,
+    "explanation": "Oba poziva zatvaraju istu vrijednost count=0 i traže postavljanje na 1. Za dva uzastopna povećanja koristi se setCount(c => c + 1).",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-112-code-css-content-box",
+    "topic": "frontend",
+    "unitId": "css-layout",
+    "question": "Kolika je vanjska širina elementa bez margina uz zadani content-box model?",
+    "code": ".card {\n  box-sizing: content-box;\n  width: 100px;\n  padding: 0 20px;\n  border: 2px solid;\n}",
+    "options": [
+      "100 px",
+      "120 px",
+      "140 px",
+      "144 px"
+    ],
+    "correctIndex": 3,
+    "explanation": "Kod content-boxa deklariranih 100 px pokriva sadržaj; lijevi i desni padding dodaju 40 px, a obrubi još 4 px.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-113-multi-native-button",
+    "topic": "frontend",
+    "unitId": "pristupacnost-testiranje",
+    "kind": "multi",
+    "question": "Koje prednosti dobivamo korištenjem izvornog button elementa umjesto div elementa s click handlerom?",
+    "options": [
+      "Ugrađenu semantiku gumba za asistivne tehnologije",
+      "Aktivaciju tipkama Enter i Space bez ručne imitacije",
+      "Sudjelovanje u redoslijedu fokusa bez dodavanja tabIndexa",
+      "Automatsku zaštitu svake aplikacije od XSS-a",
+      "Automatsko slanje bilo kojeg HTTP zahtjeva bez JavaScripta"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Nativna kontrola donosi semantiku, fokus i tipkovničko ponašanje, ali ne rješava sigurnost aplikacije niti proizvoljnu mrežnu logiku.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-114-multi-http-cache-validation",
+    "topic": "frontend",
+    "unitId": "mreza-sigurnost",
+    "kind": "multi",
+    "question": "Koje tvrdnje vrijede za HTTP validaciju cachea pomoću ETag zaglavlja?",
+    "options": [
+      "Klijent može poslati If-None-Match s prethodnim ETagom",
+      "Server može odgovoriti 304 bez ponovnog slanja tijela resursa",
+      "ETag može predstavljati verziju odabranog prikaza resursa",
+      "ETag obavezno šifrira sadržaj resursa",
+      "304 znači da resurs trajno ne postoji"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "ETag je validator reprezentacije. Podudaranje omogućuje 304 Not Modified i ponovnu uporabu lokalnog tijela, ali nije enkripcija.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-115-multi-effect-cleanup",
+    "topic": "frontend",
+    "unitId": "react",
+    "kind": "multi",
+    "question": "Koje resurse React effect često treba očistiti u povratnoj cleanup funkciji?",
+    "options": [
+      "DOM event listener koji je effect registrirao",
+      "Interval ili timeout koji više ne smije raditi",
+      "Pretplatu na vanjski izvor podataka",
+      "Svaku lokalnu const varijablu komponente",
+      "Statički JSX tekst"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Cleanup poništava vanjske efekte koji bi inače ostali aktivni nakon promjene ovisnosti ili unmounta.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-116-fill-event-listener",
+    "topic": "frontend",
+    "unitId": "dom-eventovi",
+    "kind": "fill",
+    "question": "Popuni registraciju i kasnije uklanjanje istog DOM event listenera.",
+    "text": "button.___('click', handleClick); button.___('click', handleClick);",
+    "answers": [
+      "addEventListener",
+      "removeEventListener"
+    ],
+    "distractors": [
+      "dispatchEvent",
+      "preventDefault"
+    ],
+    "explanation": "Listener se uklanja istim tipom događaja i istom referencom funkcije kojom je registriran.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-117-fill-fetch-json",
+    "topic": "frontend",
+    "unitId": "asinkroni-js",
+    "kind": "fill",
+    "question": "Popuni async funkciju koja čeka odgovor i parsira JSON tijelo.",
+    "text": "const response = ___ fetch('/api/user'); const user = await response.___();",
+    "answers": [
+      "await",
+      "json"
+    ],
+    "distractors": [
+      "yield",
+      "text",
+      "send"
+    ],
+    "explanation": "Čeka se i fetch Promise i Promise koji vraća response.json(). Ista riječ await namjerno se koristi u obje praznine.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-118-order-navigation-network",
+    "topic": "frontend",
+    "unitId": "mreza-sigurnost",
+    "kind": "order",
+    "question": "Poredaj pojednostavljene korake prvog HTTPS otvaranja stranice bez dostupnog cachea.",
+    "steps": [
+      "Razriješi naziv domene putem DNS-a",
+      "Uspostavi vezu s odredišnim poslužiteljem",
+      "Dogovori TLS i provjeri certifikat",
+      "Pošalji HTTP zahtjev",
+      "Primi HTTP odgovor",
+      "Parsiranjem HTML-a započni izgradnju DOM-a"
+    ],
+    "explanation": "Prije sigurnog HTTP prometa klijent mora pronaći adresu, povezati se i dogovoriti TLS; tek odgovor daje HTML za parsiranje.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-119-order-accessible-modal",
+    "topic": "frontend",
+    "unitId": "pristupacnost-testiranje",
+    "kind": "order",
+    "question": "Poredaj životni ciklus pristupačnog modalnog dijaloga.",
+    "steps": [
+      "Zapamti element koji je imao fokus",
+      "Prikaži dijalog i označi pozadinski sadržaj nedostupnim za interakciju",
+      "Premjesti fokus na smislen element unutar dijaloga",
+      "Zadrži tipkovnički fokus unutar otvorenog dijaloga",
+      "Zatvori dijalog na korisnikovu radnju ili Escape kada je primjereno",
+      "Vrati fokus na prethodno zapamćeni element"
+    ],
+    "explanation": "Upravljanje fokusom i izoliranje pozadine omogućuju da modal bude razumljiv i upravljiv korisnicima tipkovnice i čitača zaslona.",
+    "difficulty": "hard"
   }
 ]

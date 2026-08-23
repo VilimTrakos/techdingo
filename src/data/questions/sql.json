@@ -1863,7 +1863,11 @@
       "Ručno escapiranje cijelog upita nakon spajanja proizvoljnih stringova",
       "Skrivanje poruke pogreške samo pomoću CSS-a"
     ],
-    "correctIndexes": [0, 1, 2],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Parametri štite vrijednosti, allowlist kontrolira dinamičke nazive poput stupaca, a najmanje ovlasti ograničavaju štetu ako se propust ipak dogodi.",
     "difficulty": "medium"
   },
@@ -1875,8 +1879,16 @@
     "kind": "fill",
     "question": "Popuni dodjelu samo prava čitanja pogleda ulozi za izvještavanje.",
     "text": "GRANT ___ ___ mjesecni_izvjestaj ___ analiticar;",
-    "answers": ["SELECT", "ON", "TO"],
-    "distractors": ["UPDATE", "FROM", "AS"],
+    "answers": [
+      "SELECT",
+      "ON",
+      "TO"
+    ],
+    "distractors": [
+      "UPDATE",
+      "FROM",
+      "AS"
+    ],
     "explanation": "GRANT SELECT ON objekt TO uloga daje pravo čitanja odabranog objekta bez INSERT, UPDATE, DELETE ili administrativnih ovlasti.",
     "difficulty": "easy"
   },
@@ -1987,5 +1999,189 @@
     ],
     "explanation": "Korelacija povezuje podupit s vanjskim retkom. Fizički plan ne mora doslovno izvršavati podupit jednom po retku jer ga optimizator može dekorrelirati.",
     "difficulty": "medium"
+  },
+  {
+    "id": "sql-110-code-left-join-count",
+    "topic": "sql",
+    "unitId": "spajanje-i-skupovi",
+    "question": "Tablica korisnici sadrži Anu i Branka, a narudzbe dvije narudžbe samo za Anu. Koji rezultat vraća upit?",
+    "code": "SELECT k.ime, COUNT(n.id) AS broj\nFROM korisnici k\nLEFT JOIN narudzbe n ON n.korisnik_id = k.id\nGROUP BY k.id, k.ime\nORDER BY k.ime;",
+    "options": [
+      "Samo Ana | 2",
+      "Ana | 2 i Branko | 0",
+      "Ana | 2 i Branko | NULL",
+      "Ana | 1 i Branko | 1"
+    ],
+    "correctIndex": 1,
+    "explanation": "LEFT JOIN zadržava Branka i bez podudaranja, a COUNT(n.id) broji samo vrijednosti koje nisu NULL pa za njega vraća 0.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-111-code-null-comparison",
+    "topic": "sql",
+    "unitId": "tipovi-i-null",
+    "question": "Što nije u redu s ovim upitom ako treba pronaći retke bez datuma brisanja?",
+    "code": "SELECT id\nFROM dokumenti\nWHERE obrisano_at = NULL;",
+    "options": [
+      "Treba koristiti WHERE obrisano_at IS NULL",
+      "Treba koristiti WHERE obrisano_at == NULL",
+      "NULL se mora zamijeniti praznim stringom u tablici",
+      "Upit je ispravan i pouzdano vraća sve NULL retke"
+    ],
+    "correctIndex": 0,
+    "explanation": "U SQL-u usporedba s NULL pomoću = daje UNKNOWN. Za provjeru odsutne vrijednosti koristi se IS NULL.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-112-code-window-running-total",
+    "topic": "sql",
+    "unitId": "agregacija-i-window",
+    "question": "Što izračunava izraz ukupno_do_sada za svaki račun?",
+    "code": "SELECT id, iznos,\n  SUM(iznos) OVER (ORDER BY datum, id) AS ukupno_do_sada\nFROM racuni;",
+    "options": [
+      "Ukupan zbroj svih računa ponovljen u svakom retku",
+      "Kumulativni zbroj od prvog do trenutačnog retka u zadanom poretku",
+      "Redni broj računa bez obzira na iznos",
+      "Prosjek samo prethodna dva računa"
+    ],
+    "correctIndex": 1,
+    "explanation": "Uz ORDER BY u prozoru SUM računa tekući zbroj kroz poredane retke, bez sažimanja retka kao kod GROUP BY.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-113-multi-composite-index",
+    "topic": "sql",
+    "unitId": "indeksi-performanse",
+    "kind": "multi",
+    "question": "Koje tvrdnje općenito vrijede za složeni indeks nad stupcima (prezime, ime)?",
+    "options": [
+      "Može pomoći upitu koji filtrira po prezimenu",
+      "Može pomoći upitu koji filtrira po prezimenu i imenu",
+      "Uvijek jednako dobro ubrzava upit koji filtrira samo po imenu",
+      "Indeks zauzima prostor i može poskupjeti upise",
+      "Jamči da tablica više nikad neće trebati sortiranje"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      3
+    ],
+    "explanation": "B-tree složeni indeks tipično koristi vodeći prefiks. Dodatni indeks povećava prostor i trošak održavanja, a ne uklanja svako moguće sortiranje.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-114-multi-transaction-properties",
+    "topic": "sql",
+    "unitId": "transakcije",
+    "kind": "multi",
+    "question": "Koje su dobre prakse za kratku i pouzdanu baznu transakciju?",
+    "options": [
+      "Obuhvatiti samo operacije koje moraju biti atomske",
+      "Držati transakciju otvorenom dok korisnik razmišlja u sučelju",
+      "Dosljedno zaključavati resurse istim redoslijedom kada je moguće",
+      "Predvidjeti retry za odabrane prolazne konflikte poput deadlocka",
+      "Ignorirati svaku pogrešku COMMIT naredbe"
+    ],
+    "correctIndexes": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Kratke transakcije smanjuju kontenciju. Stabilan redoslijed zaključavanja smanjuje deadlocke, a kontrolirani retry rješava prolazne konflikte.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sql-115-multi-explain-plan",
+    "topic": "sql",
+    "unitId": "indeksi-performanse",
+    "kind": "multi",
+    "question": "Koji nalazi iz plana izvršavanja mogu upućivati na problem performansi?",
+    "options": [
+      "Skeniranje vrlo mnogo redaka za rezultat od nekoliko redaka",
+      "Velika razlika između procijenjenog i stvarnog broja redaka",
+      "Sortiranje koje se prelijeva na disk",
+      "Sama činjenica da upit koristi SELECT",
+      "Svako korištenje primarnog ključa"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Prekomjerno skeniranje, pogrešne procjene kardinalnosti i disk spill često otkrivaju loš pristup podacima ili nedostatne resurse/statistike.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sql-116-fill-select-clauses",
+    "topic": "sql",
+    "unitId": "osnove-upita",
+    "kind": "fill",
+    "question": "Popuni klauzule tako da upit dohvati aktivne korisnike i sortira ih po imenu.",
+    "text": "SELECT ime ___ korisnici ___ aktivan = TRUE ___ ime;",
+    "answers": [
+      "FROM",
+      "WHERE",
+      "ORDER BY"
+    ],
+    "distractors": [
+      "HAVING",
+      "GROUP BY"
+    ],
+    "explanation": "FROM bira izvor, WHERE filtrira retke, a ORDER BY određuje poredak rezultata.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-117-fill-update-null",
+    "topic": "sql",
+    "unitId": "izmjene-podataka",
+    "kind": "fill",
+    "question": "Popuni naredbu koja deaktivira korisnike kojima nije zabilježena prijava.",
+    "text": "UPDATE korisnici ___ aktivan = FALSE ___ zadnja_prijava ___ NULL;",
+    "answers": [
+      "SET",
+      "WHERE",
+      "IS"
+    ],
+    "distractors": [
+      "VALUES",
+      "HAVING",
+      "EQUALS"
+    ],
+    "explanation": "UPDATE koristi SET za nove vrijednosti, WHERE za odabir redaka i IS NULL za provjeru nepoznate vrijednosti.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-118-order-logical-query-processing",
+    "topic": "sql",
+    "unitId": "agregacija-i-window",
+    "kind": "order",
+    "question": "Poredaj glavne faze logičke obrade SELECT upita.",
+    "steps": [
+      "Odredi izvor podataka s FROM",
+      "Filtriraj retke s WHERE",
+      "Oblikuj grupe s GROUP BY",
+      "Filtriraj grupe s HAVING",
+      "Izračunaj izlazni SELECT popis",
+      "Poredaj rezultat s ORDER BY"
+    ],
+    "explanation": "Logički poredak objašnjava zašto alias iz SELECT popisa obično nije dostupan u WHERE, ali može biti dostupan u ORDER BY.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-119-order-expand-contract-column",
+    "topic": "sql",
+    "unitId": "kljucevi-i-dizajn",
+    "kind": "order",
+    "question": "Poredaj sigurne korake expand-contract migracije za novi obavezni stupac u velikoj tablici.",
+    "steps": [
+      "Dodaj novi stupac tako da je privremeno nullable ili ima kompatibilan default",
+      "Objavi aplikaciju koja razumije staru i novu shemu",
+      "Postupno popuni vrijednosti postojećih redaka",
+      "Prebaci sva čitanja i upise na novi stupac",
+      "Provjeri podatke i tek zatim uvedi NOT NULL ograničenje",
+      "Ukloni privremenu kompatibilnost sa starom shemom"
+    ],
+    "explanation": "Expand-contract održava kompatibilnost tijekom rollouta i odvaja potencijalno skupi backfill od završnog pooštravanja sheme.",
+    "difficulty": "hard"
   }
 ]

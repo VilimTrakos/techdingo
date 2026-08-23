@@ -1029,5 +1029,190 @@
     ],
     "explanation": "Crveni test potvrđuje da provjera može uhvatiti nedostatak, minimalna implementacija daje brzu povratnu informaciju, a refaktoriranje slijedi uz zelene testove.",
     "difficulty": "medium"
+  },
+  {
+    "id": "general-106-code-binary-search-complexity",
+    "topic": "general",
+    "unitId": "algoritmi",
+    "question": "Koja je vremenska složenost ove petlje nad sortiranim poljem od n elemenata?",
+    "code": "while (low <= high) {\n  const mid = Math.floor((low + high) / 2);\n  if (a[mid] === target) return mid;\n  if (a[mid] < target) low = mid + 1;\n  else high = mid - 1;\n}",
+    "options": [
+      "O(1)",
+      "O(log n)",
+      "O(n)",
+      "O(n log n)"
+    ],
+    "correctIndex": 1,
+    "explanation": "Svaki korak odbacuje približno polovicu preostalog raspona, pa broj iteracija raste logaritamski.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-107-code-stack-parentheses",
+    "topic": "general",
+    "unitId": "strukture-podataka",
+    "question": "Koja je najprikladnija struktura podataka za varijablu open pri provjeri pravilno ugniježđenih zagrada?",
+    "code": "for (const ch of input) {\n  if (isOpening(ch)) open.push(ch);\n  else if (!matches(open.pop(), ch)) return false;\n}",
+    "options": [
+      "Red (queue)",
+      "Stog (stack)",
+      "Min-heap",
+      "Usmjereni graf"
+    ],
+    "correctIndex": 1,
+    "explanation": "Posljednja otvorena zagrada mora se prva zatvoriti, što je LIFO ponašanje stoga.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-108-code-test-boundary-bug",
+    "topic": "general",
+    "unitId": "testiranje-kvaliteta",
+    "question": "Koji test najizravnije otkriva rubnu pogrešku u funkciji koja treba prihvatiti dob od 18 nadalje?",
+    "code": "function isAdult(age) {\n  return age > 18;\n}",
+    "options": [
+      "Očekuj da isAdult(18) vrati true",
+      "Očekuj da isAdult(30) vrati true",
+      "Očekuj da isAdult(10) vrati false",
+      "Očekuj da naziv funkcije bude string"
+    ],
+    "correctIndex": 0,
+    "explanation": "Vrijednost točno na granici otkriva da je korišten > umjesto >=. Ostali primjeri mogu proći unatoč grešci.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-109-multi-hash-map",
+    "topic": "general",
+    "unitId": "strukture-podataka",
+    "kind": "multi",
+    "question": "Koje tvrdnje općenito vrijede za hash mapu?",
+    "options": [
+      "Prosječno može dohvatiti vrijednost po ključu u O(1)",
+      "Kolizije različitih ključeva moraju se nekako razriješiti",
+      "Loša hash funkcija može pogoršati performanse",
+      "Ključeve uvijek održava sortirane bez dodatnog troška",
+      "U najgorem slučaju svaka operacija mora biti O(1)"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Očekivana konstantna složenost ovisi o raspodjeli i kontroli popunjenosti; najgori slučaj može biti znatno lošiji, a sortiranost nije osnovno svojstvo.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-110-multi-code-review",
+    "topic": "general",
+    "unitId": "testiranje-kvaliteta",
+    "kind": "multi",
+    "question": "Koje su konstruktivne prakse u code reviewu?",
+    "options": [
+      "Komentar povezati s konkretnim rizikom ili pravilom",
+      "Razlikovati blokirajuću grešku od neobaveznog prijedloga",
+      "Pregledavati manje, fokusirane promjene kada je moguće",
+      "Napadati autora umjesto koda kako bi poruka bila jasnija",
+      "Odobriti bez čitanja ako testovi prolaze"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Dobar review je specifičan, prioritetizira nalaze i ostaje usmjeren na promjenu. Automatizirani testovi ne zamjenjuju provjeru dizajna i namjere.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-111-multi-distributed-tradeoffs",
+    "topic": "general",
+    "unitId": "sustavi-koncepti",
+    "kind": "multi",
+    "question": "Koje posljedice treba razmotriti pri horizontalnom skaliranju stateful servisa?",
+    "options": [
+      "Način raspodjele ili dijeljenja stanja među instancama",
+      "Usmjeravanje zahtjeva i otkrivanje zdravih instanci",
+      "Konzistentnost tijekom konkurentnih upisa",
+      "Pretpostavku da mreža nikada ne kasni niti prekida",
+      "Jamstvo da dodavanje instanci automatski ubrzava svaku baznu operaciju"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Stateful skaliranje uvodi koordinaciju, raspodjelu podataka i odluke o konzistentnosti; mrežni kvarovi i uska grla baze i dalje postoje.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "general-112-fill-git-feature-branch",
+    "topic": "general",
+    "unitId": "git-verzioniranje",
+    "kind": "fill",
+    "question": "Popuni osnovni tijek stvaranja grane i spremanja promjene.",
+    "text": "git ___ -c feature/login; git ___ src/login.ts; git ___ -m 'Add login validation'",
+    "answers": [
+      "switch",
+      "add",
+      "commit"
+    ],
+    "distractors": [
+      "clone",
+      "stash",
+      "fetch"
+    ],
+    "explanation": "switch -c stvara i aktivira granu, add priprema sadržaj za indeks, a commit zapisuje pripremljeni snapshot.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-113-fill-big-o-growth",
+    "topic": "general",
+    "unitId": "algoritmi",
+    "kind": "fill",
+    "question": "Popuni tipične složenosti operacija.",
+    "text": "Binarno pretraživanje sortiranog polja je ___, jedan potpuni prolaz je ___, a dvije ugniježđene petlje do n često su ___.",
+    "answers": [
+      "O(log n)",
+      "O(n)",
+      "O(n²)"
+    ],
+    "distractors": [
+      "O(1)",
+      "O(2ⁿ)",
+      "O(n!)"
+    ],
+    "explanation": "Prepolavljanje daje logaritamski rast, jedan prolaz linearni, a puni parovi dviju petlji kvadratni rast.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-114-order-tdd-cycle",
+    "topic": "general",
+    "unitId": "testiranje-kvaliteta",
+    "kind": "order",
+    "question": "Poredaj jedan mali red-green-refactor TDD ciklus.",
+    "steps": [
+      "Odaberi jedno malo očekivano ponašanje",
+      "Napiši test koji opisuje to ponašanje",
+      "Pokreni test i potvrdi da pada iz pravog razloga",
+      "Napiši najmanju promjenu koja test čini zelenim",
+      "Pokreni cijeli relevantni skup testova",
+      "Refaktoriraj uz zadržavanje zelenih testova"
+    ],
+    "explanation": "Crveni test potvrđuje da provjera može uhvatiti nedostatak, minimalna implementacija daje feedback, a refaktoriranje slijedi tek uz sigurnosnu mrežu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-115-order-git-conflict-resolution",
+    "topic": "general",
+    "unitId": "git-verzioniranje",
+    "kind": "order",
+    "question": "Poredaj uobičajene korake rješavanja merge konflikta nakon što ga Git prijavi.",
+    "steps": [
+      "Pregledaj popis konfliktnih datoteka i kontekst obje promjene",
+      "Uredi datoteke u željeni konačni sadržaj i ukloni konfliktne oznake",
+      "Pokreni relevantne provjere ili testove",
+      "Označi razriješene datoteke naredbom git add",
+      "Dovrši merge commit ili nastavi prekinutu rebase operaciju",
+      "Pregledaj konačnu povijest i stanje radnog stabla"
+    ],
+    "explanation": "Konflikt se rješava razumijevanjem namjere obje strane, provjerom rezultata i tek potom označavanjem i dovršavanjem Git operacije.",
+    "difficulty": "medium"
   }
 ]

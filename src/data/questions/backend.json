@@ -1448,5 +1448,190 @@
     ],
     "explanation": "Gateway je dobar za cross-cutting brige na rubu. Domenska logika treba ostati u servisima kako gateway ne bi postao novi monolit.",
     "difficulty": "medium"
+  },
+  {
+    "id": "backend-106-code-missing-await",
+    "topic": "backend",
+    "unitId": "http-api",
+    "question": "Koji je glavni problem u handleru ako findUser vraća Promise?",
+    "code": "app.get('/users/:id', async (req, res) => {\n  const user = findUser(req.params.id);\n  res.json(user);\n});",
+    "options": [
+      "Nedostaje await prije findUser pa se pokušava poslati Promise umjesto rezultata",
+      "Async handler ne smije primati req i res",
+      "Parametri rute dostupni su samo u response objektu",
+      "JSON odgovor uvijek mora imati status 201"
+    ],
+    "correctIndex": 0,
+    "explanation": "Asinkroni rezultat treba pričekati, a zatim obraditi mogući nedostatak korisnika i pogreške prema pravilima frameworka.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-107-code-sql-injection",
+    "topic": "backend",
+    "unitId": "autentikacija-sigurnost",
+    "question": "Koja je najvažnija sigurnosna ispravka ovog koda?",
+    "code": "const sql = `SELECT * FROM users WHERE email = '${req.query.email}'`;\nconst rows = await db.query(sql);",
+    "options": [
+      "Pretvoriti SQL string u velika slova",
+      "Koristiti parametrizirani upit i vrijednost poslati odvojeno od SQL teksta",
+      "Sakriti query parametar CSS-om",
+      "Dodati duži timeout na bazu"
+    ],
+    "correctIndex": 1,
+    "explanation": "Spajanje korisničkog unosa u SQL omogućuje injection. Parametri čuvaju odvojenost strukture upita i podataka.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-108-code-cache-aside-stale",
+    "topic": "backend",
+    "unitId": "kesiranje-skaliranje",
+    "question": "Koji problem ostaje nakon uspješnog ažuriranja baze u prikazanom cache-aside kodu?",
+    "code": "async function renameUser(id, name) {\n  await db.users.update(id, { name });\n  return { id, name };\n}",
+    "options": [
+      "Cache može nastaviti vraćati staro ime ako se odgovarajući ključ ne invalidira ili osvježi",
+      "Baza automatski briše sve cache ključeve pa podaci nestaju",
+      "Funkcija ne smije vratiti objekt",
+      "Ažuriranja nikada ne smiju biti asinkrona"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cache-aside zahtijeva strategiju invalidacije ili osvježavanja nakon upisa; inače čitanje može poslužiti zastarjelu vrijednost.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "backend-109-multi-jwt-validation",
+    "topic": "backend",
+    "unitId": "autentikacija-sigurnost",
+    "kind": "multi",
+    "question": "Što servis treba provjeriti prije prihvaćanja potpisanog JWT access tokena?",
+    "options": [
+      "Potpis dopuštenim algoritmom i odgovarajućim ključem",
+      "Vrijeme isteka tokena",
+      "Očekivanog izdavatelja i publiku kada ih sustav koristi",
+      "Da payload nije Base64URL kodiran",
+      "Da korisnik nikad prije nije promijenio lozinku, bez provjere ikakvog stanja"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Ispravan potpis nije dovoljan ako token nije namijenjen tom servisu, dolazi od pogrešnog izdavatelja ili je istekao.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "backend-110-multi-retry-safety",
+    "topic": "backend",
+    "unitId": "otpornost-distribuirani",
+    "kind": "multi",
+    "question": "Koje mjere čine retry udaljenog poziva sigurnijim tijekom djelomičnog kvara?",
+    "options": [
+      "Eksponencijalni backoff s jitterom",
+      "Ograničen broj pokušaja i ukupni deadline",
+      "Idempotency key za operaciju koja stvara učinak",
+      "Beskonačno trenutačno ponavljanje bez pauze",
+      "Retry svake 4xx pogreške bez razlikovanja uzroka"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Backoff i jitter smanjuju sinkronizirani pritisak, budget ograničava štetu, a idempotency key sprječava dupli poslovni učinak.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "backend-111-multi-observability-signals",
+    "topic": "backend",
+    "unitId": "observability",
+    "kind": "multi",
+    "question": "Koji su korisni signali za dijagnostiku sporog distribuiranog zahtjeva?",
+    "options": [
+      "Trace koji povezuje spanove kroz servise",
+      "Histogram latencije s percentilima",
+      "Strukturirani logovi s correlation ili trace ID-em",
+      "Samo boja pozadine administratorskog sučelja",
+      "Broj redaka izvornog koda bez konteksta"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Trace pokazuje put zahtjeva, metrički percentili opseg problema, a korelirani logovi detalje pojedinog događaja.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-112-fill-conditional-request",
+    "topic": "backend",
+    "unitId": "http-api",
+    "kind": "fill",
+    "question": "Popuni HTTP validaciju cacheiranog resursa.",
+    "text": "Server vraća validator u zaglavlju ___. Klijent ga šalje u ___. Ako se resurs nije promijenio, server vraća status ___.",
+    "answers": [
+      "ETag",
+      "If-None-Match",
+      "304"
+    ],
+    "distractors": [
+      "Authorization",
+      "Set-Cookie",
+      "201"
+    ],
+    "explanation": "ETag i If-None-Match omogućuju uvjetni GET; 304 kaže klijentu da može ponovno koristiti spremljeno tijelo.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "backend-113-fill-bearer-header",
+    "topic": "backend",
+    "unitId": "autentikacija-sigurnost",
+    "kind": "fill",
+    "question": "Popuni standardni oblik slanja bearer access tokena.",
+    "text": "Klijent šalje zaglavlje ___ s vrijednošću ___ <token> preko veze zaštićene protokolom ___.",
+    "answers": [
+      "Authorization",
+      "Bearer",
+      "HTTPS"
+    ],
+    "distractors": [
+      "Location",
+      "Basic",
+      "FTP"
+    ],
+    "explanation": "Bearer token ide u Authorization zaglavlje i mora se štititi TLS-om jer posjedovanje tokena tipično daje pristup.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-114-order-tls-handshake",
+    "topic": "backend",
+    "unitId": "autentikacija-sigurnost",
+    "kind": "order",
+    "question": "Poredaj pojednostavljene faze TLS uspostave prije HTTP zahtjeva.",
+    "steps": [
+      "Klijent šalje podržane TLS parametre i slučajnu vrijednost",
+      "Server odabire parametre i šalje certifikat",
+      "Klijent provjerava lanac certifikata i naziv poslužitelja",
+      "Strane izvode zajedničke ključeve sesije",
+      "Obje strane potvrđuju da će daljnje poruke biti zaštićene",
+      "Klijent šalje HTTP podatke kroz šifrirani kanal"
+    ],
+    "explanation": "Točni detalji ovise o TLS verziji, ali identitet i parametri moraju se provjeriti prije zaštićenog aplikacijskog prometa.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "backend-115-order-message-consumption",
+    "topic": "backend",
+    "unitId": "poruke-redovi",
+    "kind": "order",
+    "question": "Poredaj siguran tijek obrade poruke uz at-least-once isporuku.",
+    "steps": [
+      "Consumer primi poruku i njezin stabilni message ID",
+      "Provjeri je li ID već obrađen",
+      "Atomski zapiši poslovnu promjenu i oznaku obrađenog ID-a",
+      "Potvrdi poruku brokeru tek nakon uspješnog commita",
+      "Pri prolaznoj pogrešci dopusti kontroliranu ponovnu dostavu",
+      "Nakon iscrpljenih pokušaja premjesti problematičnu poruku u dead-letter red"
+    ],
+    "explanation": "Deduplikacija i atomski poslovni upis čine ponovnu dostavu bezopasnom, a potvrda nakon commita sprječava gubitak učinka.",
+    "difficulty": "hard"
   }
 ]
