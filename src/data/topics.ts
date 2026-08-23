@@ -9,6 +9,7 @@ import sigurnostQuestions from './questions/sigurnost.json';
 import cudniKutoviQuestions from './questions/cudni-kutovi.json';
 import jeziciQuestions from './questions/jezici.json';
 import arhitekturaQuestions from './questions/arhitektura.json';
+import praksaQuestions from './questions/praksa.json';
 
 export interface TopicDefinition {
   id: string;
@@ -27,6 +28,7 @@ export const TOPICS: TopicDefinition[] = [
   { id: 'cudni-kutovi', labelHr: 'Čudni kutovi', questions: cudniKutoviQuestions as Question[] },
   { id: 'jezici', labelHr: 'Jezici', questions: jeziciQuestions as Question[] },
   { id: 'arhitektura', labelHr: 'Arhitektura', questions: arhitekturaQuestions as Question[] },
+  { id: 'praksa', labelHr: 'Praksa', questions: praksaQuestions as Question[] },
 ];
 
 export function getTopic(topicId: string): TopicDefinition | undefined {

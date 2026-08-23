@@ -103,6 +103,15 @@ export const UNITS: Record<string, UnitDefinition[]> = {
     { id: 'skaliranje', topicId: 'arhitektura', labelHr: 'Skaliranje', description: 'Bez stanja, uska grla i protupritisak.' },
     { id: 'system-design', topicId: 'arhitektura', labelHr: 'System design', description: 'Zahtjevi, procjene i klasični zadaci.' },
   ],
+  praksa: [
+    { id: 'agilni-rad', topicId: 'praksa', labelHr: 'Agilni rad', description: 'Scrum, Kanban, sprint i retrospektiva.' },
+    { id: 'code-review', topicId: 'praksa', labelHr: 'Pregled koda', description: 'Što tražiti, kako pisati primjedbe.' },
+    { id: 'procjena-i-dug', topicId: 'praksa', labelHr: 'Procjene i tehnički dug', description: 'Rasponi, opseg, dug i čišćenje.' },
+    { id: 'izdanja-i-verzije', topicId: 'praksa', labelHr: 'Izdanja i verzije', description: 'Semver, popis promjena i gašenje.' },
+    { id: 'licence', topicId: 'praksa', labelHr: 'Licence', description: 'MIT, Apache, GPL, AGPL i ovisnosti.' },
+    { id: 'dokumentacija', topicId: 'praksa', labelHr: 'Dokumentacija', description: 'README, ADR, runbook i zašto umjesto što.' },
+    { id: 'razgovor-za-posao', topicId: 'praksa', labelHr: 'Razgovor za posao', description: 'Tehnički dio, priče o iskustvu i pitanja.' },
+  ],
   general: [
     { id: 'strukture-podataka', topicId: 'general', labelHr: 'Strukture podataka', description: 'Polja, stogovi, redovi, mape i stabla.' },
     { id: 'algoritmi', topicId: 'general', labelHr: 'Algoritmi', description: 'Big-O, pretraživanje, sortiranje i grafovi.' },

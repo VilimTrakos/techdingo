@@ -1,0 +1,1136 @@
+[
+  {
+    "id": "praksa-uvod-agilni",
+    "topic": "praksa",
+    "unitId": "agilni-rad",
+    "question": "Što je glavna ideja agilnog rada?",
+    "options": [
+      "Isporučivati u kratkim ciklusima i učiti iz povratne informacije",
+      "Detaljno isplanirati cijeli projekt prije prvog retka koda",
+      "Raditi bez dokumentacije i formalnih sastanaka",
+      "Skratiti rokove tako da tim radi brže nego prije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Agilno nije brže nego prilagodljivije. Kratki ciklusi postoje da se kriva pretpostavka otkrije za tjedan, a ne za godinu.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "praksa-001-scrum-kanban",
+    "topic": "praksa",
+    "unitId": "agilni-rad",
+    "question": "Koja je razlika između Scruma i Kanbana?",
+    "options": [
+      "Scrum radi u sprintevima, Kanban u neprekidnom toku",
+      "Kanban radi u sprintevima, Scrum u neprekidnom toku",
+      "Scrum se koristi za razvoj, Kanban za održavanje",
+      "Kanban zahtijeva voditelja, dok Scrum ne zahtijeva"
+    ],
+    "correctIndex": 0,
+    "explanation": "Scrum planira u fiksnim razdobljima, Kanban ograničava koliko je posla istovremeno u radu. Kanban bolje pristaje timovima s nepredvidivim dolaznim poslom.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-002-standup",
+    "topic": "praksa",
+    "unitId": "agilni-rad",
+    "question": "Čemu služi dnevni sastanak tima?",
+    "options": [
+      "Da se uskladi rad i rano izlože prepreke",
+      "Da se svakome provjeri je li obavio zadatke",
+      "Da se raspodijele novi zadaci za taj dan",
+      "Da se zabilježi napredak za izvještaj upravi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kad postane izvještaj nadređenome, gubi svrhu i pretvara se u trošak. Cilj je da netko kaže 'zapeo sam' prije nego izgubi dva dana.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-003-retrospective",
+    "topic": "praksa",
+    "unitId": "agilni-rad",
+    "question": "Zašto je retrospektiva najvažniji agilni sastanak?",
+    "options": [
+      "Jer je jedino mjesto na kojem tim mijenja način rada",
+      "Jer se na njoj planira posao za sljedeći sprint",
+      "Jer se na njoj utvrđuje tko je propustio rok",
+      "Jer se na njoj procjenjuje složenost zadataka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez retrospektive tim ponavlja iste greške u svakom ciklusu. Retrospektiva bez ijedne promjene je isto što i nikakva.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-004-story-points",
+    "topic": "praksa",
+    "unitId": "agilni-rad",
+    "question": "Zašto se složenost procjenjuje bodovima, a ne satima?",
+    "options": [
+      "Jer se ljudi lakše slažu oko relativne veličine nego oko trajanja",
+      "Jer bodovi omogućuju točniju procjenu roka isporuke",
+      "Jer se bodovi ne mogu koristiti za mjerenje učinka",
+      "Jer su sati rezervirani za praćenje troška projekta"
+    ],
+    "correctIndex": 0,
+    "explanation": "Procjena u satima nosi lažnu preciznost i različita je za svakog člana. Bodovi mjere veličinu, a brzina tima ih s vremenom prevede u vrijeme.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-005-velocity-misuse",
+    "topic": "praksa",
+    "unitId": "agilni-rad",
+    "question": "Zašto je brzina tima loš pokazatelj učinka?",
+    "options": [
+      "Jer se lako napuše većim procjenama, bez ijednog dodatnog rezultata",
+      "Jer se ne može mjeriti u timovima koji rade u Kanbanu",
+      "Jer ovisi o broju članova tima u pojedinom sprintu",
+      "Jer se izračunava tek nakon nekoliko dovršenih sprintova"
+    ],
+    "correctIndex": 0,
+    "explanation": "Čim brzina postane cilj, prestaje biti mjera. To je poznato kao Goodhartov zakon i vrijedi za gotovo svaki pokazatelj.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-006-wip-limit",
+    "topic": "praksa",
+    "unitId": "agilni-rad",
+    "question": "Zašto se ograničava broj zadataka u radu?",
+    "options": [
+      "Jer previše započetog, a nedovršenog posla usporava cijeli tim",
+      "Jer svaki član smije raditi najviše na jednom zadatku",
+      "Jer se time smanjuje broj zadataka na popisu čekanja",
+      "Jer se time skraćuje trajanje pojedinog zadatka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Deset započetih zadataka znači deset stvari koje čekaju i nula isporučenih. Ograničenje prisiljava tim da dovršava prije nego započinje.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-007-agile-facts",
+    "topic": "praksa",
+    "unitId": "agilni-rad",
+    "kind": "multi",
+    "question": "Što je točno o agilnom radu?",
+    "options": [
+      "Kratki ciklusi skraćuju petlju povratne informacije",
+      "Retrospektiva postoji da se način rada mijenja",
+      "Ograničenje posla u radu ubrzava dovršavanje",
+      "Agilno znači raditi bez ikakvog planiranja",
+      "Procjena u bodovima izbjegava lažnu preciznost"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Agilno planira češće i na kraće, ne manje. Izostanak plana nije agilnost nego improvizacija.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-008-agile-terms",
+    "topic": "praksa",
+    "unitId": "agilni-rad",
+    "kind": "fill",
+    "question": "Dopuni agilne pojmove.",
+    "text": "Fiksno razdoblje u kojem tim isporučuje zaokruženu cjelinu zove se ___, a sastanak na kojem tim preispituje vlastiti način rada zove se ___.",
+    "answers": [
+      "sprint",
+      "retrospektiva"
+    ],
+    "distractors": [
+      "iteracija",
+      "planiranje"
+    ],
+    "explanation": "Sprint bez retrospektive daje ritam bez učenja. Upravo se ta druga polovica najčešće preskoči kad je gužva.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-009-sprint",
+    "topic": "praksa",
+    "unitId": "agilni-rad",
+    "kind": "order",
+    "question": "Poredaj tijek jednog sprinta.",
+    "steps": [
+      "Odaberi posao iz popisa čekanja",
+      "Dogovori cilj sprinta",
+      "Radi i dnevno usklađuj napredak",
+      "Pokaži isporučeno dionicima",
+      "Preispitaj način rada i dogovori promjenu"
+    ],
+    "explanation": "Prikaz rezultata i retrospektiva su dvije različite stvari: prva gleda proizvod, druga proces.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "praksa-uvod-review",
+    "topic": "praksa",
+    "unitId": "code-review",
+    "question": "Čemu prvenstveno služi pregled koda?",
+    "options": [
+      "Da se greške i nejasnoće uhvate prije nego uđu u glavnu granu",
+      "Da se utvrdi tko je odgovoran za greške u kodu",
+      "Da se provjeri je li kod napisan u dogovorenom stilu",
+      "Da voditelj tima odobri rad svakog programera"
+    ],
+    "correctIndex": 0,
+    "explanation": "Usput se širi znanje o sustavu, što je često vrjednije od uhvaćenih grešaka. Stil prepusti alatu, ne čovjeku.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "praksa-010-pr-size",
+    "topic": "praksa",
+    "unitId": "code-review",
+    "question": "Zašto je veliki pull request problem?",
+    "options": [
+      "Jer kvaliteta pregleda naglo pada s brojem izmijenjenih redaka",
+      "Jer se veliki zahtjevi sporije spajaju u glavnu granu",
+      "Jer sustav za verzioniranje teže obrađuje velike izmjene",
+      "Jer se veliki zahtjevi teže vraćaju unatrag nakon spajanja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Na pedeset redaka dobiješ konkretne primjedbe, na tisuću 'izgleda dobro'. Veliki zahtjev zapravo znači izostanak pregleda.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-011-nit",
+    "topic": "praksa",
+    "unitId": "code-review",
+    "question": "Kako se označava primjedba koja ne mora blokirati spajanje?",
+    "options": [
+      "Jasnom oznakom da je riječ o sitnici, npr. sitno",
+      "Postavljanjem primjedbe kao pitanja autoru",
+      "Izostavljanjem primjedbe do sljedećeg pregleda",
+      "Slanjem primjedbe autoru izravnom porukom"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez te oznake autor ne zna što stvarno mora popraviti. Miješanje sitnica i ozbiljnih nalaza usporava svaki pregled.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-012-review-speed",
+    "topic": "praksa",
+    "unitId": "code-review",
+    "question": "Zašto je brzina pregleda važna koliko i njegova temeljitost?",
+    "options": [
+      "Jer autor u međuvremenu gubi kontekst i posao stoji",
+      "Jer stariji zahtjevi teže prolaze automatske provjere",
+      "Jer se pregled nakon nekoliko dana ne može dovršiti",
+      "Jer se broj primjedbi povećava s vremenom čekanja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zahtjev koji čeka dva dana blokira i autora i sve što ovisi o njemu. Brz pregled s manje primjedbi obično vrijedi više od sporog i savršenog.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-013-review-tone",
+    "topic": "praksa",
+    "unitId": "code-review",
+    "question": "Zašto se primjedba piše o kodu, a ne o osobi?",
+    "options": [
+      "Jer se tako rasprava zadržava na rješenju, a ne na obrani",
+      "Jer se komentari kasnije javno objavljuju uz kod",
+      "Jer autor inače ne smije odgovoriti na primjedbu",
+      "Jer se time skraćuje vrijeme potrebno za pregled"
+    ],
+    "correctIndex": 0,
+    "explanation": "'Ova funkcija ima dvije odgovornosti' i 'ti ne znaš pisati funkcije' traže isto, a daju potpuno različit razgovor.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-014-review-what",
+    "topic": "praksa",
+    "unitId": "code-review",
+    "question": "Što je najvrjednije tražiti u pregledu koda?",
+    "options": [
+      "Je li rješenje ispravno i razumljivo za sljedećeg čitatelja",
+      "Je li kod napisan u dogovorenom stilu i s ispravnim razmacima",
+      "Je li autor upotrijebio najkraću moguću varijantu koda",
+      "Je li broj redaka manji nego u prethodnom rješenju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Stil i formatiranje su posao lintera i formatera. Čovjek treba tražiti ono što stroj ne može: ispravnost, namjeru i rubne slučajeve.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-015-approve-doubt",
+    "topic": "praksa",
+    "unitId": "code-review",
+    "question": "Što učiniti kad ne razumiješ dio koda koji pregledavaš?",
+    "options": [
+      "Pitati autora, jer nejasnoća je nalaz sam po sebi",
+      "Odobriti spajanje jer autor bolje poznaje taj dio",
+      "Odbiti pregled i prepustiti ga iskusnijem kolegi",
+      "Pretpostaviti da je ispravno ako testovi prolaze"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ako ti danas nije jasno, neće biti ni njemu za pola godine. Pitanje u pregledu često vodi do boljeg imena ili komentara.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-016-good-review",
+    "topic": "praksa",
+    "unitId": "code-review",
+    "kind": "multi",
+    "question": "Što čini dobar pregled koda?",
+    "options": [
+      "Mali, zaokružen skup izmjena",
+      "Jasno razdvajanje sitnica od blokirajućih primjedbi",
+      "Objašnjen razlog iza svake primjedbe",
+      "Provjera razmaka i formatiranja ručno",
+      "Odgovor u razumnom roku"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Formatiranje se rješava alatom pri spremanju. Svaka minuta koju čovjek na to potroši oduzeta je od stvarnog pregleda.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-017-review-terms",
+    "topic": "praksa",
+    "unitId": "code-review",
+    "kind": "fill",
+    "question": "Dopuni pojmove iz pregleda koda.",
+    "text": "Primjedba koja ne mora blokirati spajanje označava se kao ___, dok nalaz koji mora biti riješen prije spajanja ___ zahtjev.",
+    "answers": [
+      "sitnica",
+      "blokira"
+    ],
+    "distractors": [
+      "prijedlog",
+      "zatvara"
+    ],
+    "explanation": "Bez tog razlikovanja autor ili popravi sve, uključujući nebitno, ili ne popravi ništa.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-018-review-flow",
+    "topic": "praksa",
+    "unitId": "code-review",
+    "kind": "order",
+    "question": "Poredaj tijek dobrog pregleda koda.",
+    "steps": [
+      "Pročitaj opis i shvati namjeru izmjene",
+      "Provjeri prolaze li automatske provjere",
+      "Pročitaj izmjenu u cjelini prije detalja",
+      "Napiši primjedbe s objašnjenjem i oznakom važnosti",
+      "Odobri ili zatraži izmjene"
+    ],
+    "explanation": "Namjera dolazi prije koda: bez nje se pregledava kako, a ne bi li se to uopće trebalo raditi.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-uvod-dug",
+    "topic": "praksa",
+    "unitId": "procjena-i-dug",
+    "question": "Što je tehnički dug?",
+    "options": [
+      "Cijena koju plaćaš zato što je nešto napravljeno na brzinu",
+      "Broj poznatih grešaka koje čekaju na popravak",
+      "Novac potrošen na alate i licence u projektu",
+      "Kod koji je napisan prije više od nekoliko godina"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kao i pravi dug, može biti razuman izbor. Problem nastaje kad se kamata plaća godinama, a nitko ne zna da postoji.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "praksa-019-deliberate-debt",
+    "topic": "praksa",
+    "unitId": "procjena-i-dug",
+    "question": "Kad je tehnički dug razumna odluka?",
+    "options": [
+      "Kad je rok stvaran, a dug se svjesno zapiše i planira vratiti",
+      "Kad tim nema vremena za pisanje testova",
+      "Kad je rješenje toliko složeno da ga nitko ne razumije",
+      "Kad se procjenjuje da kod ionako neće trajati dugo"
+    ],
+    "correctIndex": 0,
+    "explanation": "Razlika je između posuđivanja i neplaćanja računa. Dug koji nigdje nije zapisan nitko neće vratiti.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-020-estimate-uncertainty",
+    "topic": "praksa",
+    "unitId": "procjena-i-dug",
+    "question": "Zašto se procjena daje kao raspon, a ne kao jedan broj?",
+    "options": [
+      "Jer raspon pošteno prikazuje koliko toga još nije poznato",
+      "Jer se raspon lakše izračunava od točne procjene",
+      "Jer se raspon ne može upotrijebiti protiv tima",
+      "Jer raspon uključuje i vrijeme za godišnji odmor"
+    ],
+    "correctIndex": 0,
+    "explanation": "Jedan broj zvuči kao obećanje. Raspon prenosi ono što je istina: da neizvjesnost postoji i kolika je.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-021-planning-fallacy",
+    "topic": "praksa",
+    "unitId": "procjena-i-dug",
+    "question": "Zašto se procjene sustavno podcjenjuju?",
+    "options": [
+      "Jer se zamišlja tijek u kojem ništa ne pođe po zlu",
+      "Jer se namjerno smanjuju da bi projekt bio odobren",
+      "Jer se ne uzima u obzir broj članova tima",
+      "Jer se zadaci procjenjuju prije nego su razjašnjeni"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ljudi procjenjuju najbolji mogući slučaj. Najbolji lijek je usporedba sa sličnim zadacima koji su stvarno trajali toliko i toliko.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-022-scope-creep",
+    "topic": "praksa",
+    "unitId": "procjena-i-dug",
+    "question": "Što je širenje opsega?",
+    "options": [
+      "Zahtjevi rastu tijekom rada, bez izmjene roka i procjene",
+      "Projekt se produljuje jer je tim krivo procijenio posao",
+      "Tim dodaje značajke koje korisnici nisu tražili",
+      "Opseg se smanjuje kako bi se stigao dogovoreni rok"
+    ],
+    "correctIndex": 0,
+    "explanation": "Svaki dodatak zasebno izgleda malen. Problem nije u dodavanju nego u tome što rok ostaje nepromijenjen.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-023-mvp",
+    "topic": "praksa",
+    "unitId": "procjena-i-dug",
+    "question": "Što je svrha najmanje upotrebljive verzije?",
+    "options": [
+      "Da se pretpostavka provjeri uz najmanji mogući trošak",
+      "Da se proizvod isporuči u najkraćem mogućem roku",
+      "Da se izradi verzija s najmanjim brojem grešaka",
+      "Da se smanji cijena razvoja cijelog proizvoda"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cilj je učenje, ne štednja. Verzija koja ne odgovara ni na jedno pitanje nije MVP nego samo nedovršen proizvod.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-024-refactor-time",
+    "topic": "praksa",
+    "unitId": "procjena-i-dug",
+    "question": "Kad je najbolji trenutak za čišćenje koda?",
+    "options": [
+      "Neposredno prije izmjene tog istog dijela koda",
+      "Nakon što se sve planirane značajke isporuče",
+      "U zasebnom sprintu posvećenom samo čišćenju",
+      "Kad broj prijavljenih grešaka premaši granicu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tada je kontekst svjež, a korist neposredna. Čišćenje 'kad bude vremena' ne dolazi na red gotovo nikad.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-025-debt-facts",
+    "topic": "praksa",
+    "unitId": "procjena-i-dug",
+    "kind": "multi",
+    "question": "Što je točno o tehničkom dugu?",
+    "options": [
+      "Može biti svjesna i opravdana odluka",
+      "Kamata se plaća sporijim razvojem",
+      "Trebao bi biti zapisan i vidljiv",
+      "Uvijek je posljedica lošeg programera",
+      "Najbolje se otplaćuje uz izmjene koje se ionako rade"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Dug najčešće nastaje iz razumnog kompromisa pod rokom. Pripisivanje krivnje pojedincu samo osigurava da ga nitko neće prijaviti.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-026-debt-terms",
+    "topic": "praksa",
+    "unitId": "procjena-i-dug",
+    "kind": "fill",
+    "question": "Dopuni pojmove planiranja.",
+    "text": "Rast zahtjeva bez izmjene roka zove se širenje ___, a cijena brzih rješenja koja se plaća sporijim razvojem zove se tehnički ___.",
+    "answers": [
+      "opsega",
+      "dug"
+    ],
+    "distractors": [
+      "plana",
+      "trošak"
+    ],
+    "explanation": "Oba pojma postoje da bi se nevidljivi trošak izgovorio naglas. Ono što nema ime, ne ulazi u plan.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-027-estimate",
+    "topic": "praksa",
+    "unitId": "procjena-i-dug",
+    "kind": "order",
+    "question": "Poredaj razborit postupak procjene zadatka.",
+    "steps": [
+      "Razjasni što je točno traženo",
+      "Razloži zadatak na manje dijelove",
+      "Usporedi dijelove sa sličnim, već obavljenim poslom",
+      "Dodaj vrijeme za nepoznato i pregled",
+      "Iznesi procjenu kao raspon, uz pretpostavke"
+    ],
+    "explanation": "Pretpostavke su dio procjene. Bez njih se raspon pamti kao obećanje, a razlog za njegovu širinu se zaboravi.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-uvod-verzije",
+    "topic": "praksa",
+    "unitId": "izdanja-i-verzije",
+    "question": "Što označava broj verzije oblika 2.4.1?",
+    "options": [
+      "Veliku promjenu, dodanu značajku i popravak greške",
+      "Godinu, mjesec i redni broj izdanja",
+      "Broj programera, značajki i grešaka u izdanju",
+      "Razinu stabilnosti, testiranosti i podrške"
+    ],
+    "correctIndex": 0,
+    "explanation": "Semantičko verzioniranje je obećanje: prvi broj se mijenja samo kad se nešto ruši.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "praksa-028-semver-major",
+    "topic": "praksa",
+    "unitId": "izdanja-i-verzije",
+    "question": "Kad se povećava prvi broj u semantičkoj verziji?",
+    "options": [
+      "Kad promjena ruši postojeću upotrebu",
+      "Kad se doda značajna nova mogućnost",
+      "Kad se promijeni više od polovice koda",
+      "Kad prođe godina dana od zadnjeg izdanja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Prvi broj nije mjera važnosti nego upozorenje. Zato knjižnice s velikim brojem verzija često nisu 'nestabilne' nego samo poštene.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-029-changelog",
+    "topic": "praksa",
+    "unitId": "izdanja-i-verzije",
+    "question": "Za koga se piše popis promjena?",
+    "options": [
+      "Za one koji nadograđuju i moraju znati što se promijenilo",
+      "Za tim koji je radio na tom izdanju i prati svoj napredak",
+      "Za upravu koja prati koliko je posla obavljeno u kvartalu",
+      "Za sustav koji automatski gradi i objavljuje izdanje"
+    ],
+    "correctIndex": 0,
+    "explanation": "Popis generiran iz poruka commitova rijetko odgovara na pitanje 'moram li nešto promijeniti'. Zato se ručno piše barem dio o rušećim promjenama.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-030-trunk-based",
+    "topic": "praksa",
+    "unitId": "izdanja-i-verzije",
+    "question": "Koja je prednost rada s kratkoživućim granama?",
+    "options": [
+      "Spajanja su mala pa se konflikti i regresije rijetko nakupljaju",
+      "Povijest projekta postaje kraća i preglednija",
+      "Testovi se izvršavaju brže na manjim granama",
+      "Nije potrebno raditi pregled koda prije spajanja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Grana koja živi tjedan dana razilazi se od glavne, pa spajanje postaje projekt za sebe. Kratke grane taj problem uklanjaju.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-031-feature-flag-release",
+    "topic": "praksa",
+    "unitId": "izdanja-i-verzije",
+    "question": "Kako se nedovršena značajka drži u glavnoj grani bez rizika?",
+    "options": [
+      "Iza prekidača koji je u produkciji isključen",
+      "U zasebnoj datoteci koja se ne uključuje u gradnju",
+      "U commitu koji se ne spaja do dovršetka",
+      "U komentiranom kodu koji se kasnije otkomentira"
+    ],
+    "correctIndex": 0,
+    "explanation": "Prekidač odvaja isporuku od objave. To je ono što uopće omogućuje rad s kratkim granama.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-032-rollback-plan",
+    "topic": "praksa",
+    "unitId": "izdanja-i-verzije",
+    "question": "Zašto svako izdanje treba plan povratka?",
+    "options": [
+      "Jer se dio problema pojavi tek pod pravim prometom",
+      "Jer testovi ne mogu pokriti sve dijelove koda",
+      "Jer se izdanja često rade izvan radnog vremena",
+      "Jer korisnici ponekad traže staru verziju natrag"
+    ],
+    "correctIndex": 0,
+    "explanation": "Plan koji se nikad nije isprobao nije plan. Zato se povratak vježba dok je mirno, ne prvi put usred incidenta.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-033-deprecation",
+    "topic": "praksa",
+    "unitId": "izdanja-i-verzije",
+    "question": "Kako se ispravno gasi stara mogućnost?",
+    "options": [
+      "Najavom, razdobljem supostojanja i tek onda uklanjanjem",
+      "Uklanjanjem u sljedećem izdanju uz zapis u popisu promjena",
+      "Trenutnim uklanjanjem jer se ionako rijetko koristi",
+      "Zadržavanjem zauvijek radi kompatibilnosti unatrag"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez razdoblja supostojanja korisnik nema kada prijeći. Bez konačnog uklanjanja teret održavanja raste zauvijek.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-034-release-facts",
+    "topic": "praksa",
+    "unitId": "izdanja-i-verzije",
+    "kind": "multi",
+    "question": "Što čini izdavanje sigurnijim?",
+    "options": [
+      "Male, česte promjene umjesto rijetkih velikih",
+      "Isproban i poznat put povratka",
+      "Prekidači koji odvajaju isporuku od objave",
+      "Izdavanje neposredno prije vikenda",
+      "Jasno zabilježene rušeće promjene"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Vikend znači najmanje ljudi dostupno kad nešto pukne. Manji promet ne kompenzira manji tim.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-035-semver-terms",
+    "topic": "praksa",
+    "unitId": "izdanja-i-verzije",
+    "kind": "fill",
+    "question": "Dopuni semantičko verzioniranje.",
+    "text": "Prvi broj se povećava kad promjena ___ postojeću upotrebu, a treći kad se samo ___ greška.",
+    "answers": [
+      "ruši",
+      "popravlja"
+    ],
+    "distractors": [
+      "mijenja",
+      "dodaje"
+    ],
+    "explanation": "Srednji broj je za nove mogućnosti koje ništa ne ruše.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-036-release-flow",
+    "topic": "praksa",
+    "unitId": "izdanja-i-verzije",
+    "kind": "order",
+    "question": "Poredaj tijek izdavanja nove verzije.",
+    "steps": [
+      "Potvrdi da je glavna grana zelena",
+      "Odredi broj verzije prema vrsti promjena",
+      "Zapiši promjene, posebno one rušeće",
+      "Objavi izdanje i pusti ga postupno",
+      "Prati pokazatelje i budi spreman na povratak"
+    ],
+    "explanation": "Praćenje nakon objave je dio izdavanja, ne nešto što slijedi poslije. Izdanje bez mjerenja je izdanje bez povratne informacije.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-uvod-licence",
+    "topic": "praksa",
+    "unitId": "licence",
+    "question": "Što se smije s kodom koji nema nikakvu licencu?",
+    "options": [
+      "Gotovo ništa, jer je po zadanom zaštićen autorskim pravom",
+      "Sve, jer je javno objavljen na internetu",
+      "Sve osim prodaje, koja traži dopuštenje autora",
+      "Samo čitanje, dok se ne zatraži dopuštenje"
+    ],
+    "correctIndex": 0,
+    "explanation": "Odsutnost licence nije dopuštenje nego njegov izostanak. Objava koda na javnom mjestu ne daje nikakva prava.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "praksa-037-mit",
+    "topic": "praksa",
+    "unitId": "licence",
+    "question": "Što traži MIT licenca?",
+    "options": [
+      "Zadržavanje obavijesti o autorstvu i licenci",
+      "Objavu izvornog koda svake izvedenice",
+      "Dopuštenje autora prije komercijalne upotrebe",
+      "Navođenje autora u sučelju same aplikacije"
+    ],
+    "correctIndex": 0,
+    "explanation": "MIT je vrlo dopuštajuća: praktički sve je dopušteno dok se obavijest zadrži. Zato je najčešća licenca otvorenog koda.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-038-copyleft",
+    "topic": "praksa",
+    "unitId": "licence",
+    "question": "Što znači copyleft?",
+    "options": [
+      "Izvedeni rad mora se dijeliti pod istom licencom",
+      "Autor zadržava sva prava na izvorni kod",
+      "Kod se smije koristiti samo u nekomercijalne svrhe",
+      "Licenca prestaje vrijediti nakon zadanog roka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Copyleft koristi autorsko pravo da osigura da sloboda ostane i u izvedenicama. GPL je najpoznatiji primjer.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-039-agpl",
+    "topic": "praksa",
+    "unitId": "licence",
+    "question": "Po čemu se AGPL razlikuje od GPL-a?",
+    "options": [
+      "Obuhvaća i slučaj kad se softver nudi kao mrežna usluga",
+      "Zabranjuje svaku komercijalnu upotrebu softvera",
+      "Traži plaćanje naknade za svaku izvedenicu",
+      "Vrijedi samo za softver napisan u otvorenim jezicima"
+    ],
+    "correctIndex": 0,
+    "explanation": "GPL obvezuje na dijeljenje kad se softver distribuira. AGPL zatvara rupu u kojoj se on samo poslužuje preko mreže.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-040-apache-patent",
+    "topic": "praksa",
+    "unitId": "licence",
+    "question": "Što Apache 2.0 dodaje u odnosu na MIT?",
+    "options": [
+      "Izričito dodjeljivanje prava na patente",
+      "Obvezu objave izvornog koda izvedenica",
+      "Zabranu upotrebe u zatvorenim proizvodima",
+      "Ograničenje broja korisnika izvedenog softvera"
+    ],
+    "correctIndex": 0,
+    "explanation": "Za tvrtke je patentna klauzula često presudna. To je razlog zašto mnogi projekti biraju Apache 2.0 umjesto MIT-a.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-041-dual-license",
+    "topic": "praksa",
+    "unitId": "licence",
+    "question": "Zašto projekt nudi dvije licence odjednom?",
+    "options": [
+      "Da ostane otvoren, a da tvrtke mogu kupiti drukčije uvjete",
+      "Da se izbjegne odabir između dviju sličnih licenci",
+      "Da se korisnicima ostavi izbor koji im više odgovara",
+      "Da se licenca može promijeniti bez pristanka autora"
+    ],
+    "correctIndex": 0,
+    "explanation": "Copyleft za zajednicu, komercijalna licenca za one koji ne žele njegove obveze. Model traži da autor drži prava na cijeli kod.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-042-dependency-license",
+    "topic": "praksa",
+    "unitId": "licence",
+    "question": "Zašto se provjeravaju licence ovisnosti?",
+    "options": [
+      "Jer copyleft ovisnost može obvezati i tvoj projekt",
+      "Jer ovisnosti s licencom rade sporije od onih bez nje",
+      "Jer se licence ovisnosti moraju platiti po korisniku",
+      "Jer ovisnost bez licence ne može proći kroz gradnju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Jedna GPL knjižnica u zatvorenom proizvodu je pravni problem, ne tehnički. Zato se provjera licenci ugrađuje u pipeline.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-043-license-facts",
+    "topic": "praksa",
+    "unitId": "licence",
+    "kind": "multi",
+    "question": "Što je točno o licencama otvorenog koda?",
+    "options": [
+      "Kod bez licence nije slobodan za upotrebu",
+      "MIT traži zadržavanje obavijesti o autorstvu",
+      "AGPL pokriva i pružanje softvera kao usluge",
+      "Otvoreni kod znači da se ne smije naplaćivati",
+      "Apache 2.0 izričito uređuje patentna prava"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Otvoreni kod ne znači besplatan. Naplata je dopuštena; ono što se ne smije je oduzeti slobode koje licenca daje.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-044-license-terms",
+    "topic": "praksa",
+    "unitId": "licence",
+    "kind": "fill",
+    "question": "Dopuni vrste licenci.",
+    "text": "Licenca koja traži da izvedenice ostanu pod istim uvjetima je ___, a licenca koja praktički samo traži zadržavanje obavijesti je ___.",
+    "answers": [
+      "copyleft",
+      "dopuštajuća"
+    ],
+    "distractors": [
+      "zatvorena",
+      "javna"
+    ],
+    "explanation": "Izbor između to dvoje je odluka o tome što je važnije: širenje upotrebe ili očuvanje sloboda.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-045-license-choice",
+    "topic": "praksa",
+    "unitId": "licence",
+    "kind": "order",
+    "question": "Poredaj odabir licence za novi otvoreni projekt.",
+    "steps": [
+      "Odluči želiš li da izvedenice ostanu otvorene",
+      "Provjeri licence ovisnosti koje projekt koristi",
+      "Odaberi licencu koja je s njima spojiva",
+      "Dodaj datoteku s licencom u repozitorij",
+      "Navedi licencu u opisu i datotekama projekta"
+    ],
+    "explanation": "Licence ovisnosti ograničavaju izbor: zatvoreni proizvod s copyleft ovisnošću ne prolazi bez obzira na tvoju želju.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-uvod-dokumentacija",
+    "topic": "praksa",
+    "unitId": "dokumentacija",
+    "question": "Što dobar komentar u kodu objašnjava?",
+    "options": [
+      "Zašto je nešto napravljeno tako, a ne što kod radi",
+      "Što svaki redak koda radi, korak po korak",
+      "Tko je i kada napisao pojedini dio koda",
+      "Koje se funkcije pozivaju iz tog dijela koda"
+    ],
+    "correctIndex": 0,
+    "explanation": "Što kod radi vidi se iz koda. Zašto ne postoji nigdje osim u glavi onoga tko ga je pisao.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "praksa-046-readme",
+    "topic": "praksa",
+    "unitId": "dokumentacija",
+    "question": "Što README mora imati prije svega?",
+    "options": [
+      "Što projekt radi i kako ga pokrenuti",
+      "Popis svih funkcija i njihovih parametara",
+      "Povijest svih dosadašnjih izdanja projekta",
+      "Popis članova tima i njihovih zaduženja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Prvo pitanje svakog novog čitatelja je isto: što je ovo i kako da ga pokrenem. Sve ostalo može čekati.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-047-adr",
+    "topic": "praksa",
+    "unitId": "dokumentacija",
+    "question": "Čemu služi zapis o arhitektonskoj odluci?",
+    "options": [
+      "Bilježi razlog i razmatrane alternative, radi budućih čitatelja",
+      "Opisuje kako je sustav trenutno posložen i kako komponente rade",
+      "Popisuje sve tehnologije i knjižnice koje projekt trenutno koristi",
+      "Zamjenjuje potrebu za komentarima i objašnjenjima u samom kodu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Za godinu dana nitko se ne sjeća zašto nešto nije odabrano. Bez toga se ista rasprava vodi ponovno, uz iste zaključke.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-048-stale-docs",
+    "topic": "praksa",
+    "unitId": "dokumentacija",
+    "question": "Zašto je zastarjela dokumentacija gora od nikakve?",
+    "options": [
+      "Jer joj čitatelj vjeruje i donese pogrešnu odluku",
+      "Jer zauzima prostor u repozitoriju projekta",
+      "Jer je teže obrisati nego napisati novu",
+      "Jer se ne može automatski provjeriti"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nikakva dokumentacija barem pošteno kaže da ćeš morati čitati kod. Kriva te pošalje u pogrešnom smjeru s punim povjerenjem.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-049-runbook",
+    "topic": "praksa",
+    "unitId": "dokumentacija",
+    "question": "Čemu služi runbook?",
+    "options": [
+      "Vodi dežurnu osobu kroz postupak u konkretnom incidentu",
+      "Opisuje arhitekturu sustava za nove članove tima",
+      "Bilježi sve incidente koji su se dogodili u prošlosti",
+      "Popisuje zadatke koje treba obaviti prije izdanja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Piše se za nekoga tko je probuđen u tri ujutro. Zato mora biti niz koraka, ne esej o sustavu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-050-docs-location",
+    "topic": "praksa",
+    "unitId": "dokumentacija",
+    "question": "Zašto dokumentacija živi uz kod?",
+    "options": [
+      "Jer se tada mijenja u istom pull requestu kao i kod",
+      "Jer se tako brže pretražuje nego na vanjskom mjestu",
+      "Jer vanjski alati ne podržavaju tehničke tekstove",
+      "Jer se time smanjuje broj alata koje tim koristi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dokumentacija odvojena od koda zastari jer joj promjena nije dio istog posla. Uz kod se ažurira ili se barem vidi da nije.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-051-self-documenting",
+    "topic": "praksa",
+    "unitId": "dokumentacija",
+    "question": "Što znači da kod dokumentira sam sebe?",
+    "options": [
+      "Imena i struktura otkrivaju namjeru bez dodatnog objašnjenja",
+      "Komentari se generiraju automatski iz potpisa funkcija",
+      "Kod ne treba nikakvu dokumentaciju ni komentare",
+      "Testovi pokrivaju sve moguće scenarije upotrebe"
+    ],
+    "correctIndex": 0,
+    "explanation": "To ne ukida komentare nego mijenja njihovu ulogu: ostaju za ono što se imenom ne može reći, a to je gotovo uvijek zašto.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-052-doc-facts",
+    "topic": "praksa",
+    "unitId": "dokumentacija",
+    "kind": "multi",
+    "question": "Što je znak dobre dokumentacije?",
+    "options": [
+      "Objašnjava razloge, a ne samo postupke",
+      "Mijenja se zajedno s kodom",
+      "Ima jasno određenog čitatelja",
+      "Opisuje svaki redak koda u detalje",
+      "Lako se pronađe s mjesta na kojem zatreba"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Opisivanje svakog retka daje tekst koji nitko ne čita i koji zastari prvog dana. Dokumentacija se piše za pitanja, ne za pokrivenost.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-053-doc-terms",
+    "topic": "praksa",
+    "unitId": "dokumentacija",
+    "kind": "fill",
+    "question": "Dopuni vrste dokumentacije.",
+    "text": "Zapis koji bilježi razlog arhitektonske odluke zove se ___, a korak-po-korak upute za dežurnu osobu u incidentu zovu se ___.",
+    "answers": [
+      "ADR",
+      "runbook"
+    ],
+    "distractors": [
+      "README",
+      "changelog"
+    ],
+    "explanation": "Prvi odgovara na 'zašto je ovako', drugi na 'što sad da napravim'. To su dvije potpuno različite potrebe.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-054-onboarding",
+    "topic": "praksa",
+    "unitId": "dokumentacija",
+    "kind": "order",
+    "question": "Poredaj što novi član tima treba pročitati.",
+    "steps": [
+      "Što projekt radi i za koga",
+      "Kako pokrenuti projekt lokalno",
+      "Kako je sustav grubo posložen",
+      "Zašto su donesene ključne odluke",
+      "Kako se radi izdanje i što u slučaju incidenta"
+    ],
+    "explanation": "Redoslijed prati stvarnu potrebu: prvo pokrenuti, pa razumjeti, pa tek onda preuzeti odgovornost.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-uvod-razgovor",
+    "topic": "praksa",
+    "unitId": "razgovor-za-posao",
+    "question": "Što se najviše cijeni u tehničkom dijelu razgovora?",
+    "options": [
+      "Način razmišljanja i objašnjavanje puta do rješenja",
+      "Brzina kojom se dođe do konačnog rješenja",
+      "Broj algoritama koje kandidat zna napamet",
+      "Poznavanje točne sintakse odabranog jezika"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rješenje bez objašnjenja ne razlikuje razumijevanje od napamet naučenog. Zato se traži da razmišljaš naglas.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "praksa-055-clarify",
+    "topic": "praksa",
+    "unitId": "razgovor-za-posao",
+    "question": "Što učiniti prvo kad dobiješ zadatak na razgovoru?",
+    "options": [
+      "Postaviti pitanja i razjasniti rubne slučajeve",
+      "Odmah početi pisati rješenje da se ne izgubi vrijeme",
+      "Iznijeti najsloženije rješenje koje znaš",
+      "Pitati koliko vremena imaš za rješavanje"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zadaci su namjerno nedorečeni. Pitanja su dio ispita, a ne gubitak vremena.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-056-stuck",
+    "topic": "praksa",
+    "unitId": "razgovor-za-posao",
+    "question": "Što učiniti kad zapneš na zadatku?",
+    "options": [
+      "Naglas reći gdje si zapeo i što si već pokušao",
+      "Šutjeti i razmišljati dok ne nađeš rješenje",
+      "Zatražiti drugi zadatak umjesto tog",
+      "Priznati da ne znaš i prijeći na sljedeće pitanje"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ispitivač traži suradnika, ne svevidećeg. Način na koji tražiš pomoć govori kako ćeš raditi u timu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-057-star",
+    "topic": "praksa",
+    "unitId": "razgovor-za-posao",
+    "question": "Kako se strukturira odgovor na pitanje o prošlom iskustvu?",
+    "options": [
+      "Situacija, zadatak, što si napravio i kakav je bio ishod",
+      "Problem, krivac, rješenje i pouka za budućnost",
+      "Tehnologija, arhitektura, izazovi i rezultati",
+      "Uvod, opis tima, opis projekta i zaključak"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez ishoda priča ostaje nedovršena. Konkretan broj ili posljedica je ono što se pamti.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-058-questions-to-ask",
+    "topic": "praksa",
+    "unitId": "razgovor-za-posao",
+    "question": "Zašto je važno imati pitanja za poslodavca?",
+    "options": [
+      "Jer razgovor ide u oba smjera i ti procjenjuješ njih",
+      "Jer se time pokazuje zanimanje za poziciju",
+      "Jer se time popunjava vrijeme predviđeno za razgovor",
+      "Jer se odgovori mogu iskoristiti u pregovorima"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pitanja o pregledu koda, dežurstvima i tome kako izgleda loš tjedan otkrivaju više od bilo kojeg oglasa.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-059-red-flags",
+    "topic": "praksa",
+    "unitId": "razgovor-za-posao",
+    "question": "Što je znak upozorenja pri razgovoru?",
+    "options": [
+      "Nitko ne zna objasniti kako izgleda uobičajen tjedan",
+      "Postupak odabira ima više od dva kruga",
+      "Tim koristi tehnologije koje ne poznaješ",
+      "Plaća se ne spominje u prvom razgovoru"
+    ],
+    "correctIndex": 0,
+    "explanation": "Izbjegavanje konkretnog opisa svakodnevice obično znači da svakodnevica nije dobra. Više krugova samo po sebi ne znači ništa.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-060-honesty",
+    "topic": "praksa",
+    "unitId": "razgovor-za-posao",
+    "question": "Što učiniti kad te pitaju nešto što ne znaš?",
+    "options": [
+      "Reći da ne znaš i objasniti kako bi to doznao",
+      "Nagađati jer možda pogodiš točan odgovor",
+      "Skrenuti razgovor na temu koju poznaješ",
+      "Reći da je pitanje nevažno za tu poziciju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nitko ne očekuje da znaš sve. Uhvaćeno nagađanje košta više od poštenog 'ne znam, ali evo kako bih provjerio'.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-061-interview-facts",
+    "topic": "praksa",
+    "unitId": "razgovor-za-posao",
+    "kind": "multi",
+    "question": "Što pomaže na tehničkom razgovoru?",
+    "options": [
+      "Razmišljanje naglas tijekom rješavanja",
+      "Razjašnjavanje zahtjeva prije pisanja koda",
+      "Spominjanje rubnih slučajeva i njihove obrade",
+      "Odabir najsloženijeg rješenja koje znaš",
+      "Priznavanje kad nešto ne znaš"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Nepotrebno složeno rješenje govori da ne procjenjuješ trošak. Jednostavno rješenje uz objašnjenje kada bi trebalo složenije prolazi bolje.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "praksa-062-interview-terms",
+    "topic": "praksa",
+    "unitId": "razgovor-za-posao",
+    "kind": "fill",
+    "question": "Dopuni pristup razgovoru.",
+    "text": "Odgovor o prošlom iskustvu strukturira se kroz situaciju, zadatak, ___ i ___.",
+    "answers": [
+      "radnju",
+      "ishod"
+    ],
+    "distractors": [
+      "problem",
+      "krivca"
+    ],
+    "explanation": "Ishod je dio koji se najčešće izostavi, a jedini koji pokazuje je li tvoja radnja išta promijenila.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "praksa-063-coding-task",
+    "topic": "praksa",
+    "unitId": "razgovor-za-posao",
+    "kind": "order",
+    "question": "Poredaj rješavanje zadatka na razgovoru.",
+    "steps": [
+      "Razjasni zahtjeve i rubne slučajeve",
+      "Iznesi jednostavno rješenje i njegovu složenost",
+      "Napiši kod uz objašnjavanje koraka",
+      "Provjeri rješenje na primjeru i rubnim slučajevima",
+      "Reci što bi poboljšao da imaš više vremena"
+    ],
+    "explanation": "Provjera na primjeru prije nego ispitivač nađe grešku ostavlja bolji dojam od savršenog koda bez provjere.",
+    "difficulty": "hard"
+  }
+]
