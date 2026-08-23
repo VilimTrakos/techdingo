@@ -75,3 +75,31 @@ describe('mergeProgress', () => {
     expect(Object.keys(merged.lessons).sort()).toEqual(['frontend', 'sql']);
   });
 });
+
+describe('mergeProgress - struggledQuestionIds', () => {
+  function lessonState(struggled: string[], passCount: number): ProgressState {
+    return {
+      ...createDefaultProgressState(),
+      lessons: {
+        sql: { passCount, failCount: 0, recentQuestionIds: [], struggledQuestionIds: struggled },
+      },
+    };
+  }
+
+  it('spaja greške s oba uređaja umjesto da bira jednu stranu', () => {
+    const merged = mergeProgress(lessonState(['a', 'b'], 1), lessonState(['c'], 9));
+    expect(merged.lessons.sql.struggledQuestionIds.sort()).toEqual(['a', 'b', 'c']);
+  });
+
+  it('regresija: aktivnija strana s praznim popisom NE briše lokalne greške', () => {
+    // Prije popravka: remote (passCount 9) je pobjeđivao i lokalni popis
+    // je nestajao, pa je "Ponovi greške" ostajao prazan nakon prijave.
+    const merged = mergeProgress(lessonState(['a', 'b'], 1), lessonState([], 9));
+    expect(merged.lessons.sql.struggledQuestionIds.sort()).toEqual(['a', 'b']);
+  });
+
+  it('ne stvara duplikate za istu grešku s oba uređaja', () => {
+    const merged = mergeProgress(lessonState(['a'], 1), lessonState(['a'], 2));
+    expect(merged.lessons.sql.struggledQuestionIds).toEqual(['a']);
+  });
+});

@@ -39,7 +39,12 @@ function mergeLessonProgress(a: TopicLessonProgress | undefined, b: TopicLessonP
     passCount: Math.max(a.passCount, b.passCount),
     failCount: Math.max(a.failCount, b.failCount),
     recentQuestionIds: aTotal >= bTotal ? a.recentQuestionIds : b.recentQuestionIds,
-    struggledQuestionIds: aTotal >= bTotal ? a.struggledQuestionIds : b.struggledQuestionIds,
+    // UNIJA, ne "pobjeđuje aktivnija strana": greška napravljena na bilo kojem
+    // uređaju zaslužuje ponavljanje. Odabir strane bi ovdje TIHO BRISAO popis
+    // grešaka (npr. prijava na uređaju s više aktivnosti, ali bez tih grešaka).
+    // Najgori ishod unije je da ponoviš nešto što si drugdje već naučio -
+    // neusporedivo bolje od gubitka popisa. Limit prati MAX_STRUGGLED_IDS.
+    struggledQuestionIds: [...new Set([...a.struggledQuestionIds, ...b.struggledQuestionIds])].slice(0, 12),
   };
 }
 

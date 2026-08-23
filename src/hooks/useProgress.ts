@@ -13,9 +13,9 @@ import {
   type ReviewResultInput,
   type ScoreStrikeResultInput,
 } from '../state/progress';
-import { MAX_HEARTS } from '../state/progressTypes';
+import { MAX_HEARTS, createDefaultProgressState } from '../state/progressTypes';
 import type { ProgressState } from '../state/progressTypes';
-import { getCurrentUserId, registerOnLogin } from '../state/authUserRef';
+import { getCurrentUserId, registerOnLogin, registerOnLogout } from '../state/authUserRef';
 import { mergeAndSyncOnLogin, pushCloudProgress } from '../state/cloudSync';
 
 /**
@@ -49,6 +49,17 @@ registerOnLogin((userId) => {
     .catch((err) => {
       console.warn('techdingo: spajanje napretka pri loginu nije uspjelo.', err);
     });
+});
+
+// Odjava briše napredak iz memorije i localStoragea - bez ovoga bi se na
+// dijeljenom uređaju napredak prethodnog korisnika spojio u cloud red
+// sljedećeg (vidi authUserRef.ts). Napredak nije izgubljen: prijavljeni
+// korisnik ga ima u cloudu i vrati ga merge pri sljedećoj prijavi.
+registerOnLogout(() => {
+  const fresh = createDefaultProgressState();
+  // Srca su vezana uz UREĐAJ, ne uz račun (namjerno se ne sinkroniziraju),
+  // pa ih odjava ne smije resetirati - inače bi odjava bila besplatan refill.
+  setState({ ...fresh, hearts: state.hearts }, { skipCloudPush: true });
 });
 
 function subscribe(listener: () => void): () => void {

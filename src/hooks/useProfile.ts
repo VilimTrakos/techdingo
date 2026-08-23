@@ -31,19 +31,29 @@ export function useProfile() {
     }
     let cancelled = false;
     setState((prev) => ({ ...prev, isLoading: true, error: null }));
-    supabase
-      .from('profiles')
-      .select('display_name')
-      .eq('id', user.id)
-      .maybeSingle()
-      .then(({ data, error }) => {
+
+    // async/await umjesto .then/.catch: Supabase builder je PromiseLike, nema
+    // .catch. Bez try/catch mrežni pad ostavlja isLoading zauvijek na true.
+    void (async () => {
+      try {
+        const { data, error } = await supabase!
+          .from('profiles')
+          .select('display_name')
+          .eq('id', user.id)
+          .maybeSingle();
         if (cancelled) return;
         setState({
           displayName: (data?.display_name as string | undefined) ?? null,
           isLoading: false,
           error: error?.message ?? null,
         });
-      });
+      } catch (err) {
+        if (cancelled) return;
+        console.warn('techdingo: dohvat profila nije uspio.', err);
+        setState({ displayName: null, isLoading: false, error: 'Nije moguće dohvatiti profil.' });
+      }
+    })();
+
     return () => {
       cancelled = true;
     };

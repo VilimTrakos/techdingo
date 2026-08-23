@@ -25,13 +25,18 @@ export function useLeaderboard(topicId: string) {
     }
     let cancelled = false;
     setState((prev) => ({ ...prev, isLoading: true, error: null }));
-    supabase
-      .from('leaderboard')
-      .select('display_name, best_score')
-      .eq('topic_id', topicId)
-      .order('best_score', { ascending: false })
-      .limit(LEADERBOARD_LIMIT)
-      .then(({ data, error }) => {
+
+    // async/await umjesto .then/.catch: Supabase builder je PromiseLike, nema
+    // .catch. Bez try/catch offline korisnik dobije vječni spinner umjesto
+    // poruke i gumba "Pokušaj ponovno".
+    void (async () => {
+      try {
+        const { data, error } = await supabase!
+          .from('leaderboard')
+          .select('display_name, best_score')
+          .eq('topic_id', topicId)
+          .order('best_score', { ascending: false })
+          .limit(LEADERBOARD_LIMIT);
         if (cancelled) return;
         if (error) {
           setState({ entries: [], isLoading: false, error: error.message });
@@ -45,7 +50,13 @@ export function useLeaderboard(topicId: string) {
           isLoading: false,
           error: null,
         });
-      });
+      } catch (err) {
+        if (cancelled) return;
+        console.warn('techdingo: dohvat ljestvice nije uspio.', err);
+        setState({ entries: [], isLoading: false, error: 'Nije moguće dohvatiti ljestvicu.' });
+      }
+    })();
+
     return () => {
       cancelled = true;
     };

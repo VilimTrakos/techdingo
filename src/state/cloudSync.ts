@@ -15,6 +15,7 @@ interface LessonProgressRow {
   pass_count: number;
   fail_count: number;
   recent_question_ids: string[] | null;
+  struggled_question_ids: string[] | null;
 }
 
 interface ScoreStrikeProgressRow {
@@ -43,9 +44,7 @@ export async function fetchCloudProgress(userId: string): Promise<ProgressState 
       passCount: row.pass_count,
       failCount: row.fail_count,
       recentQuestionIds: row.recent_question_ids ?? [],
-      // Ne sinkronizira se u cloud - merge svejedno zadržava lokalnu stranu
-      // kad je lokalno aktivnija (vidi mergeLessonProgress).
-      struggledQuestionIds: [],
+      struggledQuestionIds: row.struggled_question_ids ?? [],
     };
   }
 
@@ -102,6 +101,7 @@ export async function pushCloudProgress(userId: string, state: ProgressState): P
     pass_count: p.passCount,
     fail_count: p.failCount,
     recent_question_ids: p.recentQuestionIds,
+    struggled_question_ids: p.struggledQuestionIds,
   }));
   if (lessonRows.length > 0) {
     await supabase.from('lesson_progress').upsert(lessonRows);
