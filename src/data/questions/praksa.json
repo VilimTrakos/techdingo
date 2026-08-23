@@ -537,10 +537,10 @@
     "unitId": "izdanja-i-verzije",
     "question": "Koja je prednost rada s kratkoživućim granama?",
     "options": [
-      "Spajanja su mala pa se konflikti i regresije rijetko nakupljaju",
-      "Povijest projekta postaje kraća i preglednija",
-      "Testovi se izvršavaju brže na manjim granama",
-      "Nije potrebno raditi pregled koda prije spajanja"
+      "Spajanja su mala pa se konflikti rijetko nakupljaju",
+      "Povijest projekta postaje kraća i lakša za čitanje",
+      "Testovi se na manjim granama izvršavaju osjetno brže",
+      "Pregled koda prije spajanja više uopće nije potreban"
     ],
     "correctIndex": 0,
     "explanation": "Grana koja živi tjedan dana razilazi se od glavne, pa spajanje postaje projekt za sebe. Kratke grane taj problem uklanjaju.",
@@ -653,10 +653,10 @@
     "unitId": "licence",
     "question": "Što se smije s kodom koji nema nikakvu licencu?",
     "options": [
-      "Gotovo ništa, jer je po zadanom zaštićen autorskim pravom",
-      "Sve, jer je javno objavljen na internetu",
-      "Sve osim prodaje, koja traži dopuštenje autora",
-      "Samo čitanje, dok se ne zatraži dopuštenje"
+      "Gotovo ništa, jer je zaštićen autorskim pravom",
+      "Sve, jer je javno objavljen i dostupan na internetu",
+      "Sve osim prodaje, koja traži izričito dopuštenje autora",
+      "Samo čitanje, dok se ne zatraži dopuštenje autora"
     ],
     "correctIndex": 0,
     "explanation": "Odsutnost licence nije dopuštenje nego njegov izostanak. Objava koda na javnom mjestu ne daje nikakva prava.",
@@ -1054,9 +1054,9 @@
     "question": "Što je znak upozorenja pri razgovoru?",
     "options": [
       "Nitko ne zna objasniti kako izgleda uobičajen tjedan",
-      "Postupak odabira ima više od dva kruga",
-      "Tim koristi tehnologije koje ne poznaješ",
-      "Plaća se ne spominje u prvom razgovoru"
+      "Postupak odabira ima više od dva kruga razgovora",
+      "Tim koristi tehnologije koje trenutno ne poznaješ",
+      "Plaća se ne spominje već u prvom razgovoru"
     ],
     "correctIndex": 0,
     "explanation": "Izbjegavanje konkretnog opisa svakodnevice obično znači da svakodnevica nije dobra. Više krugova samo po sebi ne znači ništa.",

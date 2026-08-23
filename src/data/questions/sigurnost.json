@@ -656,9 +656,9 @@
     "question": "Što provjerava autorizacija?",
     "options": [
       "Smije li prijavljeni korisnik obaviti tu radnju",
-      "Je li korisnik unio ispravnu lozinku",
-      "Je li veza s korisnikom šifrirana",
-      "Koliko je zahtjeva korisnik poslao"
+      "Je li korisnik unio ispravnu lozinku pri prijavi",
+      "Je li veza s korisnikom šifrirana i provjerena",
+      "Koliko je zahtjeva korisnik poslao u minuti"
     ],
     "correctIndex": 0,
     "explanation": "Autentikacija je jednokratna, autorizacija se provjerava pri svakoj radnji i nad svakim pojedinim objektom.",

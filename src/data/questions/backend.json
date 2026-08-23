@@ -97,12 +97,12 @@
     "topic": "backend",
     "question": "Čemu služi HTTP zaglavlje Content-Type?",
     "options": [
-      "Određuje maksimalan broj zahtjeva koje klijent smije poslati",
-      "Identificira prijavljenog korisnika",
-      "Opisuje medijski format tijela zahtjeva ili odgovora, primjerice application/json",
+      "Opisuje medijski format tijela zahtjeva ili odgovora, npr. JSON",
+      "Određuje najveći broj zahtjeva koje klijent smije poslati",
+      "Identificira prijavljenog korisnika koji je poslao zahtjev",
       "Određuje koliko dugo mrežna veza mora ostati otvorena"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Content-Type govori primatelju kako treba protumačiti tijelo poruke. Primjerice, application/json označava JSON sadržaj.",
     "difficulty": "easy",
     "unitId": "http-api"
@@ -112,10 +112,10 @@
     "topic": "backend",
     "question": "Zašto API obično paginira veliki popis rezultata?",
     "options": [
-      "Kako bi ograničio veličinu pojedinog odgovora te smanjio latenciju, potrošnju memorije i opterećenje baze",
-      "Kako bi bez dodatnih mehanizama zajamčio da se podaci nikad ne promijene između stranica",
-      "Kako bi uklonio potrebu za autorizacijom pojedinih zapisa",
-      "Kako bi cijeli skup rezultata uvijek stao u jedan mrežni paket"
+      "Da ograniči veličinu odgovora te smanji latenciju i opterećenje",
+      "Da bez dodatnih mehanizama zajamči da se podaci ne mijenjaju",
+      "Da ukloni potrebu za provjerom ovlasti nad pojedinim zapisima",
+      "Da cijeli skup rezultata uvijek stane u jedan mrežni paket"
     ],
     "correctIndex": 0,
     "explanation": "Paginacija vraća ograničen broj zapisa po pozivu, što čuva resurse klijenta i servera. Stabilnost između stranica zahtijeva dodatno pažljivo sortiranje ili cursor pristup.",
@@ -157,12 +157,12 @@
     "topic": "backend",
     "question": "Koji je tipičan kompromis pri dodavanju indeksa u bazu podataka?",
     "options": [
-      "Indeks stvara potpunu sigurnosnu kopiju tablice",
-      "Indeks jamči konstantno vrijeme svakog mogućeg upita",
-      "Indeks može ubrzati čitanja, ali zauzima prostor i može usporiti upise",
-      "Indeks automatski šifrira stupce koje obuhvaća"
+      "Ubrzava čitanja, ali zauzima prostor i usporava upise",
+      "Stvara potpunu sigurnosnu kopiju tablice koju pokriva",
+      "Jamči konstantno vrijeme izvođenja za svaki mogući upit",
+      "Automatski šifrira stupce koje taj indeks obuhvaća"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Indeks pomaže bazi brže pronaći retke, ali ga treba održavati pri INSERT, UPDATE i DELETE operacijama. Zato previše ili loše odabranih indeksa može štetiti performansama.",
     "difficulty": "easy",
     "unitId": "baze-podataka"
@@ -218,12 +218,12 @@
     "topic": "backend",
     "question": "Čemu služi dead-letter queue u sustavu razmjene poruka?",
     "options": [
-      "Daje svim novim porukama najveći prioritet",
-      "Trajno arhivira svaku uspješno obrađenu poruku",
-      "Izolira poruke koje se nakon više pokušaja ne mogu uspješno obraditi",
-      "Šalje sinkroni HTTP odgovor izravno pošiljatelju"
+      "Izolira poruke koje se nakon više pokušaja ne mogu obraditi",
+      "Daje svim novopristiglim porukama u redu najveći prioritet",
+      "Trajno arhivira svaku poruku koja je uspješno obrađena",
+      "Šalje sinkroni HTTP odgovor izravno natrag pošiljatelju"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Problematična poruka premješta se iz glavnog reda kako ne bi stalno blokirala obradu. Nakon analize može se ispraviti, ponovno poslati ili kontrolirano odbaciti.",
     "difficulty": "easy",
     "unitId": "poruke-redovi"
@@ -248,12 +248,12 @@
     "topic": "backend",
     "question": "Što vrijedi za HTTP odgovor sa statusom 204 No Content?",
     "options": [
-      "Mora sadržavati JSON objekt s praznim poljima",
-      "Označava da je novi resurs obavezno kreiran",
-      "Ne sadrži tijelo poruke, iako može sadržavati odgovarajuća zaglavlja",
-      "Smije se vratiti samo za GET zahtjev"
+      "Ne sadrži tijelo poruke, iako smije sadržavati zaglavlja",
+      "Mora sadržavati JSON objekt s praznim vrijednostima polja",
+      "Označava da je novi resurs obavezno uspješno kreiran",
+      "Smije se vratiti isključivo kao odgovor na GET zahtjev"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Status 204 označava uspješnu obradu bez tijela odgovora. Koristan je kada klijentu nije potrebno slati reprezentaciju rezultata.",
     "difficulty": "easy",
     "unitId": "http-api"
@@ -293,12 +293,12 @@
     "topic": "backend",
     "question": "Od čega prvenstveno štiti enkripcija podataka u mirovanju?",
     "options": [
-      "Od svakog neautoriziranog upita koji aplikacija pošalje bazi",
-      "Od čitanja ukradenih diskova, datoteka ili sigurnosnih kopija bez odgovarajućeg ključa",
-      "Od presretanja nešifriranog HTTP prometa",
-      "Od svih pogrešaka u autorizacijskoj logici aplikacije"
+      "Od čitanja ukradenih diskova ili kopija bez odgovarajućeg ključa",
+      "Od svakog neovlaštenog upita koji aplikacija pošalje prema bazi",
+      "Od presretanja nešifriranog HTTP prometa između klijenta i servera",
+      "Od svih pogrešaka u autorizacijskoj logici same aplikacije"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Enkripcija u mirovanju štiti pohranjeni medij i kopije podataka. Mora se kombinirati s TLS-om, kontrolom pristupa i sigurnim upravljanjem ključevima.",
     "difficulty": "easy",
     "unitId": "autentikacija-sigurnost"
@@ -308,12 +308,12 @@
     "topic": "backend",
     "question": "Koja je svrha verzioniranih migracija baze podataka?",
     "options": [
-      "Automatski obrisati i ponovno stvoriti bazu pri svakom deployu",
-      "Zamijeniti sigurnosne kopije baze",
-      "Kontrolirano i ponovljivo primijeniti promjene sheme ili podataka kroz okruženja",
-      "Sakriti SQL promjene od ostatka razvojnog tima"
+      "Kontrolirano i ponovljivo primijeniti promjene sheme kroz sva okruženja",
+      "Automatski obrisati i ponovno stvoriti cijelu bazu pri svakom deployu",
+      "Zamijeniti potrebu za redovitim sigurnosnim kopijama produkcijske baze",
+      "Sakriti promjene u SQL-u od ostatka razvojnog tima do puštanja u rad"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Migracije bilježe redoslijed promjena baze i omogućuju da razvojno, testno i produkcijsko okruženje dođu do očekivane verzije sheme.",
     "difficulty": "easy",
     "unitId": "baze-podataka"
@@ -568,10 +568,10 @@
     "topic": "backend",
     "question": "Što je JWT i kako se koristi za autentikaciju temeljenu na tokenima?",
     "options": [
-      "JSON Web Token je samostojeći, potpisan token koji sadrži podatke o korisniku (npr. identitet, dozvole) - klijent ga šalje sa svakim zahtjevom, a server ga verificira bez potrebe za čuvanjem stanja sesije",
-      "JWT je distribuirana baza podataka za spremanje hashiranih lozinki i aktivnih sesija, a server pri svakom zahtjevu iz nje učitava cijeli korisnički zapis",
-      "JWT se uvijek generira isključivo na klijentu iz korisničke lozinke; server čita payload bez provjere potpisa jer je Base64URL kodiranje dovoljno za autentičnost",
-      "JWT šifrira sva zaglavlja i tijelo HTTP zahtjeva pa potpuno zamjenjuje HTTPS, čak i kada tokenov payload sadrži osjetljive podatke ili putuje javnom mrežom"
+      "Samostojeći potpisan token s podacima o korisniku, koji server provjerava bez sesije",
+      "Distribuirana baza za hashirane lozinke iz koje server pri svakom zahtjevu čita zapis",
+      "Token koji se generira na klijentu iz lozinke, a server mu čita payload bez provjere",
+      "Mehanizam koji šifrira zaglavlja i tijelo zahtjeva pa u cijelosti zamjenjuje HTTPS"
     ],
     "correctIndex": 0,
     "explanation": "JWT se sastoji od headera, payloada i potpisa - budući da je potpisan (ne nužno enkriptiran), server može provjeriti njegovu autentičnost bez pristupa bazi, što odgovara stateless arhitekturi.",
@@ -733,12 +733,12 @@
     "topic": "backend",
     "question": "Što backpressure znači u sustavu gdje proizvođač šalje posao brže nego što ga potrošač može obraditi?",
     "options": [
-      "Proizvođač bez ograničenja povećava broj ponovnih pokušaja",
-      "Potrošač trajno odbacuje svaki novi posao čim se red prvi put popuni",
-      "Sustav usporava ili ograničava proizvođača i koristi ograničene redove ili konkurentnost",
-      "Svi zahtjevi preusmjeravaju se u cache za autentikaciju"
+      "Sustav usporava proizvođača i koristi ograničene redove čekanja",
+      "Proizvođač bez ograničenja povećava broj ponovnih pokušaja slanja",
+      "Potrošač trajno odbacuje svaki novi posao čim se red jednom popuni",
+      "Svi zahtjevi preusmjeravaju se u predmemoriju za autentikaciju"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Backpressure sprječava nekontroliran rast reda, memorije i latencije. Može se provesti ograničenjem protoka, bounded queueom ili signalom proizvođaču da uspori.",
     "difficulty": "medium",
     "unitId": "poruke-redovi"
@@ -748,12 +748,12 @@
     "topic": "backend",
     "question": "Kako consumer-driven contract testovi pomažu pri evoluciji API-ja?",
     "options": [
-      "Automatski dokazuju da nema nijedne poslovne greške u sustavu",
-      "Zamjenjuju sve integracijske i end-to-end testove",
-      "Provjeravaju samo brzinu mrežne veze između servisa",
-      "Bilježe očekivanja stvarnih consumera koja provider provjerava u CI-ju prije objave promjene"
+      "Bilježe očekivanja stvarnih klijenata koja provider provjerava u CI-ju",
+      "Automatski dokazuju da u cijelom sustavu nema nijedne poslovne greške",
+      "Zamjenjuju potrebu za integracijskim i end-to-end testovima sustava",
+      "Provjeravaju samo brzinu mrežne veze između dvaju povezanih servisa"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Provider može rano otkriti da promjena odgovora ili zahtjeva krši ugovor aktivnog consumera, bez potrebe za pokretanjem cijelog distribuiranog sustava.",
     "difficulty": "medium",
     "unitId": "http-api"
@@ -948,10 +948,10 @@
     "topic": "backend",
     "question": "Kako optimistic concurrency control najčešće otkriva konflikt pri istovremenom ažuriranju istog zapisa?",
     "options": [
-      "Usporedbom verzije ili timestamp vrijednosti zapisa u uvjetu UPDATE naredbe",
-      "Zaključavanjem cijele baze prije svakog čitanja",
-      "Ponovnim pokretanjem servera nakon svakog zapisa",
-      "Bezuvjetnim prihvaćanjem posljednjeg upisa, bez ikakve provjere"
+      "Usporedbom verzije ili vremenske oznake u uvjetu UPDATE-a",
+      "Zaključavanjem cijele baze prije svakog pojedinog čitanja",
+      "Ponovnim pokretanjem servera nakon svakog uspješnog zapisa",
+      "Bezuvjetnim prihvaćanjem zadnjeg upisa, bez ikakve provjere"
     ],
     "correctIndex": 0,
     "explanation": "UPDATE uspijeva samo ako je verzija/timestamp u bazi još uvijek jednaka onoj pročitanoj prije izmjene; ako se ne poklapa, znači da je netko drugi u međuvremenu promijenio zapis, pa aplikacija mora ponoviti operaciju.",
@@ -963,12 +963,12 @@
     "topic": "backend",
     "question": "U klasteru s N=5 replika zapis se potvrđuje nakon W=3 replike, a čitanje kontaktira R=3 replike. Zašto quorum čitanje može susresti potvrđenu verziju zapisa?",
     "options": [
-      "Zato što i R i W pojedinačno moraju biti jednaki N",
-      "Zato što vrijedi R + W > N pa se skupovi replika za čitanje i potvrđeni upis moraju preklapati",
-      "Zato što sve replike uvijek imaju savršeno sinkronizirane fizičke satove",
-      "Zato što quorum potpuno onemogućuje mrežne particije"
+      "Zato što vrijedi R + W > N pa se skupovi replika moraju preklapati",
+      "Zato što i R i W pojedinačno moraju biti jednaki ukupnom broju N",
+      "Zato što sve replike uvijek imaju savršeno usklađene fizičke satove",
+      "Zato što quorum u potpunosti onemogućuje mrežne particije klastera"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Budući da je 3 + 3 veće od 5, barem jedna kontaktirana replika pripada i skupu koji je potvrdio upis. Sustav zatim mora ispravno usporediti verzije i odabrati noviju.",
     "difficulty": "hard",
     "unitId": "otpornost-distribuirani"
@@ -978,12 +978,12 @@
     "topic": "backend",
     "question": "Kako saga obrazac upravlja poslovnim procesom koji obuhvaća narudžbu, naplatu i rezervaciju zalihe u različitim servisima bez zajedničke ACID transakcije?",
     "options": [
-      "Drži jednu globalnu bravu nad svim servisima do kraja procesa",
-      "Sprema sve međurezultate samo u zajednički cache",
-      "Beskonačno ponavlja cijeli proces bez bilježenja koraka",
-      "Izvršava niz lokalnih transakcija i pri neuspjehu pokreće definirane kompenzacijske akcije"
+      "Izvodi niz lokalnih transakcija i pri neuspjehu pokreće kompenzacije",
+      "Drži jednu globalnu bravu nad svim servisima do samog kraja procesa",
+      "Sprema sve međurezultate isključivo u zajedničku predmemoriju",
+      "Beskonačno ponavlja cijeli proces, bez bilježenja obavljenih koraka"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Saga svaki dovršeni korak potvrđuje lokalno, a neuspjeh kasnijeg koraka pokreće poslovnu kompenzaciju, primjerice povrat naplate ili oslobađanje zalihe.",
     "difficulty": "hard",
     "unitId": "otpornost-distribuirani"
@@ -1008,12 +1008,12 @@
     "topic": "backend",
     "question": "Zašto consistent hashing smanjuje premještanje cache ključeva kada se doda ili ukloni server?",
     "options": [
-      "Svaki server uvijek čuva potpunu kopiju svih ključeva",
-      "Ključevi se raspoređuju prema vremenu kada su nastali",
-      "Čvorovi i ključevi mapiraju se na prsten pa se uglavnom premješta samo susjedni raspon ključeva",
-      "Jedan centralni server ručno prepisuje sve ključeve pri svakoj promjeni"
+      "Čvorovi i ključevi idu na prsten pa se premješta samo susjedni raspon",
+      "Svaki server u klasteru uvijek čuva potpunu kopiju svih ključeva",
+      "Ključevi se raspoređuju prema vremenu u kojem su prvi put nastali",
+      "Jedan središnji server ručno prepisuje sve ključeve pri promjeni"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Promjena člana utječe na ograničen dio hash prstena umjesto na gotovo sve ključeve kao kod običnog modulo raspoređivanja. Virtualni čvorovi dodatno poboljšavaju ravnotežu.",
     "difficulty": "hard",
     "unitId": "kesiranje-skaliranje"
@@ -1146,9 +1146,9 @@
     "code": "function auth(req, res, next) {\n  if (!req.user) return res.status(401).end();\n  // korisnik postoji\n}\napp.use('/api', auth);",
     "options": [
       "Middleware u uspješnoj grani ne poziva next() niti šalje odgovor",
-      "HTTP 401 smije se koristiti samo za POST",
-      "Middleware mora uvijek izbrisati req.user",
-      "Ruta `/api` ne smije imati pod-rute"
+      "Status 401 smije se koristiti isključivo uz POST metodu",
+      "Middleware mora u svakom slučaju izbrisati objekt req.user",
+      "Ruta '/api' prema specifikaciji ne smije imati svoje pod-rute"
     ],
     "correctIndex": 0,
     "explanation": "Middleware mora završiti odgovor ili predati kontrolu sljedećem handleru. U prikazu prijavljeni korisnik ne ulazi u 401 granu, ali ni ne poziva next().",
@@ -1330,9 +1330,9 @@
     "question": "Što znači da je sustav otporan (resilient)?",
     "options": [
       "Nastavlja raditi i kad dio njega otkaže",
-      "Nikad ne može otkazati",
-      "Koristi najbrži mogući hardver",
-      "Ima sigurnosnu kopiju svih podataka"
+      "Ne može otkazati ni pod kojim uvjetima",
+      "Koristi najbrži dostupan hardver na tržištu",
+      "Ima sigurnosnu kopiju svih svojih podataka"
     ],
     "correctIndex": 0,
     "explanation": "Otpornost nije odsutnost kvarova nego pretpostavka da će ih biti. Retry, timeout i circuit breaker su odgovori na tu pretpostavku.",

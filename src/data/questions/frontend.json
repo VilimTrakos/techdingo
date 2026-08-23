@@ -173,12 +173,12 @@
     "topic": "frontend",
     "question": "Kako se vidljiva oznaka obrasca ispravno povezuje s poljem za unos e-maila?",
     "options": [
-      "Placeholderom unutar input elementa",
-      "Postavljanjem podebljanog teksta neposredno prije inputa",
-      "Elementom <label for='email'> povezanim s <input id='email'>",
-      "Dodavanjem title atributa samo na input"
+      "Elementom <label for='email'> uz <input id='email'>",
+      "Placeholderom postavljenim unutar input elementa",
+      "Podebljanim tekstom neposredno prije samog inputa",
+      "Dodavanjem title atributa isključivo na input"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Vrijednost for na labelu mora odgovarati id-u kontrole, čime polje dobiva pristupačno ime, a klik na oznaku fokusira polje.",
     "difficulty": "easy",
     "unitId": "osnove-weba"
@@ -218,12 +218,12 @@
     "topic": "frontend",
     "question": "U odnosu na što se računa CSS jedinica rem?",
     "options": [
-      "U odnosu na širinu roditeljskog elementa",
-      "U odnosu na visinu viewporta",
-      "U odnosu na veličinu fonta korijenskog html elementa",
+      "U odnosu na veličinu fonta korijenskog elementa",
+      "U odnosu na širinu roditeljskog elementa u stablu",
+      "U odnosu na visinu vidljivog dijela stranice",
       "U odnosu na omjer fizičkih piksela zaslona"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Jedan rem jednak je izračunatoj veličini fonta korijenskog html elementa, pa omogućuje dosljedno skaliranje sučelja.",
     "difficulty": "easy",
     "unitId": "css-layout"
@@ -233,12 +233,12 @@
     "topic": "frontend",
     "question": "Što radi event.preventDefault() u DOM event handleru?",
     "options": [
-      "Trajno uklanja handler s elementa",
-      "Sprječava zadanu radnju preglednika povezanu s događajem",
-      "Zaustavlja širenje događaja kroz DOM",
-      "Otkazuje sve buduće događaje istog tipa"
+      "Sprječava zadanu radnju preglednika povezanu s tim događajem",
+      "Trajno uklanja taj handler s elementa na kojem je registriran",
+      "Zaustavlja daljnje širenje događaja kroz stablo dokumenta",
+      "Otkazuje sve buduće događaje istog tipa na toj stranici"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "preventDefault sprječava zadano ponašanje poput slanja forme ili otvaranja linka, ali sam po sebi ne zaustavlja propagaciju događaja.",
     "difficulty": "easy",
     "unitId": "dom-eventovi"
@@ -279,12 +279,12 @@
     "topic": "frontend",
     "question": "Koja tvrdnja najbolje opisuje razliku između propsa i statea u React komponenti?",
     "options": [
-      "Komponenta slobodno mijenja props, dok state može mijenjati samo roditelj",
-      "State uvijek dolazi sa servera, a props postoje samo tijekom builda",
-      "Props su ulazi koje daje roditelj, dok komponenta posjeduje state i ažuriranjem statea pokreće novi render",
-      "Props i state dva su naziva za potpuno isti mehanizam"
+      "Props daje roditelj, a state pripada komponenti i pokreće novi render",
+      "Komponenta slobodno mijenja props, dok state mijenja samo roditelj",
+      "State uvijek dolazi sa servera, a props postoje samo tijekom gradnje",
+      "Props i state dva su naziva za jedan te isti mehanizam u Reactu"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Props se tretiraju kao read-only ulazi komponente, dok state predstavlja promjenjive podatke koje React prati i koristi pri renderiranju.",
     "difficulty": "easy",
     "unitId": "react"
@@ -325,10 +325,10 @@
     "topic": "frontend",
     "question": "Kako semantički grupirati više radio gumba koji zajedno odgovaraju na pitanje „Način dostave”?",
     "options": [
-      "Omotati ih u fieldset i opis grupe staviti u legend",
-      "Svakom radio gumbu dati isti id",
-      "Staviti ih u div bez zajedničkog naslova",
-      "Dodati placeholder svakom radio gumbu"
+      "Omotati ih u fieldset, a opis grupe staviti u legend",
+      "Svakom radio gumbu u toj grupi dati potpuno isti id",
+      "Staviti ih u obični div, bez zajedničkog naslova grupe",
+      "Dodati placeholder atribut svakom pojedinom gumbu"
     ],
     "correctIndex": 0,
     "explanation": "fieldset i legend daju grupi kontrola zajedničko semantičko ime koje asistivna tehnologija najavljuje uz pojedine opcije.",
@@ -355,12 +355,12 @@
     "topic": "frontend",
     "question": "Što CSS media query najčešće omogućuje u responzivnom dizajnu?",
     "options": [
-      "Promjenu HTML sadržaja na serveru prema vrsti baze podataka",
-      "Primjenu stilova samo kada medijski uvjet, poput minimalne širine viewporta, odgovara",
-      "Automatsko komprimiranje svih slika na stranici",
+      "Primjenu stilova samo kad medijski uvjet, npr. širina, odgovara",
+      "Promjenu HTML sadržaja na serveru prema vrsti korištene baze",
+      "Automatsko komprimiranje svih slika koje stranica učitava",
       "Izvršavanje JavaScript funkcije pri svakoj promjeni veličine"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Media query uvjetno primjenjuje CSS prema značajkama uređaja ili viewporta, primjerice pomoću min-width ili prefers-color-scheme.",
     "difficulty": "easy",
     "unitId": "css-layout"
@@ -370,12 +370,12 @@
     "topic": "frontend",
     "question": "Koja je prednost CSS svojstva gap za razmak između stavki u Flexbox ili Grid kontejneru?",
     "options": [
-      "Dodaje razmak i oko vanjskog ruba cijelog kontejnera",
-      "Mijenja širinu stavki bez obzira na raspoloživi prostor",
-      "Dodaje razmak samo između stavki bez potrebe za uklanjanjem margine s prve ili zadnje stavke",
+      "Dodaje razmak samo između stavki, bez skidanja margine s rubnih",
+      "Dodaje razmak i oko vanjskog ruba cijelog kontejnera sa stavkama",
+      "Mijenja širinu stavki neovisno o tome koliko prostora ima na raspolaganju",
       "Automatski pretvara jednodimenzionalni raspored u dvodimenzionalni"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "gap pripada kontejneru i stvara razmak između njegovih redaka ili stupaca, bez neželjenih vanjskih margina.",
     "difficulty": "easy",
     "unitId": "css-layout"
@@ -400,12 +400,12 @@
     "topic": "frontend",
     "question": "Po čemu se operator ?? razlikuje od operatora || pri odabiru zadane vrijednosti?",
     "options": [
-      "?? radi samo s brojevima, a || samo sa stringovima",
-      "?? vraća zadanu vrijednost za svaku falsy vrijednost",
-      "|| čuva vrijednosti 0, false i prazan string, a ?? ih zamjenjuje",
-      "?? koristi zadanu vrijednost samo za null ili undefined, pa čuva 0, false i prazan string"
+      "?? zamjenjuje samo null i undefined, pa čuva 0, false i prazan tekst",
+      "?? radi isključivo s brojevima, dok || radi samo s tekstualnim nizovima",
+      "?? vraća zadanu vrijednost za svaku falsy vrijednost, kao i operator ||",
+      "|| čuva vrijednosti 0, false i prazan tekst, dok ih ?? zamjenjuje"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Nullish coalescing reagira samo na odsutnost vrijednosti, dok || reagira na sve falsy vrijednosti.",
     "difficulty": "easy",
     "unitId": "js-jezik"
@@ -415,12 +415,12 @@
     "topic": "frontend",
     "question": "Koja je osnovna razlika između događaja DOMContentLoaded i window load?",
     "options": [
-      "load se uvijek događa prije nego što preglednik parsira HTML",
-      "DOMContentLoaded se događa nakon parsiranja dokumenta, dok load čeka i resurse poput slika",
-      "DOMContentLoaded se aktivira samo za SPA aplikacije",
-      "Oba događaja uvijek se aktiviraju u istom trenutku"
+      "DOMContentLoaded ide nakon parsiranja, a load čeka i slike i resurse",
+      "Događaj load uvijek se dogodi prije nego preglednik parsira HTML",
+      "DOMContentLoaded se aktivira isključivo u jednostraničnim aplikacijama",
+      "Oba se događaja uvijek aktiviraju u istom trenutku učitavanja"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "DOMContentLoaded označava da je DOM spreman, dok load dodatno čeka završetak učitavanja ovisnih resursa stranice.",
     "difficulty": "easy",
     "unitId": "dom-eventovi"
@@ -445,12 +445,12 @@
     "topic": "frontend",
     "question": "Zašto je važno postaviti atribut lang, primjerice <html lang='hr'>, na korijenski element dokumenta?",
     "options": [
-      "Kako bi preglednik automatski preveo sav sadržaj na taj jezik",
-      "Kako bi CSS mogao učitati samo stilove napisane za taj jezik",
-      "Kako bi čitači zaslona i jezični alati mogli primijeniti ispravan izgovor i pravila jezika",
-      "Kako bi se stranica mogla otvoriti samo korisnicima iz te države"
+      "Da čitači zaslona i jezični alati primijene ispravna pravila",
+      "Da preglednik automatski prevede sav sadržaj na taj jezik",
+      "Da CSS može učitati samo stilove napisane za taj jezik",
+      "Da se stranica može otvoriti samo korisnicima iz te države"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Ispravan lang pomaže asistivnoj tehnologiji odabrati pravila izgovora te alatima poput provjere pravopisa razumjeti jezik sadržaja.",
     "difficulty": "easy",
     "unitId": "osnove-weba"
@@ -475,12 +475,12 @@
     "topic": "frontend",
     "question": "Što vraća JavaScript metoda array.filter(predicate)?",
     "options": [
-      "Prvi element za koji predicate vrati true",
-      "Niz boolean vrijednosti dobivenih pozivom predicatea",
-      "Broj elemenata za koje predicate vrati true",
-      "Novi niz s elementima za koje predicate vrati truthy vrijednost"
+      "Novi niz s elementima za koje predicate vrati truthy",
+      "Prvi element za koji predicate vrati vrijednost true",
+      "Niz logičkih vrijednosti dobivenih pozivom predicatea",
+      "Broj elemenata za koje je predicate vratio true"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "filter prolazi kroz elemente i vraća novi niz samo s onima koji zadovoljavaju uvjet; izvorni niz sam po sebi ne mijenja.",
     "difficulty": "easy",
     "unitId": "js-jezik"
@@ -521,10 +521,10 @@
     "topic": "frontend",
     "question": "Najbliži pozicionirani predak ima position: relative, a njegov potomak position: absolute. Kako se potomak ponaša?",
     "options": [
-      "Pozicionira se prema tom pretku kao containing blocku i izuzet je iz normalnog toka",
-      "Automatski postaje position: fixed u odnosu na viewport",
-      "Ostaje u normalnom toku bez mogućnosti pomicanja",
-      "Nasljeđuje sve top i left vrijednosti pretka"
+      "Pozicionira se prema tom pretku i izuzet je iz normalnog toka",
+      "Automatski postaje position: fixed u odnosu na cijeli viewport",
+      "Ostaje u normalnom toku, bez ikakve mogućnosti pomicanja",
+      "Nasljeđuje sve vrijednosti top i left od svog pozicioniranog pretka"
     ],
     "correctIndex": 0,
     "explanation": "Absolute element pozicionira se prema najbližem odgovarajućem pozicioniranom pretku; pritom ne zauzima svoje uobičajeno mjesto u normalnom toku.",
@@ -551,12 +551,12 @@
     "topic": "frontend",
     "question": "Čemu služi React Fragment, zapisan primjerice kao <>...</>?",
     "options": [
-      "Trajno sprema state djece izvan komponente",
-      "Grupira više susjednih elemenata bez dodavanja dodatnog DOM elementa",
-      "Sprječava svako ponovno renderiranje svoje djece",
-      "Pretvara djecu u običan HTML string"
+      "Grupira više susjednih elemenata bez dodatnog DOM elementa",
+      "Trajno sprema state svoje djece izvan same komponente",
+      "Sprječava svako ponovno renderiranje elemenata u sebi",
+      "Pretvara djecu u običan HTML zapis u obliku teksta"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Fragment zadovoljava potrebu da komponenta vrati grupu elemenata, ali ne stvara dodatni wrapper u rezultirajućem DOM-u.",
     "difficulty": "easy",
     "unitId": "react"
@@ -831,12 +831,12 @@
     "topic": "frontend",
     "question": "Koja je posebnost CSS pseudo-klase :where() u izračunu specifičnosti?",
     "options": [
-      "Uvijek ima veću specifičnost od ID selektora",
+      "I sama pseudo-klasa i selektori u njoj imaju nultu specifičnost",
+      "Uvijek ima veću specifičnost od bilo kojeg ID selektora",
       "Preuzima najveću specifičnost među selektorima u svojoj listi",
-      "Sama pseudo-klasa i svi selektori unutar nje doprinose nultom specifičnošću",
-      "Potpuno isključuje CSS kaskadu za odabrane elemente"
+      "Potpuno isključuje CSS kaskadu za elemente koje odabere"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": ":where() omogućuje grupiranje i precizno ciljanje bez povećavanja specifičnosti, što olakšava kasnije nadjačavanje stilova.",
     "difficulty": "medium",
     "unitId": "css-layout"
@@ -876,10 +876,10 @@
     "topic": "frontend",
     "question": "Kako otkazati fetch zahtjev koji više nije potreban, primjerice nakon promjene upita za pretraživanje?",
     "options": [
-      "Proslijediti AbortController.signal fetchu i pozvati controller.abort()",
-      "Pozvati clearTimeout nad Promiseom koji fetch vraća",
-      "Postaviti response.ok na false",
-      "Obrisati URL iz varijable nakon slanja zahtjeva"
+      "Proslijediti AbortController.signal fetchu pa pozvati abort()",
+      "Pozvati clearTimeout nad Promiseom koji je fetch vratio",
+      "Postaviti response.ok na false prije nego odgovor stigne",
+      "Obrisati URL iz varijable nakon što je zahtjev već poslan"
     ],
     "correctIndex": 0,
     "explanation": "AbortController šalje signal otkazivanja API-ju fetch; otkazani zahtjev odbacuje Promise odgovarajućom pogreškom koju kod može obraditi.",
@@ -966,12 +966,12 @@
     "topic": "frontend",
     "question": "Kada su CSS container queries korisnije od media queries?",
     "options": [
-      "Kada stil mora ovisiti isključivo o operacijskom sustavu korisnika",
-      "Kada treba dohvatiti dimenzije elementa iz JavaScripta",
-      "Kada se stil cijele stranice smije promijeniti samo pri ispisu",
-      "Kada se komponenta treba prilagoditi veličini svojeg kontejnera, ne cijelog viewporta"
+      "Kad se komponenta prilagođava kontejneru, a ne cijelom viewportu",
+      "Kad stil mora ovisiti isključivo o operacijskom sustavu korisnika",
+      "Kad treba dohvatiti dimenzije nekog elementa iz JavaScripta",
+      "Kad se stil cijele stranice smije promijeniti samo pri ispisu"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Container queries omogućuju da ista komponenta reagira na prostor koji stvarno ima u različitim dijelovima layouta.",
     "difficulty": "medium",
     "unitId": "css-layout"
@@ -996,12 +996,12 @@
     "topic": "frontend",
     "question": "Koja je ključna razlika između tipova unknown i any u TypeScriptu?",
     "options": [
-      "unknown može sadržavati samo objekte, a any samo primitivne vrijednosti",
-      "any zahtijeva provjeru tipa prije svake operacije",
-      "unknown zahtijeva sužavanje ili provjeru prije uporabe, dok any uglavnom zaobilazi provjeru tipova",
-      "unknown i any ponašaju se identično pri provjeri tipova"
+      "unknown traži sužavanje prije uporabe, any zaobilazi provjeru tipova",
+      "unknown može sadržavati samo objekte, dok any prima samo primitive",
+      "any zahtijeva izričitu provjeru tipa prije bilo koje operacije",
+      "unknown i any ponašaju se potpuno identično pri provjeri tipova"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Oba tipa mogu primiti proizvoljnu vrijednost, ali unknown čuva sigurnost jer ga kod mora suziti prije pristupa svojstvima ili poziva.",
     "difficulty": "medium",
     "unitId": "js-jezik"
@@ -1071,10 +1071,10 @@
     "topic": "frontend",
     "question": "Koja je razlika između async i defer na vanjskim klasičnim script elementima?",
     "options": [
-      "Oba preuzimaju skriptu paralelno; async je izvršava čim je spremna bez jamstva redoslijeda, a defer nakon parsiranja dokumenta uz očuvanje redoslijeda",
-      "async čeka završetak parsiranja i čuva redoslijed, dok defer blokira parser čim preuzimanje skripte započne",
-      "defer radi samo za inline skripte nakon DOMContentLoaded, a async samo za vanjske CSS i JavaScript datoteke",
-      "Oba blokiraju parsiranje dokumenta i jamče izvršavanje redoslijedom kojim su njihove oznake navedene u HTML-u"
+      "Oba preuzimaju paralelno; async izvršava odmah, defer nakon parsiranja u redu",
+      "async čeka kraj parsiranja i čuva redoslijed, dok defer blokira parser odmah",
+      "defer radi samo za inline skripte, a async samo za vanjske CSS datoteke",
+      "Oba blokiraju parsiranje i jamče redoslijed kojim su oznake navedene"
     ],
     "correctIndex": 0,
     "explanation": "Async skripte izvršavaju se čim se preuzmu i mogu prekinuti parsiranje, dok se defer skripte izvršavaju nakon parsiranja redoslijedom u dokumentu, prije DOMContentLoaded.",
@@ -1146,12 +1146,12 @@
     "topic": "frontend",
     "question": "Koja je prednost korištenja URLSearchParams za izgradnju query stringa iz korisničkih vrijednosti?",
     "options": [
-      "Automatski validira poslovna pravila svih parametara",
-      "Šifrira parametre tako da ih server ne može pročitati",
-      "Sprema parametre izvan URL-a u trajnu memoriju preglednika",
-      "Pravilno serijalizira i kodira nazive i vrijednosti umjesto ručnog spajanja stringova"
+      "Pravilno kodira nazive i vrijednosti umjesto ručnog spajanja teksta",
+      "Automatski provjerava poslovna pravila svih zadanih parametara",
+      "Šifrira parametre tako da ih server u zahtjevu ne može pročitati",
+      "Sprema parametre izvan URL-a, u trajnu memoriju samog preglednika"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "URLSearchParams nudi get, set i append te provodi form-url-encoded serijalizaciju, čime se izbjegavaju pogreške s razmacima i posebnim znakovima.",
     "difficulty": "medium",
     "unitId": "mreza-sigurnost"
@@ -1176,12 +1176,12 @@
     "topic": "frontend",
     "question": "Kako pristupačno najaviti poruku „Rezultati su ažurirani” koja se dinamički pojavi bez premještanja fokusa?",
     "options": [
-      "Nakon svake promjene prisilno fokusirati body element",
-      "Poruku dodati samo CSS pseudo-elementom ::after",
-      "Ažurirati postojeću live regiju, primjerice element s role='status' ili aria-live='polite'",
+      "Ažurirati živu regiju, npr. element s role='status' ili aria-live",
+      "Nakon svake promjene prisilno fokusirati element body dokumenta",
+      "Poruku dodati isključivo CSS pseudo-elementom ::after na spremnik",
       "Postaviti aria-hidden='true' na poruku kako ne bi ometala korisnika"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Live regija koja postoji prije promjene omogućuje čitaču zaslona najaviti novi status bez prekidanja korisnikova fokusa; role='status' ima prikladno nenametljivo ponašanje.",
     "difficulty": "medium",
     "unitId": "pristupacnost-testiranje"
@@ -1340,12 +1340,12 @@
     "topic": "frontend",
     "question": "Zašto element s position: fixed ponekad ostaje vezan uz pomicanje određenog pretka umjesto uz viewport?",
     "options": [
+      "Svojstvo poput transform na pretku stvara containing block",
       "Svaki flex kontejner automatski pretvara fixed u static",
-      "Fixed elementi uvijek su pozicionirani prema najbližem roditelju",
-      "z-index pretka mijenja position: fixed u position: absolute",
-      "Svojstvo poput transform na pretku može uspostaviti containing block za fixed potomka"
+      "Fixed elementi uvijek se pozicioniraju prema najbližem roditelju",
+      "Svojstvo z-index pretka mijenja fixed u position: absolute"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Određena svojstva, uključujući transform, mogu učiniti pretka containing blockom pa se fixed potomak pozicionira u odnosu na njega.",
     "difficulty": "hard",
     "unitId": "css-layout"
@@ -1385,10 +1385,10 @@
     "topic": "frontend",
     "question": "Kako tip never pomaže provjeriti da switch obrađuje sve varijante discriminated uniona?",
     "options": [
-      "Default grana može proslijediti preostalu vrijednost funkciji koja prima never, pa nova neobrađena varijanta uzrokuje compile-time grešku",
-      "never automatski dodaje nedostajuće case grane u generirani JavaScript i bira prvu granu tijekom izvođenja",
-      "never pretvara sve članove uniona u optional svojstva pa svaka vrijednost može proći kroz default granu",
-      "Default grana s never prihvaća sve buduće varijante i prijavljuje ih tek kao upozorenje tijekom izvođenja"
+      "Default grana proslijedi ostatak funkciji koja prima never, pa nova varijanta puca",
+      "never automatski dodaje nedostajuće grane i bira prvu tijekom izvođenja",
+      "never pretvara sve članove uniona u neobavezna svojstva pa sve prolazi",
+      "Default grana s never prihvaća buduće varijante i javlja samo upozorenje"
     ],
     "correctIndex": 0,
     "explanation": "Nakon iscrpnog narrowinga ne bi smjela ostati vrijednost; assertNever obrazac zato otkriva novu varijantu koju switch nije obradio.",
@@ -1430,12 +1430,12 @@
     "topic": "frontend",
     "question": "Koji pristup najpouzdanije testira rezultat asinkrone React interakcije koja može završiti nakon više rendera?",
     "options": [
-      "Nakon klika čekati fiksnih 100 ms pa pretpostaviti da je UI gotov",
+      "Awaitati akciju pa s findBy ili waitFor čekati vidljivu promjenu",
+      "Nakon klika čekati fiksnih sto milisekundi pa pretpostaviti da je gotovo",
       "Čitati internu state varijablu komponente odmah nakon poziva handlera",
-      "Awaitati korisničku akciju, zatim pomoću findBy ili waitFor čekati korisniku vidljivu završnu promjenu u DOM-u",
       "Provjeriti samo da je mock funkcija definirana, bez provjere sučelja"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Čekanje opažljivog završnog stanja uklanja vremenske pretpostavke i provjerava ponašanje koje korisnik stvarno vidi.",
     "difficulty": "hard",
     "unitId": "pristupacnost-testiranje"
@@ -1460,8 +1460,8 @@
     "topic": "frontend",
     "question": "Kako CSS subgrid pomaže da stupci kartice u ugniježđenom gridu budu poravnati sa stupcima vanjskog grida?",
     "options": [
-      "Potomak koristi grid-template-columns: subgrid pa preuzima definiciju tragova roditeljskog grida na toj osi",
-      "Potomak kopira izračunate širine roditelja u inline style pomoću JavaScripta",
+      "Potomak s grid-template-columns: subgrid preuzima tragove roditelja",
+      "Potomak kopira izračunate širine roditelja u inline stil JavaScriptom",
       "Roditelj postavlja display: contents i time automatski briše sve redove",
       "Potomak koristi position: absolute kako bi ignorirao vlastiti grid"
     ],
@@ -1490,12 +1490,12 @@
     "topic": "frontend",
     "question": "Effect s praznim dependency nizom pokrene interval koji svake sekunde zove setCount(count + 1), ali brojač ostane na 1. Koja je ciljana ispravka ako interval treba samo povećavati prethodnu vrijednost?",
     "options": [
-      "Mutirati count s count++ bez settera",
-      "Dodati novi interval pri svakom renderu bez cleanupa",
-      "U intervalu koristiti setCount(c => c + 1) i u cleanupu pozvati clearInterval",
-      "Spremiti prikazani broj u globalnu CSS varijablu"
+      "U intervalu koristiti setCount(c => c + 1), a u cleanupu clearInterval",
+      "Mijenjati count izravno s count++ bez pozivanja settera iz hooka",
+      "Dodati novi interval pri svakom renderu, bez čišćenja prethodnog",
+      "Spremiti prikazani broj u globalnu CSS varijablu pa je čitati"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Callback zatvara count iz rendera u kojem je effect postavljen; funkcionalni updater čita aktualnu prethodnu vrijednost, a cleanup sprječava da interval preživi unmount.",
     "difficulty": "hard",
     "unitId": "react"
@@ -1535,10 +1535,10 @@
     "topic": "frontend",
     "question": "Koja je namjeravana razlika između resource hintova preload i prefetch?",
     "options": [
-      "preload rano dohvaća resurs potreban trenutačnoj navigaciji uz poznat tip, dok prefetch nižim prioritetom sugerira resurs za moguću buduću navigaciju",
-      "prefetch blokira parser dok se resurs ne izvrši, a preload samo označava URL bez pokretanja mrežnog zahtjeva",
-      "preload služi samo za slike trenutačne stranice, a prefetch samo za JavaScript koji se izvršava odmah",
-      "Oba hintova imaju identičan prioritet i životni ciklus cachea te se razlikuju samo po nazivu HTML atributa"
+      "preload dohvaća resurs za trenutnu navigaciju, prefetch za moguću buduću",
+      "prefetch blokira parser dok se resurs ne izvrši, a preload samo označi URL",
+      "preload služi samo za slike trenutne stranice, a prefetch samo za skripte",
+      "Oba hinta imaju isti prioritet i razlikuju se samo po nazivu atributa"
     ],
     "correctIndex": 0,
     "explanation": "Preload je snažan signal za resurs potreban na aktualnoj stranici i zahtijeva odgovarajući as atribut, dok je prefetch spekulativan signal za vjerojatnu buduću uporabu.",
@@ -1598,10 +1598,10 @@
     "unitId": "pristupacnost-testiranje",
     "question": "Kako pristupačno objaviti poruku 'Spremljeno' koja se pojavi nakon asinkrone akcije bez premještanja fokusa?",
     "options": [
-      "Ažurirati postojeće područje s role=status ili aria-live=polite",
-      "Dodati poruku samo u CSS pseudo-element ::after",
-      "Promijeniti document.title svake milisekunde",
-      "Sakriti poruku atributom aria-hidden=true"
+      "Ažurirati područje s role=status ili aria-live=polite",
+      "Dodati poruku isključivo u CSS pseudo-element ::after",
+      "Mijenjati document.title u vrlo kratkim razmacima",
+      "Sakriti poruku atributom aria-hidden=true na spremniku"
     ],
     "correctIndex": 0,
     "explanation": "Polite live region čitaču ekrana objavljuje novu poruku kada je prikladno, bez prekidanja korisnika ili prisilnog pomicanja fokusa.",

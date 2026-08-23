@@ -97,12 +97,12 @@
     "topic": "general",
     "question": "Što predstavlja Git commit?",
     "options": [
-      "Potpunu sigurnosnu kopiju svakog necommitiranog dokumenta na računalu",
-      "Automatski spoj svih udaljenih grana",
-      "Popis konflikata koje Git nije pokušao riješiti",
-      "Identificiranu snimku praćenih promjena s metapodacima i vezom na prethodnu povijest"
+      "Označenu snimku praćenih promjena s metapodacima i vezom na povijest",
+      "Potpunu sigurnosnu kopiju svakog dokumenta na tvom računalu",
+      "Automatski spoj svih udaljenih grana u trenutnu radnu granu",
+      "Popis konflikata koje Git nije uspio riješiti pri spajanju"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Commit bilježi određeno stanje projekta i njegove roditeljske commitove, čime nastaje povijest koju je moguće pregledavati, uspoređivati i dijeliti.",
     "difficulty": "easy",
     "unitId": "git-verzioniranje"
@@ -158,12 +158,12 @@
     "topic": "general",
     "question": "Zašto pristup k-tom elementu jednostruko povezane liste obično traje O(k), odnosno O(n) u najgorem slučaju?",
     "options": [
-      "Jer lista prije svakog čitanja mora sortirati sve elemente",
-      "Jer čvorovi ne nude izravan pristup po indeksu pa treba slijediti poveznice od početka",
-      "Jer se svaki element uvijek nalazi u zasebnoj datoteci",
-      "Jer lista može sadržavati samo jedan element u memoriji"
+      "Jer nema izravnog pristupa po indeksu, pa se slijede poveznice",
+      "Jer lista prije svakog čitanja mora sortirati sve svoje elemente",
+      "Jer se svaki pojedini element uvijek nalazi u zasebnoj datoteci",
+      "Jer lista može držati samo jedan element u memoriji odjednom"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Povezana lista nema adresnu aritmetiku za proizvoljan indeks kao polje. Do željenog čvora dolazi se prolaskom kroz prethodne čvorove, iako umetanje uz već poznat čvor može biti O(1).",
     "difficulty": "easy",
     "unitId": "strukture-podataka"
@@ -174,10 +174,10 @@
     "topic": "general",
     "question": "Koja je osnovna svrha strukture podataka mapa odnosno rječnik?",
     "options": [
-      "Pohranjivanje vrijednosti pridruženih jedinstvenim ključevima kako bi ih se dohvaćalo prema ključu",
-      "Čuvanje elemenata isključivo redoslijedom njihova umetanja",
-      "Automatsko izvođenje svake vrijednosti kao programske funkcije",
-      "Jamčenje da su sve spremljene vrijednosti međusobno različite"
+      "Pohrana vrijednosti uz jedinstvene ključeve radi dohvata po ključu",
+      "Čuvanje elemenata isključivo redoslijedom njihova umetanja u zbirku",
+      "Automatsko izvođenje svake spremljene vrijednosti kao funkcije",
+      "Jamstvo da su sve spremljene vrijednosti međusobno različite"
     ],
     "correctIndex": 0,
     "explanation": "Mapa povezuje svaki ključ s vrijednošću, primjerice korisnički ID s korisničkim zapisom. Implementacija može biti hash tablica, uravnoteženo stablo ili druga struktura, pa složenost i poredak ovise o izboru.",
@@ -189,12 +189,12 @@
     "topic": "general",
     "question": "Koja je uloga baznog slučaja u rekurzivnoj funkciji?",
     "options": [
-      "Pretvara svaki rekurzivni algoritam u O(1)",
-      "Automatski sprema rezultat u globalnu varijablu",
-      "Određuje uvjet u kojem funkcija vraća rezultat bez novog rekurzivnog poziva",
-      "Jamči da funkcija nikada ne koristi stog poziva"
+      "Uvjet u kojem funkcija vrati rezultat bez novog rekurzivnog poziva",
+      "Pretvara svaki rekurzivni algoritam u složenost reda veličine O(1)",
+      "Automatski sprema međurezultat u globalnu varijablu programa",
+      "Jamči da funkcija nikada neće koristiti stog poziva programa"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Bazni slučaj zaustavlja rekurzivno razlaganje problema. Ako ga nema ili mu se ulaz ne približava, pozivi se nastavljaju dok se ne iscrpi raspoloživi stog ili drugi resurs.",
     "difficulty": "easy",
     "unitId": "algoritmi"
@@ -280,12 +280,12 @@
     "topic": "general",
     "question": "Prema konvenciji semantičkog verzioniranja MAJOR.MINOR.PATCH, koja promjena tipično povećava PATCH broj?",
     "options": [
-      "Nekompatibilna promjena javnog API-ja",
-      "Nova kompatibilna funkcionalnost",
-      "Kompatibilan ispravak greške bez nove javne funkcionalnosti",
-      "Potpuna promjena programskog jezika bez obzira na javni API"
+      "Kompatibilan ispravak greške bez nove funkcionalnosti",
+      "Nekompatibilna promjena javnog sučelja knjižnice",
+      "Nova funkcionalnost koja ne ruši postojeću upotrebu",
+      "Promjena programskog jezika, neovisno o javnom sučelju"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "SemVer koristi PATCH za kompatibilne ispravke, MINOR za novu unatrag kompatibilnu funkcionalnost, a MAJOR za nekompatibilnu promjenu javnog API-ja. To je obećana konvencija projekta, ne automatsko jamstvo alata.",
     "difficulty": "easy",
     "unitId": "git-verzioniranje"
@@ -360,12 +360,12 @@
     "topic": "general",
     "question": "Kada je kompozicija često bolji izbor od nasljeđivanja?",
     "options": [
-      "Kada dvije klase slučajno imaju nekoliko redaka sličnog koda",
-      "Kada želimo da svaka komponenta može pristupati globalnom promjenjivom stanju",
-      "Kada objekt koristi zamjenjiva ponašanja koja nisu pravi odnos vrste „jest”, nego odnos „ima”",
-      "Kada želimo onemogućiti testiranje pojedinih dijelova objekta"
+      "Kad objekt koristi zamjenjiva ponašanja, dakle odnos 'ima', a ne 'jest'",
+      "Kad dvije klase slučajno imaju nekoliko redaka vrlo sličnog koda",
+      "Kad želimo da svaka komponenta pristupa globalnom promjenjivom stanju",
+      "Kad želimo onemogućiti zasebno testiranje pojedinih dijelova objekta"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Kompozicija sastavlja objekt od manjih suradnika i omogućuje neovisnu zamjenu ponašanja bez stvaranja krhke hijerarhije nasljeđivanja.",
     "difficulty": "medium",
     "unitId": "oop-dizajn"
@@ -450,12 +450,12 @@
     "topic": "general",
     "question": "Što se u modularnom dizajnu obično smatra poželjnom kombinacijom?",
     "options": [
-      "Niska kohezija unutar modula i mnogo izravnih ovisnosti među modulima",
-      "Visoka kohezija povezanih odgovornosti unutar modula i niska spregnutost između modula",
-      "Jedan modul koji sadrži sve odgovornosti sustava",
-      "Kružne ovisnosti kako bi svaki modul mogao izravno pozvati svaki drugi"
+      "Visoka kohezija unutar modula i niska spregnutost među modulima",
+      "Niska kohezija unutar modula i mnogo izravnih ovisnosti među njima",
+      "Jedan veliki modul koji sadrži sve odgovornosti cijelog sustava",
+      "Kružne ovisnosti kako bi svaki modul mogao pozvati svaki drugi"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Kohezivan modul ima jasnu svrhu, a slaba spregnutost ograničava širenje promjena i olakšava neovisno testiranje i zamjenu modula.",
     "difficulty": "medium",
     "unitId": "oop-dizajn"
@@ -779,10 +779,10 @@
     "topic": "general",
     "question": "Koju garanciju daje pravilno korišten Bloomov filter bez brisanja elemenata?",
     "options": [
-      "Odgovor „možda postoji” može biti lažno pozitivan, ali odgovor „sigurno ne postoji” nema lažno negativnih rezultata",
-      "Svaki odgovor točno dokazuje postoji li element i vraća njegovu spremljenu vrijednost",
-      "Lažno negativni rezultati su česti, a lažno pozitivni nisu mogući",
-      "Elemente uvijek čuva u potpuno sortiranom redoslijedu"
+      "Odgovor 'možda postoji' može biti lažan, 'sigurno ne postoji' ne može",
+      "Svaki odgovor točno dokazuje postoji li element i vraća njegovu vrijednost",
+      "Lažno negativni rezultati su česti, dok lažno pozitivni nisu mogući",
+      "Elemente uvijek čuva u potpuno sortiranom redoslijedu radi pretrage"
     ],
     "correctIndex": 0,
     "explanation": "Bloomov filter postavlja bitove pomoću više hash funkcija. Ako neki potreban bit nije postavljen, element sigurno nije dodan; ako su svi postavljeni, možda ih je postavila kombinacija drugih elemenata, pa je potrebna provjera u stvarnom spremištu.",
@@ -900,9 +900,9 @@
     "question": "Što je algoritam?",
     "options": [
       "Precizan niz koraka koji rješava zadani problem",
-      "Programski jezik namijenjen matematici",
-      "Struktura u kojoj se čuvaju podaci",
-      "Naziv za gotovu biblioteku funkcija"
+      "Programski jezik namijenjen matematičkim izračunima",
+      "Struktura u kojoj se podaci čuvaju u memoriji",
+      "Naziv za gotovu biblioteku funkcija u projektu"
     ],
     "correctIndex": 0,
     "explanation": "Algoritam je recept: isti ulaz, isti koraci, isti izlaz. Big-O onda opisuje koliko taj recept košta kad se ulaz poveća.",
@@ -948,9 +948,9 @@
     "question": "Čemu služi automatski test?",
     "options": [
       "Provjerava da se kod ponaša očekivano i nakon izmjena",
-      "Ubrzava izvršavanje programa u produkciji",
-      "Zamjenjuje potrebu za dokumentacijom projekta",
-      "Prevodi izvorni kod u strojni jezik"
+      "Ubrzava izvršavanje programa u produkcijskom okruženju",
+      "Zamjenjuje potrebu za dokumentacijom cijelog projekta",
+      "Prevodi izvorni kod u strojni jezik ciljanog procesora"
     ],
     "correctIndex": 0,
     "explanation": "Test je mreža ispod izmjena: kad netko sutra promijeni kod, test kaže je li nešto pokvario. Zato vrijednost testa raste s vremenom.",

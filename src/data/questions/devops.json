@@ -1204,10 +1204,10 @@
     "unitId": "nadzor-produkcije",
     "question": "Čemu služi error budget?",
     "options": [
-      "Kvantificira koliko ispada je prihvatljivo prije usporavanja izdanja",
-      "Određuje koliko novca se izdvaja za popravak grešaka",
-      "Ograničava broj grešaka koje aplikacija smije zapisati",
-      "Mjeri koliko su testovi pokrili izvornog koda"
+      "Kvantificira koliko je ispada prihvatljivo prije usporavanja",
+      "Određuje koliko se novca izdvaja za popravak prijavljenih grešaka",
+      "Ograničava broj grešaka koje aplikacija smije zapisati u dnevnik",
+      "Mjeri koliki je postotak izvornog koda pokriven testovima"
     ],
     "correctIndex": 0,
     "explanation": "Ako je cilj 99,9%, preostalih 0,1% je proračun za rizik. Dok ima proračuna, ide se brzo; kad se potroši, prioritet postaje stabilnost.",

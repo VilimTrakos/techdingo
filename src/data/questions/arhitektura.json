@@ -361,9 +361,9 @@
     "question": "Što je ograničeni kontekst u domenskom dizajnu?",
     "options": [
       "Područje unutar kojeg pojam ima točno jedno značenje",
-      "Skup klasa koje dijele istu baznu klasu",
-      "Dio sustava koji radi u zasebnom procesu",
-      "Popis podataka koje modul smije čitati"
+      "Skup klasa koje dijele istu zajedničku baznu klasu",
+      "Dio sustava koji se izvodi u vlastitom zasebnom procesu",
+      "Popis podataka koje pojedini modul smije čitati"
     ],
     "correctIndex": 0,
     "explanation": "Kupac u prodaji i kupac u naplati nisu isti pojam. Pokušaj jednog modela za oba daje objekt koji nikome ne odgovara.",
@@ -523,9 +523,9 @@
     "question": "Što je ugovor između dva servisa?",
     "options": [
       "Dogovoreni oblik zahtjeva i odgovora koji obje strane poštuju",
-      "Popis servisa koje jedan servis smije pozivati",
-      "Ograničenje broja poziva u zadanom vremenu",
-      "Dokument koji opisuje tko održava koji servis"
+      "Popis servisa koje jedan servis uopće smije pozivati",
+      "Ograničenje broja poziva u zadanom vremenskom razdoblju",
+      "Dokument koji opisuje tko u organizaciji održava koji servis"
     ],
     "correctIndex": 0,
     "explanation": "Ugovor je jedino što druga strana smije pretpostavljati. Sve izvan njega je detalj koji se smije mijenjati bez najave.",
@@ -892,9 +892,9 @@
     "question": "Zašto se poruka ne šalje izravno nakon upisa u bazu?",
     "options": [
       "Jer upis može uspjeti, a slanje zakazati, pa se stanja raziđu",
-      "Jer slanje poruke traje dulje od upisa u bazu",
-      "Jer se poruke ne mogu slati unutar transakcije",
-      "Jer bi red poruka time postao preopterećen"
+      "Jer slanje poruke traje osjetno dulje od samog upisa u bazu",
+      "Jer se poruke uopće ne mogu slati unutar otvorene transakcije",
+      "Jer bi red poruka time vrlo brzo postao preopterećen"
     ],
     "correctIndex": 0,
     "explanation": "Rješenje je upisati poruku u istu transakciju, u zasebnu tablicu, pa je zaseban proces objavi. To je obrazac odlazne pošte.",
@@ -1201,9 +1201,9 @@
     "question": "Zašto je ograničavanje prometa teško u sustavu s više instanci?",
     "options": [
       "Jer brojač mora biti zajednički, a zajedničko stanje usporava",
-      "Jer se svaka instanca mora zasebno konfigurirati",
-      "Jer korisnici mogu mijenjati svoju IP adresu",
-      "Jer se zahtjevi ne mogu razvrstati po korisniku"
+      "Jer se svaka instanca mora zasebno ručno konfigurirati",
+      "Jer korisnici mogu jednostavno mijenjati svoju IP adresu",
+      "Jer se dolazni zahtjevi ne mogu razvrstati po korisniku"
     ],
     "correctIndex": 0,
     "explanation": "Lokalni brojač po instanci propušta N puta više prometa. Zajednički brojač rješava točnost, ali dodaje mrežni poziv u svaki zahtjev.",
@@ -1216,9 +1216,9 @@
     "question": "Što se očekuje kao najvažniji dio odgovora u system designu?",
     "options": [
       "Objašnjenje zašto je odabrano jedno rješenje umjesto drugog",
-      "Popis svih tehnologija koje se mogu upotrijebiti",
-      "Točan dijagram sa svim komponentama sustava",
-      "Procjena vremena potrebnog za izradu sustava"
+      "Popis svih tehnologija koje bi se mogle upotrijebiti",
+      "Točan dijagram sa svim komponentama budućeg sustava",
+      "Procjena vremena potrebnog za izradu cijelog sustava"
     ],
     "correctIndex": 0,
     "explanation": "Svaki izbor ima cijenu. Odgovor koji ne spominje nijednu cijenu obično znači da izbor nije bio svjestan.",

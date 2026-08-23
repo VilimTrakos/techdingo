@@ -19,9 +19,9 @@
     "topic": "sql",
     "question": "Koja je razlika između INNER, LEFT, RIGHT i FULL OUTER JOIN-a?",
     "options": [
-      "INNER vraća samo podudarajuće retke, LEFT dodaje sve iz lijeve tablice, RIGHT sve iz desne, FULL OUTER sve iz obje",
-      "Svi JOIN tipovi vraćaju identičan rezultat, razlikuje se samo brzina izvršavanja",
-      "LEFT JOIN vraća samo retke koji NE postoje u desnoj tablici",
+      "INNER vraća podudarne, LEFT sve iz lijeve, RIGHT iz desne, FULL iz obje",
+      "Svi JOIN tipovi vraćaju isti rezultat, razlikuje se samo brzina izvođenja",
+      "LEFT JOIN vraća samo one retke koji NE postoje u desnoj tablici",
       "INNER JOIN spaja tablice bez uvjeta, dok ostali zahtijevaju ON klauzulu"
     ],
     "correctIndex": 0,
@@ -206,10 +206,10 @@
     "topic": "sql",
     "question": "Kako se tumači ORDER BY prezime ASC, datum_zaposlenja DESC?",
     "options": [
-      "Rezultat se prvo sortira po prezimenu uzlazno, a retci s istim prezimenom zatim po datumu silazno",
-      "Rezultat se prvo sortira po datumu, a prezime se koristi samo ako je datum NULL",
-      "Oba stupca sortiraju se silazno jer posljednji smjer vrijedi za cijelu klauzulu",
-      "Redoslijed stupaca u ORDER BY klauzuli nema utjecaja na rezultat"
+      "Prvo po prezimenu uzlazno, a isto prezime zatim po datumu silazno",
+      "Prvo po datumu, a prezime se koristi samo kad je datum NULL",
+      "Oba stupca silazno, jer zadnji smjer vrijedi za cijelu klauzulu",
+      "Redoslijed stupaca u ORDER BY klauzuli ne utječe na rezultat"
     ],
     "correctIndex": 0,
     "explanation": "ORDER BY primjenjuje ključeve slijeva nadesno: drugi stupac razrješava poredak samo među retcima koji imaju jednaku vrijednost prvog.",
@@ -236,12 +236,12 @@
     "topic": "sql",
     "question": "Što znači uvjet cijena BETWEEN 10 AND 20?",
     "options": [
-      "Vrijednost mora biti veća od 10 i manja od 20, bez granica",
-      "Uvjet uključuje obje granice i ekvivalentan je cijena >= 10 AND cijena <= 20",
-      "Uvjet uključuje 10, ali uvijek isključuje 20",
-      "BETWEEN radi samo s datumima, ne i s brojevima"
+      "Uključuje obje granice, isto kao cijena >= 10 AND cijena <= 20",
+      "Vrijednost mora biti veća od 10 i manja od 20, bez samih granica",
+      "Uvjet uključuje vrijednost 10, ali vrijednost 20 uvijek isključuje",
+      "BETWEEN radi isključivo s datumima, ne i s brojčanim vrijednostima"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "BETWEEN je uključiv na donjoj i gornjoj granici; pritom prva granica treba biti donja, a druga gornja vrijednost raspona.",
     "difficulty": "easy",
     "unitId": "osnove-upita"
@@ -296,12 +296,12 @@
     "topic": "sql",
     "question": "Koja je razlika između COUNT(*) i COUNT(email) nad istim skupom redaka?",
     "options": [
+      "COUNT(*) broji sve retke, a COUNT(email) samo one bez NULL-a",
       "COUNT(*) broji samo retke s barem jednom ne-NULL vrijednošću",
-      "COUNT(*) broji sve retke, dok COUNT(email) broji samo retke u kojima email nije NULL",
-      "COUNT(email) uvijek vraća veći rezultat jer broji znakove u adresi",
-      "Nema razlike čak ni kada email sadrži NULL"
+      "COUNT(email) uvijek vraća veći broj jer broji znakove u adresi",
+      "Nema razlike, čak ni kad stupac email sadrži NULL vrijednosti"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "COUNT(*) broji retke neovisno o njihovim vrijednostima, dok COUNT(izraz) zanemaruje retke u kojima je rezultat izraza NULL.",
     "difficulty": "easy",
     "unitId": "tipovi-i-null"
@@ -311,12 +311,12 @@
     "topic": "sql",
     "question": "Kako se u relacijskoj bazi najčešće modelira veza više-prema-više, primjerice studenti i kolegiji?",
     "options": [
-      "Popis svih kolegija sprema se kao tekst u jednom stupcu tablice studenata",
-      "Obje se tablice spajaju bez ključeva u jednu široku tablicu",
-      "Na svaku se tablicu dodaje po jedan stupac s proizvoljnim ID-em druge tablice",
-      "Uvodi se spojna tablica s vanjskim ključevima prema obje tablice i jedinstvenošću njihova para"
+      "Uvodi se spojna tablica s ključevima prema objema i jedinstvenim parom",
+      "Popis kolegija sprema se kao tekst u jednom stupcu tablice studenata",
+      "Obje se tablice spajaju bez ključeva u jednu široku zajedničku tablicu",
+      "Na svaku se tablicu dodaje po jedan stupac s ID-em druge tablice"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Spojna tablica predstavlja svaku vezu jednim retkom; par vanjskih ključeva obično je kompozitni primarni ključ ili ima UNIQUE ograničenje.",
     "difficulty": "easy",
     "unitId": "kljucevi-i-dizajn"
@@ -356,8 +356,8 @@
     "topic": "sql",
     "question": "Što je surogatni ključ i koji je čest razlog za njegovu uporabu?",
     "options": [
-      "Umjetni identifikator bez poslovnog značenja koji može ostati stabilan i kad se poslovni atributi promijene",
-      "Prirodni poslovni atribut koji se mora mijenjati pri svakoj izmjeni retka",
+      "Umjetni identifikator bez poslovnog značenja koji ostaje stabilan",
+      "Prirodni poslovni atribut koji se mijenja pri svakoj izmjeni retka",
       "Ključ sastavljen isključivo od svih tekstualnih stupaca tablice",
       "Zamjena za sva UNIQUE i FOREIGN KEY ograničenja u cijeloj bazi"
     ],
@@ -417,10 +417,10 @@
     "topic": "sql",
     "question": "Koja je osnovna razlika između COMMIT i ROLLBACK?",
     "options": [
-      "COMMIT potvrđuje promjene transakcije, a ROLLBACK poništava nepotvrđene promjene te transakcije",
-      "COMMIT samo čita podatke, a ROLLBACK stvara novu tablicu",
+      "COMMIT potvrđuje promjene, a ROLLBACK poništava nepotvrđene",
+      "COMMIT samo čita podatke, dok ROLLBACK stvara novu tablicu",
       "ROLLBACK trajno potvrđuje promjene, a COMMIT ih poništava",
-      "Obje naredbe služe isključivo za upravljanje korisničkim ovlastima"
+      "Obje naredbe služe isključivo upravljanju korisničkim ovlastima"
     ],
     "correctIndex": 0,
     "explanation": "COMMIT završava transakciju i čini njezine promjene trajnim. ROLLBACK odustaje od cijele transakcije, dok ROLLBACK TO SAVEPOINT poništava samo njezin kasniji dio.",
@@ -494,12 +494,12 @@
     "topic": "sql",
     "question": "Što vraća izraz COALESCE(nadimak, ime, 'Nepoznato')?",
     "options": [
-      "Uvijek posljednji argument, neovisno o NULL vrijednostima",
-      "Prvi argument koji je jednak praznom stringu",
-      "Popis svih argumenata spojenih u jedan tekst",
-      "Prvi argument slijeva koji nije NULL, ili NULL ako su svi argumenti NULL"
+      "Prvi argument slijeva koji nije NULL, inače opet NULL",
+      "Uvijek posljednji argument, bez obzira na NULL vrijednosti",
+      "Prvi argument koji je jednak praznom nizu znakova",
+      "Popis svih argumenata spojenih u jedan zajednički tekst"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "COALESCE redom provjerava argumente i vraća prvi koji nije NULL. U ovom primjeru prednost ima nadimak, zatim ime, a tekst 'Nepoznato' služi kao konačna zamjena.",
     "difficulty": "easy",
     "unitId": "tipovi-i-null"
@@ -539,12 +539,12 @@
     "topic": "sql",
     "question": "Kako se bez dodatnih zagrada tumači uvjet aktivan = TRUE OR probni = TRUE AND istekao = FALSE?",
     "options": [
-      "Najprije se vrednuje OR, pa rezultat zatim AND",
-      "AND i OR nemaju definiran prioritet pa je upit nevaljan",
-      "Uvjet je uvijek jednak (aktivan = TRUE OR probni = TRUE) AND istekao = FALSE",
-      "AND ima viši prioritet od OR, pa se prvo povezuju probni = TRUE i istekao = FALSE"
+      "AND ima viši prioritet od OR, pa se prvo vežu probni i istekao",
+      "Najprije se vrednuje OR, pa se na taj rezultat primijeni AND",
+      "AND i OR nemaju definiran prioritet pa je takav upit nevaljan",
+      "Uvjet je jednak (aktivan OR probni) AND istekao = FALSE"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "NOT ima viši prioritet od AND, a AND viši od OR. Iako je navedeno tumačenje standardno, zagrade su poželjne jer jasno izražavaju namjeru i smanjuju rizik pogrešnog čitanja.",
     "difficulty": "easy",
     "unitId": "osnove-upita"
@@ -785,12 +785,12 @@
     "topic": "sql",
     "question": "Koji izraz u standardnom SQL-u broji samo narudžbe sa statusom 'plaćeno' unutar svake grupe?",
     "options": [
-      "SUM(status = 'plaćeno')",
-      "COUNT(*) WHERE status = 'plaćeno'",
-      "GROUP BY COUNT(status = 'plaćeno')",
-      "SUM(CASE WHEN status = 'plaćeno' THEN 1 ELSE 0 END)"
+      "SUM(CASE WHEN status = 'plaćeno' THEN 1 ELSE 0 END)",
+      "COUNT(*) WHERE status = 'plaćeno' unutar SELECT liste",
+      "COUNT(status = 'plaćeno') uz dodatni GROUP BY status",
+      "GROUP BY COUNT(CASE WHEN status = 'plaćeno' THEN 1 END)"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "CASE pretvara svaki redak u 1 ili 0, a SUM ih zbraja unutar grupe; taj obrazac omogućuje više uvjetnih agregata u jednom upitu.",
     "difficulty": "medium",
     "unitId": "agregacija-i-window"
@@ -875,12 +875,12 @@
     "topic": "sql",
     "question": "Bez funkcijskog indeksa, koji uvjet planer najlakše može pretvoriti u raspon nad običnim indeksom na created_at?",
     "options": [
-      "EXTRACT(YEAR FROM created_at) = 2026",
-      "CAST(created_at AS CHAR(4)) = '2026'",
       "created_at >= DATE '2026-01-01' AND created_at < DATE '2027-01-01'",
-      "created_at + INTERVAL '0' DAY = created_at"
+      "EXTRACT(YEAR FROM created_at) = 2026 AND created_at IS NOT NULL",
+      "CAST(created_at AS CHAR(4)) = '2026' AND created_at IS NOT NULL",
+      "DATE_TRUNC('year', created_at) = DATE '2026-01-01' AND created_at IS NOT NULL"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Izravni poluotvoreni raspon nad indeksiranim stupcem je sargabilan i uključuje cijelu godinu; funkcija ili pretvorba nad stupcem često otežava uporabu običnog indeksa.",
     "difficulty": "medium",
     "unitId": "indeksi-performanse"
@@ -950,12 +950,12 @@
     "topic": "sql",
     "question": "Čemu u sustavima koji ga podržavaju služi SELECT ... FOR UPDATE unutar transakcije?",
     "options": [
-      "Omogućuje čitanje bez ikakvih zaključavanja čak i tijekom brisanja",
-      "Zaključava odabrane retke protiv konfliktnih izmjena ili zaključavanja dok transakcija ne završi",
-      "Trajno mijenja sve odabrane retke bez UPDATE naredbe",
-      "Automatski postavlja izolaciju cijele baze na SERIALIZABLE"
+      "Zaključava odabrane retke protiv izmjena dok transakcija ne završi",
+      "Omogućuje čitanje bez ikakvih zaključavanja, čak i tijekom brisanja",
+      "Trajno mijenja sve odabrane retke i bez izvršavanja UPDATE naredbe",
+      "Automatski postavlja izolaciju cijele baze na razinu SERIALIZABLE"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "FOR UPDATE služi obrascu pročitaj-pa-promijeni: konkurentni pisci istih redaka moraju čekati ili dobivaju pogrešku, ovisno o opcijama i implementaciji. Zaključavanje treba držati što kraće.",
     "difficulty": "medium",
     "unitId": "transakcije"
@@ -965,12 +965,12 @@
     "topic": "sql",
     "question": "U bazama koje koriste te nazive, koja je važna razlika između EXPLAIN i EXPLAIN ANALYZE?",
     "options": [
-      "EXPLAIN mijenja podatke, a EXPLAIN ANALYZE uvijek poništava transakciju",
+      "EXPLAIN daje procijenjen plan, ANALYZE izvrši upit i doda stvarne brojke",
+      "EXPLAIN mijenja podatke, dok EXPLAIN ANALYZE uvijek poništi transakciju",
       "EXPLAIN prikazuje samo rezultat upita, a ANALYZE samo strukturu tablice",
-      "EXPLAIN ANALYZE nikad ne izvršava upit pa je siguran za svaki DELETE",
-      "EXPLAIN prikazuje procijenjeni plan, dok EXPLAIN ANALYZE izvršava naredbu i dodaje stvarna vremena i broj redaka"
+      "EXPLAIN ANALYZE nikad ne izvršava upit pa je siguran i za DELETE naredbe"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Stvarno izvršavanje omogućuje usporedbu procjena i mjerenja, ali kod naredbi koje mijenjaju podatke može proizvesti stvarne promjene ako ih transakcija ne poništi. Sintaksa se razlikuje među bazama.",
     "difficulty": "medium",
     "unitId": "indeksi-performanse"
@@ -1040,12 +1040,12 @@
     "topic": "sql",
     "question": "Kako izraz prihod / NULLIF(broj_narudzbi, 0) pomaže pri računanju prosjeka?",
     "options": [
-      "Pretvara svaki prihod u cijeli broj prije dijeljenja",
-      "Zamjenjuje svaki NULL broj narudžbi vrijednošću 1",
-      "Vraća 0 kad su prihod i broj narudžbi jednaki",
-      "Pretvara nazivnik 0 u NULL, pa izraz umjesto dijeljenja s nulom tipično vraća NULL"
+      "Pretvara nazivnik 0 u NULL pa izraz vrati NULL umjesto pogreške",
+      "Pretvara svaki prihod u cijeli broj prije nego se izvrši dijeljenje",
+      "Zamjenjuje svaki NULL broj narudžbi vrijednošću jedan prije dijeljenja",
+      "Vraća nulu kad su prihod i broj narudžbi međusobno jednaki"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "NULLIF(a, b) vraća NULL kada su a i b jednaki. Ako je broj_narudzbi nula, nazivnik postaje NULL i aritmetički rezultat je NULL; po potrebi se završni NULL može posebno obraditi s COALESCE.",
     "difficulty": "medium",
     "unitId": "tipovi-i-null"
@@ -1194,10 +1194,10 @@
     "question": "Što vraća ovaj upit?",
     "code": "SELECT odjel, COUNT(*) AS broj\nFROM zaposlenici\nWHERE placa > 5000\nGROUP BY odjel\nHAVING COUNT(*) > 3;",
     "options": [
-      "Odjele koji imaju više od 3 zaposlenika s plaćom većom od 5000",
-      "Sve zaposlenike s plaćom većom od 5000",
-      "Odjele s više od 3 zaposlenika, bez obzira na plaću",
-      "Broj svih odjela u tablici"
+      "Odjele koji imaju više od tri zaposlenika s plaćom većom od 5000",
+      "Sve zaposlenike s plaćom većom od 5000, poredane po odjelu",
+      "Odjele s više od tri zaposlenika, bez obzira na njihovu plaću",
+      "Broj svih odjela u tablici koji imaju barem jednog zaposlenika"
     ],
     "correctIndex": 0,
     "explanation": "WHERE prvo zadrži samo retke s plaćom > 5000, GROUP BY ih grupira po odjelu, a HAVING zadrži samo grupe (odjele) u kojima je nakon filtriranja ostalo više od 3 retka.",
@@ -1229,10 +1229,10 @@
     "topic": "sql",
     "question": "Koja je razlika između clustered i non-clustered indeksa?",
     "options": [
-      "Clustered indeks fizički određuje redoslijed podataka u tablici (tablica ga smije imati samo jedan), non-clustered indeks je zasebna struktura s pokazivačima na stvarne retke",
-      "Clustered indeks sprema samo tekstualne stupce, dok non-clustered indeks može sadržavati isključivo brojčane ključeve",
-      "Non-clustered indeks uvijek je brži jer sadrži kopiju cijelog retka i nikad ne treba pristupiti osnovnoj tablici",
-      "Clustered indeks zasebna je struktura koja se automatski briše i ponovno gradi nakon svakog UPDATE-a retka"
+      "Clustered određuje fizički poredak i jedan je, non-clustered je zasebna struktura",
+      "Clustered sprema samo tekstualne stupce, a non-clustered isključivo brojčane ključeve",
+      "Non-clustered je uvijek brži jer nosi kopiju retka i ne dira osnovnu tablicu",
+      "Clustered je zasebna struktura koja se ponovno gradi nakon svakog UPDATE-a"
     ],
     "correctIndex": 0,
     "explanation": "Budući da clustered indeks određuje fizički poredak podataka, tablica može imati samo jedan; non-clustered indeksi se mogu dodavati u većem broju, ali zahtijevaju dodatni skok (lookup) do stvarnog retka.",
@@ -1379,10 +1379,10 @@
     "topic": "sql",
     "question": "Kako tipično nastaje deadlock i kako ga aplikacija treba ublažiti?",
     "options": [
-      "Transakcije drže zaključavanja koja druga treba i čekaju se u ciklusu; dosljedan redoslijed zaključavanja smanjuje rizik, a transakciju koju baza prekine treba sigurno ponoviti",
-      "Nastaje kad jedan SELECT nema ORDER BY; rješava se dodavanjem DISTINCT-a i ponavljanjem čitanja u istoj transakciji",
-      "Nastaje isključivo zbog premalog VARCHAR stupca; rješava se većim tipom i produljenjem timeouta svake transakcije",
-      "Baza ga ne može pouzdano otkriti pa administrator mora ručno ugasiti proces koji je posljednji zatražio zaključavanje"
+      "Transakcije se čekaju u ciklusu; pomaže isti redoslijed i ponavljanje",
+      "Nastaje kad SELECT nema ORDER BY; rješava se dodavanjem DISTINCT-a",
+      "Nastaje zbog premalog VARCHAR stupca; rješava se većim tipom stupca",
+      "Baza ga ne može otkriti pa administrator mora ručno ugasiti proces"
     ],
     "correctIndex": 0,
     "explanation": "Sustavi obično otkrivaju ciklus čekanja i prekidaju jednu transakciju. Kratke transakcije, isti redoslijed pribavljanja zaključavanja i retry cijele transakcije čine obradu robusnijom.",
@@ -1469,12 +1469,12 @@
     "topic": "sql",
     "question": "Što row-level security politika dodaje običnim ovlastima nad tablicom u bazama koje je podržavaju?",
     "options": [
-      "Automatski šifrira svaki stupac različitim ključem i zato uklanja potrebu za TLS-om i objektnim ovlastima",
-      "Ograničava koje retke određena uloga smije vidjeti ili mijenjati, uz postojeće objektne ovlasti; pravila za vlasnike i bypass uloge ovise o bazi",
-      "Pretvara svaki SELECT u materijalizirani pogled filtriran prema ulozi te ga osvježava nakon svake promjene retka",
-      "Daje svim korisnicima administratorske ovlasti nad vlastitim retcima i potpuno zaobilazi postojeće ovlasti tablice"
+      "Ograničava koje retke uloga smije vidjeti ili mijenjati, uz objektne ovlasti",
+      "Automatski šifrira svaki stupac drugim ključem i uklanja potrebu za TLS-om",
+      "Pretvara svaki SELECT u materijalizirani pogled filtriran prema toj ulozi",
+      "Daje svim korisnicima administratorske ovlasti nad njihovim vlastitim retcima"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "RLS provodi predikat pristupa unutar baze i može biti dodatni sloj obrane za višekorisničke podatke. Ne zamjenjuje autentikaciju, pažljivu dodjelu GRANT ovlasti ni sigurnost aplikacije.",
     "difficulty": "hard",
     "unitId": "sigurnost"
@@ -1514,12 +1514,12 @@
     "topic": "sql",
     "question": "Koja tvrdnja najbolje opisuje odnos write-ahead loga (WAL) i checkpointa?",
     "options": [
-      "Checkpoint znači da se prije svakog COMMIT-a mora prepisati cijela baza u novu datoteku, nakon čega se WAL trajno isključuje",
-      "WAL zapisuje samo tekst SELECT upita radi audita, dok checkpoint provjerava njihovu sintaksu prije izvođenja bez spremanja podatkovnih stranica",
-      "Nakon checkpointa oporavak nikada ne treba čitati nijedan kasniji zapis transakcijskog dnevnika jer checkpoint unaprijed sadrži buduće promjene",
-      "Promjena se najprije dovoljno zabilježi u trajnom dnevniku prije podatkovnih stranica; checkpoint povremeno približava stranice na disku stanju dnevnika i skraćuje potreban oporavak"
+      "Promjena se prvo zapiše u dnevnik, a checkpoint približi stranice tom stanju",
+      "Prije svakog COMMIT-a prepisuje se cijela baza, nakon čega se dnevnik isključi",
+      "Dnevnik zapisuje samo tekst SELECT upita, a checkpoint provjerava njihovu sintaksu",
+      "Nakon checkpointa oporavak nikad ne čita kasnije zapise transakcijskog dnevnika"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Write-ahead pravilo omogućuje potvrdu transakcije nakon sigurnog zapisa potrebnog loga, bez trenutnog zapisivanja svake izmijenjene stranice. Checkpoint ograničava koliko se loga mora ponovno primijeniti nakon pada, uz detalje ovisne o sustavu.",
     "difficulty": "hard",
     "unitId": "transakcije"
@@ -2039,12 +2039,12 @@
     "question": "Što izračunava izraz ukupno_do_sada za svaki račun?",
     "code": "SELECT id, iznos,\n  SUM(iznos) OVER (ORDER BY datum, id) AS ukupno_do_sada\nFROM racuni;",
     "options": [
-      "Ukupan zbroj svih računa ponovljen u svakom retku",
-      "Kumulativni zbroj od prvog do trenutačnog retka u zadanom poretku",
-      "Redni broj računa bez obzira na iznos",
-      "Prosjek samo prethodna dva računa"
+      "Kumulativni zbroj od prvog do trenutnog retka u zadanom poretku",
+      "Ukupan zbroj svih računa, isti u svakom retku rezultata",
+      "Redni broj računa u poretku, bez obzira na njegov iznos",
+      "Prosjek iznosa samo prethodna dva računa u tom poretku"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Uz ORDER BY u prozoru SUM računa tekući zbroj kroz poredane retke, bez sažimanja retka kao kod GROUP BY.",
     "difficulty": "medium"
   },

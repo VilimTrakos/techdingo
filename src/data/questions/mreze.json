@@ -1143,9 +1143,9 @@
     "question": "Što provjerava naredba `ping`?",
     "options": [
       "Je li udaljeni uređaj dostupan i koliko brzo odgovara",
-      "Radi li web aplikacija na udaljenom uređaju",
-      "Koliki je promet prema udaljenom uređaju",
-      "Koji su portovi otvoreni na uređaju"
+      "Radi li web aplikacija na tom udaljenom uređaju",
+      "Koliki je ukupan promet prema udaljenom uređaju",
+      "Koji su portovi na tom uređaju trenutno otvoreni"
     ],
     "correctIndex": 0,
     "explanation": "Ping mjeri dostupnost i kašnjenje na mrežnoj razini. Da aplikacija radi ne govori ništa - server može odgovarati dok je usluga mrtva.",

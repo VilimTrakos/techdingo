@@ -838,9 +838,9 @@
     "question": "Kad se mora koristiti kriptografski siguran izvor slučajnosti?",
     "options": [
       "Kad se stvara token, ključ ili identifikator sesije",
-      "Kad se miješa redoslijed pitanja u kvizu",
-      "Kad se bira nasumična boja za grafikon",
-      "Kad se simulira bacanje kocke u igri"
+      "Kad se miješa redoslijed pitanja u kvizu za vježbu",
+      "Kad se bira nasumična boja za stupac u grafikonu",
+      "Kad se simulira bacanje kocke u društvenoj igri"
     ],
     "correctIndex": 0,
     "explanation": "Predvidiv token je isto što i javan token. Za miješanje pitanja predvidljivost nikoga ne košta.",
@@ -1015,9 +1015,9 @@
     "question": "Zašto je izgubljen Mars Climate Orbiter?",
     "options": [
       "Jedan tim je računao u imperijalnim, drugi u metričkim jedinicama",
-      "Datum u sustavu prelio se u negativnu vrijednost",
-      "Antena se pokvarila pa je letjelica izgubila vezu",
-      "Softver je koristio neispravan model gravitacije"
+      "Datum u sustavu prelio se u negativnu vrijednost usred leta",
+      "Antena se pokvarila pa je letjelica trajno izgubila vezu",
+      "Softver je koristio neispravan model gravitacije planeta"
     ],
     "correctIndex": 0,
     "explanation": "Softver je radio točno ono što je napisano. Nedostajala je jedna pretvorba jedinica na granici dvaju sustava.",
@@ -1044,10 +1044,10 @@
     "unitId": "slavni-bugovi",
     "question": "Zašto su se uređaji Zune zamrznuli 31. prosinca 2008.?",
     "options": [
-      "Petlja koja oduzima dane nikad nije završila u prijestupnoj godini",
-      "Sat se prelio jer je brojač sekundi dosegao granicu",
-      "Datoteka s vremenskim zonama je istekla toga dana",
-      "Baterija se nije mogla puniti nakon zadanog datuma"
+      "Petlja koja oduzima dane nije završila u prijestupnoj godini",
+      "Sat se prelio jer je brojač sekundi dosegao svoju granicu",
+      "Datoteka s vremenskim zonama istekla je upravo toga dana",
+      "Baterija se nije mogla puniti nakon toga zadanog datuma"
     ],
     "correctIndex": 0,
     "explanation": "366. dan prijestupne godine nije se uklapao u uvjet petlje, pa je uređaj vrtio istu provjeru zauvijek. Sam se popravio sutradan.",

@@ -23,8 +23,12 @@ const MIN_QUESTIONS_PER_UNIT = 10;
  * ga duljina počne odavati. Pitanje kod kojeg je točan odgovor najduži I
  * osjetno dulji od ostalih igrač može pogoditi bez ikakvog znanja - a onda
  * razmaknuto ponavljanje bilježi pogotke kao naučeno gradivo.
+ *
+ * Ovo je GREŠKA, ne upozorenje: banka je jednom već bila u stanju u kojem se
+ * 85% pitanja moglo pogoditi biranjem najduljeg retka, i čišćenje toga bio je
+ * posao od nekoliko stotina pitanja. Prag postoji da se to ne ponovi.
  */
-const MAX_CORRECT_LENGTH_RATIO = 1.4;
+const MAX_CORRECT_LENGTH_RATIO = 1.3;
 
 /**
  * Ispod ove duljine razlika u duljini ne odaje ništa: nitko ne bira "O(n log n)"
@@ -133,15 +137,10 @@ function main(): void {
       }
     }
 
-    if (lengthTells.length > 0) {
-      const worst = [...lengthTells]
-        .sort((a, b) => b.ratio - a.ratio)
-        .slice(0, 3)
-        .map((t) => `${t.id} (${t.ratio.toFixed(1)}x)`)
-        .join(', ');
-      warnings.push(
-        `${file}: kod ${lengthTells.length}/${singleCount} pitanja duljina odaje točan odgovor - ` +
-          `igrač ih pogađa biranjem najdužeg. Netočne opcije treba produljiti do duljine točne. Najgori: ${worst}.`,
+    for (const tell of [...lengthTells].sort((a, b) => b.ratio - a.ratio)) {
+      errors.push(
+        `Pitanje "${tell.id}": točan odgovor je najduži i ${tell.ratio.toFixed(2)}x dulji od prosjeka netočnih, ` +
+          `pa se pitanje može pogoditi bez znanja. Produlji netočne opcije ili skrati točnu (najviše ${MAX_CORRECT_LENGTH_RATIO}x).`,
       );
     }
 

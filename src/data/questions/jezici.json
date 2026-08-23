@@ -555,10 +555,10 @@
     "unitId": "paradigme",
     "question": "Zašto se preporučuje kompozicija umjesto nasljeđivanja?",
     "options": [
-      "Jer nasljeđivanje čvrsto veže dijete uz unutarnje odluke roditelja",
-      "Jer nasljeđivanje troši više memorije od kompozicije",
-      "Jer se naslijeđene metode ne mogu prepisati u djetetu",
-      "Jer nasljeđivanje ne podržava provjeru tipova"
+      "Jer nasljeđivanje veže dijete uz unutarnje odluke roditelja",
+      "Jer nasljeđivanje troši osjetno više memorije od kompozicije",
+      "Jer se naslijeđene metode ne mogu prepisati u podklasi",
+      "Jer nasljeđivanje ne podržava statičku provjeru tipova"
     ],
     "correctIndex": 0,
     "explanation": "Promjena u roditelju tiho mijenja svu djecu, ponekad i nekoliko razina duboko. Kompozicija tu vezu čini vidljivom i zamjenjivom.",
@@ -879,10 +879,10 @@
     "unitId": "izvodjenje-koda",
     "question": "Što radi transpiler?",
     "options": [
-      "Prevodi kod iz jednog jezika u drugi jezik iste razine",
+      "Prevodi kod iz jednog jezika u drugi iste razine",
       "Prevodi kod izravno u strojni jezik procesora",
-      "Uklanja iz koda dijelove koji se ne koriste",
-      "Sažima kod da zauzme manje prostora"
+      "Uklanja iz koda dijelove koji se nigdje ne koriste",
+      "Sažima kod tako da zauzme što manje prostora"
     ],
     "correctIndex": 0,
     "explanation": "TypeScript u JavaScript, ili noviji JavaScript u stariji. Rezultat je opet izvorni kod, ne izvršna datoteka.",
@@ -980,9 +980,9 @@
     "unitId": "greske",
     "question": "Čemu služi mehanizam iznimki?",
     "options": [
-      "Prekida uobičajeni tok da se greška obradi na prikladnom mjestu",
-      "Bilježi greške u dnevnik radi kasnije analize",
-      "Sprječava da se greška uopće dogodi u programu",
+      "Prekida tok da se greška obradi na prikladnom mjestu",
+      "Bilježi greške u dnevnik radi kasnije analize uzroka",
+      "Sprječava da se greška uopće dogodi tijekom izvođenja",
       "Zaustavlja program čim se dogodi bilo kakva greška"
     ],
     "correctIndex": 0,
