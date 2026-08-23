@@ -1683,9 +1683,9 @@
     "question": "Što u SQL-u predstavlja vrijednost NULL?",
     "options": [
       "Nepoznatu ili nepostojeću vrijednost",
-      "Broj nula",
-      "Prazan tekst \"\"",
-      "Logičku vrijednost false"
+      "Broj nula, isto kao vrijednost 0",
+      "Prazan tekst, isto kao vrijednost ''",
+      "Logičku neistinu, isto kao false"
     ],
     "correctIndex": 0,
     "explanation": "NULL nije vrijednost nego odsutnost vrijednosti. Zato se ne uspoređuje s = nego s IS NULL - to je izvor većine zamki u ovoj cjelini.",
@@ -1714,10 +1714,10 @@
     "isIntro": true,
     "question": "Čemu služi JOIN?",
     "options": [
-      "Povezuje retke iz dvije ili više tablica po zadanom uvjetu",
-      "Spaja dva stupca u jedan tekst",
-      "Kopira tablicu u novu bazu",
-      "Sortira rezultat po više stupaca"
+      "Povezuje retke iz dvije ili više tablica po uvjetu",
+      "Spaja sadržaj dva stupca u jedan tekst",
+      "Kopira cijelu tablicu u drugu bazu podataka",
+      "Sortira rezultat upita po više stupaca odjednom"
     ],
     "correctIndex": 0,
     "explanation": "JOIN je način da se podaci razbacani po više tablica pojave u jednom rezultatu. Koji retci prežive spajanje ovisi o vrsti JOIN-a.",
@@ -1731,9 +1731,9 @@
     "question": "Što radi agregatna funkcija poput COUNT, SUM ili AVG?",
     "options": [
       "Sažima više redaka u jednu vrijednost",
-      "Mijenja tip podatka stupca",
-      "Dodaje novi redak u tablicu",
-      "Stvara indeks nad stupcem"
+      "Mijenja tip podatka nekog stupca",
+      "Dodaje novi redak na kraj tablice",
+      "Stvara indeks nad zadanim stupcem"
     ],
     "correctIndex": 0,
     "explanation": "Agregacija gleda skupinu redaka i vraća jedan broj. S GROUP BY se taj skup dijeli po ključu, pa dobiješ po jednu vrijednost za svaku skupinu.",
@@ -1748,8 +1748,8 @@
     "options": [
       "Podupit (subquery)",
       "Pogled (view)",
-      "Indeks",
-      "Transakcija"
+      "Indeks (index)",
+      "Okidač (trigger)"
     ],
     "correctIndex": 0,
     "explanation": "Podupit je upit u zagradama unutar drugog upita. Pogled je imenovani upit spremljen u bazi - srodan pojam, ali nije isto.",
@@ -1764,9 +1764,9 @@
     "question": "Čemu služi primarni ključ?",
     "options": [
       "Jedinstveno identificira svaki redak tablice",
-      "Ubrzava sortiranje rezultata",
-      "Određuje redoslijed stupaca",
-      "Šifrira sadržaj retka"
+      "Ubrzava sortiranje rezultata upita",
+      "Određuje redoslijed stupaca u tablici",
+      "Šifrira sadržaj retka prije zapisa"
     ],
     "correctIndex": 0,
     "explanation": "Primarni ključ je obećanje da dva retka nikad neće imati istu vrijednost i da ona nikad neće biti NULL. Na tome počiva povezivanje tablica.",
@@ -1795,10 +1795,10 @@
     "isIntro": true,
     "question": "Što je transakcija u bazi podataka?",
     "options": [
-      "Skup naredbi koji se izvršava kao jedna nedjeljiva cjelina",
-      "Jedan upit koji dohvaća podatke",
-      "Prijenos baze na drugi server",
-      "Zapis o tome tko se prijavio u sustav"
+      "Skup naredbi koji se izvršava kao jedna cjelina",
+      "Jedan upit koji dohvaća podatke iz tablice",
+      "Prijenos cijele baze na drugi server",
+      "Zapis o tome tko se i kada prijavio u sustav"
     ],
     "correctIndex": 0,
     "explanation": "Ili se dogode sve naredbe u transakciji ili nijedna. Zato novac ne može nestati između dva računa - to je slovo A (atomarnost) u ACID-u.",
@@ -1811,10 +1811,10 @@
     "isIntro": true,
     "question": "Što je SQL injection?",
     "options": [
-      "Napad u kojem korisnički unos postane dio SQL upita i promijeni ga",
-      "Preopterećenje baze prevelikim brojem upita",
-      "Krađa sigurnosne kopije baze",
-      "Greška u kojoj se isti redak upiše dvaput"
+      "Napad u kojem korisnički unos postane dio SQL upita",
+      "Preopterećenje baze prevelikim brojem upita odjednom",
+      "Krađa sigurnosne kopije baze s poslužitelja",
+      "Greška u kojoj se isti redak nehotice upiše dvaput"
     ],
     "correctIndex": 0,
     "explanation": "Ako se unos lijepi u upit kao tekst, napadač može upisati vlastiti SQL. Parametrizirani upiti su rješenje jer unos nikad ne postaje kod.",

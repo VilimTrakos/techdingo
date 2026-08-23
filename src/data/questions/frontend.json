@@ -1690,10 +1690,10 @@
     "isIntro": true,
     "question": "Što je event (događaj) u pregledniku?",
     "options": [
-      "Signal da se nešto dogodilo, npr. klik ili unos teksta",
+      "Signal da se nešto dogodilo, npr. klik ili unos",
       "Greška koja zaustavlja izvršavanje skripte",
-      "Zahtjev poslan serveru",
-      "Element koji se dodaje na stranicu"
+      "Zahtjev koji preglednik pošalje serveru",
+      "Element koji se naknadno dodaje na stranicu"
     ],
     "correctIndex": 0,
     "explanation": "Preglednik javlja događaje, a kod se na njih pretplaćuje slušačem. Sve interakcije u ovoj cjelini svode se na to tko sluša, kada i kojim redom.",
@@ -1707,9 +1707,9 @@
     "question": "Što CSS određuje?",
     "options": [
       "Izgled i raspored elemenata na stranici",
-      "Strukturu sadržaja stranice",
-      "Sadržaj baze podataka",
-      "Redoslijed učitavanja skripti"
+      "Strukturu i redoslijed sadržaja stranice",
+      "Sadržaj baze podataka iza stranice",
+      "Redoslijed učitavanja skripti na stranici"
     ],
     "correctIndex": 0,
     "explanation": "CSS opisuje kako elementi izgledaju i gdje stoje. Flexbox i Grid su dva sustava kojima se taj raspored zadaje.",
@@ -1771,10 +1771,10 @@
     "isIntro": true,
     "question": "Što znači pristupačnost (a11y) na webu?",
     "options": [
-      "Da sučelje mogu koristiti i osobe s invaliditetom, npr. uz čitač ekrana",
-      "Da se stranica brzo učitava na sporoj vezi",
-      "Da je stranica dostupna iz svih država",
-      "Da korisnik ne treba račun za pristup"
+      "Da sučelje mogu koristiti i osobe s invaliditetom",
+      "Da se stranica brzo učitava i na sporoj vezi",
+      "Da je stranica dostupna iz svih država svijeta",
+      "Da korisnik ne treba račun za pristup sadržaju"
     ],
     "correctIndex": 0,
     "explanation": "Pristupačnost je pitanje može li netko tko ne vidi ekran ili ne koristi miš obaviti isti posao. Semantični HTML rješava većinu toga sam.",
@@ -1787,10 +1787,10 @@
     "isIntro": true,
     "question": "Što se mjeri kad se govori o performansama web stranice?",
     "options": [
-      "Koliko brzo se prikaže i koliko glatko reagira na korisnika",
-      "Koliko redaka koda ima",
-      "Koliko posjetitelja dnevno dolazi",
-      "Koliko je datoteka u projektu"
+      "Koliko brzo se prikaže i koliko glatko reagira",
+      "Koliko redaka koda ima cijela aplikacija",
+      "Koliko posjetitelja stranica dnevno primi",
+      "Koliko datoteka projekt sadrži na disku"
     ],
     "correctIndex": 0,
     "explanation": "Performanse su vrijeme do prvog prikaza i odzivnost nakon toga. Optimizacija je uvijek odgovor na mjerenje, ne na osjećaj.",

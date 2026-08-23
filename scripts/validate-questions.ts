@@ -18,6 +18,26 @@ interface FileReport {
  */
 const MIN_QUESTIONS_PER_UNIT = 10;
 
+/**
+ * Koliko puta točan odgovor smije biti dulji od prosjeka netočnih prije nego
+ * ga duljina počne odavati. Pitanje kod kojeg je točan odgovor najduži I
+ * osjetno dulji od ostalih igrač može pogoditi bez ikakvog znanja - a onda
+ * razmaknuto ponavljanje bilježi pogotke kao naučeno gradivo.
+ */
+const MAX_CORRECT_LENGTH_RATIO = 1.4;
+
+/** Odaje li duljina točan odgovor? Vraća omjer, ili null ako je pitanje u redu. */
+function lengthTellRatio(options: string[], correctIndex: number): number | null {
+  const correct = options[correctIndex]?.length ?? 0;
+  const others = options.filter((_, i) => i !== correctIndex).map((o) => o.length);
+  if (others.length === 0) return null;
+  const mean = others.reduce((a, b) => a + b, 0) / others.length;
+  if (mean === 0) return null;
+  const ratio = correct / mean;
+  const isLongest = others.every((len) => correct >= len);
+  return isLongest && ratio > MAX_CORRECT_LENGTH_RATIO ? ratio : null;
+}
+
 function main(): void {
   const files = readdirSync(QUESTIONS_DIR).filter((f) => f.endsWith('.json'));
   const reports: FileReport[] = [];
@@ -58,7 +78,14 @@ function main(): void {
     const unitCounts = new Map<string, number>();
     const unitIntroCounts = new Map<string, number>();
     const conceptCounts = new Map<string, number>();
+    const lengthTells: { id: string; ratio: number }[] = [];
+    let singleCount = 0;
     for (const q of parsed.data) {
+      if ((q.kind ?? 'single') === 'single') {
+        singleCount++;
+        const ratio = lengthTellRatio(q.options, q.correctIndex);
+        if (ratio !== null) lengthTells.push({ id: q.id, ratio });
+      }
       if (q.isIntro) {
         introTotal++;
         unitIntroCounts.set(q.unitId, (unitIntroCounts.get(q.unitId) ?? 0) + 1);
@@ -83,6 +110,18 @@ function main(): void {
     }
 
     variantTotal += [...conceptCounts.values()].filter((n) => n > 1).length;
+
+    if (lengthTells.length > 0) {
+      const worst = [...lengthTells]
+        .sort((a, b) => b.ratio - a.ratio)
+        .slice(0, 3)
+        .map((t) => `${t.id} (${t.ratio.toFixed(1)}x)`)
+        .join(', ');
+      warnings.push(
+        `${file}: kod ${lengthTells.length}/${singleCount} pitanja duljina odaje točan odgovor - ` +
+          `igrač ih pogađa biranjem najdužeg. Netočne opcije treba produljiti do duljine točne. Najgori: ${worst}.`,
+      );
+    }
 
     // Svaka registrirana cjelina mora imati barem jedno pitanje - prazna
     // cjelina bi na putu učenja bila mrtav, neprelaziv čvor.

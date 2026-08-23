@@ -1225,10 +1225,10 @@
     "isIntro": true,
     "question": "Što je API?",
     "options": [
-      "Dogovoreno sučelje preko kojeg programi razmjenjuju podatke",
-      "Baza podataka na serveru",
-      "Programski jezik za backend",
-      "Alat za crtanje korisničkog sučelja"
+      "Sučelje preko kojeg programi razmjenjuju podatke",
+      "Baza podataka koja živi na udaljenom serveru",
+      "Programski jezik namijenjen pisanju backenda",
+      "Alat za crtanje izgleda korisničkog sučelja"
     ],
     "correctIndex": 0,
     "explanation": "API je ugovor: ako pošalješ ovakav zahtjev, dobit ćeš ovakav odgovor. REST je jedan raširen stil pisanja takvog ugovora.",
@@ -1257,10 +1257,10 @@
     "isIntro": true,
     "question": "Što znači da je aplikacija podijeljena u slojeve?",
     "options": [
-      "Svaki dio ima svoju odgovornost i razgovara samo sa susjednim dijelom",
+      "Svaki dio ima svoju odgovornost i susjede s kojima radi",
       "Kod je razdijeljen u više datoteka iste vrste",
-      "Aplikacija se pokreće na više servera",
-      "Svaka funkcija ima najviše deset redaka"
+      "Aplikacija se pokreće na više servera odjednom",
+      "Svaka funkcija ima najviše desetak redaka koda"
     ],
     "correctIndex": 0,
     "explanation": "Slojevi (npr. rute, servisi, pristup podacima) postoje da se promjena u jednom ne prelije u ostale. To je ista ideja i iza middlewarea.",
@@ -1273,9 +1273,9 @@
     "isIntro": true,
     "question": "Čemu služi baza podataka u backendu?",
     "options": [
-      "Trajno pohranjuje podatke i omogućuje njihovo pretraživanje",
-      "Ubrzava učitavanje slika u pregledniku",
-      "Zamjenjuje potrebu za serverom",
+      "Trajno pohranjuje podatke i omogućuje pretraživanje",
+      "Ubrzava učitavanje slika i skripti u pregledniku",
+      "Zamjenjuje potrebu za posebnim serverom",
       "Šifrira promet između klijenta i servera"
     ],
     "correctIndex": 0,
@@ -1289,10 +1289,10 @@
     "isIntro": true,
     "question": "Što je cache (predmemorija)?",
     "options": [
-      "Privremena pohrana rezultata da se ne moraju ponovno računati ili dohvaćati",
-      "Trajna pohrana svih podataka aplikacije",
+      "Privremena pohrana rezultata da se ne računaju ponovno",
+      "Trajna pohrana svih podataka koje aplikacija ima",
       "Popis korisnika koji su trenutno prijavljeni",
-      "Datoteka u koju se zapisuju greške"
+      "Datoteka u koju se zapisuju greške aplikacije"
     ],
     "correctIndex": 0,
     "explanation": "Cache trguje svježinom za brzinu. Zato je najteže pitanje u keširanju uvijek isto: kada podatak izbaciti.",
@@ -1305,9 +1305,9 @@
     "isIntro": true,
     "question": "Čemu služi red poruka (message queue)?",
     "options": [
-      "Prima poruke i predaje ih obrađivaču kasnije, neovisno o pošiljatelju",
-      "Sortira zahtjeve po važnosti korisnika",
-      "Sprema poruke između korisnika u chatu",
+      "Prima poruke i predaje ih obrađivaču kasnije",
+      "Sortira dolazne zahtjeve po važnosti korisnika",
+      "Sprema poruke koje korisnici šalju jedni drugima",
       "Prevodi podatke iz jednog formata u drugi"
     ],
     "correctIndex": 0,
@@ -1337,10 +1337,10 @@
     "isIntro": true,
     "question": "Čemu služe logovi, metrike i tragovi?",
     "options": [
-      "Da se vidi što sustav radi i zašto je nešto pošlo po zlu",
-      "Da se ubrza izvršavanje koda",
-      "Da se smanji potrošnja memorije",
-      "Da se korisnicima prikažu obavijesti"
+      "Da se vidi što sustav radi i zašto je nešto puklo",
+      "Da se ubrza izvršavanje koda u produkciji",
+      "Da se smanji potrošnja memorije po zahtjevu",
+      "Da se korisnicima prikažu obavijesti u aplikaciji"
     ],
     "correctIndex": 0,
     "explanation": "Bez njih se kvar u produkciji istražuje nagađanjem. Log kaže što se dogodilo, metrika koliko često, a trag kroz koje je servise zahtjev prošao.",

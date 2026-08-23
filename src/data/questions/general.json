@@ -877,9 +877,9 @@
     "isIntro": true,
     "question": "Što je struktura podataka?",
     "options": [
-      "Način organiziranja podataka u memoriji radi učinkovitog rada s njima",
-      "Popis tablica u bazi podataka",
-      "Dijagram arhitekture aplikacije",
+      "Način organiziranja podataka u memoriji radi bržeg rada",
+      "Popis tablica i stupaca u bazi podataka",
+      "Dijagram koji prikazuje arhitekturu aplikacije",
       "Format u kojem se podaci šalju preko mreže"
     ],
     "correctIndex": 0,
@@ -894,7 +894,7 @@
     "question": "Što je algoritam?",
     "options": [
       "Precizan niz koraka koji rješava zadani problem",
-      "Programski jezik za matematiku",
+      "Programski jezik namijenjen matematici",
       "Struktura u kojoj se čuvaju podaci",
       "Naziv za gotovu biblioteku funkcija"
     ],
@@ -910,9 +910,9 @@
     "question": "Što je objekt u objektno orijentiranom programiranju?",
     "options": [
       "Cjelina koja drži podatke i operacije nad tim podacima",
-      "Datoteka s izvornim kodom",
-      "Zapis u bazi podataka",
-      "Element korisničkog sučelja"
+      "Datoteka s izvornim kodom jedne klase",
+      "Zapis u bazi podataka koji opisuje entitet",
+      "Element korisničkog sučelja s kojim korisnik radi"
     ],
     "correctIndex": 0,
     "explanation": "Objekt spaja stanje i ponašanje na jedno mjesto. Sve ostalo - enkapsulacija, nasljeđivanje, SOLID - govori kako to spajanje raditi da kod ostane promjenjiv.",
@@ -925,10 +925,10 @@
     "isIntro": true,
     "question": "Čemu služi Git?",
     "options": [
-      "Bilježi povijest promjena u kodu i omogućuje više ljudi na istom projektu",
-      "Pokreće aplikaciju na serveru",
-      "Provjerava ima li kod grešaka",
-      "Sprema sigurnosne kopije baze podataka"
+      "Bilježi povijest promjena u kodu i omogućuje timski rad",
+      "Pokreće i nadzire aplikaciju na produkcijskom serveru",
+      "Automatski pronalazi greške u kodu prije pokretanja",
+      "Radi sigurnosne kopije baze podataka po rasporedu"
     ],
     "correctIndex": 0,
     "explanation": "Git pamti svaku verziju i tko ju je napravio, pa se promjene mogu spajati i vraćati unatrag. Commit, branch i merge su tri pojma na kojima sve počiva.",
@@ -941,10 +941,10 @@
     "isIntro": true,
     "question": "Čemu služi automatski test?",
     "options": [
-      "Provjerava da se kod ponaša očekivano, i nakon budućih izmjena",
-      "Ubrzava izvršavanje programa",
-      "Zamjenjuje dokumentaciju projekta",
-      "Prevodi kod u strojni jezik"
+      "Provjerava da se kod ponaša očekivano i nakon izmjena",
+      "Ubrzava izvršavanje programa u produkciji",
+      "Zamjenjuje potrebu za dokumentacijom projekta",
+      "Prevodi izvorni kod u strojni jezik"
     ],
     "correctIndex": 0,
     "explanation": "Test je mreža ispod izmjena: kad netko sutra promijeni kod, test kaže je li nešto pokvario. Zato vrijednost testa raste s vremenom.",
@@ -958,9 +958,9 @@
     "question": "Što su klijent i server?",
     "options": [
       "Klijent traži uslugu, a server je pruža",
-      "Dva naziva za istu stvar",
-      "Dvije vrste baza podataka",
-      "Dva sloja korisničkog sučelja"
+      "Dva naziva za istu vrstu računala",
+      "Dvije vrste baza podataka po namjeni",
+      "Dva sloja unutar korisničkog sučelja"
     ],
     "correctIndex": 0,
     "explanation": "Gotovo sve u system designu je varijacija ovog odnosa: netko traži, netko odgovara, a između njih je mreža koja može zakazati.",
