@@ -83,10 +83,10 @@
     "topic": "sql",
     "question": "Čemu služi GROUP BY klauzula?",
     "options": [
-      "Grupira retke s istom vrijednošću u navedenim stupcima kako bi se nad svakom grupom mogle primijeniti agregatne funkcije",
-      "Sortira rezultate upita silaznim redoslijedom",
+      "Grupira retke s istom vrijednošću da se nad grupama primijeni agregacija",
+      "Sortira rezultate upita silaznim redoslijedom po navedenim stupcima",
       "Uklanja duplikate iz rezultata bez potrebe za agregatnim funkcijama",
-      "Spaja dvije tablice po zajedničkom stupcu"
+      "Spaja dvije tablice po zajedničkom stupcu prije primjene filtera"
     ],
     "correctIndex": 0,
     "explanation": "GROUP BY grupira retke po vrijednostima jednog ili više stupaca, a agregatne funkcije (COUNT, SUM...) se zatim računaju za svaku grupu posebno.",
@@ -98,10 +98,10 @@
     "topic": "sql",
     "question": "Koje su najčešće agregatne funkcije u SQL-u i čemu služe?",
     "options": [
-      "COUNT, SUM, AVG, MIN i MAX - računaju jednu vrijednost iz skupa redaka (npr. broj, zbroj, prosjek, minimum, maksimum)",
-      "SELECT, INSERT, UPDATE, DELETE - osnovne DML naredbe",
-      "AND, OR, NOT - logički operatori za WHERE klauzulu",
-      "VARCHAR, INT, DATE - tipovi podataka za stupce"
+      "COUNT, SUM, AVG, MIN i MAX - iz skupa redaka računaju jednu vrijednost",
+      "SELECT, INSERT, UPDATE i DELETE - osnovne naredbe za rad s podacima",
+      "AND, OR i NOT - logički operatori koji se koriste u WHERE klauzuli",
+      "VARCHAR, INT i DATE - tipovi podataka kojima se opisuju stupci"
     ],
     "correctIndex": 0,
     "explanation": "Agregatne funkcije sažimaju više redaka u jednu vrijednost, često u kombinaciji s GROUP BY.",
@@ -146,10 +146,10 @@
     "topic": "sql",
     "question": "Čemu služi CASE WHEN izraz u SQL-u?",
     "options": [
-      "Omogućuje uvjetnu logiku (if/else stil) unutar SQL upita, npr. za mapiranje vrijednosti ili uvjetno računanje unutar SELECT-a",
-      "Koristi se isključivo za definiranje novih tablica",
-      "Zamjenjuje potrebu za WHERE klauzulom u svim upitima",
-      "Služi za brisanje redaka koji zadovoljavaju određeni uvjet"
+      "Omogućuje uvjetnu logiku unutar upita, npr. mapiranje ili uvjetno računanje",
+      "Koristi se isključivo za definiranje novih tablica i njihovih stupaca",
+      "Zamjenjuje potrebu za WHERE klauzulom u upitima nad više tablica",
+      "Služi za brisanje redaka koji zadovoljavaju zadani uvjet pretrage"
     ],
     "correctIndex": 0,
     "explanation": "CASE WHEN uvjet THEN vrijednost ... ELSE vrijednost END vraća različitu vrijednost ovisno o uvjetu, slično switch/if-else konstruktu u programskim jezicima.",
@@ -161,10 +161,10 @@
     "topic": "sql",
     "question": "Koja je razlika između VARCHAR i CHAR tipova podataka?",
     "options": [
-      "CHAR je fiksne duljine i popunjava se razmacima do definirane veličine, VARCHAR je varijabilne duljine i zauzima prostor prema stvarnom sadržaju",
-      "VARCHAR se koristi samo za brojeve, a CHAR samo za datume",
-      "CHAR može sadržavati neograničen broj znakova, a VARCHAR najviše 10",
-      "Nema razlike u spremanju podataka, razlikuje se samo naziv u različitim bazama"
+      "CHAR je fiksne duljine i nadopunjuje razmacima, VARCHAR prati stvarni sadržaj",
+      "VARCHAR se koristi samo za brojeve, dok se CHAR koristi samo za datume",
+      "CHAR može primiti neograničen broj znakova, a VARCHAR najviše deset",
+      "Nema razlike u spremanju, razlikuje se samo naziv među proizvođačima"
     ],
     "correctIndex": 0,
     "explanation": "CHAR(n) uvijek zauzima n znakova (popunjava razmacima), dok VARCHAR(n) zauzima onoliko koliko je stvarno upisano (do maksimuma n) - CHAR može biti brži za podatke fiksne duljine (npr. šifre), VARCHAR štedi prostor za varijabilne tekstove.",
@@ -176,12 +176,12 @@
     "topic": "sql",
     "question": "Koji primjer ispravno razlikuje DDL i DML naredbe?",
     "options": [
+      "CREATE i ALTER definiraju strukturu, INSERT i UPDATE mijenjaju podatke",
       "DDL mijenja pojedinačne retke, dok DML mijenja isključivo indekse",
-      "DDL naredbe poput CREATE i ALTER definiraju strukturu baze, dok DML naredbe poput INSERT i UPDATE mijenjaju podatke u retcima",
-      "DDL i DML su sinonimi; razlikuju se samo po proizvođaču baze",
-      "COMMIT i ROLLBACK su DDL, a CREATE TABLE je DML"
+      "DDL i DML su sinonimi koji se razlikuju samo po proizvođaču baze",
+      "COMMIT i ROLLBACK spadaju u DDL, a CREATE TABLE spada u DML"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "DDL opisuje ili mijenja strukturu objekata baze, primjerice tablica, dok DML umeće, ažurira ili briše podatke spremljene u tim objektima.",
     "difficulty": "easy",
     "unitId": "izmjene-podataka"
@@ -251,12 +251,12 @@
     "topic": "sql",
     "question": "Što NOT NULL ograničenje doista jamči za stupac?",
     "options": [
-      "Svaka vrijednost mora biti jedinstvena",
-      "Tekstualna vrijednost ne smije biti prazan string",
-      "Brojčana vrijednost mora biti veća od nule",
-      "Stupac ne smije sadržavati SQL NULL, ali može sadržavati vrijednosti poput praznog stringa ili nule"
+      "Stupac ne smije sadržavati NULL, ali prazan tekst i nula su dopušteni",
+      "Svaka vrijednost u stupcu mora biti jedinstvena unutar cijele tablice",
+      "Tekstualna vrijednost u stupcu ne smije biti prazan niz znakova",
+      "Brojčana vrijednost u stupcu mora biti strogo veća od nule"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "NOT NULL zabranjuje nepoznatu ili odsutnu SQL vrijednost NULL; ostale poslovne uvjete treba izraziti zasebnim CHECK ili drugim ograničenjem.",
     "difficulty": "easy",
     "unitId": "kljucevi-i-dizajn"
@@ -434,12 +434,12 @@
     "conceptId": "sql-least-privilege",
     "question": "Koja dodjela ovlasti najbolje slijedi načelo najmanjih ovlasti za račun koji samo izrađuje izvještaje?",
     "options": [
-      "Dodijeliti mu vlasništvo nad cijelom bazom",
-      "Dodijeliti ALL PRIVILEGES nad svim tablicama i budućim objektima",
-      "Dodijeliti samo SELECT nad potrebnim tablicama ili pogledima, bez nepotrebnih ovlasti pisanja i administracije",
-      "Dijeliti administratorski račun s ostalim servisima"
+      "Samo SELECT nad potrebnim tablicama, bez ovlasti pisanja i administracije",
+      "ALL PRIVILEGES nad svim tablicama i nad svim budućim objektima u bazi",
+      "Vlasništvo nad cijelom bazom, kako izvještaji ne bi ostali bez podataka",
+      "Dijeljeni administratorski račun koji koriste i ostali interni servisi"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "GRANT treba ograničiti na nužne objekte i operacije. Uskraćivanje INSERT, UPDATE, DELETE i administrativnih ovlasti smanjuje posljedice pogreške ili kompromitacije računa.",
     "difficulty": "easy",
     "unitId": "sigurnost"
@@ -449,12 +449,12 @@
     "topic": "sql",
     "question": "Zašto je pri INSERT naredbi dobro izričito navesti ciljne stupce?",
     "options": [
+      "Jer se vrijednosti vežu uz imena, pa fizički redoslijed stupaca ne smeta",
       "Jer tada baza automatski stvara indeks za svaki navedeni stupac",
       "Jer INSERT bez popisa stupaca ne može umetnuti više od jednog retka",
-      "Jer se vrijednosti vežu uz navedene stupce, a naredba je otpornija na njihov fizički redoslijed i izostavljene stupce s DEFAULT vrijednošću",
       "Jer popis stupaca automatski pretvara sve ulazne vrijednosti u tekst"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Izričit popis stupaca jasno određuje kamo ide svaka vrijednost i omogućuje da se ostali stupci popune zadanim vrijednostima ili s NULL ako je dopušten. Time je naredba čitljivija i manje osjetljiva na promjene strukture tablice.",
     "difficulty": "easy",
     "unitId": "izmjene-podataka"
@@ -740,10 +740,10 @@
     "topic": "sql",
     "question": "Kada je SELF JOIN prikladan i zašto se koriste aliasi tablice?",
     "options": [
-      "Kad retke tablice treba povezati s drugim retcima iste tablice, primjerice zaposlenika s nadređenim; aliasi razlikuju dvije uloge tablice",
+      "Kad retke treba povezati s drugim retcima iste tablice; aliasi razlikuju uloge",
       "Samo kad tablica nema primarni ključ; aliasi tada stvaraju privremeni ključ",
-      "Kad treba ukloniti sve duplikate bez DISTINCT-a",
-      "Isključivo za spajanje tablica iz dviju različitih baza"
+      "Kad treba ukloniti duplikate bez DISTINCT-a; aliasi ubrzavaju usporedbu",
+      "Isključivo za spajanje tablica iz dviju različitih baza na istom serveru"
     ],
     "correctIndex": 0,
     "explanation": "SELF JOIN istu tablicu navodi više puta pod različitim aliasima, što omogućuje povezivanje hijerarhijskih ili drugih međusobno povezanih redaka.",
@@ -770,12 +770,12 @@
     "topic": "sql",
     "question": "Koja je zamka izraza vrijednost NOT IN (podupit) ako podupit može vratiti NULL?",
     "options": [
-      "NULL se automatski pretvara u nulu pa rezultat može sadržavati lažna podudaranja",
-      "Ako nema jednakog retka, ali skup sadrži NULL, rezultat može biti UNKNOWN umjesto TRUE pa WHERE ne vraća očekivane retke",
-      "NOT IN tada uvijek baca sintaktičku grešku",
-      "NULL uzrokuje da NOT IN postane isto što i IN"
+      "Ako skup sadrži NULL, rezultat postane UNKNOWN pa WHERE ne propusti redak",
+      "NULL se automatski pretvori u nulu pa u rezultatu nastanu lažna podudaranja",
+      "NOT IN u tom slučaju uvijek baca sintaktičku grešku prilikom izvođenja",
+      "NULL uzrokuje da se NOT IN ponaša jednako kao običan IN operator"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Zbog trovrijednosne logike usporedba s NULL nije TRUE ni FALSE. Za anti-spajanje je često sigurniji korelirani NOT EXISTS ili prethodno uklanjanje NULL vrijednosti iz podupita.",
     "difficulty": "medium",
     "unitId": "tipovi-i-null"
@@ -800,10 +800,10 @@
     "topic": "sql",
     "question": "Što je CTE definiran klauzulom WITH?",
     "options": [
-      "Imenovani rezultat upita dostupan unutar jedne SQL naredbe, koristan za čitljivost i kao osnova rekurzivnih upita",
-      "Trajna tablica koja ostaje spremljena nakon COMMIT-a",
-      "Indeks koji se automatski gradi za svaki podupit",
-      "Transakcija koja uvijek koristi SERIALIZABLE izolaciju"
+      "Imenovani rezultat upita dostupan unutar te jedne SQL naredbe",
+      "Trajna tablica koja ostaje spremljena i nakon završetka transakcije",
+      "Indeks koji se automatski gradi za svaki podupit u toj naredbi",
+      "Transakcija koja se uvijek izvodi u SERIALIZABLE izolaciji"
     ],
     "correctIndex": 0,
     "explanation": "CTE daje ime međurezultatu u opsegu jedne naredbe. Sam po sebi ne jamči materijalizaciju ni bolje performanse jer to ovisi o optimizatoru.",
@@ -890,12 +890,12 @@
     "topic": "sql",
     "question": "Kako je najrobustnije modelirati točan trenutak online sastanka za korisnike u različitim vremenskim zonama?",
     "options": [
-      "Spremiti samo lokalni tekst poput '10:00' bez datuma i zone",
-      "Spremiti jednoznačan trenutak time-zone-aware tipom ili normaliziran u UTC, a zasebno čuvati IANA zonu ako treba rekonstruirati izvorna ili ponavljajuća lokalna pravila",
-      "Spremiti samo DATE jer se vrijeme može izračunati iz korisničkog imena",
-      "Za svakog korisnika trajno duplicirati isti događaj kao formatirani lokalni string"
+      "Spremiti jednoznačan trenutak u UTC, a zasebno čuvati IANA naziv zone",
+      "Spremiti lokalno vrijeme kao tekst, npr. '10:00', bez datuma i zone",
+      "Spremiti samo datum, jer se točno vrijeme izvede iz postavki korisnika",
+      "Za svakog sudionika duplicirati događaj kao formatirani lokalni tekst"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Jednoznačan instant omogućuje pouzdanu konverziju prikaza, dok naziv zone čuva pravila poput ljetnog računanja vremena. Točna semantika time-zone tipova razlikuje se među bazama i mora se provjeriti.",
     "difficulty": "medium",
     "unitId": "tipovi-i-null"
@@ -905,12 +905,12 @@
     "topic": "sql",
     "question": "Zašto dodavanje intervala od jednog kalendarskog mjeseca nije općenito isto što i dodavanje 30 dana?",
     "options": [
-      "SQL intervali ne mogu sadržavati mjesece",
-      "Svaki kalendarski mjesec prema standardu traje točno 28 dana",
-      "Dodavanje mjeseca uvijek uklanja vremenski dio vrijednosti",
-      "Mjeseci imaju različit broj dana, pa kalendarsko pomicanje mjeseca i fiksni broj dana mogu završiti na različitim datumima"
+      "Mjeseci imaju različit broj dana pa oba pomaka daju različit datum",
+      "SQL intervali uopće ne mogu sadržavati jedinicu mjeseca, samo dane",
+      "Svaki kalendarski mjesec prema standardu traje točno dvadeset osam dana",
+      "Dodavanje mjeseca uvijek ukloni vremenski dio iz dobivene vrijednosti"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Kalendarske jedinice i fiksna trajanja nisu zamjenjivi. Ponašanje na kraju mjeseca i preko promjene ljetnog vremena treba provjeriti za konkretnu bazu i poslovno pravilo.",
     "difficulty": "medium",
     "unitId": "tipovi-i-null"
@@ -1070,12 +1070,12 @@
     "topic": "sql",
     "question": "Što radi PARTITION BY odjeljak unutar OVER klauzule prozorske funkcije?",
     "options": [
+      "Dijeli retke u neovisne skupine, ne uklanjajući pritom pojedine retke",
       "Fizički particionira tablicu i premješta podatke na različite diskove",
-      "Sažima svaku grupu u jedan redak kao GROUP BY",
-      "Dijeli ulazne retke u neovisne skupine unutar kojih se računa prozorska funkcija, bez uklanjanja pojedinačnih redaka",
-      "Ograničava rezultat na prvu particiju"
+      "Sažima svaku dobivenu skupinu u jedan redak, jednako kao GROUP BY",
+      "Ograničava rezultat upita na prvu particiju u zadanom redoslijedu"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "PARTITION BY ponovno pokreće izračun prozorske funkcije za svaku logičku skupinu. Za razliku od GROUP BY, ulazni retci ostaju zasebni u rezultatu.",
     "difficulty": "medium",
     "unitId": "agregacija-i-window"
@@ -1085,8 +1085,8 @@
     "topic": "sql",
     "question": "Koja je svrha GROUPING SETS klauzule?",
     "options": [
-      "Definira više željenih razina grupiranja u jednoj agregacijskoj naredbi, primjerice po regiji, po proizvodu i ukupno",
-      "Jamči da svaki stupac tablice ima UNIQUE ograničenje",
+      "Definira više razina grupiranja u jednoj agregacijskoj naredbi",
+      "Jamči da svaki stupac tablice dobije UNIQUE ograničenje",
       "Mijenja fizički redoslijed redaka prije GROUP BY obrade",
       "Dopušta agregatne funkcije samo nad tekstualnim stupcima"
     ],
@@ -1304,12 +1304,12 @@
     "topic": "sql",
     "question": "Koja je bitna razlika između ROWS i RANGE okvira prozorske funkcije s ORDER BY?",
     "options": [
-      "ROWS se smije koristiti samo s tekstom, a RANGE samo s brojevima",
-      "RANGE uvijek obuhvaća cijelu particiju, neovisno o granicama",
-      "ROWS grupira rezultat kao GROUP BY, dok RANGE zadržava retke",
-      "ROWS određuje okvir po pozicijama redaka u uređenom prozoru, dok RANGE granice veže uz vrijednosti sortiranja i može zajedno uključiti peer retke"
+      "ROWS veže okvir uz pozicije redaka, a RANGE uz vrijednosti sortiranja",
+      "ROWS se smije koristiti samo nad tekstom, a RANGE samo nad brojevima",
+      "RANGE uvijek obuhvaća cijelu particiju, neovisno o zadanim granicama",
+      "ROWS sažima rezultat kao GROUP BY, dok RANGE zadržava pojedine retke"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "ROWS broji pojedinačne pozicije, dok RANGE promatra vrijednosti ORDER BY izraza; retci jednaki po tim izrazima čine peer grupu i mogu zajedno ući u okvir.",
     "difficulty": "hard",
     "unitId": "agregacija-i-window"
@@ -1349,12 +1349,12 @@
     "topic": "sql",
     "question": "Dvije transakcije pročitaju isto poslovno pravilo, zatim promijene različite retke tako da ga zajedno prekrše (write skew). Koji pristup daje najjače standardno jamstvo protiv takve anomalije?",
     "options": [
-      "READ COMMITTED bez dodatnih provjera",
-      "SERIALIZABLE transakcije uz spremnost aplikacije da ponovi transakciju nakon serialization failure pogreške",
-      "READ UNCOMMITTED i COMMIT nakon svakog SELECT-a",
-      "Korištenje autocommita za svaku pojedinačnu naredbu"
+      "SERIALIZABLE izolacija, uz aplikaciju spremnu ponoviti transakciju nakon greške",
+      "READ COMMITTED uz ponovljeno čitanje pravila neposredno prije COMMIT-a",
+      "READ UNCOMMITTED uz COMMIT nakon svakog pojedinačnog SELECT upita",
+      "Autocommit za svaku naredbu, jer kratke transakcije ne mogu kolidirati"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "SERIALIZABLE zahtijeva ishod ekvivalentan nekom serijskom izvršavanju. Sustav zato može prekinuti jednu konfliktnu transakciju, a aplikacija mora ponoviti cijelu transakciju.",
     "difficulty": "hard",
     "unitId": "transakcije"
@@ -1364,12 +1364,12 @@
     "topic": "sql",
     "question": "Što kod kompozitnog vanjskog ključa znači SQL MATCH FULL, ako ga baza podržava?",
     "options": [
+      "Referenca smije izostati samo ako su svi njezini stupci NULL, ne dio njih",
       "Dovoljno je da bilo koji jedan stupac ključa odgovara roditeljskom retku",
-      "Svi stupci vanjskog ključa automatski postaju UNIQUE",
-      "Svaki NULL automatski se pretvara u zadanu vrijednost roditelja",
-      "Referenca može izostati samo ako su svi njezini stupci NULL; mješavina NULL i ne-NULL vrijednosti nije dopušten bijeg od provjere"
+      "Svi stupci vanjskog ključa time automatski postaju i UNIQUE ograničenje",
+      "Svaki NULL se automatski zamijeni zadanom vrijednošću iz roditelja"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "MATCH FULL sprječava djelomično popunjenu kompozitnu referencu: ili je cijela referenca odsutna ili svi stupci zajedno moraju odgovarati referenciranom ključu.",
     "difficulty": "hard",
     "unitId": "kljucevi-i-dizajn"
@@ -1409,12 +1409,12 @@
     "topic": "sql",
     "question": "Koja usporedba hash i merge join algoritma je najtočnija za equi-join?",
     "options": [
-      "Hash join zahtijeva oba ulaza unaprijed sortirana, dok merge join uvijek gradi hash tablicu",
-      "Hash join obično gradi hash strukturu nad jednim ulazom i ne traži prethodni poredak, dok merge join može učinkovito prolaziti ulazima uređenima po ključu spajanja",
-      "Oba algoritma rade samo kada vanjski ulaz ima najviše jedan redak",
-      "Merge join nikada ne može iskoristiti poredak dobiven indeksom"
+      "Hash join gradi hash nad jednim ulazom, merge join koristi postojeći poredak",
+      "Hash join traži oba ulaza sortirana, a merge join uvijek gradi hash tablicu",
+      "Oba algoritma rade samo kad vanjski ulaz ima najviše jedan podudarni redak",
+      "Merge join nikad ne može iskoristiti poredak koji je dobio iz indeksa"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Hash join troši memoriju za hash strukturu i može prelijevati na disk, dok merge join treba odgovarajući poredak, dobiven indeksom ili sortiranjem. Izbor ovisi o veličini, memoriji i dostupnom poretku.",
     "difficulty": "hard",
     "unitId": "indeksi-performanse"
@@ -1559,10 +1559,10 @@
     "topic": "sql",
     "question": "Koji je ključni kompromis protokola two-phase commit u distribuiranoj transakciji?",
     "options": [
-      "Sudionici najprije trajno pripreme odluku, a zatim potvrde ili ponište po nalogu koordinatora; kvar koordinatora može ostaviti resurse zaključane u neodlučenom stanju",
-      "Svaki sudionik smije samostalno potvrditi drugu poslovnu vrijednost bez koordinacije",
-      "Protokol jamči dostupnost bez čekanja tijekom svake mrežne particije",
-      "Dvije faze znače da se svaki SELECT izvršava jednom s indeksom i jednom bez njega"
+      "Sudionici prvo pripreme odluku, a kvar koordinatora ostavi ih zaključanima",
+      "Svaki sudionik smije samostalno potvrditi vlastitu odluku bez koordinacije",
+      "Protokol jamči punu dostupnost i bez čekanja tijekom mrežne particije",
+      "Dvije faze znače da se upit izvrši jednom s indeksom i jednom bez njega"
     ],
     "correctIndex": 0,
     "explanation": "U prepare fazi sudionik obećava da kasnije može provesti konačnu odluku, a u drugoj fazi dobiva COMMIT ili ROLLBACK. To daje atomarnost među sudionicima, ali može blokirati i zahtijeva oporavak neodlučenih transakcija.",
@@ -1574,12 +1574,12 @@
     "topic": "sql",
     "question": "Što znače lossless join i dependency preservation pri dekompoziciji relacijske sheme?",
     "options": [
-      "Lossless join znači da JOIN nikad ne koristi disk, a dependency preservation da svi stupci imaju indeks",
-      "Lossless join znači da su sve tablice jednake veličine, a dependency preservation da nemaju vanjske ključeve",
-      "Oba pojma znače samo da je shema u prvoj normalnoj formi",
-      "Lossless join znači da se spajanjem dekomponiranih relacija rekonstruira izvorna relacija bez lažnih kombinacija, a dependency preservation da se izvorne ovisnosti mogu provjeriti bez njihova ponovnog spajanja"
+      "Spajanje vraća izvornu relaciju bez lažnih redaka, a ovisnosti se provjere bez spajanja",
+      "Spajanje se izvodi bez pristupa disku, a svaki stupac dekompozicije ima vlastiti indeks",
+      "Sve dobivene tablice imaju jednak broj redaka i nemaju vanjskih ključeva među sobom",
+      "Oba pojma znače samo to da je dobivena shema barem u prvoj normalnoj formi"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Dobra dekompozicija ne smije izgubiti informaciju niti stvarati spurious tuples pri rekonstrukciji. Ako uz to čuva ovisnosti, ključna se pravila mogu provoditi lokalno nad nastalim relacijama, bez skupog JOIN-a.",
     "difficulty": "hard",
     "unitId": "kljucevi-i-dizajn"
@@ -1606,10 +1606,10 @@
     "unitId": "kljucevi-i-dizajn",
     "question": "Kada je odgodiva (DEFERRABLE) provjera ograničenja posebno korisna?",
     "options": [
-      "Kada privremeno međustanje unutar transakcije krši ograničenje, ali konačno stanje prije COMMIT-a mora biti valjano",
-      "Kada ograničenje više nikada ne želimo provjeravati",
-      "Kada SELECT treba automatski preskočiti zaključane retke",
-      "Kada svaki stupac treba pretvoriti u tekst"
+      "Kad međustanje unutar transakcije krši pravilo, a stanje prije COMMIT-a ne",
+      "Kad se ograničenje više nikada ne želi provjeravati nad tom tablicom",
+      "Kad SELECT treba automatski preskočiti retke koje netko drugi zaključa",
+      "Kad se svaki stupac tablice mora pretvoriti u tekstualni tip podatka"
     ],
     "correctIndex": 0,
     "explanation": "Odgodivo ograničenje može se provjeriti na kraju transakcije umjesto nakon svake naredbe. Time se omogućuju složene, ali konačno konzistentne izmjene.",
@@ -1621,10 +1621,10 @@
     "unitId": "agregacija-i-window",
     "question": "Što je potrebno dodati window agregaciji SUM kako bi računala tekući zbroj od početka particije do trenutačnog retka?",
     "options": [
-      "ORDER BY unutar OVER izraza i odgovarajući frame do CURRENT ROW",
-      "Samo DISTINCT izvan SELECT-a",
-      "CROSS JOIN iste tablice bez uvjeta",
-      "HAVING bez GROUP BY-a"
+      "ORDER BY unutar OVER izraza i okvir koji ide do trenutnog retka",
+      "DISTINCT izvan SELECT-a, koji sam po sebi uvodi kumulativni zbroj",
+      "CROSS JOIN iste tablice bez uvjeta, pa filtriranje u HAVING klauzuli",
+      "HAVING bez GROUP BY-a, čime se agregacija primijeni na svaki redak"
     ],
     "correctIndex": 0,
     "explanation": "Redoslijed definira slijed retka, a window frame određuje koji prethodni retci ulaze u zbroj. Eksplicitni ROWS frame izbjegava iznenađenja s jednakim vrijednostima poretka.",

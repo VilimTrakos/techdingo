@@ -51,10 +51,10 @@
     "topic": "frontend",
     "question": "Koja je razlika između == i === u JavaScriptu?",
     "options": [
-      "== uspoređuje vrijednosti uz automatsku pretvorbu tipa (type coercion), === uspoređuje i vrijednost i tip bez pretvorbe",
-      "=== se koristi samo za brojeve, a == samo za stringove",
-      "== je novija i preporučena sintaksa, === je zastarjela",
-      "Nema razlike, oba operatora rade identično u svim slučajevima"
+      "== uspoređuje uz automatsku pretvorbu tipa, === i vrijednost i tip",
+      "=== se koristi samo za brojeve, a == isključivo za tekstualne nizove",
+      "== je novija i preporučena sintaksa, dok je === danas zastarjela",
+      "Nema razlike, oba operatora daju isti rezultat u svakom slučaju"
     ],
     "correctIndex": 0,
     "explanation": "Npr. 0 == '0' je true zbog pretvorbe tipa, dok je 0 === '0' false jer su tipovi različiti (number vs string) - zato se === preporučuje kao sigurniji izbor.",
@@ -128,10 +128,10 @@
     "topic": "frontend",
     "question": "Što opisuje CSS box model?",
     "options": [
-      "Način na koji se veličina svakog HTML elementa računa kroz slojeve: content, padding, border i margin",
-      "CSS svojstvo koje definira boju pozadine elementa",
-      "Model za organizaciju JavaScript datoteka u projektu",
-      "Tehnika za animiranje elemenata pri scrollanju"
+      "Veličina elementa računa se kroz content, padding, border i margin",
+      "CSS svojstvo kojim se definira boja pozadine pojedinog elementa",
+      "Model za organizaciju JavaScript datoteka unutar većeg projekta",
+      "Tehnika za animiranje elemenata dok korisnik pomiče stranicu"
     ],
     "correctIndex": 0,
     "explanation": "Svaki element se sastoji od sadržaja, unutarnjeg razmaka (padding), ruba (border) i vanjskog razmaka (margin) - box-sizing: border-box mijenja kako se ukupna širina/visina računa.",
@@ -143,10 +143,10 @@
     "topic": "frontend",
     "question": "Kada je bolje koristiti CSS Flexbox, a kada CSS Grid?",
     "options": [
-      "Flexbox je prilagođen jednodimenzionalnim rasporedima (redak ili stupac), dok je Grid namijenjen dvodimenzionalnim rasporedima (redci i stupci istovremeno)",
-      "Flexbox i Grid rade identičnu stvar i potpuno su zamjenjivi u svim situacijama",
-      "Grid se može koristiti samo unutar tablica, a Flexbox samo unutar formi",
-      "Flexbox je zastarjela tehnologija koju su u potpunosti zamijenili Grid"
+      "Flexbox je za jednodimenzionalan raspored, Grid za dvodimenzionalan",
+      "Flexbox i Grid rade istu stvar i zamjenjivi su u svakoj situaciji",
+      "Grid se koristi samo unutar tablica, a Flexbox samo unutar formi",
+      "Flexbox je zastarjela tehnologija koju je Grid u cijelosti zamijenio"
     ],
     "correctIndex": 0,
     "explanation": "Za raspored elemenata u jednom smjeru (npr. navigacijska traka) prirodniji je Flexbox; za složenije rasporede stranice s redcima i stupcima (npr. cijeli layout stranice) prirodniji je Grid.",
@@ -491,12 +491,12 @@
     "topic": "frontend",
     "question": "Što pregledniku poručuje atribut loading='lazy' na img elementu?",
     "options": [
-      "Da sliku preuzme prije svih ostalih resursa",
-      "Da preuzimanje slike izvan vidljivog područja može odgoditi dok joj se korisnik ne približi",
-      "Da sliku prikaže zamućeno dok JavaScript ne završi",
-      "Da sliku trajno spremi u localStorage"
+      "Da preuzimanje slike izvan zaslona smije odgoditi dok joj se ne približi",
+      "Da sliku preuzme prije svih ostalih resursa na toj istoj stranici",
+      "Da sliku prikaže zamućeno sve dok JavaScript ne završi s učitavanjem",
+      "Da sliku trajno spremi u localStorage radi bržeg sljedećeg posjeta"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Nativni lazy loading omogućuje pregledniku odgodu nekritičnih slika izvan viewporta, čime se može smanjiti početni mrežni promet.",
     "difficulty": "easy",
     "unitId": "performanse"
@@ -620,10 +620,10 @@
     "topic": "frontend",
     "question": "Što je event bubbling?",
     "options": [
-      "Mehanizam kod kojeg se event, nakon što se okine na ciljanom elementu, širi prema gore kroz roditeljske elemente sve do vrha dokumenta",
-      "Tehnika za grupiranje više eventova u jedan poziv radi optimizacije",
-      "Proces kojim preglednik automatski briše event listenere nakon 1 sekunde",
-      "Način na koji CSS animacije mijenjaju veličinu elementa"
+      "Event se nakon okidanja širi prema gore kroz roditeljske elemente",
+      "Tehnika grupiranja više eventova u jedan poziv radi optimizacije",
+      "Postupak kojim preglednik sam uklanja slušatelje nakon jedne sekunde",
+      "Način na koji CSS animacije mijenjaju veličinu prikazanog elementa"
     ],
     "correctIndex": 0,
     "explanation": "Kad kliknete na element unutar drugog elementa, event prvo okine handler na tom elementu, a zatim 'buble-a' prema gore kroz sve roditelje (osim ako se pozove stopPropagation).",
@@ -951,10 +951,10 @@
     "topic": "frontend",
     "question": "Kako srcset i sizes pomažu pri prikazu responzivne slike?",
     "options": [
-      "Pregledniku opisuju dostupne inačice slike i očekivanu prikaznu širinu kako bi mogao odabrati prikladan resurs",
-      "Prisiljavaju preglednik da uvijek preuzme najveću sliku",
-      "Pretvaraju raster sliku u SVG tijekom učitavanja",
-      "Odgađaju preuzimanje slike dok korisnik ne klikne na nju"
+      "Opisuju dostupne inačice i očekivanu širinu pa preglednik bira resurs",
+      "Prisiljavaju preglednik da uvijek preuzme najveću dostupnu inačicu",
+      "Pretvaraju rastersku sliku u SVG format tijekom samog učitavanja",
+      "Odgađaju preuzimanje slike dok korisnik na nju izravno ne klikne"
     ],
     "correctIndex": 0,
     "explanation": "Preglednik kombinira kandidate iz srcseta, podatke iz sizes i gustoću zaslona kako bi odabrao dovoljno kvalitetnu, ali ne nepotrebno veliku sliku.",
@@ -1161,12 +1161,12 @@
     "topic": "frontend",
     "question": "Zašto service worker s cache-first strategijom treba upravljati verzijama cachea pri objavi nove aplikacije?",
     "options": [
-      "Jer Cache API automatski briše sve resurse nakon svakog reloada",
-      "Jer stari cache može nastaviti posluživati zastarjele datoteke, pa nova verzija treba popuniti novi cache i kontrolirano ukloniti stare",
+      "Jer stari cache i dalje poslužuje zastarjele datoteke dok se ne ukloni",
+      "Jer Cache API automatski briše sve resurse nakon svakog osvježavanja",
       "Jer service worker ne smije presretati zahtjeve za lokalne resurse",
       "Jer promjena naziva cachea prisiljava server da isključi HTTPS"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Cache-first vraća pronađenu lokalnu reprezentaciju prije mreže; verzioniranje i čišćenje u install/activate životnom ciklusu sprječavaju trajno posluživanje starih asseta.",
     "difficulty": "medium",
     "unitId": "mreza-sigurnost"
@@ -1295,10 +1295,10 @@
     "topic": "frontend",
     "question": "Zašto komponenta omotana u React.memo može ponovno renderirati kada roditelj svaki put šalje config={{ theme: 'dark' }} i onClick={() => save()}?",
     "options": [
-      "Svaki render stvara nove reference objekta i funkcije, pa plitka usporedba propsa vidi promjenu",
-      "React.memo radi samo s class komponentama",
-      "Inline propsi automatski mijenjaju key djeteta",
-      "Preglednikov cache poništava Reactovu memoizaciju"
+      "Svaki render stvara nove reference, pa plitka usporedba vidi promjenu",
+      "React.memo radi isključivo s klasnim komponentama, ne s funkcijskima",
+      "Inline propsi automatski mijenjaju key djeteta pri svakom renderu",
+      "Predmemorija preglednika poništava Reactovu memoizaciju komponente"
     ],
     "correctIndex": 0,
     "explanation": "React.memo uspoređuje svaki prop pomoću referencijalne jednakosti; stabilniji API ili opravdani useMemo/useCallback mogu pomoći kada mjerenje pokaže stvaran problem.",
@@ -1310,12 +1310,12 @@
     "topic": "frontend",
     "question": "Kako preglednik i server koriste ETag za provjeru je li cacheirani resurs još uvijek svjež?",
     "options": [
+      "Preglednik šalje If-None-Match, a server može odgovoriti 304 bez tijela",
       "Preglednik šalje ETag u URL-u, a server uvijek vraća cijeli resurs",
-      "Server sprema ETag samo u cookie i preskače HTTP cache",
-      "Preglednik šalje If-None-Match s poznatim ETagom; server može odgovoriti 304 bez tijela pa se koristi cacheirana reprezentacija",
-      "ETag određuje koliko JavaScript memorije resurs smije zauzeti"
+      "Server sprema ETag samo u kolačić i time preskače HTTP predmemoriju",
+      "ETag određuje koliko JavaScript memorije taj resurs smije zauzeti"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "ETag je validator reprezentacije: podudaranje u uvjetnom zahtjevu omogućuje odgovor 304 Not Modified i ponovnu uporabu lokalno spremljenog sadržaja.",
     "difficulty": "hard",
     "unitId": "mreza-sigurnost"
@@ -1400,12 +1400,12 @@
     "topic": "frontend",
     "question": "Zašto je rizično usred aktivne IndexedDB transakcije awaitati nepovezanu asinkronu operaciju poput fetch zahtjeva?",
     "options": [
-      "IndexedDB automatski pretvara fetch odgovor u string",
-      "Fetch uvijek briše object store koji transakcija koristi",
-      "Await mijenja mode transakcije iz readwrite u readonly",
-      "Transakcija se može automatski commitati kada nema aktivnih IndexedDB zahtjeva, pa nakon awaita više nije aktivna"
+      "Transakcija se sama potvrdi kad nema aktivnih zahtjeva, pa nakon awaita ne radi",
+      "IndexedDB automatski pretvori odgovor fetch zahtjeva u tekstualni niz",
+      "Fetch zahtjev uvijek obriše object store koji ta transakcija koristi",
+      "Await promijeni način rada transakcije iz readwrite u readonly"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "IndexedDB transakcije imaju životni vijek vezan uz svoj red zahtjeva; nepovezani async rad često treba završiti prije otvaranja transakcije ili u zasebnom koraku.",
     "difficulty": "hard",
     "unitId": "mreza-sigurnost"
@@ -1445,12 +1445,12 @@
     "topic": "frontend",
     "question": "Dva normalna autorska CSS pravila nalaze se u različitim cascade layerima. Raniji layer koristi ID selektor, a kasniji layer koristi klasu. Koje pravilo ima prednost ako oba ciljaju isti element?",
     "options": [
-      "ID selektor uvijek pobjeđuje bez obzira na layer",
-      "Pobjeđuje pravilo koje ima više deklariranih svojstava",
-      "Pravila iz različitih layera preglednik smatra neusporedivima",
-      "Pobjeđuje pravilo iz kasnijeg layera jer se redoslijed layera razmatra prije specifičnosti unutar pojedinog layera"
+      "Pobjeđuje kasniji layer, jer se redoslijed layera gleda prije specifičnosti",
+      "ID selektor uvijek pobjeđuje, bez obzira na to u kojem se layeru nalazi",
+      "Pobjeđuje ono pravilo koje ima veći broj deklariranih CSS svojstava",
+      "Pravila iz različitih layera preglednik smatra međusobno neusporedivima"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Za normalne deklaracije prioritet cascade layera odlučuje prije specifičnosti; specifičnost se uspoređuje tek između pravila unutar layera istog prioriteta.",
     "difficulty": "hard",
     "unitId": "css-layout"

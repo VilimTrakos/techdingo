@@ -20,10 +20,10 @@
     "topic": "backend",
     "question": "Kada se koriste GET, POST, PUT, PATCH i DELETE HTTP metode?",
     "options": [
-      "GET dohvaća podatke, POST kreira novi resurs, PUT zamjenjuje cijeli resurs, PATCH djelomično ažurira resurs, DELETE briše resurs",
-      "Sve metode rade identičnu stvar, razlikuje se samo naziv u URL-u",
-      "GET se koristi za brisanje, a DELETE za dohvaćanje podataka",
-      "PATCH i PUT se koriste isključivo za autentikaciju korisnika"
+      "GET dohvaća, POST stvara, PUT zamjenjuje, PATCH mijenja dio, DELETE briše",
+      "Sve metode rade istu stvar, a razlikuje se samo naziv koji stoji u URL-u",
+      "GET se koristi za brisanje resursa, a DELETE za dohvaćanje podataka",
+      "PATCH i PUT koriste se isključivo za autentikaciju korisnika u sustavu"
     ],
     "correctIndex": 0,
     "explanation": "Konvencija (ne prisila) HTTP metoda: GET = read, POST = create, PUT = full update/replace, PATCH = partial update, DELETE = remove - PUT i DELETE su tipično idempotentni, POST obično nije.",
@@ -127,12 +127,12 @@
     "topic": "backend",
     "question": "Kako bi backend trebao spremati korisničke lozinke?",
     "options": [
-      "Reverzibilno ih šifrirati jednim zajedničkim ključem",
-      "Pretvoriti ih u Base64 tekst",
-      "Spremiti brzi hash bez salta radi lakše usporedbe",
-      "Spremiti rezultat sporog, saltanog algoritma za lozinke poput Argon2id, bcrypta ili scrypta"
+      "Spremiti rezultat sporog, saltanog algoritma poput Argon2id ili bcrypta",
+      "Reverzibilno ih šifrirati jednim zajedničkim ključem cijele aplikacije",
+      "Pretvoriti ih u Base64 tekst prije nego što se upišu u tablicu",
+      "Spremiti brzi hash bez soli, radi jednostavnije i brže usporedbe"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Spori algoritam i jedinstveni salt otežavaju masovno pogađanje ukradenih hash vrijednosti. Server pri prijavi uspoređuje hash, a izvornu lozinku ne mora moći vratiti.",
     "difficulty": "easy",
     "unitId": "autentikacija-sigurnost"
@@ -278,12 +278,12 @@
     "topic": "backend",
     "question": "Kako produkcijske API ključeve i lozinke servisa treba dostaviti aplikaciji?",
     "options": [
-      "Zapisati ih u komentare izvornog koda",
-      "Ugraditi ih u container image kako se ne bi mijenjali",
-      "Ispisati ih u log pri pokretanju radi lakšeg debugiranja",
-      "Čuvati ih u namjenskom secret manageru i ubrizgati aplikaciji tijekom izvršavanja uz ograničene dozvole"
+      "Čuvati ih u secret manageru i ubrizgati pri pokretanju, uz uske dozvole",
+      "Ugraditi ih u container image kako se ne bi slučajno mijenjali",
+      "Ispisati ih u dnevnik pri pokretanju radi lakšeg otklanjanja grešaka",
+      "Zapisati ih u komentare izvornog koda koji vidi samo razvojni tim"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Tajne ne pripadaju repozitoriju, imageu ni logovima. Centralno upravljanje olakšava kontrolu pristupa, audit i rotaciju bez promjene izvornog koda.",
     "difficulty": "easy",
     "unitId": "autentikacija-sigurnost"
@@ -823,12 +823,12 @@
     "topic": "backend",
     "question": "Kako zadržati redoslijed događaja za pojedinu narudžbu, a ipak paralelno obrađivati različite narudžbe u particioniranom brokeru?",
     "options": [
-      "Svaki događaj slati na nasumičnu particiju",
-      "Koristiti ID narudžbe kao partition key kako bi njezini događaji završili u istoj uređenoj particiji",
-      "Za svaki događaj pokrenuti zaseban broker",
-      "Sortirati događaje samo prema lokalnom satu svakog producera"
+      "Koristiti ID narudžbe kao partition key, pa svi njezini događaji idu zajedno",
+      "Svaki događaj slati na nasumično odabranu particiju radi ravnomjernosti",
+      "Za svaki tok događaja pokrenuti zaseban broker s vlastitim redoslijedom",
+      "Sortirati događaje prema lokalnom satu svakog pojedinog proizvođača"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Broker tipično jamči redoslijed unutar particije, ne globalno. Stabilan ključ agregata omogućuje redoslijed po narudžbi uz paralelizam među različitim ključevima.",
     "difficulty": "medium",
     "unitId": "poruke-redovi"
@@ -993,10 +993,10 @@
     "topic": "backend",
     "question": "Worker s vremenski ograničenim leaseom zastane, lease istekne i novi worker preuzme posao. Kako fencing token sprječava da se stari worker nakon oporavka ponovno upiše preko novoga?",
     "options": [
-      "Svaki novi lease dobiva veći monotoni token, a resurs odbija operacije sa starijim tokenom",
-      "Lease se postavlja na beskonačno trajanje",
-      "Workeri uspoređuju samo vlastite lokalne satove",
-      "Stari worker briše cache prije svakog upisa"
+      "Novi lease dobiva veći monotoni token, pa resurs odbija starije tokene",
+      "Trajanje leasea postavlja se na beskonačno pa ne može isteći usred posla",
+      "Radnici uspoređuju vlastite lokalne satove prije svakog upisa u resurs",
+      "Stari radnik obriše cijelu predmemoriju prije nego zapiše nove podatke"
     ],
     "correctIndex": 0,
     "explanation": "Lease sam ne može zaustaviti pauziranog starog vlasnika. Resurs koji provjerava rastući fencing token pouzdano odbija zakašnjele operacije prethodnog vlasnika.",
@@ -1023,12 +1023,12 @@
     "topic": "backend",
     "question": "Zašto je user_id obično loš izbor za label u sustavu vremenskih metrika?",
     "options": [
-      "Metrički sustavi uopće ne podržavaju tekstualne labele",
-      "Svaka različita vrijednost stvara novu vremensku seriju pa velik broj korisnika naglo povećava memoriju, pohranu i cijenu upita",
-      "Labela automatski onemogućuje agregiranje svih drugih dimenzija",
-      "Dodavanje user_id vrijednosti uvijek mijenja counter u gauge"
+      "Svaka vrijednost stvara novu vremensku seriju pa memorija i cijena naglo rastu",
+      "Sustavi za metrike uopće ne podržavaju labele s tekstualnim vrijednostima",
+      "Takva labela onemogućuje agregiranje po svim ostalim dimenzijama metrike",
+      "Dodavanje vrijednosti user_id uvijek pretvori counter metriku u gauge"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Neograničene dimenzije stvaraju eksploziju kardinalnosti. Za pojedinačne korisnike prikladniji su logovi ili traceovi, dok metrike trebaju ograničene labele poput rute i statusne klase.",
     "difficulty": "hard",
     "unitId": "observability"
@@ -1128,12 +1128,12 @@
     "topic": "backend",
     "question": "Koja je razlika između serializability i linearizability jamstava?",
     "options": [
-      "To su potpuno jednaka jamstva s dva različita naziva",
-      "Linearizability se odnosi samo na višekoračne transakcije, a serializability uvijek poštuje stvarni vremenski redoslijed",
-      "Serializability traži ishod ekvivalentan nekom serijskom poretku transakcija, dok linearizability dodatno veže pojedinačne operacije uz njihov stvarni vremenski redoslijed",
-      "Oba jamstva zahtijevaju da sustav radi na samo jednom fizičkom serveru"
+      "Serializability traži ishod kao kod nekog serijskog poretka transakcija, linearizability i stvarni vremenski redoslijed",
+      "Linearizability se odnosi samo na višekoračne transakcije, a serializability na stvarni vremenski redoslijed operacija",
+      "To su potpuno jednaka jamstva pod dva različita naziva, koja se razlikuju samo po tome koja ih baza koristi",
+      "Oba jamstva zahtijevaju da cijeli sustav radi na samo jednom fizičkom serveru, bez ijedne replike"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Serijalizabilan raspored ne mora poštovati redoslijed koji je korisnik promatrao u stvarnom vremenu. Stroga serializability kombinira transakcijsku serijalizabilnost s real-time zahtjevom linearizabilnosti.",
     "difficulty": "hard",
     "unitId": "otpornost-distribuirani"
@@ -1488,10 +1488,10 @@
     "question": "Koji problem ostaje nakon uspješnog ažuriranja baze u prikazanom cache-aside kodu?",
     "code": "async function renameUser(id, name) {\n  await db.users.update(id, { name });\n  return { id, name };\n}",
     "options": [
-      "Cache može nastaviti vraćati staro ime ako se odgovarajući ključ ne invalidira ili osvježi",
-      "Baza automatski briše sve cache ključeve pa podaci nestaju",
-      "Funkcija ne smije vratiti objekt",
-      "Ažuriranja nikada ne smiju biti asinkrona"
+      "Cache i dalje vraća staro ime ako se ključ ne invalidira ili osvježi",
+      "Baza automatski obriše sve ključeve u cacheu pa podaci privremeno nestanu",
+      "Funkcija u tom obliku ne smije vratiti objekt nego samo identifikator",
+      "Ažuriranja u ovom obrascu nikada ne smiju biti asinkrona ni odgođena"
     ],
     "correctIndex": 0,
     "explanation": "Cache-aside zahtijeva strategiju invalidacije ili osvježavanja nakon upisa; inače čitanje može poslužiti zastarjelu vrijednost.",
