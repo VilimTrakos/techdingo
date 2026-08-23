@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { getTopic } from '../data/topics';
+import { loadTopicQuestions } from '../data/questionLoader';
 import { unitProgressKey } from '../data/units';
 import { randomSessionSize, randomUnitSessionSize, selectSessionPool } from '../lib/pool';
 import {
@@ -12,7 +13,7 @@ import { resolveHearts } from '../state/hearts';
 import { conceptOf } from '../types/question';
 import { useProgress } from './useProgress';
 
-type Status = 'loading' | 'no-hearts' | 'playing' | 'passed' | 'failed';
+type Status = 'loading' | 'no-hearts' | 'load-failed' | 'playing' | 'passed' | 'failed';
 
 interface State {
   status: Status;
@@ -30,6 +31,7 @@ interface State {
 type Action =
   | { type: 'INIT'; questions: PreparedQuestion[]; hearts: number }
   | { type: 'NO_HEARTS' }
+  | { type: 'LOAD_FAILED' }
   | { type: 'ANSWER'; correct: boolean }
   | { type: 'NEXT' }
   | { type: 'RESET' };
@@ -59,6 +61,8 @@ function reducer(state: State, action: Action): State {
       };
     case 'NO_HEARTS':
       return { ...createIdleState(), status: 'no-hearts' };
+    case 'LOAD_FAILED':
+      return { ...createIdleState(), status: 'load-failed' };
     case 'ANSWER': {
       if (state.status !== 'playing' || state.isAnswered) return state;
       const current = state.questions[state.questionIndex];
@@ -121,35 +125,53 @@ export function useLessonSession(topicId: string, unitId?: string) {
     dispatch({ type: 'RESET' });
     syncHearts(); // materijaliziraj eventualnu regeneraciju prije provjere zalihe
 
-    const topic = getTopic(topicId);
-    if (!topic || topic.questions.length === 0) return;
+    if (!getTopic(topicId)) return;
 
-    const questions = unitId ? topic.questions.filter((q) => q.unitId === unitId) : topic.questions;
-    if (questions.length === 0) return;
-
+    // Srca prije dohvata: s praznom zalihom lekcija ionako ne kreće, pa nema
+    // razloga skidati chunk s pitanjima.
     const heartsAvailable = resolveHearts(progressRef.current.hearts).balance;
     if (heartsAvailable <= 0) {
       dispatch({ type: 'NO_HEARTS' });
       return;
     }
 
-    const lessonProgress = progressRef.current.lessons[lessonKey];
-    const recentIds = lessonProgress?.recentQuestionIds ?? [];
-    const priorityIds = lessonProgress?.struggledQuestionIds ?? [];
-    const size = unitId ? randomUnitSessionSize() : randomSessionSize();
-    // Prva lekcija u cjelini dobiva uvodna pitanja koja predstavljaju pojmove.
-    const isFirstVisit =
-      (lessonProgress?.passCount ?? 0) + (lessonProgress?.failCount ?? 0) === 0;
-    const picked = selectSessionPool(questions, recentIds, size, {
-      priorityIds,
-      allowRepeats: Boolean(unitId),
-      mastery: progressRef.current.mastery,
-      lessonCounter: progressRef.current.lessonCounter,
-      isFirstVisit,
-    });
+    // `cancelled` sprječava dispatch nakon odlaska s ekrana ili restarta -
+    // pitanja stižu asinkrono, u zasebnom chunku po temi.
+    let cancelled = false;
 
-    recordedRef.current = false;
-    dispatch({ type: 'INIT', questions: picked.map(prepareQuestion), hearts: heartsAvailable });
+    loadTopicQuestions(topicId)
+      .then((all) => {
+        if (cancelled) return;
+        const questions = unitId ? all.filter((q) => q.unitId === unitId) : all;
+        if (questions.length === 0) return;
+
+        const lessonProgress = progressRef.current.lessons[lessonKey];
+        const recentIds = lessonProgress?.recentQuestionIds ?? [];
+        const priorityIds = lessonProgress?.struggledQuestionIds ?? [];
+        const size = unitId ? randomUnitSessionSize() : randomSessionSize();
+        // Prva lekcija u cjelini dobiva uvodna pitanja koja predstavljaju pojmove.
+        const isFirstVisit =
+          (lessonProgress?.passCount ?? 0) + (lessonProgress?.failCount ?? 0) === 0;
+        const picked = selectSessionPool(questions, recentIds, size, {
+          priorityIds,
+          allowRepeats: Boolean(unitId),
+          mastery: progressRef.current.mastery,
+          lessonCounter: progressRef.current.lessonCounter,
+          isFirstVisit,
+        });
+
+        recordedRef.current = false;
+        dispatch({ type: 'INIT', questions: picked.map(prepareQuestion), hearts: heartsAvailable });
+      })
+      .catch((err) => {
+        if (cancelled) return;
+        console.error('techdingo: dohvat pitanja teme nije uspio.', err);
+        dispatch({ type: 'LOAD_FAILED' });
+      });
+
+    return () => {
+      cancelled = true;
+    };
     // Namjerno bez `progress` u deps - inače bi zapisivanje rezultata na
     // kraju sesije (koje mijenja progress store) ponovno pokrenulo init.
     // eslint-disable-next-line react-hooks/exhaustive-deps

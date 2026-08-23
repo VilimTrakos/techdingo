@@ -7,6 +7,7 @@ import { QuestionCard } from '../components/QuestionCard';
 import { ResultsSummary } from '../components/ResultsSummary';
 import { TOPICS } from '../data/topics';
 import { getUnit } from '../data/units';
+import { QuestionsLoadError } from '../components/QuestionsLoadError';
 import { correctAnswerText } from '../lib/questionKinds';
 import { useLessonSession } from '../hooks/useLessonSession';
 
@@ -30,6 +31,10 @@ function LessonSession({ topicId, topicLabel, unitId, exitHref }: LessonSessionP
 
   if (session.status === 'loading') {
     return <SessionLoading label="Pripremamo tvoju lekciju…" />;
+  }
+
+  if (session.status === 'load-failed') {
+    return <QuestionsLoadError onRetry={session.restart} />;
   }
 
   if (session.status === 'no-hearts') {
