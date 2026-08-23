@@ -34,10 +34,10 @@
     "topic": "sql",
     "question": "Koja je razlika između PRIMARY KEY i UNIQUE constrainta?",
     "options": [
-      "Tablica može imati samo jedan PRIMARY KEY i on ne dopušta NULL, dok UNIQUE stupaca može biti više i obično dopušta jedan NULL",
-      "UNIQUE se odnosi samo na cijele brojeve, PRIMARY KEY na sve tipove podataka",
-      "PRIMARY KEY se može mijenjati bez ograničenja, UNIQUE je nepromjenjiv",
-      "Nema razlike - oba osiguravaju identično ponašanje"
+      "PRIMARY KEY je jedan i bez NULL-a, UNIQUE ih može biti više i dopušta NULL",
+      "UNIQUE se odnosi samo na cijele brojeve, dok PRIMARY KEY prima sve tipove",
+      "PRIMARY KEY se može mijenjati bez ograničenja, dok je UNIQUE nepromjenjiv",
+      "Nema razlike, oba ograničenja osiguravaju potpuno isto ponašanje stupca"
     ],
     "correctIndex": 0,
     "explanation": "PRIMARY KEY jedinstveno identificira redak (implicitno NOT NULL + UNIQUE), a tablica ih smije imati samo jedan (može biti kompozitni); UNIQUE ograničenja mogu postojati na više stupaca.",
@@ -114,10 +114,10 @@
     "topic": "sql",
     "question": "Koja je razlika između UNION i UNION ALL?",
     "options": [
-      "UNION spaja rezultate dva upita i uklanja duplikate, UNION ALL spaja rezultate i zadržava sve duplikate (pa je obično brži)",
-      "UNION ALL se može koristiti samo s dvije tablice iste veličine",
+      "UNION uklanja duplikate, dok ih UNION ALL zadržava pa je obično brži",
+      "UNION ALL se smije koristiti samo nad dvije tablice iste veličine",
       "UNION spaja stupce jedne tablice, a UNION ALL retke druge tablice",
-      "Nema stvarne razlike, UNION ALL je samo zastarjela sintaksa za UNION"
+      "Nema stvarne razlike, UNION ALL je samo starija sintaksa za UNION"
     ],
     "correctIndex": 0,
     "explanation": "UNION interno radi dodatnu operaciju uklanjanja duplikata (slično DISTINCT), što ga čini sporijim od UNION ALL kad znamo da duplikati ne smetaju ili ih nema.",
@@ -371,12 +371,12 @@
     "topic": "sql",
     "question": "Što radi referencijalna akcija ON DELETE CASCADE?",
     "options": [
-      "Zabranjuje svako brisanje retka iz podređene tablice",
-      "Postavlja primarni ključ roditelja na NULL",
-      "Pri brisanju roditeljskog retka automatski briše retke koji ga referenciraju tim vanjskim ključem",
+      "Pri brisanju roditelja briše i retke koji ga referenciraju tim ključem",
+      "Zabranjuje svako brisanje retka iz podređene tablice dok postoji veza",
+      "Postavlja primarni ključ roditeljskog retka na vrijednost NULL",
       "Kopira obrisani roditeljski redak u svaku podređenu tablicu"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "CASCADE prenosi brisanje na povezane podređene retke. Primjeren je kada njihov životni ciklus stvarno ovisi o roditelju, a treba ga koristiti oprezno zbog mogućeg velikog lanca brisanja.",
     "difficulty": "easy",
     "unitId": "kljucevi-i-dizajn"
@@ -386,12 +386,12 @@
     "topic": "sql",
     "question": "Koji je preduvjet da ON DELETE SET NULL uspješno postavi referencu podređenog retka na NULL?",
     "options": [
-      "Referencirajući stupac mora ujedno biti primarni ključ",
-      "Stupci koje akcija postavlja na NULL moraju dopuštati NULL i ne smiju time prekršiti druga ograničenja",
-      "Roditeljska tablica ne smije imati nijedan indeks",
-      "Transakcija mora koristiti READ UNCOMMITTED izolaciju"
+      "Stupci koje akcija postavlja na NULL moraju uopće dopuštati NULL",
+      "Referencirajući stupac mora ujedno biti i primarni ključ te tablice",
+      "Roditeljska tablica ne smije imati nijedan indeks nad tim stupcem",
+      "Transakcija mora koristiti READ UNCOMMITTED razinu izolacije"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "SET NULL ne može završiti ako je ciljni stupac NOT NULL ili novo stanje krši drugo ograničenje; tada se brisanje roditelja odbija.",
     "difficulty": "easy",
     "unitId": "kljucevi-i-dizajn"
@@ -524,10 +524,10 @@
     "topic": "sql",
     "question": "Čemu služi standardni SQL izraz CAST(vrijednost AS tip)?",
     "options": [
-      "Pretvara vrijednost u zadani tip ako je pretvorba dopuštena, a nevaljan sadržaj može uzrokovati pogrešku",
-      "Trajno mijenja tip izvornog stupca u definiciji tablice",
-      "Šifrira vrijednost prije nego što je vrati klijentu",
-      "Automatski zamjenjuje svaku NULL vrijednost nulom"
+      "Pretvara vrijednost u zadani tip, a nevaljan sadržaj daje pogrešku",
+      "Trajno mijenja tip izvornog stupca u samoj definiciji tablice",
+      "Šifrira vrijednost prije nego što se ona vrati klijentu aplikacije",
+      "Automatski zamjenjuje svaku NULL vrijednost brojem nula"
     ],
     "correctIndex": 0,
     "explanation": "CAST radi eksplicitnu pretvorbu izraza za potrebe naredbe, primjerice teksta u broj. Ne mijenja shemu tablice, a ponašanje neuspjele pretvorbe i dostupni tipovi ovise o sustavu baze.",
@@ -604,10 +604,10 @@
     "topic": "sql",
     "question": "Što je indeks u bazi podataka i kada ga je dobro koristiti?",
     "options": [
-      "Struktura podataka koja ubrzava pretraživanje po određenim stupcima, korisna kad se ti stupci često koriste u WHERE/JOIN/ORDER BY",
-      "Kopija cijele tablice koja se automatski briše nakon svakog upita",
+      "Struktura koja ubrzava pretraživanje po stupcima čestima u WHERE i JOIN-u",
+      "Kopija cijele tablice koja se automatski obriše nakon svakog upita",
       "Mehanizam koji sprječava unos duplikata u bilo koji stupac tablice",
-      "Skripta koja se pokreće prije svakog INSERT-a radi validacije podataka"
+      "Skripta koja se pokreće prije svakog INSERT-a radi provjere podataka"
     ],
     "correctIndex": 0,
     "explanation": "Indeks (npr. B-tree) ubrzava čitanje po cijenu sporijih INSERT/UPDATE/DELETE operacija i dodatnog prostora na disku, pa se koristi na stupcima koji se često filtriraju ili sortiraju.",
@@ -619,10 +619,10 @@
     "topic": "sql",
     "question": "Što je normalizacija baze podataka i koje probleme rješava?",
     "options": [
-      "Proces organiziranja podataka u tablice radi smanjenja redundancije i sprječavanja anomalija pri unosu/ažuriranju/brisanju",
-      "Postupak brisanja svih indeksa radi ubrzanja upita",
-      "Pretvaranje svih tekstualnih stupaca u velika slova radi konzistentnosti",
-      "Proces spajanja svih tablica u jednu radi jednostavnosti"
+      "Organiziranje podataka u tablice radi manje redundancije i manje anomalija",
+      "Pretvaranje svih tekstualnih stupaca u velika slova radi ujednačenosti",
+      "Postupak brisanja svih indeksa nad tablicom radi ubrzavanja upita",
+      "Spajanje svih tablica u jednu veliku tablicu radi jednostavnosti"
     ],
     "correctIndex": 0,
     "explanation": "Normalizacija (1NF, 2NF, 3NF...) dijeli podatke tako da se svaka činjenica čuva samo na jednom mjestu, čime se smanjuje redundancija i rizik od nekonzistentnih podataka.",
@@ -649,10 +649,10 @@
     "topic": "sql",
     "question": "Kako se NULL ponaša u SQL upitima?",
     "options": [
-      "NULL predstavlja nepoznatu vrijednost - usporedbe s NULL (npr. = NULL) uvijek daju UNKNOWN, pa se koristi IS NULL / IS NOT NULL",
-      "NULL je jednak praznom stringu '' u svim usporedbama",
-      "NULL se ponaša isto kao broj 0 u aritmetičkim operacijama",
-      "NULL vrijednosti se automatski isključuju iz svih agregatnih funkcija osim COUNT(*)"
+      "NULL je nepoznata vrijednost, pa usporedba s njim daje UNKNOWN",
+      "NULL je jednak praznom nizu znakova u svim vrstama usporedbi",
+      "NULL se u aritmetičkim operacijama ponaša jednako kao broj nula",
+      "NULL vrijednosti automatski se isključuju iz svih agregatnih funkcija"
     ],
     "correctIndex": 0,
     "explanation": "NULL znači 'nepoznato', pa x = NULL nikad nije TRUE (uvijek UNKNOWN) - za provjeru se mora koristiti IS NULL ili IS NOT NULL.",
@@ -830,12 +830,12 @@
     "topic": "sql",
     "question": "Kako se ROW_NUMBER, RANK i DENSE_RANK razlikuju kada postoje izjednačene vrijednosti u ORDER BY dijelu prozora?",
     "options": [
-      "Sve tri funkcije daju isti broj svim retcima i nikad nemaju praznine",
-      "ROW_NUMBER daje jedinstven redni broj, RANK dijeli rang uz praznine nakon izjednačenja, a DENSE_RANK dijeli rang bez praznina",
-      "RANK nema praznine, a DENSE_RANK nakon izjednačenja preskače rangove",
-      "ROW_NUMBER radi samo uz GROUP BY, a preostale dvije samo bez njega"
+      "ROW_NUMBER daje jedinstven broj, RANK ostavlja praznine, DENSE_RANK ne",
+      "Sve tri funkcije daju isti broj svakom retku i nikada nemaju praznine",
+      "RANK nema praznine, dok DENSE_RANK nakon izjednačenja preskače rangove",
+      "ROW_NUMBER radi samo uz GROUP BY, a preostale dvije isključivo bez njega"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Povezani retci dobivaju isti RANK ili DENSE_RANK; RANK zatim preskače zauzete pozicije, dok DENSE_RANK nastavlja sljedećim cijelim rangom.",
     "difficulty": "medium",
     "unitId": "agregacija-i-window"
@@ -845,12 +845,12 @@
     "topic": "sql",
     "question": "Čemu služi SAVEPOINT unutar transakcije?",
     "options": [
-      "Trajno potvrđuje sve dotadašnje promjene kao COMMIT",
-      "Mijenja razinu izolacije samo za sljedeći SELECT",
-      "Zaključava cijelu bazu do kraja sesije",
-      "Označava točku na koju se može djelomično vratiti bez poništavanja cijele transakcije"
+      "Označava točku na koju se transakcija može djelomično vratiti",
+      "Trajno potvrđuje sve dotadašnje promjene, jednako kao i COMMIT",
+      "Mijenja razinu izolacije, ali samo za sljedeći SELECT u transakciji",
+      "Zaključava cijelu bazu podataka do samog kraja otvorene sesije"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "SAVEPOINT omogućuje ROLLBACK TO SAVEPOINT, čime se poništava kasniji dio rada, a transakcija ostaje aktivna za nastavak ili konačni COMMIT.",
     "difficulty": "medium",
     "unitId": "transakcije"
@@ -920,10 +920,10 @@
     "topic": "sql",
     "question": "Koji uvjet moraju zadovoljiti upiti povezani s UNION, INTERSECT ili EXCEPT?",
     "options": [
-      "Moraju vraćati isti broj stupaca, a odgovarajući stupci po poziciji moraju imati kompatibilne tipove",
-      "Moraju koristiti iste nazive tablica i identične aliase",
-      "Svaki upit mora vratiti jednak broj redaka",
-      "Svi odabrani stupci moraju biti primarni ključevi"
+      "Isti broj stupaca, uz kompatibilne tipove na odgovarajućim pozicijama",
+      "Iste nazive tablica i identične aliase u svim povezanim upitima",
+      "Jednak broj redaka u svakom od upita koji se povezuju operacijom",
+      "Sve odabrane stupce moraju biti primarni ključevi svojih tablica"
     ],
     "correctIndex": 0,
     "explanation": "Skupovne operacije uparuju stupce po položaju, ne po nazivu. Broj stupaca mora biti jednak, a implementacija mora moći odrediti zajednički kompatibilan tip za svaki par.",
@@ -1055,10 +1055,10 @@
     "topic": "sql",
     "question": "Za što se koriste prozorske funkcije LAG i LEAD?",
     "options": [
-      "Za pristup vrijednosti iz prethodnog ili sljedećeg retka prema poretku prozora, bez self joina",
-      "Za trajno pomicanje redaka na disku",
-      "Za uklanjanje svih retaka koji nemaju prethodnika",
-      "Za spajanje particija tablice u jednu fizičku datoteku"
+      "Za pristup vrijednosti prethodnog ili sljedećeg retka, bez self joina",
+      "Za trajno pomicanje redaka na disku radi bržeg sekvencijalnog čitanja",
+      "Za uklanjanje svih redaka koji u zadanom poretku nemaju prethodnika",
+      "Za spajanje particija tablice u jednu zajedničku fizičku datoteku"
     ],
     "correctIndex": 0,
     "explanation": "LAG dohvaća vrijednost iz ranijeg, a LEAD iz kasnijeg retka unutar particije i poretka definiranog u OVER klauzuli. Korisne su, primjerice, za računanje promjene u odnosu na prethodni dan.",
@@ -1130,10 +1130,10 @@
     "topic": "sql",
     "question": "Što je generirani odnosno computed stupac?",
     "options": [
-      "Stupac čija se vrijednost izvodi iz definiranog izraza nad drugim podacima, virtualno ili fizički spremljeno ovisno o bazi",
-      "Stupac koji korisnik mora ručno popuniti nasumičnim brojem",
-      "Privremeni alias koji postoji samo tijekom ORDER BY obrade",
-      "Stupac koji automatski postaje vanjski ključ prema svakoj tablici"
+      "Stupac čija se vrijednost izvodi iz izraza nad drugim stupcima retka",
+      "Stupac koji korisnik mora ručno popuniti nasumično odabranim brojem",
+      "Privremeni alias koji postoji samo tijekom obrade ORDER BY klauzule",
+      "Stupac koji automatski postane vanjski ključ prema svakoj tablici"
     ],
     "correctIndex": 0,
     "explanation": "Generirani stupac centralizira izvedenu vrijednost poput ukupne cijene ili normaliziranog teksta. Dopušteni izrazi, način spremanja i mogućnost indeksiranja razlikuju se među sustavima.",
@@ -1289,12 +1289,12 @@
     "topic": "sql",
     "question": "Koja struktura ispravno opisuje rekurzivni CTE za prolazak hijerarhije?",
     "options": [
-      "Sadrži samo rekurzivni SELECT koji se poziva bez početnog skupa",
-      "Ima početni (anchor) upit, zatim UNION ALL i rekurzivni dio koji referencira CTE te uvjet ili podatke koji konačno zaustavljaju širenje",
-      "Mora ručno kreirati trajnu tablicu za svaku razinu stabla",
-      "Rekurzija se prema SQL standardu uvijek automatski zaustavlja nakon dvije razine"
+      "Početni upit, pa UNION ALL i rekurzivni dio koji referencira sam CTE",
+      "Samo rekurzivni SELECT koji se poziva bez ikakvog početnog skupa",
+      "Ručno stvorenu trajnu tablicu za svaku pojedinu razinu hijerarhije",
+      "Rekurziju koja se prema standardu sama zaustavi nakon dvije razine"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Početni dio daje prvi skup redaka, a rekurzivni dio iterativno proizvodi sljedeće. Ispravan odnos ili uvjet završetka nužan je da upit ne širi ciklus unedogled.",
     "difficulty": "hard",
     "unitId": "podupiti-pogledi"
@@ -1529,12 +1529,12 @@
     "topic": "sql",
     "question": "Koji je sigurniji opći obrazac za uvođenje obveznog stupca u veliku aktivnu tablicu uz minimalan zastoj?",
     "options": [
-      "Odmah dodati NOT NULL bez zadane vrijednosti i pretpostaviti da svi stari retci postaju valjani",
-      "Dodati stupac kao nullable, prilagoditi pisce, popunjavati stare retke u kontroliranim serijama, provjeriti podatke pa tek zatim provesti NOT NULL",
-      "Isključiti transakcijski dnevnik dok traje promjena",
-      "Izbrisati sve postojeće retke, dodati stupac i zatim čekati da ih aplikacija ponovno stvori"
+      "Dodati nullable stupac, prilagoditi pisce, popuniti u serijama pa uvesti NOT NULL",
+      "Odmah dodati NOT NULL bez zadane vrijednosti i pretpostaviti da su stari retci valjani",
+      "Isključiti transakcijski dnevnik dok promjena traje pa ga nakon toga vratiti",
+      "Izbrisati sve postojeće retke, dodati stupac i čekati da ih aplikacija ponovno stvori"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Postupna migracija odvaja promjenu sheme od dugog backfilla i omogućuje kompatibilnost stare i nove verzije aplikacije. Točne mogućnosti online validacije i zaključavanja treba provjeriti za konkretnu bazu.",
     "difficulty": "hard",
     "unitId": "sigurnost"

@@ -5,10 +5,10 @@
     "topic": "frontend",
     "question": "Koja je razlika između HTML-a, CSS-a i JavaScripta?",
     "options": [
-      "HTML definira strukturu/sadržaj stranice, CSS definira izgled/stiliranje, JavaScript dodaje interaktivnost i dinamičko ponašanje",
-      "HTML i CSS su programski jezici, a JavaScript je jezik za oblikovanje",
+      "HTML daje strukturu, CSS izgled, a JavaScript dodaje interaktivnost",
+      "HTML i CSS su programski jezici, a JavaScript služi samo oblikovanju",
       "CSS definira strukturu stranice, a HTML se koristi samo za stiliranje",
-      "Sve tri tehnologije rade identičnu stvar, razlikuje se samo sintaksa"
+      "Sve tri tehnologije rade isto, a razlikuje se samo njihova sintaksa"
     ],
     "correctIndex": 0,
     "explanation": "To je klasična podjela odgovornosti na webu: HTML = sadržaj/struktura, CSS = prezentacija, JS = ponašanje.",
@@ -21,10 +21,10 @@
     "topic": "frontend",
     "question": "Što je DOM (Document Object Model)?",
     "options": [
-      "Stablasta reprezentacija HTML dokumenta u memoriji preglednika, koju JavaScript može čitati i mijenjati",
-      "Poseban format datoteke za spremanje CSS stilova",
-      "Server koji generira HTML stranice prije slanja pregledniku",
-      "Biblioteka za rad s bazama podataka u pregledniku"
+      "Stablasti prikaz dokumenta u memoriji koji JavaScript može mijenjati",
+      "Poseban format datoteke u kojem se spremaju CSS stilovi stranice",
+      "Server koji generira HTML stranice prije nego ih pošalje pregledniku",
+      "Biblioteka za rad s bazama podataka izravno unutar preglednika"
     ],
     "correctIndex": 0,
     "explanation": "DOM predstavlja HTML strukturu kao stablo objekata (node-ova) koje JavaScript može čitati, dodavati, mijenjati ili brisati, a preglednik zatim ponovno iscrtava stranicu.",
@@ -340,12 +340,12 @@
     "topic": "frontend",
     "question": "Čemu služi HTML atribut autocomplete s vrijednostima poput email ili new-password?",
     "options": [
-      "Automatski šalje formu čim korisnik unese valjanu vrijednost",
-      "Pretvara svako polje u obavezno polje",
-      "Sprema unesene vrijednosti u JavaScript varijable aplikacije",
-      "Opisuje svrhu polja kako bi preglednik i password manager mogli ponuditi prikladno automatsko popunjavanje"
+      "Opisuje svrhu polja pa preglednik može ponuditi prikladno popunjavanje",
+      "Automatski šalje obrazac čim korisnik unese valjanu vrijednost",
+      "Sprema unesene vrijednosti u JavaScript varijable same aplikacije",
+      "Pretvara svako polje u obavezno, bez kojeg se obrazac ne šalje"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Ispravne autocomplete vrijednosti pomažu pregledniku, password managerima i korisnicima asistivne tehnologije razumjeti svrhu polja.",
     "difficulty": "easy",
     "unitId": "osnove-weba"
@@ -846,12 +846,12 @@
     "topic": "frontend",
     "question": "Zašto element sa z-index: 999 može ostati ispod susjednog elementa sa z-index: 2?",
     "options": [
-      "Preglednici ograničavaju z-index na vrijednost 99",
-      "Element je unutar zasebnog stacking contexta čiji se cijeli sloj nalazi ispod stacking contexta susjeda",
-      "z-index radi samo na elementima s position: absolute",
-      "CSS transform trajno onemogućuje z-index svim potomcima"
+      "Element je u zasebnom stacking contextu koji je cijeli ispod susjedova",
+      "Preglednici ograničavaju vrijednost z-index svojstva na najviše 99",
+      "Svojstvo z-index djeluje samo na elementima s position: absolute",
+      "CSS transform trajno onemogućuje z-index svim potomcima elementa"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "z-index potomka uspoređuje se unutar njegova stacking contexta; visoka lokalna vrijednost ne može preskočiti vanjski stacking context koji je složen iznad njegova roditelja.",
     "difficulty": "medium",
     "unitId": "css-layout"
@@ -861,12 +861,12 @@
     "topic": "frontend",
     "question": "Što je event delegation i zašto je koristan kod dinamičke liste?",
     "options": [
-      "Kopiranje istog event handlera na svaki element nakon svakog rendera",
-      "Slanje svih DOM događaja u Web Worker",
-      "Zaustavljanje bubblinga na svakom djetetu liste",
-      "Postavljanje jednog handlera na zajedničkog pretka koji pomoću event.target prepoznaje aktivirano dijete"
+      "Jedan handler na zajedničkom pretku prepoznaje dijete preko event.target",
+      "Kopiranje istog handlera na svaki element nakon svakog novog rendera",
+      "Slanje svih DOM događaja u Web Worker radi rasterećenja glavne dretve",
+      "Zaustavljanje širenja događaja na svakom pojedinom djetetu te liste"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Delegacija koristi bubbling pa jedan handler može obraditi postojeću i naknadno dodanu djecu bez zasebnog listenera na svakom elementu.",
     "difficulty": "medium",
     "unitId": "dom-eventovi"
@@ -891,12 +891,12 @@
     "topic": "frontend",
     "question": "Kako fetch najčešće reagira kada server uredno vrati HTTP 404 ili 500 odgovor?",
     "options": [
-      "Automatski ponavlja zahtjev dok ne dobije 2xx odgovor",
-      "Vraća null umjesto Response objekta",
-      "Razrješava Promise s Response objektom pa aplikacija treba provjeriti response.ok ili status",
-      "Uvijek odbacuje Promise jednako kao kod mrežne pogreške"
+      "Razrješava Promise pa aplikacija sama mora provjeriti response.ok",
+      "Automatski ponavlja zahtjev sve dok ne dobije odgovor iz 2xx razreda",
+      "Odbacuje Promise jednako kao i kod prave mrežne pogreške",
+      "Vraća null umjesto Response objekta pa se odgovor ne može čitati"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "fetch odbacuje Promise kod mrežnih i sličnih transportnih pogrešaka, ali HTTP error statusi i dalje su valjani odgovori koje treba eksplicitno provjeriti.",
     "difficulty": "medium",
     "unitId": "mreza-sigurnost"
@@ -921,12 +921,12 @@
     "topic": "frontend",
     "question": "Zašto useEffect često vraća cleanup funkciju?",
     "options": [
-      "Kako bi komponenta prestala prihvaćati nove propse",
-      "Kako bi React preskočio sve buduće rendere komponente",
-      "Kako bi se state automatski vratio na početnu vrijednost nakon rendera",
-      "Kako bi se prije ponovnog efekta ili unmounta uklonili listeneri, pretplate, timeri i drugi vanjski resursi"
+      "Da se prije novog efekta ili unmounta uklone slušatelji i timeri",
+      "Da komponenta prestane prihvaćati nove propse od svog roditelja",
+      "Da React preskoči sve buduće rendere te iste komponente u stablu",
+      "Da se state automatski vrati na početnu vrijednost nakon rendera"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Cleanup sprječava curenje resursa i zastarjele callbackove tako da poništi ono što je prethodno izvođenje efekta postavilo.",
     "difficulty": "medium",
     "unitId": "react"
@@ -981,12 +981,12 @@
     "topic": "frontend",
     "question": "Kako bi sučelje trebalo reagirati na prefers-reduced-motion: reduce?",
     "options": [
-      "Ubrzati sve animacije kako bi kraće trajale",
-      "Smanjiti ili ukloniti nebitno kretanje uz očuvanje funkcionalnosti i razumljivog feedbacka",
-      "Sakriti sav sadržaj koji inače koristi prijelaze",
-      "Onemogućiti korisniku promjenu te postavke"
+      "Smanjiti ili ukloniti nebitno kretanje, uz očuvanje jasnog feedbacka",
+      "Ubrzati sve animacije kako bi trajale znatno kraće nego inače",
+      "Sakriti sav sadržaj koji inače koristi prijelaze i animacije",
+      "Onemogućiti korisniku da tu postavku uopće promijeni u sučelju"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Preferencija reduced motion služi korisnicima kojima kretanje smeta; animacije treba ublažiti bez uklanjanja važnih informacija.",
     "difficulty": "medium",
     "unitId": "pristupacnost-testiranje"
@@ -1011,10 +1011,10 @@
     "topic": "frontend",
     "question": "Što omogućuje TypeScript discriminated union s članovima koji imaju literal svojstvo poput kind: 'loading' ili kind: 'success'?",
     "options": [
-      "Provjera svojstva kind može precizno suziti tip i učiniti podatke odgovarajuće varijante dostupnima",
-      "Sve varijante automatski dobivaju sva međusobna svojstva",
-      "Tipovi se pretvaraju u klase tijekom izvršavanja",
-      "Union dopušta samo jednu vrijednost u cijeloj aplikaciji"
+      "Provjera svojstva kind sužava tip i otkriva podatke te varijante",
+      "Sve varijante automatski dobivaju sva svojstva ostalih varijanti",
+      "Tipovi se tijekom izvođenja pretvaraju u prave klase s metodama",
+      "Union dopušta samo jednu jedinu vrijednost u cijeloj aplikaciji"
     ],
     "correctIndex": 0,
     "explanation": "Zajednički diskriminator daje compileru pouzdanu osnovu za narrowing u switch ili if granama.",
@@ -1026,12 +1026,12 @@
     "topic": "frontend",
     "question": "Kako History API omogućuje SPA navigaciju bez potpunog ponovnog učitavanja stranice?",
     "options": [
-      "pushState šalje novi HTML dokument sa servera pri svakoj navigaciji",
-      "popstate se aktivira samo nakon osvježavanja preglednika",
-      "pushState automatski aktivira popstate u istom pozivu",
-      "pushState dodaje zapis i mijenja URL bez reloada, a popstate obrađuje kretanje kroz povijest poput Back i Forward"
+      "pushState mijenja URL bez reloada, a popstate hvata kretanje kroz povijest",
+      "pushState dohvaća novi HTML dokument sa servera pri svakoj navigaciji",
+      "popstate se aktivira samo nakon što korisnik osvježi cijelu stranicu",
+      "pushState automatski aktivira popstate unutar istog poziva funkcije"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Aplikacija sama renderira sadržaj nakon pushStatea, dok popstate služi za reakciju na korisnikovo kretanje kroz postojeću povijest.",
     "difficulty": "medium",
     "unitId": "mreza-sigurnost"
@@ -1041,12 +1041,12 @@
     "topic": "frontend",
     "question": "Kako Content Security Policy može ublažiti posljedice XSS ranjivosti?",
     "options": [
-      "Automatski sanitizira svaki string prije spremanja u bazu",
-      "Ograničava dopuštene izvore i načine izvršavanja sadržaja poput skripti, primjerice pomoću noncea ili hashova",
-      "Sakriva JavaScript source code od korisnika",
-      "Zamjenjuje potrebu za escapeanjem i sanitizacijom nepouzdanog sadržaja"
+      "Ograničava dopuštene izvore skripti, npr. preko noncea ili hasha",
+      "Automatski čisti svaki niz znakova prije nego se spremi u bazu",
+      "Zamjenjuje potrebu za escapeanjem nepouzdanog korisničkog sadržaja",
+      "Skriva izvorni JavaScript kod stranice od znatiželjnih korisnika"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "CSP je dodatni obrambeni sloj koji može blokirati neodobrene skripte, ali ne zamjenjuje sigurno rukovanje nepouzdanim unosom.",
     "difficulty": "medium",
     "unitId": "mreza-sigurnost"
@@ -1056,12 +1056,12 @@
     "topic": "frontend",
     "question": "Komponenta prima firstName i lastName kao propse. Koji je najbolji zadani način dobivanja fullName vrijednosti?",
     "options": [
-      "Spremiti fullName u globalnu varijablu izvan komponente",
-      "Kopirati propse u state samo pri prvom renderu",
-      "Izračunati fullName tijekom rendera, umjesto dupliciranja podataka u stateu i sinkroniziranja efektom",
-      "Mijenjati primljene propse kako bi sadržavali fullName"
+      "Izračunati vrijednost tijekom rendera, bez dupliciranja u stateu",
+      "Spremiti izračunatu vrijednost u globalnu varijablu izvan komponente",
+      "Kopirati propse u state samo pri prvom renderu komponente",
+      "Mijenjati primljene propse tako da sadrže i izračunatu vrijednost"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Vrijednost koja se izravno i jeftino izvodi iz trenutnih propsa ne treba zaseban state jer bi stvorila dodatni izvor istine.",
     "difficulty": "medium",
     "unitId": "react"
@@ -1086,12 +1086,12 @@
     "topic": "frontend",
     "question": "Što znači opcija { passive: true } pri registraciji touchmove ili wheel event listenera?",
     "options": [
-      "Handler će se izvršiti samo jednom i zatim automatski ukloniti",
-      "Događaj se više neće širiti prema precima",
-      "Handler će se izvršavati u zasebnom Web Workeru",
-      "Handler obećava da neće pozvati preventDefault, pa preglednik ne mora čekati prije pomicanja sadržaja"
+      "Handler obećava da neće pozvati preventDefault pa preglednik ne čeka",
+      "Handler će se izvršiti samo jednom i zatim se automatski ukloniti",
+      "Događaj se nakon obrade više neće širiti prema roditeljskim elementima",
+      "Handler će se izvršavati u zasebnom Web Workeru, izvan glavne dretve"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Pasivni listener omogućuje pregledniku ranije započeti scroll; preventDefault u takvom handleru ne može otkazati zadanu radnju.",
     "difficulty": "medium",
     "unitId": "dom-eventovi"
@@ -1280,12 +1280,12 @@
     "topic": "frontend",
     "question": "Zašto petlja koja naizmjenično mijenja style.width elementa i odmah čita njegov offsetWidth može ozbiljno usporiti prikaz?",
     "options": [
-      "Svako čitanje offsetWidth pokreće novi HTTP zahtjev",
+      "Izmjena upisa i čitanja geometrije prisiljava ponavljane izračune layouta",
+      "Svako čitanje svojstva offsetWidth pokreće novi mrežni zahtjev",
       "Promjena inline stila briše element iz DOM-a i ponovno ga stvara",
-      "JavaScript engine za svaki element pokreće garbage collection",
-      "Izmjenjivanje DOM upisa i geometrijskih čitanja može prisiliti preglednik na ponavljane sinkrone izračune layouta"
+      "JavaScript engine za svaki element pokreće sakupljanje smeća"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Čitanje geometrije nakon promjene stila može prisilno isprazniti pending layout; grupiranje svih čitanja prije svih upisa smanjuje layout thrashing.",
     "difficulty": "hard",
     "unitId": "performanse"
@@ -1370,12 +1370,12 @@
     "topic": "frontend",
     "question": "Koji je siguran obrazac za razmjenu osjetljivih poruka između prozora pomoću postMessage?",
     "options": [
-      "Uvijek koristiti targetOrigin='*' i vjerovati svakom primljenom payloadu",
-      "Provjeravati samo event.data jer origin nije moguće krivotvoriti",
-      "Slati na točno očekivani targetOrigin te pri primitku provjeriti event.origin, po potrebi event.source i strukturu podataka",
-      "Spremiti poruku u localStorage bez provjere pošiljatelja"
+      "Slati na točan targetOrigin i pri primitku provjeriti event.origin",
+      "Uvijek koristiti targetOrigin '*' i vjerovati svakom primljenom sadržaju",
+      "Provjeravati samo event.data jer se origin ionako ne može krivotvoriti",
+      "Spremiti poruku u localStorage bez ikakve provjere pošiljatelja"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Točan targetOrigin sprječava slanje pogrešnom odredištu, a validacija origin-a, izvora i payloada sprječava prihvaćanje poruka nepouzdanih stranica.",
     "difficulty": "hard",
     "unitId": "mreza-sigurnost"
@@ -1475,12 +1475,12 @@
     "topic": "frontend",
     "question": "Koje svojstvo WeakMapa omogućuje vezanje metapodataka uz DOM element bez zadržavanja uklonjenog elementa u memoriji samo zbog mape?",
     "options": [
-      "WeakMap automatski pretvara svaki ključ u string",
-      "Ključevi su slabo referencirani objekti, pa zapis ne sprječava garbage collection ključa kada druge reference nestanu",
+      "Ključevi su slabo referencirani pa zapis ne sprječava oslobađanje",
+      "WeakMap automatski pretvara svaki ključ u tekstualnu vrijednost",
       "WeakMap periodično briše sve zapise prema zadanom vremenu isteka",
-      "Svaki se zapis može enumerirati metodom keys i ručno osloboditi"
+      "Svaki se zapis može nabrojati metodom keys i ručno osloboditi"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "WeakMap prihvaća objekte kao ključeve i ne drži ih snažno dostupnima; zato njegovi zapisi nisu enumerabilni i njihov životni vijek prati dostupnost ključa.",
     "difficulty": "hard",
     "unitId": "js-jezik"
@@ -1613,10 +1613,10 @@
     "unitId": "asinkroni-js",
     "question": "Zašto se callback već razriješenog Promisea tipično izvrši prije setTimeout callbacka s odgodom 0?",
     "options": [
-      "Promise reaction ide u microtask red koji se prazni nakon aktualnog stacka prije sljedećeg taska",
-      "setTimeout uvijek čeka najmanje jednu minutu",
-      "Promise callback izvršava se sinkrono prije ostatka funkcije",
-      "Timer callback ulazi u CSS render pipeline"
+      "Promise ide u microtask red koji se prazni prije sljedećeg taska",
+      "setTimeout uvijek čeka najmanje jednu punu minutu prije poziva",
+      "Promise callback izvršava se sinkrono, prije ostatka te funkcije",
+      "Timer callback ulazi u CSS pipeline pa čeka sljedeći iscrtavanje"
     ],
     "correctIndex": 0,
     "explanation": "Nakon što se call stack isprazni, event loop prazni microtask queue prije uzimanja sljedećeg taska poput timer callbacka.",

@@ -50,10 +50,10 @@
     "topic": "backend",
     "question": "Koja je razlika između autentikacije i autorizacije?",
     "options": [
-      "Autentikacija provjerava TKO je korisnik (npr. login), dok autorizacija provjerava ŠTO taj korisnik smije raditi (dozvole/permisije)",
-      "Autorizacija se odvija prije autentikacije u svakom sustavu",
-      "Autentikacija se odnosi samo na mobilne aplikacije, autorizacija samo na web aplikacije",
-      "To su sinonimi koji opisuju identičan proces provjere lozinke"
+      "Autentikacija provjerava tko je korisnik, autorizacija što taj smije",
+      "Autorizacija se u svakom sustavu odvija prije same autentikacije",
+      "Autentikacija se odnosi na mobilne, a autorizacija na web aplikacije",
+      "To su sinonimi koji opisuju isti postupak provjere korisničke lozinke"
     ],
     "correctIndex": 0,
     "explanation": "Prvo se korisnik autenticira (dokaže identitet, npr. e-mail+lozinka), a zatim se za svaku akciju provjerava autorizacija (ima li taj identitet dozvolu za tu akciju/resurs).",
@@ -82,12 +82,12 @@
     "topic": "backend",
     "question": "Što HTTPS dodaje u odnosu na obični HTTP?",
     "options": [
-      "Automatsku kompresiju svakog API odgovora",
-      "TLS zaštitu povjerljivosti i integriteta prometa te provjeru identiteta servera certifikatom",
-      "Automatsku validaciju svih podataka koje korisnik pošalje",
-      "Trajno spremanje svakog zahtjeva na serveru"
+      "Zaštitu povjerljivosti i integriteta prometa te provjeru identiteta servera",
+      "Automatsku provjeru ispravnosti svih podataka koje korisnik pošalje",
+      "Automatsku kompresiju svakog odgovora koji API vrati klijentu",
+      "Trajno spremanje svakog primljenog zahtjeva na strani servera"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "HTTPS koristi TLS kako bi šifrirao promet, otkrio izmjene tijekom prijenosa i potvrdio identitet servera. Ne uklanja potrebu za sigurnom validacijom i autorizacijom u aplikaciji.",
     "difficulty": "easy",
     "unitId": "autentikacija-sigurnost"
@@ -188,12 +188,12 @@
     "topic": "backend",
     "question": "Koja je glavna prednost strukturiranih logova?",
     "options": [
-      "Automatski šifriraju sve osjetljive podatke",
-      "Bilježe samo neobrađene tekstove iznimki",
-      "Zamjenjuju potrebu za metrikama i distribuiranim tragovima",
-      "Zapisuju događaje u strojno pretraživa polja poput razine, vremena, servisa i request ID-a"
+      "Zapisuju događaje u strojno pretraživa polja poput razine i request ID-a",
+      "Automatski šifriraju sve osjetljive podatke prije nego ih zapišu",
+      "Bilježe samo neobrađene tekstove iznimki, bez dodatnog konteksta",
+      "Zamjenjuju potrebu za metrikama i za distribuiranim tragovima"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Strukturirana polja olakšavaju filtriranje, agregaciju i povezivanje događaja između servisa. Osjetljive podatke i dalje treba izostaviti ili maskirati.",
     "difficulty": "easy",
     "unitId": "observability"
@@ -203,12 +203,12 @@
     "topic": "backend",
     "question": "Čemu služi health-check endpoint backend servisa?",
     "options": [
-      "Provjerava jačinu korisničkih lozinki",
-      "Omogućuje load balanceru ili orkestratoru da procijeni može li instanca primati promet",
-      "Izvodi puni test opterećenja pri svakom pozivu",
-      "Potpuno zamjenjuje logove, metrike i alarme"
+      "Omogućuje orkestratoru da procijeni smije li instanca primati promet",
+      "Provjerava jačinu korisničkih lozinki prije nego se dopusti prijava",
+      "Izvodi puni test opterećenja instance pri svakom pojedinom pozivu",
+      "Potpuno zamjenjuje potrebu za dnevnicima, metrikama i alarmima"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Health check pomaže automatski ukloniti neispravnu instancu iz prometa ili je ponovno pokrenuti. Liveness i readiness provjere često imaju različite svrhe.",
     "difficulty": "easy",
     "unitId": "observability"
@@ -233,12 +233,12 @@
     "topic": "backend",
     "question": "Čemu prvenstveno služi OpenAPI dokument?",
     "options": [
-      "Trajnom spremanju produkcijskih logova API-ja",
-      "Strojno čitljivom opisu endpointa, parametara, odgovora i podatkovnih shema API ugovora",
-      "Šifriranju access tokena prije slanja klijentu",
-      "Automatskom pokretanju kontejnera u produkciji"
+      "Strojno čitljivom opisu ruta, parametara, odgovora i podatkovnih shema",
+      "Trajnom spremanju produkcijskih dnevnika koje API generira u radu",
+      "Šifriranju pristupnog tokena prije nego se pošalje klijentu",
+      "Automatskom pokretanju kontejnera aplikacije u produkcijskom okruženju"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "OpenAPI opis može služiti za dokumentaciju, generiranje klijenata i validaciju ugovora. Implementaciju ipak treba provjeravati kako se ne bi razišla s opisom.",
     "difficulty": "easy",
     "unitId": "http-api"
@@ -323,9 +323,9 @@
     "topic": "backend",
     "question": "Zašto replika baze nije potpuna zamjena za sigurnosnu kopiju?",
     "options": [
-      "Replika može brzo prenijeti slučajno brisanje ili oštećenje, dok backup omogućuje povrat na ranije stanje",
-      "Replika nikada ne sadrži podatke iz primarne baze",
-      "Backup služi samo za ubrzavanje SELECT upita",
+      "Replika brzo prenese i slučajno brisanje, dok backup vraća ranije stanje",
+      "Replika nikada ne sadrži iste podatke koje ima i primarna baza",
+      "Sigurnosna kopija služi samo za ubrzavanje složenih SELECT upita",
       "Sigurnosna kopija mora uvijek biti dostupna za produkcijska čitanja"
     ],
     "correctIndex": 0,
@@ -339,12 +339,12 @@
     "topic": "backend",
     "question": "Što TTL određuje za zapis u cacheu?",
     "options": [
-      "Maksimalno trajanje transakcije u bazi",
-      "Broj poruka koje consumer smije obraditi",
-      "Vrijeme dopušteno za uspostavljanje TLS veze",
-      "Koliko dugo zapis može ostati valjan prije isteka ili potrebe za osvježavanjem"
+      "Koliko dugo zapis smije ostati valjan prije isteka ili osvježavanja",
+      "Koliko najviše smije trajati jedna transakcija otvorena u bazi",
+      "Koliko poruka pojedini potrošač smije obraditi u jednoj minuti",
+      "Koliko vremena je dopušteno za uspostavljanje sigurne TLS veze"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Kraći TTL smanjuje trajanje zastarjelih podataka, ali povećava opterećenje izvora. Dulji TTL daje više pogodaka cachea uz veći rizik zastarjelosti.",
     "difficulty": "easy",
     "unitId": "kesiranje-skaliranje"
@@ -355,12 +355,12 @@
     "topic": "backend",
     "question": "Što acknowledgement poruke obično znači brokeru?",
     "options": [
-      "Da poruka mora biti poslana svim consumerima još jednom",
-      "Da je consumer uspješno završio obradu pa se poruka može ukloniti ili označiti dovršenom",
-      "Da sadržaj poruke treba automatski šifrirati",
-      "Da se red poruka mora trajno zaustaviti"
+      "Da je potrošač obradu uspješno završio pa se poruka smije ukloniti",
+      "Da poruku treba još jednom poslati svim prijavljenim potrošačima",
+      "Da sadržaj poruke treba automatski šifrirati prije daljnje obrade",
+      "Da se cijeli red poruka mora trajno zaustaviti do daljnjega"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Ako potvrda ne stigne, broker poruku može ponovno isporučiti. Potvrđivanje prije završetka poslovne operacije može uzrokovati gubitak posla pri padu consumera.",
     "difficulty": "easy",
     "unitId": "poruke-redovi"
@@ -598,12 +598,12 @@
     "topic": "backend",
     "question": "API mora preimenovati obavezno polje koje već koriste postojeći klijenti. Koji pristup najbolje čuva kompatibilnost unatrag?",
     "options": [
+      "Podržati oba polja, staro označiti zastarjelim i ukloniti ga nakon migracije",
       "Odmah ukloniti staro polje i očekivati da se svi klijenti istodobno ažuriraju",
-      "Privremeno podržati staro i novo polje ili uvesti novu verziju ugovora, označiti staro kao zastarjelo i ukloniti ga tek nakon migracije klijenata",
       "Nasumično vraćati staro ili novo polje kako bi se klijenti postupno prilagodili",
-      "Za zahtjeve starih klijenata vraćati status 500 bez dodatnog objašnjenja"
+      "Za zahtjeve starih klijenata vraćati status 500 bez ikakvog objašnjenja"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Kompatibilna evolucija API-ja preferira aditivne promjene i razdoblje migracije. Preimenovanje ili uklanjanje postojećeg polja zahtijeva deprecaciju ili novu verziju kako se aktivni klijenti ne bi iznenada pokvarili.",
     "difficulty": "medium",
     "unitId": "http-api"
@@ -643,12 +643,12 @@
     "topic": "backend",
     "question": "Kako se može ublažiti cache stampede kada popularan ključ istekne i mnogo zahtjeva istodobno krene prema bazi?",
     "options": [
-      "Svim ključevima postaviti potpuno isti trenutak isteka",
-      "Povećavati broj ponovnih pokušaja bez ikakvog ograničenja",
-      "Brisati cijeli cache prije svakog čitanja",
-      "Dopustiti samo jednom workeru osvježavanje ključa te koristiti jitter ili stale-while-revalidate"
+      "Dopustiti samo jednom radniku osvježavanje, uz jitter u trajanju keša",
+      "Svim ključevima postaviti potpuno isti trenutak isteka valjanosti",
+      "Povećavati broj ponovnih pokušaja bez ikakvog gornjeg ograničenja",
+      "Obrisati cijeli cache prije svakog čitanja pa ga popuniti iznova"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Single-flight ili kratka brava sprječava paralelno računanje iste vrijednosti, a nasumično odstupanje isteka i posluživanje kratko zastarjele vrijednosti smanjuju nagli val prema izvoru.",
     "difficulty": "medium",
     "unitId": "kesiranje-skaliranje"
@@ -658,10 +658,10 @@
     "topic": "backend",
     "question": "Klijent nakon timeouta ne zna je li POST zahtjev za naplatu uspio. Kako sigurno ponoviti zahtjev bez dvostruke naplate?",
     "options": [
-      "Ponovno poslati isti jedinstveni idempotency key, a server uz taj ključ spremiti i vratiti isti rezultat operacije",
-      "Promijeniti zahtjev u GET i ponovno izvršiti naplatu",
-      "Za svaki ponovni pokušaj generirati novi ključ",
-      "Pretpostaviti da timeout uvijek znači da server nije obradio zahtjev"
+      "Poslati isti idempotency key, a server uz njega vraća već spremljen rezultat",
+      "Pretpostaviti da istek vremena uvijek znači da server zahtjev nije obradio",
+      "Promijeniti zahtjev u GET metodu i tako ponovno pokrenuti naplatu",
+      "Za svaki ponovni pokušaj generirati novi, potpuno svjež ključ"
     ],
     "correctIndex": 0,
     "explanation": "Server atomarno povezuje idempotency key s ishodom prve obrade. Ponovljeni zahtjev s istim ključem vraća poznati ishod umjesto stvaranja nove naplate.",
@@ -778,12 +778,12 @@
     "topic": "backend",
     "question": "Kako rotirati vjerodajnicu koju koristi više instanci servisa bez prekida rada?",
     "options": [
-      "Odmah opozvati staru vjerodajnicu prije izdavanja nove",
-      "Trajno ostaviti staru i novu vjerodajnicu valjanima",
-      "Uvesti razdoblje preklapanja, distribuirati novu vjerodajnicu, potvrditi migraciju instanci pa opozvati staru",
-      "Upisati novu vjerodajnicu u javni konfiguracijski repozitorij"
+      "Uvesti preklapanje, raspodijeliti novu, potvrditi pa opozvati staru",
+      "Odmah opozvati staru vjerodajnicu, prije nego se izda i raspodijeli nova",
+      "Trajno ostaviti i staru i novu vjerodajnicu valjanima radi sigurnosti",
+      "Upisati novu vjerodajnicu u javni konfiguracijski repozitorij tima"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Kontrolirano preklapanje omogućuje postupni rollout. Nakon potvrde da svi consumeri koriste novu vjerodajnicu, staru treba opozvati i evidentirati završetak rotacije.",
     "difficulty": "medium",
     "unitId": "autentikacija-sigurnost"
@@ -808,12 +808,12 @@
     "topic": "backend",
     "question": "Spori cache-aside reader dohvati verziju v1 iz baze. Writer zatim spremi v2 i invalidira cache, nakon čega reader zakasnjelo upiše v1 natrag u cache. Kako se može spriječiti takva zastarjela repopulacija?",
     "options": [
-      "Postaviti beskonačan TTL za sve zapise",
-      "Prestati invalidirati cache nakon upisa u bazu",
-      "Dopustiti readeru da bezuvjetno prepiše svaku postojeću vrijednost",
-      "Koristiti verzionirani ili generacijski ključ odnosno uvjetni upis koji odbija stariju verziju"
+      "Koristiti verzionirani ključ ili uvjetni upis koji odbija stariju verziju",
+      "Postaviti beskonačno trajanje valjanosti za sve zapise u predmemoriji",
+      "Prestati invalidirati predmemoriju nakon svakog upisa u samu bazu",
+      "Dopustiti čitatelju da bezuvjetno prepiše svaku postojeću vrijednost"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Verzija zapisa omogućuje cacheu da prepozna zakašnjeli rezultat i ne zamijeni novije stanje starijim. Kratak TTL može ograničiti štetu, ali sam ne uklanja utrku.",
     "difficulty": "medium",
     "unitId": "kesiranje-skaliranje"
@@ -903,10 +903,10 @@
     "topic": "backend",
     "question": "Što je deadlock?",
     "options": [
-      "Stanje u kojem dva ili više procesa/niti čekaju jedni druge da oslobode resurse koje drže, pa nijedan ne može nastaviti s izvršavanjem",
-      "Greška koja se javlja kad server primi previše zahtjeva odjednom",
-      "Sigurnosni mehanizam koji zaključava bazu podataka od neovlaštenog pristupa",
-      "Proces automatskog zaustavljanja aplikacije nakon isteka licence"
+      "Stanje u kojem procesi čekaju resurse koje drže drugi, pa nitko ne napreduje",
+      "Greška koja se javi kad server odjednom primi previše dolaznih zahtjeva",
+      "Sigurnosni mehanizam koji zaključava bazu od neovlaštenog pristupa izvana",
+      "Postupak automatskog zaustavljanja aplikacije nakon isteka njezine licence"
     ],
     "correctIndex": 0,
     "explanation": "Klasičan primjer: proces A drži zaključan resurs 1 i čeka resurs 2, dok proces B drži zaključan resurs 2 i čeka resurs 1 - nijedan se ne može pomaknuti bez vanjske intervencije (timeout, detekcija ciklusa).",
@@ -1038,12 +1038,12 @@
     "topic": "backend",
     "question": "Kako bez prekida rada preimenovati često korišten, obavezan stupac baze dok stare i nove verzije aplikacije privremeno rade zajedno?",
     "options": [
+      "Dodati stupac, pisati u oba, prenijeti podatke, pa ukloniti stari",
       "Odmah preimenovati stupac i tek zatim početi mijenjati aplikacije",
       "Zaključati tablicu dok svi timovi ručno ne ažuriraju svoje instance",
-      "Prvo deployati kod koji čita novi stupac iako on još ne postoji",
-      "Dodati novi stupac, privremeno dual-writeati, backfillati podatke, prebaciti čitanja pa tek nakon migracije ukloniti stari stupac"
+      "Prvo pustiti kod koji čita novi stupac iako on još ne postoji"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Expand-contract razdvaja kompatibilno dodavanje od kasnijeg uklanjanja. Svaka međufaza mora raditi sa svim verzijama aplikacije koje tada mogu primati promet.",
     "difficulty": "hard",
     "unitId": "baze-podataka"
@@ -1068,12 +1068,12 @@
     "topic": "backend",
     "question": "Kako envelope encryption omogućuje učinkovito šifriranje mnogo podataka i lakšu rotaciju glavnog ključa?",
     "options": [
-      "Svi se podaci šifriraju jednim ključem ugrađenim u aplikacijski image",
-      "Podaci se samo hashiraju pa ih aplikacija kasnije dekriptira",
-      "Podaci se šifriraju zasebnim data ključem, a taj se ključ omota ključem iz KMS-a koji se može rotirati ponovnim omatanjem",
-      "TLS certifikat servera izravno se sprema uz svaki redak baze"
+      "Podaci se šifriraju data ključem, a on se omota ključem iz KMS-a",
+      "Svi se podaci šifriraju jednim ključem ugrađenim u sam image aplikacije",
+      "Podaci se samo sažimaju pa ih aplikacija kasnije vraća u izvorni oblik",
+      "TLS certifikat servera sprema se izravno uz svaki redak u bazi"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "KMS ključ štiti manje data ključeve, dok se sami podaci šifriraju učinkovitim simetričnim ključem. Rotacija KMS ključa često zahtijeva ponovno omatanje ključeva, ne svih podataka.",
     "difficulty": "hard",
     "unitId": "autentikacija-sigurnost"
@@ -1083,10 +1083,10 @@
     "topic": "backend",
     "question": "Zašto vrlo duga read transakcija može uzrokovati rast prostora u MVCC bazi iako ništa ne mijenja?",
     "options": [
-      "Zadržava staru snapshot vidljivost pa sustav ne može očistiti verzije redaka koje bi toj transakciji još mogle trebati",
-      "Svaki SELECT automatski stvara trajnu kopiju cijele baze",
-      "Read transakcija obavezno zaključava sve tablice za pisanje",
-      "MVCC isključuje spremanje svih novih redaka dok čitanje traje"
+      "Drži stari snapshot pa se stare verzije redaka ne smiju očistiti",
+      "Svaki SELECT u njoj automatski stvara trajnu kopiju cijele baze",
+      "Read transakcija obavezno zaključava sve tablice i za pisanje",
+      "MVCC zaustavlja spremanje novih redaka dok god to čitanje traje"
     ],
     "correctIndex": 0,
     "explanation": "Dugovječni snapshot može zadržavati stare verzije redaka i odgađati vacuum ili garbage collection, što povećava bloat i trošak održavanja.",
@@ -1098,12 +1098,12 @@
     "topic": "backend",
     "question": "Događaji istog poslovnog entiteta mogu stići duplicirani ili izvan redoslijeda iz više producera. Kako consumer pouzdano otkriva praznine i zastarjele događaje?",
     "options": [
-      "Sortira ih isključivo prema lokalnom satu producera",
-      "Pretpostavlja da vrijeme dolaska uvijek odgovara poslovnom redoslijedu",
-      "Prihvaća svaki događaj bez obzira na prethodno obrađeno stanje",
-      "Koristi monotoni broj verzije ili sekvence po entitetu, prati očekivanu vrijednost te posebno obrađuje duplikate i praznine"
+      "Prati monotoni broj verzije po entitetu i posebno obrađuje praznine",
+      "Sortira ih isključivo prema lokalnom satu pojedinog proizvođača",
+      "Pretpostavlja da vrijeme dolaska odgovara poslovnom redoslijedu",
+      "Prihvaća svaki događaj bez obzira na već obrađeno stanje entiteta"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Sekvenca dodijeljena na autoritativnom mjestu daje determinističan poredak bez oslanjanja na nesinkronizirane satove. Consumer može odbaciti staru verziju ili zatražiti propuštene događaje.",
     "difficulty": "hard",
     "unitId": "poruke-redovi"
