@@ -28,6 +28,13 @@ interface QuestionBase {
   code?: string;
   /** Kratko objašnjenje prikazano nakon odgovora (preporučeno, nije obavezno). */
   explanation?: string;
+  /**
+   * Uvodno pitanje cjeline: predstavlja NOVI POJAM prije nego se on počne
+   * ozbiljno ispitivati (Duolingo prvo pokaže riječ, pa je tek onda traži).
+   * Prva lekcija u cjelini garantirano počinje s takvim pitanjima, a i
+   * kasnije ona uvijek idu prva u nizu. Treba biti `difficulty: "easy"`.
+   */
+  isIntro?: boolean;
   /** Koristi se za progresiju unutar sesije (easy -> medium -> hard). */
   difficulty: Difficulty;
 }

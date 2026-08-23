@@ -1,6 +1,6 @@
 import { conceptOf, type Difficulty, type Question } from '../types/question';
 import type { ConceptMastery } from '../state/progressTypes';
-import { daysOverdue, isDue } from './scheduling';
+import { isDue, lessonsOverdue } from './scheduling';
 import { shuffle } from './shuffle';
 
 export const MIN_SESSION_SIZE = 15;
@@ -70,21 +70,41 @@ export interface SelectSessionOptions {
   allowRepeats?: boolean;
   /** Napredak po konceptu; pokreće razmakom vođeno ponavljanje. */
   mastery?: Record<string, ConceptMastery>;
-  now?: Date;
+  /** Broj dovršenih sesija - "sat" razmaknutog ponavljanja (vidi lib/scheduling.ts). */
+  lessonCounter?: number;
+  /**
+   * Prva lekcija u ovoj cjelini: uvodna pitanja (`isIntro`) se garantirano
+   * ubacuju na početak, kao Duolingov uvod u nove pojmove.
+   */
+  isFirstVisit?: boolean;
 }
 
-/** Udio sesije rezerviran za koncepte koji su dospjeli za ponavljanje. */
+/**
+ * Udio sesije rezerviran za koncepte koji su dospjeli za ponavljanje.
+ * Namjerno visok: cilj je da se gradivo VRAĆA, a ne da svaka lekcija bude
+ * nova hrpa nepoznatog.
+ */
 const REVIEW_SHARE = 0.4;
+
+/** Koliko uvodnih pitanja najviše ide na početak prve lekcije u cjelini. */
+const MAX_INTRO_QUESTIONS = 3;
+
+/** Uvodna pitanja idu prva, prije sortiranja po težini. */
+function introRank(q: Question): number {
+  return q.isIntro ? 0 : 1;
+}
 
 /**
  * Bira po jednu varijantu za svaki dospjeli koncept, najzakašnjeliji prvi.
  * Kad koncept ima više varijanti (isti conceptId, različita vrsta pitanja),
- * bira se nasumična - tako ponavljanje ne bude doslovno isto pitanje.
+ * prednost ima ona koju igrač NIJE vidio u prošloj sesiji - tako ponavljanje
+ * ne bude doslovno isto pitanje, nego ista činjenica iz drugog kuta.
  */
 function pickDueQuestions(
   all: Question[],
   mastery: Record<string, ConceptMastery>,
-  now: Date,
+  lessonCounter: number,
+  recentSet: Set<string>,
   limit: number,
 ): Question[] {
   if (limit <= 0) return [];
@@ -95,34 +115,58 @@ function pickDueQuestions(
     const seen = mastery[concept];
     // Samo VIĐENI koncepti idu u ponavljanje; neviđeni su "novo gradivo"
     // i biraju se u drugom koraku, po težini.
-    if (!seen || !isDue(seen, now)) continue;
+    if (!seen || !isDue(seen, lessonCounter)) continue;
     const bucket = byConcept.get(concept);
     if (bucket) bucket.push(q);
     else byConcept.set(concept, [q]);
   }
 
   return [...byConcept.entries()]
-    .sort((a, b) => daysOverdue(mastery[b[0]], now) - daysOverdue(mastery[a[0]], now))
+    .sort(
+      (a, b) =>
+        lessonsOverdue(mastery[b[0]], lessonCounter) - lessonsOverdue(mastery[a[0]], lessonCounter),
+    )
     .slice(0, limit)
-    .map(([, variants]) => shuffle(variants)[0]);
+    .map(([, variants]) => {
+      const shuffled = shuffle(variants);
+      return shuffled.find((q) => !recentSet.has(q.id)) ?? shuffled[0];
+    });
 }
 
 export function selectSessionPool(
   all: Question[],
   recentIds: string[],
   size: number,
-  { priorityIds = [], allowRepeats = false, mastery, now = new Date() }: SelectSessionOptions = {},
+  {
+    priorityIds = [],
+    allowRepeats = false,
+    mastery,
+    lessonCounter = 0,
+    isFirstVisit = false,
+  }: SelectSessionOptions = {},
 ): Question[] {
   const recentSet = new Set(recentIds);
   const usedIds = new Set<string>();
   const selected: Question[] = [];
 
+  // 0) Uvod u cjelinu: pri prvom dolasku garantirano se ubacuju uvodna
+  // pitanja koja predstavljaju nove pojmove (Duolingo-stil). Nakon prve
+  // lekcije ona se natječu kao i sva druga, samo i dalje idu prva u nizu.
+  if (isFirstVisit) {
+    for (const q of all.filter((q) => q.isIntro).slice(0, MAX_INTRO_QUESTIONS)) {
+      selected.push(q);
+      usedIds.add(q.id);
+    }
+  }
+
   // 1) Razmakom vođeno ponavljanje: do 40% sesije za koncepte kojima je
-  // istekao razmak (Leitner, vidi lib/scheduling.ts). Ovo je ono što čini da
-  // se gradivo VRAĆA kroz više lekcija umjesto da nestane nakon jednog
-  // točnog odgovora.
+  // istekao razmak (Leitner u LEKCIJAMA, vidi lib/scheduling.ts). Ovo je ono
+  // što čini da se gradivo VRAĆA kroz više lekcija umjesto da nestane nakon
+  // jednog točnog odgovora.
   if (mastery) {
-    for (const q of pickDueQuestions(all, mastery, now, Math.floor(size * REVIEW_SHARE))) {
+    const dueBudget = Math.floor(size * REVIEW_SHARE) - selected.length;
+    for (const q of pickDueQuestions(all, mastery, lessonCounter, recentSet, dueBudget)) {
+      if (usedIds.has(q.id)) continue;
       selected.push(q);
       usedIds.add(q.id);
     }
@@ -163,7 +207,11 @@ export function selectSessionPool(
     selected.push(...remainder.slice(0, size - selected.length));
   }
 
-  selected.sort((a, b) => DIFFICULTY_RANK[a.difficulty] - DIFFICULTY_RANK[b.difficulty]);
+  selected.sort(
+    (a, b) =>
+      introRank(a) - introRank(b) ||
+      DIFFICULTY_RANK[a.difficulty] - DIFFICULTY_RANK[b.difficulty],
+  );
 
   // 4) Ponavljanje za male banke: cikliraj kroz već odabrana pitanja.
   if (allowRepeats && selected.length > 0 && selected.length < size) {

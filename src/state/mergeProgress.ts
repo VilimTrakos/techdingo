@@ -79,7 +79,7 @@ export function mergeProgress(local: ProgressState, remote: ProgressState, now: 
   }
 
   return {
-    version: 3,
+    version: 4,
     xpTotal: Math.max(local.xpTotal, remote.xpTotal),
     streak: mergeStreak(local.streak, remote.streak),
     lessons,
@@ -88,6 +88,7 @@ export function mergeProgress(local: ProgressState, remote: ProgressState, now: 
     // sinkroniziraju se) - merge uvijek zadržava lokalnu stranu da login ne
     // resetira zalihu ni raspored ponavljanja.
     mastery: local.mastery,
+    lessonCounter: local.lessonCounter,
     hearts: local.hearts,
     dailyChallenge: local.dailyChallenge,
     updatedAtISO: now.toISOString(),

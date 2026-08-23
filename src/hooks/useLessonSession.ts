@@ -137,10 +137,15 @@ export function useLessonSession(topicId: string, unitId?: string) {
     const recentIds = lessonProgress?.recentQuestionIds ?? [];
     const priorityIds = lessonProgress?.struggledQuestionIds ?? [];
     const size = unitId ? randomUnitSessionSize() : randomSessionSize();
+    // Prva lekcija u cjelini dobiva uvodna pitanja koja predstavljaju pojmove.
+    const isFirstVisit =
+      (lessonProgress?.passCount ?? 0) + (lessonProgress?.failCount ?? 0) === 0;
     const picked = selectSessionPool(questions, recentIds, size, {
       priorityIds,
       allowRepeats: Boolean(unitId),
       mastery: progressRef.current.mastery,
+      lessonCounter: progressRef.current.lessonCounter,
+      isFirstVisit,
     });
 
     recordedRef.current = false;

@@ -2,9 +2,11 @@ import {
   MAX_HEARTS,
   createDefaultProgressState,
   type ConceptMastery,
+  type ConceptMasteryV3,
   type ProgressState,
   type ProgressStateV1,
   type ProgressStateV2,
+  type ProgressStateV3,
   type TopicLessonProgress,
 } from './progressTypes';
 
@@ -29,17 +31,51 @@ export function migrate(raw: unknown): ProgressState {
   switch (raw.version) {
     case 1:
       return isValidV1(raw)
-        ? migrateV2ToV3(migrateV1ToV2(raw as unknown as ProgressStateV1))
+        ? migrateV3ToV4(migrateV2ToV3(migrateV1ToV2(raw as unknown as ProgressStateV1)))
         : createDefaultProgressState();
     case 2:
       return isValidV2(raw)
-        ? migrateV2ToV3(raw as unknown as ProgressStateV2)
+        ? migrateV3ToV4(migrateV2ToV3(raw as unknown as ProgressStateV2))
         : createDefaultProgressState();
     case 3:
-      return isValidV3(raw) ? (raw as unknown as ProgressState) : createDefaultProgressState();
+      return isValidV3(raw)
+        ? migrateV3ToV4(raw as unknown as ProgressStateV3)
+        : createDefaultProgressState();
+    case 4:
+      return isValidV4(raw) ? (raw as unknown as ProgressState) : createDefaultProgressState();
     default:
       return createDefaultProgressState();
   }
+}
+
+/**
+ * V3 -> V4: razmaci se prestaju mjeriti u DANIMA i počinju se mjeriti u
+ * LEKCIJAMA (vidi lib/scheduling.ts za razlog).
+ *
+ * `box` se čuva - stečeno znanje se ne poništava. `lessonCounter` se
+ * rekonstruira iz stvarne povijesti (zbroj odigranih lekcija), a svi koncepti
+ * dobivaju `lastSeenLesson: 0`, čime dospijevaju redom po tome koliko su
+ * slabo naučeni: box 0 najprije, box 5 tek ako je igrač odigrao dovoljno
+ * lekcija. Nijedan koncept se ne gubi.
+ */
+function migrateV3ToV4(v3: ProgressStateV3): ProgressState {
+  // Barem 1, da koncepti iz box-a 0 (razmak = 1 lekcija) odmah dospiju.
+  const lessonCounter = Math.max(
+    1,
+    Object.values(v3.lessons).reduce(
+      (sum, lesson) => sum + (lesson.passCount ?? 0) + (lesson.failCount ?? 0),
+      0,
+    ),
+  );
+
+  const mastery: Record<string, ConceptMastery> = {};
+  for (const [conceptId, old] of Object.entries(v3.mastery ?? {})) {
+    const box = typeof (old as ConceptMasteryV3)?.box === 'number' ? (old as ConceptMasteryV3).box : 0;
+    mastery[conceptId] = { box, lastSeenLesson: 0 };
+  }
+
+  const { mastery: _discardedOldShape, ...rest } = v3;
+  return { ...rest, version: 4, mastery, lessonCounter };
 }
 
 /**
@@ -47,8 +83,8 @@ export function migrate(raw: unknown): ProgressState {
  * Postojeće greške (`struggledQuestionIds`) sjedaju u box 0 s jučerašnjim
  * datumom, pa odmah dospijevaju za ponavljanje - ništa se ne gubi.
  */
-function migrateV2ToV3(v2: ProgressStateV2): ProgressState {
-  const mastery: Record<string, ConceptMastery> = {};
+function migrateV2ToV3(v2: ProgressStateV2): ProgressStateV3 {
+  const mastery: Record<string, ConceptMasteryV3> = {};
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
   const yesterdayISO = toLocalDateISO(yesterday);
@@ -104,4 +140,8 @@ function isValidV2(raw: Record<string, unknown>): boolean {
 
 function isValidV3(raw: Record<string, unknown>): boolean {
   return isValidV2(raw) && isPlainObject(raw.mastery);
+}
+
+function isValidV4(raw: Record<string, unknown>): boolean {
+  return isValidV3(raw) && typeof raw.lessonCounter === 'number';
 }

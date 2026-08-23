@@ -15,6 +15,7 @@ const BaseFields = {
   question: z.string().min(1),
   code: z.string().min(1).optional(),
   explanation: z.string().min(1).optional(),
+  isIntro: z.boolean().optional(),
   difficulty: z.enum(['easy', 'medium', 'hard']),
 };
 

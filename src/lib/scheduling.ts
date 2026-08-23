@@ -1,20 +1,37 @@
-import { daysBetween, toLocalDateISO } from '../state/streak';
 import type { ConceptMastery } from '../state/progressTypes';
 
 /**
- * Leitner kutije: razmak do sljedećeg ponavljanja raste sa svakim točnim
- * odgovorom. Indeks = box, vrijednost = koliko dana čekati prije nego koncept
- * ponovno dospije.
+ * Leitner kutije mjerene u LEKCIJAMA, ne u danima.
  *
- * Box 0 (promašeno ili neviđeno) dospijeva odmah - zato 0 dana.
+ * Razmak u danima je za ovu aplikaciju bio pogrešna mjera: igrač koji odigra
+ * pet lekcija u jednom sjedenju ne bi u njima vidio ni jedno ponavljanje, a
+ * onaj koji igra jednom tjedno bio bi zatrpan. Brojač lekcija prati stvarni
+ * ritam učenja - ponavljanje dolazi nakon N odigranih lekcija, kad god one
+ * bile odigrane.
+ *
+ * Indeks = box, vrijednost = za koliko se lekcija koncept vraća.
+ *
+ * Box 0 (promašeno) = 1, dakle koncept se vraća već u SLJEDEĆOJ lekciji. To
+ * je namjerno: ono što nisi znao vraća se lekciju za lekcijom dok ne sjedne.
+ *
  * Box 5 je "naučeno": i dalje se vraća, samo rijetko, da ne ispari.
+ *
+ * Praktično, uz točan odgovor svaki put, koncept se vidi u lekcijama
+ * 1, 3, 6, 11, 19 - pet susreta u prva tri tjedna svakodnevnog igranja.
  */
-export const BOX_INTERVAL_DAYS = [0, 1, 3, 7, 16, 35];
-export const MAX_BOX = BOX_INTERVAL_DAYS.length - 1;
+export const BOX_INTERVAL_LESSONS = [1, 2, 3, 5, 8, 13];
+export const MAX_BOX = BOX_INTERVAL_LESSONS.length - 1;
+
+/**
+ * U kojoj se lekciji (računajući od prve u kojoj je koncept viđen) koncept
+ * smatra naučenim ako se svaki put pogodi. Izvedeno iz razmaka - ne mijenjaj ručno.
+ */
+export const LESSONS_TO_MASTERY =
+  1 + BOX_INTERVAL_LESSONS.slice(1, MAX_BOX).reduce((sum, gap) => sum + gap, 0);
 
 /** Novi koncept: nije viđen, dospijeva odmah. */
-export function initialMastery(nowISO: string): ConceptMastery {
-  return { box: 0, lastSeenDateISO: nowISO };
+export function initialMastery(lessonCounter: number): ConceptMastery {
+  return { box: 0, lastSeenLesson: lessonCounter };
 }
 
 /**
@@ -23,33 +40,36 @@ export function initialMastery(nowISO: string): ConceptMastery {
  *
  * Vraćanje na 0 umjesto box-1 je namjerno: ako si pogriješio, prethodni
  * "znam ovo" bio je pogodak, a ne znanje.
+ *
+ * `lessonCounter` je broj DOVRŠENIH sesija u trenutku odgovora, dakle
+ * vrijednost PRIJE inkrementa za tekuću sesiju. Zbog toga je u sljedećoj
+ * lekciji proteklo točno 1, pa razmak 1 znači "vraća se odmah iduću lekciju".
  */
 export function applyAnswer(
   mastery: ConceptMastery | undefined,
   correct: boolean,
-  now: Date = new Date(),
+  lessonCounter: number,
 ): ConceptMastery {
-  const todayISO = toLocalDateISO(now);
   const currentBox = mastery?.box ?? 0;
   return {
     box: correct ? Math.min(MAX_BOX, currentBox + 1) : 0,
-    lastSeenDateISO: todayISO,
+    lastSeenLesson: lessonCounter,
   };
 }
 
 /** Je li koncept dospio za ponavljanje? Neviđen koncept uvijek jest. */
-export function isDue(mastery: ConceptMastery | undefined, now: Date = new Date()): boolean {
+export function isDue(mastery: ConceptMastery | undefined, lessonCounter: number): boolean {
   if (!mastery) return true;
-  return daysOverdue(mastery, now) >= 0;
+  return lessonsOverdue(mastery, lessonCounter) >= 0;
 }
 
 /**
- * Koliko je dana PROŠLO preko roka. Negativno = još nije dospjelo.
+ * Koliko je LEKCIJA prošlo preko roka. Negativno = još nije dospjelo.
  * Koristi se za sortiranje: najviše zakašnjelo ide prvo.
  */
-export function daysOverdue(mastery: ConceptMastery, now: Date = new Date()): number {
-  const elapsed = daysBetween(mastery.lastSeenDateISO, toLocalDateISO(now));
-  const required = BOX_INTERVAL_DAYS[Math.min(mastery.box, MAX_BOX)];
+export function lessonsOverdue(mastery: ConceptMastery, lessonCounter: number): number {
+  const elapsed = lessonCounter - mastery.lastSeenLesson;
+  const required = BOX_INTERVAL_LESSONS[Math.min(Math.max(mastery.box, 0), MAX_BOX)];
   return elapsed - required;
 }
 

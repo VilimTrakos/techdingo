@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { createDefaultProgressState } from './progressTypes';
 import { recordLessonResult, recordReviewResult, recordScoreStrikeResult } from './progress';
+import { isDue } from '../lib/scheduling';
 
 describe('recordLessonResult', () => {
   it('prolaz (passed) dodaje XP, povećava passCount i produžuje streak', () => {
@@ -110,5 +111,47 @@ describe('recordReviewResult', () => {
     };
     recordReviewResult(state, { correctQuestionIds: ['a'], correctCount: 1 }, new Date('2026-02-01T10:00:00'));
     expect(state.lessons.sql.struggledQuestionIds).toEqual(['a']);
+  });
+});
+
+describe('lessonCounter - sat razmaknutog ponavljanja', () => {
+  const lesson = (passed: boolean, conceptResults: Record<string, boolean> = {}) => ({
+    passed,
+    correctCount: passed ? 8 : 3,
+    questionIds: ['q1'],
+    wrongQuestionIds: passed ? [] : ['q1'],
+    conceptResults,
+  });
+
+  it('svaka dovršena lekcija pomiče brojač, i položena i pala', () => {
+    let state = createDefaultProgressState();
+    expect(state.lessonCounter).toBe(0);
+    state = recordLessonResult(state, 'sql/osnove-upita', lesson(true));
+    expect(state.lessonCounter).toBe(1);
+    state = recordLessonResult(state, 'sql/osnove-upita', lesson(false));
+    expect(state.lessonCounter).toBe(2);
+  });
+
+  it('ponavljanje grešaka također pomiče brojač', () => {
+    let state = createDefaultProgressState();
+    state = recordReviewResult(state, { correctQuestionIds: ['q1'], correctCount: 1 });
+    expect(state.lessonCounter).toBe(1);
+  });
+
+  it('koncept se bilježi na broj lekcija PRIJE inkrementa, pa se promašaj vraća iduću lekciju', () => {
+    let state = createDefaultProgressState();
+    state = recordLessonResult(state, 'sql/osnove-upita', lesson(true, { 'sql-joins': false }));
+    expect(state.mastery['sql-joins']).toEqual({ box: 0, lastSeenLesson: 0 });
+    // Brojač je sad 1, razmak za box 0 je 1 -> dospijeva u sljedećoj lekciji.
+    expect(isDue(state.mastery['sql-joins'], state.lessonCounter)).toBe(true);
+  });
+
+  it('točan odgovor gura koncept dalje i odgađa ga za više od jedne lekcije', () => {
+    let state = createDefaultProgressState();
+    state = recordLessonResult(state, 'sql/osnove-upita', lesson(true, { 'sql-joins': true }));
+    expect(state.mastery['sql-joins'].box).toBe(1);
+    expect(isDue(state.mastery['sql-joins'], state.lessonCounter)).toBe(false);
+    state = recordLessonResult(state, 'sql/osnove-upita', lesson(true));
+    expect(isDue(state.mastery['sql-joins'], state.lessonCounter)).toBe(true);
   });
 });

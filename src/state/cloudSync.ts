@@ -59,7 +59,7 @@ export async function fetchCloudProgress(userId: string): Promise<ProgressState 
   }
 
   return {
-    version: 3,
+    version: 4,
     xpTotal: progressRow.xp_total,
     streak: {
       current: progressRow.streak_current,
@@ -73,6 +73,7 @@ export async function fetchCloudProgress(userId: string): Promise<ProgressState 
     // Popis grešaka (struggledQuestionIds) SE sinkronizira, pa ponavljanje
     // preživi prijavu na drugom uređaju i bez sinkroniziranog mastery-ja.
     mastery: {},
+    lessonCounter: 0,
     hearts: { balance: 5, lastRegenAtISO: null },
     dailyChallenge: { lastPlayedDateISO: null, lastScore: 0, bestScore: 0 },
     updatedAtISO: progressRow.updated_at,

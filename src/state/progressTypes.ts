@@ -22,7 +22,13 @@ export interface TopicScoreStrikeProgress {
 export interface ConceptMastery {
   /** 0 = promašeno/novo, MAX_BOX = naučeno. Viši box = dulji razmak do ponavljanja. */
   box: number;
-  /** Lokalni datum (YYYY-MM-DD) zadnjeg susreta s konceptom. */
+  /** Vrijednost `lessonCounter`-a pri zadnjem susretu - razmak se mjeri u LEKCIJAMA, ne u danima. */
+  lastSeenLesson: number;
+}
+
+/** Oblik `ConceptMastery` prije V4 (razmaci u danima) - potreban samo migraciji. */
+export interface ConceptMasteryV3 {
+  box: number;
   lastSeenDateISO: string;
 }
 
@@ -96,7 +102,42 @@ export interface ProgressStateV3 {
    * "što treba ponoviti" - `struggledQuestionIds` na lekcijama ostaje samo
    * kao pomoćni popis za brzo skupljanje grešaka po temi.
    */
+  mastery: Record<string, ConceptMasteryV3>;
+  /** Trajna srca - dijele se kroz sve lekcije, NE sinkroniziraju se u cloud (lokalno po uređaju). */
+  hearts: HeartsState;
+  /** Dnevni izazov - NE sinkronizira se u cloud (lokalno po uređaju). */
+  dailyChallenge: DailyChallengeState;
+  updatedAtISO: string;
+}
+
+export interface ProgressStateV4 {
+  version: 4;
+  xpTotal: number;
+  streak: {
+    current: number;
+    longest: number;
+    /** Lokalni datum (YYYY-MM-DD), ne UTC. */
+    lastCompletedDateISO: string | null;
+  };
+  /**
+   * Ključ je `topicId` (naslijeđene lekcije cijele teme) ili
+   * `topicId/unitId` (lekcije pojedine cjeline, vidi units.ts).
+   */
+  lessons: Record<string, TopicLessonProgress>;
+  scoreStrike: Record<string, TopicScoreStrikeProgress>;
+  /**
+   * Razmakom vođeno ponavljanje po conceptId-u. Ovo je izvor istine za
+   * "što treba ponoviti" - `struggledQuestionIds` na lekcijama ostaje samo
+   * kao pomoćni popis za brzo skupljanje grešaka po temi.
+   */
   mastery: Record<string, ConceptMastery>;
+  /**
+   * Monotoni brojač dovršenih sesija (lekcija + ponavljanja). Ovo je "sat"
+   * razmaknutog ponavljanja: razmaci se mjere u lekcijama, pa igrač koji
+   * odigra pet lekcija zaredom u njima i vidi ponavljanja. Nikad se ne
+   * smanjuje i ne sinkronizira se u cloud (vezan je uz mastery, koji je lokalan).
+   */
+  lessonCounter: number;
   /** Trajna srca - dijele se kroz sve lekcije, NE sinkroniziraju se u cloud (lokalno po uređaju). */
   hearts: HeartsState;
   /** Dnevni izazov - NE sinkronizira se u cloud (lokalno po uređaju). */
@@ -105,18 +146,19 @@ export interface ProgressStateV3 {
 }
 
 /** Aktualna verzija - novi kod uvijek radi s ovim aliasom, ne s konkretnim VN tipom. */
-export type ProgressState = ProgressStateV3;
+export type ProgressState = ProgressStateV4;
 
 export const MAX_HEARTS = 5;
 
 export function createDefaultProgressState(): ProgressState {
   return {
-    version: 3,
+    version: 4,
     xpTotal: 0,
     streak: { current: 0, longest: 0, lastCompletedDateISO: null },
     lessons: {},
     scoreStrike: {},
     mastery: {},
+    lessonCounter: 0,
     hearts: { balance: MAX_HEARTS, lastRegenAtISO: null },
     dailyChallenge: { lastPlayedDateISO: null, lastScore: 0, bestScore: 0 },
     updatedAtISO: new Date().toISOString(),

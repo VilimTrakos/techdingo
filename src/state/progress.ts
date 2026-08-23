@@ -20,16 +20,20 @@ export interface LessonResultInput {
 /**
  * Primijeni rezultate sesije na Leitner raspored. Točan odgovor gura koncept
  * u viši box (dulji razmak do ponavljanja), krivi ga vraća na 0.
+ *
+ * `lessonCounter` je stanje PRIJE inkrementa za ovu sesiju - razmaci se mjere
+ * u lekcijama (vidi lib/scheduling.ts), pa se koncept iz box-a 0 vraća već u
+ * sljedećoj lekciji.
  */
 export function applyConceptResults(
   mastery: Record<string, ConceptMastery>,
   results: Record<string, boolean>,
-  now: Date,
+  lessonCounter: number,
 ): Record<string, ConceptMastery> {
   if (Object.keys(results).length === 0) return mastery;
   const next = { ...mastery };
   for (const [conceptId, correct] of Object.entries(results)) {
-    next[conceptId] = applyAnswer(next[conceptId], correct, now);
+    next[conceptId] = applyAnswer(next[conceptId], correct, lessonCounter);
   }
   return next;
 }
@@ -78,7 +82,10 @@ export function recordLessonResult(
     xpTotal: state.xpTotal + xpGained,
     streak,
     lessons,
-    mastery: applyConceptResults(state.mastery, input.conceptResults ?? {}, now),
+    mastery: applyConceptResults(state.mastery, input.conceptResults ?? {}, state.lessonCounter),
+    // Brojač raste i za pale lekcije: i one su odigrana sesija, pa gradivo
+    // iz njih treba dospjeti po istom ritmu kao i iz prošlih.
+    lessonCounter: state.lessonCounter + 1,
     updatedAtISO: now.toISOString(),
   };
 }
@@ -227,7 +234,8 @@ export function recordReviewResult(
     xpTotal: state.xpTotal + xpForLesson(true, input.correctCount),
     streak: applyStreak(state.streak, now),
     lessons,
-    mastery: applyConceptResults(state.mastery, input.conceptResults ?? {}, now),
+    mastery: applyConceptResults(state.mastery, input.conceptResults ?? {}, state.lessonCounter),
+    lessonCounter: state.lessonCounter + 1,
     updatedAtISO: now.toISOString(),
   };
 }
