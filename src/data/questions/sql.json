@@ -655,9 +655,9 @@
     "question": "Koja je razlika između podupita i JOIN-a?",
     "options": [
       "JOIN kombinira stupce iz više tablica u jedan rezultat, dok podupit obično vraća vrijednost/skup koji se koristi za filtriranje - JOIN je često (ali ne uvijek) brži jer optimizator ima više informacija",
-      "Podupit i JOIN uvijek daju identičan plan izvršavanja u svakoj bazi podataka",
-      "JOIN se može koristiti samo s dvije tablice, dok podupit nema ograničenja",
-      "Podupit mijenja podatke u bazi, dok JOIN samo čita podatke"
+      "Podupit i JOIN uvijek daju identičan plan izvršavanja u svakoj bazi jer optimizator prije izvođenja bez iznimke pretvara sve podupite u iste fizičke JOIN operatore",
+      "JOIN može povezati samo dvije tablice i uvijek vraća sve njihove stupce, dok podupit može obuhvatiti neograničen broj tablica, ali ne smije referencirati vanjski upit",
+      "Podupit služi isključivo izmjeni podataka jer se izvršava prije glavne naredbe, dok JOIN uvijek samo čita tablice i ne može se pojaviti u UPDATE ili DELETE izrazu"
     ],
     "correctIndex": 0,
     "explanation": "Oboje mogu riješiti isti problem, ali JOIN direktno spaja retke iz više tablica u rezultat, dok se podupit često koristi za filtriranje (npr. WHERE id IN (subquery)) - izbor ovisi o čitljivosti i planu izvršavanja.",
@@ -804,10 +804,10 @@
     "topic": "sql",
     "question": "Po čemu se korelirani podupit razlikuje od nekoreliranog?",
     "options": [
-      "Može vratiti samo jedan stupac i jedan redak",
-      "Uvijek se izvršava brže od ekvivalentnog JOIN-a",
+      "Može vratiti samo jedan stupac i jedan redak jer svako pozivanje stupca vanjskog upita automatski pretvara rezultat podupita u skalarnu vrijednost",
+      "Uvijek se fizički izvršava samo jednom i zato je brži od ekvivalentnog JOIN-a, bez obzira na broj vanjskih redaka, indekse ili odluku optimizatora",
       "Referencira stupac vanjskog upita pa se logički vrednuje u kontekstu svakog vanjskog retka, iako ga optimizator može preoblikovati",
-      "Mora mijenjati podatke naredbom UPDATE ili DELETE"
+      "Mora mijenjati podatke naredbom UPDATE ili DELETE i ne može se koristiti unutar SELECT-a, WHERE uvjeta ili izraza koji samo čita postojeće retke"
     ],
     "correctIndex": 2,
     "explanation": "Korelacija nastaje kada unutarnji upit ovisi o trenutačnom retku vanjskog upita; stvarni plan može izbjeći doslovno ponovno izvođenje optimizacijom.",
@@ -1089,9 +1089,9 @@
     "topic": "sql",
     "question": "Koja je glavna prednost keyset paginationa nad velikim OFFSET-om?",
     "options": [
-      "Ne zahtijeva nikakav ORDER BY niti indeks",
-      "Uvijek omogućuje izravan skok na proizvoljan broj stranice bez dodatnih podataka",
-      "Automatski zaključava sve prethodno prikazane retke",
+      "Ne zahtijeva stabilan ORDER BY ni indeks jer baza pamti fizičku poziciju svakog klijenta između zahtjeva i nastavlja skeniranje od tog mjesta",
+      "Uvijek omogućuje izravan skok na proizvoljan broj stranice bez pokazivača ili dodatnih podataka, čak i kada se prethodni retci istodobno umeću i brišu",
+      "Automatski zaključava sve prethodno prikazane retke do završetka korisnikove sesije, pa drugi klijenti ne mogu promijeniti njihov poredak ni sadržaj",
       "Nastavlja iza posljednjeg viđenog jedinstveno uređenog ključa pa može izbjeći preskakanje velikog broja redaka i stabilnije podnijeti konkurentne promjene"
     ],
     "correctIndex": 3,
@@ -1413,9 +1413,9 @@
     "topic": "sql",
     "question": "Što obično znači kada stvarni execution plan prijavi da je Sort ili Hash operacija koristila privremeni disk odnosno više batch-eva?",
     "options": [
-      "Da planer nije izvršio nijedan dio upita",
-      "Da je baza automatski stvorila trajni indeks za rezultat",
-      "Da je rezultat upita nužno logički netočan",
+      "Da planer nije izvršio nijedan dio upita nego je cijeli rezultat pročitao iz cachea, a privremeni disk sadrži samo tekstualni prikaz execution plana",
+      "Da je baza automatski stvorila trajni indeks nad izvornom tablicom i podijelila ga u batch-eve koji ostaju dostupni svim budućim upitima",
+      "Da je rezultat upita nužno logički netočan jer Sort i Hash operatori smiju koristiti samo memoriju; svaki pristup disku mijenja vrijednosti redaka",
       "Da međurezultat nije obrađen samo u dodijeljenoj memoriji pa je korištena privremena pohrana, što može znatno povećati I/O"
     ],
     "correctIndex": 3,
@@ -1473,10 +1473,10 @@
     "topic": "sql",
     "question": "Zašto spajanje narudžbe istodobno s više stavki i više uplata može dati previsoke SUM iznose?",
     "options": [
-      "Jer SUM automatski udvostručuje svaki broj koji dolazi iz JOIN-a",
-      "Jer strani ključevi uvijek pretvaraju LEFT JOIN u CROSS JOIN",
+      "Jer SUM automatski udvostručuje svaku numeričku vrijednost koja dolazi iz bilo kojeg JOIN-a, neovisno o broju podudarajućih redaka i grupiranju",
+      "Jer strani ključevi uvijek pretvaraju LEFT JOIN u potpuni CROSS JOIN čim su dvije podređene tablice povezane s istim primarnim ključem roditelja",
       "Jer kombinacije dviju veza jedan-prema-više umnožavaju retke narudžbe; svaku podređenu stranu često treba prvo agregirati na razinu narudžbe pa zatim spojiti",
-      "Jer GROUP BY ne smije sadržavati primarni ključ"
+      "Jer GROUP BY ne smije sadržavati primarni ključ zajedno s agregatnom funkcijom; baza tada svaku grupu računa dvaput kako bi zadržala jedinstvenost ključa"
     ],
     "correctIndex": 2,
     "explanation": "Ako narudžba ima tri stavke i dvije uplate, zajednički JOIN može proizvesti šest kombinacija. Zbroj iz jedne podređene tablice tada se ponavlja za retke druge, pa preagregiranje sprječava fanout pogrešku.",

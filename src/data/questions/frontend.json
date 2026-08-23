@@ -749,7 +749,7 @@
     "question": "Koja je razlika između debounce i throttle tehnika?",
     "options": [
       "Debounce odgađa izvršavanje funkcije dok ne prođe određeno vrijeme bez novog poziva (izvrši se samo zadnji poziv), throttle ograničava funkciju da se izvrši najviše jednom u zadanom vremenskom razdoblju",
-      "Debounce i throttle jednako izvršavaju svaki primljeni poziv nakon fiksne odgode; razlikuju se samo po nazivu timera koji preglednik koristi interno",
+      "Debounce i throttle jednako izvršavaju svaki primljeni poziv nakon fiksne odgode; razlikuju se samo po nazivu i implementaciji internog timera koji preglednik koristi",
       "Throttle odgađa obradu dok pozivi potpuno ne prestanu, a debounce dopušta najviše jedan poziv po intervalu; oba se mogu koristiti samo za CSS animacije",
       "Debounce namjerno povećava broj izvršavanja grupiranjem jednog događaja u više callbackova, dok throttle nakon prvog poziva trajno zaustavlja funkciju"
     ],

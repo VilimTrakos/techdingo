@@ -199,10 +199,10 @@
     "topic": "general",
     "question": "Što znači da je vrijednost ili objekt nepromjenjiv (immutable)?",
     "options": [
-      "Može se izmijeniti samo iz druge niti",
+      "Može se izmijeniti samo iz druge niti, dok nit koja ga je stvorila nakon inicijalizacije ima isključivo pravo čitanja njegova stanja",
       "Njegovo se vidljivo stanje nakon stvaranja ne mijenja; za drukčije stanje stvara se nova vrijednost",
-      "Mora biti spremljen isključivo na disku",
-      "Ne može se proslijediti funkciji kao argument"
+      "Mora biti spremljen na trajnom disku jer bi pohrana u radnu memoriju omogućila izmjenu njegovih svojstava nakon stvaranja",
+      "Ne može se proslijediti funkciji jer bi poziv automatski promijenio identitet objekta, čak i kada funkcija samo čita sadržaj"
     ],
     "correctIndex": 1,
     "explanation": "Nepromjenjive vrijednosti smanjuju broj mogućih promjena dijeljenog stanja, što olakšava zaključivanje, testiranje i sigurno dijeljenje. Cijena može biti stvaranje dodatnih objekata, ovisno o implementaciji.",
@@ -534,10 +534,10 @@
     "topic": "general",
     "question": "Što znači da je operacija idempotentna?",
     "options": [
-      "Mora završiti u točno jednoj milisekundi",
+      "Mora završiti u točno određenom vremenu pri svakom pozivu, primjerice jednoj milisekundi, neovisno o ulazu i stanju sustava",
       "Može se primijeniti više puta s istim namjeravanim učinkom na stanje kao da je primijenjena jednom",
-      "Nikada ne smije vratiti pogrešku klijentu",
-      "Svaki poziv mora stvoriti novi resurs"
+      "Nikada ne smije vratiti pogrešku klijentu; neuspjeli pokušaj mora se interno ponavljati sve dok operacija ne vrati uspješan odgovor",
+      "Svaki ponovljeni poziv mora stvoriti novi resurs s novim identifikatorom, čak i kada klijent šalje isti zahtjev i istu vrijednost"
     ],
     "correctIndex": 1,
     "explanation": "Idempotentnost olakšava sigurno ponavljanje nakon timeouta ili prekida veze. Odgovor i sporedni metapodaci ne moraju nužno biti identični, ali namjeravani učinak na stanje ne smije se nekontrolirano umnožavati.",
@@ -549,10 +549,10 @@
     "topic": "general",
     "question": "Zašto je invalidacija cachea važna nakon promjene izvornog podatka?",
     "options": [
-      "Jer cache nakon svakog čitanja trajno briše izvorni podatak",
-      "Jer invalidacija automatski povećava kapacitet baze",
+      "Jer cache nakon svakog čitanja trajno briše izvorni zapis, pa invalidacija mora vratiti posljednju spremljenu kopiju podatka natrag u bazu",
+      "Jer invalidacija automatski povećava kapacitet baze i broj dostupnih veza svaki put kada se cache ključ ukloni nakon uspješnog upisa",
       "Jer inače cache može nastaviti posluživati zastarjelu vrijednost; strategija mora uzeti u obzir redoslijed upisa, kvarove i konkurentne zahtjeve",
-      "Jer se bez invalidacije nijedna vrijednost ne može serijalizirati"
+      "Jer se bez invalidacije vrijednost ne može serijalizirati ni poslati klijentu, čak i kada cache još sadrži potpuno svježu kopiju izvornog podatka"
     ],
     "correctIndex": 2,
     "explanation": "Cache je kopija čija se svježina mora uskladiti s izvorom istine. TTL ograničava trajanje zastarjelosti, a obrasci poput cache-aside zahtijevaju pažljivo ažuriranje ili uklanjanje zapisa nakon promjene.",
@@ -713,9 +713,9 @@
     "topic": "general",
     "question": "Zašto kombinacija path compressiona i union by rank odnosno size čini Union-Find učinkovitim?",
     "options": [
-      "Svaki skup unaprijed pretvara u potpuno sortirano polje",
-      "Jamči strogo O(1) vrijeme svake pojedine operacije bez ikakvih pretpostavki",
-      "Uklanja potrebu za predstavnikom skupa",
+      "Svaki skup nakon svakog spajanja pretvara u potpuno sortirano polje, pa se predstavnik uvijek nalazi binarnim pretraživanjem nad svim elementima",
+      "Jamči strogo O(1) vrijeme baš svake pojedine operacije, uključujući prvi find nad proizvoljno dubokim stablom, bez amortizacije ili pretpostavki",
+      "Uklanja potrebu za predstavnikom skupa tako da svaki element pohranjuje izravnu kopiju svih ostalih elemenata koji pripadaju istoj komponenti",
       "Održava stabla plitkima pa niz m operacija ima gotovo konstantan amortizirani trošak, preciznije vezan uz inverznu Ackermannovu funkciju"
     ],
     "correctIndex": 3,

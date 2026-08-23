@@ -577,8 +577,8 @@
     "options": [
       "Sustav koji omogućuje asinkronu komunikaciju između servisa slanjem poruka u red - pošiljatelj ne mora čekati da primatelj odmah obradi poruku, čime se sustavi razdvajaju (decouple) i postaju otporniji",
       "Struktura u memoriji koja služi isključivo sortiranju numeričkih vrijednosti prije sinkronog poziva drugog servisa i ne može preživjeti ponovno pokretanje procesa",
-      "Servis namijenjen samo slanju e-mail obavijesti, pri čemu pošiljatelj mora ostati blokiran dok primatelj ne potvrdi prikaz svake poruke korisniku",
-      "Trajna zamjena za svaku bazu podataka: svi servisi čuvaju konačno poslovno stanje samo u redu, a obrađene poruke zauvijek ostaju jedini izvor za upite"
+      "Servis namijenjen samo slanju e-mail obavijesti korisnicima, pri čemu pošiljatelj mora ostati blokiran dok primatelj ne potvrdi prikaz svake pojedine poruke",
+      "Trajna zamjena za svaku bazu podataka: svi servisi čuvaju konačno poslovno stanje samo u redu poruka, a obrađene poruke zauvijek ostaju jedini izvor za upite"
     ],
     "correctIndex": 0,
     "explanation": "Primjeri (RabbitMQ, Kafka, SQS) omogućuju npr. da web server brzo odgovori korisniku, dok se dugotrajna obrada (slanje e-maila, generiranje izvještaja) odvija asinkrono u pozadini preko workera koji čitaju iz reda.",
