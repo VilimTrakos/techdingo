@@ -8,6 +8,10 @@ const BaseFields = {
     .regex(/^[a-z0-9-]+$/, 'id smije sadržavati samo mala slova, brojke i crtice'),
   topic: z.string().min(1),
   unitId: z.string().min(1),
+  conceptId: z
+    .string()
+    .regex(/^[a-z0-9-]+$/, 'conceptId smije sadržavati samo mala slova, brojke i crtice')
+    .optional(),
   question: z.string().min(1),
   code: z.string().min(1).optional(),
   explanation: z.string().min(1).optional(),

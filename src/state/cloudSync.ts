@@ -59,7 +59,7 @@ export async function fetchCloudProgress(userId: string): Promise<ProgressState 
   }
 
   return {
-    version: 2,
+    version: 3,
     xpTotal: progressRow.xp_total,
     streak: {
       current: progressRow.streak_current,
@@ -68,8 +68,11 @@ export async function fetchCloudProgress(userId: string): Promise<ProgressState 
     },
     lessons,
     scoreStrike,
-    // Srca i dnevni izazov se ne sinkroniziraju (lokalno po uređaju) -
+    // Srca, dnevni izazov i mastery se ne sinkroniziraju (lokalno po uređaju) -
     // mergeProgress uvijek uzima lokalnu stranu, ovi defaulti nikad ne pobjeđuju.
+    // Popis grešaka (struggledQuestionIds) SE sinkronizira, pa ponavljanje
+    // preživi prijavu na drugom uređaju i bez sinkroniziranog mastery-ja.
+    mastery: {},
     hearts: { balance: 5, lastRegenAtISO: null },
     dailyChallenge: { lastPlayedDateISO: null, lastScore: 0, bestScore: 0 },
     updatedAtISO: progressRow.updated_at,

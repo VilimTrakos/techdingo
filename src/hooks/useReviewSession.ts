@@ -7,6 +7,7 @@ import {
   type PreparedQuestion,
 } from '../lib/questionKinds';
 import { MAX_REVIEW_SESSION_SIZE, collectStruggledQuestions } from '../lib/review';
+import { conceptOf } from '../types/question';
 import { useProgress } from './useProgress';
 
 type Status = 'loading' | 'empty' | 'playing' | 'finished';
@@ -17,6 +18,8 @@ interface State {
   questionIndex: number;
   correctCount: number;
   correctQuestionIds: string[];
+  /** conceptId -> točno? Hrani Leitner raspored. */
+  conceptResults: Record<string, boolean>;
   stillWrongCount: number;
   isAnswered: boolean;
   lastAnswerCorrect: boolean | null;
@@ -25,7 +28,7 @@ interface State {
 type Action =
   | { type: 'INIT'; questions: PreparedQuestion[] }
   | { type: 'EMPTY' }
-  | { type: 'ANSWER'; correct: boolean; questionId: string }
+  | { type: 'ANSWER'; correct: boolean; questionId: string; conceptId: string }
   | { type: 'NEXT' };
 
 function createIdleState(): State {
@@ -35,6 +38,7 @@ function createIdleState(): State {
     questionIndex: 0,
     correctCount: 0,
     correctQuestionIds: [],
+    conceptResults: {},
     stillWrongCount: 0,
     isAnswered: false,
     lastAnswerCorrect: null,
@@ -57,6 +61,10 @@ function reducer(state: State, action: Action): State {
         correctQuestionIds: action.correct
           ? [...state.correctQuestionIds, action.questionId]
           : state.correctQuestionIds,
+        conceptResults: {
+          ...state.conceptResults,
+          [action.conceptId]: action.correct && state.conceptResults[action.conceptId] !== false,
+        },
         stillWrongCount: state.stillWrongCount + (action.correct ? 0 : 1),
       };
     }
@@ -122,9 +130,10 @@ export function useReviewSession() {
       recordReviewResult({
         correctQuestionIds: state.correctQuestionIds,
         correctCount: state.correctCount,
+        conceptResults: state.conceptResults,
       });
     }
-  }, [state.status, state.correctQuestionIds, state.correctCount, recordReviewResult]);
+  }, [state.status, state.correctQuestionIds, state.correctCount, state.conceptResults, recordReviewResult]);
 
   const current: PreparedQuestion | null = state.questions[state.questionIndex] ?? null;
 
@@ -135,6 +144,7 @@ export function useReviewSession() {
         type: 'ANSWER',
         correct: gradeAnswer(current, payload),
         questionId: current.question.id,
+        conceptId: conceptOf(current.question),
       });
     },
     [state.status, state.isAnswered, current],

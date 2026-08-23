@@ -1,4 +1,5 @@
-import type { ProgressState } from './progressTypes';
+import type { ConceptMastery, ProgressState } from './progressTypes';
+import { applyAnswer } from '../lib/scheduling';
 import { grantHearts, resolveHearts, spendHeart } from './hearts';
 import { applyStreak, toLocalDateISO } from './streak';
 import { xpForLesson, xpForScoreStrike } from '../lib/xp';
@@ -12,6 +13,25 @@ export interface LessonResultInput {
   questionIds: string[];
   /** Pitanja krivo odgovorena u ovoj sesiji - ulaze u prioritetno ponavljanje. */
   wrongQuestionIds: string[];
+  /** Rezultat po KONCEPTU: conceptId -> je li točno odgovoren. */
+  conceptResults?: Record<string, boolean>;
+}
+
+/**
+ * Primijeni rezultate sesije na Leitner raspored. Točan odgovor gura koncept
+ * u viši box (dulji razmak do ponavljanja), krivi ga vraća na 0.
+ */
+export function applyConceptResults(
+  mastery: Record<string, ConceptMastery>,
+  results: Record<string, boolean>,
+  now: Date,
+): Record<string, ConceptMastery> {
+  if (Object.keys(results).length === 0) return mastery;
+  const next = { ...mastery };
+  for (const [conceptId, correct] of Object.entries(results)) {
+    next[conceptId] = applyAnswer(next[conceptId], correct, now);
+  }
+  return next;
 }
 
 /** Čista funkcija: vraća NOVO stanje (ne mutira ulaz), za lakše testiranje i predvidljiv React re-render. */
@@ -58,6 +78,7 @@ export function recordLessonResult(
     xpTotal: state.xpTotal + xpGained,
     streak,
     lessons,
+    mastery: applyConceptResults(state.mastery, input.conceptResults ?? {}, now),
     updatedAtISO: now.toISOString(),
   };
 }
@@ -172,6 +193,8 @@ export interface ReviewResultInput {
   /** Pitanja točno odgovorena u ponavljanju - brišu se iz liste za ponavljanje. */
   correctQuestionIds: string[];
   correctCount: number;
+  /** Rezultat po KONCEPTU: conceptId -> je li točno odgovoren. */
+  conceptResults?: Record<string, boolean>;
 }
 
 /**
@@ -204,6 +227,7 @@ export function recordReviewResult(
     xpTotal: state.xpTotal + xpForLesson(true, input.correctCount),
     streak: applyStreak(state.streak, now),
     lessons,
+    mastery: applyConceptResults(state.mastery, input.conceptResults ?? {}, now),
     updatedAtISO: now.toISOString(),
   };
 }

@@ -79,13 +79,15 @@ export function mergeProgress(local: ProgressState, remote: ProgressState, now: 
   }
 
   return {
-    version: 2,
+    version: 3,
     xpTotal: Math.max(local.xpTotal, remote.xpTotal),
     streak: mergeStreak(local.streak, remote.streak),
     lessons,
     scoreStrike,
-    // Srca i dnevni izazov su NAMJERNO lokalni po uređaju (ne sinkroniziraju
-    // se) - merge uvijek zadržava lokalnu stranu da login ne resetira zalihu.
+    // Srca, dnevni izazov i mastery su NAMJERNO lokalni po uređaju (ne
+    // sinkroniziraju se) - merge uvijek zadržava lokalnu stranu da login ne
+    // resetira zalihu ni raspored ponavljanja.
+    mastery: local.mastery,
     hearts: local.hearts,
     dailyChallenge: local.dailyChallenge,
     updatedAtISO: now.toISOString(),

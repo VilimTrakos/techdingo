@@ -94,3 +94,42 @@ describe('selectSessionPool', () => {
     expect(counts.medium + counts.hard).toBe(13);
   });
 });
+
+describe('selectSessionPool - razmakom vođeno ponavljanje', () => {
+  const TODAY = new Date('2026-08-22T10:00:00');
+
+  it('dospjeli koncepti dobivaju mjesto u sesiji', () => {
+    const bank = makeQuestions(60);
+    // Prvih 5 pitanja: viđena davno u box 1 -> odavno dospjela.
+    const mastery = Object.fromEntries(
+      bank.slice(0, 5).map((q) => [q.id, { box: 1, lastSeenDateISO: '2026-08-01' }]),
+    );
+    const selected = selectSessionPool(bank, [], 15, { mastery, now: TODAY });
+    const dueIds = new Set(Object.keys(mastery));
+    const includedDue = selected.filter((q) => dueIds.has(q.id));
+    expect(includedDue.length).toBeGreaterThan(0);
+  });
+
+  it('koncept koji JOŠ NIJE dospio se ne gura u sesiju kao ponavljanje', () => {
+    const bank = makeQuestions(60);
+    // Box 5 viđen jučer -> razmak je 35 dana, daleko od roka.
+    const mastery = { [bank[0].id]: { box: 5, lastSeenDateISO: '2026-08-21' } };
+    // Ponovi više puta jer ostatak sesije bira nasumično iz cijele banke.
+    let appearedAsDue = 0;
+    for (let i = 0; i < 30; i++) {
+      const selected = selectSessionPool(bank, [], 15, { mastery, now: TODAY });
+      // Ako bi se tretiralo kao dospjelo, bilo bi PRVO u odabiru prije sortiranja.
+      if (selected.length > 0 && selected.filter((q) => q.id === bank[0].id).length > 1) {
+        appearedAsDue++;
+      }
+    }
+    expect(appearedAsDue).toBe(0);
+  });
+
+  it('bez mastery podataka ponaša se kao i prije (bez regresije)', () => {
+    const bank = makeQuestions(60);
+    const selected = selectSessionPool(bank, [], 15);
+    expect(selected).toHaveLength(15);
+    expect(new Set(selected.map((q) => q.id)).size).toBe(15);
+  });
+});

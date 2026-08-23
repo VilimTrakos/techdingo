@@ -9,6 +9,7 @@ import {
   type PreparedQuestion,
 } from '../lib/questionKinds';
 import { resolveHearts } from '../state/hearts';
+import { conceptOf } from '../types/question';
 import { useProgress } from './useProgress';
 
 type Status = 'loading' | 'no-hearts' | 'playing' | 'passed' | 'failed';
@@ -20,6 +21,8 @@ interface State {
   hearts: number;
   correctCount: number;
   wrongQuestionIds: string[];
+  /** conceptId -> točno? Hrani Leitner raspored (vidi lib/scheduling.ts). */
+  conceptResults: Record<string, boolean>;
   isAnswered: boolean;
   lastAnswerCorrect: boolean | null;
 }
@@ -39,6 +42,7 @@ function createIdleState(): State {
     hearts: 0,
     correctCount: 0,
     wrongQuestionIds: [],
+    conceptResults: {},
     isAnswered: false,
     lastAnswerCorrect: null,
   };
@@ -67,6 +71,13 @@ function reducer(state: State, action: Action): State {
         wrongQuestionIds: action.correct
           ? state.wrongQuestionIds
           : [...new Set([...state.wrongQuestionIds, current.question.id])],
+        // Krivi odgovor na BILO KOJU varijantu ruši cijeli koncept - zato
+        // ne prepisujemo već zabilježen promašaj točnim odgovorom.
+        conceptResults: {
+          ...state.conceptResults,
+          [conceptOf(current.question)]:
+            action.correct && state.conceptResults[conceptOf(current.question)] !== false,
+        },
         hearts,
         status: hearts <= 0 ? 'failed' : state.status,
       };
@@ -129,6 +140,7 @@ export function useLessonSession(topicId: string, unitId?: string) {
     const picked = selectSessionPool(questions, recentIds, size, {
       priorityIds,
       allowRepeats: Boolean(unitId),
+      mastery: progressRef.current.mastery,
     });
 
     recordedRef.current = false;
@@ -146,9 +158,10 @@ export function useLessonSession(topicId: string, unitId?: string) {
         correctCount: state.correctCount,
         questionIds: [...new Set(state.questions.map((q) => q.question.id))],
         wrongQuestionIds: state.wrongQuestionIds,
+        conceptResults: state.conceptResults,
       });
     }
-  }, [state.status, state.correctCount, state.questions, state.wrongQuestionIds, lessonKey, recordLessonResult]);
+  }, [state.status, state.correctCount, state.questions, state.wrongQuestionIds, state.conceptResults, lessonKey, recordLessonResult]);
 
   const answerQuestion = useCallback(
     (payload: AnswerPayload) => {
