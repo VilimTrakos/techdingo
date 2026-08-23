@@ -2208,5 +2208,225 @@
     "explanation": "Indeks ubrzava čitanje po pokrivenom stupcu - to je cijela svrha. Plaća se pisanjem i prostorom, ne čitanjem.",
     "difficulty": "medium",
     "conceptId": "kompromis-indeksa"
+  },
+  {
+    "id": "sql-911-limit-bez-tiebreakera",
+    "topic": "sql",
+    "unitId": "osnove-upita",
+    "difficulty": "hard",
+    "question": "Stranica 2 upita s ORDER BY grad LIMIT 20 OFFSET 20 ponekad ponovi redak s prve stranice, iako se podaci ne mijenjaju. Zašto?",
+    "options": [
+      "Više redaka dijeli isti grad, pa njihov međusobni poredak nije određen",
+      "OFFSET uvijek preskače jedan redak previše kod parnih stranica",
+      "LIMIT se primjenjuje prije ORDER BY, pa se sortira već odrezan skup",
+      "Baza ne jamči poredak kada je stupac sortiranja tekstualnog tipa"
+    ],
+    "correctIndex": 0,
+    "explanation": "ORDER BY nad nejedinstvenim stupcem ostavlja vezane retke u proizvoljnom poretku. Rješenje je tiebreaker: ORDER BY grad, id."
+  },
+  {
+    "id": "sql-912-null-u-order-by",
+    "topic": "sql",
+    "unitId": "osnove-upita",
+    "difficulty": "hard",
+    "question": "Gdje se u standardnom SQL-u pojavljuju NULL vrijednosti pri ORDER BY stupac ASC?",
+    "options": [
+      "Implementacija sama bira, pa se poredak eksplicitno traži s NULLS FIRST ili NULLS LAST",
+      "Uvijek prvi, jer se NULL uspoređuje kao vrijednost manja od svake druge",
+      "Uvijek zadnji, jer se NULL uspoređuje kao vrijednost veća od svake druge",
+      "NULL retci ispadaju iz rezultata jer se ne mogu smjestiti u poredak"
+    ],
+    "correctIndex": 0,
+    "explanation": "Standard prepušta izbor implementaciji. PostgreSQL ih pri ASC stavlja zadnje, MySQL prve — pa je oslanjanje na zadano ponašanje prijenosna zamka."
+  },
+  {
+    "id": "sql-913-in-vs-exists-null",
+    "topic": "sql",
+    "unitId": "osnove-upita",
+    "difficulty": "hard",
+    "question": "Kada NOT EXISTS daje pouzdaniji rezultat od NOT IN nad istim podupitom?",
+    "options": [
+      "Kada podupit može vratiti NULL, jer NOT IN tada ne vrati nijedan redak",
+      "Kada podupit vraća više od tisuću redaka, jer NOT IN ima ograničenje veličine",
+      "Kada podupit čita iz druge baze, jer NOT IN ne radi preko granice veze",
+      "Kada podupit sadrži GROUP BY, jer NOT IN ne prihvaća agregirane rezultate"
+    ],
+    "correctIndex": 0,
+    "explanation": "x NOT IN (1, NULL) daje UNKNOWN, nikad TRUE. NOT EXISTS radi na postojanju retka i nije osjetljiv na NULL."
+  },
+  {
+    "id": "sql-914-null-prolazi-check",
+    "topic": "sql",
+    "unitId": "tipovi-i-null",
+    "difficulty": "hard",
+    "question": "Stupac ima CHECK (cijena > 0), ali nije NOT NULL. Koji redak prolazi provjeru?",
+    "conceptId": "null-troclana-logika",
+    "options": [
+      "Redak s cijenom NULL, jer uvjet daje UNKNOWN, a CHECK odbija samo FALSE",
+      "Nijedan redak s NULL, jer CHECK svaki NULL tretira kao neuspjelu provjeru",
+      "Nijedan redak s NULL, jer CHECK implicitno dodaje uvjet IS NOT NULL",
+      "Redak s cijenom NULL samo ako tablica nema nijedan drugi CHECK uvjet"
+    ],
+    "correctIndex": 0,
+    "explanation": "CHECK propušta i TRUE i UNKNOWN. Zato je NOT NULL zaseban posao — CHECK ga ne pokriva."
+  },
+  {
+    "id": "sql-915-unique-i-null",
+    "topic": "sql",
+    "unitId": "tipovi-i-null",
+    "difficulty": "hard",
+    "question": "Koliko redaka s NULL vrijednošću dopušta UNIQUE ograničenje nad jednim stupcem u standardnom SQL-u?",
+    "conceptId": "null-troclana-logika",
+    "options": [
+      "Neograničeno, jer se dva NULL-a međusobno ne smatraju jednakima",
+      "Točno jedan, jer se svi NULL-ovi smatraju istom vrijednošću",
+      "Nijedan, jer UNIQUE stupac implicitno postaje i NOT NULL",
+      "Ovisi o tome je li stupac ujedno i dio primarnog ključa tablice"
+    ],
+    "correctIndex": 0,
+    "explanation": "Klasična zamka: UNIQUE(email) ne sprječava tisuću redaka bez e-maila. Za to treba NOT NULL."
+  },
+  {
+    "id": "sql-916-distinct-i-null",
+    "topic": "sql",
+    "unitId": "tipovi-i-null",
+    "difficulty": "hard",
+    "question": "SELECT DISTINCT grad vraća retke u kojima je grad NULL. Koliko takvih redaka izlazi?",
+    "options": [
+      "Jedan, jer DISTINCT NULL-ove grupira zajedno iako ih = ne izjednačava",
+      "Nijedan, jer DISTINCT preskače retke bez vrijednosti u odabranom stupcu",
+      "Onoliko koliko ih ima u tablici, jer se NULL nikad ne smatra duplikatom",
+      "Ovisi o tome je li nad stupcem grad definiran indeks"
+    ],
+    "correctIndex": 0,
+    "explanation": "DISTINCT i GROUP BY koriste 'not distinct from', gdje su NULL-ovi jednaki. Operator = ih i dalje ne izjednačava — dva različita pravila u istom jeziku."
+  },
+  {
+    "id": "sql-917-null-agregacije",
+    "topic": "sql",
+    "unitId": "tipovi-i-null",
+    "difficulty": "medium",
+    "question": "Koje tvrdnje o NULL vrijednostima i agregatnim funkcijama su točne?",
+    "kind": "multi",
+    "options": [
+      "SUM i AVG preskaču NULL vrijednosti",
+      "AVG dijeli sa brojem ne-NULL vrijednosti, ne s ukupnim brojem redaka",
+      "COUNT(*) broji i retke u kojima su svi stupci NULL",
+      "SUM nad stupcem u kojem su sve vrijednosti NULL vraća 0",
+      "GROUP BY izbacuje grupu čiji je ključ NULL"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "SUM nad samim NULL-ovima vraća NULL, ne 0 — česta zamka u izvještajima. GROUP BY zadržava NULL kao vlastitu grupu."
+  },
+  {
+    "id": "sql-918-null-provjera-fill",
+    "topic": "sql",
+    "unitId": "tipovi-i-null",
+    "difficulty": "easy",
+    "question": "Dopuni uvjet koji dohvaća retke bez datuma brisanja:",
+    "conceptId": "null-troclana-logika",
+    "kind": "fill",
+    "text": "SELECT * FROM korisnici WHERE datum_brisanja ___ ___;",
+    "answers": [
+      "IS",
+      "NULL"
+    ],
+    "distractors": [
+      "=",
+      "<>"
+    ],
+    "explanation": "Usporedba = NULL nikad nije istinita. Za NULL postoji zaseban operator IS."
+  },
+  {
+    "id": "sql-919-coalesce-red",
+    "topic": "sql",
+    "unitId": "tipovi-i-null",
+    "difficulty": "medium",
+    "question": "Poredaj korake kojima baza izračuna COALESCE(nadimak, ime, 'Nepoznato'):",
+    "kind": "order",
+    "steps": [
+      "Provjeri nadimak",
+      "Ako je nadimak NULL, provjeri ime",
+      "Ako je i ime NULL, uzmi 'Nepoznato'"
+    ],
+    "explanation": "COALESCE staje na prvoj vrijednosti koja nije NULL i ostale izraze više ne računa."
+  },
+  {
+    "id": "sql-920-left-join-tvrdnje",
+    "topic": "sql",
+    "unitId": "spajanje-i-skupovi",
+    "difficulty": "medium",
+    "question": "Što vrijedi za LEFT JOIN između tablica narudzbe i placanja?",
+    "kind": "multi",
+    "options": [
+      "Svaka narudžba se pojavljuje barem jednom, i bez plaćanja",
+      "Stupci iz placanja su NULL za narudžbe bez podudaranja",
+      "Uvjet nad placanja u WHERE dijelu može ponašanje svesti na INNER JOIN",
+      "Narudžba s tri plaćanja daje tri retka u rezultatu",
+      "Broj redaka rezultata nikad ne prelazi broj narudžbi"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explanation": "Zadnja tvrdnja je zamka: LEFT JOIN jamči da nijedan lijevi redak ne nestane, ali ne i da se neće umnožiti."
+  },
+  {
+    "id": "sql-921-anti-join-fill",
+    "topic": "sql",
+    "unitId": "spajanje-i-skupovi",
+    "difficulty": "medium",
+    "question": "Dopuni upit koji nalazi korisnike bez ijedne narudžbe:",
+    "conceptId": "anti-join",
+    "kind": "fill",
+    "text": "SELECT k.* FROM korisnici k ___ JOIN narudzbe n ON n.korisnik_id = k.id WHERE n.id ___ ___;",
+    "answers": [
+      "LEFT",
+      "IS",
+      "NULL"
+    ],
+    "distractors": [
+      "INNER",
+      "CROSS",
+      "="
+    ],
+    "explanation": "Anti-join: spoji sve, pa zadrži samo retke gdje desna strana nije našla par."
+  },
+  {
+    "id": "sql-922-fan-out-red",
+    "topic": "sql",
+    "unitId": "spajanje-i-skupovi",
+    "difficulty": "hard",
+    "question": "Poredaj korake kojima spajanje narudžbe sa stavkama i uplatama napuše SUM:",
+    "conceptId": "join-fan-out",
+    "kind": "order",
+    "steps": [
+      "Narudžba se spoji s 3 stavke i daje 3 retka",
+      "Ta 3 retka se spoje s 2 uplate i daju 6 redaka",
+      "Iznos uplate se sada pojavljuje 3 puta umjesto jednom",
+      "SUM(uplata.iznos) vrati trostruko previše"
+    ],
+    "explanation": "Rješenje je agregirati svaku granu zasebno (podupit ili LATERAL), pa tek onda spojiti."
+  },
+  {
+    "id": "sql-923-using-vs-on",
+    "topic": "sql",
+    "unitId": "spajanje-i-skupovi",
+    "difficulty": "medium",
+    "question": "Po čemu se JOIN ... USING (korisnik_id) razlikuje od JOIN ... ON a.korisnik_id = b.korisnik_id?",
+    "options": [
+      "USING traži isto ime stupca u obje tablice i u rezultatu ga ostavlja jednom",
+      "USING radi samo uz INNER JOIN, dok ON radi uz sve vrste spajanja",
+      "USING uspoređuje vrijednosti bez obzira na tip stupca, a ON zahtijeva isti tip",
+      "USING stvara privremeni indeks nad stupcem, dok ON koristi postojeći"
+    ],
+    "correctIndex": 0,
+    "explanation": "Praktična posljedica: uz USING pišeš korisnik_id bez prefiksa tablice, jer postoji samo jedan."
   }
 ]
