@@ -9,7 +9,8 @@ Supabase integracija omogućuje račun, sinkronizaciju između uređaja i ljestv
 
 ## Značajke
 
-- **Put učenja po temama** — svaka tema (SQL / Frontend / Backend / Opće) dijeli
+- **Put učenja po temama** — jedanaest područja (SQL, Frontend, Backend, Opće,
+  DevOps, Mreže, Sigurnost, Čudni kutovi, Jezici, Arhitektura, Praksa) dijeli
   se na cjeline poredane od osnova prema naprednom, koje se otključavaju redom.
 - **Četiri vrste pitanja** — klasičan izbor, "odaberi sve točne", popunjavanje
   praznina iz banke riječi i slaganje koraka u točan redoslijed; uz opcionalni
@@ -25,7 +26,11 @@ Supabase integracija omogućuje račun, sinkronizaciju između uređaja i ljestv
 - **Dnevni izazov** — 10 pitanja iz svih tema, ista za sve igrače, jednom dnevno.
 - **Ljestvica i značke** — javna ljestvica po temama (uz račun) i lokalna
   postignuća.
-- **350+ pitanja** kroz četiri područja, s objašnjenjem nakon svakog odgovora.
+- **1000+ pitanja** kroz jedanaest područja, s objašnjenjem nakon svakog
+  odgovora. Svaka cjelina počinje uvodnim pitanjima koja predstavljaju pojmove.
+- **Razmaknuto ponavljanje mjereno u lekcijama** — promašen pojam vraća se već
+  u sljedećoj lekciji, a naučen se javlja sve rjeđe (1/2/3/5/8/13 lekcija).
+  Ista činjenica može se vratiti kao druga vrsta pitanja.
 - Otvoren za doprinose — dodavanje novih pitanja je pull request na jednu
   JSON datoteku, validiran automatski u CI-u.
 

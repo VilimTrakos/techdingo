@@ -50,57 +50,32 @@ pravila) je opisana u komentarima unutar `supabase/migrations/0001_init.sql`
 i u kodu (`src/state/cloudSync.ts`, `src/state/mergeProgress.ts`,
 `src/hooks/useAuth.ts`).
 
-## 2. Redizajn i rast baze pitanja (u tijeku)
+## 2. Baza pitanja — 1029 pitanja kroz 11 tema (2026-08-23)
 
-Codex (drugi AI agent, radi paralelno na istom repou) radi na vizualnom
-redizajnu i širenju baze pitanja. Stanje 2026-08-23:
-**SQL 119, Frontend 118, Backend 88, Opće 63 = 388 pitanja.**
+Ujutro je bilo 355 pitanja u 4 teme. Sada:
+**SQL, Frontend, Backend, Opće, DevOps, Mreže, Sigurnost, Čudni kutovi,
+Jezici, Arhitektura, Praksa** = 1029 pitanja, 91 cjelina.
 
-### Otvoreni problemi u sadržaju (mjereno, ne procijenjeno)
+Sedam novih tema pokriva ono što je pretraga banke pokazala kao rupe: cloud,
+HTTP/2 i /3, WebSocket, OWASP, regex, Unicode, endianness, Agile/Scrum, licence
+— ničega od toga prije nije bilo.
 
-1. **Duljina odgovora odaje rješenje — 290 od 368 single pitanja.** Točan
-   odgovor je najduži i u prosjeku ~2x dulji od netočnih, pa igrač koji ne zna
-   ništa pogodi ~85% biranjem najduljeg retka. Gore: razmaknuto ponavljanje te
-   pogotke bilježi kao naučeno gradivo. Radna lista:
-   `npm run validate:questions -- --list-length-tells`. (Codex, ZADATAK I.)
-2. **12 cjelina ispod 10 pitanja** (sql/sigurnost ima 5, lekcija traži 8-10).
-   Validator ih ispisuje kao upozorenje. (Codex, ZADATAK A.)
-3. **Posebne vrste pitanja su 20/388 (5%)** — mehanika postoji, igrač je
-   rijetko vidi. (Codex, ZADATAK F.)
-4. **Varijante istog koncepta: 2 grupe** od cilja ~30 po temi. (ZADATAK H.)
-5. **Uvodnih pitanja 33** (po jedno po cjelini), cilj 2-3. (ZADATAK J.)
+### Riješeno u ovom krugu
 
-### Nove teme — prijedlog (2026-08-23, čeka odluku)
+- **Duljina odgovora više ne odaje rješenje.** Bilo je 313 od 368 pitanja kod
+  kojih je točan odgovor bio najduži i u prosjeku 2x dulji od netočnih, pa se
+  85% moglo pogoditi bez znanja. Sada je prosječni omjer 1,07x, a provjera je
+  GREŠKA u `validate:questions` (prag 1,3x) pa se ne može vratiti.
+- **Sve 91 cjeline imaju ≥10 pitanja i uvodno pitanje** (`isIntro`).
+- **24 koncepta povezana `conceptId`-em**, 22 kroz više tema, 20 kroz više
+  vrsta pitanja — ista činjenica vraća se kao drugi oblik pitanja.
+- **Posebne vrste pitanja: 243 od 1029** (bilo 20 od 355).
 
-Korisnikov cilj: pokriti *sve* vezano uz razvoj softvera, od najopćenitijeg do
-najčudnijeg. Izmjereno pretragom banke, potpuno nedostaju: cloud, HTTP/2 i /3,
-WebSocket, OWASP, regex, Unicode/UTF-8, endianness, Agile/Scrum, mobilni
-razvoj; jedva su dotaknuti CI/CD, Linux/shell, DNS, TCP/UDP, pomični zarez,
-AI/ML, bitovne operacije, code review.
+### Otvoreno
 
-Predložene teme (redom prioriteta):
-1. `devops` — Linux i shell, Docker, CI/CD, Kubernetes, deploy strategije, IaC, cloud, nadzor
-2. `mreze` — OSI/TCP-IP, TCP vs UDP, DNS, HTTP/1.1→2→3, TLS, WebSocket, load balanceri i CDN
-3. `sigurnost` — OWASP Top 10, XSS/CSRF, sesije, kriptografija u praksi, tajne, supply chain, GDPR
-4. `cudni-kutovi` — pomični zarez, Unicode, vrijeme i prijestupne sekunde, regex, bitovi i endianness, slučajnost i UUID, poznati bugovi
-5. `jezici` — tipski sustavi, memorija i GC, pokazivači, funkcijsko vs OO, konkurentnost, kompilacija, iznimke
-6. `arhitektura` — monolit vs mikroservisi, dizajn obrasci, DDD, event-driven, CAP, skaliranje, klasični system design zadaci
-7. `praksa` — Agile/Scrum, code review, procjena i tehnički dug, licence, dokumentacija, ponašajni dio razgovora
-
-Cijena: ~80 pitanja po temi (10 × 8 cjelina). **Napomena:** širenje na nove
-teme prije rješavanja problema 1 samo povećava banku, ne i njezinu kvalitetu.
-
-Detaljna koordinacijska povijest (tko je što radio, otvorena pitanja) živi
-u `AGENT_NOTES.txt` u rootu repozitorija — namjerno NIJE u gitu (vidi
-`.gitignore`), postoji samo lokalno na računalu gdje je nastala. Ako
-nastavljaš s drugog laptopa, ta datoteka neće postojati dok je Codex ili
-Claude ponovno ne kreiraju na tom računalu.
-
-Napomena: kad se u toj bilježnici pojavi novi ```json blok pitanja od
-Codexa, integracijski postupak je: parsiraj blokove, spoji po `id` (dedupe)
-u odgovarajuću `src/data/questions/<tema>.json`, sortiraj easy→medium→hard,
-pokreni `npm run validate:questions`, regeneriraj
-`supabase/seed_questions_meta.sql` (`npx tsx scripts/generate-question-metadata-seed.ts`).
+- Codexu su potrošeni krediti; njegovi zadaci (ZADATAK A/F/H/I/J) su dovršeni
+  ručno. `AGENT_NOTES.txt` je time povijesni dokument, ne aktivan popis.
+- Nove teme nemaju `code` blokove gotovo nigdje — prostor za dopunu.
 
 ## 3. Razmaknuto ponavljanje — u LEKCIJAMA (2026-08-23)
 
