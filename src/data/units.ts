@@ -93,6 +93,16 @@ export const UNITS: Record<string, UnitDefinition[]> = {
     { id: 'greske', topicId: 'jezici', labelHr: 'Greške i iznimke', description: 'Iznimke, povratne greške i fail-fast.' },
     { id: 'funkcije-i-opseg', topicId: 'jezici', labelHr: 'Funkcije i doseg', description: 'Zatvorenja, doseg i funkcije višeg reda.' },
   ],
+  arhitektura: [
+    { id: 'stilovi', topicId: 'arhitektura', labelHr: 'Stilovi arhitekture', description: 'Monolit, mikroservisi i njihova cijena.' },
+    { id: 'dizajn-obrasci', topicId: 'arhitektura', labelHr: 'Dizajn obrasci', description: 'Strategija, promatrač, adapter i zamke.' },
+    { id: 'granice-i-moduli', topicId: 'arhitektura', labelHr: 'Granice i moduli', description: 'Vezanost, kohezija i domenske granice.' },
+    { id: 'komunikacija', topicId: 'arhitektura', labelHr: 'Komunikacija servisa', description: 'Sinkrono, asinkrono, ugovori i verzije.' },
+    { id: 'podaci-u-velikom', topicId: 'arhitektura', labelHr: 'Podaci u velikom', description: 'Replikacija, shardanje, CQRS i događaji.' },
+    { id: 'konzistentnost', topicId: 'arhitektura', labelHr: 'Konzistentnost', description: 'CAP, saga, idempotentnost i outbox.' },
+    { id: 'skaliranje', topicId: 'arhitektura', labelHr: 'Skaliranje', description: 'Bez stanja, uska grla i protupritisak.' },
+    { id: 'system-design', topicId: 'arhitektura', labelHr: 'System design', description: 'Zahtjevi, procjene i klasični zadaci.' },
+  ],
   general: [
     { id: 'strukture-podataka', topicId: 'general', labelHr: 'Strukture podataka', description: 'Polja, stogovi, redovi, mape i stabla.' },
     { id: 'algoritmi', topicId: 'general', labelHr: 'Algoritmi', description: 'Big-O, pretraživanje, sortiranje i grafovi.' },

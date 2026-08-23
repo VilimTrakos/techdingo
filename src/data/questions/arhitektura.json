@@ -1,0 +1,1298 @@
+[
+  {
+    "id": "arh-uvod-stilovi",
+    "topic": "arhitektura",
+    "unitId": "stilovi",
+    "question": "Što je monolit?",
+    "options": [
+      "Aplikacija koja se gradi i pušta u rad kao jedna cjelina",
+      "Aplikacija napisana u jednoj jedinoj datoteci koda",
+      "Aplikacija koja radi na točno jednom fizičkom serveru",
+      "Aplikacija bez ijedne vanjske ovisnosti ili knjižnice"
+    ],
+    "correctIndex": 0,
+    "explanation": "Monolit je pitanje isporuke, ne veličine ni kvalitete. Uredno podijeljen monolit može biti bolji od loše razrezanih mikroservisa.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "arh-001-microservices-cost",
+    "topic": "arhitektura",
+    "unitId": "stilovi",
+    "question": "Koja je stvarna cijena prelaska na mikroservise?",
+    "options": [
+      "Poziv funkcije postaje mrežni poziv koji može zakazati",
+      "Kod se mora prepisati u drugi programski jezik",
+      "Baza podataka se mora zamijeniti bržim sustavom",
+      "Broj programera u timu mora se udvostručiti"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ono što je bio siguran poziv postaje mreža s kašnjenjem, ispadima i djelomičnim uspjehom. Ta cijena se plaća u svakom pozivu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-002-modular-monolith",
+    "topic": "arhitektura",
+    "unitId": "stilovi",
+    "question": "Što je modularni monolit?",
+    "options": [
+      "Jedna isporuka s jasnim granicama među modulima",
+      "Više isporuka koje dijele isti izvorni kod",
+      "Monolit razdvojen u više baza podataka",
+      "Monolit koji se pušta u rad po dijelovima"
+    ],
+    "correctIndex": 0,
+    "explanation": "Granice se mogu povući bez mreže između njih. To je obično bolji prvi korak od odmah razrezanih servisa.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-003-when-microservices",
+    "topic": "arhitektura",
+    "unitId": "stilovi",
+    "question": "Kad mikroservisi doista pomažu?",
+    "options": [
+      "Kad više timova mora isporučivati neovisno jedan o drugom",
+      "Kad aplikacija ima više od stotinu tisuća redaka koda",
+      "Kad se koristi više različitih programskih jezika",
+      "Kad se aplikacija pušta u rad više puta tjedno"
+    ],
+    "correctIndex": 0,
+    "explanation": "Mikroservisi su prije svega organizacijsko rješenje. Jedan tim s pet servisa uglavnom je platio cijenu bez ijedne koristi.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-004-distributed-monolith",
+    "topic": "arhitektura",
+    "unitId": "stilovi",
+    "question": "Što je distribuirani monolit?",
+    "options": [
+      "Servisi su odvojeni, ali se moraju puštati u rad zajedno",
+      "Monolit koji se izvodi na više servera istovremeno",
+      "Skup servisa koji dijele istu programsku knjižnicu",
+      "Monolit razdijeljen na više neovisnih repozitorija"
+    ],
+    "correctIndex": 0,
+    "explanation": "Najgori od oba svijeta: složenost mreže bez neovisnosti isporuke. Prepoznaje se po tome što se sve mora pustiti u rad u točnom redoslijedu.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-005-serverless-fit",
+    "topic": "arhitektura",
+    "unitId": "stilovi",
+    "question": "Za kakav posao serverless najbolje pristaje?",
+    "options": [
+      "Za rijetke ili neravnomjerne zadatke pokrenute događajem",
+      "Za obradu koja neprekidno traje sat vremena i dulje",
+      "Za aplikacije koje moraju držati stanje u memoriji",
+      "Za sustave s vrlo strogim zahtjevom na kašnjenje"
+    ],
+    "correctIndex": 0,
+    "explanation": "Plaćaš po pozivu i ne brineš za servere. Kod stalnog opterećenja to je obično skuplje od vlastite instance.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-006-conway",
+    "topic": "arhitektura",
+    "unitId": "stilovi",
+    "question": "Što tvrdi Conwayev zakon?",
+    "options": [
+      "Sustav preslikava strukturu komunikacije organizacije",
+      "Složenost sustava raste s brojem programera na njemu",
+      "Svaki sustav s vremenom postaje teži za promjenu",
+      "Broj grešaka raste s brojem redaka izvornog koda"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tri tima gotovo neizbježno proizvedu tri komponente. Zato se granice sustava planiraju zajedno s granicama timova.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-007-style-tradeoffs",
+    "topic": "arhitektura",
+    "unitId": "stilovi",
+    "kind": "multi",
+    "question": "Što je točno o izboru arhitektonskog stila?",
+    "options": [
+      "Monolit se lakše mijenja dok su granice nejasne",
+      "Mikroservisi omogućuju neovisnu isporuku",
+      "Mikroservisi donose mrežnu složenost u svaki poziv",
+      "Mikroservisi su uvijek bolji izbor za nove projekte",
+      "Granice se mogu povući i unutar jedne isporuke"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Novi projekt najmanje zna gdje su prave granice. Rezanje prije tog saznanja fiksira granice na krivim mjestima.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-008-style-terms",
+    "topic": "arhitektura",
+    "unitId": "stilovi",
+    "kind": "fill",
+    "question": "Dopuni arhitektonske pojmove.",
+    "text": "Aplikacija koja se gradi i pušta kao jedna cjelina je ___, a skup servisa koji se svejedno moraju puštati zajedno je ___ monolit.",
+    "answers": [
+      "monolit",
+      "distribuirani"
+    ],
+    "distractors": [
+      "modul",
+      "servis"
+    ],
+    "explanation": "Ključni test je uvijek isti: možeš li jedan dio pustiti u rad, a da ostalo ne diraš.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-009-extract-service",
+    "topic": "arhitektura",
+    "unitId": "stilovi",
+    "kind": "order",
+    "question": "Poredaj razborito izdvajanje servisa iz monolita.",
+    "steps": [
+      "Pronađi dio s jasnom granicom i vlastitim podacima",
+      "Izdvoji ga u modul unutar monolita",
+      "Pusti da granica odstoji i pokaže je li ispravna",
+      "Izdvoji modul u zaseban servis",
+      "Prebaci promet postupno na novi servis"
+    ],
+    "explanation": "Granica se dokazuje unutar monolita, gdje je popravak jeftin. Rezanje po mreži prije toga fiksira grešku koju je skupo vratiti.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-uvod-obrasci",
+    "topic": "arhitektura",
+    "unitId": "dizajn-obrasci",
+    "question": "Što je dizajn obrazac?",
+    "options": [
+      "Provjereno rješenje problema koji se često ponavlja",
+      "Gotova knjižnica koja se dodaje u projekt",
+      "Pravilo koje prevoditelj provjerava pri gradnji",
+      "Naziv za način imenovanja klasa i metoda"
+    ],
+    "correctIndex": 0,
+    "explanation": "Obrazac je zajednički rječnik, ne recept koji se mora primijeniti. Ime obrasca skraćuje raspravu u timu.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "arh-010-strategy",
+    "topic": "arhitektura",
+    "unitId": "dizajn-obrasci",
+    "question": "Što rješava obrazac strategije?",
+    "options": [
+      "Zamjenu algoritma bez mijenjanja koda koji ga koristi",
+      "Stvaranje samo jedne instance klase u programu",
+      "Obavještavanje više objekata o promjeni stanja",
+      "Prilagodbu jednog sučelja na drugo, nespojivo"
+    ],
+    "correctIndex": 0,
+    "explanation": "Umjesto grananja po vrsti, ponašanje se predaje kao objekt ili funkcija. Nova vrsta ne traži izmjenu postojećeg koda.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-011-observer",
+    "topic": "arhitektura",
+    "unitId": "dizajn-obrasci",
+    "question": "Što omogućuje obrazac promatrača?",
+    "options": [
+      "Više objekata reagira na promjenu, bez znanja izvora o njima",
+      "Objekt se stvara tek kad se prvi put stvarno zatreba",
+      "Jedan objekt zamjenjuje drugi bez izmjene pozivatelja",
+      "Objekt dobiva dodatno ponašanje bez mijenjanja klase"
+    ],
+    "correctIndex": 0,
+    "explanation": "Isti obrazac stoji iza slušatelja događaja i reaktivnog stanja. Zamka je zaboravljena odjava, koja drži objekte na životu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-012-singleton",
+    "topic": "arhitektura",
+    "unitId": "dizajn-obrasci",
+    "question": "Zašto se singleton smatra problematičnim?",
+    "options": [
+      "Uvodi skriveno globalno stanje koje otežava testiranje",
+      "Troši više memorije nego obična instanca klase",
+      "Ne može se koristiti u jezicima bez klasa",
+      "Sprječava da se klasa naslijedi u podklasi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ovisnost o singletonu ne vidi se u potpisu i ne može se zamijeniti u testu. Ubrizgavanje ovisnosti rješava isti problem bez toga.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-013-adapter",
+    "topic": "arhitektura",
+    "unitId": "dizajn-obrasci",
+    "question": "Čemu služi obrazac adaptera?",
+    "options": [
+      "Prilagođava postojeće sučelje onome što kod očekuje",
+      "Dodaje novo ponašanje postojećem objektu u hodu",
+      "Stvara objekte bez navođenja konkretne klase",
+      "Skriva složenost podsustava iza jednostavnog sučelja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Adapter je sloj prevođenja prema vanjskoj knjižnici. Time ostatak koda ne ovisi o tuđem obliku podataka.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-014-overuse",
+    "topic": "arhitektura",
+    "unitId": "dizajn-obrasci",
+    "question": "Koja je najčešća greška u primjeni obrazaca?",
+    "options": [
+      "Uvođenje apstrakcije prije nego problem stvarno postoji",
+      "Korištenje obrasca koji nije opisan u literaturi",
+      "Kombiniranje više obrazaca u istom dijelu koda",
+      "Primjena obrasca u jeziku koji nije objektni"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tvornica koja gradi jednu vrstu objekta je čista cijena bez koristi. Apstrakcija se plaća odmah, a isplati tek s drugim slučajem.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-015-dependency-inversion",
+    "topic": "arhitektura",
+    "unitId": "dizajn-obrasci",
+    "question": "Što nalaže obrat ovisnosti?",
+    "options": [
+      "Da i visoka i niska razina ovise o zajedničkoj apstrakciji",
+      "Da niska razina ovisi izravno o visokoj razini",
+      "Da se ovisnosti stvaraju unutar klase koja ih koristi",
+      "Da svaka klasa ima najviše jednu vanjsku ovisnost"
+    ],
+    "correctIndex": 0,
+    "explanation": "Poslovna logika opisuje što joj treba, a baza se prilagođava tome. Zbog toga se pohrana može zamijeniti bez diranja logike.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-016-pattern-facts",
+    "topic": "arhitektura",
+    "unitId": "dizajn-obrasci",
+    "kind": "multi",
+    "question": "Što je točno o dizajn obrascima?",
+    "options": [
+      "Obrazac je zajednički rječnik u timu",
+      "Strategija zamjenjuje grananje po vrsti ponašanja",
+      "Singleton uvodi skriveno globalno stanje",
+      "Obrazac uvijek pojednostavljuje kod",
+      "Adapter izolira kod od tuđeg sučelja"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Obrazac dodaje sloj. Kad problem koji rješava ne postoji, taj sloj je čista složenost.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-017-pattern-terms",
+    "topic": "arhitektura",
+    "unitId": "dizajn-obrasci",
+    "kind": "fill",
+    "question": "Dopuni obrasce prema njihovoj svrsi.",
+    "text": "Zamjena algoritma bez izmjene pozivatelja je obrazac ___, a obavještavanje više objekata o promjeni je obrazac ___.",
+    "answers": [
+      "strategije",
+      "promatrača"
+    ],
+    "distractors": [
+      "tvornice",
+      "adaptera"
+    ],
+    "explanation": "Oba obrasca smanjuju vezanost, samo na različitim mjestima: strategija u odluci, promatrač u obavijesti.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-018-remove-branching",
+    "topic": "arhitektura",
+    "unitId": "dizajn-obrasci",
+    "kind": "order",
+    "question": "Poredaj zamjenu velikog grananja obrascem strategije.",
+    "steps": [
+      "Prepoznaj da se grananje ponavlja na više mjesta",
+      "Definiraj zajedničko sučelje za sve grane",
+      "Prebaci svaku granu u zasebnu implementaciju",
+      "Zamijeni grananje odabirom implementacije",
+      "Dodaj novu vrstu bez diranja postojećeg koda"
+    ],
+    "explanation": "Zadnji korak je dokaz da je obrazac bio opravdan. Ako se nova vrsta ne dodaje, grananje je vjerojatno bilo jeftinije.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-uvod-granice",
+    "topic": "arhitektura",
+    "unitId": "granice-i-moduli",
+    "question": "Što znači slaba vezanost među modulima?",
+    "options": [
+      "Promjena u jednom modulu rijetko prisiljava izmjenu drugog",
+      "Moduli međusobno ne razmjenjuju nikakve podatke",
+      "Moduli se izvršavaju na odvojenim serverima",
+      "Moduli su napisani u različitim programskim jezicima"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cilj nije da moduli ne surađuju nego da surađuju kroz uzak, stabilan dogovor.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "arh-019-cohesion",
+    "topic": "arhitektura",
+    "unitId": "granice-i-moduli",
+    "question": "Što znači visoka kohezija modula?",
+    "options": [
+      "Sve u modulu služi istoj, jasno određenoj svrsi",
+      "Modul sadrži što manje redaka izvornog koda",
+      "Modul ne ovisi ni o jednom drugom modulu",
+      "Modul ima točno jednu javnu funkciju prema van"
+    ],
+    "correctIndex": 0,
+    "explanation": "Modul nazvan 'utils' je definicija niske kohezije. Kad se ne zna što u njega spada, ne zna se ni što iz njega izlazi.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-020-bounded-context",
+    "topic": "arhitektura",
+    "unitId": "granice-i-moduli",
+    "question": "Što je ograničeni kontekst u domenskom dizajnu?",
+    "options": [
+      "Područje unutar kojeg pojam ima točno jedno značenje",
+      "Skup klasa koje dijele istu baznu klasu",
+      "Dio sustava koji radi u zasebnom procesu",
+      "Popis podataka koje modul smije čitati"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kupac u prodaji i kupac u naplati nisu isti pojam. Pokušaj jednog modela za oba daje objekt koji nikome ne odgovara.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-021-dependency-direction",
+    "topic": "arhitektura",
+    "unitId": "granice-i-moduli",
+    "question": "Zašto smjer ovisnosti mora biti jednosmjeran?",
+    "options": [
+      "Jer kružna ovisnost znači da se moduli ne mogu razdvojiti",
+      "Jer dvosmjerne ovisnosti usporavaju prevođenje projekta",
+      "Jer prevoditelj odbija kod s dvosmjernim ovisnostima",
+      "Jer se time smanjuje broj datoteka u projektu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kad A treba B i B treba A, to je jedan modul u dvije datoteke. Granica postoji samo na papiru.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-022-leaky-abstraction",
+    "topic": "arhitektura",
+    "unitId": "granice-i-moduli",
+    "question": "Što znači da apstrakcija propušta?",
+    "options": [
+      "Detalji implementacije probijaju kroz sučelje prema korisniku",
+      "Apstrakcija troši više memorije nego izravan pristup",
+      "Sučelje ima previše metoda za jednostavnu upotrebu",
+      "Implementacija se može zamijeniti bez izmjene koda"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sloj za pohranu koji vraća greške specifične za bazu propušta. Korisnik tada mora znati ono što je sloj trebao sakriti.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-023-shared-database",
+    "topic": "arhitektura",
+    "unitId": "granice-i-moduli",
+    "question": "Zašto dijeljena baza između servisa ruši granice?",
+    "options": [
+      "Jer shema postaje javno sučelje koje nitko ne smije mijenjati",
+      "Jer baza ne može poslužiti više servisa istovremeno",
+      "Jer se upiti izvršavaju sporije uz više klijenata",
+      "Jer se podaci moraju duplicirati u svakom servisu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Čim dva servisa čitaju iste tablice, promjena stupca je promjena tuđeg koda. Neovisnost isporuke tada više ne postoji.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-024-anti-corruption",
+    "topic": "arhitektura",
+    "unitId": "granice-i-moduli",
+    "question": "Čemu služi sloj zaštite od tuđeg modela?",
+    "options": [
+      "Prevodi vanjski model u onaj kakav tvoja domena koristi",
+      "Provjerava ovlasti prije pristupa vanjskom sustavu",
+      "Sprječava da vanjski sustav dohvati previše podataka",
+      "Bilježi sve pozive prema vanjskom sustavu u dnevnik"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez tog sloja se tuđi pojmovi šire kroz cijeli kod. Kad taj sustav zamijeniš, izmjena dotakne sve.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-025-boundary-facts",
+    "topic": "arhitektura",
+    "unitId": "granice-i-moduli",
+    "kind": "multi",
+    "question": "Što označava dobru granicu modula?",
+    "options": [
+      "Uzak i stabilan dogovor prema van",
+      "Sve unutar modula služi istoj svrsi",
+      "Ovisnosti idu u jednom smjeru",
+      "Modul dijeli tablice s drugim modulima",
+      "Unutarnji detalji mogu se mijenjati slobodno"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Dijeljene tablice su najbrži način da granica postane fiktivna. Podaci se razmjenjuju kroz sučelje, ne kroz shemu.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-026-boundary-terms",
+    "topic": "arhitektura",
+    "unitId": "granice-i-moduli",
+    "kind": "fill",
+    "question": "Dopuni dvije mjere kvalitete modula.",
+    "text": "Kad promjena u jednom modulu prisiljava izmjenu drugog, riječ je o jakoj ___, a kad sve u modulu služi istoj svrsi, o visokoj ___.",
+    "answers": [
+      "vezanosti",
+      "koheziji"
+    ],
+    "distractors": [
+      "ovisnosti",
+      "apstrakciji"
+    ],
+    "explanation": "Cilj je slaba vezanost i visoka kohezija. To je najkraći mogući sažetak dobrog dizajna.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-027-find-boundary",
+    "topic": "arhitektura",
+    "unitId": "granice-i-moduli",
+    "kind": "order",
+    "question": "Poredaj kako se pronalazi prava granica modula.",
+    "steps": [
+      "Prati koje se promjene u sustavu događaju zajedno",
+      "Grupiraj ono što se mijenja iz istog razloga",
+      "Odvoji ono što se mijenja iz različitih razloga",
+      "Definiraj uzak dogovor između tih skupina",
+      "Provjeri može li se svaka strana mijenjati sama"
+    ],
+    "explanation": "Granica se izvodi iz razloga promjene, ne iz tehničkih slojeva. Zato podjela na 'kontrolere, servise i modele' rijetko daje prave module.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-uvod-komunikacija",
+    "topic": "arhitektura",
+    "unitId": "komunikacija",
+    "question": "Koja je razlika između sinkronog i asinkronog poziva među servisima?",
+    "options": [
+      "Sinkroni čeka odgovor, asinkroni preda poruku i nastavi",
+      "Asinkroni čeka odgovor, sinkroni preda poruku i nastavi",
+      "Sinkroni radi preko mreže, a asinkroni unutar procesa",
+      "Asinkroni je uvijek brži od sinkronog poziva"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sinkroni poziv veže dostupnost dvaju servisa. Asinkroni ih razdvaja, ali unosi pitanje kad će posao stvarno biti obavljen.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "arh-028-temporal-coupling",
+    "topic": "arhitektura",
+    "unitId": "komunikacija",
+    "question": "Što je vremenska vezanost među servisima?",
+    "options": [
+      "Pozivatelj ne može raditi ako pozvani servis nije dostupan",
+      "Servisi moraju imati usklađene satove na svojim serverima",
+      "Poruke moraju stići točno onim redoslijedom kojim su poslane",
+      "Servisi se moraju puštati u rad u isto vrijeme"
+    ],
+    "correctIndex": 0,
+    "explanation": "Lanac od pet sinkronih poziva pada ako padne bilo koji. Poruka u redu tu vezu prekida.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-029-contract",
+    "topic": "arhitektura",
+    "unitId": "komunikacija",
+    "question": "Što je ugovor između dva servisa?",
+    "options": [
+      "Dogovoreni oblik zahtjeva i odgovora koji obje strane poštuju",
+      "Popis servisa koje jedan servis smije pozivati",
+      "Ograničenje broja poziva u zadanom vremenu",
+      "Dokument koji opisuje tko održava koji servis"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ugovor je jedino što druga strana smije pretpostavljati. Sve izvan njega je detalj koji se smije mijenjati bez najave.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-030-versioning",
+    "topic": "arhitektura",
+    "unitId": "komunikacija",
+    "question": "Kako se sučelje mijenja bez rušenja postojećih klijenata?",
+    "options": [
+      "Dodavanjem novog, uz zadržavanje starog dok se ne ugasi",
+      "Objavom promjene svim klijentima tjedan dana ranije",
+      "Izmjenom postojećeg polja uz zadržavanje istog imena",
+      "Uvođenjem obavezne nadogradnje za sve klijente odjednom"
+    ],
+    "correctIndex": 0,
+    "explanation": "Aditivne promjene ne ruše nikoga. Uklanjanje se najavljuje, mjeri i tek onda izvodi.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-031-grpc-rest",
+    "topic": "arhitektura",
+    "unitId": "komunikacija",
+    "question": "Kad gRPC ima prednost pred REST-om?",
+    "options": [
+      "Kod česte interne komunikacije gdje je bitno kašnjenje",
+      "Kod javnog sučelja koje koriste vanjski partneri",
+      "Kod prijenosa velikih datoteka prema pregledniku",
+      "Kod sučelja koje se poziva jednom dnevno"
+    ],
+    "correctIndex": 0,
+    "explanation": "Binarni format i strogi ugovor plaćaju se lošijom čitljivošću i slabijom podrškom u pregledniku. Interno je to obično dobra trampa.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-032-choreography",
+    "topic": "arhitektura",
+    "unitId": "komunikacija",
+    "question": "Koja je razlika između orkestracije i koreografije?",
+    "options": [
+      "Orkestracija ima središnjeg voditelja, koreografija nema",
+      "Koreografija ima središnjeg voditelja, orkestracija nema",
+      "Orkestracija radi sinkrono, a koreografija isključivo asinkrono",
+      "Koreografija se koristi samo unutar jednog servisa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Orkestracija je preglednija ali stvara središnju točku. Koreografija je otpornija, ali nitko ne zna cijeli tok napamet.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-033-backend-for-frontend",
+    "topic": "arhitektura",
+    "unitId": "komunikacija",
+    "question": "Čemu služi poseban sloj za pojedino sučelje?",
+    "options": [
+      "Sastavlja i prilagođava podatke potrebama tog klijenta",
+      "Ubrzava bazu podataka keširanjem svih upita",
+      "Provjerava ovlasti umjesto svih servisa iza njega",
+      "Prevodi promet iz jednog protokola u drugi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Mobilna aplikacija i web trebaju različite oblike podataka. Bez tog sloja jedan od njih uvijek radi previše poziva.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-034-async-benefits",
+    "topic": "arhitektura",
+    "unitId": "komunikacija",
+    "kind": "multi",
+    "question": "Što donosi asinkrona komunikacija porukama?",
+    "options": [
+      "Pošiljatelj ne mora čekati obradu",
+      "Ispad primatelja ne ruši pošiljatelja",
+      "Opterećenje se može ravnomjerno rasporediti",
+      "Rezultat je odmah dostupan pozivatelju",
+      "Više primatelja može reagirati na isti događaj"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Odgovor upravo nije odmah dostupan - to je cijena. Zato asinkronost ne pristaje tamo gdje korisnik čeka rezultat na ekranu.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-035-comm-terms",
+    "topic": "arhitektura",
+    "unitId": "komunikacija",
+    "kind": "fill",
+    "question": "Dopuni načine vođenja procesa.",
+    "text": "Kad središnji servis vodi tijek i poziva ostale, riječ je o ___, a kad svaki servis reagira na događaje sam, o ___.",
+    "answers": [
+      "orkestraciji",
+      "koreografiji"
+    ],
+    "distractors": [
+      "kompoziciji",
+      "delegaciji"
+    ],
+    "explanation": "Izbor je između preglednosti i otpornosti. Središnji voditelj se lakše prati, ali i lakše ruši.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-036-breaking-change",
+    "topic": "arhitektura",
+    "unitId": "komunikacija",
+    "kind": "order",
+    "question": "Poredaj sigurno uklanjanje polja iz javnog sučelja.",
+    "steps": [
+      "Dodaj novo polje uz postojeće",
+      "Označi staro polje kao zastarjelo",
+      "Prati koliko ga klijenata još koristi",
+      "Obavijesti preostale klijente o gašenju",
+      "Ukloni polje kad promet padne na nulu"
+    ],
+    "explanation": "Mjerenje je korak koji se najčešće preskoči. Bez njega je gašenje nagađanje, a nagađanje ruši nečiju integraciju.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-uvod-podaci",
+    "topic": "arhitektura",
+    "unitId": "podaci-u-velikom",
+    "question": "Što je replikacija baze podataka?",
+    "options": [
+      "Održavanje kopije podataka na drugom poslužitelju",
+      "Podjela podataka na više poslužitelja po ključu",
+      "Sažimanje podataka radi uštede prostora na disku",
+      "Automatsko brisanje starih zapisa iz tablica"
+    ],
+    "correctIndex": 0,
+    "explanation": "Replika daje otpornost i rasterećenje čitanja. Podjelu na dijelove radi shardanje, što je zaseban postupak.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "arh-037-sharding",
+    "topic": "arhitektura",
+    "unitId": "podaci-u-velikom",
+    "question": "Što se postiže shardanjem?",
+    "options": [
+      "Podaci se dijele na više baza pa svaka nosi manji dio",
+      "Podaci se kopiraju na više baza radi sigurnosti",
+      "Upiti se izvršavaju paralelno nad istom bazom",
+      "Stariji podaci se automatski sele u arhivu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Shardanje rješava količinu koju jedan stroj ne može nositi. Cijena su upiti preko više shardova, koji postaju znatno teži.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-038-shard-key",
+    "topic": "arhitektura",
+    "unitId": "podaci-u-velikom",
+    "question": "Zašto je izbor ključa za shardanje kritičan?",
+    "options": [
+      "Jer loš ključ nagomila promet na jedan shard",
+      "Jer se ključ ne može promijeniti bez restarta baze",
+      "Jer ključ određuje koliko će shardova biti moguće",
+      "Jer se po ključu određuje redoslijed zapisa u tablici"
+    ],
+    "correctIndex": 0,
+    "explanation": "Shardanje po državi kod usluge s jednim velikim tržištem daje jedan vrući shard i devet praznih. Promjena ključa kasnije traži selidbu svih podataka.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-039-read-replica",
+    "topic": "arhitektura",
+    "unitId": "podaci-u-velikom",
+    "question": "Koja je posljedica čitanja s replike?",
+    "options": [
+      "Podatak može biti malo stariji od onog u glavnoj bazi",
+      "Upiti se izvršavaju sporije nego na glavnoj bazi",
+      "Zapis u repliku ne stiže do glavne baze",
+      "Replika ne može posluživati složene upite"
+    ],
+    "correctIndex": 0,
+    "explanation": "Korisnik koji nešto spremi pa odmah osvježi stranicu može ne vidjeti vlastitu izmjenu. Zato se nakon zapisa često čita s glavne baze.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-040-denormalization",
+    "topic": "arhitektura",
+    "unitId": "podaci-u-velikom",
+    "question": "Kad se namjerno odustaje od normalizacije?",
+    "options": [
+      "Kad je čitanje toliko češće da spajanja postanu usko grlo",
+      "Kad baza nema dovoljno prostora za sve tablice",
+      "Kad se podaci mijenjaju češće nego što se čitaju",
+      "Kad se koristi baza koja ne podržava strane ključeve"
+    ],
+    "correctIndex": 0,
+    "explanation": "Denormalizacija trguje ispravnošću za brzinu čitanja. Cijena je da se ista informacija sada mora održavati na više mjesta.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-041-cqrs",
+    "topic": "arhitektura",
+    "unitId": "podaci-u-velikom",
+    "question": "Što razdvaja obrazac CQRS?",
+    "options": [
+      "Model za pisanje od modela za čitanje",
+      "Bazu podataka od aplikacijskog koda",
+      "Sinkrone od asinkronih operacija",
+      "Javno sučelje od interne implementacije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pisanje treba ispravnost, čitanje brzinu i oblik prilagođen ekranu. Cijena je da se ta dva modela moraju usklađivati.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-042-event-sourcing",
+    "topic": "arhitektura",
+    "unitId": "podaci-u-velikom",
+    "question": "Što se pohranjuje kod event sourcinga?",
+    "options": [
+      "Niz događaja iz kojih se stanje izračuna",
+      "Trenutno stanje uz povijest izmjena u dnevniku",
+      "Samo posljednje stanje svakog zapisa",
+      "Snimke baze u pravilnim vremenskim razmacima"
+    ],
+    "correctIndex": 0,
+    "explanation": "Stanje je izvedenica, a događaji su istina. Dobiva se potpuna povijest, a plaća složenijim čitanjem i izmjenama sheme.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-043-scale-data",
+    "topic": "arhitektura",
+    "unitId": "podaci-u-velikom",
+    "kind": "multi",
+    "question": "Što pomaže kad jedna baza više ne stiže?",
+    "options": [
+      "Replike za rasterećenje čitanja",
+      "Keširanje najčešćih upita",
+      "Shardanje po dobro odabranom ključu",
+      "Dodavanje indeksa na svaki stupac",
+      "Premještanje rijetko korištenih podataka u arhivu"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Indeks na svaki stupac usporava pisanje i troši prostor, a većina se nikad ne iskoristi. Indeksi se dodaju prema stvarnim upitima.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-044-data-terms",
+    "topic": "arhitektura",
+    "unitId": "podaci-u-velikom",
+    "kind": "fill",
+    "question": "Dopuni dva načina raspoređivanja podataka.",
+    "text": "Držanje iste kopije na više poslužitelja zove se ___, a dijeljenje podataka na dijelove po ključu zove se ___.",
+    "answers": [
+      "replikacija",
+      "shardanje"
+    ],
+    "distractors": [
+      "particioniranje",
+      "arhiviranje"
+    ],
+    "explanation": "Replikacija rješava dostupnost i čitanje, shardanje količinu. Veliki sustavi obično rade oboje.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-045-scale-order",
+    "topic": "arhitektura",
+    "unitId": "podaci-u-velikom",
+    "kind": "order",
+    "question": "Poredaj korake skaliranja baze, od najjeftinijeg prema najskupljem.",
+    "steps": [
+      "Optimiziraj upite i dodaj potrebne indekse",
+      "Uvedi keširanje najčešćih rezultata",
+      "Dodaj replike za čitanje",
+      "Podijeli podatke po domenama u zasebne baze",
+      "Uvedi shardanje po ključu"
+    ],
+    "explanation": "Shardanje je zadnja opcija jer se najteže poništava. Većina sustava nikad ne dođe dalje od trećeg koraka.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-uvod-konzistentnost",
+    "topic": "arhitektura",
+    "unitId": "konzistentnost",
+    "question": "Što znači eventualna konzistentnost?",
+    "options": [
+      "Sve kopije se s vremenom usklade, ali ne odmah",
+      "Podaci se nikad ne usklade između kopija",
+      "Podaci su usklađeni u trenutku svakog zapisa",
+      "Kopije se usklađuju samo na zahtjev korisnika"
+    ],
+    "correctIndex": 0,
+    "explanation": "Eventualno ne znači nikad nego 'malo kasnije'. Za lajkove je to potpuno u redu, za stanje računa nije.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "arh-046-cap",
+    "topic": "arhitektura",
+    "unitId": "konzistentnost",
+    "question": "Što tvrdi CAP teorem?",
+    "options": [
+      "Pri podjeli mreže bira se između konzistentnosti i dostupnosti",
+      "Sustav ne može istovremeno biti brz, jeftin i pouzdan",
+      "Svaka baza mora odabrati dvije od tri razine izolacije",
+      "Distribuirani sustav ne može jamčiti ispravan redoslijed"
+    ],
+    "correctIndex": 0,
+    "explanation": "Podjela mreže nije izbor nego činjenica koja se dogodi. Izbor postoji tek u tome što učiniti kad se dogodi.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-047-idempotency",
+    "topic": "arhitektura",
+    "unitId": "konzistentnost",
+    "question": "Zašto operacije preko mreže moraju biti idempotentne?",
+    "options": [
+      "Jer se zahtjev može ponoviti, a ishod mora ostati isti",
+      "Jer se time ubrzava obrada svakog pojedinog zahtjeva",
+      "Jer se tako izbjegava potreba za transakcijama",
+      "Jer to zahtijeva HTTP standard za sve metode"
+    ],
+    "correctIndex": 0,
+    "explanation": "Isteklo vrijeme ne znači da posao nije obavljen. Bez idempotentnosti ponovljeni pokušaj naplati narudžbu dvaput.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-048-saga",
+    "topic": "arhitektura",
+    "unitId": "konzistentnost",
+    "question": "Kako obrazac sage rješava transakciju preko više servisa?",
+    "options": [
+      "Nizom lokalnih koraka, svaki s vlastitim poništavanjem",
+      "Zaključavanjem svih servisa dok transakcija ne završi",
+      "Kopiranjem podataka u jednu bazu prije obrade",
+      "Odgađanjem svih koraka do kraja radnog dana"
+    ],
+    "correctIndex": 0,
+    "explanation": "Prava distribuirana transakcija je preskupa i krhka. Saga je prihvaća stvarnost: kompenzira ono što se ne može poništiti.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-049-two-phase-commit",
+    "topic": "arhitektura",
+    "unitId": "konzistentnost",
+    "question": "Koja je glavna mana dvofaznog potvrđivanja?",
+    "options": [
+      "Ispad koordinatora ostavlja sudionike zaključanima",
+      "Zahtijeva da svi sudionici koriste istu bazu podataka",
+      "Ne može se koristiti kad ima više od dva sudionika",
+      "Ne jamči da će svi sudionici vidjeti isti ishod"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sudionici čekaju odluku koja možda nikad ne stigne, držeći zaključavanja. Zato se u praksi izbjegava u korist sage.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-050-outbox",
+    "topic": "arhitektura",
+    "unitId": "konzistentnost",
+    "question": "Zašto se poruka ne šalje izravno nakon upisa u bazu?",
+    "options": [
+      "Jer upis može uspjeti, a slanje zakazati, pa se stanja raziđu",
+      "Jer slanje poruke traje dulje od upisa u bazu",
+      "Jer se poruke ne mogu slati unutar transakcije",
+      "Jer bi red poruka time postao preopterećen"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rješenje je upisati poruku u istu transakciju, u zasebnu tablicu, pa je zaseban proces objavi. To je obrazac odlazne pošte.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-051-exactly-once",
+    "topic": "arhitektura",
+    "unitId": "konzistentnost",
+    "question": "Zašto je isporuka točno jednom u praksi teška?",
+    "options": [
+      "Jer se potvrda može izgubiti pa pošiljatelj ponovi poruku",
+      "Jer redovi poruka ne podržavaju potvrde primitka",
+      "Jer se poruke ne mogu jednoznačno označiti",
+      "Jer mreža ne jamči redoslijed dolaska poruka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Praktično rješenje je isporuka barem jednom uz idempotentnu obradu. Efekt je isti, a sustav ostaje jednostavan.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-052-consistency-facts",
+    "topic": "arhitektura",
+    "unitId": "konzistentnost",
+    "kind": "multi",
+    "question": "Što je točno o konzistentnosti u distribuiranim sustavima?",
+    "options": [
+      "Eventualna konzistentnost znači kašnjenje, ne gubitak",
+      "Idempotentnost čini ponovljeni pokušaj sigurnim",
+      "Saga zamjenjuje distribuiranu transakciju kompenzacijom",
+      "Dvofazno potvrđivanje uklanja svaku mogućnost blokade",
+      "Podjela mreže je stvarnost, ne izbor"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Dvofazno potvrđivanje upravo uvodi blokadu kad koordinator ispadne. To je razlog zašto se rijetko koristi.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-053-consistency-terms",
+    "topic": "arhitektura",
+    "unitId": "konzistentnost",
+    "kind": "fill",
+    "question": "Dopuni pojmove distribuirane konzistentnosti.",
+    "text": "Operacija koju je sigurno ponoviti je ___, a niz lokalnih transakcija s koracima poništavanja zove se ___.",
+    "answers": [
+      "idempotentna",
+      "saga"
+    ],
+    "distractors": [
+      "atomarna",
+      "replika"
+    ],
+    "explanation": "Ta dva pojma zajedno rješavaju većinu problema koje bi inače trebala distribuirana transakcija.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-054-order-flow",
+    "topic": "arhitektura",
+    "unitId": "konzistentnost",
+    "kind": "order",
+    "question": "Poredaj sigurnu obradu narudžbe preko više servisa.",
+    "steps": [
+      "Zaprimi narudžbu s ključem idempotentnosti",
+      "Upiši narudžbu i poruku u istoj transakciji",
+      "Objavi poruku iz tablice odlazne pošte",
+      "Servisi obrade poruku i potvrde svoj korak",
+      "Pokreni kompenzaciju ako neki korak trajno zakaže"
+    ],
+    "explanation": "Ključ idempotentnosti dolazi prvi jer štiti od ponovljenog zahtjeva prije nego išta krene. Kompenzacija je zadnja obrana, ne prva.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-uvod-skaliranje",
+    "topic": "arhitektura",
+    "unitId": "skaliranje",
+    "question": "Koja je razlika između vertikalnog i horizontalnog skaliranja?",
+    "options": [
+      "Vertikalno jača jedan stroj, horizontalno dodaje strojeve",
+      "Horizontalno jača jedan stroj, vertikalno dodaje strojeve",
+      "Vertikalno se odnosi na bazu, horizontalno na aplikaciju",
+      "Horizontalno se koristi samo u oblaku, vertikalno lokalno"
+    ],
+    "correctIndex": 0,
+    "explanation": "Vertikalno je jednostavnije ali ima strop. Horizontalno nema strop, ali traži da aplikacija bude spremna za više instanci.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "arh-055-stateless",
+    "topic": "arhitektura",
+    "unitId": "skaliranje",
+    "question": "Zašto aplikacija bez stanja lakše skalira?",
+    "options": [
+      "Jer svaki zahtjev može obraditi bilo koja instanca",
+      "Jer troši manje memorije po pojedinom zahtjevu",
+      "Jer ne mora komunicirati s bazom podataka",
+      "Jer se pokreće brže od aplikacije sa stanjem"
+    ],
+    "correctIndex": 0,
+    "explanation": "Stanje u memoriji instance veže korisnika uz nju. Kad ga nema, dodavanje instance je jedina potrebna radnja.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-056-bottleneck",
+    "topic": "arhitektura",
+    "unitId": "skaliranje",
+    "question": "Što je usko grlo sustava?",
+    "options": [
+      "Dio koji ograničava propusnost cjeline",
+      "Dio koji troši najviše memorije u sustavu",
+      "Dio koji ima najviše redaka izvornog koda",
+      "Dio koji se najčešće mijenja pri razvoju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Optimiziranje bilo čega osim uskog grla ne mijenja ukupnu propusnost. Zato mjerenje uvijek dolazi prije optimizacije.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-057-cache-layers",
+    "topic": "arhitektura",
+    "unitId": "skaliranje",
+    "question": "Zašto se keširanje uvodi u slojevima?",
+    "options": [
+      "Jer svaki sloj hvata dio prometa prije skupljeg sloja",
+      "Jer jedan sloj keša ne može držati dovoljno podataka",
+      "Jer se slojevi međusobno provjeravaju radi ispravnosti",
+      "Jer se time smanjuje potreba za replikacijom baze"
+    ],
+    "correctIndex": 0,
+    "explanation": "Preglednik, CDN, aplikacijski keš i keš baze. Najbrži zahtjev je onaj koji nikad ne stigne do sljedećeg sloja.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-058-backpressure",
+    "topic": "arhitektura",
+    "unitId": "skaliranje",
+    "question": "Čemu služi protupritisak?",
+    "options": [
+      "Sustav odbija ili usporava primanje kad ne stiže obraditi",
+      "Sustav dodaje instance kad opterećenje poraste",
+      "Sustav prebacuje promet na pričuvni podatkovni centar",
+      "Sustav sprema neobrađene zahtjeve za kasnije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez protupritiska red raste dok ne ponestane memorije i sve padne. Odbiti dio prometa je bolje od potpunog ispada.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-059-thundering-herd",
+    "topic": "arhitektura",
+    "unitId": "skaliranje",
+    "question": "Što se dogodi kad istekne keš vrlo traženog podatka?",
+    "options": [
+      "Mnogo zahtjeva odjednom krene prema bazi",
+      "Podatak se automatski ponovno izračuna u pozadini",
+      "Korisnici privremeno dobiju zastarjeli podatak",
+      "Keš odbije nove zahtjeve dok se ne napuni"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rješenja su zaključavanje pri obnovi, posluživanje zastarjelog dok se obnavlja, i slučajni pomak u trajanju keša.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-060-scale-cube",
+    "topic": "arhitektura",
+    "unitId": "skaliranje",
+    "question": "Što je najjednostavniji način horizontalnog skaliranja aplikacije?",
+    "options": [
+      "Više identičnih instanci iza raspoređivača prometa",
+      "Podjela aplikacije na servise po poslovnim područjima",
+      "Podjela korisnika na skupine s vlastitom instancom",
+      "Prebacivanje dijela posla u asinkroni red poruka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kloniranje je najjeftinije i najbrže. Ostale metode dolaze kad kloniranje više nije dovoljno.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-061-scaling-facts",
+    "topic": "arhitektura",
+    "unitId": "skaliranje",
+    "kind": "multi",
+    "question": "Što je preduvjet za dobro horizontalno skaliranje?",
+    "options": [
+      "Stanje izmješteno izvan instance",
+      "Mjerenje koje pokazuje pravo usko grlo",
+      "Provjera zdravlja instanci na raspoređivaču",
+      "Što snažniji pojedinačni stroj",
+      "Otpornost na to da instanca nestane bilo kad"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Snažniji stroj je vertikalno skaliranje i ne pomaže horizontalnom. Instance se u pravom horizontalnom sustavu smatraju potrošnima.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-062-scaling-terms",
+    "topic": "arhitektura",
+    "unitId": "skaliranje",
+    "kind": "fill",
+    "question": "Dopuni vrste skaliranja i zaštitu od preopterećenja.",
+    "text": "Dodavanje novih instanci je ___ skaliranje, a odbijanje prometa koji se ne stigne obraditi zove se ___.",
+    "answers": [
+      "horizontalno",
+      "protupritisak"
+    ],
+    "distractors": [
+      "vertikalno",
+      "zagušenje"
+    ],
+    "explanation": "Skaliranje povećava kapacitet, protupritisak štiti kad ni povećani kapacitet nije dovoljan.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-063-perf-work",
+    "topic": "arhitektura",
+    "unitId": "skaliranje",
+    "kind": "order",
+    "question": "Poredaj ispravan pristup problemu performansi.",
+    "steps": [
+      "Izmjeri gdje se vrijeme stvarno troši",
+      "Pronađi najveće usko grlo",
+      "Postavi cilj koji je dovoljno dobar",
+      "Promijeni samo taj dio",
+      "Izmjeri ponovno i provjeri je li cilj postignut"
+    ],
+    "explanation": "Optimizacija bez mjerenja gotovo uvijek pogodi krivo mjesto. Ponovno mjerenje je jedini dokaz da je promjena pomogla.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-uvod-design",
+    "topic": "arhitektura",
+    "unitId": "system-design",
+    "question": "Što se prvo radi u zadatku iz system designa?",
+    "options": [
+      "Razjasne se zahtjevi i opseg problema",
+      "Nacrta se dijagram svih komponenti sustava",
+      "Odabere se baza podataka i programski jezik",
+      "Procijeni se broj potrebnih poslužitelja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rješenje bez razjašnjenih zahtjeva odgovara na krivo pitanje. Pitanja na početku vrijede više od bilo kojeg dijagrama.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "arh-064-estimation",
+    "topic": "arhitektura",
+    "unitId": "system-design",
+    "question": "Čemu služi gruba procjena brojeva u system designu?",
+    "options": [
+      "Pokazuje je li rješenje uopće izvedivo u tom redu veličine",
+      "Određuje točan broj poslužitelja koji treba naručiti",
+      "Zamjenjuje potrebu za mjerenjem u produkciji",
+      "Dokazuje da je odabrana baza podataka ispravna"
+    ],
+    "correctIndex": 0,
+    "explanation": "Razlika između gigabajta i petabajta mijenja cijelo rješenje. Razlika između 8 i 9 poslužitelja ne mijenja ništa.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-065-url-shortener",
+    "topic": "arhitektura",
+    "unitId": "system-design",
+    "question": "Što je glavni izazov skraćivača poveznica?",
+    "options": [
+      "Vrlo mnogo čitanja uz relativno malo pisanja",
+      "Složeni upiti koji spajaju više tablica",
+      "Velika količina podataka po pojedinom zapisu",
+      "Potreba za transakcijama preko više servisa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Omjer čitanja i pisanja je često tisuću prema jedan. To rješenje gura prema keširanju i replikama, a ne prema jačoj bazi.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-066-feed",
+    "topic": "arhitektura",
+    "unitId": "system-design",
+    "question": "Koja je glavna odluka pri dizajnu feeda?",
+    "options": [
+      "Sastavlja li se pri objavi ili pri dohvatu",
+      "Sprema li se u relacijsku ili dokumentnu bazu",
+      "Prikazuje li se kronološki ili po važnosti",
+      "Šalje li se preko WebSocketa ili običnog HTTP-a"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sastavljanje pri objavi je brzo za čitanje, ali korisnik s milijun pratitelja izaziva milijun upisa. Zato veliki sustavi rade oboje.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-067-rate-limiter",
+    "topic": "arhitektura",
+    "unitId": "system-design",
+    "question": "Zašto je ograničavanje prometa teško u sustavu s više instanci?",
+    "options": [
+      "Jer brojač mora biti zajednički, a zajedničko stanje usporava",
+      "Jer se svaka instanca mora zasebno konfigurirati",
+      "Jer korisnici mogu mijenjati svoju IP adresu",
+      "Jer se zahtjevi ne mogu razvrstati po korisniku"
+    ],
+    "correctIndex": 0,
+    "explanation": "Lokalni brojač po instanci propušta N puta više prometa. Zajednički brojač rješava točnost, ali dodaje mrežni poziv u svaki zahtjev.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-068-tradeoff",
+    "topic": "arhitektura",
+    "unitId": "system-design",
+    "question": "Što se očekuje kao najvažniji dio odgovora u system designu?",
+    "options": [
+      "Objašnjenje zašto je odabrano jedno rješenje umjesto drugog",
+      "Popis svih tehnologija koje se mogu upotrijebiti",
+      "Točan dijagram sa svim komponentama sustava",
+      "Procjena vremena potrebnog za izradu sustava"
+    ],
+    "correctIndex": 0,
+    "explanation": "Svaki izbor ima cijenu. Odgovor koji ne spominje nijednu cijenu obično znači da izbor nije bio svjestan.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-069-single-point",
+    "topic": "arhitektura",
+    "unitId": "system-design",
+    "question": "Što je jedinstvena točka ispada?",
+    "options": [
+      "Komponenta čiji kvar ruši cijeli sustav",
+      "Komponenta koja se najčešće kvari u sustavu",
+      "Mjesto na kojem se sav promet mjeri i bilježi",
+      "Poslužitelj koji ima najveće opterećenje"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pronalaženje takvih točaka je najbrži način da se dizajn provjeri. Pitanje je uvijek isto: što ako ovo sad nestane.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-070-design-checklist",
+    "topic": "arhitektura",
+    "unitId": "system-design",
+    "kind": "multi",
+    "question": "Što treba pokriti u odgovoru na system design zadatak?",
+    "options": [
+      "Funkcionalne i nefunkcionalne zahtjeve",
+      "Grubu procjenu opterećenja i količine podataka",
+      "Model podataka i glavne tokove",
+      "Točan izbor pružatelja usluge u oblaku",
+      "Uska grla i što se događa kad dio otkaže"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Izbor pružatelja gotovo nikad nije bit zadatka. Bit su zahtjevi, red veličine i ponašanje sustava kad nešto padne.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "arh-071-design-terms",
+    "topic": "arhitektura",
+    "unitId": "system-design",
+    "kind": "fill",
+    "question": "Dopuni pojmove iz system designa.",
+    "text": "Komponenta čiji kvar ruši cijeli sustav zove se jedinstvena točka ___, a dio koji ograničava propusnost cjeline zove se usko ___.",
+    "answers": [
+      "ispada",
+      "grlo"
+    ],
+    "distractors": [
+      "kvara",
+      "mjesto"
+    ],
+    "explanation": "Prvo pitanje je otpornost, drugo kapacitet. Dobar dizajn ima odgovor na oba.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "arh-072-design-order",
+    "topic": "arhitektura",
+    "unitId": "system-design",
+    "kind": "order",
+    "question": "Poredaj tijek rješavanja system design zadatka.",
+    "steps": [
+      "Razjasni zahtjeve i opseg",
+      "Procijeni red veličine opterećenja i podataka",
+      "Skiciraj glavne komponente i tokove",
+      "Produbi najkritičniji dio rješenja",
+      "Prođi kroz uska grla i scenarije ispada"
+    ],
+    "explanation": "Procjena dolazi prije crtanja jer određuje kakvo rješenje uopće ima smisla. Crtanje prije brojeva vodi u rješenje bez pokrića.",
+    "difficulty": "hard"
+  }
+]
