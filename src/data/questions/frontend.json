@@ -211,7 +211,8 @@
     "correctIndex": 3,
     "explanation": "Kada su porijeklo, važnost i specifičnost jednaki, kaskada daje prednost deklaraciji koja dolazi kasnije.",
     "difficulty": "easy",
-    "unitId": "css-layout"
+    "unitId": "css-layout",
+    "conceptId": "css-specificnost"
   },
   {
     "id": "frontend-030-rem-root-font-size",
@@ -839,7 +840,8 @@
     "correctIndex": 0,
     "explanation": ":where() omogućuje grupiranje i precizno ciljanje bez povećavanja specifičnosti, što olakšava kasnije nadjačavanje stilova.",
     "difficulty": "medium",
-    "unitId": "css-layout"
+    "unitId": "css-layout",
+    "conceptId": "css-specificnost"
   },
   {
     "id": "frontend-039-stacking-context",
@@ -1079,7 +1081,8 @@
     "correctIndex": 0,
     "explanation": "Async skripte izvršavaju se čim se preuzmu i mogu prekinuti parsiranje, dok se defer skripte izvršavaju nakon parsiranja redoslijedom u dokumentu, prije DOMContentLoaded.",
     "difficulty": "medium",
-    "unitId": "performanse"
+    "unitId": "performanse",
+    "conceptId": "defer-vs-async"
   },
   {
     "id": "frontend-086-passive-event-listener",
@@ -1454,7 +1457,8 @@
     "correctIndex": 0,
     "explanation": "Za normalne deklaracije prioritet cascade layera odlučuje prije specifičnosti; specifičnost se uspoređuje tek između pravila unutar layera istog prioriteta.",
     "difficulty": "hard",
-    "unitId": "css-layout"
+    "unitId": "css-layout",
+    "conceptId": "css-specificnost"
   },
   {
     "id": "frontend-094-css-subgrid-alignment",

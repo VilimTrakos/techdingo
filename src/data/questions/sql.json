@@ -1185,7 +1185,8 @@
       "ORDER BY"
     ],
     "explanation": "Baza prvo sastavi izvor podataka (FROM/JOIN), filtrira retke (WHERE), grupira ih (GROUP BY), filtrira grupe (HAVING), tek onda računa izraze iz SELECT liste i na kraju sortira rezultat.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "redoslijed-izvrsavanja-upita"
   },
   {
     "id": "sql-903-code-having-count",
@@ -1493,7 +1494,8 @@
     "correctIndex": 2,
     "explanation": "Ako narudžba ima tri stavke i dvije uplate, zajednički JOIN može proizvesti šest kombinacija. Zbroj iz jedne podređene tablice tada se ponavlja za retke druge, pa preagregiranje sprječava fanout pogrešku.",
     "difficulty": "hard",
-    "unitId": "spajanje-i-skupovi"
+    "unitId": "spajanje-i-skupovi",
+    "conceptId": "join-fan-out"
   },
   {
     "id": "sql-095-mvcc-long-transaction",
@@ -2168,7 +2170,8 @@
       "Poredaj rezultat s ORDER BY"
     ],
     "explanation": "Logički poredak objašnjava zašto alias iz SELECT popisa obično nije dostupan u WHERE, ali može biti dostupan u ORDER BY.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "redoslijed-izvrsavanja-upita"
   },
   {
     "id": "sql-119-order-expand-contract-column",

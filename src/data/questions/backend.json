@@ -274,7 +274,8 @@
     "correctIndex": 0,
     "explanation": "401 upućuje klijenta da se ispravno autenticira, dok 403 znači da za traženu radnju nema dopuštenje ili je server odbija.",
     "difficulty": "easy",
-    "unitId": "autentikacija-sigurnost"
+    "unitId": "autentikacija-sigurnost",
+    "conceptId": "401-vs-403"
   },
   {
     "id": "backend-051-secrets-outside-source-control",
@@ -855,7 +856,8 @@
     "correctIndex": 2,
     "explanation": "Readiness sprječava prerano usmjeravanje prometa, dok draining i dovoljno termination grace vremena omogućuju staroj instanci da dovrši aktivne zahtjeve.",
     "difficulty": "medium",
-    "unitId": "arhitektura"
+    "unitId": "arhitektura",
+    "conceptId": "graceful-shutdown"
   },
   {
     "id": "backend-066-error-budget-burn-rate",
@@ -937,7 +939,8 @@
     "correctIndex": 0,
     "explanation": "Klasičan primjer: dohvatiš listu od 50 postova (1 upit), pa za svaki post posebno dohvaćaš autora (50 dodatnih upita) - rješava se JOIN-ovima ili eager loadingom (npr. 'include' u ORM-u).",
     "difficulty": "hard",
-    "unitId": "baze-podataka"
+    "unitId": "baze-podataka",
+    "conceptId": "n-plus-1"
   },
   {
     "id": "backend-021-circuit-breaker",
@@ -1059,7 +1062,8 @@
     "correctIndex": 0,
     "explanation": "Expand-contract razdvaja kompatibilno dodavanje od kasnijeg uklanjanja. Svaka međufaza mora raditi sa svim verzijama aplikacije koje tada mogu primati promet.",
     "difficulty": "hard",
-    "unitId": "baze-podataka"
+    "unitId": "baze-podataka",
+    "conceptId": "expand-contract-migracija"
   },
   {
     "id": "backend-068-token-audience-validation",
@@ -1868,7 +1872,8 @@
       "Nova verzija se pokreće i prolazi health check",
       "Instanca se vraća u balanser"
     ],
-    "explanation": "Ključ je da instanca izađe iz prometa PRIJE gašenja, a vrati se tek nakon što health check prođe."
+    "explanation": "Ključ je da instanca izađe iz prometa PRIJE gašenja, a vrati se tek nakon što health check prođe.",
+    "conceptId": "graceful-shutdown"
   },
   {
     "id": "backend-918-n-plus-1-rjesenja",

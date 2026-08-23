@@ -401,7 +401,8 @@
     "correctIndex": 1,
     "explanation": "Podtip mora poštovati ugovor baznog tipa, uključujući očekivane rezultate i invarijante. Samo sintaktičko nasljeđivanje nije dovoljno.",
     "difficulty": "medium",
-    "unitId": "oop-dizajn"
+    "unitId": "oop-dizajn",
+    "conceptId": "liskov"
   },
   {
     "id": "general-017-git-merge-vs-rebase",
@@ -1359,7 +1360,7 @@
     "unitId": "oop-dizajn",
     "difficulty": "medium",
     "question": "Što je cijena duboke hijerarhije nasljeđivanja?",
-    "conceptId": "kompozicija-vs-nasljedjivanje",
+    "conceptId": "kompozicija-vs-nasljedivanje",
     "kind": "multi",
     "options": [
       "Izmjena u bazi tiho mijenja ponašanje svih potomaka",
