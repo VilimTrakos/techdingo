@@ -6,6 +6,7 @@ import generalQuestions from './questions/general.json';
 import devopsQuestions from './questions/devops.json';
 import mrezeQuestions from './questions/mreze.json';
 import sigurnostQuestions from './questions/sigurnost.json';
+import cudniKutoviQuestions from './questions/cudni-kutovi.json';
 
 export interface TopicDefinition {
   id: string;
@@ -21,6 +22,7 @@ export const TOPICS: TopicDefinition[] = [
   { id: 'devops', labelHr: 'DevOps', questions: devopsQuestions as Question[] },
   { id: 'mreze', labelHr: 'Mreže', questions: mrezeQuestions as Question[] },
   { id: 'sigurnost', labelHr: 'Sigurnost', questions: sigurnostQuestions as Question[] },
+  { id: 'cudni-kutovi', labelHr: 'Čudni kutovi', questions: cudniKutoviQuestions as Question[] },
 ];
 
 export function getTopic(topicId: string): TopicDefinition | undefined {

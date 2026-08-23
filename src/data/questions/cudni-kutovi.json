@@ -1,0 +1,1142 @@
+[
+  {
+    "id": "cudni-uvod-brojevi",
+    "topic": "cudni-kutovi",
+    "unitId": "brojevi",
+    "question": "Zašto `0.1 + 0.2` u većini jezika nije točno `0.3`?",
+    "options": [
+      "Jer se 0.1 ne može točno zapisati u binarnom obliku",
+      "Jer se rezultat zaokružuje na dvije decimale",
+      "Jer zbrajanje decimalnih brojeva ima grešku mjerenja",
+      "Jer se decimalni brojevi spremaju kao tekst"
+    ],
+    "correctIndex": 0,
+    "explanation": "U bazi 2 je 0.1 beskonačan razlomak, kao 1/3 u bazi 10. Zapis je najbliža moguća vrijednost, pa se greška vidi pri zbrajanju.",
+    "difficulty": "easy",
+    "isIntro": true,
+    "code": "0.1 + 0.2\n// 0.30000000000000004"
+  },
+  {
+    "id": "cudni-001-float-compare",
+    "topic": "cudni-kutovi",
+    "unitId": "brojevi",
+    "question": "Kako se ispravno uspoređuju dva decimalna broja?",
+    "options": [
+      "Provjeri je li razlika manja od male tolerancije",
+      "Zaokruži oba broja na dvije decimale pa usporedi",
+      "Pretvori oba broja u tekst pa usporedi nizove",
+      "Usporedi ih izravno, ali uz trostruki znak jednakosti"
+    ],
+    "correctIndex": 0,
+    "explanation": "Jednakost decimalnih brojeva gotovo nikad nije ono što stvarno želiš. Usporedba s epsilonom pita 'jesu li dovoljno blizu'.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-002-money",
+    "topic": "cudni-kutovi",
+    "unitId": "brojevi",
+    "question": "Kako se ispravno pohranjuje novčani iznos?",
+    "options": [
+      "Kao cijeli broj najmanjih jedinica, npr. lipa",
+      "Kao decimalni broj zaokružen na dvije decimale",
+      "Kao tekst u formatu koji korisnik vidi",
+      "Kao decimalni broj uz zaokruživanje pri ispisu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zbrajanje milijun decimalnih iznosa nakupi grešku koju revizor primijeti. Cijeli broj lipa nema tu klasu problema.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-003-nan",
+    "topic": "cudni-kutovi",
+    "unitId": "brojevi",
+    "question": "Zašto `NaN === NaN` daje `false`?",
+    "options": [
+      "Jer standard propisuje da NaN nije jednak ničemu, ni sebi",
+      "Jer se svaki NaN u memoriji zapisuje drukčije",
+      "Jer je NaN zapravo tekst, a ne broj",
+      "Jer usporedba brojeva ne radi s posebnim vrijednostima"
+    ],
+    "correctIndex": 0,
+    "explanation": "NaN znači 'nije broj kakav se očekivao'. Dvije nedefinirane vrijednosti nemaju razloga biti jednake, pa se provjerava funkcijom.",
+    "difficulty": "hard",
+    "code": "NaN === NaN   // false\nNumber.isNaN(NaN)  // true"
+  },
+  {
+    "id": "cudni-004-overflow",
+    "topic": "cudni-kutovi",
+    "unitId": "brojevi",
+    "question": "Što se dogodi kad zbroj premaši najveći broj koji tip može zapisati?",
+    "options": [
+      "U mnogim jezicima vrijednost se prelije u negativnu",
+      "Program se uvijek zaustavi s greškom prelijevanja",
+      "Vrijednost ostane na najvećem mogućem broju",
+      "Tip se automatski proširi na veći raspon"
+    ],
+    "correctIndex": 0,
+    "explanation": "Prelijevanje je tiho u C-u, Javi i Go-u. Baš takvo prelijevanje srušilo je Ariane 5 nekoliko sekundi nakon lansiranja.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-005-safe-integer",
+    "topic": "cudni-kutovi",
+    "unitId": "brojevi",
+    "question": "Zašto JavaScript ne može točno prikazati sve velike cijele brojeve?",
+    "options": [
+      "Jer sve brojeve drži kao decimalne s 53 bita preciznosti",
+      "Jer cijele brojeve pohranjuje kao tekst iznad milijarde",
+      "Jer zaokružuje sve brojeve veće od milijun",
+      "Jer velike brojeve prima samo kao posebnu vrijednost"
+    ],
+    "correctIndex": 0,
+    "explanation": "Iznad 2^53-1 dva različita cijela broja mogu dati isti zapis. Zato se identifikatori iz baze prenose kao tekst, ne kao broj.",
+    "difficulty": "hard",
+    "code": "9007199254740993 === 9007199254740992\n// true"
+  },
+  {
+    "id": "cudni-006-integer-division",
+    "topic": "cudni-kutovi",
+    "unitId": "brojevi",
+    "question": "Što daje cjelobrojno dijeljenje `7 / 2` u jezicima poput Jave ili C-a?",
+    "options": [
+      "3, jer se decimalni dio odbacuje",
+      "3.5, jer se rezultat pretvara u decimalni",
+      "4, jer se rezultat zaokružuje na najbliži",
+      "Grešku, jer dijeljenje nije cjelobrojno"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rezultat operacije nad dva cijela broja ostaje cijeli broj. To je izvor tihih grešaka pri računanju postotaka i prosjeka.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-007-float-facts",
+    "topic": "cudni-kutovi",
+    "unitId": "brojevi",
+    "kind": "multi",
+    "question": "Što je točno o decimalnim brojevima s pomičnim zarezom?",
+    "options": [
+      "Neki decimalni brojevi nemaju točan binarni zapis",
+      "Zbrajanje nije uvijek asocijativno",
+      "Postoje vrijednosti za beskonačnost",
+      "Postoje dvije nule, pozitivna i negativna",
+      "Svaki cijeli broj se može zapisati bez greške"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "explanation": "Iznad granice preciznosti ni cijeli brojevi nisu sigurni. A promjena redoslijeda zbrajanja doista može promijeniti rezultat.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-008-money-terms",
+    "topic": "cudni-kutovi",
+    "unitId": "brojevi",
+    "kind": "fill",
+    "question": "Dopuni pravilo o novcu u kodu.",
+    "text": "Iznosi se pohranjuju kao ___ broj u najmanjim jedinicama, a decimalni tipovi s pomičnim zarezom se za novac ___.",
+    "answers": [
+      "cijeli",
+      "izbjegavaju"
+    ],
+    "distractors": [
+      "decimalni",
+      "preporučuju"
+    ],
+    "explanation": "Jedina prihvatljiva alternativa cijelim brojevima je namjenski decimalni tip s fiksnom preciznošću, kakav ima SQL.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-009-percent",
+    "topic": "cudni-kutovi",
+    "unitId": "brojevi",
+    "kind": "order",
+    "question": "Poredaj siguran izračun popusta od 15% na iznos u lipama.",
+    "steps": [
+      "Uzmi iznos kao cijeli broj lipa",
+      "Pomnoži iznos s 15",
+      "Podijeli rezultat sa 100",
+      "Zaokruži prema dogovorenom pravilu",
+      "Oduzmi popust od početnog iznosa"
+    ],
+    "explanation": "Množenje ide PRIJE dijeljenja jer tako nema međukoraka s decimalama. Pravilo zaokruživanja mora biti dogovoreno, ne slučajno.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-uvod-tekst",
+    "topic": "cudni-kutovi",
+    "unitId": "tekst-i-znakovi",
+    "question": "Što je Unicode?",
+    "options": [
+      "Popis koji svakom znaku dodjeljuje jedinstveni broj",
+      "Format u kojem se tekst sprema u datoteku",
+      "Font koji sadrži znakove svih svjetskih jezika",
+      "Način sažimanja teksta prije slanja mrežom"
+    ],
+    "correctIndex": 0,
+    "explanation": "Unicode dodjeljuje brojeve, a UTF-8 određuje kako se ti brojevi zapisuju u bajtove. To dvoje se stalno miješa.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "cudni-010-utf8",
+    "topic": "cudni-kutovi",
+    "unitId": "tekst-i-znakovi",
+    "question": "Koliko bajtova zauzima znak u UTF-8?",
+    "options": [
+      "Od jednog do četiri, ovisno o znaku",
+      "Točno jedan bajt za svaki znak",
+      "Točno dva bajta za svaki znak",
+      "Uvijek četiri bajta radi ujednačenosti"
+    ],
+    "correctIndex": 0,
+    "explanation": "Engleska slova zauzimaju jedan bajt, hrvatska dijakritika dva, emoji četiri. Zato je UTF-8 unatrag spojiv s ASCII-jem.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-011-emoji-length",
+    "topic": "cudni-kutovi",
+    "unitId": "tekst-i-znakovi",
+    "question": "Zašto duljina niza s emojijem često nije 1?",
+    "options": [
+      "Jer se duljina broji u jedinicama zapisa, ne u znakovima",
+      "Jer emoji uvijek nosi i nevidljivi razmak uz sebe",
+      "Jer se emoji sprema kao slika, ne kao znak",
+      "Jer preglednik dodaje oznaku boje ispred emojija"
+    ],
+    "correctIndex": 0,
+    "explanation": "U JavaScriptu se broje UTF-16 jedinice, pa emoji izvan osnovne ravnine daje 2. Složeni emoji od više dijelova daje i mnogo više.",
+    "difficulty": "hard",
+    "code": "\"👍\".length      // 2\n\"👨‍👩‍👧\".length  // 8"
+  },
+  {
+    "id": "cudni-012-grapheme",
+    "topic": "cudni-kutovi",
+    "unitId": "tekst-i-znakovi",
+    "question": "Što je grafemski klaster?",
+    "options": [
+      "Ono što korisnik doživljava kao jedan znak",
+      "Skupina znakova iste abecede u tekstu",
+      "Broj bajtova koje znak zauzima u zapisu",
+      "Popis znakova koje font može prikazati"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zastava, emoji obitelji ili slovo s dva naglaska su više kodnih točaka, a jedan grafem. Rezanje teksta po kodnim točkama ih razbija.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-013-normalization",
+    "topic": "cudni-kutovi",
+    "unitId": "tekst-i-znakovi",
+    "question": "Zašto dva vizualno identična teksta mogu biti različita pri usporedbi?",
+    "options": [
+      "Jer se isti znak može zapisati na više načina",
+      "Jer jedan tekst može imati skriveni razmak",
+      "Jer usporedba razlikuje velika i mala slova",
+      "Jer su tekstovi spremljeni u različitim fontovima"
+    ],
+    "correctIndex": 0,
+    "explanation": "Slovo é može biti jedna kodna točka ili slovo e plus oznaka naglaska. Zato se tekst prije usporedbe normalizira.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-014-turkish-i",
+    "topic": "cudni-kutovi",
+    "unitId": "tekst-i-znakovi",
+    "question": "Zašto je pretvaranje teksta u mala slova ovisno o jeziku?",
+    "options": [
+      "Jer neki jezici imaju drukčija pravila za ista slova",
+      "Jer se pravila razlikuju od operativnog sustava",
+      "Jer neki fontovi nemaju mala slova za sve znakove",
+      "Jer se mala slova drukčije zapisuju u UTF-8"
+    ],
+    "correctIndex": 0,
+    "explanation": "U turskom veliko I daje bezdotno ı. Zato je usporedba korisničkih imena bez zadane lokalizacije klasičan izvor sigurnosnih rupa.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-015-bom",
+    "topic": "cudni-kutovi",
+    "unitId": "tekst-i-znakovi",
+    "question": "Zašto se u CSV datoteci ponekad na početku pojavi čudan znak?",
+    "options": [
+      "To je oznaka redoslijeda bajtova koju alat nije prepoznao",
+      "To je znak za kraj retka iz drugog operativnog sustava",
+      "To je ostatak zaglavlja koje je program zaboravio maknuti",
+      "To je posljedica pogrešnog razdvajanja stupaca zarezom"
+    ],
+    "correctIndex": 0,
+    "explanation": "BOM na početku UTF-8 datoteke zbunjuje čitače koji ga ne očekuju, pa prvi stupac dobije nevidljivi prefiks.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-016-encoding-facts",
+    "topic": "cudni-kutovi",
+    "unitId": "tekst-i-znakovi",
+    "kind": "multi",
+    "question": "Što je točno o zapisu teksta?",
+    "options": [
+      "UTF-8 je unatrag spojiv s ASCII-jem",
+      "Ista kodna točka može se zapisati različitim brojem bajtova u različitim UTF zapisima",
+      "Broj znakova i broj bajtova nisu isto",
+      "Unicode propisuje kako znak izgleda u fontu",
+      "Rezanje teksta po bajtovima može razbiti znak"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Unicode kaže koji broj pripada kojem znaku, a ne kako se crta. Izgled je stvar fonta, zato isti emoji izgleda drukčije na svakom uređaju.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-017-unicode-terms",
+    "topic": "cudni-kutovi",
+    "unitId": "tekst-i-znakovi",
+    "kind": "fill",
+    "question": "Dopuni pojmove oko teksta.",
+    "text": "___ dodjeljuje broj svakom znaku, dok ___ određuje kako se taj broj pretvara u bajtove.",
+    "answers": [
+      "Unicode",
+      "UTF-8"
+    ],
+    "distractors": [
+      "ASCII",
+      "Base64"
+    ],
+    "explanation": "Rečenica 'datoteka je u Unicodeu' zapravo ništa ne govori. Pitanje je uvijek koji je zapis, jer o njemu ovisi čitanje.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-018-mojibake",
+    "topic": "cudni-kutovi",
+    "unitId": "tekst-i-znakovi",
+    "kind": "order",
+    "question": "Poredaj kako nastaje tekst pun čudnih znakova.",
+    "steps": [
+      "Tekst se zapiše u jednom zapisu, npr. UTF-8",
+      "Datoteka nigdje ne nosi podatak o tom zapisu",
+      "Drugi program je pročita pretpostavljajući drugi zapis",
+      "Isti bajtovi se protumače kao drugi znakovi",
+      "Na ekranu se pojavi nečitljiv niz"
+    ],
+    "explanation": "Bajtovi su ispravni cijelo vrijeme - kriva je samo pretpostavka o zapisu. Zato se zapis mora prenositi uz podatke, ne pogađati.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-uvod-vrijeme",
+    "topic": "cudni-kutovi",
+    "unitId": "vrijeme",
+    "question": "Kako se vrijeme ispravno pohranjuje?",
+    "options": [
+      "U UTC-u, uz pretvorbu u lokalno tek pri prikazu",
+      "U lokalnom vremenu korisnika koji ga je unio",
+      "U lokalnom vremenu servera na kojem se sprema",
+      "Kao tekst u formatu koji korisnik prepoznaje"
+    ],
+    "correctIndex": 0,
+    "explanation": "UTC je jedina vremenska crta bez pomicanja sata. Sve ostalo su prikazi te crte u nekom mjestu i trenutku.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "cudni-019-dst-gap",
+    "topic": "cudni-kutovi",
+    "unitId": "vrijeme",
+    "question": "Što se dogodi s vremenom 02:30 u noći prelaska na ljetno računanje?",
+    "options": [
+      "Taj trenutak tog dana ne postoji",
+      "Taj trenutak se dogodi dvaput zaredom",
+      "Taj trenutak traje dvostruko dulje",
+      "Taj trenutak se pomakne za jedan dan"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sat skoči s 2 na 3, pa cijeli sat nestane. U jesen je obrnuto i isti sat se ponovi, pa 02:30 postoji dvaput.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-020-tz-change",
+    "topic": "cudni-kutovi",
+    "unitId": "vrijeme",
+    "question": "Zašto se baza vremenskih zona mora redovito ažurirati?",
+    "options": [
+      "Jer države političkim odlukama mijenjaju svoje zone",
+      "Jer se Zemljina rotacija postupno usporava",
+      "Jer se zone mijenjaju sa svakim prijestupnim danom",
+      "Jer se stari zapisi vremena s vremenom pokvare"
+    ],
+    "correctIndex": 0,
+    "explanation": "Vremenske zone nisu fizika nego politika. Odluka donesena ovaj mjesec može promijeniti prošlogodišnje pretvorbe.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-021-leap-year",
+    "topic": "cudni-kutovi",
+    "unitId": "vrijeme",
+    "question": "Koja je godina prijestupna?",
+    "options": [
+      "Djeljiva sa 4, osim stoljetnih koje nisu djeljive sa 400",
+      "Svaka godina djeljiva sa 4, bez iznimke",
+      "Svaka godina djeljiva sa 4 osim svake stote godine",
+      "Svaka četvrta godina počevši od 2000. nadalje"
+    ],
+    "correctIndex": 0,
+    "explanation": "Godina 1900. nije bila prijestupna, a 2000. jest. Sustavi koji su znali samo pravilo o četiri pali su upravo na tome.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-022-epoch",
+    "topic": "cudni-kutovi",
+    "unitId": "vrijeme",
+    "question": "Što je Unix vremenska oznaka?",
+    "options": [
+      "Broj sekundi od 1. siječnja 1970. u UTC-u",
+      "Broj dana od početka rada operativnog sustava",
+      "Vrijeme zapisano u obliku godina-mjesec-dan",
+      "Broj milisekundi od pokretanja programa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Jedan broj bez vremenske zone, bez formata i bez dvosmislenosti. Zato je i dalje najsigurniji način razmjene trenutka.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-023-y2038",
+    "topic": "cudni-kutovi",
+    "unitId": "vrijeme",
+    "question": "Što je problem 2038. godine?",
+    "options": [
+      "32-bitni predznačeni brojač sekundi tada se prelije",
+      "Vremenske zone tada gube podršku za ljetno računanje",
+      "Godina 2038. nije prijestupna iako je djeljiva sa 4",
+      "Datumi nakon 2038. ne mogu se zapisati u ISO obliku"
+    ],
+    "correctIndex": 0,
+    "explanation": "19. siječnja 2038. brojač prijeđe najveći 32-bitni broj i skoči u 1901. Isti oblik greške kao Y2K, samo s drugim brojem.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-024-date-vs-instant",
+    "topic": "cudni-kutovi",
+    "unitId": "vrijeme",
+    "question": "Zašto se datum rođenja ne sprema kao trenutak s vremenom?",
+    "options": [
+      "Jer bi pretvorba u drugu zonu pomaknula dan",
+      "Jer datum rođenja ne staje u format s vremenom",
+      "Jer se datumi bez vremena brže pretražuju",
+      "Jer bi zapis zauzimao više prostora u bazi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rođendan je isti u svakoj zoni. Ako se sprema kao ponoć UTC, korisnik zapadno od Greenwicha vidi dan ranije.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-025-time-rules",
+    "topic": "cudni-kutovi",
+    "unitId": "vrijeme",
+    "kind": "multi",
+    "question": "Što je dobra praksa s vremenom?",
+    "options": [
+      "Pohranjivati u UTC-u",
+      "Uz budući događaj pamtiti i naziv vremenske zone",
+      "Koristiti postojeću knjižnicu umjesto vlastite aritmetike",
+      "Pretpostaviti da svaki dan ima 24 sata",
+      "Prikazivati vrijeme u zoni korisnika"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Dan s prelaskom na ljetno vrijeme ima 23 ili 25 sati. Uz buduće sastanke treba ime zone, jer se pomak do tada može promijeniti.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-026-time-terms",
+    "topic": "cudni-kutovi",
+    "unitId": "vrijeme",
+    "kind": "fill",
+    "question": "Dopuni pravila rada s vremenom.",
+    "text": "Vrijeme se pohranjuje u ___, a u lokalnu zonu pretvara tek pri ___.",
+    "answers": [
+      "UTC",
+      "prikazu"
+    ],
+    "distractors": [
+      "GMT",
+      "spremanju"
+    ],
+    "explanation": "Pretvorba pri spremanju gubi podatak koji se više ne može vratiti. Pretvorba pri prikazu je uvijek reverzibilna.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-027-meeting",
+    "topic": "cudni-kutovi",
+    "unitId": "vrijeme",
+    "kind": "order",
+    "question": "Poredaj ispravnu obradu sastanka zakazanog za tri mjeseca.",
+    "steps": [
+      "Zapamti lokalno vrijeme i naziv zone koju je korisnik odabrao",
+      "Prikaži vrijeme svakom sudioniku u njegovoj zoni",
+      "Prije samog termina izračunaj stvarni trenutak u UTC-u",
+      "Provjeri je li se pravilo zone u međuvremenu promijenilo",
+      "Pošalji podsjetnik u tako izračunatom trenutku"
+    ],
+    "explanation": "Za buduće događaje se UTC računa NA KRAJU, jer se pomak zone do tada može promijeniti političkom odlukom.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-uvod-regex",
+    "topic": "cudni-kutovi",
+    "unitId": "regex-i-parsiranje",
+    "question": "Što je regularni izraz?",
+    "options": [
+      "Uzorak kojim se opisuje i pretražuje tekst",
+      "Naredba kojom se tekst pretvara u velika slova",
+      "Format u kojem se tekst sprema u bazu",
+      "Funkcija koja provjerava ispravnost podataka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Regex opisuje oblik teksta. Snažan je za jednostavne uzorke, a opasan čim se uzorak počne komplicirati.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "cudni-028-greedy",
+    "topic": "cudni-kutovi",
+    "unitId": "regex-i-parsiranje",
+    "question": "Zašto uzorak `<.*>` na tekstu `<a><b>` uhvati sve odjednom?",
+    "options": [
+      "Jer je kvantifikator pohlepan i uzima najviše što može",
+      "Jer točka ne odgovara znaku veći od",
+      "Jer se uzorak primjenjuje na cijeli tekst odjednom",
+      "Jer zagrade označavaju grupu koja se ne razdvaja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pohlepni kvantifikator ide do kraja pa se vraća. Za najkraći pogodak koristi se lijeni oblik s upitnikom.",
+    "difficulty": "medium",
+    "code": "'<a><b>'.match(/<.*>/)   // ['<a><b>']\n'<a><b>'.match(/<.*?>/)  // ['<a>']"
+  },
+  {
+    "id": "cudni-029-redos",
+    "topic": "cudni-kutovi",
+    "unitId": "regex-i-parsiranje",
+    "question": "Što je katastrofalno vraćanje unatrag u regexu?",
+    "options": [
+      "Broj kombinacija koje mehanizam isprobava raste eksponencijalno",
+      "Uzorak se primijeni na krivi dio teksta pa vrati pogrešno",
+      "Mehanizam prestane raditi jer je uzorak neispravan",
+      "Rezultat se vrati u obrnutom redoslijedu od očekivanog"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ugniježđeni kvantifikatori poput (a+)+ na dugom nizu bez pogotka mogu vrtjeti procesor minutama. To je ReDoS napad.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-030-html-regex",
+    "topic": "cudni-kutovi",
+    "unitId": "regex-i-parsiranje",
+    "question": "Zašto se HTML ne parsira regularnim izrazom?",
+    "options": [
+      "Jer ugniježđene strukture regex ne može ispravno opisati",
+      "Jer je HTML predugačak za obradu regularnim izrazom",
+      "Jer HTML koristi znakove koje regex ne prepoznaje",
+      "Jer bi obrada trajala predugo na velikim stranicama"
+    ],
+    "correctIndex": 0,
+    "explanation": "Proizvoljno duboko ugniježđenje je izvan onoga što regularni jezici mogu opisati. Za HTML se koristi parser, i to je jedini ispravan odgovor.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-031-dot-newline",
+    "topic": "cudni-kutovi",
+    "unitId": "regex-i-parsiranje",
+    "question": "Odgovara li točka u regexu znaku novog retka?",
+    "options": [
+      "Po zadanom ne, osim uz posebnu zastavicu",
+      "Da, točka odgovara svakom mogućem znaku",
+      "Ne, i to se ne može promijeniti zastavicom",
+      "Ovisi isključivo o programskom jeziku"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zadano ponašanje je nasljeđe obrade redak po redak. Zaboravljena zastavica je razlog zašto uzorak radi na jednom retku, a pada na više.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-032-email-regex",
+    "topic": "cudni-kutovi",
+    "unitId": "regex-i-parsiranje",
+    "question": "Zašto je provjera e-mail adrese regexom loša ideja?",
+    "options": [
+      "Jer je službeni oblik toliko složen da svaki uzorak griješi",
+      "Jer e-mail adrese sadrže znakove koje regex ne podržava",
+      "Jer se domene mijenjaju pa uzorak brzo zastari",
+      "Jer je regex prespor za provjeru pri svakoj registraciji"
+    ],
+    "correctIndex": 0,
+    "explanation": "Jednostavni uzorci odbijaju valjane adrese, a potpuni je nečitljiv i i dalje ne dokazuje da adresa postoji. Jedina prava provjera je poslana poruka.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-033-anchors",
+    "topic": "cudni-kutovi",
+    "unitId": "regex-i-parsiranje",
+    "question": "Zašto uzorak za provjeru mora imati sidra na početku i kraju?",
+    "options": [
+      "Jer bi inače pogodak bilo dovoljno naći bilo gdje u tekstu",
+      "Jer bez sidara uzorak radi sporije nad dugim tekstom",
+      "Jer sidra određuju velika i mala slova u uzorku",
+      "Jer bez sidara uzorak ne prepoznaje prazan tekst"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez sidara uzorak za poštanski broj prolazi i na tekstu 'abc 10000 xyz'. To je česta rupa u provjerama unosa.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-034-regex-facts",
+    "topic": "cudni-kutovi",
+    "unitId": "regex-i-parsiranje",
+    "kind": "multi",
+    "question": "Što je točno o regularnim izrazima?",
+    "options": [
+      "Kvantifikatori su po zadanom pohlepni",
+      "Ugniježđeni kvantifikatori mogu izazvati eksponencijalno vrijeme",
+      "Sidra vežu uzorak uz početak i kraj teksta",
+      "Regexom se pouzdano parsira ugniježđeni HTML",
+      "Isti uzorak može se drukčije ponašati u različitim jezicima"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Različiti jezici imaju različite mehanizme i zastavice. Uzorak prenesen iz jednog jezika u drugi treba ponovno provjeriti.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-035-regex-terms",
+    "topic": "cudni-kutovi",
+    "unitId": "regex-i-parsiranje",
+    "kind": "fill",
+    "question": "Dopuni ponašanje kvantifikatora.",
+    "text": "Kvantifikator koji uzima najviše što može zove se ___, a onaj koji uzima najmanje zove se ___.",
+    "answers": [
+      "pohlepan",
+      "lijen"
+    ],
+    "distractors": [
+      "strog",
+      "slobodan"
+    ],
+    "explanation": "Razlika je jedan upitnik. To je najčešći uzrok toga što uzorak 'radi, ali hvata previše'.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-036-safe-regex",
+    "topic": "cudni-kutovi",
+    "unitId": "regex-i-parsiranje",
+    "kind": "order",
+    "question": "Poredaj siguran pristup provjeri unosa uzorkom.",
+    "steps": [
+      "Opiši točno koji oblik je dopušten",
+      "Napiši uzorak sa sidrima na oba kraja",
+      "Izbjegni ugniježđene kvantifikatore",
+      "Testiraj uzorak i na tekstu koji ne odgovara",
+      "Ograniči duljinu ulaza prije provjere"
+    ],
+    "explanation": "Testiranje na tekstu koji NE odgovara otkriva katastrofalno vraćanje. Ograničena duljina ulaza je zadnja crta obrane.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-uvod-bitovi",
+    "topic": "cudni-kutovi",
+    "unitId": "bitovi-i-memorija",
+    "question": "Koliko različitih vrijednosti može zapisati jedan bajt?",
+    "options": [
+      "256",
+      "8",
+      "128",
+      "1024"
+    ],
+    "correctIndex": 0,
+    "explanation": "Osam bitova, svaki dva stanja, dakle 2 na osmu. Zato nepredznačeni bajt ide od 0 do 255.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "cudni-037-endian",
+    "topic": "cudni-kutovi",
+    "unitId": "bitovi-i-memorija",
+    "question": "Što je endianness?",
+    "options": [
+      "Redoslijed kojim se bajtovi broja zapisuju u memoriju",
+      "Broj bajtova koje pojedini tip zauzima u memoriji",
+      "Način na koji se negativni brojevi zapisuju u bitove",
+      "Poravnanje podataka na granicu riječi procesora"
+    ],
+    "correctIndex": 0,
+    "explanation": "Isti broj u memoriji izgleda različito na različitim procesorima. Zato mrežni protokoli propisuju vlastiti redoslijed bajtova.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-038-twos-complement",
+    "topic": "cudni-kutovi",
+    "unitId": "bitovi-i-memorija",
+    "question": "Kako je zapisan broj -1 u osmobitnom dvojnom komplementu?",
+    "options": [
+      "Svi bitovi su postavljeni na jedinicu",
+      "Prvi bit je jedinica, ostali nule",
+      "Svi bitovi su nule osim zadnjeg",
+      "Isto kao 1, uz zaseban bit predznaka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dvojni komplement postoji zato da zbrajanje radi jednako za pozitivne i negativne brojeve, bez posebnog sklopa.",
+    "difficulty": "hard",
+    "code": "-1  ->  11111111"
+  },
+  {
+    "id": "cudni-039-shift",
+    "topic": "cudni-kutovi",
+    "unitId": "bitovi-i-memorija",
+    "question": "Što radi pomak bitova ulijevo za jedno mjesto?",
+    "options": [
+      "Množi broj s dva",
+      "Dijeli broj s dva",
+      "Mijenja predznak broja",
+      "Zamjenjuje prvi i zadnji bit"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pomak je najjeftinija operacija na procesoru. Kod predznačenih brojeva pomak ulijevo može tiho prelijeti vrijednost.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-040-xor",
+    "topic": "cudni-kutovi",
+    "unitId": "bitovi-i-memorija",
+    "question": "Koje svojstvo ima operacija XOR?",
+    "options": [
+      "Dvostruka primjena istog operanda vraća početnu vrijednost",
+      "Rezultat je uvijek veći od svakog od dvaju operanada",
+      "Rezultat je jednak običnom zbroju dvaju operanada",
+      "Primjena nad samim sobom daje taj isti broj natrag"
+    ],
+    "correctIndex": 0,
+    "explanation": "Baš zbog toga se XOR koristi u jednostavnom šifriranju i u zamjeni vrijednosti bez pomoćne varijable.",
+    "difficulty": "hard",
+    "code": "a ^ b ^ b === a"
+  },
+  {
+    "id": "cudni-041-bitmask",
+    "topic": "cudni-kutovi",
+    "unitId": "bitovi-i-memorija",
+    "question": "Zašto se dozvole često pamte kao skup bitova u jednom broju?",
+    "options": [
+      "Jer se provjera i izmjena svode na jednu brzu operaciju",
+      "Jer se tako dozvole ne mogu neovlašteno promijeniti",
+      "Jer brojevi zauzimaju manje mjesta od teksta u bazi",
+      "Jer je broj dozvola time ograničen na razumnu mjeru"
+    ],
+    "correctIndex": 0,
+    "explanation": "Provjera je jedno logičko I, dodavanje jedno logičko ILI. Cijena je čitljivost, pa se u modernom kodu češće koristi jasan popis.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-042-padding",
+    "topic": "cudni-kutovi",
+    "unitId": "bitovi-i-memorija",
+    "question": "Zašto struktura u memoriji zna zauzeti više nego zbroj svojih polja?",
+    "options": [
+      "Jer se polja poravnavaju na granice koje procesor voli",
+      "Jer svako polje nosi i skriveni podatak o svom tipu",
+      "Jer se strukture uvijek zaokružuju na cijeli kilobajt",
+      "Jer prevoditelj dodaje mjesto za buduće izmjene"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nepovoljan redoslijed polja može strukturu napuhati dvostruko. Preslagivanje od većih prema manjima obično ukloni većinu praznina.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-043-bit-facts",
+    "topic": "cudni-kutovi",
+    "unitId": "bitovi-i-memorija",
+    "kind": "multi",
+    "question": "Što je točno o radu s bitovima?",
+    "options": [
+      "Pomak ulijevo množi s potencijom broja dva",
+      "XOR sa samim sobom uvijek daje nulu",
+      "Logičko I s maskom izdvaja odabrane bitove",
+      "Pomak udesno uvijek dijeli bez ikakvog gubitka",
+      "Redoslijed bajtova u memoriji ovisi o procesoru"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Pomak udesno odbacuje bitove koji ispadnu, pa se ostatak dijeljenja nepovratno gubi.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-044-bit-terms",
+    "topic": "cudni-kutovi",
+    "unitId": "bitovi-i-memorija",
+    "kind": "fill",
+    "question": "Dopuni pojmove o zapisu u memoriji.",
+    "text": "Redoslijed bajtova unutar broja zove se ___, a negativni cijeli brojevi zapisuju se u ___ komplementu.",
+    "answers": [
+      "endianness",
+      "dvojnom"
+    ],
+    "distractors": [
+      "poravnanje",
+      "jedinstvenom"
+    ],
+    "explanation": "Oba pojma postanu vidljiva čim se podaci prenose između sustava ili čitaju iz binarne datoteke.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-045-flag-check",
+    "topic": "cudni-kutovi",
+    "unitId": "bitovi-i-memorija",
+    "kind": "order",
+    "question": "Poredaj provjeru je li određena dozvola uključena u masci.",
+    "steps": [
+      "Odredi koji bit predstavlja tu dozvolu",
+      "Napravi masku s jedinicom na tom mjestu",
+      "Primijeni logičko I između vrijednosti i maske",
+      "Provjeri je li rezultat različit od nule"
+    ],
+    "explanation": "Rezultat se uspoređuje s nulom, a ne s jedinicom - jer bit na petom mjestu daje vrijednost 32, ne 1.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-uvod-slucajnost",
+    "topic": "cudni-kutovi",
+    "unitId": "slucajnost-i-id",
+    "question": "Zašto se brojevi iz običnog generatora zovu pseudoslučajni?",
+    "options": [
+      "Jer ih izračunava algoritam iz početnog stanja",
+      "Jer se ponavljaju svakih tisuću poziva",
+      "Jer nikad ne daju istu vrijednost dvaput",
+      "Jer se računaju iz trenutnog vremena sustava"
+    ],
+    "correctIndex": 0,
+    "explanation": "Isto početno stanje daje isti niz. To je korisno za testove, a poražavajuće za sigurnost.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "cudni-046-csprng",
+    "topic": "cudni-kutovi",
+    "unitId": "slucajnost-i-id",
+    "question": "Kad se mora koristiti kriptografski siguran izvor slučajnosti?",
+    "options": [
+      "Kad se stvara token, ključ ili identifikator sesije",
+      "Kad se miješa redoslijed pitanja u kvizu",
+      "Kad se bira nasumična boja za grafikon",
+      "Kad se simulira bacanje kocke u igri"
+    ],
+    "correctIndex": 0,
+    "explanation": "Predvidiv token je isto što i javan token. Za miješanje pitanja predvidljivost nikoga ne košta.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-047-uuid4",
+    "topic": "cudni-kutovi",
+    "unitId": "slucajnost-i-id",
+    "question": "Na čemu se temelji UUID verzije 4?",
+    "options": [
+      "Na 122 slučajna bita",
+      "Na trenutnom vremenu i MAC adresi",
+      "Na sažetku imena i prostora imena",
+      "Na rednom broju iz baze podataka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Vjerojatnost sudara je zanemariva čak i uz milijarde vrijednosti. Verzija 1 koristi vrijeme i MAC, verzija 5 sažetak imena.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-048-uuid7",
+    "topic": "cudni-kutovi",
+    "unitId": "slucajnost-i-id",
+    "question": "Zašto vremenski uređen identifikator poput UUID v7 bolje leži bazi?",
+    "options": [
+      "Jer se novi zapisi upisuju na kraj indeksa, bez raspršivanja",
+      "Jer zauzima manje prostora od potpuno slučajnog",
+      "Jer se iz njega može pročitati koji ga je korisnik stvorio",
+      "Jer se lakše pamti i lakše upisuje ručno"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nasumični ključ pogađa nasumična mjesta u indeksu i cijepa stranice. Vremenski uređen ključ raste monotono i to izbjegava.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-049-birthday",
+    "topic": "cudni-kutovi",
+    "unitId": "slucajnost-i-id",
+    "question": "Zašto je vjerojatnost sudara veća nego što intuicija govori?",
+    "options": [
+      "Jer se uspoređuje svaki par, a broj parova raste kvadratno",
+      "Jer generatori slučajnih brojeva favoriziraju niže vrijednosti",
+      "Jer se identifikatori s vremenom počnu ponavljati",
+      "Jer se svaki novi identifikator uspoređuje samo s prvim"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rođendanski paradoks: u skupini od 23 osobe vjerojatnost dijeljenog rođendana prelazi 50%. Isto vrijedi za sažetke i identifikatore.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-050-autoincrement-leak",
+    "topic": "cudni-kutovi",
+    "unitId": "slucajnost-i-id",
+    "question": "Što odaje identifikator koji je redni broj u bazi?",
+    "options": [
+      "Koliko zapisa sustav ima i kojom brzinom raste",
+      "Koji je korisnik zapis stvorio i kada",
+      "Koliko je zapis puta mijenjan od nastanka",
+      "Na kojem je serveru zapis pohranjen"
+    ],
+    "correctIndex": 0,
+    "explanation": "Naruči dvije stvari s razmakom od tjedan dana i iz razlike brojeva pročitaj promet konkurenta. Zato javni identifikatori nisu redni brojevi.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-051-seed",
+    "topic": "cudni-kutovi",
+    "unitId": "slucajnost-i-id",
+    "question": "Zašto je korisno moći zadati početno stanje generatora?",
+    "options": [
+      "Jer se tako isti niz može ponoviti u testu",
+      "Jer se time povećava kvaliteta slučajnosti",
+      "Jer se generator time ubrza pri svakom pozivu",
+      "Jer se time sprječava ponavljanje vrijednosti"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ponovljiva slučajnost je zlato za testiranje: isti seed daje isti scenarij, pa se greška može ponoviti.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-052-random-facts",
+    "topic": "cudni-kutovi",
+    "unitId": "slucajnost-i-id",
+    "kind": "multi",
+    "question": "Što je točno o slučajnosti i identifikatorima?",
+    "options": [
+      "Obični generator nije prikladan za tokene",
+      "UUID v4 se temelji na slučajnim bitovima",
+      "Vremenski uređeni identifikatori pomažu indeksu baze",
+      "UUID jamči da sudar nikad nije moguć",
+      "Redni brojevi otkrivaju veličinu i rast sustava"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Sudar je moguć, samo krajnje nevjerojatan. Razlika između 'nemoguće' i 'zanemarivo' je važna kod svakog sigurnosnog razmišljanja.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-053-random-terms",
+    "topic": "cudni-kutovi",
+    "unitId": "slucajnost-i-id",
+    "kind": "fill",
+    "question": "Dopuni izbor generatora.",
+    "text": "Za miješanje redoslijeda u igri dovoljan je ___ generator, a za token sesije mora se koristiti ___ siguran generator.",
+    "answers": [
+      "pseudoslučajni",
+      "kriptografski"
+    ],
+    "distractors": [
+      "linearni",
+      "statistički"
+    ],
+    "explanation": "Pitanje nije koliko brojevi izgledaju slučajno, nego može li ih napadač predvidjeti.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-054-token",
+    "topic": "cudni-kutovi",
+    "unitId": "slucajnost-i-id",
+    "kind": "order",
+    "question": "Poredaj stvaranje sigurnog tokena za oporavak lozinke.",
+    "steps": [
+      "Uzmi dovoljno bajtova iz kriptografskog izvora",
+      "Pretvori ih u zapis prikladan za URL",
+      "Spremi njihov sažetak, ne sam token",
+      "Pošalji token korisniku i postavi rok trajanja",
+      "Poništi token nakon prve uspješne upotrebe"
+    ],
+    "explanation": "U bazu ide sažetak, kao i kod lozinke - da proboj baze ne da napadaču upotrebljive tokene.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-uvod-bugovi",
+    "topic": "cudni-kutovi",
+    "unitId": "slavni-bugovi",
+    "question": "Što je bio problem 2000. godine?",
+    "options": [
+      "Godine su se pamtile s dvije znamenke",
+      "Računala nisu podržavala prijestupne godine",
+      "Sustavi nisu mogli zapisati datume nakon 1999.",
+      "Vremenske zone nisu bile usklađene među zemljama"
+    ],
+    "correctIndex": 0,
+    "explanation": "Uštedjeti dva znaka bilo je razumno kad je memorija bila skupa. Problem je što je kod nadživio pretpostavku.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "cudni-055-ariane",
+    "topic": "cudni-kutovi",
+    "unitId": "slavni-bugovi",
+    "question": "Zašto se raketa Ariane 5 raspala 1996. godine?",
+    "options": [
+      "Veliki decimalni broj pretvoren je u premali cjelobrojni tip",
+      "Dva sustava koristila su različite mjerne jedinice",
+      "Softver je imao beskonačnu petlju u izračunu putanje",
+      "Senzori su vratili podatke u pogrešnom redoslijedu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kod je bio ispravan za Ariane 4, ali nova raketa je letjela brže. Prelijevanje je oborilo sustav, a i pričuvni jer je vrtio isti kod.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-056-mars",
+    "topic": "cudni-kutovi",
+    "unitId": "slavni-bugovi",
+    "question": "Zašto je izgubljen Mars Climate Orbiter?",
+    "options": [
+      "Jedan tim je računao u imperijalnim, drugi u metričkim jedinicama",
+      "Datum u sustavu prelio se u negativnu vrijednost",
+      "Antena se pokvarila pa je letjelica izgubila vezu",
+      "Softver je koristio neispravan model gravitacije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Softver je radio točno ono što je napisano. Nedostajala je jedna pretvorba jedinica na granici dvaju sustava.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-057-null",
+    "topic": "cudni-kutovi",
+    "unitId": "slavni-bugovi",
+    "question": "Što je Tony Hoare nazvao svojom milijardu dolara vrijednom greškom?",
+    "options": [
+      "Uvođenje null reference u programski jezik",
+      "Odluku da nizovi počinju od nule",
+      "Korištenje dvije znamenke za godinu",
+      "Dopuštanje implicitne pretvorbe tipova"
+    ],
+    "correctIndex": 0,
+    "explanation": "Hoare je null uveo 1965. jer je bilo lako izvedivo. Suvremeni jezici zato imaju tipove koji izostanak vrijednosti prisiljavaju na obradu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-058-zune",
+    "topic": "cudni-kutovi",
+    "unitId": "slavni-bugovi",
+    "question": "Zašto su se uređaji Zune zamrznuli 31. prosinca 2008.?",
+    "options": [
+      "Petlja koja oduzima dane nikad nije završila u prijestupnoj godini",
+      "Sat se prelio jer je brojač sekundi dosegao granicu",
+      "Datoteka s vremenskim zonama je istekla toga dana",
+      "Baterija se nije mogla puniti nakon zadanog datuma"
+    ],
+    "correctIndex": 0,
+    "explanation": "366. dan prijestupne godine nije se uklapao u uvjet petlje, pa je uređaj vrtio istu provjeru zauvijek. Sam se popravio sutradan.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-059-knight",
+    "topic": "cudni-kutovi",
+    "unitId": "slavni-bugovi",
+    "question": "Što je srušilo Knight Capital 2012. godine?",
+    "options": [
+      "Nova verzija nije stigla na jedan server, a stara zastavica dobila je novo značenje",
+      "Baza podataka izgubila je podatke o svim otvorenim nalozima toga jutra",
+      "Napadač je preuzeo sustav za trgovanje i izdao niz lažnih naloga",
+      "Mrežni ispad prekinuo je vezu s burzom na četrdeset i pet minuta"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sedam servera je imalo novi kod, osmi stari. Ista zastavica pokrenula je dvije različite stvari i tvrtka je izgubila 440 milijuna dolara.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-060-heartbleed",
+    "topic": "cudni-kutovi",
+    "unitId": "slavni-bugovi",
+    "question": "Što je omogućio Heartbleed 2014. godine?",
+    "options": [
+      "Čitanje dijelova memorije servera zbog izostale provjere duljine",
+      "Izvršavanje proizvoljnog koda na ranjivom serveru",
+      "Rušenje servera slanjem prevelikog broja zahtjeva",
+      "Lažno predstavljanje kao bilo koja certificirana domena"
+    ],
+    "correctIndex": 0,
+    "explanation": "Server je vraćao onoliko bajtova koliko klijent zatraži, ne koliko je poslao. U tim bajtovima znali su biti ključevi i lozinke.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-061-lessons",
+    "topic": "cudni-kutovi",
+    "unitId": "slavni-bugovi",
+    "kind": "multi",
+    "question": "Što je zajedničko velikim softverskim katastrofama?",
+    "options": [
+      "Kod je nadživio pretpostavku pod kojom je pisan",
+      "Provjera na granici dvaju sustava je izostala",
+      "Pričuvni sustav vrtio je isti neispravan kod",
+      "Uzrok je gotovo uvijek bio zlonamjeran napad",
+      "Rubni slučaj se u testovima nikad nije pojavio"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Napadi su rijetki u ovom popisu. Daleko češći uzrok je ispravno napisan kod koji radi u svijetu za koji nije bio zamišljen.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "cudni-062-bug-terms",
+    "topic": "cudni-kutovi",
+    "unitId": "slavni-bugovi",
+    "kind": "fill",
+    "question": "Dopuni uzroke dvaju poznatih kvarova.",
+    "text": "Ariane 5 srušilo je ___ vrijednosti pri pretvorbi tipa, a Mars Climate Orbiter neusklađene mjerne ___.",
+    "answers": [
+      "prelijevanje",
+      "jedinice"
+    ],
+    "distractors": [
+      "zaokruživanje",
+      "zone"
+    ],
+    "explanation": "Oba puta je svaki dio sustava radio točno po specifikaciji. Greška je bila na granici, gdje specifikacije nisu razgovarale.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "cudni-063-postmortem",
+    "topic": "cudni-kutovi",
+    "unitId": "slavni-bugovi",
+    "kind": "order",
+    "question": "Poredaj kako se iz kvara izvlači stvarna pouka.",
+    "steps": [
+      "Utvrdi točan slijed događaja",
+      "Pronađi uvjet koji je omogućio kvar",
+      "Pitaj zašto ga nijedna provjera nije uhvatila",
+      "Popravi sustav, ne samo pojedini slučaj",
+      "Podijeli nalaz da drugi ne ponove isto"
+    ],
+    "explanation": "Zaustavljanje na drugom koraku daje popravak jednog buga. Tek treći korak daje popravak cijele klase problema.",
+    "difficulty": "hard"
+  }
+]

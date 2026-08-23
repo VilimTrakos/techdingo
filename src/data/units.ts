@@ -74,6 +74,15 @@ export const UNITS: Record<string, UnitDefinition[]> = {
     { id: 'tajne-i-ovisnosti', topicId: 'sigurnost', labelHr: 'Tajne i ovisnosti', description: 'Trezori, opskrbni lanac i ranjivi paketi.' },
     { id: 'privatnost', topicId: 'sigurnost', labelHr: 'Privatnost', description: 'Osobni podaci, rokovi i curenja.' },
   ],
+  'cudni-kutovi': [
+    { id: 'brojevi', topicId: 'cudni-kutovi', labelHr: 'Brojevi koji lažu', description: 'Pomični zarez, prelijevanje i novac.' },
+    { id: 'tekst-i-znakovi', topicId: 'cudni-kutovi', labelHr: 'Tekst i znakovi', description: 'Unicode, UTF-8, emoji i normalizacija.' },
+    { id: 'vrijeme', topicId: 'cudni-kutovi', labelHr: 'Vrijeme', description: 'UTC, zone, ljetno računanje i 2038.' },
+    { id: 'regex-i-parsiranje', topicId: 'cudni-kutovi', labelHr: 'Regex i parsiranje', description: 'Uzorci, pohlepnost i ReDoS.' },
+    { id: 'bitovi-i-memorija', topicId: 'cudni-kutovi', labelHr: 'Bitovi i memorija', description: 'Endianness, komplement i maske.' },
+    { id: 'slucajnost-i-id', topicId: 'cudni-kutovi', labelHr: 'Slučajnost i ID-jevi', description: 'PRNG, UUID i vjerojatnost sudara.' },
+    { id: 'slavni-bugovi', topicId: 'cudni-kutovi', labelHr: 'Slavni bugovi', description: 'Ariane 5, Mars, null i Knight Capital.' },
+  ],
   general: [
     { id: 'strukture-podataka', topicId: 'general', labelHr: 'Strukture podataka', description: 'Polja, stogovi, redovi, mape i stabla.' },
     { id: 'algoritmi', topicId: 'general', labelHr: 'Algoritmi', description: 'Big-O, pretraživanje, sortiranje i grafovi.' },
