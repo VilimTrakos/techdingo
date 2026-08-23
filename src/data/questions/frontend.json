@@ -2075,5 +2075,166 @@
     "explanation": "Zatvorenje nosi svoju okolinu sa sobom. Zato brojač skriven u funkciji preživi kraj funkcije u kojoj je nastao.",
     "difficulty": "medium",
     "conceptId": "zatvorenje"
+  },
+  {
+    "id": "frontend-910-specificnost-red",
+    "topic": "frontend",
+    "unitId": "css-layout",
+    "difficulty": "medium",
+    "question": "Poredaj selektore od najslabijeg prema najjačem po specifičnosti:",
+    "conceptId": "css-specificnost",
+    "kind": "order",
+    "steps": [
+      "Selektor tipa: p",
+      "Selektor klase: .karta",
+      "Selektor id-a: #zaglavlje",
+      "Inline stil: style='...'"
+    ],
+    "explanation": "Unutar iste kaskade jače uvijek pobjeđuje slabije, bez obzira na redoslijed u datoteci. Iznimka je !important."
+  },
+  {
+    "id": "frontend-911-centriranje-flex",
+    "topic": "frontend",
+    "unitId": "css-layout",
+    "difficulty": "easy",
+    "question": "Što je potrebno da se dijete vodoravno i okomito centrira u flex kontejneru?",
+    "kind": "multi",
+    "options": [
+      "display: flex na kontejneru",
+      "justify-content: center",
+      "align-items: center",
+      "position: absolute na djetetu",
+      "text-align: center na kontejneru"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "justify-content radi po glavnoj osi, align-items po poprečnoj. Zadnje dvije opcije rješavaju druge probleme."
+  },
+  {
+    "id": "frontend-912-grid-fill",
+    "topic": "frontend",
+    "unitId": "css-layout",
+    "difficulty": "medium",
+    "question": "Dopuni pravilo za responzivan grid koji sam prelama stupce:",
+    "conceptId": "css-grid-responzivnost",
+    "kind": "fill",
+    "text": "grid-template-columns: repeat(___, minmax(200px, ___));",
+    "answers": [
+      "auto-fit",
+      "1fr"
+    ],
+    "distractors": [
+      "auto",
+      "100%"
+    ],
+    "explanation": "auto-fit skuplja prazne staze, pa se stupci prelome bez ijednog media queryja."
+  },
+  {
+    "id": "frontend-913-margin-collapse",
+    "topic": "frontend",
+    "unitId": "css-layout",
+    "difficulty": "hard",
+    "question": "Kada se okomite margine dvaju elemenata sklapaju u jednu?",
+    "kind": "multi",
+    "options": [
+      "Između susjednih blok elemenata u normalnom toku",
+      "Između roditelja i prvog djeteta, ako roditelj nema obrub ni padding",
+      "Kod praznog elementa, kojemu se gornja i donja margina sklope",
+      "Između flex stavki unutar flex kontejnera",
+      "Kada je jednom od elemenata postavljen float"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Flex i grid kontejneri uspostavljaju vlastiti kontekst i tamo se margine ne sklapaju — to je čest razlog zašto se razmak 'popravi' prelaskom na flex."
+  },
+  {
+    "id": "frontend-914-defer-vs-async",
+    "topic": "frontend",
+    "unitId": "osnove-weba",
+    "difficulty": "medium",
+    "question": "Po čemu se razlikuju atributi defer i async na skripti?",
+    "conceptId": "defer-vs-async",
+    "options": [
+      "Oba se skidaju usporedno, ali defer čeka HTML i čuva redoslijed",
+      "defer skida skriptu tek nakon HTML-a, dok je async skida usporedno",
+      "async čeka HTML i čuva redoslijed, dok defer izvršava odmah",
+      "Oba odgađaju izvršavanje do prvog korisnikova klika na stranicu"
+    ],
+    "correctIndex": 0,
+    "explanation": "async izvršava čim stigne, pa se skripte mogu preteći. Za međusobno ovisne skripte ide defer."
+  },
+  {
+    "id": "frontend-915-render-red",
+    "topic": "frontend",
+    "unitId": "osnove-weba",
+    "difficulty": "medium",
+    "question": "Poredaj korake kojima preglednik prikaže stranicu:",
+    "conceptId": "render-pipeline",
+    "kind": "order",
+    "steps": [
+      "Parsira HTML u DOM",
+      "Parsira CSS u CSSOM",
+      "Spoji ih u render stablo",
+      "Izračuna raspored (layout)",
+      "Iscrta piksele (paint)"
+    ],
+    "explanation": "Zato blokirajući CSS u zaglavlju odgađa prvo iscrtavanje: bez CSSOM-a nema render stabla."
+  },
+  {
+    "id": "frontend-916-viewport-meta",
+    "topic": "frontend",
+    "unitId": "osnove-weba",
+    "difficulty": "medium",
+    "question": "Zašto responzivna stranica treba meta oznaku viewport?",
+    "options": [
+      "Bez nje mobilni preglednik glumi široki zaslon i sve smanji",
+      "Bez nje media queryji uopće ne rade ni na jednom uređaju",
+      "Bez nje se stranica ne može zumirati prstima na dodirnom zaslonu",
+      "Bez nje preglednik ne učita CSS datoteke namijenjene mobitelu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zadano je oko 980px pa se cijela stranica stisne. width=device-width kaže pregledniku da koristi stvarnu širinu."
+  },
+  {
+    "id": "frontend-917-get-vs-post-forma",
+    "topic": "frontend",
+    "unitId": "osnove-weba",
+    "difficulty": "medium",
+    "question": "Kada forma treba koristiti method='post' umjesto zadanog get-a?",
+    "options": [
+      "Kada mijenja stanje na poslužitelju ili šalje osjetljive podatke",
+      "Kada šalje više od pet polja, jer get ima ograničenje broja polja",
+      "Kada rezultat treba biti moguće spremiti u favorite i podijeliti",
+      "Kada se podaci šalju na drugu domenu od one koja poslužuje formu"
+    ],
+    "correctIndex": 0,
+    "explanation": "get stavlja podatke u URL — završe u povijesti i logovima. Treća opcija je razlog da se ostane na get-u, ne da se prijeđe na post."
+  },
+  {
+    "id": "frontend-918-semantika-korist",
+    "topic": "frontend",
+    "unitId": "osnove-weba",
+    "difficulty": "medium",
+    "question": "Što donosi semantički HTML u odnosu na sve div elemente?",
+    "kind": "multi",
+    "options": [
+      "Čitači ekrana nude navigaciju po orijentirima",
+      "Tipkovnica i nativna stanja rade bez dodatnog koda",
+      "Tražilice lakše razumiju strukturu sadržaja",
+      "Stranica se automatski prilagodi mobilnim zaslonima",
+      "Preglednik sam smanji veličinu CSS datoteke"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Zadnje dvije su česta zabluda — semantika ne mijenja ni raspored ni veličinu datoteka."
   }
 ]
