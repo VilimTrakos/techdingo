@@ -17,6 +17,7 @@
   },
   {
     "id": "sigurnost-001-cia",
+    "isIntro": true,
     "topic": "sigurnost",
     "unitId": "osnove-sigurnosti",
     "question": "Što štiti načelo povjerljivosti?",

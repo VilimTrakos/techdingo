@@ -1,6 +1,7 @@
 [
   {
     "id": "general-001-big-o-growth",
+    "isIntro": true,
     "topic": "general",
     "question": "Što Big-O notacija prvenstveno opisuje?",
     "options": [
@@ -76,6 +77,7 @@
   },
   {
     "id": "general-006-encapsulation",
+    "isIntro": true,
     "topic": "general",
     "question": "Što enkapsulacija znači u objektno orijentiranom dizajnu?",
     "options": [
@@ -91,6 +93,7 @@
   },
   {
     "id": "general-007-git-commit",
+    "isIntro": true,
     "topic": "general",
     "question": "Što predstavlja Git commit?",
     "options": [
@@ -106,6 +109,7 @@
   },
   {
     "id": "general-008-unit-test",
+    "isIntro": true,
     "topic": "general",
     "question": "Što dobar jedinični test najčešće provjerava?",
     "options": [
@@ -166,6 +170,7 @@
   },
   {
     "id": "general-027-map-key-value",
+    "isIntro": true,
     "topic": "general",
     "question": "Koja je osnovna svrha strukture podataka mapa odnosno rječnik?",
     "options": [
@@ -241,6 +246,7 @@
   },
   {
     "id": "general-032-compiler-interpreter",
+    "isIntro": true,
     "topic": "general",
     "question": "Koja tvrdnja razumno razlikuje prevođenje i interpretiranje programa?",
     "options": [

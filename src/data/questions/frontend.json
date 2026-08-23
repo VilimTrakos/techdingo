@@ -1,6 +1,7 @@
 [
   {
     "id": "frontend-001-html-css-js",
+    "isIntro": true,
     "topic": "frontend",
     "question": "Koja je razlika između HTML-a, CSS-a i JavaScripta?",
     "options": [
@@ -16,6 +17,7 @@
   },
   {
     "id": "frontend-002-dom",
+    "isIntro": true,
     "topic": "frontend",
     "question": "Što je DOM (Document Object Model)?",
     "options": [
@@ -76,6 +78,7 @@
   },
   {
     "id": "frontend-008-callback-functions",
+    "isIntro": true,
     "topic": "frontend",
     "question": "Što su callback funkcije?",
     "options": [
@@ -121,6 +124,7 @@
   },
   {
     "id": "frontend-019-box-model",
+    "isIntro": true,
     "topic": "frontend",
     "question": "Što opisuje CSS box model?",
     "options": [
@@ -256,6 +260,7 @@
   },
   {
     "id": "frontend-033-http-status-groups",
+    "isIntro": true,
     "topic": "frontend",
     "question": "Što općenito označavaju HTTP statusni kodovi iz skupine 2xx?",
     "options": [
@@ -286,6 +291,7 @@
   },
   {
     "id": "frontend-035-react-controlled-input",
+    "isIntro": true,
     "topic": "frontend",
     "question": "Što čini tekstualni input kontroliranom React komponentom?",
     "options": [
@@ -481,6 +487,7 @@
   },
   {
     "id": "frontend-079-native-lazy-image",
+    "isIntro": true,
     "topic": "frontend",
     "question": "Što pregledniku poručuje atribut loading='lazy' na img elementu?",
     "options": [
@@ -556,6 +563,7 @@
   },
   {
     "id": "frontend-084-aria-current-page",
+    "isIntro": true,
     "topic": "frontend",
     "question": "Kako u navigaciji semantički označiti link koji predstavlja trenutačnu stranicu?",
     "options": [

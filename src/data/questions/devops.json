@@ -17,6 +17,7 @@
   },
   {
     "id": "devops-001-pwd",
+    "isIntro": true,
     "topic": "devops",
     "unitId": "linux-shell",
     "question": "Što ispisuje naredba `pwd`?",
@@ -179,6 +180,7 @@
   },
   {
     "id": "devops-010-image-vs-container",
+    "isIntro": true,
     "topic": "devops",
     "unitId": "kontejneri",
     "question": "Koja je razlika između imagea i kontejnera?",
@@ -340,6 +342,7 @@
   },
   {
     "id": "devops-019-ci-vs-cd",
+    "isIntro": true,
     "topic": "devops",
     "unitId": "ci-cd",
     "question": "Koja je razlika između CI i CD?",
@@ -503,6 +506,7 @@
   },
   {
     "id": "devops-028-pod",
+    "isIntro": true,
     "topic": "devops",
     "unitId": "orkestracija",
     "question": "Što je pod u Kubernetesu?",
@@ -664,6 +668,7 @@
   },
   {
     "id": "devops-037-rollback",
+    "isIntro": true,
     "topic": "devops",
     "unitId": "deploy-strategije",
     "question": "Zašto je mogućnost povratka na prethodnu verziju važnija od savršenog testiranja?",

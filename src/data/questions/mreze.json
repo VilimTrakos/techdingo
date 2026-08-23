@@ -17,6 +17,7 @@
   },
   {
     "id": "mreze-001-port",
+    "isIntro": true,
     "topic": "mreze",
     "unitId": "osnove-mreza",
     "question": "Čemu služi broj porta?",
@@ -341,6 +342,7 @@
   },
   {
     "id": "mreze-019-a-record",
+    "isIntro": true,
     "topic": "mreze",
     "unitId": "dns",
     "question": "Što sadrži A zapis u DNS-u?",
@@ -504,6 +506,7 @@
   },
   {
     "id": "mreze-028-status-classes",
+    "isIntro": true,
     "topic": "mreze",
     "unitId": "http-protokol",
     "question": "Što označava statusni kod koji počinje s 4?",

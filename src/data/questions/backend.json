@@ -1,6 +1,7 @@
 [
   {
     "id": "backend-002-rest-api",
+    "isIntro": true,
     "topic": "backend",
     "question": "Što je REST API?",
     "options": [
@@ -61,6 +62,7 @@
   },
   {
     "id": "backend-020-rate-limiting",
+    "isIntro": true,
     "topic": "backend",
     "question": "Što je rate limiting i čemu služi?",
     "options": [
@@ -76,6 +78,7 @@
   },
   {
     "id": "backend-023-https-data-in-transit",
+    "isIntro": true,
     "topic": "backend",
     "question": "Što HTTPS dodaje u odnosu na obični HTTP?",
     "options": [
@@ -166,6 +169,7 @@
   },
   {
     "id": "backend-029-transaction-atomicity",
+    "isIntro": true,
     "topic": "backend",
     "question": "Što atomarnost transakcije jamči?",
     "options": [
@@ -331,6 +335,7 @@
   },
   {
     "id": "backend-055-cache-ttl",
+    "isIntro": true,
     "topic": "backend",
     "question": "Što TTL određuje za zapis u cacheu?",
     "options": [
@@ -346,6 +351,7 @@
   },
   {
     "id": "backend-056-queue-acknowledgement",
+    "isIntro": true,
     "topic": "backend",
     "question": "Što acknowledgement poruke obično znači brokeru?",
     "options": [
@@ -361,6 +367,7 @@
   },
   {
     "id": "backend-057-container-image-vs-container",
+    "isIntro": true,
     "topic": "backend",
     "question": "Koja je razlika između container imagea i containera?",
     "options": [
@@ -376,6 +383,7 @@
   },
   {
     "id": "backend-058-slo-target",
+    "isIntro": true,
     "topic": "backend",
     "question": "Što je SLO u kontekstu pouzdanosti servisa?",
     "options": [
