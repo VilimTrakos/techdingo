@@ -38,6 +38,13 @@ function lengthTellRatio(options: string[], correctIndex: number): number | null
   return isLongest && ratio > MAX_CORRECT_LENGTH_RATIO ? ratio : null;
 }
 
+/**
+ * `npm run validate:questions -- --list-length-tells` ispisuje SVAKO pitanje
+ * kod kojeg duljina odaje odgovor, najgore prvo - radna lista za prepravak
+ * netočnih opcija.
+ */
+const LIST_LENGTH_TELLS = process.argv.includes('--list-length-tells');
+
 function main(): void {
   const files = readdirSync(QUESTIONS_DIR).filter((f) => f.endsWith('.json'));
   const reports: FileReport[] = [];
@@ -110,6 +117,13 @@ function main(): void {
     }
 
     variantTotal += [...conceptCounts.values()].filter((n) => n > 1).length;
+
+    if (lengthTells.length > 0 && LIST_LENGTH_TELLS) {
+      console.log(`\n${file} - ${lengthTells.length} pitanja koja odaje duljina (najgore prvo):`);
+      for (const tell of [...lengthTells].sort((a, b) => b.ratio - a.ratio)) {
+        console.log(`  ${tell.ratio.toFixed(2)}x  ${tell.id}`);
+      }
+    }
 
     if (lengthTells.length > 0) {
       const worst = [...lengthTells]
