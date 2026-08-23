@@ -83,6 +83,16 @@ export const UNITS: Record<string, UnitDefinition[]> = {
     { id: 'slucajnost-i-id', topicId: 'cudni-kutovi', labelHr: 'Slučajnost i ID-jevi', description: 'PRNG, UUID i vjerojatnost sudara.' },
     { id: 'slavni-bugovi', topicId: 'cudni-kutovi', labelHr: 'Slavni bugovi', description: 'Ariane 5, Mars, null i Knight Capital.' },
   ],
+  jezici: [
+    { id: 'tipovi', topicId: 'jezici', labelHr: 'Tipovi', description: 'Statičko i dinamičko, zaključivanje i generici.' },
+    { id: 'memorija', topicId: 'jezici', labelHr: 'Memorija', description: 'Stog, hrpa, sakupljanje smeća i curenja.' },
+    { id: 'vrijednosti-reference', topicId: 'jezici', labelHr: 'Vrijednosti i reference', description: 'Kopiranje, dijeljenje i nepromjenjivost.' },
+    { id: 'paradigme', topicId: 'jezici', labelHr: 'Paradigme', description: 'Imperativno, deklarativno, OOP i funkcijsko.' },
+    { id: 'konkurentnost', topicId: 'jezici', labelHr: 'Konkurentnost', description: 'Dretve, utrke, zastoji i async.' },
+    { id: 'izvodjenje-koda', topicId: 'jezici', labelHr: 'Izvođenje koda', description: 'Prevođenje, međukod, JIT i AOT.' },
+    { id: 'greske', topicId: 'jezici', labelHr: 'Greške i iznimke', description: 'Iznimke, povratne greške i fail-fast.' },
+    { id: 'funkcije-i-opseg', topicId: 'jezici', labelHr: 'Funkcije i doseg', description: 'Zatvorenja, doseg i funkcije višeg reda.' },
+  ],
   general: [
     { id: 'strukture-podataka', topicId: 'general', labelHr: 'Strukture podataka', description: 'Polja, stogovi, redovi, mape i stabla.' },
     { id: 'algoritmi', topicId: 'general', labelHr: 'Algoritmi', description: 'Big-O, pretraživanje, sortiranje i grafovi.' },

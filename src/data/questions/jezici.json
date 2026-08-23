@@ -1,0 +1,1302 @@
+[
+  {
+    "id": "jezici-uvod-tipovi",
+    "topic": "jezici",
+    "unitId": "tipovi",
+    "question": "Što je tip podatka?",
+    "options": [
+      "Oznaka koja govori kakva je vrijednost i što se s njom smije",
+      "Količina memorije koju vrijednost zauzima u programu",
+      "Ime pod kojim je vrijednost spremljena u varijablu",
+      "Redoslijed kojim se vrijednosti obrađuju u programu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tip nije samo veličina u memoriji nego skup dopuštenih operacija. Zbog toga zbrajanje broja i datuma nema smisla.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "jezici-001-static-dynamic",
+    "topic": "jezici",
+    "unitId": "tipovi",
+    "question": "Koja je razlika između statičkog i dinamičkog tipiziranja?",
+    "options": [
+      "Statičko provjerava tipove prije pokretanja, dinamičko tijekom rada",
+      "Dinamičko provjerava tipove prije pokretanja, statičko tijekom rada",
+      "Statičko dopušta samo ugrađene tipove, dinamičko i vlastite",
+      "Dinamičko ne provjerava tipove ni u jednom trenutku rada"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dinamički jezici i dalje imaju tipove - samo ih provjeravaju kasnije. Greška se tada javlja na korisniku, a ne u prevoditelju.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-002-strong-weak",
+    "topic": "jezici",
+    "unitId": "tipovi",
+    "question": "Što znači da je jezik slabo tipiziran?",
+    "options": [
+      "Tiho pretvara vrijednosti iz jednog tipa u drugi",
+      "Ne provjerava tipove prije pokretanja programa",
+      "Dopušta da varijabla tijekom rada promijeni tip",
+      "Nema ugrađene tipove nego samo vlastite strukture"
+    ],
+    "correctIndex": 0,
+    "explanation": "Promjena tipa varijable je dinamičnost, a tiha pretvorba slabost. Zato JavaScript zbroji broj i tekst bez ijedne pritužbe.",
+    "difficulty": "hard",
+    "code": "1 + \"2\"   // \"12\"\n\"3\" * 2   // 6"
+  },
+  {
+    "id": "jezici-003-inference",
+    "topic": "jezici",
+    "unitId": "tipovi",
+    "question": "Što radi zaključivanje tipa?",
+    "options": [
+      "Prevoditelj sam odredi tip iz dodijeljene vrijednosti",
+      "Program tijekom rada pretvori vrijednost u očekivani tip",
+      "Prevoditelj upozori kad su tipovi u izrazu različiti",
+      "Razvojni alat predloži tip koji programer mora potvrditi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zaključivanje ne uklanja tipove nego samo njihovo pisanje. Provjera je jednako stroga kao da su ispisani ručno.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-004-null-safety",
+    "topic": "jezici",
+    "unitId": "tipovi",
+    "question": "Kako moderni tipski sustavi rješavaju problem null vrijednosti?",
+    "options": [
+      "Izostanak vrijednosti je zaseban tip koji se mora obraditi",
+      "Null se pretvara u zadanu vrijednost odgovarajućeg tipa",
+      "Null se zabranjuje pa se svaka varijabla mora inicijalizirati",
+      "Provjera na null ubacuje se automatski pri prevođenju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ako je izostanak dio tipa, prevoditelj ne dopusti da se preskoči. Time se Hoareova milijardu dolara vrijedna greška vraća u kod gdje se vidi.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-005-generics",
+    "topic": "jezici",
+    "unitId": "tipovi",
+    "question": "Čemu služe generički tipovi?",
+    "options": [
+      "Da ista struktura radi s više tipova, bez gubitka provjere",
+      "Da se tipovi mogu mijenjati dok program radi",
+      "Da se izbjegne pisanje tipova u potpisu funkcije",
+      "Da se svaka vrijednost može spremiti u istu varijablu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez generika biraš između duplog koda i tipa koji prima sve. Generici daju jedno rješenje koje ostaje provjereno.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-006-any-cost",
+    "topic": "jezici",
+    "unitId": "tipovi",
+    "question": "Koja je stvarna cijena tipa koji prima bilo što?",
+    "options": [
+      "Prevoditelj prestaje provjeravati sve što iz njega proizlazi",
+      "Program počne trošiti osjetno više memorije pri radu",
+      "Prevođenje traje dulje jer se provjeravaju sve mogućnosti",
+      "Vrijednost se mora ručno pretvoriti pri svakoj upotrebi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Jedan `any` se širi kroz kod poput mrlje. Sve što ga dotakne prestaje biti provjereno, a da to nigdje ne piše.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-007-type-facts",
+    "topic": "jezici",
+    "unitId": "tipovi",
+    "kind": "multi",
+    "question": "Što je točno o tipskim sustavima?",
+    "options": [
+      "Statičke provjere hvataju greške prije pokretanja",
+      "Zaključivanje tipa ne znači odsutnost tipova",
+      "Generici čuvaju provjeru uz ponovnu upotrebu koda",
+      "Dinamički jezici nemaju tipove",
+      "Tipovi služe i kao dokumentacija koda"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Dinamički jezici imaju tipove, samo se provjeravaju u trenutku izvođenja. Razlika je u tome KADA se greška otkrije.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-008-typing-terms",
+    "topic": "jezici",
+    "unitId": "tipovi",
+    "kind": "fill",
+    "question": "Dopuni podjelu tipskih sustava.",
+    "text": "Kad se tipovi provjeravaju prije pokretanja, tipiziranje je ___, a kad se vrijednosti tiho pretvaraju iz tipa u tip, jezik je ___ tipiziran.",
+    "answers": [
+      "statičko",
+      "slabo"
+    ],
+    "distractors": [
+      "dinamičko",
+      "strogo"
+    ],
+    "explanation": "Te dvije osi su neovisne. Python je dinamičan ali strog, JavaScript dinamičan i slab, Rust statičan i strog.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-009-type-error",
+    "topic": "jezici",
+    "unitId": "tipovi",
+    "kind": "order",
+    "question": "Poredaj kad se greška u tipu može otkriti, od najranije prema najkasnijoj.",
+    "steps": [
+      "Dok programer piše kod u uređivaču",
+      "Pri prevođenju projekta",
+      "Pri pokretanju testova",
+      "Pri radu aplikacije u produkciji",
+      "Kad je korisnik prijavi kao kvar"
+    ],
+    "explanation": "Svaki korak udesno višestruko poskupljuje popravak. Tipovi postoje da greška ostane na lijevoj strani ovog niza.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-uvod-memorija",
+    "topic": "jezici",
+    "unitId": "memorija",
+    "question": "Što se sprema na stog, a što na hrpu?",
+    "options": [
+      "Na stog lokalne varijable poziva, na hrpu dugoživuće vrijednosti",
+      "Na hrpu lokalne varijable poziva, na stog dugoživuće vrijednosti",
+      "Na stog brojevi, a na hrpu tekstualne vrijednosti",
+      "Na stog podaci programa, a na hrpu podaci sustava"
+    ],
+    "correctIndex": 0,
+    "explanation": "Stog raste i pada s pozivima funkcija i vrlo je brz. Hrpa je slobodna, ali traži da netko vodi računa o oslobađanju.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "jezici-010-gc",
+    "topic": "jezici",
+    "unitId": "memorija",
+    "question": "Kako sakupljač smeća zna da se memorija smije osloboditi?",
+    "options": [
+      "Kad do vrijednosti više ne vodi nijedna živa referenca",
+      "Kad vrijednost nije korištena dulje od zadanog vremena",
+      "Kad program izričito zatraži oslobađanje te vrijednosti",
+      "Kad se funkcija u kojoj je vrijednost nastala završi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dosežljivost, ne starost. Zato jedna zaboravljena referenca u globalnom popisu drži cijeli graf objekata na životu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-011-leak-gc",
+    "topic": "jezici",
+    "unitId": "memorija",
+    "question": "Može li program sa sakupljačem smeća curiti memoriju?",
+    "options": [
+      "Da, ako se čuvaju reference koje se više ne koriste",
+      "Ne, jer sakupljač oslobađa svu neiskorištenu memoriju",
+      "Da, ali samo ako se koristi vanjska knjižnica u C-u",
+      "Ne, osim ako je sakupljač isključen u postavkama"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sakupljač briše nedosežljivo, a ne nepotrebno. Cache bez ograničenja i slušatelj koji se nikad ne odjavi klasični su primjeri.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-012-refcount",
+    "topic": "jezici",
+    "unitId": "memorija",
+    "question": "Koja je slabost brojanja referenci?",
+    "options": [
+      "Kružne reference se nikad ne oslobode same",
+      "Brojanje se ne može koristiti uz više dretvi",
+      "Oslobađanje se odgađa do kraja rada programa",
+      "Broj referenci mora se ažurirati ručno u kodu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dva objekta koja pokazuju jedan na drugi imaju broj referenci jedan, a nedosežljivi su. Zato takvi sustavi dodaju detektor ciklusa ili slabe reference.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-013-stack-overflow",
+    "topic": "jezici",
+    "unitId": "memorija",
+    "question": "Zašto preduboka rekurzija sruši program?",
+    "options": [
+      "Jer svaki poziv zauzme okvir na stogu, a stog je ograničen",
+      "Jer se ista funkcija ne smije pozvati više od tisuću puta",
+      "Jer se rezultat rekurzije ne može spremiti u memoriju",
+      "Jer se rekurzivni pozivi ne mogu optimizirati u petlju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Stog je obično nekoliko megabajta. Neki jezici to izbjegavaju optimizacijom repnog poziva, ali većina ne.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-014-pause",
+    "topic": "jezici",
+    "unitId": "memorija",
+    "question": "Zašto sakupljanje smeća zna izazvati zastoj u aplikaciji?",
+    "options": [
+      "Jer sakupljač povremeno mora zaustaviti rad da obiđe objekte",
+      "Jer se memorija ne može čitati dok se oslobađa",
+      "Jer sakupljač radi na istoj dretvi kao korisničko sučelje",
+      "Jer se oslobođena memorija mora vratiti operativnom sustavu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kod aplikacija s tvrdim zahtjevima na odziv ti zastoji su glavni razlog zašto se biraju jezici bez sakupljača smeća.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-015-ownership",
+    "topic": "jezici",
+    "unitId": "memorija",
+    "question": "Kako Rust oslobađa memoriju bez sakupljača smeća?",
+    "options": [
+      "Vrijednost ima vlasnika i oslobađa se kad vlasnik izađe iz dosega",
+      "Prevoditelj ubaci poziv za oslobađanje na kraju svake funkcije",
+      "Memorija se oslobađa tek kad program završi s radom",
+      "Programer mora ručno osloboditi svaku zauzetu vrijednost"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pravila vlasništva provjerava prevoditelj, pa oslobađanje nema cijenu u vrijeme izvođenja. Cijena se plaća u vremenu učenja.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-016-memory-facts",
+    "topic": "jezici",
+    "unitId": "memorija",
+    "kind": "multi",
+    "question": "Što je točno o upravljanju memorijom?",
+    "options": [
+      "Stog je brži od hrpe",
+      "Sakupljač smeća oslobađa nedosežljive objekte",
+      "Kružne reference muče brojanje referenci",
+      "Sakupljač smeća uklanja svaku mogućnost curenja",
+      "Zauzimanje na hrpi je skuplje od zauzimanja na stogu"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Sakupljač smeća uklanja jednu klasu grešaka, ne sve. Zaboravljena referenca curi jednako uspješno kao i zaboravljeni free.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-017-memory-terms",
+    "topic": "jezici",
+    "unitId": "memorija",
+    "kind": "fill",
+    "question": "Dopuni dva područja memorije.",
+    "text": "Lokalne varijable i okviri poziva žive na ___, a vrijednosti koje moraju nadživjeti funkciju na ___.",
+    "answers": [
+      "stogu",
+      "hrpi"
+    ],
+    "distractors": [
+      "registru",
+      "kešu"
+    ],
+    "explanation": "Zato vraćanje pokazivača na lokalnu varijablu u C-u daje pokazivač na memoriju koja više ne postoji.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-018-gc-cycle",
+    "topic": "jezici",
+    "unitId": "memorija",
+    "kind": "order",
+    "question": "Poredaj kako sakupljač smeća pronalazi što osloboditi.",
+    "steps": [
+      "Kreni od korijenskih referenci, npr. globalnih i sa stoga",
+      "Obiđi sve objekte dosežljive iz njih",
+      "Označi obiđene objekte kao žive",
+      "Neoznačene objekte proglasi smećem",
+      "Oslobodi memoriju koju su zauzimali"
+    ],
+    "explanation": "Poznato kao mark and sweep. Ključno je da se polazi od korijena, a ne od objekata - zato zaboravljena globalna referenca drži sve.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-uvod-reference",
+    "topic": "jezici",
+    "unitId": "vrijednosti-reference",
+    "question": "Što se dogodi kad se objekt pridruži drugoj varijabli?",
+    "options": [
+      "Obje varijable pokazuju na isti objekt u memoriji",
+      "Objekt se kopira pa varijable postaju neovisne",
+      "Prva varijabla postane prazna nakon pridruživanja",
+      "Objekt se zaključa dok jedna varijabla ne završi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kod objekata se kopira referenca, ne sadržaj. Promjena kroz jednu varijablu vidi se i kroz drugu.",
+    "difficulty": "easy",
+    "isIntro": true,
+    "code": "const a = { x: 1 };\nconst b = a;\nb.x = 2;\n// a.x je sada 2"
+  },
+  {
+    "id": "jezici-019-shallow-deep",
+    "topic": "jezici",
+    "unitId": "vrijednosti-reference",
+    "question": "Koja je razlika između plitke i duboke kopije?",
+    "options": [
+      "Plitka kopira samo prvu razinu, duboka i sve ugniježđeno",
+      "Duboka kopira samo prvu razinu, plitka i sve ugniježđeno",
+      "Plitka radi na objektima, a duboka isključivo na nizovima",
+      "Plitka kopira vrijednosti, a duboka samo reference na njih"
+    ],
+    "correctIndex": 0,
+    "explanation": "Plitka kopija izgleda kao rješenje dok se ne promijeni ugniježđeni objekt, koji je i dalje dijeljen s izvornikom.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-020-value-semantics",
+    "topic": "jezici",
+    "unitId": "vrijednosti-reference",
+    "question": "Što znači da tip ima semantiku vrijednosti?",
+    "options": [
+      "Pridruživanje stvara neovisnu kopiju sadržaja",
+      "Vrijednost se ne može promijeniti nakon stvaranja",
+      "Vrijednost se uvijek sprema na hrpu, ne na stog",
+      "Pridruživanje je dopušteno samo unutar iste funkcije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Brojevi i logičke vrijednosti se gotovo svugdje kopiraju. Nepromjenjivost je srodno, ali zasebno svojstvo.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-021-mutation-arg",
+    "topic": "jezici",
+    "unitId": "vrijednosti-reference",
+    "question": "Zašto funkcija koja mijenja primljeni objekt iznenađuje pozivatelja?",
+    "options": [
+      "Jer promjena postaje vidljiva izvan funkcije, bez povratne vrijednosti",
+      "Jer se objekt nakon izlaska iz funkcije automatski oslobađa",
+      "Jer funkcija ne može mijenjati vrijednosti primljene kao argument",
+      "Jer se promjena primijeni tek nakon što funkcija završi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Potpis funkcije ne otkriva da ona mijenja ulaz. Zato se ili radi na kopiji ili se promjena jasno najavi u imenu.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-022-immutable",
+    "topic": "jezici",
+    "unitId": "vrijednosti-reference",
+    "question": "Koja je prednost nepromjenjivih struktura?",
+    "options": [
+      "Vrijednost se ne može promijeniti pod nogama drugog dijela koda",
+      "Zauzimaju manje memorije od promjenjivih struktura",
+      "Brže se čitaju jer im nije potrebna provjera pristupa",
+      "Ne moraju se kopirati pri prosljeđivanju funkciji"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kad se vrijednost ne mijenja, otpada cijela klasa pitanja: tko ju je promijenio, kada i je li još ista.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-023-equality",
+    "topic": "jezici",
+    "unitId": "vrijednosti-reference",
+    "question": "Zašto dva objekta s istim sadržajem nisu jednaki?",
+    "options": [
+      "Jer se po zadanom uspoređuje identitet, ne sadržaj",
+      "Jer objekti nemaju ugrađenu operaciju usporedbe",
+      "Jer se sadržaj objekta ne može pouzdano usporediti",
+      "Jer se usporedba objekata radi tek nakon pretvorbe u tekst"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zadana usporedba pita 'je li to isti objekt'. Za usporedbu po sadržaju treba je definirati, u nekim jezicima ručno.",
+    "difficulty": "hard",
+    "code": "{ x: 1 } === { x: 1 }   // false"
+  },
+  {
+    "id": "jezici-024-const",
+    "topic": "jezici",
+    "unitId": "vrijednosti-reference",
+    "question": "Što `const` na objektu zapravo sprječava?",
+    "options": [
+      "Promjenu toga na što varijabla pokazuje, ne sadržaja objekta",
+      "Promjenu sadržaja objekta, ali ne i toga na što pokazuje",
+      "Bilo kakvu promjenu, i reference i sadržaja objekta",
+      "Promjenu objekta izvan funkcije u kojoj je nastao"
+    ],
+    "correctIndex": 0,
+    "explanation": "Referenca je zaključana, objekt nije. Za zaključavanje sadržaja treba zamrzavanje ili nepromjenjiva struktura.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-025-copy-facts",
+    "topic": "jezici",
+    "unitId": "vrijednosti-reference",
+    "kind": "multi",
+    "question": "Što je točno o kopiranju i referencama?",
+    "options": [
+      "Plitka kopija dijeli ugniježđene objekte s izvornikom",
+      "Zadana usporedba objekata provjerava identitet",
+      "Nepromjenjivost uklanja neočekivane izmjene izvana",
+      "Prosljeđivanje objekta funkciji ga uvijek kopira",
+      "Dvije varijable mogu pokazivati na isti objekt"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Prosljeđivanje objekta kopira referencu, ne objekt. Zato funkcija može promijeniti nešto što pozivatelj i dalje drži.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-026-copy-terms",
+    "topic": "jezici",
+    "unitId": "vrijednosti-reference",
+    "kind": "fill",
+    "question": "Dopuni vrste kopiranja.",
+    "text": "Kopija koja preslika samo prvu razinu zove se ___, a ona koja preslika i sve ugniježđeno zove se ___.",
+    "answers": [
+      "plitka",
+      "duboka"
+    ],
+    "distractors": [
+      "djelomična",
+      "referentna"
+    ],
+    "explanation": "Duboka kopija je skuplja i ima zamke kod cikličkih struktura, pa se ne koristi olako.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-027-safe-update",
+    "topic": "jezici",
+    "unitId": "vrijednosti-reference",
+    "kind": "order",
+    "question": "Poredaj sigurno ažuriranje ugniježđenog polja bez izmjene izvornika.",
+    "steps": [
+      "Napravi kopiju vanjskog objekta",
+      "Napravi kopiju ugniježđenog objekta koji se mijenja",
+      "U toj kopiji postavi novu vrijednost",
+      "Poveži novu ugniježđenu kopiju u vanjsku kopiju",
+      "Vrati novi vanjski objekt"
+    ],
+    "explanation": "Kopira se samo put do promjene, ne cijelo stablo. To je isti obrazac koji koriste knjižnice za nepromjenjivo stanje.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-uvod-paradigme",
+    "topic": "jezici",
+    "unitId": "paradigme",
+    "question": "Koja je razlika između imperativnog i deklarativnog stila?",
+    "options": [
+      "Imperativni opisuje kako, deklarativni opisuje što",
+      "Deklarativni opisuje kako, imperativni opisuje što",
+      "Imperativni radi s objektima, deklarativni s funkcijama",
+      "Deklarativni se izvršava brže od imperativnog stila"
+    ],
+    "correctIndex": 0,
+    "explanation": "Petlja koja zbraja je imperativna, SQL upit je deklarativan. Isti posao, druga razina opisa.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "jezici-028-pure-function",
+    "topic": "jezici",
+    "unitId": "paradigme",
+    "question": "Što je čista funkcija?",
+    "options": [
+      "Za isti ulaz uvijek daje isti izlaz i nema nuspojava",
+      "Funkcija koja ne prima nijedan argument izvana",
+      "Funkcija koja ne poziva nijednu drugu funkciju",
+      "Funkcija koja mijenja samo vlastite lokalne varijable"
+    ],
+    "correctIndex": 0,
+    "explanation": "Čiste funkcije se trivijalno testiraju i mogu se keširati. Nuspojave nisu zabranjene, samo se guraju na rub sustava.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-029-side-effect",
+    "topic": "jezici",
+    "unitId": "paradigme",
+    "question": "Što je nuspojava funkcije?",
+    "options": [
+      "Svaka promjena stanja izvan povratne vrijednosti",
+      "Greška koja se dogodi tijekom izvršavanja funkcije",
+      "Vrijednost koju funkcija vraća pozivatelju",
+      "Vrijeme koje funkcija potroši na izvršavanje"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zapis u bazu, ispis, izmjena globalne varijable - sve su to nuspojave. Bez njih program ne radi ništa korisno, ali ih treba držati na okupu.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-030-oop-vs-fp",
+    "topic": "jezici",
+    "unitId": "paradigme",
+    "question": "U čemu se objektni i funkcijski pristup najviše razlikuju?",
+    "options": [
+      "Objektni veže podatke i ponašanje, funkcijski ih razdvaja",
+      "Funkcijski veže podatke i ponašanje, objektni ih razdvaja",
+      "Objektni radi bez stanja, a funkcijski se oslanja na stanje",
+      "Funkcijski se koristi samo za matematičke izračune"
+    ],
+    "correctIndex": 0,
+    "explanation": "Objektni kaže 'objekt zna što s tim podacima', funkcijski 'podaci su podaci, a funkcije rade nad njima'. Oba pristupa rješavaju iste probleme.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-031-composition",
+    "topic": "jezici",
+    "unitId": "paradigme",
+    "question": "Zašto se preporučuje kompozicija umjesto nasljeđivanja?",
+    "options": [
+      "Jer nasljeđivanje čvrsto veže dijete uz unutarnje odluke roditelja",
+      "Jer nasljeđivanje troši više memorije od kompozicije",
+      "Jer se naslijeđene metode ne mogu prepisati u djetetu",
+      "Jer nasljeđivanje ne podržava provjeru tipova"
+    ],
+    "correctIndex": 0,
+    "explanation": "Promjena u roditelju tiho mijenja svu djecu, ponekad i nekoliko razina duboko. Kompozicija tu vezu čini vidljivom i zamjenjivom.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-032-declarative-cost",
+    "topic": "jezici",
+    "unitId": "paradigme",
+    "question": "Koja je cijena deklarativnog pristupa?",
+    "options": [
+      "Manja kontrola nad time kako se posao stvarno izvodi",
+      "Kod postaje dulji i teže čitljiv nego imperativni",
+      "Rezultat nije uvijek isti za isti ulazni podatak",
+      "Ne može se koristiti uz provjeru tipova"
+    ],
+    "correctIndex": 0,
+    "explanation": "SQL upit je kratak i jasan, ali kad je spor, moraš zaviriti u plan izvršavanja - dakle ipak u 'kako'.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-033-declarative-ui",
+    "topic": "jezici",
+    "unitId": "paradigme",
+    "question": "Zašto se moderna sučelja pišu deklarativno?",
+    "options": [
+      "Jer se opisuje željeno stanje, a knjižnica izvede promjene",
+      "Jer se time smanjuje količina prenesenih podataka",
+      "Jer preglednici ne podržavaju izravnu izmjenu DOM-a",
+      "Jer se deklarativni kod izvršava na više dretvi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ručno usklađivanje DOM-a sa stanjem je izvor beskrajnih grešaka. Deklarativni pristup taj posao prepušta knjižnici.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-034-fp-benefits",
+    "topic": "jezici",
+    "unitId": "paradigme",
+    "kind": "multi",
+    "question": "Što donosi rad s čistim funkcijama i nepromjenjivim podacima?",
+    "options": [
+      "Lakše testiranje bez postavljanja okoline",
+      "Rezultat se smije zapamtiti i ponovno upotrijebiti",
+      "Manje grešaka od neočekivane izmjene stanja",
+      "Uvijek brže izvođenje od imperativnog koda",
+      "Lakše zaključivanje o tome što kod radi"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Kopiranje umjesto izmjene ponekad je sporije. Dobitak je u predvidljivosti, ne nužno u brzini.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-035-paradigm-terms",
+    "topic": "jezici",
+    "unitId": "paradigme",
+    "kind": "fill",
+    "question": "Dopuni pojmove iz funkcijskog pristupa.",
+    "text": "Funkcija koja za isti ulaz uvijek daje isti izlaz i ne mijenja ništa izvan sebe zove se ___, a svaka promjena izvan povratne vrijednosti zove se ___.",
+    "answers": [
+      "čista",
+      "nuspojava"
+    ],
+    "distractors": [
+      "statička",
+      "iznimka"
+    ],
+    "explanation": "Program bez ijedne nuspojave ne bi imao ni ispis. Cilj nije ukloniti ih nego znati gdje su.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-036-refactor-pure",
+    "topic": "jezici",
+    "unitId": "paradigme",
+    "kind": "order",
+    "question": "Poredaj kako se funkcija s nuspojavom razdvaja radi lakšeg testiranja.",
+    "steps": [
+      "Prepoznaj koji dio funkcije samo računa",
+      "Izdvoji taj dio u zasebnu čistu funkciju",
+      "Ostavi nuspojavu u vanjskoj funkciji",
+      "Neka vanjska funkcija pozove čistu i primijeni rezultat",
+      "Testiraj čisti dio bez ikakve okoline"
+    ],
+    "explanation": "Obrazac je uvijek isti: računanje u sredini, nuspojave na rubu. Tako se najveći dio logike testira bez baze i mreže.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-uvod-konkurentnost",
+    "topic": "jezici",
+    "unitId": "konkurentnost",
+    "question": "Koja je razlika između procesa i dretve?",
+    "options": [
+      "Proces ima vlastitu memoriju, dretve unutar njega je dijele",
+      "Dretva ima vlastitu memoriju, procesi je međusobno dijele",
+      "Proces radi na jednoj jezgri, a dretva na više njih",
+      "Dretva je stariji naziv za isto što i proces"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dijeljena memorija je i prednost i izvor svih problema s dretvama. Procesi su sigurniji, ali skuplji za komunikaciju.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "jezici-037-race-condition",
+    "topic": "jezici",
+    "unitId": "konkurentnost",
+    "question": "Što je stanje utrke?",
+    "options": [
+      "Ishod ovisi o redoslijedu kojim se operacije preklope",
+      "Program troši previše procesorskog vremena na čekanje",
+      "Dvije dretve se međusobno blokiraju i nijedna ne napreduje",
+      "Dretva završi prije nego što je zadatak dovršen"
+    ],
+    "correctIndex": 0,
+    "explanation": "Utrka daje ispravan rezultat u devedeset devet od sto pokretanja. To je razlog zašto se otkriva tek u produkciji.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-038-mutex",
+    "topic": "jezici",
+    "unitId": "konkurentnost",
+    "question": "Čemu služi mutex?",
+    "options": [
+      "Osigurava da samo jedna dretva ulazi u kritični dio koda",
+      "Ubrzava izvođenje tako što posao dijeli na više dretvi",
+      "Sprječava da dretva potroši previše memorije",
+      "Osigurava da dretve završe zadanim redoslijedom"
+    ],
+    "correctIndex": 0,
+    "explanation": "Mutex nije brzina nego ispravnost. Cijena je čekanje, a zloupotreba vodi u zastoj.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-039-deadlock",
+    "topic": "jezici",
+    "unitId": "konkurentnost",
+    "question": "Kako nastaje potpuni zastoj?",
+    "options": [
+      "Dvije dretve drže po jedan resurs i čekaju onaj drugi",
+      "Dretva zauzme resurs i nikad ga ne otpusti",
+      "Previše dretvi istovremeno traži isti resurs",
+      "Dretva čeka odgovor koji nikad ne stigne s mreže"
+    ],
+    "correctIndex": 0,
+    "explanation": "Najjednostavnija obrana je zaključavati resurse uvijek istim redoslijedom. Time se ciklus čekanja ne može zatvoriti.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-040-async-vs-thread",
+    "topic": "jezici",
+    "unitId": "konkurentnost",
+    "question": "Po čemu se asinkroni rad razlikuje od višedretvenosti?",
+    "options": [
+      "Asinkroni oslobađa dretvu tijekom čekanja, bez novih dretvi",
+      "Asinkroni stvara novu dretvu za svaku operaciju čekanja",
+      "Višedretveni radi samo s ulazom i izlazom, ne s računanjem",
+      "Asinkroni ubrzava izračune koji troše procesor"
+    ],
+    "correctIndex": 0,
+    "explanation": "Async rješava čekanje, dretve rješavaju računanje. Zato async ne ubrzava petlju koja melje procesor - samo je pomakne.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-041-atomic",
+    "topic": "jezici",
+    "unitId": "konkurentnost",
+    "question": "Zašto je `brojac++` iz više dretvi nesiguran?",
+    "options": [
+      "Jer se sastoji od čitanja, uvećanja i zapisa, koji se mogu preplesti",
+      "Jer se cijeli brojevi ne mogu dijeliti između dretvi",
+      "Jer operator uvećanja nije podržan u višedretvenom kodu",
+      "Jer svaka dretva radi s vlastitom kopijom te varijable"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dvije dretve pročitaju istu vrijednost, obje je uvećaju i obje zapišu - jedno uvećanje nestane. Zato postoje atomarne operacije.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-042-actor",
+    "topic": "jezici",
+    "unitId": "konkurentnost",
+    "question": "Kako model aktora izbjegava probleme s dijeljenom memorijom?",
+    "options": [
+      "Aktori ne dijele stanje nego razmjenjuju poruke",
+      "Aktori zaključavaju memoriju prije svakog pristupa",
+      "Aktori se izvršavaju strogo jedan za drugim",
+      "Aktori kopiraju cijelu memoriju pri svakoj promjeni"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez dijeljenog stanja nema utrka ni zaključavanja. Erlang i Akka su na tome izgradili cijele sustave.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-043-concurrency-facts",
+    "topic": "jezici",
+    "unitId": "konkurentnost",
+    "kind": "multi",
+    "question": "Što je točno o konkurentnosti?",
+    "options": [
+      "Stanje utrke ovisi o rasporedu izvođenja",
+      "Zaključavanje istim redoslijedom sprječava zastoj",
+      "Asinkroni rad ne mora značiti više dretvi",
+      "Više dretvi uvijek znači brži program",
+      "Nepromjenjivi podaci uklanjaju potrebu za zaključavanjem"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Više dretvi donosi trošak usklađivanja i prebacivanja konteksta. Kod poslova koji čekaju to zna biti i sporije.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-044-concurrency-terms",
+    "topic": "jezici",
+    "unitId": "konkurentnost",
+    "kind": "fill",
+    "question": "Dopuni pojmove iz konkurentnosti.",
+    "text": "Kad ishod ovisi o redoslijedu izvođenja, riječ je o stanju ___, a kad dvije dretve zauvijek čekaju jedna drugu, o ___.",
+    "answers": [
+      "utrke",
+      "zastoju"
+    ],
+    "distractors": [
+      "čekanja",
+      "preplitanju"
+    ],
+    "explanation": "Utrka daje kriv rezultat, zastoj nikakav. Utrku je teže otkriti jer se ne vidi da se nešto zaustavilo.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-045-lost-update",
+    "topic": "jezici",
+    "unitId": "konkurentnost",
+    "kind": "order",
+    "question": "Poredaj kako se izgubi jedno uvećanje brojača.",
+    "steps": [
+      "Prva dretva pročita vrijednost 5",
+      "Druga dretva pročita istu vrijednost 5",
+      "Prva izračuna 6 i zapiše je",
+      "Druga izračuna 6 i zapiše je",
+      "Brojač pokazuje 6 umjesto očekivanih 7"
+    ],
+    "explanation": "Problem je u tome što čitanje i pisanje nisu jedna operacija. Isti obrazac postoji i u bazama, gdje se rješava zaključavanjem retka.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-uvod-izvodjenje",
+    "topic": "jezici",
+    "unitId": "izvodjenje-koda",
+    "question": "Koja je razlika između prevođenja i tumačenja koda?",
+    "options": [
+      "Prevoditelj kod pretvara unaprijed, tumač ga izvodi u hodu",
+      "Tumač kod pretvara unaprijed, prevoditelj ga izvodi u hodu",
+      "Prevoditelj radi s tekstom, a tumač s binarnim datotekama",
+      "Tumač provjerava tipove, a prevoditelj samo sintaksu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Podjela je danas mekša nego u udžbenicima: većina modernih jezika koristi i jedno i drugo.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "jezici-046-bytecode",
+    "topic": "jezici",
+    "unitId": "izvodjenje-koda",
+    "question": "Čemu služi međukod (bytecode)?",
+    "options": [
+      "Isti prevedeni kod može se izvoditi na više platformi",
+      "Kod se time šifrira i postaje nečitljiv za druge",
+      "Program se time smanjuje na manje od izvornog koda",
+      "Kod se time provjerava strože nego pri prevođenju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Java i C# prevode u međukod koji izvodi virtualni stroj. Prenosivost je cijena za sloj između koda i procesora.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-047-jit",
+    "topic": "jezici",
+    "unitId": "izvodjenje-koda",
+    "question": "Što radi JIT prevoditelj?",
+    "options": [
+      "Tijekom rada prevodi vrući dio koda u strojni jezik",
+      "Prevodi cijeli program prije nego se pokrene",
+      "Provjerava tipove neposredno prije svakog poziva",
+      "Prevodi kod na serveru pa ga šalje klijentu"
+    ],
+    "correctIndex": 0,
+    "explanation": "JIT prati koji se kod izvodi često i njega optimizira. Zato se performanse mjere tek nakon zagrijavanja, ne u prvoj sekundi.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-048-aot",
+    "topic": "jezici",
+    "unitId": "izvodjenje-koda",
+    "question": "Koja je prednost prevođenja unaprijed nad JIT-om?",
+    "options": [
+      "Program starta odmah punom brzinom, bez zagrijavanja",
+      "Program se izvodi brže u dugotrajnom radu",
+      "Program zauzima manje memorije tijekom prevođenja",
+      "Program se može mijenjati dok se izvodi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zato je AOT prirodan izbor za funkcije u oblaku i alate iz naredbenog retka, gdje proces živi sekundu.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-049-transpile",
+    "topic": "jezici",
+    "unitId": "izvodjenje-koda",
+    "question": "Što radi transpiler?",
+    "options": [
+      "Prevodi kod iz jednog jezika u drugi jezik iste razine",
+      "Prevodi kod izravno u strojni jezik procesora",
+      "Uklanja iz koda dijelove koji se ne koriste",
+      "Sažima kod da zauzme manje prostora"
+    ],
+    "correctIndex": 0,
+    "explanation": "TypeScript u JavaScript, ili noviji JavaScript u stariji. Rezultat je opet izvorni kod, ne izvršna datoteka.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-050-optimization",
+    "topic": "jezici",
+    "unitId": "izvodjenje-koda",
+    "question": "Zašto optimizirani kod zna biti teži za otklanjanje grešaka?",
+    "options": [
+      "Jer prevoditelj presloži i ukloni dijelove koda",
+      "Jer se optimizirani kod ne može zaustaviti u točki prekida",
+      "Jer optimizacija uklanja imena svih varijabli",
+      "Jer se optimizirani kod izvodi na drugoj dretvi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Redak u kojem se program zaustavio možda više ne postoji, a varijabla je nestala u registru. Zato se za razvoj koriste neoptimizirane gradnje.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-051-undefined-behavior",
+    "topic": "jezici",
+    "unitId": "izvodjenje-koda",
+    "question": "Zašto je nedefinirano ponašanje u C-u opasno?",
+    "options": [
+      "Jer prevoditelj smije pretpostaviti da se ono ne događa",
+      "Jer program u tom slučaju uvijek odmah pukne",
+      "Jer se takav kod ne može prevesti bez upozorenja",
+      "Jer se ponašanje razlikuje samo među operativnim sustavima"
+    ],
+    "correctIndex": 0,
+    "explanation": "Prevoditelj na temelju te pretpostavke ukloni provjere koje je programer napisao. Program tada radi 'ispravno' dok ne prestane.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-052-execution-facts",
+    "topic": "jezici",
+    "unitId": "izvodjenje-koda",
+    "kind": "multi",
+    "question": "Što je točno o izvođenju koda?",
+    "options": [
+      "Međukod omogućuje prenosivost među platformama",
+      "JIT optimizira kod koji se često izvodi",
+      "Prevođenje unaprijed daje brži start programa",
+      "Tumačeni jezici nemaju nikakvu fazu prevođenja",
+      "Transpiler proizvodi izvorni kod, ne strojni"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Gotovo svaki 'tumačeni' jezik danas prvo prevede izvorni kod u međukod. Čistog tumačenja retka po redak gotovo više nema.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-053-execution-terms",
+    "topic": "jezici",
+    "unitId": "izvodjenje-koda",
+    "kind": "fill",
+    "question": "Dopuni načine izvođenja.",
+    "text": "Prevođenje vrućeg koda tijekom rada zove se ___, a prevođenje cijelog programa prije pokretanja zove se ___ prevođenje.",
+    "answers": [
+      "JIT",
+      "AOT"
+    ],
+    "distractors": [
+      "JVM",
+      "IL"
+    ],
+    "explanation": "Izbor je kompromis: JIT daje bolju dugoročnu brzinu, AOT bolji start.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-054-pipeline",
+    "topic": "jezici",
+    "unitId": "izvodjenje-koda",
+    "kind": "order",
+    "question": "Poredaj put od izvornog koda do izvođenja u jeziku s virtualnim strojem.",
+    "steps": [
+      "Izvorni kod se raščlani i provjeri",
+      "Nastaje međukod",
+      "Virtualni stroj učita međukod",
+      "Vrući dijelovi se prevedu u strojni kod",
+      "Program se izvodi na procesoru"
+    ],
+    "explanation": "Optimizacija dolazi tek nakon učitavanja jer se do tada ne zna što je vruće. Zato prvi prolaz kroz kod uvijek zna biti spor.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-uvod-greske",
+    "topic": "jezici",
+    "unitId": "greske",
+    "question": "Čemu služi mehanizam iznimki?",
+    "options": [
+      "Prekida uobičajeni tok da se greška obradi na prikladnom mjestu",
+      "Bilježi greške u dnevnik radi kasnije analize",
+      "Sprječava da se greška uopće dogodi u programu",
+      "Zaustavlja program čim se dogodi bilo kakva greška"
+    ],
+    "correctIndex": 0,
+    "explanation": "Iznimka odvaja mjesto nastanka greške od mjesta gdje se s njom zna što napraviti.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "jezici-055-swallow",
+    "topic": "jezici",
+    "unitId": "greske",
+    "question": "Zašto je prazan blok za hvatanje iznimke opasan?",
+    "options": [
+      "Jer program nastavi raditi kao da se ništa nije dogodilo",
+      "Jer se time usporava izvođenje ostatka programa",
+      "Jer se iznimka nakon toga ponovno baci više u stogu",
+      "Jer prevoditelj takav kod odbija prevesti"
+    ],
+    "correctIndex": 0,
+    "explanation": "Progutana greška ne nestaje nego se pretvara u čudno ponašanje kasnije, na mjestu gdje uzrok više nije vidljiv.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-056-error-values",
+    "topic": "jezici",
+    "unitId": "greske",
+    "question": "Koja je prednost vraćanja greške kao vrijednosti nad bacanjem iznimke?",
+    "options": [
+      "Iz potpisa funkcije se vidi da može zakazati",
+      "Greška se time obradi brže nego kod iznimke",
+      "Program se ne može srušiti ni u kojem slučaju",
+      "Greška se automatski prosljeđuje pozivatelju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Go i Rust idu tim putem. Cijena je više koda za provjeru, dobitak je da se zakazivanje ne može previdjeti.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-057-finally",
+    "topic": "jezici",
+    "unitId": "greske",
+    "question": "Čemu služi blok koji se izvršava u svakom slučaju?",
+    "options": [
+      "Oslobađanju resursa bez obzira na ishod",
+      "Ponavljanju operacije koja nije uspjela",
+      "Bilježenju greške u dnevnik aplikacije",
+      "Vraćanju zadane vrijednosti nakon greške"
+    ],
+    "correctIndex": 0,
+    "explanation": "Otvorena datoteka i zauzeta veza moraju se osloboditi i kad sve pukne. Moderni jezici to rade kroz konstrukte koji čiste sami.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-058-catch-specific",
+    "topic": "jezici",
+    "unitId": "greske",
+    "question": "Zašto se hvata određena vrsta iznimke, a ne svaka?",
+    "options": [
+      "Jer bi široko hvatanje sakrilo i greške koje se ne očekuju",
+      "Jer se široko hvatanje izvodi sporije od uskog",
+      "Jer se opća iznimka ne može zabilježiti u dnevnik",
+      "Jer neki jezici ne dopuštaju hvatanje svih iznimki"
+    ],
+    "correctIndex": 0,
+    "explanation": "Hvatanje svega uhvati i grešku u tipu i grešku u pisanju imena. Program tada tiho nastavi s pokvarenim stanjem.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-059-fail-fast",
+    "topic": "jezici",
+    "unitId": "greske",
+    "question": "Zašto je bolje da program pukne rano nego da nastavi s neispravnim stanjem?",
+    "options": [
+      "Jer je uzrok tada blizu mjesta pada i lakše se nađe",
+      "Jer se time smanjuje broj grešaka u programu",
+      "Jer korisnici lakše podnose pad nego pogrešan rezultat",
+      "Jer se program tada može automatski ponovno pokrenuti"
+    ],
+    "correctIndex": 0,
+    "explanation": "Greška koja se tiho prenosi kroz deset slojeva izbije daleko od uzroka. Tada je istraga skuplja od samog kvara.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-060-error-message",
+    "topic": "jezici",
+    "unitId": "greske",
+    "question": "Što dobra poruka o grešci mora sadržavati?",
+    "options": [
+      "Što je pokušano, što je pošlo po zlu i što učiniti",
+      "Točan redak koda u kojem se greška dogodila",
+      "Cijeli sadržaj podataka koji su obrađivani",
+      "Vrijeme i identifikator dretve koja je pukla"
+    ],
+    "correctIndex": 0,
+    "explanation": "Poruka je za čovjeka koji rješava problem. Tehnički detalji idu u dnevnik, a korisniku treba sljedeći korak.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-061-error-handling",
+    "topic": "jezici",
+    "unitId": "greske",
+    "kind": "multi",
+    "question": "Što je dobra praksa u obradi grešaka?",
+    "options": [
+      "Hvatati određenu vrstu iznimke, ne sve odjednom",
+      "Osloboditi resurse bez obzira na ishod",
+      "Iz poruke učiniti jasnim što je pokušano",
+      "Prazan blok za hvatanje kad se greška ne očekuje",
+      "Prosljeđivati grešku dalje kad se ne zna riješiti"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Prazan blok je uvijek odluka da se problem sakrije. Ako se doista ništa ne poduzima, barem treba zapisati što se dogodilo.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-062-error-terms",
+    "topic": "jezici",
+    "unitId": "greske",
+    "kind": "fill",
+    "question": "Dopuni pristupe obradi grešaka.",
+    "text": "Kad funkcija prekine tok i signalizira problem, riječ je o ___, a kad grešku vrati kao običnu vrijednost, riječ je o pristupu s ___ vrijednostima.",
+    "answers": [
+      "iznimci",
+      "povratnim"
+    ],
+    "distractors": [
+      "prekidu",
+      "zadanim"
+    ],
+    "explanation": "Oba pristupa rade. Razlika je u tome vidi li se iz potpisa funkcije da može zakazati.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-063-error-flow",
+    "topic": "jezici",
+    "unitId": "greske",
+    "kind": "order",
+    "question": "Poredaj obradu greške pri dohvatu podataka s mreže.",
+    "steps": [
+      "Pokušaj dohvatiti podatke",
+      "Prepoznaj o kakvoj se grešci radi",
+      "Odluči je li vrijedno ponoviti pokušaj",
+      "Zapiši dovoljno detalja u dnevnik",
+      "Vrati korisniku razumljivu poruku"
+    ],
+    "explanation": "Vrsta greške određuje sve ostalo: privremeni ispad se ponavlja, kriv zahtjev nikad. Ponavljanje bez razlikovanja samo pogoršava ispad.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-uvod-funkcije",
+    "topic": "jezici",
+    "unitId": "funkcije-i-opseg",
+    "question": "Što znači da su funkcije vrijednosti prvog reda?",
+    "options": [
+      "Mogu se dodijeliti varijabli i predati kao argument",
+      "Izvršavaju se prije svih ostalih funkcija u programu",
+      "Mogu se pozvati bez navođenja ijednog argumenta",
+      "Imaju prednost pri prevođenju u odnosu na metode"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ako se funkcija može predati dalje, moguće su povratne funkcije, dekoratori i cijeli funkcijski stil.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "jezici-064-closure",
+    "topic": "jezici",
+    "unitId": "funkcije-i-opseg",
+    "question": "Što je zatvorenje (closure)?",
+    "options": [
+      "Funkcija koja pamti varijable iz mjesta gdje je nastala",
+      "Funkcija koja se izvršava odmah nakon definiranja",
+      "Funkcija koja nema pristup vanjskim varijablama",
+      "Funkcija koja se poziva sama iz sebe"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zatvorenje nosi svoju okolinu sa sobom. Zato brojač skriven u funkciji nastavi raditi i nakon što je vanjska funkcija završila.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-065-scope",
+    "topic": "jezici",
+    "unitId": "funkcije-i-opseg",
+    "question": "Što određuje leksički doseg?",
+    "options": [
+      "Vidljivost varijable prema mjestu gdje je napisana u kodu",
+      "Vidljivost varijable prema tome tko je funkciju pozvao",
+      "Redoslijed kojim se varijable oslobađaju iz memorije",
+      "Koliko dugo varijabla postoji tijekom rada programa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Doseg se čita iz koda, ne iz toka izvođenja. Zato se ugniježđena funkcija uvijek zna na što se odnosi njezina varijabla.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-066-hoisting",
+    "topic": "jezici",
+    "unitId": "funkcije-i-opseg",
+    "question": "Zašto varijabla deklarirana s `let` prije dodjele javlja grešku?",
+    "options": [
+      "Jer postoji, ali je do dodjele u nedostupnoj zoni",
+      "Jer još uopće nije stvorena u tom trenutku",
+      "Jer je njezina vrijednost tada jednaka undefined",
+      "Jer se `let` smije koristiti samo unutar funkcije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Varijabla je podignuta na vrh bloka, ali nedostupna do retka s dodjelom. Kod `var` se u istom slučaju dobije undefined, što je gore.",
+    "difficulty": "hard",
+    "code": "console.log(a); // undefined\nvar a = 1;\n\nconsole.log(b); // greška\nlet b = 1;"
+  },
+  {
+    "id": "jezici-067-recursion",
+    "topic": "jezici",
+    "unitId": "funkcije-i-opseg",
+    "question": "Što svaka rekurzivna funkcija mora imati?",
+    "options": [
+      "Uvjet pri kojem se prestaje pozivati",
+      "Najviše jedan poziv same sebe po grani",
+      "Povratnu vrijednost istog tipa kao ulaz",
+      "Argument koji se pri svakom pozivu smanjuje"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez uvjeta zaustavljanja rekurzija troši stog dok program ne pukne. Argument se najčešće smanjuje, ali to nije uvjet.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-068-default-arg",
+    "topic": "jezici",
+    "unitId": "funkcije-i-opseg",
+    "question": "Zašto je promjenjivi objekt kao zadana vrijednost argumenta opasan?",
+    "options": [
+      "Jer se u nekim jezicima stvori jednom i dijeli među pozivima",
+      "Jer se pri svakom pozivu ponovno stvara i troši memoriju",
+      "Jer se zadane vrijednosti ne mogu mijenjati u funkciji",
+      "Jer prevoditelj tada ne može zaključiti tip argumenta"
+    ],
+    "correctIndex": 0,
+    "explanation": "U Pythonu se prazan popis kao zadana vrijednost stvori jednom pri definiciji. Drugi poziv zatekne ono što je prvi ostavio.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-069-higher-order",
+    "topic": "jezici",
+    "unitId": "funkcije-i-opseg",
+    "question": "Što je funkcija višeg reda?",
+    "options": [
+      "Prima funkciju kao argument ili je vraća kao rezultat",
+      "Izvršava se prije svih funkcija nižeg reda",
+      "Poziva veći broj drugih funkcija u svom tijelu",
+      "Radi s više tipova podataka istovremeno"
+    ],
+    "correctIndex": 0,
+    "explanation": "map, filter i reduce su funkcije višeg reda. Isti obrazac stoji iza svakog dekoratora i međusloja.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-070-scope-facts",
+    "topic": "jezici",
+    "unitId": "funkcije-i-opseg",
+    "kind": "multi",
+    "question": "Što je točno o funkcijama i dosegu?",
+    "options": [
+      "Zatvorenje pamti okolinu u kojoj je nastalo",
+      "Leksički doseg određuje mjesto pisanja u kodu",
+      "Funkcije se mogu predati kao argumenti",
+      "Varijabla iz vanjskog dosega nedostupna je unutarnjem",
+      "Rekurzija bez uvjeta zaustavljanja troši stog"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Upravo je obrnuto: unutarnji doseg vidi vanjski, ali ne i obrnuto. Na tome počivaju i zatvorenja.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "jezici-071-scope-terms",
+    "topic": "jezici",
+    "unitId": "funkcije-i-opseg",
+    "kind": "fill",
+    "question": "Dopuni pojmove o funkcijama.",
+    "text": "Funkcija koja pamti varijable iz okoline u kojoj je nastala zove se ___, a funkcija koja prima ili vraća drugu funkciju je funkcija ___ reda.",
+    "answers": [
+      "zatvorenje",
+      "višeg"
+    ],
+    "distractors": [
+      "metoda",
+      "prvog"
+    ],
+    "explanation": "Ta dva pojma zajedno objašnjavaju gotovo sve što se u modernom kodu radi s funkcijama.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "jezici-072-closure-counter",
+    "topic": "jezici",
+    "unitId": "funkcije-i-opseg",
+    "kind": "order",
+    "question": "Poredaj kako zatvorenje čuva privatni brojač.",
+    "steps": [
+      "Vanjska funkcija stvori lokalnu varijablu",
+      "Vanjska funkcija vrati unutarnju funkciju",
+      "Unutarnja funkcija zadrži pristup toj varijabli",
+      "Vanjska funkcija završi s radom",
+      "Svaki poziv vraćene funkcije mijenja istu varijablu"
+    ],
+    "explanation": "Varijabla preživi kraj vanjske funkcije jer je unutarnja i dalje drži. To je jedini način da se u JavaScriptu dobije stvarno privatno stanje.",
+    "difficulty": "hard"
+  }
+]
