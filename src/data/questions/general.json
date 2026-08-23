@@ -971,5 +971,63 @@
     "correctIndex": 0,
     "explanation": "Gotovo sve u system designu je varijacija ovog odnosa: netko traži, netko odgovara, a između njih je mreža koja može zakazati.",
     "difficulty": "easy"
+  },
+  {
+    "id": "general-116-multi-solid-boundaries",
+    "topic": "general",
+    "unitId": "oop-dizajn",
+    "kind": "multi",
+    "question": "Koje tvrdnje odgovaraju cilju SOLID načela?",
+    "options": [
+      "Smanjiti razloge zbog kojih se jedna komponenta mora mijenjati",
+      "Ovisiti o stabilnim apstrakcijama umjesto o slučajnim detaljima",
+      "Omogućiti zamjenu podtipa bez kršenja očekivanog ugovora",
+      "Smjestiti sve odgovornosti u jednu klasu radi manjeg broja datoteka",
+      "Zahtijevati da svaki interface sadrži sve metode cijelog podsustava"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "SOLID promiče fokusirane odgovornosti, zamjenjivost, manje interfacee i ovisnost o apstrakcijama. Cilj je lakša promjena, ne veći broj obrazaca sam po sebi.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "general-117-fill-git-feature-commit",
+    "topic": "general",
+    "unitId": "git-verzioniranje",
+    "kind": "fill",
+    "question": "Popuni osnovni tijek stvaranja grane i spremanja promjene.",
+    "text": "git ___ -c feature/login; git ___ src/login.ts; git ___ -m 'Add login validation'",
+    "answers": [
+      "switch",
+      "add",
+      "commit"
+    ],
+    "distractors": [
+      "clone",
+      "stash",
+      "fetch"
+    ],
+    "explanation": "switch -c stvara i aktivira granu, add priprema sadržaj za indeks, a commit zapisuje pripremljeni snapshot.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-118-order-tdd-cycle",
+    "topic": "general",
+    "unitId": "testiranje-kvaliteta",
+    "kind": "order",
+    "question": "Poredaj jedan mali red-green-refactor TDD ciklus.",
+    "steps": [
+      "Odaberi jedno malo očekivano ponašanje",
+      "Napiši test koji opisuje to ponašanje",
+      "Pokreni test i potvrdi da pada iz pravog razloga",
+      "Napiši najmanju promjenu koja test čini zelenim",
+      "Pokreni relevantni skup testova",
+      "Refaktoriraj uz zadržavanje zelenih testova"
+    ],
+    "explanation": "Crveni test potvrđuje da provjera može uhvatiti nedostatak, minimalna implementacija daje brzu povratnu informaciju, a refaktoriranje slijedi uz zelene testove.",
+    "difficulty": "medium"
   }
 ]

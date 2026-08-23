@@ -1819,5 +1819,58 @@
     "correctIndex": 0,
     "explanation": "Runtime stavlja spremne callbackove u odgovarajuće redove. Event loop ih prenosi na call stack kada trenutačni sinkroni posao završi.",
     "difficulty": "easy"
+  },
+  {
+    "id": "frontend-120-code-event-loop-order",
+    "topic": "frontend",
+    "unitId": "asinkroni-js",
+    "question": "Kojim se redoslijedom ispisuju slova?",
+    "code": "console.log('A');\nsetTimeout(() => console.log('B'), 0);\nPromise.resolve().then(() => console.log('C'));\nconsole.log('D');",
+    "options": [
+      "A, D, C, B",
+      "A, B, C, D",
+      "A, C, D, B",
+      "C, A, D, B"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sinkroni kod ispisuje A pa D, Promise callback ide u microtask red, a timer u kasniji task red.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-121-multi-compositor-animation",
+    "topic": "frontend",
+    "unitId": "performanse",
+    "kind": "multi",
+    "question": "Koje prakse često pomažu glatkoći UI animacije?",
+    "options": [
+      "Preferirati transform i opacity kada daju željeni efekt",
+      "Izbjegavati nepotrebno animiranje svojstava koja pokreću layout",
+      "Poštovati korisnikovu prefers-reduced-motion postavku",
+      "Čitati layout i odmah ga višestruko mijenjati u svakoj iteraciji petlje",
+      "Povećati broj React rendera bez obzira na promijenjeni sadržaj"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Transformacija i opacity često ostaju u fazi kompozicije, a izbjegavanje layout thrashinga smanjuje skupe faze renderiranja. Reduced motion je važan za pristupačnost.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "frontend-122-order-browser-render",
+    "topic": "frontend",
+    "unitId": "performanse",
+    "kind": "order",
+    "question": "Poredaj pojednostavljene faze od promjene DOM/CSS-a do prikaza novog framea.",
+    "steps": [
+      "JavaScript promijeni DOM ili stil",
+      "Preglednik izračuna primjenjive stilove",
+      "Izračuna geometriju elemenata kada je potreban layout",
+      "Iscrta piksele promijenjenih slojeva kada je potreban paint",
+      "Kompozitor složi slojeve u završni frame"
+    ],
+    "explanation": "Ne pokreće svaka promjena sve faze, ali geometrijske promjene često zahtijevaju style, layout i paint prije kompozicije.",
+    "difficulty": "medium"
   }
 ]

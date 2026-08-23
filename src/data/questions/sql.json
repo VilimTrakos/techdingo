@@ -1929,5 +1929,63 @@
     "correctIndex": 0,
     "explanation": "Indeks daje brži put do redaka, ali zauzima prostor i mora se ažurirati pri promjenama. Zato se dodaje prema stvarnim obrascima upita.",
     "difficulty": "easy"
+  },
+  {
+    "id": "sql-125-fill-update-null",
+    "topic": "sql",
+    "unitId": "izmjene-podataka",
+    "kind": "fill",
+    "question": "Popuni naredbu koja deaktivira korisnike kojima nije zabilježena prijava.",
+    "text": "UPDATE korisnici ___ aktivan = FALSE ___ zadnja_prijava ___ NULL;",
+    "answers": [
+      "SET",
+      "WHERE",
+      "IS"
+    ],
+    "distractors": [
+      "VALUES",
+      "HAVING",
+      "EQUALS"
+    ],
+    "explanation": "UPDATE koristi SET za nove vrijednosti, WHERE za odabir redaka i IS NULL za provjeru odsutne vrijednosti.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-126-order-expand-contract-column",
+    "topic": "sql",
+    "unitId": "izmjene-podataka",
+    "kind": "order",
+    "question": "Poredaj sigurne korake uvođenja obveznog stupca u veliku aktivnu tablicu.",
+    "steps": [
+      "Dodaj novi stupac kao privremeno nullable",
+      "Objavi aplikaciju koja razumije staru i novu shemu",
+      "Postupno popuni vrijednosti postojećih redaka",
+      "Prebaci sva čitanja i upise na novi stupac",
+      "Provjeri podatke i uvedi NOT NULL ograničenje",
+      "Ukloni privremenu kompatibilnost sa starom shemom"
+    ],
+    "explanation": "Expand-contract održava kompatibilnost tijekom rollouta i odvaja skupi backfill od završnog pooštravanja sheme.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sql-127-multi-correlated-subquery",
+    "topic": "sql",
+    "unitId": "podupiti-pogledi",
+    "kind": "multi",
+    "question": "Koje tvrdnje mogu vrijediti za korelirani podupit?",
+    "options": [
+      "Referencira vrijednost iz vanjskog upita",
+      "Logički se vrednuje u kontekstu vanjskih redaka",
+      "Optimizator ga ponekad može preoblikovati u JOIN ili semi-join",
+      "Mora uvijek vratiti točno jedan stupac i jedan redak",
+      "Može se koristiti samo unutar DELETE naredbe"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Korelacija povezuje podupit s vanjskim retkom. Fizički plan ne mora doslovno izvršavati podupit jednom po retku jer ga optimizator može dekorrelirati.",
+    "difficulty": "medium"
   }
 ]

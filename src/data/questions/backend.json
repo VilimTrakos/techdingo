@@ -1353,5 +1353,100 @@
     "correctIndex": 0,
     "explanation": "Bez njih se kvar u produkciji istražuje nagađanjem. Log kaže što se dogodilo, metrika koliko često, a trag kroz koje je servise zahtjev prošao.",
     "difficulty": "easy"
+  },
+  {
+    "id": "backend-116-code-cache-invalidation",
+    "topic": "backend",
+    "unitId": "kesiranje-skaliranje",
+    "question": "Koji korak nedostaje kako čitanje ne bi nastavilo vraćati staro ime?",
+    "code": "async function renameUser(id, name) {\n  await db.users.update(id, { name });\n  return { id, name };\n}",
+    "options": [
+      "Invalidirati ili osvježiti cache ključ korisnika nakon uspješnog upisa",
+      "Povećati TTL postojećeg cache zapisa prije ažuriranja baze",
+      "Ponoviti isti UPDATE sve dok cache sam ne pročita novu vrijednost",
+      "Serijalizirati povratni objekt dvaput prije slanja odgovora klijentu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cache-aside zahtijeva strategiju invalidacije ili osvježavanja nakon upisa. Inače cache može do isteka posluživati zastarjeli zapis.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "backend-117-fill-cache-aside",
+    "topic": "backend",
+    "unitId": "kesiranje-skaliranje",
+    "kind": "fill",
+    "question": "Popuni osnovni cache-aside tijek čitanja.",
+    "text": "Prvo pokušaj ___ iz cachea. Kod promašaja učitaj iz ___, zatim rezultat ___ u cache.",
+    "answers": [
+      "čitanje",
+      "baze",
+      "spremi"
+    ],
+    "distractors": [
+      "brisanje",
+      "reda",
+      "zaključaj"
+    ],
+    "explanation": "Cache-aside prvo provjerava cache, a kod promašaja aplikacija čita iz izvora i popunjava cache za buduće zahtjeve.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-118-multi-observability-triage",
+    "topic": "backend",
+    "unitId": "observability",
+    "kind": "multi",
+    "question": "Koji signali zajedno pomažu dijagnosticirati spor distribuirani zahtjev?",
+    "options": [
+      "Trace koji povezuje spanove kroz servise",
+      "Percentili latencije, primjerice p95 i p99",
+      "Strukturirani logovi s trace ili correlation ID-em",
+      "Samo prosječan broj redaka izvornog koda po servisu",
+      "Boja statusne stranice bez vremenske oznake"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Trace pokazuje put zahtjeva, percentili opseg sporosti, a korelirani logovi detalje događaja. Zajedno daju znatno bolji kontekst.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "backend-119-order-message-consumer",
+    "topic": "backend",
+    "unitId": "poruke-redovi",
+    "kind": "order",
+    "question": "Poredaj siguran tijek obrade poruke uz at-least-once isporuku.",
+    "steps": [
+      "Preuzmi poruku i njezin stabilni identifikator",
+      "Provjeri je li identifikator već obrađen",
+      "Atomski zapiši poslovnu promjenu i oznaku deduplikacije",
+      "Potvrdi poruku brokeru nakon uspješnog commita",
+      "Pri prolaznoj pogrešci dopusti ograničenu ponovnu dostavu",
+      "Nakon iscrpljenih pokušaja premjesti poruku u dead-letter red"
+    ],
+    "explanation": "Deduplikacija čini ponovnu dostavu bezopasnom, a potvrda tek nakon commita sprječava gubitak poslovnog učinka.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "backend-120-multi-api-gateway-boundary",
+    "topic": "backend",
+    "unitId": "arhitektura",
+    "kind": "multi",
+    "question": "Koje odgovornosti ima smisla držati na rubu u API gatewayu?",
+    "options": [
+      "Usmjeravanje zahtjeva prema odgovarajućem servisu",
+      "Opća provjera tokena i ograničenje prometa",
+      "Prikupljanje zajedničkih ulaznih metrika",
+      "Sva domenska pravila i transakcije svakog servisa",
+      "Izravno ručno ispravljanje poslovnih podataka u bazama"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Gateway je dobar za cross-cutting brige na rubu. Domenska logika treba ostati u servisima kako gateway ne bi postao novi monolit.",
+    "difficulty": "medium"
   }
 ]
