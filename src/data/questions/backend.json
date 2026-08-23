@@ -388,9 +388,9 @@
     "question": "Što je SLO u kontekstu pouzdanosti servisa?",
     "options": [
       "Ciljana razina određene SLI metrike tijekom vremenskog razdoblja, primjerice 99,9% uspješnih zahtjeva mjesečno",
-      "Neobrađeni popis svih logova koje servis proizvede",
-      "Isključivo pravni ugovor s financijskim penalima",
-      "Datoteka koja opisuje kako izgraditi container image"
+      "Neobrađeni popis svih logova koje servis proizvede, zadržan bez definiranog vremenskog cilja",
+      "Pravni ugovor koji uvijek uključuje financijske penale za svaku pojedinačnu grešku servisa",
+      "Datoteka koja opisuje kako izgraditi i pokrenuti container image u produkcijskoj okolini"
     ],
     "correctIndex": 0,
     "explanation": "SLI je izmjerena karakteristika servisa, a SLO njezina ciljana vrijednost. SLA je zaseban sporazum koji može uključivati vanjske obveze i penale.",
@@ -613,10 +613,10 @@
     "topic": "backend",
     "question": "Kako rotacija refresh tokena smanjuje rizik njegove krađe?",
     "options": [
-      "Refresh token izdaje se bez roka valjanosti",
-      "Isti access token ostaje valjan nakon svake obnove",
+      "Refresh token izdaje se bez roka valjanosti i ostaje jedini token koji klijent koristi za sve API pozive",
+      "Isti access token ostaje valjan nakon svake obnove, a mijenja se samo njegov zapis u klijentskoj pohrani",
       "Svaka uporaba izdaje novi refresh token, a ponovna uporaba staroga može pokrenuti opoziv cijele token obitelji",
-      "Klijent uz refresh token ponovno šalje korisničku lozinku"
+      "Klijent uz refresh token ponovno šalje korisničku lozinku, a poslužitelj nikad ne pamti prethodno izdane tokene"
     ],
     "correctIndex": 2,
     "explanation": "Jednokratna rotacija ograničava replay ukradenog tokena. Ako legitimni klijent i napadač pokušaju koristiti isti stari token, server može prepoznati ponovnu uporabu i opozvati sesiju.",
@@ -934,9 +934,9 @@
     "question": "Koja je glavna svrha 'circuit breaker' obrasca u distribuiranim sustavima?",
     "options": [
       "Privremeno zaustaviti pozive prema servisu koji opetovano vraća greške, dok se ne oporavi",
-      "Šifrirati promet između mikroservisa",
-      "Trajno spremiti sve API odgovore radi audita",
-      "Zamijeniti autentikaciju rate limitingom"
+      "Šifrirati promet između mikroservisa i ponavljati svaki neuspjeli poziv bez ograničenja",
+      "Trajno spremiti sve API odgovore te ih vratiti kad udaljeni servis prijavi grešku",
+      "Zamijeniti autentikaciju rate limitingom kako neispravni pozivi ne bi došli do servisa"
     ],
     "correctIndex": 0,
     "explanation": "Nakon niza uzastopnih grešaka circuit breaker 'otvara krug' i brzo odbija nove pozive prema tom servisu (umjesto da čeka timeout), čime sprječava kaskadne kvarove, a povremeno propušta probni poziv da provjeri je li se servis oporavio.",
@@ -1053,10 +1053,10 @@
     "topic": "backend",
     "question": "API prihvati valjano potpisan access token koji je zapravo izdan za drugi servis. Koja je ključna provjera nedostajala?",
     "options": [
-      "Provjera duljine HTTP tijela",
+      "Provjera duljine HTTP tijela, naziva preglednika i vremena proteklog od zadnjeg korisničkog zahtjeva",
       "Provjera očekivanog issuera, audiencea, token tipa i potrebnih scopeova uz provjeru potpisa",
-      "Pretvaranje tokena u Base64 još jednom",
-      "Provjera koristi li korisnik isti preglednik kao pri prijavi"
+      "Ponovno pretvaranje cijelog tokena u Base64 i usporedba dobivenog teksta s korisničkim identifikatorom",
+      "Provjera koristi li korisnik isti preglednik i IP adresu kao pri prijavi, bez provjere namjene tokena"
     ],
     "correctIndex": 1,
     "explanation": "Valjan potpis potvrđuje izdavatelja i integritet, ali ne znači da je token namijenjen tom API-ju ili dopušta traženu radnju. Audience i scope sprječavaju zamjenu tokena između servisa.",
@@ -1472,10 +1472,10 @@
     "question": "Koja je najvažnija sigurnosna ispravka ovog koda?",
     "code": "const sql = `SELECT * FROM users WHERE email = '${req.query.email}'`;\nconst rows = await db.query(sql);",
     "options": [
-      "Pretvoriti SQL string u velika slova",
+      "Ugraditi korisnički unos u SQL string nakon pretvaranja ključnih riječi u velika slova",
       "Koristiti parametrizirani upit i vrijednost poslati odvojeno od SQL teksta",
-      "Sakriti query parametar CSS-om",
-      "Dodati duži timeout na bazu"
+      "Ukloniti navodnike iz unosa CSS escape pravilima prije slanja prema bazi",
+      "Povećati timeout upita kako bi baza stigla prepoznati zlonamjeran korisnički unos"
     ],
     "correctIndex": 1,
     "explanation": "Spajanje korisničkog unosa u SQL omogućuje injection. Parametri čuvaju odvojenost strukture upita i podataka.",

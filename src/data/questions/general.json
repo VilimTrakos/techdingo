@@ -219,9 +219,9 @@
     "topic": "general",
     "question": "Što je lokalna grana u Gitu?",
     "options": [
-      "Potpuna zasebna kopija cijelog repozitorija za svaki commit",
-      "Mapa u kojoj Git automatski čuva samo binarne datoteke",
-      "Neizmjenjiva oznaka koja se nikada ne pomiče",
+      "Potpuna zasebna kopija cijelog repozitorija koja se stvara za svaki novi commit na aktivnoj grani",
+      "Mapa u kojoj Git automatski čuva samo binarne datoteke povezane s commitovima jedne grane",
+      "Neizmjenjiva oznaka jednog commita koja se ne može pomaknuti ni nakon novog commita na istoj grani",
       "Pokretna referenca na commit koja se obično pomakne na novi commit kada se na toj grani commita"
     ],
     "correctIndex": 3,
@@ -315,9 +315,9 @@
     "topic": "general",
     "question": "Zašto standardno binarno pretraživanje u sortiranom polju s O(1) pristupom po indeksu ima vremensku složenost O(log n)?",
     "options": [
-      "Jer redom uspoređuje svaki element polja",
-      "Jer za svaki element unaprijed izračuna hash vrijednost",
-      "Jer sortiranost omogućuje pronalazak bilo kojeg elementa bez usporedbe",
+      "Jer redom uspoređuje svaki element polja, ali preskače svaki drugi element nakon neuspjele usporedbe",
+      "Jer za svaki element unaprijed izračuna hash vrijednost pa zatim linearno traži odgovarajući hash",
+      "Jer sortiranost omogućuje izravno izračunati indeks bilo kojeg elementa bez uspoređivanja vrijednosti",
       "Jer nakon svake usporedbe odbacuje polovicu preostalog intervala, a srednjem elementu pristupa u O(1)"
     ],
     "correctIndex": 3,
@@ -495,10 +495,10 @@
     "topic": "general",
     "question": "Što preporučuje Dependency Inversion Principle?",
     "options": [
-      "Moduli visoke razine trebaju izravno stvarati svaku konkretnu infrastrukturalnu ovisnost",
+      "Moduli visoke razine trebaju izravno stvarati svaku konkretnu infrastrukturalnu ovisnost i skrivati je od testova",
       "Moduli visoke i niske razine trebaju ovisiti o prikladnim apstrakcijama, a detalji implementacije prilagoditi se tim ugovorima",
-      "Svaka apstrakcija mora imati točno jednu implementaciju",
-      "Ovisnosti se moraju učitavati isključivo iz globalnih varijabli"
+      "Svaka apstrakcija mora imati točno jednu implementaciju, a moduli niske razine ne smiju ovisiti o sučeljima",
+      "Ovisnosti se moraju učitavati isključivo iz globalnih varijabli kako bi svim modulima bile jednako dostupne"
     ],
     "correctIndex": 1,
     "explanation": "Poslovna pravila ne bi trebala biti čvrsto vezana uz konkretnu bazu, mrežni klijent ili datotečni sustav. Dependency injection je česta tehnika povezivanja implementacija s apstrakcijama, ali nije samo načelo.",
@@ -674,9 +674,9 @@
     "topic": "general",
     "question": "Što razlikuje property-based testiranje od testova temeljenih samo na nekoliko ručno zadanih primjera?",
     "options": [
-      "Provjerava isključivo izgled spremljenih snapshotova",
-      "Ne izvršava testirani kod, nego samo provjerava tipove",
-      "Namjerno mijenja produkcijski kod kako bi izmjerilo kvalitetu testova",
+      "Provjerava velik broj automatski generiranih snapshotova izgleda, ali ne ispituje svojstva povratnih vrijednosti",
+      "Generira kombinacije statičkih tipova bez izvršavanja testiranog koda i prijavljuje samo compile-time pogreške",
+      "Namjerno mijenja produkcijski kod u mnogo varijanti kako bi izmjerilo koliko testova otkriva uvedene mutacije",
       "Generira mnogo ulaza iz zadanog prostora, provjerava opća svojstva i često smanjuje pronađeni protuprimjer"
     ],
     "correctIndex": 3,
@@ -704,10 +704,10 @@
     "topic": "general",
     "question": "Što znači ako Kahnov algoritam za topološko sortiranje obradi manje čvorova nego što ih usmjereni graf sadrži?",
     "options": [
-      "Graf ima više od jedne povezane komponente pa rezultat nužno nije moguć",
+      "Graf ima više od jedne povezane komponente pa nije moguće odabrati čvor s ulaznim stupnjem nula",
       "U preostalom dijelu postoji usmjereni ciklus, pa topološki poredak svih čvorova ne postoji",
-      "Svi bridovi imaju negativnu težinu",
-      "Algoritam je pronašao jedinstven najkraći put"
+      "Svi bridovi imaju negativnu težinu pa algoritam ne može odrediti koji čvor treba obraditi sljedeći",
+      "Algoritam je pronašao jedinstven najkraći put koji ne uključuje svaki čvor usmjerenog grafa"
     ],
     "correctIndex": 1,
     "explanation": "Kahnov algoritam opetovano uklanja čvorove ulaznog stupnja nula. Ako nijedan takav čvor ne ostane, a dio grafa nije obrađen, taj dio sadrži ciklus; topološki poredak postoji samo za DAG.",

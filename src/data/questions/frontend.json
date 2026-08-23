@@ -937,9 +937,9 @@
     "question": "Zašto je u testu korisničkog sučelja često bolje pronaći gumb po ulozi i pristupačnom imenu nego po CSS klasi?",
     "options": [
       "Test tako provjerava ponašanje i semantiku koju korisnik doživljava te je otporniji na promjene implementacijskih stilova",
-      "Upit po ulozi automatski popravlja sve accessibility pogreške",
-      "CSS klase nisu dostupne u testnom DOM-u",
-      "Upit po ulozi uklanja potrebu za simuliranjem korisničke interakcije"
+      "Upit po ulozi automatski dodaje nedostajuće ARIA atribute i popravlja sve accessibility pogreške komponente",
+      "CSS klase nisu dostupne u testnom DOM-u pa je semantička uloga jedini tehnički mogući selektor elementa",
+      "Upit po ulozi uklanja potrebu za simuliranjem korisničke interakcije jer sam potvrđuje sve promjene stanja"
     ],
     "correctIndex": 0,
     "explanation": "Upit poput getByRole('button', { name: /spremi/i }) odražava način na koji korisnici i asistivna tehnologija pronalaze kontrolu, bez vezivanja testa uz stil.",
@@ -1072,9 +1072,9 @@
     "question": "Koja je razlika između async i defer na vanjskim klasičnim script elementima?",
     "options": [
       "Oba preuzimaju skriptu paralelno; async je izvršava čim je spremna bez jamstva redoslijeda, a defer nakon parsiranja dokumenta uz očuvanje redoslijeda",
-      "async čeka završetak parsiranja, dok defer uvijek blokira parser pri preuzimanju",
-      "defer radi samo za inline skripte, a async samo za CSS datoteke",
-      "Oba jamče izvršavanje prije nego preglednik počne parsirati HTML"
+      "async čeka završetak parsiranja i čuva redoslijed, dok defer blokira parser čim preuzimanje skripte započne",
+      "defer radi samo za inline skripte nakon DOMContentLoaded, a async samo za vanjske CSS i JavaScript datoteke",
+      "Oba blokiraju parsiranje dokumenta i jamče izvršavanje redoslijedom kojim su njihove oznake navedene u HTML-u"
     ],
     "correctIndex": 0,
     "explanation": "Async skripte izvršavaju se čim se preuzmu i mogu prekinuti parsiranje, dok se defer skripte izvršavaju nakon parsiranja redoslijedom u dokumentu, prije DOMContentLoaded.",
@@ -1116,10 +1116,10 @@
     "topic": "frontend",
     "question": "Kada je React useRef prikladniji od statea?",
     "options": [
-      "Kada promjena vrijednosti mora odmah izazvati novi render sučelja",
-      "Kada vrijednost treba automatski sinkronizirati sa serverom",
+      "Kada svaka promjena vrijednosti mora odmah izazvati novi render sučelja i ponovno izračunavanje svih potomaka",
+      "Kada vrijednost treba automatski sinkronizirati sa serverom nakon rendera bez dodatnog efekta ili event handlera",
       "Kada treba sačuvati DOM referencu ili promjenjivu vrijednost između rendera, ali promjena current ne treba pokrenuti render",
-      "Kada roditelj treba poslati obavezni prop djetetu"
+      "Kada roditelj treba poslati obavezni prop djetetu i očekuje da promjena reference automatski renderira oba"
     ],
     "correctIndex": 2,
     "explanation": "Ref objekt zadržava isti identitet između rendera, a promjena njegova current svojstva ne pokreće render, pa je pogodan za DOM čvorove i podatke koji nisu dio prikaza.",
@@ -1386,9 +1386,9 @@
     "question": "Kako tip never pomaže provjeriti da switch obrađuje sve varijante discriminated uniona?",
     "options": [
       "Default grana može proslijediti preostalu vrijednost funkciji koja prima never, pa nova neobrađena varijanta uzrokuje compile-time grešku",
-      "never automatski dodaje nedostajuće case grane u generirani JavaScript",
-      "never pretvara sve članove uniona u optional svojstva",
-      "Default grana s never ignorira sve buduće varijante bez upozorenja"
+      "never automatski dodaje nedostajuće case grane u generirani JavaScript i bira prvu granu tijekom izvođenja",
+      "never pretvara sve članove uniona u optional svojstva pa svaka vrijednost može proći kroz default granu",
+      "Default grana s never prihvaća sve buduće varijante i prijavljuje ih tek kao upozorenje tijekom izvođenja"
     ],
     "correctIndex": 0,
     "explanation": "Nakon iscrpnog narrowinga ne bi smjela ostati vrijednost; assertNever obrazac zato otkriva novu varijantu koju switch nije obradio.",
@@ -1536,9 +1536,9 @@
     "question": "Koja je namjeravana razlika između resource hintova preload i prefetch?",
     "options": [
       "preload rano dohvaća resurs potreban trenutačnoj navigaciji uz poznat tip, dok prefetch nižim prioritetom sugerira resurs za moguću buduću navigaciju",
-      "prefetch blokira parser dok se resurs ne izvrši, a preload nikada ne pokreće mrežni zahtjev",
-      "preload služi samo za slike, a prefetch samo za JavaScript",
-      "Oba hintova imaju identičan prioritet i životni ciklus cachea"
+      "prefetch blokira parser dok se resurs ne izvrši, a preload samo označava URL bez pokretanja mrežnog zahtjeva",
+      "preload služi samo za slike trenutačne stranice, a prefetch samo za JavaScript koji se izvršava odmah",
+      "Oba hintova imaju identičan prioritet i životni ciklus cachea te se razlikuju samo po nazivu HTML atributa"
     ],
     "correctIndex": 0,
     "explanation": "Preload je snažan signal za resurs potreban na aktualnoj stranici i zahtijeva odgovarajući as atribut, dok je prefetch spekulativan signal za vjerojatnu buduću uporabu.",

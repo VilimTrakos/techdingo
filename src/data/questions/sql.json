@@ -1230,9 +1230,9 @@
     "question": "Koja je razlika između clustered i non-clustered indeksa?",
     "options": [
       "Clustered indeks fizički određuje redoslijed podataka u tablici (tablica ga smije imati samo jedan), non-clustered indeks je zasebna struktura s pokazivačima na stvarne retke",
-      "Clustered indeks se koristi samo za tekstualne stupce, non-clustered samo za brojeve",
-      "Non-clustered indeks je uvijek brži od clustered indeksa u svim situacijama",
-      "Clustered indeks se automatski briše nakon svakog UPDATE-a"
+      "Clustered indeks sprema samo tekstualne stupce, dok non-clustered indeks može sadržavati isključivo brojčane ključeve",
+      "Non-clustered indeks uvijek je brži jer sadrži kopiju cijelog retka i nikad ne treba pristupiti osnovnoj tablici",
+      "Clustered indeks zasebna je struktura koja se automatski briše i ponovno gradi nakon svakog UPDATE-a retka"
     ],
     "correctIndex": 0,
     "explanation": "Budući da clustered indeks određuje fizički poredak podataka, tablica može imati samo jedan; non-clustered indeksi se mogu dodavati u većem broju, ali zahtijevaju dodatni skok (lookup) do stvarnog retka.",
@@ -1380,9 +1380,9 @@
     "question": "Kako tipično nastaje deadlock i kako ga aplikacija treba ublažiti?",
     "options": [
       "Transakcije drže zaključavanja koja druga treba i čekaju se u ciklusu; dosljedan redoslijed zaključavanja smanjuje rizik, a transakciju koju baza prekine treba sigurno ponoviti",
-      "Nastaje kad jedan SELECT nema ORDER BY; rješava se dodavanjem DISTINCT-a",
-      "Nastaje isključivo zbog premalog VARCHAR stupca; rješava se većim tipom",
-      "Baza ga nikad ne može otkriti pa se proces servera uvijek mora ručno ugasiti"
+      "Nastaje kad jedan SELECT nema ORDER BY; rješava se dodavanjem DISTINCT-a i ponavljanjem čitanja u istoj transakciji",
+      "Nastaje isključivo zbog premalog VARCHAR stupca; rješava se većim tipom i produljenjem timeouta svake transakcije",
+      "Baza ga ne može pouzdano otkriti pa administrator mora ručno ugasiti proces koji je posljednji zatražio zaključavanje"
     ],
     "correctIndex": 0,
     "explanation": "Sustavi obično otkrivaju ciklus čekanja i prekidaju jednu transakciju. Kratke transakcije, isti redoslijed pribavljanja zaključavanja i retry cijele transakcije čine obradu robusnijom.",
@@ -1469,10 +1469,10 @@
     "topic": "sql",
     "question": "Što row-level security politika dodaje običnim ovlastima nad tablicom u bazama koje je podržavaju?",
     "options": [
-      "Automatski šifrira svaki stupac i uklanja potrebu za TLS-om",
+      "Automatski šifrira svaki stupac različitim ključem i zato uklanja potrebu za TLS-om i objektnim ovlastima",
       "Ograničava koje retke određena uloga smije vidjeti ili mijenjati, uz postojeće objektne ovlasti; pravila za vlasnike i bypass uloge ovise o bazi",
-      "Pretvara svaki SELECT u materijalizirani pogled",
-      "Daje svim korisnicima administratorske ovlasti samo nad vlastitim retcima"
+      "Pretvara svaki SELECT u materijalizirani pogled filtriran prema ulozi te ga osvježava nakon svake promjene retka",
+      "Daje svim korisnicima administratorske ovlasti nad vlastitim retcima i potpuno zaobilazi postojeće ovlasti tablice"
     ],
     "correctIndex": 1,
     "explanation": "RLS provodi predikat pristupa unutar baze i može biti dodatni sloj obrane za višekorisničke podatke. Ne zamjenjuje autentikaciju, pažljivu dodjelu GRANT ovlasti ni sigurnost aplikacije.",
@@ -1500,9 +1500,9 @@
     "question": "Kako vrlo duga transakcija čitanja može utjecati na bazu koja koristi MVCC?",
     "options": [
       "Može zadržavati staru snimku pa sustav ne smije odmah ukloniti sve starije verzije redaka, što povećava prostor i posao čišćenja",
-      "Automatski pretvara sve tablice u memorijske tablice",
-      "Jamči da nijedan drugi klijent ne može izvršiti SELECT",
-      "Trajno isključuje zapisivanje transakcijskog dnevnika"
+      "Automatski pretvara sve zahvaćene tablice u memorijske tablice i odgađa njihov povratak na disk do COMMIT-a",
+      "Zaključava svaku pročitanu tablicu pa nijedan drugi klijent ne može izvršiti SELECT dok transakcija ne završi",
+      "Privremeno isključuje zapisivanje transakcijskog dnevnika i zato povećava prostor rezerviran za nove retke"
     ],
     "correctIndex": 0,
     "explanation": "MVCC čitateljima daje konzistentnu snimku bez blokiranja svakog pisca, ali stare verzije moraju ostati dostupne dok ih aktivna snimka možda treba. Duga transakcija zato može odgoditi vacuum ili drugo čišćenje i pridonijeti bloatu.",
@@ -1544,10 +1544,10 @@
     "topic": "sql",
     "question": "Što omogućuje LATERAL podupit u FROM dijelu, u bazama koje ga podržavaju?",
     "options": [
-      "Da podupit mijenja definiciju svih ranije navedenih tablica",
-      "Da se ORDER BY primjenjuje tek nakon COMMIT-a",
+      "Da podupit može promijeniti definiciju i sadržaj svih ranije navedenih tablica prije izvođenja glavnog upita",
+      "Da se ORDER BY unutar podupita primjenjuje tek nakon COMMIT-a vanjske transakcije i tada uređuje cijelu tablicu",
       "Da podupit referencira stupce ranije navedenih FROM stavki, primjerice za dohvat nekoliko najnovijih zapisa za svakog roditelja",
-      "Da se dva nepovezana rezultata uvijek spoje bez uvjeta"
+      "Da se dva nepovezana rezultata uvijek spoje bez uvjeta, pri čemu podupit ne smije čitati stupce vanjskog retka"
     ],
     "correctIndex": 2,
     "explanation": "LATERAL se logički vrednuje u kontekstu retka prethodne FROM stavke. Time elegantno izražava korelirane tablične rezultate, poput TOP-N djece po roditelju; naziv i sintaksa razlikuju se među bazama.",
