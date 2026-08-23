@@ -2055,5 +2055,25 @@
     ],
     "explanation": "Upravljanje fokusom i izoliranje pozadine omogućuju da modal bude razumljiv i upravljiv korisnicima tipkovnice i čitača zaslona.",
     "difficulty": "hard"
+  },
+  {
+    "id": "frontend-201-closure-fill",
+    "topic": "frontend",
+    "unitId": "js-jezik",
+    "kind": "fill",
+    "question": "Dopuni pojam iz JavaScripta.",
+    "text": "Funkcija koja i nakon što vanjska funkcija završi i dalje pamti njezine ___ zove se ___.",
+    "answers": [
+      "varijable",
+      "zatvorenje"
+    ],
+    "distractors": [
+      "parametre",
+      "metoda",
+      "argumente"
+    ],
+    "explanation": "Zatvorenje nosi svoju okolinu sa sobom. Zato brojač skriven u funkciji preživi kraj funkcije u kojoj je nastao.",
+    "difficulty": "medium",
+    "conceptId": "zatvorenje"
   }
 ]

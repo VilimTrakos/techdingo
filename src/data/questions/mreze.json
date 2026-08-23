@@ -1379,5 +1379,24 @@
     "correctIndex": 0,
     "explanation": "Sustavna dijagnostika odvaja DNS, povezivanje, TLS, aplikacijski protokol i udaljeni servis. Time se izbjegava nasumično mijenjanje konfiguracije.",
     "difficulty": "easy"
+  },
+  {
+    "id": "mreze-201-latency-fill",
+    "topic": "mreze",
+    "unitId": "dijagnostika-mreze",
+    "kind": "fill",
+    "question": "Dopuni dvije mjere mrežne izvedbe.",
+    "text": "Koliko se čeka na prvi odgovor je ___, a koliko podataka prođe u sekundi je ___.",
+    "answers": [
+      "kašnjenje",
+      "propusnost"
+    ],
+    "distractors": [
+      "zagušenje",
+      "gubitak"
+    ],
+    "explanation": "Deblji kabel ne skraćuje put. Zato veća propusnost ne pomaže aplikaciji koja radi mnogo malih zahtjeva zaredom.",
+    "difficulty": "medium",
+    "conceptId": "latencija-vs-propusnost"
   }
 ]

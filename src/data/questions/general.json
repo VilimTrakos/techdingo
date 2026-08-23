@@ -1223,5 +1223,87 @@
     ],
     "explanation": "Konflikt se rješava razumijevanjem namjere obje strane, provjerom rezultata i tek potom označavanjem i dovršavanjem Git operacije.",
     "difficulty": "medium"
+  },
+  {
+    "id": "general-201-race-condition-fill",
+    "topic": "general",
+    "unitId": "sustavi-koncepti",
+    "kind": "fill",
+    "question": "Dopuni opis greške u konkurentnom kodu.",
+    "text": "Dvije dretve pročitaju istu vrijednost, obje je uvećaju i obje zapišu; jedno ___ se izgubi, a to je stanje ___.",
+    "answers": [
+      "uvećanje",
+      "utrke"
+    ],
+    "distractors": [
+      "čitanje",
+      "zastoja",
+      "preklapanja"
+    ],
+    "explanation": "Ishod ovisi o rasporedu izvođenja, pa isti kod devet od deset puta radi ispravno. Zato se greška otkrije tek u produkciji.",
+    "difficulty": "medium",
+    "conceptId": "race-condition"
+  },
+  {
+    "id": "general-202-cap-multi",
+    "topic": "general",
+    "unitId": "sustavi-koncepti",
+    "kind": "multi",
+    "question": "Što je točno o CAP teoremu?",
+    "options": [
+      "Podjela mreže je činjenica, ne odluka arhitekta",
+      "Pri podjeli se bira između konzistentnosti i dostupnosti",
+      "Bez podjele sustav može biti i konzistentan i dostupan",
+      "Teorem tvrdi da se od tri svojstva trajno biraju dva",
+      "Odabir se u praksi radi po pojedinoj operaciji, ne za cijeli sustav"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "explanation": "Popularna formulacija 'biraj dva od tri' je netočna: izbor postoji samo tijekom podjele mreže, i to obično po operaciji.",
+    "difficulty": "hard",
+    "conceptId": "cap-teorem"
+  },
+  {
+    "id": "general-203-circuit-breaker-order",
+    "topic": "general",
+    "unitId": "sustavi-koncepti",
+    "kind": "order",
+    "question": "Poredaj rad circuit breakera.",
+    "steps": [
+      "Pozivi prema servisu počnu učestalo padati",
+      "Prekidač se otvori i odbija daljnje pozive",
+      "Nakon zadanog vremena propusti jedan probni poziv",
+      "Probni poziv uspije",
+      "Prekidač se zatvori i promet se vrati"
+    ],
+    "explanation": "Poanta otvorenog prekidača je da servisu koji se guši prestaneš slati promet. Probni poziv je jedini način da se sazna je li se oporavio.",
+    "difficulty": "hard",
+    "conceptId": "circuit-breaker"
+  },
+  {
+    "id": "general-204-semver-major",
+    "topic": "general",
+    "unitId": "git-verzioniranje",
+    "kind": "multi",
+    "question": "Koje promjene traže povećanje PRVOG broja u semantičkoj verziji?",
+    "options": [
+      "Uklonjena je javna funkcija koju klijenti koriste",
+      "Postojećem parametru promijenjen je tip",
+      "Promijenjeno je zadano ponašanje postojeće funkcije",
+      "Dodana je nova neobavezna mogućnost",
+      "Ispravljena je greška bez promjene sučelja"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Prvi broj nije mjera važnosti nego upozorenje da postojeća upotreba može prestati raditi.",
+    "difficulty": "medium",
+    "conceptId": "semanticko-verzioniranje"
   }
 ]

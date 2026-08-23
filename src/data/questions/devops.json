@@ -323,7 +323,8 @@
       "Pokreni kontejner iz tog imagea"
     ],
     "explanation": "Dockerfile je recept, image je rezultat gradnje, kontejner je pokrenuta instanca. Registar je samo mjesto gdje image čeka.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "conceptId": "image-vs-kontejner"
   },
   {
     "id": "devops-uvod-ci-cd",
@@ -1365,5 +1366,25 @@
     "correctIndex": 0,
     "explanation": "Metrike, logovi i tragovi pomažu otkriti i objasniti probleme. Dobar nadzor povezuje tehničke signale s korisničkim učinkom.",
     "difficulty": "easy"
+  },
+  {
+    "id": "devops-201-image-fill",
+    "topic": "devops",
+    "unitId": "kontejneri",
+    "kind": "fill",
+    "question": "Dopuni odnos imagea i kontejnera.",
+    "text": "Iz jednog ___ može se pokrenuti proizvoljno mnogo ___, jednako kao mnogo objekata iz jedne klase.",
+    "answers": [
+      "imagea",
+      "kontejnera"
+    ],
+    "distractors": [
+      "sloja",
+      "volumena",
+      "registra"
+    ],
+    "explanation": "Image je nepromjenjiv predložak, kontejner je njegova pokrenuta instanca s vlastitim slojem za pisanje.",
+    "difficulty": "easy",
+    "conceptId": "image-vs-kontejner"
   }
 ]

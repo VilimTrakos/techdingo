@@ -957,7 +957,8 @@
       "replika"
     ],
     "explanation": "Ta dva pojma zajedno rješavaju većinu problema koje bi inače trebala distribuirana transakcija.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "idempotentnost"
   },
   {
     "id": "arh-054-order-flow",
@@ -1300,5 +1301,39 @@
     ],
     "explanation": "Procjena dolazi prije crtanja jer određuje kakvo rješenje uopće ima smisla. Crtanje prije brojeva vodi u rješenje bez pokrića.",
     "difficulty": "hard"
+  },
+  {
+    "id": "arh-201-backpressure-order",
+    "topic": "arhitektura",
+    "unitId": "skaliranje",
+    "kind": "order",
+    "question": "Poredaj kako protupritisak zaustavlja preopterećenje.",
+    "steps": [
+      "Proizvođač šalje posao brže nego što se obrađuje",
+      "Red čekanja počne rasti",
+      "Sustav usporava ili odbija primanje novog posla",
+      "Proizvođač smanji brzinu slanja",
+      "Red se vrati u održivu veličinu"
+    ],
+    "explanation": "Bez trećeg koraka red raste dok ne ponestane memorije i sve padne. Odbiti dio prometa je bolje od potpunog ispada.",
+    "difficulty": "hard",
+    "conceptId": "protupritisak"
+  },
+  {
+    "id": "arh-202-two-phase-order",
+    "topic": "arhitektura",
+    "unitId": "konzistentnost",
+    "kind": "order",
+    "question": "Poredaj dvofazno potvrđivanje.",
+    "steps": [
+      "Koordinator pita sudionike jesu li spremni",
+      "Sudionici trajno pripreme promjenu i odgovore",
+      "Koordinator odluči potvrditi ili poništiti",
+      "Sudionici primijene tu odluku",
+      "Sudionici jave koordinatoru da su završili"
+    ],
+    "explanation": "Kvar koordinatora nakon drugog koraka ostavlja sudionike zaključanima u pripremljenom stanju. Zbog toga se u praksi bira saga.",
+    "difficulty": "hard",
+    "conceptId": "dvofazno-potvrdivanje"
   }
 ]

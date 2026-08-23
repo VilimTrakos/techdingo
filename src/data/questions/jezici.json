@@ -797,7 +797,8 @@
       "preplitanju"
     ],
     "explanation": "Utrka daje kriv rezultat, zastoj nikakav. Utrku je teže otkriti jer se ne vidi da se nešto zaustavilo.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "race-condition"
   },
   {
     "id": "jezici-045-lost-update",
@@ -1303,5 +1304,25 @@
     "explanation": "Varijabla preživi kraj vanjske funkcije jer je unutarnja i dalje drži. To je jedini način da se u JavaScriptu dobije stvarno privatno stanje.",
     "difficulty": "hard",
     "conceptId": "zatvorenje"
+  },
+  {
+    "id": "jezici-201-composition-fill",
+    "topic": "jezici",
+    "unitId": "paradigme",
+    "kind": "fill",
+    "question": "Dopuni odnos dviju tehnika ponovne upotrebe.",
+    "text": "Nasljeđivanje izražava odnos ___, dok kompozicija izražava odnos ___.",
+    "answers": [
+      "jest",
+      "ima"
+    ],
+    "distractors": [
+      "koristi",
+      "zna",
+      "radi"
+    ],
+    "explanation": "Pas jest životinja, ali automobil ima motor. Kad odnos nije 'jest', nasljeđivanje vezuje jače nego što treba.",
+    "difficulty": "medium",
+    "conceptId": "kompozicija-vs-nasljedivanje"
   }
 ]

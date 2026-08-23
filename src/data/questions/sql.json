@@ -2186,5 +2186,27 @@
     ],
     "explanation": "Expand-contract održava kompatibilnost tijekom rollouta i odvaja potencijalno skupi backfill od završnog pooštravanja sheme.",
     "difficulty": "hard"
+  },
+  {
+    "id": "sql-201-index-cost",
+    "topic": "sql",
+    "unitId": "indeksi-performanse",
+    "kind": "multi",
+    "question": "Što se plaća dodavanjem indeksa?",
+    "options": [
+      "Sporiji upisi jer se indeks mora održavati",
+      "Dodatni prostor na disku",
+      "Rad pri svakom INSERT-u, UPDATE-u i DELETE-u",
+      "Sporije čitanje po stupcu koji indeks pokriva",
+      "Gubitak referencijalnog integriteta tablice"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Indeks ubrzava čitanje po pokrivenom stupcu - to je cijela svrha. Plaća se pisanjem i prostorom, ne čitanjem.",
+    "difficulty": "medium",
+    "conceptId": "kompromis-indeksa"
   }
 ]

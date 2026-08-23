@@ -289,7 +289,8 @@
       4
     ],
     "explanation": "Brisanje opasnih znakova je zakrpa koja se uvijek zaobiđe. Popis dopuštenog je jači od popisa zabranjenog jer ne mora predvidjeti svaki napad.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "sql-injection"
   },
   {
     "id": "sigurnost-017-injection-terms",
@@ -1397,5 +1398,47 @@
     "correctIndex": 0,
     "explanation": "Manje prikupljenih podataka znači manji rizik i lakše upravljanje životnim ciklusom. Potreba, svrha i rok čuvanja trebaju biti poznati unaprijed.",
     "difficulty": "easy"
+  },
+  {
+    "id": "sigurnost-201-password-fill",
+    "topic": "sigurnost",
+    "unitId": "autentikacija-sesije",
+    "kind": "fill",
+    "question": "Dopuni pohranu lozinke.",
+    "text": "Lozinka se sprema kao rezultat namjerno ___ funkcije, a slučajna vrijednost koja se dodaje prije sažimanja zove se ___.",
+    "answers": [
+      "spore",
+      "sol"
+    ],
+    "distractors": [
+      "brze",
+      "ključ",
+      "papar"
+    ],
+    "explanation": "Sporost je značajka, ne propust: napadaču poskupljuje svaki pokušaj. Sol osigurava da se ista lozinka nigdje ne zapiše jednako.",
+    "difficulty": "medium",
+    "conceptId": "hash-lozinki"
+  },
+  {
+    "id": "sigurnost-202-csrf-defense",
+    "topic": "sigurnost",
+    "unitId": "xss-csrf",
+    "kind": "multi",
+    "question": "Što stvarno štiti od CSRF napada?",
+    "options": [
+      "Kolačić sesije s oznakom SameSite",
+      "Token vezan uz sesiju koji zahtjev mora nositi",
+      "Provjera zaglavlja Origin ili Referer na serveru",
+      "Prelazak s HTTP-a na HTTPS",
+      "Skrivanje adrese rute koja obavlja radnju"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "HTTPS štiti promet u prijenosu, ali CSRF ne treba čitati promet - koristi ono što preglednik ionako sam šalje.",
+    "difficulty": "hard",
+    "conceptId": "csrf-obrana"
   }
 ]

@@ -1646,5 +1646,98 @@
     ],
     "explanation": "Deduplikacija i atomski poslovni upis čine ponovnu dostavu bezopasnom, a potvrda nakon commita sprječava gubitak učinka.",
     "difficulty": "hard"
+  },
+  {
+    "id": "backend-201-idempotency-fill",
+    "topic": "backend",
+    "unitId": "http-api",
+    "kind": "fill",
+    "question": "Dopuni pojam idempotentnosti.",
+    "text": "Metoda je ___ ako ponovljeni identičan zahtjev ne mijenja ishod; PUT to jest, a ___ u pravilu nije.",
+    "answers": [
+      "idempotentna",
+      "POST"
+    ],
+    "distractors": [
+      "atomarna",
+      "GET",
+      "DELETE"
+    ],
+    "explanation": "GET i DELETE su također idempotentni. POST nije, zato se naplata štiti ključem idempotentnosti.",
+    "difficulty": "medium",
+    "conceptId": "idempotentnost"
+  },
+  {
+    "id": "backend-202-deadlock-order",
+    "topic": "backend",
+    "unitId": "otpornost-distribuirani",
+    "kind": "order",
+    "question": "Poredaj kako nastaje potpuni zastoj dviju transakcija.",
+    "steps": [
+      "Prva transakcija zaključa redak A",
+      "Druga transakcija zaključa redak B",
+      "Prva zatraži redak B i počne čekati",
+      "Druga zatraži redak A i počne čekati",
+      "Baza otkrije ciklus i prekine jednu transakciju"
+    ],
+    "explanation": "Ciklus čekanja zatvara se u četvrtom koraku. Dosljedan redoslijed zaključavanja sprječava da se on uopće može zatvoriti.",
+    "difficulty": "hard",
+    "conceptId": "deadlock"
+  },
+  {
+    "id": "backend-203-scaling-fill",
+    "topic": "backend",
+    "unitId": "kesiranje-skaliranje",
+    "kind": "fill",
+    "question": "Dopuni dva smjera skaliranja.",
+    "text": "Jači pojedinačni stroj je ___ skaliranje i ima strop, dok je više instanci ___ skaliranje i traži aplikaciju bez stanja.",
+    "answers": [
+      "vertikalno",
+      "horizontalno"
+    ],
+    "distractors": [
+      "linearno",
+      "elastično"
+    ],
+    "explanation": "Vertikalno je jednostavnije dok ne udariš u najveći dostupan stroj. Horizontalno nema strop, ali mijenja način na koji se aplikacija piše.",
+    "difficulty": "easy",
+    "conceptId": "smjer-skaliranja"
+  },
+  {
+    "id": "backend-204-saga-order",
+    "topic": "backend",
+    "unitId": "poruke-redovi",
+    "kind": "order",
+    "question": "Poredaj sagu narudžbe koja u zadnjem koraku zakaže.",
+    "steps": [
+      "Kreiraj narudžbu lokalnom transakcijom",
+      "Zatraži naplatu u servisu plaćanja",
+      "Pokušaj rezervirati zalihu u skladištu",
+      "Rezervacija zakaže, pa storniraj naplatu",
+      "Označi narudžbu kao neuspjelu i obavijesti kupca"
+    ],
+    "explanation": "Saga nema poništavanje unatrag nego kompenzaciju unaprijed: storno je nova transakcija, a ne rollback prethodne.",
+    "difficulty": "hard",
+    "conceptId": "saga-kompenzacija"
+  },
+  {
+    "id": "backend-205-ttl-fill",
+    "topic": "backend",
+    "unitId": "kesiranje-skaliranje",
+    "kind": "fill",
+    "question": "Dopuni pojam iz keširanja.",
+    "text": "Vrijednost ___ određuje koliko dugo spremljeni odgovor vrijedi; kad istekne, podatak se mora ___ iznova.",
+    "answers": [
+      "TTL",
+      "dohvatiti"
+    ],
+    "distractors": [
+      "LRU",
+      "obrisati",
+      "potvrditi"
+    ],
+    "explanation": "Kratak TTL znači svježe podatke uz više prometa, dug TTL obrnuto. Isti mehanizam vrijedi za DNS i za aplikacijski cache.",
+    "difficulty": "easy",
+    "conceptId": "ttl-valjanost"
   }
 ]
