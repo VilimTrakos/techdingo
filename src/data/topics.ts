@@ -1,49 +1,39 @@
 import questionIndex from 'virtual:question-index';
-import type { Question } from '../types/question';
-import sqlQuestions from './questions/sql.json';
-import frontendQuestions from './questions/frontend.json';
-import backendQuestions from './questions/backend.json';
-import generalQuestions from './questions/general.json';
-import devopsQuestions from './questions/devops.json';
-import mrezeQuestions from './questions/mreze.json';
-import sigurnostQuestions from './questions/sigurnost.json';
-import cudniKutoviQuestions from './questions/cudni-kutovi.json';
-import jeziciQuestions from './questions/jezici.json';
-import arhitekturaQuestions from './questions/arhitektura.json';
-import praksaQuestions from './questions/praksa.json';
 
 export interface TopicDefinition {
   id: string;
   labelHr: string;
-  questions: Question[];
-  /** Broj pitanja iz indeksa - dostupan bez čitanja teksta pitanja. */
+  /** Ukupan broj pitanja u temi - iz indeksa, bez učitavanja teksta pitanja. */
   questionCount: number;
 }
 
-export const TOPICS: TopicDefinition[] = [
-  { id: 'sql', labelHr: 'SQL', questions: sqlQuestions as Question[], questionCount: (questionIndex['sql'] ?? []).length },
-  { id: 'frontend', labelHr: 'Frontend', questions: frontendQuestions as Question[], questionCount: (questionIndex['frontend'] ?? []).length },
-  { id: 'backend', labelHr: 'Backend', questions: backendQuestions as Question[], questionCount: (questionIndex['backend'] ?? []).length },
-  { id: 'general', labelHr: 'Opće', questions: generalQuestions as Question[], questionCount: (questionIndex['general'] ?? []).length },
-  { id: 'devops', labelHr: 'DevOps', questions: devopsQuestions as Question[], questionCount: (questionIndex['devops'] ?? []).length },
-  { id: 'mreze', labelHr: 'Mreže', questions: mrezeQuestions as Question[], questionCount: (questionIndex['mreze'] ?? []).length },
-  { id: 'sigurnost', labelHr: 'Sigurnost', questions: sigurnostQuestions as Question[], questionCount: (questionIndex['sigurnost'] ?? []).length },
-  { id: 'cudni-kutovi', labelHr: 'Čudni kutovi', questions: cudniKutoviQuestions as Question[], questionCount: (questionIndex['cudni-kutovi'] ?? []).length },
-  { id: 'jezici', labelHr: 'Jezici', questions: jeziciQuestions as Question[], questionCount: (questionIndex['jezici'] ?? []).length },
-  { id: 'arhitektura', labelHr: 'Arhitektura', questions: arhitekturaQuestions as Question[], questionCount: (questionIndex['arhitektura'] ?? []).length },
-  { id: 'praksa', labelHr: 'Praksa', questions: praksaQuestions as Question[], questionCount: (questionIndex['praksa'] ?? []).length },
+/**
+ * Redoslijed tema na početnoj i u svim izbornicima - od najpoznatijih prema
+ * najužim. Ovo je jedini popis koji određuje koje teme postoje; datoteka u
+ * src/data/questions/ bez unosa ovdje neće se nigdje prikazati.
+ */
+const TOPIC_LABELS: [id: string, labelHr: string][] = [
+  ['sql', 'SQL'],
+  ['frontend', 'Frontend'],
+  ['backend', 'Backend'],
+  ['general', 'Opće'],
+  ['devops', 'DevOps'],
+  ['mreze', 'Mreže'],
+  ['sigurnost', 'Sigurnost'],
+  ['cudni-kutovi', 'Čudni kutovi'],
+  ['jezici', 'Jezici'],
+  ['arhitektura', 'Arhitektura'],
+  ['praksa', 'Praksa'],
 ];
+
+export const TOPICS: TopicDefinition[] = TOPIC_LABELS.map(([id, labelHr]) => ({
+  id,
+  labelHr,
+  questionCount: (questionIndex[id] ?? []).length,
+}));
 
 export function getTopic(topicId: string): TopicDefinition | undefined {
   return TOPICS.find((t) => t.id === topicId);
-}
-
-/** `topicIdOrMixed === 'mixed'` vraća pitanja iz svih tema kombinirano. */
-export function getQuestionsForScoreStrike(topicIdOrMixed: string): Question[] {
-  if (topicIdOrMixed === 'mixed') {
-    return TOPICS.flatMap((t) => t.questions);
-  }
-  return getTopic(topicIdOrMixed)?.questions ?? [];
 }
 
 /** Koliko pitanja ima svaka cjelina teme - za prikaz na putu učenja. */

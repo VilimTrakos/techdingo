@@ -1,15 +1,17 @@
 import { describe, expect, it } from 'vitest';
 import questionIndex from 'virtual:question-index';
 import { TOPICS, findTopicOfQuestion, getUnitQuestionCounts, questionExists } from './topics';
+import { loadTopicQuestions } from './questionLoader';
 
 /**
  * Indeks je izveden iz istih JSON datoteka kao i pitanja, ali drugim putem
  * (Vite plugin umjesto importa). Ovi testovi drže ta dva puta u skladu.
  */
 describe('indeks pitanja', () => {
-  it('broj pitanja iz indeksa odgovara stvarnoj temi', () => {
+  it('broj pitanja iz indeksa odgovara stvarnoj temi', async () => {
     for (const topic of TOPICS) {
-      expect(topic.questionCount, topic.id).toBe(topic.questions.length);
+      const questions = await loadTopicQuestions(topic.id);
+      expect(topic.questionCount, topic.id).toBe(questions.length);
     }
   });
 
@@ -20,9 +22,9 @@ describe('indeks pitanja', () => {
     }
   });
 
-  it('svako pitanje se preko id-a nađe u svojoj temi', () => {
+  it('svako pitanje se preko id-a nađe u svojoj temi', async () => {
     for (const topic of TOPICS) {
-      for (const question of topic.questions) {
+      for (const question of await loadTopicQuestions(topic.id)) {
         expect(findTopicOfQuestion(question.id), question.id).toBe(topic.id);
       }
     }
