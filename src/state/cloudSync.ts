@@ -26,15 +26,37 @@ interface ScoreStrikeProgressRow {
   recent_question_ids: string[] | null;
 }
 
+/**
+ * Supabase klijent NE baca na grešku upita - vraća `{ data, error }`. Bez ove
+ * provjere neuspjeli upis prolazi kao uspjeh: `pushCloudProgress` se uredno
+ * resolva, `.catch` u useProgress se nikad ne okine, i korisnik misli da je
+ * napredak spremljen u oblak dok nije.
+ *
+ * Točno se to i dogodilo: kod je pisao `struggled_question_ids` prije nego je
+ * migracija 0003 pokrenuta na bazi, pa cijeli lesson_progress mjesecima nije
+ * sinkronizirao, bez ijedne poruke.
+ */
+function throwIfFailed(what: string, error: { message: string } | null): void {
+  if (error) throw new Error(`Supabase: ${what} nije uspjelo - ${error.message}`);
+}
+
 /** `null` ako korisnik još nema cloud red (npr. prvi login nakon registracije). */
 export async function fetchCloudProgress(userId: string): Promise<ProgressState | null> {
   if (!supabase) return null;
 
-  const [{ data: progressRow }, { data: lessonRows }, { data: scoreStrikeRows }] = await Promise.all([
+  const [progressResult, lessonResult, scoreStrikeResult] = await Promise.all([
     supabase.from('progress').select('*').eq('user_id', userId).maybeSingle<ProgressRow>(),
     supabase.from('lesson_progress').select('*').eq('user_id', userId).returns<LessonProgressRow[]>(),
     supabase.from('score_strike_progress').select('*').eq('user_id', userId).returns<ScoreStrikeProgressRow[]>(),
   ]);
+
+  throwIfFailed('čitanje progress reda', progressResult.error);
+  throwIfFailed('čitanje lesson_progress redova', lessonResult.error);
+  throwIfFailed('čitanje score_strike_progress redova', scoreStrikeResult.error);
+
+  const progressRow = progressResult.data;
+  const lessonRows = lessonResult.data;
+  const scoreStrikeRows = scoreStrikeResult.data;
 
   if (!progressRow) return null;
 
@@ -90,7 +112,7 @@ export async function fetchCloudProgress(userId: string): Promise<ProgressState 
 export async function pushCloudProgress(userId: string, state: ProgressState): Promise<void> {
   if (!supabase) return;
 
-  await supabase.from('progress').upsert({
+  const progressResult = await supabase.from('progress').upsert({
     user_id: userId,
     xp_total: state.xpTotal,
     streak_current: state.streak.current,
@@ -98,6 +120,7 @@ export async function pushCloudProgress(userId: string, state: ProgressState): P
     streak_last_completed_date: state.streak.lastCompletedDateISO,
     updated_at: state.updatedAtISO,
   });
+  throwIfFailed('upis progress reda', progressResult.error);
 
   const lessonRows = Object.entries(state.lessons).map(([topicId, p]) => ({
     user_id: userId,
@@ -108,7 +131,8 @@ export async function pushCloudProgress(userId: string, state: ProgressState): P
     struggled_question_ids: p.struggledQuestionIds,
   }));
   if (lessonRows.length > 0) {
-    await supabase.from('lesson_progress').upsert(lessonRows);
+    const { error } = await supabase.from('lesson_progress').upsert(lessonRows);
+    throwIfFailed('upis lesson_progress redova', error);
   }
 
   const scoreStrikeRows = Object.entries(state.scoreStrike).map(([topicId, p]) => ({
@@ -120,7 +144,8 @@ export async function pushCloudProgress(userId: string, state: ProgressState): P
     recent_question_ids: p.recentQuestionIds,
   }));
   if (scoreStrikeRows.length > 0) {
-    await supabase.from('score_strike_progress').upsert(scoreStrikeRows);
+    const { error } = await supabase.from('score_strike_progress').upsert(scoreStrikeRows);
+    throwIfFailed('upis score_strike_progress redova', error);
   }
 }
 
