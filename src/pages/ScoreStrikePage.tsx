@@ -6,6 +6,7 @@ import { QuestionCard } from '../components/QuestionCard';
 import { ResultsSummary } from '../components/ResultsSummary';
 import { Timer } from '../components/Timer';
 import { TOPICS } from '../data/topics';
+import { QuestionsLoadError } from '../components/QuestionsLoadError';
 import { correctAnswerText } from '../lib/questionKinds';
 import { useScoreStrikeSession } from '../hooks/useScoreStrikeSession';
 
@@ -34,6 +35,10 @@ function ScoreStrikeSession({
         <p className="font-bold text-slate-600">Pripremamo Score Strike…</p>
       </div>
     );
+  }
+
+  if (session.status === 'load-failed') {
+    return <QuestionsLoadError onRetry={session.restart} />;
   }
 
   if (session.status === 'finished') {

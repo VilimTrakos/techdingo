@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useReducer, useRef } from 'react';
-import { getQuestionsForScoreStrike } from '../data/topics';
+import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
+import { loadQuestionsForScoreStrike } from '../data/questionLoader';
 import { selectDailyQuestions } from '../lib/daily';
 import {
   gradeAnswer,
@@ -14,7 +14,7 @@ import { useProgress } from './useProgress';
 
 const AUTO_ADVANCE_MS = 1100;
 
-type Status = 'loading' | 'already-played' | 'playing' | 'finished';
+type Status = 'loading' | 'already-played' | 'load-failed' | 'playing' | 'finished';
 
 interface State {
   status: Status;
@@ -29,6 +29,7 @@ interface State {
 type Action =
   | { type: 'INIT'; questions: PreparedQuestion[] }
   | { type: 'ALREADY_PLAYED' }
+  | { type: 'LOAD_FAILED' }
   | { type: 'ANSWER'; correct: boolean; remainingMs: number; totalMs: number }
   | { type: 'TIMEOUT' }
   | { type: 'NEXT' };
@@ -51,6 +52,8 @@ function reducer(state: State, action: Action): State {
       return { ...createIdleState(), status: 'playing', questions: action.questions };
     case 'ALREADY_PLAYED':
       return { ...createIdleState(), status: 'already-played' };
+    case 'LOAD_FAILED':
+      return { ...createIdleState(), status: 'load-failed' };
     case 'ANSWER': {
       if (state.status !== 'playing' || state.isAnswered) return state;
       const { pointsAwarded, newCombo } = scoreAnswer({
@@ -91,6 +94,9 @@ function reducer(state: State, action: Action): State {
  */
 export function useDailyChallengeSession() {
   const [state, dispatch] = useReducer(reducer, undefined, createIdleState);
+  // Ponovni pokušaj nakon pada dohvata pitanja - bez ovoga bi jedina izlaz
+  // bio ručni reload stranice.
+  const [retryNonce, setRetryNonce] = useState(0);
   const { state: progress, recordDailyChallengeResult } = useProgress();
   const recordedRef = useRef(false);
   const questionStartedAtRef = useRef(Date.now());
@@ -102,15 +108,31 @@ export function useDailyChallengeSession() {
       dispatch({ type: 'ALREADY_PLAYED' });
       return;
     }
-    const pool = getQuestionsForScoreStrike('mixed');
-    if (pool.length === 0) return;
-    const picked = selectDailyQuestions(todayISO, pool);
-    recordedRef.current = false;
-    dispatch({ type: 'INIT', questions: picked.map(prepareQuestion) });
+    // Izazov je isti za sve, pa mora vidjeti CIJELU banku - dovlače se sve
+    // teme. Redoslijed je uvijek redoslijed TOPICS-a, što seeded odabir u
+    // selectDailyQuestions čini istim na svakom uređaju.
+    let cancelled = false;
+
+    loadQuestionsForScoreStrike('mixed')
+      .then((pool) => {
+        if (cancelled || pool.length === 0) return;
+        const picked = selectDailyQuestions(todayISO, pool);
+        recordedRef.current = false;
+        dispatch({ type: 'INIT', questions: picked.map(prepareQuestion) });
+      })
+      .catch((err) => {
+        if (cancelled) return;
+        console.error('techdingo: dohvat pitanja za dnevni izazov nije uspio.', err);
+        dispatch({ type: 'LOAD_FAILED' });
+      });
+
+    return () => {
+      cancelled = true;
+    };
     // Namjerno bez `progress` u deps - zapisivanje rezultata na kraju bi
     // ponovno pokrenulo init (i prikazalo "već odigrano" umjesto rezultata).
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [todayISO]);
+  }, [todayISO, retryNonce]);
 
   useEffect(() => {
     if (state.status === 'playing' && !state.isAnswered) {
@@ -153,8 +175,11 @@ export function useDailyChallengeSession() {
     [state.status, state.isAnswered, current],
   );
 
+  const retry = useCallback(() => setRetryNonce((n) => n + 1), []);
+
   return {
     status: state.status,
+    retry,
     todayISO,
     questionIndex: state.questionIndex,
     totalQuestions: state.questions.length,

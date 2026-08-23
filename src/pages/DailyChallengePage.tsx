@@ -7,6 +7,7 @@ import { ResultsSummary } from '../components/ResultsSummary';
 import { Timer } from '../components/Timer';
 import { correctAnswerText } from '../lib/questionKinds';
 import { useDailyChallengeSession } from '../hooks/useDailyChallengeSession';
+import { QuestionsLoadError } from '../components/QuestionsLoadError';
 
 export function DailyChallengePage() {
   const session = useDailyChallengeSession();
@@ -25,6 +26,10 @@ export function DailyChallengePage() {
         <p className="font-bold text-slate-600">Pripremamo dnevni izazov…</p>
       </div>
     );
+  }
+
+  if (session.status === 'load-failed') {
+    return <QuestionsLoadError onRetry={session.retry} />;
   }
 
   if (session.status === 'already-played') {

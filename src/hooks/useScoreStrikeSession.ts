@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
-import { getQuestionsForScoreStrike } from '../data/topics';
+import { loadQuestionsForScoreStrike } from '../data/questionLoader';
 import { randomSessionSize, selectSessionPool } from '../lib/pool';
 import {
   gradeAnswer,
@@ -13,7 +13,7 @@ import { useProgress } from './useProgress';
 
 const AUTO_ADVANCE_MS = 1100;
 
-type Status = 'loading' | 'playing' | 'finished';
+type Status = 'loading' | 'load-failed' | 'playing' | 'finished';
 
 interface State {
   status: Status;
@@ -28,6 +28,7 @@ interface State {
 
 type Action =
   | { type: 'INIT'; questions: PreparedQuestion[] }
+  | { type: 'LOAD_FAILED' }
   | { type: 'ANSWER'; correct: boolean; remainingMs: number; totalMs: number }
   | { type: 'TIMEOUT' }
   | { type: 'NEXT' }
@@ -49,6 +50,8 @@ function reducer(state: State, action: Action): State {
   switch (action.type) {
     case 'INIT':
       return { ...createIdleState(), status: 'playing', questions: action.questions };
+    case 'LOAD_FAILED':
+      return { ...createIdleState(), status: 'load-failed' };
     case 'ANSWER': {
       if (state.status !== 'playing' || state.isAnswered) return state;
       const { pointsAwarded, newCombo } = scoreAnswer({
@@ -92,18 +95,37 @@ export function useScoreStrikeSession(topicIdOrMixed: string) {
   const recordedRef = useRef(false);
   const questionStartedAtRef = useRef(Date.now());
 
+  // Pitanja stižu asinkrono, pa init čita progress kroz ref - do trenutka
+  // dolaska chunka `progress` iz zatvorenja bi već mogao biti zastario.
+  const progressRef = useRef(progress);
+  progressRef.current = progress;
+
   useEffect(() => {
     dispatch({ type: 'RESET' });
-    const pool = getQuestionsForScoreStrike(topicIdOrMixed);
-    if (pool.length === 0) return;
+    // "mixed" dovlači sve teme; jedna tema dovlači samo svoj chunk.
+    let cancelled = false;
 
-    const recentIds = progress.scoreStrike[topicIdOrMixed]?.recentQuestionIds ?? [];
-    const size = randomSessionSize();
-    const picked = selectSessionPool(pool, recentIds, size);
+    loadQuestionsForScoreStrike(topicIdOrMixed)
+      .then((pool) => {
+        if (cancelled || pool.length === 0) return;
 
-    recordedRef.current = false;
-    setIsNewBest(false);
-    dispatch({ type: 'INIT', questions: picked.map(prepareQuestion) });
+        const recentIds = progressRef.current.scoreStrike[topicIdOrMixed]?.recentQuestionIds ?? [];
+        const size = randomSessionSize();
+        const picked = selectSessionPool(pool, recentIds, size);
+
+        recordedRef.current = false;
+        setIsNewBest(false);
+        dispatch({ type: 'INIT', questions: picked.map(prepareQuestion) });
+      })
+      .catch((err) => {
+        if (cancelled) return;
+        console.error('techdingo: dohvat pitanja za Score Strike nije uspio.', err);
+        dispatch({ type: 'LOAD_FAILED' });
+      });
+
+    return () => {
+      cancelled = true;
+    };
     // Namjerno bez `progress` u deps - vidi useLessonSession za obrazloženje.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [topicIdOrMixed, restartNonce]);
