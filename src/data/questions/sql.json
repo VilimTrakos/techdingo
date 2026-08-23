@@ -423,6 +423,7 @@
   {
     "id": "sql-057-least-privilege-grant",
     "topic": "sql",
+    "conceptId": "sql-least-privilege",
     "question": "Koja dodjela ovlasti najbolje slijedi načelo najmanjih ovlasti za račun koji samo izrađuje izvještaje?",
     "options": [
       "Dodijeliti mu vlasništvo nad cijelom bazom",
@@ -697,6 +698,7 @@
   {
     "id": "sql-018-sql-injection",
     "topic": "sql",
+    "conceptId": "sql-sql-injection",
     "question": "Što je SQL injection i kako ga se najčešće sprječava?",
     "options": [
       "Napad u kojem se zlonamjerni SQL kod ubacuje kroz korisnički unos; sprječava se parametriziranim upitima (prepared statements), a ne konkatenacijom stringova",
@@ -1808,6 +1810,7 @@
     "id": "sql-uvod-sigurnost",
     "topic": "sql",
     "unitId": "sigurnost",
+    "conceptId": "sql-sql-injection",
     "isIntro": true,
     "question": "Što je SQL injection?",
     "options": [
@@ -1819,5 +1822,87 @@
     "correctIndex": 0,
     "explanation": "Ako se unos lijepi u upit kao tekst, napadač može upisati vlastiti SQL. Parametrizirani upiti su rješenje jer unos nikad ne postaje kod.",
     "difficulty": "easy"
+  },
+  {
+    "id": "sql-120-uvod-least-privilege",
+    "topic": "sql",
+    "unitId": "sigurnost",
+    "conceptId": "sql-least-privilege",
+    "isIntro": true,
+    "question": "Što znači načelo najmanjih ovlasti za račun baze podataka?",
+    "options": [
+      "Račun dobiva samo ovlasti nužne za svoj konkretan posao",
+      "Račun dobiva sve ovlasti, ali ih koristi samo kada zatrebaju",
+      "Svaki račun smije čitati samo tablicu s najmanje redaka",
+      "Svi servisi dijele jedan račun kako bi bilo manje lozinki"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ograničene ovlasti smanjuju štetu pogreške ili kompromitacije. Servis koji samo čita izvještaj ne treba pravo izmjene tablica ni administracije baze.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-121-multi-injection-defense",
+    "topic": "sql",
+    "unitId": "sigurnost",
+    "conceptId": "sql-sql-injection",
+    "kind": "multi",
+    "question": "Koje mjere izravno smanjuju rizik i posljedice SQL injectiona?",
+    "options": [
+      "Parametrizirani upiti koji odvajaju SQL strukturu od vrijednosti",
+      "Račun aplikacije ograničen na nužne ovlasti",
+      "Dopuštena lista za dinamičke identifikatore koji se ne mogu parametrizirati",
+      "Ručno escapiranje cijelog upita nakon spajanja proizvoljnih stringova",
+      "Skrivanje poruke pogreške samo pomoću CSS-a"
+    ],
+    "correctIndexes": [0, 1, 2],
+    "explanation": "Parametri štite vrijednosti, allowlist kontrolira dinamičke nazive poput stupaca, a najmanje ovlasti ograničavaju štetu ako se propust ipak dogodi.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "sql-122-fill-report-grant",
+    "topic": "sql",
+    "unitId": "sigurnost",
+    "conceptId": "sql-least-privilege",
+    "kind": "fill",
+    "question": "Popuni dodjelu samo prava čitanja pogleda ulozi za izvještavanje.",
+    "text": "GRANT ___ ___ mjesecni_izvjestaj ___ analiticar;",
+    "answers": ["SELECT", "ON", "TO"],
+    "distractors": ["UPDATE", "FROM", "AS"],
+    "explanation": "GRANT SELECT ON objekt TO uloga daje pravo čitanja odabranog objekta bez INSERT, UPDATE, DELETE ili administrativnih ovlasti.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-123-order-credential-rotation",
+    "topic": "sql",
+    "unitId": "sigurnost",
+    "kind": "order",
+    "question": "Poredaj siguran postupak rotacije vjerodajnice aplikacijskog računa baze bez prekida rada.",
+    "steps": [
+      "Stvori novu vjerodajnicu s istim minimalnim potrebnim ovlastima",
+      "Sigurno dostavi novu tajnu aplikaciji bez zapisivanja u izvorni kod",
+      "Objavi konfiguraciju koja se može povezati novom vjerodajnicom",
+      "Potvrdi kroz metrike i logove da nove veze uspijevaju",
+      "Povuci staru vjerodajnicu nakon isteka postojećih veza",
+      "Provjeri da stara vjerodajnica više ne omogućuje pristup"
+    ],
+    "explanation": "Razdoblje kontroliranog preklapanja omogućuje zamjenu bez prekida, a brzo povlačenje i provjera stare tajne zatvaraju prethodni pristup.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "sql-124-code-parameter-binding",
+    "topic": "sql",
+    "unitId": "sigurnost",
+    "conceptId": "sql-sql-injection",
+    "question": "Zašto je ovaj obrazac sigurniji od umetanja emaila izravno u SQL string?",
+    "code": "db.query('SELECT id FROM korisnici WHERE email = $1', [email]);",
+    "options": [
+      "Driver šalje SQL strukturu i vrijednost odvojeno, pa email ne postaje izvršni SQL kod",
+      "Driver uklanja sve posebne znakove iz emaila, pa baza uvijek prima samo slova i brojke",
+      "Placeholder $1 šifrira email javnim ključem baze prije nego što se upit pošalje mrežom",
+      "Polje s jednom vrijednošću prisiljava bazu da preskoči provjeru ovlasti aplikacijskog računa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Vezani parametar tretira email kao podatak neovisno o njegovu sadržaju. Enkripcija prometa i najmanje ovlasti zasebni su slojevi zaštite.",
+    "difficulty": "medium"
   }
 ]
