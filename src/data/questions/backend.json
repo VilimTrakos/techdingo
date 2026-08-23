@@ -36,8 +36,8 @@
     "options": [
       "1xx informativni, 2xx uspjeh (npr. 200 OK, 201 Created), 3xx preusmjeravanje, 4xx greška na strani klijenta (npr. 404 Not Found), 5xx greška na strani servera (npr. 500 Internal Server Error)",
       "Statusni kodovi koriste se samo za neuspješne zahtjeve: klijentske pogreške dobivaju 1xx, serverske 2xx, a uspješni odgovori šalju se bez statusne linije",
-      "1xx označava trajna preusmjeravanja, 2xx greške klijenta, 3xx greške servera, 4xx uspjeh, a 5xx informativne odgovore koji još nemaju tijelo",
-      "Kategorije nemaju standardizirano značenje; svaki API sam određuje predstavlja li pojedini raspon uspjeh, preusmjeravanje ili pogrešku"
+      "1xx označava trajna preusmjeravanja, 2xx greške klijenta, 3xx greške servera, 4xx uspjeh, a 5xx informativne odgovore koji još nemaju tijelo ni završni status",
+      "Kategorije nemaju standardizirano značenje; svaki API sam određuje predstavlja li pojedini raspon uspjeh, preusmjeravanje, klijentsku ili serversku pogrešku"
     ],
     "correctIndex": 0,
     "explanation": "Prva znamenka statusnog koda odmah govori o kategoriji odgovora, što olakšava rukovanje odgovorima na klijentskoj strani bez parsiranja tijela odgovora.",
@@ -472,8 +472,8 @@
     "options": [
       "Caching sprema rezultate skupih operacija radi bržeg budućeg pristupa, a invalidacija cachea je proces uklanjanja/ažuriranja zastarjelih podataka iz predmemorije kad se izvorni podaci promijene",
       "Caching trajno premješta rijetko korištene podatke iz baze u sporiju arhivu radi uštede prostora, a invalidacija ih nepovratno briše iz oba spremišta",
-      "Caching sprema korisničke lozinke u memoriju procesa, a invalidacija provjerava jesu li njihove hash vrijednosti još valjane nakon svake prijave",
-      "Caching se može koristiti samo za slike i statične datoteke preglednika; rezultati upita, API odgovori i izračuni ne smiju se predmemorirati"
+      "Caching sprema korisničke lozinke u memoriju procesa, a invalidacija provjerava jesu li njihove hash vrijednosti još valjane nakon svake prijave ili odjave korisnika",
+      "Caching se može koristiti samo za slike i statične datoteke preglednika; rezultati upita, API odgovori i skupi izračuni ne smiju se predmemorirati na serveru"
     ],
     "correctIndex": 0,
     "explanation": "Cache ubrzava sustav izbjegavanjem ponovnog računanja/dohvaćanja istih podataka, ali unosi izazov: ako se izvorni podatak promijeni, stara verzija u cacheu mora se osvježiti ili ukloniti - poznato kao jedan od 'dva najteža problema u informatici'.",
@@ -695,9 +695,9 @@
     "topic": "backend",
     "question": "Korisnik odmah nakon uspješnog upisa čita podatak s asinkrone read replike i vidi staru vrijednost. Kako osigurati read-after-write iskustvo?",
     "options": [
-      "Povećati TTL cachea za taj zapis kako bi replika dobila stariju spremljenu vrijednost i koristila je sve dok se asinkroni prijenos promjene ne završi",
+      "Povećati TTL cachea kako bi replika koristila stariju spremljenu vrijednost sve dok se asinkroni prijenos promjene ne završi",
       "Bez ograničenja ponavljati isti upit na istoj replici jer svaki SELECT automatski ubrzava replikaciju upravo tog retka s primary instance",
-      "Prepustiti klijentu da lokalno sortira primljene retke prema vremenu odgovora, čime će zastarjela vrijednost biti zamijenjena najnovijom bez dodatnog čitanja",
+      "Prepustiti klijentu da sortira primljene retke prema vremenu odgovora, čime će zastarjela vrijednost biti zamijenjena bez dodatnog čitanja",
       "Privremeno usmjeriti čitanje na primary ili koristiti token sesijske konzistentnosti dok replika ne sustigne upis"
     ],
     "correctIndex": 3,

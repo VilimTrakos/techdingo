@@ -758,9 +758,9 @@
     "topic": "general",
     "question": "Ako se 80% vremena programa može beskonačno ubrzati paralelizacijom, koje maksimalno ukupno ubrzanje predviđa Amdahlov zakon?",
     "options": [
-      "Najviše 1,25 puta, jer paralelnih 80% određuje preostali udio vremena nakon beskonačnog ubrzanja",
-      "Najviše 4 puta, jer se ubrzivi dio od 80% dijeli s neubrzivih 20% bez uključivanja serijskog dijela u ukupno vrijeme",
-      "Ubrzanje je neograničeno jer je većina programa paralelizirana, pa preostalih 20% vremena nestaje kada broj procesora teži beskonačnosti",
+      "Najviše 1,25 puta, jer paralelnih 80% određuje preostali udio ukupnog vremena",
+      "Najviše 4 puta, jer se ubrzivih 80% podijeli s neubrzivih 20% programa",
+      "Ubrzanje je neograničeno jer serijskih 20% nestaje uz beskonačno procesora",
       "Najviše 5 puta, jer neubrzivih 20% ostaje donja granica ukupnog vremena"
     ],
     "correctIndex": 3,
