@@ -650,7 +650,8 @@
     "correctIndex": 0,
     "explanation": "Promise omogućuje čitljivije rukovanje asinkronim kodom pomoću .then()/.catch() lanaca (ili async/await) umjesto ugniježđenih callbackova.",
     "difficulty": "medium",
-    "unitId": "asinkroni-js"
+    "unitId": "asinkroni-js",
+    "conceptId": "frontend-promise"
   },
   {
     "id": "frontend-010-async-await",
@@ -1626,7 +1627,11 @@
       "Automatski šalje svaki mrežni zahtjev kao JSON",
       "Nikada ne treba vidljivo fokusno stanje"
     ],
-    "correctIndexes": [0, 1, 2],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Nativni button već donosi semantiku, fokus i Space/Enter ponašanje. I dalje ga treba ispravno stilizirati, uključujući vidljiv fokus.",
     "difficulty": "easy"
   },
@@ -1645,5 +1650,150 @@
     ],
     "explanation": "Preglednik spaja DOM i CSSOM u render tree, izračunava geometriju u layoutu te zatim iscrtava i sastavlja slojeve.",
     "difficulty": "medium"
+  },
+  {
+    "id": "frontend-uvod-osnove-weba",
+    "topic": "frontend",
+    "unitId": "osnove-weba",
+    "isIntro": true,
+    "question": "Što HTML opisuje na web stranici?",
+    "options": [
+      "Strukturu i sadržaj",
+      "Boje i razmake",
+      "Logiku i interakciju",
+      "Podatke spremljene na serveru"
+    ],
+    "correctIndex": 0,
+    "explanation": "HTML kaže ŠTO je na stranici (naslov, odlomak, gumb). CSS kaže kako to izgleda, a JavaScript što se dogodi kad korisnik nešto napravi.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-uvod-js-jezik",
+    "topic": "frontend",
+    "unitId": "js-jezik",
+    "isIntro": true,
+    "question": "Koja ključna riječ deklarira varijablu kojoj se vrijednost više ne može ponovno pridružiti?",
+    "options": [
+      "const",
+      "let",
+      "var",
+      "static"
+    ],
+    "correctIndex": 0,
+    "explanation": "const veže ime za vrijednost jednom zauvijek. let dopušta promjenu, a var je stariji oblik s drugačijim pravilima dosega kojeg se u novom kodu izbjegava.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-uvod-dom-eventovi",
+    "topic": "frontend",
+    "unitId": "dom-eventovi",
+    "isIntro": true,
+    "question": "Što je event (događaj) u pregledniku?",
+    "options": [
+      "Signal da se nešto dogodilo, npr. klik ili unos teksta",
+      "Greška koja zaustavlja izvršavanje skripte",
+      "Zahtjev poslan serveru",
+      "Element koji se dodaje na stranicu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Preglednik javlja događaje, a kod se na njih pretplaćuje slušačem. Sve interakcije u ovoj cjelini svode se na to tko sluša, kada i kojim redom.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-uvod-css-layout",
+    "topic": "frontend",
+    "unitId": "css-layout",
+    "isIntro": true,
+    "question": "Što CSS određuje?",
+    "options": [
+      "Izgled i raspored elemenata na stranici",
+      "Strukturu sadržaja stranice",
+      "Sadržaj baze podataka",
+      "Redoslijed učitavanja skripti"
+    ],
+    "correctIndex": 0,
+    "explanation": "CSS opisuje kako elementi izgledaju i gdje stoje. Flexbox i Grid su dva sustava kojima se taj raspored zadaje.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-uvod-asinkroni-js",
+    "topic": "frontend",
+    "unitId": "asinkroni-js",
+    "isIntro": true,
+    "question": "Kod pozove nešto što traje, npr. dohvat podataka s mreže. Što JavaScript vrati odmah, prije nego podaci stignu?",
+    "options": [
+      "Promise - obećanje da će rezultat stići kasnije",
+      "Gotove podatke, jer čeka da dohvat završi",
+      "Praznu vrijednost undefined koja se kasnije popuni sama",
+      "Grešku, jer podaci još ne postoje"
+    ],
+    "correctIndex": 0,
+    "explanation": "JavaScript ne staje i ne čeka - vraća Promise, objekt koji predstavlja rezultat koji tek dolazi. Na njega se onda čeka s await ili .then().",
+    "difficulty": "easy",
+    "conceptId": "frontend-promise"
+  },
+  {
+    "id": "frontend-uvod-react",
+    "topic": "frontend",
+    "unitId": "react",
+    "isIntro": true,
+    "question": "Što je komponenta u Reactu?",
+    "options": [
+      "Funkcija koja vraća opis dijela sučelja",
+      "Datoteka sa CSS pravilima",
+      "Zapis u bazi podataka",
+      "Poseban HTML tag koji preglednik razumije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Komponenta prima podatke (props) i vraća opis onoga što treba prikazati. React onda taj opis pretvara u stvarni DOM.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-uvod-mreza-sigurnost",
+    "topic": "frontend",
+    "unitId": "mreza-sigurnost",
+    "isIntro": true,
+    "question": "Što radi HTTP zahtjev koji preglednik šalje serveru?",
+    "options": [
+      "Traži podatke od servera ili mu ih šalje",
+      "Mijenja izgled stranice bez servera",
+      "Sprema podatke u memoriju preglednika",
+      "Prevodi JavaScript u strojni kod"
+    ],
+    "correctIndex": 0,
+    "explanation": "Svaka slika, stranica i API poziv je HTTP zahtjev. Metoda kaže što se traži, a statusni kod kako je prošlo.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-uvod-pristupacnost-testiranje",
+    "topic": "frontend",
+    "unitId": "pristupacnost-testiranje",
+    "isIntro": true,
+    "question": "Što znači pristupačnost (a11y) na webu?",
+    "options": [
+      "Da sučelje mogu koristiti i osobe s invaliditetom, npr. uz čitač ekrana",
+      "Da se stranica brzo učitava na sporoj vezi",
+      "Da je stranica dostupna iz svih država",
+      "Da korisnik ne treba račun za pristup"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pristupačnost je pitanje može li netko tko ne vidi ekran ili ne koristi miš obaviti isti posao. Semantični HTML rješava većinu toga sam.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "frontend-uvod-performanse",
+    "topic": "frontend",
+    "unitId": "performanse",
+    "isIntro": true,
+    "question": "Što se mjeri kad se govori o performansama web stranice?",
+    "options": [
+      "Koliko brzo se prikaže i koliko glatko reagira na korisnika",
+      "Koliko redaka koda ima",
+      "Koliko posjetitelja dnevno dolazi",
+      "Koliko je datoteka u projektu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Performanse su vrijeme do prvog prikaza i odzivnost nakon toga. Optimizacija je uvijek odgovor na mjerenje, ne na osjećaj.",
+    "difficulty": "easy"
   }
 ]

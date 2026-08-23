@@ -11,10 +11,21 @@ interface FileReport {
   errors: string[];
 }
 
+/**
+ * Koliko pitanja cjelina treba da lekcija od 8-10 pitanja prođe bez doslovnog
+ * ponavljanja istog pitanja u istom sjedenju. Zasad UPOZORENJE, ne greška -
+ * banka se još puni; postaje greška kad sve cjeline dosegnu prag.
+ */
+const MIN_QUESTIONS_PER_UNIT = 10;
+
 function main(): void {
   const files = readdirSync(QUESTIONS_DIR).filter((f) => f.endsWith('.json'));
   const reports: FileReport[] = [];
+  const warnings: string[] = [];
   const idToFiles = new Map<string, string[]>();
+  let introTotal = 0;
+  let variantTotal = 0;
+  let richKindTotal = 0;
 
   for (const file of files) {
     const expectedTopic = basename(file, '.json');
@@ -45,7 +56,19 @@ function main(): void {
     }
 
     const unitCounts = new Map<string, number>();
+    const unitIntroCounts = new Map<string, number>();
+    const conceptCounts = new Map<string, number>();
     for (const q of parsed.data) {
+      if (q.isIntro) {
+        introTotal++;
+        unitIntroCounts.set(q.unitId, (unitIntroCounts.get(q.unitId) ?? 0) + 1);
+        // Uvod predstavlja NOVI pojam - ako je težak, ne uvodi nego odbija.
+        if (q.difficulty !== 'easy') {
+          errors.push(`Uvodno pitanje "${q.id}" ima difficulty "${q.difficulty}"; uvod mora biti "easy".`);
+        }
+      }
+      if (q.kind && q.kind !== 'single') richKindTotal++;
+      if (q.conceptId) conceptCounts.set(q.conceptId, (conceptCounts.get(q.conceptId) ?? 0) + 1);
       if (q.topic !== expectedTopic) {
         errors.push(`Pitanje "${q.id}" ima topic "${q.topic}", a nalazi se u datoteci "${file}" (očekivano "${expectedTopic}").`);
       }
@@ -59,11 +82,25 @@ function main(): void {
       idToFiles.set(q.id, existing);
     }
 
+    variantTotal += [...conceptCounts.values()].filter((n) => n > 1).length;
+
     // Svaka registrirana cjelina mora imati barem jedno pitanje - prazna
     // cjelina bi na putu učenja bila mrtav, neprelaziv čvor.
     for (const unit of getUnitsForTopic(expectedTopic)) {
-      if (!unitCounts.has(unit.id)) {
+      const count = unitCounts.get(unit.id) ?? 0;
+      if (count === 0) {
         errors.push(`Cjelina "${unit.id}" iz src/data/units.ts nema nijedno pitanje u "${file}".`);
+        continue;
+      }
+      if (count < MIN_QUESTIONS_PER_UNIT) {
+        warnings.push(
+          `${file}: cjelina "${unit.id}" ima ${count} pitanja, a lekcija traži 8-10 - igrač će vidjeti isto pitanje više puta u istom sjedenju (cilj: ${MIN_QUESTIONS_PER_UNIT}).`,
+        );
+      }
+      if (!unitIntroCounts.has(unit.id)) {
+        warnings.push(
+          `${file}: cjelina "${unit.id}" nema nijedno uvodno pitanje (isIntro) - prva lekcija počinje bez predstavljanja pojmova.`,
+        );
       }
     }
 
@@ -82,9 +119,20 @@ function main(): void {
     reports.push({ file: '(globalno)', errors: duplicateIdErrors });
   }
 
+  if (warnings.length > 0) {
+    console.warn(`⚠ ${warnings.length} upozorenja o pokrivenosti sadržaja:\n`);
+    for (const warning of warnings) {
+      console.warn(`    - ${warning}`);
+    }
+    console.warn('');
+  }
+
   if (reports.length === 0) {
     const totalQuestions = [...idToFiles.keys()].length;
-    console.log(`✓ Sve datoteke pitanja su valjane (${files.length} tema, ${totalQuestions} pitanja ukupno).`);
+    console.log(
+      `✓ Sve datoteke pitanja su valjane (${files.length} tema, ${totalQuestions} pitanja ukupno).\n` +
+        `  uvodnih: ${introTotal} | posebnih vrsta (multi/fill/order): ${richKindTotal} | koncepata s više varijanti: ${variantTotal}`,
+    );
     return;
   }
 

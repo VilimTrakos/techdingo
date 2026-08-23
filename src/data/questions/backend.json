@@ -1174,7 +1174,11 @@
       "Aktivira se za svaki pojedinačni debug log",
       "Namjerno skriva pogođeni servis"
     ],
-    "correctIndexes": [0, 1, 2],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Dobar alert je djelotvoran: opisuje stvaran simptom, usmjerava prema dijagnozi i ima vlasnika. Preosjetljivi alerti stvaraju zamor i zanemarivanje signala.",
     "difficulty": "medium"
   },
@@ -1185,8 +1189,16 @@
     "kind": "fill",
     "question": "Dopuni uvjetni HTTP GET tok s validatorom cachea:",
     "text": "Server vrati validator u zaglavlju ___; klijent ga u idućem zahtjevu šalje kroz ___; nepromijenjen resurs može dobiti status ___.",
-    "answers": ["ETag", "If-None-Match", "304"],
-    "distractors": ["Location", "If-Match", "201"],
+    "answers": [
+      "ETag",
+      "If-None-Match",
+      "304"
+    ],
+    "distractors": [
+      "Location",
+      "If-Match",
+      "201"
+    ],
     "explanation": "ETag identificira verziju reprezentacije. If-None-Match omogućuje provjeru, a 304 Not Modified kaže klijentu da ponovno koristi spremljeno tijelo.",
     "difficulty": "medium"
   },
@@ -1205,5 +1217,133 @@
     ],
     "explanation": "Prvo treba razumjeti opseg i vratiti uslugu u sigurno stanje. Duboka analiza, trajni popravak i organizacijsko učenje slijede nakon stabilizacije.",
     "difficulty": "medium"
+  },
+  {
+    "id": "backend-uvod-http-api",
+    "topic": "backend",
+    "unitId": "http-api",
+    "isIntro": true,
+    "question": "Što je API?",
+    "options": [
+      "Dogovoreno sučelje preko kojeg programi razmjenjuju podatke",
+      "Baza podataka na serveru",
+      "Programski jezik za backend",
+      "Alat za crtanje korisničkog sučelja"
+    ],
+    "correctIndex": 0,
+    "explanation": "API je ugovor: ako pošalješ ovakav zahtjev, dobit ćeš ovakav odgovor. REST je jedan raširen stil pisanja takvog ugovora.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-uvod-autentikacija-sigurnost",
+    "topic": "backend",
+    "unitId": "autentikacija-sigurnost",
+    "isIntro": true,
+    "question": "Što provjerava autentikacija?",
+    "options": [
+      "Tko je korisnik",
+      "Što korisnik smije napraviti",
+      "Koliko je zahtjeva korisnik poslao",
+      "Je li veza šifrirana"
+    ],
+    "correctIndex": 0,
+    "explanation": "Autentikacija odgovara na pitanje \"tko si\", a autorizacija na \"što smiješ\". To dvoje se stalno miješa i zato se stalno pita na razgovorima.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-uvod-arhitektura",
+    "topic": "backend",
+    "unitId": "arhitektura",
+    "isIntro": true,
+    "question": "Što znači da je aplikacija podijeljena u slojeve?",
+    "options": [
+      "Svaki dio ima svoju odgovornost i razgovara samo sa susjednim dijelom",
+      "Kod je razdijeljen u više datoteka iste vrste",
+      "Aplikacija se pokreće na više servera",
+      "Svaka funkcija ima najviše deset redaka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Slojevi (npr. rute, servisi, pristup podacima) postoje da se promjena u jednom ne prelije u ostale. To je ista ideja i iza middlewarea.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-uvod-baze-podataka",
+    "topic": "backend",
+    "unitId": "baze-podataka",
+    "isIntro": true,
+    "question": "Čemu služi baza podataka u backendu?",
+    "options": [
+      "Trajno pohranjuje podatke i omogućuje njihovo pretraživanje",
+      "Ubrzava učitavanje slika u pregledniku",
+      "Zamjenjuje potrebu za serverom",
+      "Šifrira promet između klijenta i servera"
+    ],
+    "correctIndex": 0,
+    "explanation": "Baza je mjesto gdje podaci prežive gašenje aplikacije. Sve ostalo u ovoj cjelini - indeksi, transakcije, replike - služi tome da to bude brzo i pouzdano.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-uvod-kesiranje-skaliranje",
+    "topic": "backend",
+    "unitId": "kesiranje-skaliranje",
+    "isIntro": true,
+    "question": "Što je cache (predmemorija)?",
+    "options": [
+      "Privremena pohrana rezultata da se ne moraju ponovno računati ili dohvaćati",
+      "Trajna pohrana svih podataka aplikacije",
+      "Popis korisnika koji su trenutno prijavljeni",
+      "Datoteka u koju se zapisuju greške"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cache trguje svježinom za brzinu. Zato je najteže pitanje u keširanju uvijek isto: kada podatak izbaciti.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-uvod-poruke-redovi",
+    "topic": "backend",
+    "unitId": "poruke-redovi",
+    "isIntro": true,
+    "question": "Čemu služi red poruka (message queue)?",
+    "options": [
+      "Prima poruke i predaje ih obrađivaču kasnije, neovisno o pošiljatelju",
+      "Sortira zahtjeve po važnosti korisnika",
+      "Sprema poruke između korisnika u chatu",
+      "Prevodi podatke iz jednog formata u drugi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Red razdvaja onoga tko posao naručuje od onoga tko ga radi. Zahvaljujući tome sporo slanje maila ne mora čekati korisnika.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-uvod-otpornost-distribuirani",
+    "topic": "backend",
+    "unitId": "otpornost-distribuirani",
+    "isIntro": true,
+    "question": "Što znači da je sustav otporan (resilient)?",
+    "options": [
+      "Nastavlja raditi i kad dio njega otkaže",
+      "Nikad ne može otkazati",
+      "Koristi najbrži mogući hardver",
+      "Ima sigurnosnu kopiju svih podataka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Otpornost nije odsutnost kvarova nego pretpostavka da će ih biti. Retry, timeout i circuit breaker su odgovori na tu pretpostavku.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "backend-uvod-observability",
+    "topic": "backend",
+    "unitId": "observability",
+    "isIntro": true,
+    "question": "Čemu služe logovi, metrike i tragovi?",
+    "options": [
+      "Da se vidi što sustav radi i zašto je nešto pošlo po zlu",
+      "Da se ubrza izvršavanje koda",
+      "Da se smanji potrošnja memorije",
+      "Da se korisnicima prikažu obavijesti"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez njih se kvar u produkciji istražuje nagađanjem. Log kaže što se dogodilo, metrika koliko često, a trag kroz koje je servise zahtjev prošao.",
+    "difficulty": "easy"
   }
 ]

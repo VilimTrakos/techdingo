@@ -827,7 +827,11 @@
       "Napadaju autora umjesto promjene",
       "Traže promjenu samo zato što je reviewer osobno piše drukčije, bez dogovorenog pravila"
     ],
-    "correctIndexes": [0, 1, 2],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
     "explanation": "Dobar review govori o kodu, kontekstu i posljedici te jasno komunicira prioritet. Osobni napadi i neobrazložene preferencije otežavaju suradnju.",
     "difficulty": "easy"
   },
@@ -838,8 +842,15 @@
     "kind": "fill",
     "question": "Dopuni naredbu koja uklanja datoteku iz staging area bez brisanja njezinih promjena iz working treeja:",
     "text": "git ___ --___ src/app.ts",
-    "answers": ["restore", "staged"],
-    "distractors": ["clean", "hard", "delete"],
+    "answers": [
+      "restore",
+      "staged"
+    ],
+    "distractors": [
+      "clean",
+      "hard",
+      "delete"
+    ],
     "explanation": "git restore --staged vraća verziju u indexu prema HEAD-u, dok lokalne izmjene datoteke ostaju u working treeju.",
     "difficulty": "easy"
   },
@@ -858,5 +869,101 @@
     ],
     "explanation": "Reprodukcija i smanjivanje daju stabilnu osnovu. Hipoteze treba testirati ciljano, a popravak zaključati testom koji bi prije njega padao.",
     "difficulty": "medium"
+  },
+  {
+    "id": "general-uvod-strukture-podataka",
+    "topic": "general",
+    "unitId": "strukture-podataka",
+    "isIntro": true,
+    "question": "Što je struktura podataka?",
+    "options": [
+      "Način organiziranja podataka u memoriji radi učinkovitog rada s njima",
+      "Popis tablica u bazi podataka",
+      "Dijagram arhitekture aplikacije",
+      "Format u kojem se podaci šalju preko mreže"
+    ],
+    "correctIndex": 0,
+    "explanation": "Izbor strukture određuje što je brzo, a što skupo. Polje je brzo po indeksu, mapa po ključu, red po redoslijedu dolaska.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-uvod-algoritmi",
+    "topic": "general",
+    "unitId": "algoritmi",
+    "isIntro": true,
+    "question": "Što je algoritam?",
+    "options": [
+      "Precizan niz koraka koji rješava zadani problem",
+      "Programski jezik za matematiku",
+      "Struktura u kojoj se čuvaju podaci",
+      "Naziv za gotovu biblioteku funkcija"
+    ],
+    "correctIndex": 0,
+    "explanation": "Algoritam je recept: isti ulaz, isti koraci, isti izlaz. Big-O onda opisuje koliko taj recept košta kad se ulaz poveća.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-uvod-oop-dizajn",
+    "topic": "general",
+    "unitId": "oop-dizajn",
+    "isIntro": true,
+    "question": "Što je objekt u objektno orijentiranom programiranju?",
+    "options": [
+      "Cjelina koja drži podatke i operacije nad tim podacima",
+      "Datoteka s izvornim kodom",
+      "Zapis u bazi podataka",
+      "Element korisničkog sučelja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Objekt spaja stanje i ponašanje na jedno mjesto. Sve ostalo - enkapsulacija, nasljeđivanje, SOLID - govori kako to spajanje raditi da kod ostane promjenjiv.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-uvod-git-verzioniranje",
+    "topic": "general",
+    "unitId": "git-verzioniranje",
+    "isIntro": true,
+    "question": "Čemu služi Git?",
+    "options": [
+      "Bilježi povijest promjena u kodu i omogućuje više ljudi na istom projektu",
+      "Pokreće aplikaciju na serveru",
+      "Provjerava ima li kod grešaka",
+      "Sprema sigurnosne kopije baze podataka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Git pamti svaku verziju i tko ju je napravio, pa se promjene mogu spajati i vraćati unatrag. Commit, branch i merge su tri pojma na kojima sve počiva.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-uvod-testiranje-kvaliteta",
+    "topic": "general",
+    "unitId": "testiranje-kvaliteta",
+    "isIntro": true,
+    "question": "Čemu služi automatski test?",
+    "options": [
+      "Provjerava da se kod ponaša očekivano, i nakon budućih izmjena",
+      "Ubrzava izvršavanje programa",
+      "Zamjenjuje dokumentaciju projekta",
+      "Prevodi kod u strojni jezik"
+    ],
+    "correctIndex": 0,
+    "explanation": "Test je mreža ispod izmjena: kad netko sutra promijeni kod, test kaže je li nešto pokvario. Zato vrijednost testa raste s vremenom.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "general-uvod-sustavi-koncepti",
+    "topic": "general",
+    "unitId": "sustavi-koncepti",
+    "isIntro": true,
+    "question": "Što su klijent i server?",
+    "options": [
+      "Klijent traži uslugu, a server je pruža",
+      "Dva naziva za istu stvar",
+      "Dvije vrste baza podataka",
+      "Dva sloja korisničkog sučelja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Gotovo sve u system designu je varijacija ovog odnosa: netko traži, netko odgovara, a između njih je mreža koja može zakazati.",
+    "difficulty": "easy"
   }
 ]

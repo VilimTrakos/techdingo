@@ -72,7 +72,8 @@
     "correctIndex": 0,
     "explanation": "Podupit je SELECT unutar drugog upita - može vraćati jednu vrijednost, listu vrijednosti ili cijelu tablicu, ovisno o kontekstu u kojem se koristi.",
     "difficulty": "easy",
-    "unitId": "podupiti-pogledi"
+    "unitId": "podupiti-pogledi",
+    "conceptId": "sql-subquery"
   },
   {
     "id": "sql-011-group-by",
@@ -1631,7 +1632,11 @@
       "Svaki SELECT automatski zaključava cijelu bazu za pisanje",
       "COMMIT poništava sva ograničenja integriteta"
     ],
-    "correctIndexes": [0, 1, 2],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
     "explanation": "COMMIT potvrđuje, ROLLBACK poništava, a SAVEPOINT daje međutočku povrata. Točna zaključavanja SELECT-a ovise o bazi i izolaciji, ali ne znače automatsko zaključavanje cijele baze.",
     "difficulty": "medium"
   },
@@ -1642,9 +1647,177 @@
     "kind": "fill",
     "question": "Dopuni INSERT koji navodi ciljane stupce i njihove vrijednosti:",
     "text": "INSERT ___ korisnici (ime, dob) ___ ('Ana', 28);",
-    "answers": ["INTO", "VALUES"],
-    "distractors": ["FROM", "SET", "RETURN"],
+    "answers": [
+      "INTO",
+      "VALUES"
+    ],
+    "distractors": [
+      "FROM",
+      "SET",
+      "RETURN"
+    ],
     "explanation": "INSERT INTO odabire ciljnu tablicu i stupce, a VALUES daje vrijednosti istim redoslijedom.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-uvod-osnove-upita",
+    "topic": "sql",
+    "unitId": "osnove-upita",
+    "isIntro": true,
+    "question": "Koja SQL naredba dohvaća podatke iz tablice?",
+    "options": [
+      "SELECT",
+      "INSERT",
+      "CREATE",
+      "GRANT"
+    ],
+    "correctIndex": 0,
+    "explanation": "SELECT je naredba za čitanje. INSERT dodaje retke, CREATE stvara objekte u bazi, a GRANT dodjeljuje ovlasti.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-uvod-tipovi-i-null",
+    "topic": "sql",
+    "unitId": "tipovi-i-null",
+    "isIntro": true,
+    "question": "Što u SQL-u predstavlja vrijednost NULL?",
+    "options": [
+      "Nepoznatu ili nepostojeću vrijednost",
+      "Broj nula",
+      "Prazan tekst \"\"",
+      "Logičku vrijednost false"
+    ],
+    "correctIndex": 0,
+    "explanation": "NULL nije vrijednost nego odsutnost vrijednosti. Zato se ne uspoređuje s = nego s IS NULL - to je izvor većine zamki u ovoj cjelini.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-uvod-izmjene-podataka",
+    "topic": "sql",
+    "unitId": "izmjene-podataka",
+    "isIntro": true,
+    "question": "Koje tri naredbe mijenjaju sadržaj postojeće tablice?",
+    "options": [
+      "INSERT, UPDATE i DELETE",
+      "SELECT, FROM i WHERE",
+      "CREATE, ALTER i DROP",
+      "GRANT, REVOKE i DENY"
+    ],
+    "correctIndex": 0,
+    "explanation": "INSERT dodaje retke, UPDATE ih mijenja, DELETE ih briše. CREATE/ALTER/DROP mijenjaju strukturu, ne podatke.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-uvod-spajanje-i-skupovi",
+    "topic": "sql",
+    "unitId": "spajanje-i-skupovi",
+    "isIntro": true,
+    "question": "Čemu služi JOIN?",
+    "options": [
+      "Povezuje retke iz dvije ili više tablica po zadanom uvjetu",
+      "Spaja dva stupca u jedan tekst",
+      "Kopira tablicu u novu bazu",
+      "Sortira rezultat po više stupaca"
+    ],
+    "correctIndex": 0,
+    "explanation": "JOIN je način da se podaci razbacani po više tablica pojave u jednom rezultatu. Koji retci prežive spajanje ovisi o vrsti JOIN-a.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-uvod-agregacija-i-window",
+    "topic": "sql",
+    "unitId": "agregacija-i-window",
+    "isIntro": true,
+    "question": "Što radi agregatna funkcija poput COUNT, SUM ili AVG?",
+    "options": [
+      "Sažima više redaka u jednu vrijednost",
+      "Mijenja tip podatka stupca",
+      "Dodaje novi redak u tablicu",
+      "Stvara indeks nad stupcem"
+    ],
+    "correctIndex": 0,
+    "explanation": "Agregacija gleda skupinu redaka i vraća jedan broj. S GROUP BY se taj skup dijeli po ključu, pa dobiješ po jednu vrijednost za svaku skupinu.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-uvod-podupiti-pogledi",
+    "topic": "sql",
+    "unitId": "podupiti-pogledi",
+    "isIntro": true,
+    "question": "Kako se zove SELECT napisan unutar drugog SELECT-a?",
+    "options": [
+      "Podupit (subquery)",
+      "Pogled (view)",
+      "Indeks",
+      "Transakcija"
+    ],
+    "correctIndex": 0,
+    "explanation": "Podupit je upit u zagradama unutar drugog upita. Pogled je imenovani upit spremljen u bazi - srodan pojam, ali nije isto.",
+    "difficulty": "easy",
+    "conceptId": "sql-subquery"
+  },
+  {
+    "id": "sql-uvod-kljucevi-i-dizajn",
+    "topic": "sql",
+    "unitId": "kljucevi-i-dizajn",
+    "isIntro": true,
+    "question": "Čemu služi primarni ključ?",
+    "options": [
+      "Jedinstveno identificira svaki redak tablice",
+      "Ubrzava sortiranje rezultata",
+      "Određuje redoslijed stupaca",
+      "Šifrira sadržaj retka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Primarni ključ je obećanje da dva retka nikad neće imati istu vrijednost i da ona nikad neće biti NULL. Na tome počiva povezivanje tablica.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-uvod-indeksi-performanse",
+    "topic": "sql",
+    "unitId": "indeksi-performanse",
+    "isIntro": true,
+    "question": "Čemu služi indeks u bazi podataka?",
+    "options": [
+      "Ubrzava pronalaženje redaka po nekom stupcu",
+      "Sprječava unos duplikata u bilo koji stupac",
+      "Smanjuje veličinu baze na disku",
+      "Automatski stvara sigurnosnu kopiju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Indeks je zasebna struktura koja bazi omogućuje da skoči ravno na tražene retke umjesto da pročita cijelu tablicu. Plaća se prostorom i sporijim pisanjem.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-uvod-transakcije",
+    "topic": "sql",
+    "unitId": "transakcije",
+    "isIntro": true,
+    "question": "Što je transakcija u bazi podataka?",
+    "options": [
+      "Skup naredbi koji se izvršava kao jedna nedjeljiva cjelina",
+      "Jedan upit koji dohvaća podatke",
+      "Prijenos baze na drugi server",
+      "Zapis o tome tko se prijavio u sustav"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ili se dogode sve naredbe u transakciji ili nijedna. Zato novac ne može nestati između dva računa - to je slovo A (atomarnost) u ACID-u.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "sql-uvod-sigurnost",
+    "topic": "sql",
+    "unitId": "sigurnost",
+    "isIntro": true,
+    "question": "Što je SQL injection?",
+    "options": [
+      "Napad u kojem korisnički unos postane dio SQL upita i promijeni ga",
+      "Preopterećenje baze prevelikim brojem upita",
+      "Krađa sigurnosne kopije baze",
+      "Greška u kojoj se isti redak upiše dvaput"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ako se unos lijepi u upit kao tekst, napadač može upisati vlastiti SQL. Parametrizirani upiti su rješenje jer unos nikad ne postaje kod.",
     "difficulty": "easy"
   }
 ]
