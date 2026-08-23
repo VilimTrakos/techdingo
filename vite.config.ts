@@ -1,7 +1,8 @@
 import { readFileSync, readdirSync } from 'node:fs'
 import { basename, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { defineConfig, type Plugin } from 'vite'
+import type { Plugin } from 'vite'
+import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
@@ -56,4 +57,14 @@ export default defineConfig({
   // Mora točno odgovarati imenu GitHub repozitorija (project page: user.github.io/techdingo/).
   base: process.env.CI ? '/techdingo/' : '/',
   plugins: [react(), tailwindcss(), questionIndexPlugin()],
+  test: {
+    // jsdom za sve, ne samo za testove komponenti: čisto logički testovi rade
+    // jednako, a jedno okruženje znači da se pri pisanju novog testa ne treba
+    // sjetiti nikakvog docblocka.
+    environment: 'jsdom',
+    setupFiles: ['./src/test/setup.ts'],
+    // Svaki testni file dobiva svoj DOM i svoj localStorage - inače bi
+    // progress store (modul-singleton) curio stanje između datoteka.
+    restoreMocks: true,
+  },
 })
