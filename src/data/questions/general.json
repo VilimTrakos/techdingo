@@ -1305,5 +1305,74 @@
     "explanation": "Prvi broj nije mjera važnosti nego upozorenje da postojeća upotreba može prestati raditi.",
     "difficulty": "medium",
     "conceptId": "semanticko-verzioniranje"
+  },
+  {
+    "id": "general-910-lsp-krsenje",
+    "topic": "general",
+    "unitId": "oop-dizajn",
+    "difficulty": "hard",
+    "question": "Kvadrat nasljeđuje Pravokutnik i u postavljaču širine mijenja i visinu. Zašto je to problem?",
+    "conceptId": "liskov",
+    "options": [
+      "Kod pisan za Pravokutnik prestaje vrijediti kad dobije Kvadrat",
+      "Kvadrat time troši više memorije nego što mu je potrebno",
+      "Nasljeđivanje ne dopušta da potklasa mijenja postavljače roditelja",
+      "Kvadrat i Pravokutnik ne mogu dijeliti sučelje bez apstraktne klase"
+    ],
+    "correctIndex": 0,
+    "explanation": "Test koji postavi širinu 5 i visinu 4 pa očekuje površinu 20 pada. Kvadrat JEST pravokutnik u geometriji, ali nije njegova zamjena u kodu."
+  },
+  {
+    "id": "general-911-open-closed",
+    "topic": "general",
+    "unitId": "oop-dizajn",
+    "difficulty": "hard",
+    "question": "Svaka nova vrsta plaćanja traži novi else if u istoj funkciji. Što to krši i kako se rješava?",
+    "options": [
+      "Open/Closed — svaka vrsta dobiva vlastitu implementaciju sučelja",
+      "Single Responsibility — funkciju treba podijeliti na manje metode",
+      "Liskov Substitution — vrste trebaju naslijediti zajedničku baznu klasu",
+      "Interface Segregation — sučelje plaćanja treba razdvojiti na manja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Otvoreno za proširenje, zatvoreno za izmjenu: nova vrsta dolazi kao nova datoteka, ne kao nova grana u postojećoj."
+  },
+  {
+    "id": "general-912-demeter",
+    "topic": "general",
+    "unitId": "oop-dizajn",
+    "difficulty": "hard",
+    "question": "Zašto je izraz narudzba.getKupac().getAdresa().getGrad() krhak?",
+    "conceptId": "zakon-demetera",
+    "options": [
+      "Vezan je uz unutarnju strukturu tuđih objekata i puca na njihove izmjene",
+      "Svaki poziv u lancu otvara zasebnu novu vezu prema bazi podataka",
+      "Lanac poziva ne može se pokriti testovima bez stvarnih objekata",
+      "Objekti u lancu moraju biti nepromjenjivi da bi izraz bio ispravan"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zakon Demetera: razgovaraj sa susjedima, ne sa susjedima svojih susjeda. Bolje je narudzba.getGradDostave()."
+  },
+  {
+    "id": "general-913-nasljedjivanje-cijena",
+    "topic": "general",
+    "unitId": "oop-dizajn",
+    "difficulty": "medium",
+    "question": "Što je cijena duboke hijerarhije nasljeđivanja?",
+    "conceptId": "kompozicija-vs-nasljedjivanje",
+    "kind": "multi",
+    "options": [
+      "Izmjena u bazi tiho mijenja ponašanje svih potomaka",
+      "Ponašanje objekta treba tražiti kroz više razina",
+      "Potklasa ovisi o unutarnjim detaljima roditelja, ne samo o sučelju",
+      "Objekti zauzimaju više memorije s dubinom hijerarhije",
+      "Jezik ograničava dubinu nasljeđivanja na tri razine"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Zadnje dvije nisu točne — cijena nasljeđivanja je razumljivost i vezanost, ne memorija."
   }
 ]
