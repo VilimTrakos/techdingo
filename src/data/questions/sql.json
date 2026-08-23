@@ -50,10 +50,10 @@
     "topic": "sql",
     "question": "Koja je razlika između DELETE, TRUNCATE i DROP naredbi?",
     "options": [
-      "DELETE briše odabrane retke (može se rollbackati), TRUNCATE brzo prazni cijelu tablicu, DROP briše samu tablicu iz baze",
-      "Sve tri naredbe rade identičnu stvar, razlikuje se samo sintaksa",
-      "TRUNCATE briše samo strukturu tablice, a DELETE i DROP brišu podatke",
-      "DROP briše samo jedan redak, DELETE i TRUNCATE brišu cijelu bazu"
+      "DELETE briše odabrane retke, TRUNCATE prazni tablicu, DROP briše tablicu",
+      "Sve tri naredbe rade istu stvar, a razlikuje se samo njihova sintaksa",
+      "TRUNCATE briše samo strukturu tablice, dok DELETE i DROP brišu podatke",
+      "DROP briše samo jedan redak, dok DELETE i TRUNCATE brišu cijelu bazu"
     ],
     "correctIndex": 0,
     "explanation": "DELETE je DML naredba koja se logira po retku i može imati WHERE uvjet; TRUNCATE je brži DDL koji resetira tablicu ali zadržava strukturu; DROP potpuno uklanja tablicu (strukturu i podatke).",
@@ -66,10 +66,10 @@
     "topic": "sql",
     "question": "Što je podupit (subquery)?",
     "options": [
-      "SQL upit ugniježđen unutar drugog upita, koji se koristi npr. u WHERE, FROM ili SELECT dijelu",
+      "Upit ugniježđen u drugi upit, npr. u WHERE, FROM ili SELECT dijelu",
       "Naredba koja automatski dijeli veliku tablicu na manje particije",
-      "Poseban tip indeksa koji ubrzava JOIN operacije",
-      "Upit koji se izvršava isključivo nakon COMMIT-a"
+      "Poseban tip indeksa koji ubrzava izvođenje JOIN operacija",
+      "Upit koji se izvršava isključivo nakon potvrde transakcije"
     ],
     "correctIndex": 0,
     "explanation": "Podupit je SELECT unutar drugog upita - može vraćati jednu vrijednost, listu vrijednosti ili cijelu tablicu, ovisno o kontekstu u kojem se koristi.",
@@ -130,10 +130,10 @@
     "topic": "sql",
     "question": "Što je strani ključ (foreign key) i čemu služi?",
     "options": [
-      "Stupac (ili skup stupaca) koji referencira primarni ključ druge tablice, čime se osigurava referencijalni integritet",
-      "Ključ koji se koristi za enkripciju osjetljivih podataka u tablici",
-      "Alternativni naziv za indeks na stupcu koji nije primarni ključ",
-      "Ključ koji automatski generira nasumične vrijednosti za primarni ključ"
+      "Stupac koji referencira ključ druge tablice i čuva referencijalni integritet",
+      "Ključ koji se koristi za šifriranje osjetljivih podataka u toj tablici",
+      "Drugi naziv za indeks nad stupcem koji nije primarni ključ tablice",
+      "Ključ koji automatski generira nasumične vrijednosti primarnog ključa"
     ],
     "correctIndex": 0,
     "explanation": "Strani ključ sprječava unos vrijednosti koja ne postoji u referenciranoj tablici (npr. narudžba ne može imati customer_id koji ne postoji u tablici kupaca).",
@@ -191,12 +191,12 @@
     "topic": "sql",
     "question": "Što radi SELECT DISTINCT kada se odabire više stupaca?",
     "options": [
-      "Sortira svaki odabrani stupac uzlazno",
-      "Trajno briše duplikate iz izvorne tablice",
-      "Vraća samo retke u kojima nijedan odabrani stupac nije NULL",
-      "U rezultatu zadržava samo jedinstvene kombinacije vrijednosti svih odabranih stupaca"
+      "Zadržava samo jedinstvene kombinacije vrijednosti svih odabranih stupaca",
+      "Vraća samo one retke u kojima nijedan odabrani stupac nije NULL",
+      "Sortira svaki odabrani stupac uzlazno prije nego vrati rezultat",
+      "Trajno briše duplikate iz izvorne tablice nad kojom se izvodi"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "DISTINCT uklanja duplicirane kombinacije odabranih izraza samo iz rezultata upita; ne mijenja podatke u tablici.",
     "difficulty": "easy",
     "unitId": "osnove-upita"
@@ -266,10 +266,10 @@
     "topic": "sql",
     "question": "Kada se pri INSERT-u koristi zadana DEFAULT vrijednost stupca?",
     "options": [
-      "Kada je stupac izostavljen iz INSERT-a ili se za njega izričito navede ključna riječ DEFAULT",
+      "Kad je stupac izostavljen ili se za njega navede ključna riječ DEFAULT",
       "Kad god se izričito unese NULL, čak i ako stupac dopušta NULL",
-      "Samo nakon UPDATE naredbe nad postojećim retkom",
-      "Samo ako na stupcu postoji i UNIQUE ograničenje"
+      "Samo nakon UPDATE naredbe koja je izvedena nad postojećim retkom",
+      "Samo ako na tom stupcu postoji i dodatno UNIQUE ograničenje"
     ],
     "correctIndex": 0,
     "explanation": "DEFAULT daje vrijednost kad INSERT ne zada stupac ili zatraži DEFAULT; izričito uneseni NULL ostaje NULL ako ga ograničenja dopuštaju.",
@@ -281,12 +281,12 @@
     "topic": "sql",
     "question": "Zašto CHECK (cijena > 0) obično treba kombinirati s NOT NULL ako je cijena obavezna?",
     "options": [
-      "CHECK se provjerava samo pri DELETE naredbi",
-      "NOT NULL automatski ubrzava svaku agregaciju nad stupcem",
-      "CHECK odbija FALSE, ali izraz s NULL može dati UNKNOWN i proći; NOT NULL zasebno zabranjuje NULL",
-      "CHECK može uspoređivati samo tekst, a NOT NULL samo brojeve"
+      "CHECK odbija FALSE, ali izraz s NULL daje UNKNOWN i prolazi provjeru",
+      "NOT NULL automatski ubrzava svaku agregaciju koja ide nad tim stupcem",
+      "CHECK može uspoređivati samo tekst, dok NOT NULL vrijedi samo za brojeve",
+      "CHECK ograničenje se provjerava isključivo prilikom DELETE naredbe"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "U SQL trovrijednosnoj logici CHECK je zadovoljen kad uvjet nije FALSE, pa NULL može proizvesti UNKNOWN; obaveznost vrijednosti zato se izražava s NOT NULL.",
     "difficulty": "easy",
     "unitId": "tipovi-i-null"
@@ -634,10 +634,10 @@
     "topic": "sql",
     "question": "Što su transakcije i što označavaju ACID osobine?",
     "options": [
-      "Transakcija je niz operacija koje se izvršavaju kao cjelina; ACID = Atomicity, Consistency, Isolation, Durability",
-      "Transakcija je naziv za svaki SELECT upit; ACID se odnosi na brzinu izvršavanja upita",
-      "ACID označava četiri tipa indeksa u relacijskim bazama",
-      "Transakcije se koriste isključivo za brisanje podataka"
+      "Niz operacija koji se izvodi kao cjelina; ACID su atomarnost i ostalo troje",
+      "Transakcija je naziv za svaki SELECT upit; ACID opisuje brzinu izvršavanja",
+      "ACID označava četiri glavna tipa indeksa koje relacijske baze podržavaju",
+      "Transakcije se koriste isključivo za brisanje podataka iz većih tablica"
     ],
     "correctIndex": 0,
     "explanation": "ACID garantira da transakcija ili u potpunosti uspije ili u potpunosti propadne (atomičnost), da baza ostaje u ispravnom stanju, da se paralelne transakcije ne miješaju (izolacija) i da su promjene trajne nakon commita.",
@@ -755,12 +755,12 @@
     "topic": "sql",
     "question": "Zašto uvjet nad desnom tablicom u WHERE dijelu može promijeniti rezultat LEFT JOIN-a?",
     "options": [
+      "WHERE odbaci retke proširene NULL-ovima; uvjet u ON ih može sačuvati",
       "WHERE se izvršava prije FROM dijela pa desna tablica još ne postoji",
-      "Takav uvjet samo mijenja redoslijed rezultata, ne i broj redaka",
-      "WHERE uvjet može odbaciti NULL-proširene retke bez podudaranja; stavljanje uvjeta u ON može ih sačuvati",
-      "LEFT JOIN sintaktički ne dopušta WHERE klauzulu"
+      "Takav uvjet mijenja samo redoslijed rezultata, ali ne i broj redaka",
+      "LEFT JOIN sintaktički uopće ne dopušta korištenje WHERE klauzule"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Nakon LEFT JOIN-a nepodudarni desni stupci imaju NULL. Predikat poput desna.aktivna = TRUE u WHERE-u nije TRUE za te retke pa ih uklanja, dok isti predikat u ON-u i dalje čuva lijeve retke.",
     "difficulty": "medium",
     "unitId": "spajanje-i-skupovi"
@@ -980,10 +980,10 @@
     "topic": "sql",
     "question": "Kada je nested-loop join često dobar izbor planera?",
     "options": [
-      "Kada je vanjski skup malen, a za svaki njegov redak unutarnji skup ima jeftin indeksirani dohvat",
-      "Isključivo kada obje tablice nemaju nijedan indeks",
-      "Uvijek za dvije vrlo velike tablice bez selektivnog filtra",
-      "Samo za FULL OUTER JOIN nad tekstualnim stupcima"
+      "Kad je vanjski skup malen, a unutarnji ima jeftin indeksirani dohvat",
+      "Isključivo kad nijedna od dviju tablica nema nijedan indeks",
+      "Uvijek kod dviju vrlo velikih tablica bez selektivnog filtra",
+      "Samo za FULL OUTER JOIN nad tekstualnim stupcima tablica"
     ],
     "correctIndex": 0,
     "explanation": "Nested loop ponavlja unutarnji dohvat za retke vanjskog ulaza. To je učinkovito uz malo ponavljanja i brz lookup, ali može biti vrlo skupo kada su oba ulaza velika.",
@@ -995,12 +995,12 @@
     "topic": "sql",
     "question": "Koja je glavna razlika između običnog i materijaliziranog pogleda?",
     "options": [
-      "Obični pogled uvijek sprema fizičku kopiju rezultata, a materijalizirani nikad",
-      "Materijalizirani pogled služi samo za dodjelu korisničkih ovlasti",
-      "Materijalizirani pogled fizički sprema rezultat upita pa čitanje može biti brže, ali podatke treba osvježavati i mogu zastarjeti",
+      "Materijalizirani fizički sprema rezultat pa je brži, ali može zastarjeti",
+      "Obični pogled uvijek sprema fizičku kopiju rezultata, a materijalizirani ne",
+      "Materijalizirani pogled služi isključivo za dodjelu korisničkih ovlasti",
       "Materijalizirani pogled automatski zamjenjuje sve indekse osnovnih tablica"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Materijalizacija mijenja svježinu za brzinu čitanja. Način, cijena i mogućnost konkurentnog ili inkrementalnog osvježavanja ovise o konkretnoj bazi.",
     "difficulty": "medium",
     "unitId": "podupiti-pogledi"

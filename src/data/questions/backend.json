@@ -263,10 +263,10 @@
     "topic": "backend",
     "question": "Koja je uobičajena razlika između HTTP statusa 401 i 403?",
     "options": [
-      "401 znači da autentikacija nedostaje ili nije valjana, a 403 da server odbija pristup unatoč poznatom identitetu",
-      "401 označava privremeni pad servera, a 403 nepostojeći endpoint",
+      "401 znači da autentikacija nedostaje, a 403 da poznat identitet nema pravo",
+      "401 označava privremeni pad servera, dok 403 označava nepostojeću rutu",
       "401 se koristi samo za administratore, a 403 samo za anonimne korisnike",
-      "Statusi su potpuno zamjenjivi i imaju isto značenje"
+      "Statusi su potpuno zamjenjivi i u praksi imaju jednako značenje"
     ],
     "correctIndex": 0,
     "explanation": "401 upućuje klijenta da se ispravno autenticira, dok 403 znači da za traženu radnju nema dopuštenje ili je server odbija.",
@@ -371,12 +371,12 @@
     "topic": "backend",
     "question": "Koja je razlika između container imagea i containera?",
     "options": [
+      "Image je predložak sa slojevima, a container njegova pokrenuta instanca",
       "Container image je aktivni proces, a container tekstualna konfiguracija",
-      "Container je uvijek virtualni stroj s vlastitim kernelom",
-      "Image je predložak sa slojevima aplikacije, a container njegova pokrenuta instanca s vlastitim runtime stanjem",
-      "Image postoji samo u memoriji i ne može se spremiti u registry"
+      "Container je uvijek virtualni stroj s vlastitom jezgrom i sustavom",
+      "Image postoji samo u memoriji i ne može se spremiti u registar"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Isti nepromjenjivi image može pokrenuti više containera. Container dodaje proces, mrežu i privremeni zapisivi sloj nad imageom.",
     "difficulty": "easy",
     "unitId": "arhitektura"
@@ -673,12 +673,12 @@
     "topic": "backend",
     "question": "Broker jamči at-least-once isporuku pa istu poruku može poslati više puta. Kako consumer treba zaštititi poslovnu operaciju od duplikata?",
     "options": [
-      "Potvrditi poruku prije nego što započne obrada",
-      "Pretpostaviti da broker ipak nikad neće ponoviti poruku",
-      "Obradu učiniti idempotentnom ili atomarno evidentirati jedinstveni ID već obrađene poruke",
-      "Uspoređivati samo duljinu tijela susjednih poruka"
+      "Obradu učiniti idempotentnom ili atomarno bilježiti već obrađene ID-jeve",
+      "Potvrditi poruku brokeru prije nego što obrada uopće započne",
+      "Pretpostaviti da broker ipak nikada neće ponoviti istu poruku",
+      "Uspoređivati samo duljinu tijela dviju uzastopnih poruka u redu"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Consumer mora moći prepoznati ponovnu isporuku ili sigurno ponoviti učinak. Evidencija poruke i poslovna promjena trebaju biti u istoj transakcijskoj granici kada je to moguće.",
     "difficulty": "medium",
     "unitId": "poruke-redovi"
@@ -718,10 +718,10 @@
     "topic": "backend",
     "question": "Kako distribuirani tracing povezuje jedan korisnički zahtjev kroz više servisa?",
     "options": [
-      "Propagira trace i span identifikatore kroz mrežna zaglavlja te bilježi spanove za pojedine operacije",
-      "Zahtijeva da svi servisi rade na istom fizičkom serveru",
-      "Uspoređuje samo lokalne timestampove bez zajedničkog identifikatora",
-      "Sprema puna tijela svih zahtjeva u javni log"
+      "Propagira trace i span identifikatore kroz zaglavlja i bilježi spanove",
+      "Zahtijeva da svi servisi rade na jednom te istom fizičkom serveru",
+      "Uspoređuje lokalne vremenske oznake bez zajedničkog identifikatora",
+      "Sprema puna tijela svih zahtjeva u javno dostupan dnevnik sustava"
     ],
     "correctIndex": 0,
     "explanation": "Propagirani kontekst omogućuje backendu za observability složiti spanove u jedan trag i pronaći gdje su nastali latencija ili greška.",
@@ -853,10 +853,10 @@
     "topic": "backend",
     "question": "Kako se error budget i burn rate koriste uz SLO?",
     "options": [
-      "Error budget predstavlja dopuštenu količinu nepouzdanosti, a burn rate pokazuje koliko se brzo taj budžet troši",
-      "Error budget određuje cijenu cloud resursa, a burn rate temperaturu servera",
-      "Obje vrijednosti mjere isključivo broj redaka u logovima",
-      "Burn rate mora uvijek biti nula, čak i kada je SLO ispunjen"
+      "Budžet je dopuštena nepouzdanost, a burn rate brzina njegova trošenja",
+      "Budžet određuje cijenu cloud resursa, a burn rate temperaturu servera",
+      "Obje vrijednosti mjere isključivo broj redaka zapisanih u dnevnicima",
+      "Burn rate mora uvijek biti nula, čak i kad je SLO u cijelosti ispunjen"
     ],
     "correctIndex": 0,
     "explanation": "Primjerice, SLO od 99,9% ostavlja 0,1% budžeta za neuspjehe. Visok burn rate upozorava da će se budžet potrošiti znatno prije kraja mjernog razdoblja.",
@@ -1456,10 +1456,10 @@
     "question": "Koji je glavni problem u handleru ako findUser vraća Promise?",
     "code": "app.get('/users/:id', async (req, res) => {\n  const user = findUser(req.params.id);\n  res.json(user);\n});",
     "options": [
-      "Nedostaje await prije findUser pa se pokušava poslati Promise umjesto rezultata",
-      "Async handler ne smije primati req i res",
-      "Parametri rute dostupni su samo u response objektu",
-      "JSON odgovor uvijek mora imati status 201"
+      "Nedostaje await pa se šalje Promise umjesto stvarnog rezultata",
+      "Async handler ne smije primati parametre req i res u potpisu",
+      "Parametri rute dostupni su isključivo kroz response objekt",
+      "JSON odgovor u ovakvom handleru uvijek mora imati status 201"
     ],
     "correctIndex": 0,
     "explanation": "Asinkroni rezultat treba pričekati, a zatim obraditi mogući nedostatak korisnika i pogreške prema pravilima frameworka.",

@@ -81,10 +81,10 @@
     "topic": "general",
     "question": "Što enkapsulacija znači u objektno orijentiranom dizajnu?",
     "options": [
-      "Skrivanje unutarnjeg stanja i detalja implementacije iza jasno definiranog javnog sučelja",
-      "Pretvaranje svake funkcije u globalnu funkciju",
-      "Obavezno nasljeđivanje svih klasa iz jedne bazne klase",
-      "Spremanje svih podataka objekta u tekstualnu datoteku"
+      "Skrivanje unutarnjeg stanja iza jasno definiranog javnog sučelja",
+      "Pretvaranje svake funkcije u globalnu funkciju dostupnu svugdje",
+      "Obavezno nasljeđivanje svih klasa iz jedne zajedničke bazne klase",
+      "Spremanje svih podataka objekta u zasebnu tekstualnu datoteku"
     ],
     "correctIndex": 0,
     "explanation": "Enkapsulacija ograničava izravnu ovisnost korisnika objekta o njegovoj implementaciji i omogućuje čuvanje valjanih invarijanti stanja.",
@@ -234,12 +234,12 @@
     "topic": "general",
     "question": "Koja je važna svrha pregleda koda (code reviewa)?",
     "options": [
-      "Zamijeniti sve automatizirane testove i statičke provjere",
-      "Osigurati da samo autor razumije promjenu",
-      "Otkrivati probleme u ispravnosti i održavanju te dijeliti kontekst prije spajanja promjene",
-      "Automatski dokazati da kod nema nijednu moguću grešku"
+      "Otkrivanje problema u ispravnosti i dijeljenje konteksta prije spajanja",
+      "Zamjena za sve automatizirane testove i statičke provjere u pipelineu",
+      "Osigurati da promjenu razumije isključivo osoba koja ju je napisala",
+      "Automatski dokazati da kod nema nijednu moguću grešku u izvođenju"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Pregled koda daje ljudsku provjeru namjere, dizajna, čitljivosti i rizika te širi znanje u timu. Nadopunjuje automatizirane provjere, ali ih ne zamjenjuje niti može dokazati potpunu ispravnost.",
     "difficulty": "easy",
     "unitId": "testiranje-kvaliteta"
@@ -510,12 +510,12 @@
     "topic": "general",
     "question": "Koja je uobičajena razlika između stuba i mocka u testiranju?",
     "options": [
-      "Stub uvijek koristi stvarnu produkcijsku bazu, a mock nikada ne vraća vrijednost",
-      "Mock može testirati samo privatne metode, a stub samo javne",
-      "Pojmovi nužno znače potpuno istu stvar u svakom alatu",
-      "Stub prvenstveno daje unaprijed određene odgovore, dok mock često dodatno provjerava očekivane pozive i interakcije"
+      "Stub daje unaprijed određene odgovore, a mock provjerava i pozive",
+      "Stub uvijek koristi pravu produkcijsku bazu, a mock ne vraća vrijednost",
+      "Mock može testirati samo privatne metode, dok stub testira samo javne",
+      "Pojmovi u svakom alatu nužno znače potpuno istu stvar i zamjenjivi su"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "explanation": "Oba su test doubles, ali stub tipično kontrolira ulaz suradnika, dok mock postavlja očekivanja o komunikaciji. Terminologija pojedinih biblioteka razlikuje se, pa je važnije jasno opisati ulogu zamjene.",
     "difficulty": "medium",
     "unitId": "testiranje-kvaliteta"
@@ -525,10 +525,10 @@
     "topic": "general",
     "question": "Što je race condition u konkurentnom programu?",
     "options": [
-      "Greška pri kojoj rezultat ovisi o nepredvidivom redoslijedu isprepletenih pristupa dijeljenom stanju",
+      "Greška u kojoj ishod ovisi o redoslijedu pristupa dijeljenom stanju",
       "Namjerno paralelno izvođenje dvaju potpuno neovisnih izračuna",
-      "Situacija u kojoj jedna funkcija ima previše parametara",
-      "Usporedba brzine dvaju algoritama na istom računalu"
+      "Situacija u kojoj jedna funkcija prima previše ulaznih parametara",
+      "Usporedba brzine dvaju algoritama na istom računalu i istom ulazu"
     ],
     "correctIndex": 0,
     "explanation": "Ako operacije nad dijeljenim stanjem nisu pravilno sinkronizirane, različita ispreplitanja mogu dati različite ili nevaljane rezultate. Rješenja uključuju zaključavanja, atomske operacije, nepromjenjive poruke ili uklanjanje dijeljenog mutabilnog stanja.",

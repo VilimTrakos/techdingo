@@ -26,9 +26,17 @@ const MIN_QUESTIONS_PER_UNIT = 10;
  */
 const MAX_CORRECT_LENGTH_RATIO = 1.4;
 
+/**
+ * Ispod ove duljine razlika u duljini ne odaje ništa: nitko ne bira "O(n log n)"
+ * umjesto "O(n)" zato što je dulje. Prag postoji da mjera ne prijavljuje
+ * pitanja s kratkim, tehničkim odgovorima.
+ */
+const MIN_TELL_LENGTH = 30;
+
 /** Odaje li duljina točan odgovor? Vraća omjer, ili null ako je pitanje u redu. */
 function lengthTellRatio(options: string[], correctIndex: number): number | null {
   const correct = options[correctIndex]?.length ?? 0;
+  if (correct < MIN_TELL_LENGTH) return null;
   const others = options.filter((_, i) => i !== correctIndex).map((o) => o.length);
   if (others.length === 0) return null;
   const mean = others.reduce((a, b) => a + b, 0) / others.length;

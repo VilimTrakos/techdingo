@@ -310,12 +310,12 @@
     "topic": "frontend",
     "question": "Kako spriječiti da gumb „Prikaži pomoć” unutar forme nenamjerno pošalje formu?",
     "options": [
-      "Dodati gumbu atribut method='button'",
-      "Premjestiti gumb u label element",
-      "Postaviti type='button' jer je zadani tip buttona u formi submit",
-      "Ukloniti name atribute sa svih polja"
+      "Postaviti type='button', jer je zadani tip gumba u formi submit",
+      "Dodati gumbu atribut method='button' kako se forma ne bi slala",
+      "Premjestiti gumb u label element koji nije vezan uz nijedno polje",
+      "Ukloniti name atribute sa svih polja pa forma nema što poslati"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Button unutar forme zadano je submit kontrola, pa radnje koje ne šalju formu trebaju eksplicitno koristiti type='button'.",
     "difficulty": "easy",
     "unitId": "osnove-weba"
@@ -506,12 +506,12 @@
     "topic": "frontend",
     "question": "Koja tvrdnja ispravno opisuje JSON.stringify i JSON.parse?",
     "options": [
-      "Obje funkcije pretvaraju JSON tekst u DOM elemente",
-      "stringify provjerava tipove pri compile timeu, a parse ih automatski dodaje",
-      "stringify pretvara JavaScript vrijednost u JSON tekst, a parse valjani JSON tekst u JavaScript vrijednost",
-      "parse šalje podatke serveru, a stringify ih dohvaća"
+      "stringify pretvara vrijednost u JSON tekst, a parse tekst u vrijednost",
+      "Obje funkcije pretvaraju JSON tekst u gotove DOM elemente stranice",
+      "stringify provjerava tipove pri prevođenju, a parse ih sam dodaje",
+      "parse šalje podatke serveru, dok ih stringify dohvaća natrag"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "JSON.stringify služi serijalizaciji podržanih JavaScript vrijednosti, dok JSON.parse analizira valjani JSON tekst i iz njega stvara odgovarajuću vrijednost.",
     "difficulty": "easy",
     "unitId": "js-jezik"
@@ -816,7 +816,7 @@
     "topic": "frontend",
     "question": "Koje ponašanje fokusa očekujemo od pristupačnog modalnog dijaloga?",
     "options": [
-      "Pri otvaranju fokus ulazi u dijalog, Tab ostaje unutar njega, a zatvaranjem se fokus vraća na element koji ga je otvorio",
+      "Fokus ulazi u dijalog, Tab ostaje unutra, a zatvaranje ga vraća natrag",
       "Fokus ostaje na sadržaju iza dijaloga kako se korisnik ne bi zbunio",
       "Tab treba slobodno prelaziti između dijaloga i sadržaja u pozadini",
       "Otvaranje dijaloga treba ponovno učitati stranicu i fokusirati body"
@@ -906,12 +906,12 @@
     "topic": "frontend",
     "question": "Čemu služi CORS preflight zahtjev koji preglednik šalje metodom OPTIONS?",
     "options": [
-      "Preuzima sadržaj resursa prije stvarnog GET zahtjeva radi cacheiranja",
-      "Provjerava dopušta li server planiranu cross-origin metodu, zaglavlja i origin prije slanja stvarnog zahtjeva",
-      "Automatski autentificira korisnika bez slanja vjerodajnica",
-      "Pretvara cross-origin zahtjev u same-origin zahtjev"
+      "Provjerava dopušta li server planiranu metodu, zaglavlja i origin",
+      "Preuzima sadržaj resursa prije stvarnog GET zahtjeva radi keširanja",
+      "Automatski autentificira korisnika bez slanja ijedne vjerodajnice",
+      "Pretvara cross-origin zahtjev u zahtjev s istog izvora kao stranica"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Za zahtjeve koji nisu CORS-simple preglednik prvo OPTIONS zahtjevom provjerava serverova Access-Control dopuštenja.",
     "difficulty": "medium",
     "unitId": "mreza-sigurnost"
@@ -1415,12 +1415,12 @@
     "topic": "frontend",
     "question": "Kako smisleno koristiti React startTransition kada tipkanje u polje pokreće skupo filtriranje velike liste?",
     "options": [
-      "Ažuriranje vrijednosti kontroliranog inputa staviti u transition, a listu ažurirati sinkrono",
-      "Vrijednost inputa ažurirati kao hitnu promjenu, a skupo ažuriranje rezultata označiti transitionom koji React može odgoditi ili prekinuti",
-      "Svaki onChange omotati u setTimeout umjesto korištenja React statea",
+      "Vrijednost polja ažurirati hitno, a skupo filtriranje označiti transitionom",
+      "Ažuriranje vrijednosti polja staviti u transition, a listu ažurirati sinkrono",
+      "Svaki onChange omotati u setTimeout umjesto da se koristi React state",
       "Transition koristiti kako bi mrežni zahtjev automatski postao brži"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Unos mora ostati neposredno responzivan, dok se nehitno renderiranje teških rezultata može označiti kao transition.",
     "difficulty": "hard",
     "unitId": "react"
@@ -1520,12 +1520,12 @@
     "topic": "frontend",
     "question": "Kako se click događaj iz otvorenog Shadow DOM-a tipično prikazuje listeneru izvan shadow root granice?",
     "options": [
-      "Svaki događaj prelazi granicu i event.target uvijek ostaje najdublji interni element",
-      "Click je composed pa može prijeći granicu, ali event.target se retargetira na host; composedPath može prikazati put kroz otvoreni shadow root",
-      "Shadow DOM automatski pretvara click u custom event bez targeta",
-      "Listener izvan komponente mora koristiti capture jer bubbling ne postoji u Shadow DOM-u"
+      "Click prelazi granicu, ali se event.target retargetira na host element",
+      "Svaki događaj prelazi granicu, a event.target ostaje najdublji element",
+      "Shadow DOM automatski pretvara click u custom event bez ikakvog targeta",
+      "Listener izvan komponente mora koristiti capture jer bubblinga nema"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Retargeting čuva enkapsulaciju tako da vanjski kod vidi host kao target, dok composed određuje smije li događaj prijeći granicu, a composedPath otvorenog shadow root-a opisuje njegov put.",
     "difficulty": "hard",
     "unitId": "dom-eventovi"
