@@ -1,15 +1,14 @@
 import { useEffect, useId, useRef, useState, type FormEvent } from 'react';
 import { useAuth } from '../hooks/useAuth';
+import { authErrorMessageHr } from '../lib/authErrors';
 
 type AuthMode = 'sign-in' | 'sign-up';
 
-function getAuthErrorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  return 'Nešto je pošlo po zlu. Pokušaj ponovno.';
-}
+// Supabase poruke su engleske; mapiranje na hrvatski živi u lib/authErrors.ts.
+const getAuthErrorMessage = authErrorMessageHr;
 
 export function AuthControl() {
-  const { user, isLoading, isCloudEnabled, signUp, signIn, signOut } = useAuth();
+  const { user, isLoading, isCloudEnabled, signUp, signIn, signOut, requestPasswordReset, resendConfirmation, deleteAccount } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [mode, setMode] = useState<AuthMode>('sign-in');
   const [email, setEmail] = useState('');
@@ -17,6 +16,7 @@ export function AuthControl() {
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const emailId = useId();
   const passwordId = useId();
@@ -57,7 +57,9 @@ export function AuthControl() {
       if (mode === 'sign-up') {
         await signUp(email.trim(), password);
         setPassword('');
-        setNotice('Račun je kreiran. Provjeri email i potvrdi adresu prije prijave.');
+        // Supabase namjerno vraća uspjeh i za VEĆ POSTOJEĆI email (zaštita od
+        // enumeracije), pa poruka mora biti istinita u oba slučaja.
+        setNotice('Provjeri email i potvrdi adresu prije prijave. Ako račun već postoji, stiže poveznica za prijavu.');
       } else {
         await signIn(email.trim(), password);
         setPassword('');
@@ -65,6 +67,58 @@ export function AuthControl() {
       }
     } catch (submitError) {
       setError(getAuthErrorMessage(submitError));
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handlePasswordReset = async () => {
+    const address = email.trim();
+    if (!address) {
+      setError('Prvo upiši svoj email pa klikni na oporavak lozinke.');
+      return;
+    }
+    setError(null);
+    setNotice(null);
+    setIsSubmitting(true);
+    try {
+      await requestPasswordReset(address);
+      setNotice('Poslali smo ti poveznicu za novu lozinku. Provjeri poštu (i spam).');
+    } catch (resetError) {
+      setError(getAuthErrorMessage(resetError));
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleResendConfirmation = async () => {
+    const address = email.trim();
+    if (!address) {
+      setError('Prvo upiši svoj email pa zatraži ponovnu potvrdu.');
+      return;
+    }
+    setError(null);
+    setNotice(null);
+    setIsSubmitting(true);
+    try {
+      await resendConfirmation(address);
+      setNotice('Potvrdna poruka je poslana ponovno. Provjeri poštu (i spam).');
+    } catch (resendError) {
+      setError(getAuthErrorMessage(resendError));
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleDeleteAccount = async () => {
+    setError(null);
+    setIsSubmitting(true);
+    try {
+      await deleteAccount();
+      setConfirmDelete(false);
+      setIsOpen(false);
+    } catch (deleteError) {
+      setError(getAuthErrorMessage(deleteError));
     } finally {
       setIsSubmitting(false);
     }
@@ -130,6 +184,42 @@ export function AuthControl() {
               >
                 {isSubmitting ? 'Odjava…' : 'Odjavi se'}
               </button>
+
+              <div className="mt-5 border-t-2 border-cloud-200 pt-4">
+                {confirmDelete ? (
+                  <>
+                    <p className="text-sm font-bold leading-6 text-rose-800">
+                      Trajno obrisati račun i sav napredak? Ovo se ne može poništiti.
+                    </p>
+                    <div className="mt-3 grid grid-cols-2 gap-2">
+                      <button
+                        type="button"
+                        className="game-button game-button-ghost"
+                        onClick={() => setConfirmDelete(false)}
+                        disabled={isSubmitting}
+                      >
+                        Odustani
+                      </button>
+                      <button
+                        type="button"
+                        className="min-h-12 rounded-2xl border-2 border-rose-800 bg-rose-600 px-4 font-black text-white shadow-[0_4px_0_#9f1239] transition hover:bg-rose-700 active:translate-y-1 disabled:opacity-60"
+                        onClick={handleDeleteAccount}
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? 'Brišem…' : 'Obriši'}
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <button
+                    type="button"
+                    className="text-xs font-bold text-ink-400 underline decoration-dotted underline-offset-4 transition hover:text-rose-700"
+                    onClick={() => setConfirmDelete(true)}
+                  >
+                    Obriši račun
+                  </button>
+                )}
+              </div>
             </div>
           ) : (
             <div>
@@ -226,6 +316,27 @@ export function AuthControl() {
                       ? 'Prijavi se'
                       : 'Kreiraj račun'}
                 </button>
+
+                {/* Bez ovoga korisnik koji zaboravi lozinku ili kojem ne
+                    stigne potvrdni mail nema nikakav izlaz iz aplikacije. */}
+                <div className="flex flex-wrap justify-between gap-x-4 gap-y-1 pt-1">
+                  <button
+                    type="button"
+                    onClick={handlePasswordReset}
+                    disabled={isSubmitting}
+                    className="text-xs font-bold text-ink-600 underline decoration-dotted underline-offset-4 transition hover:text-brand-700 disabled:opacity-50"
+                  >
+                    Zaboravljena lozinka?
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleResendConfirmation}
+                    disabled={isSubmitting}
+                    className="text-xs font-bold text-ink-600 underline decoration-dotted underline-offset-4 transition hover:text-brand-700 disabled:opacity-50"
+                  >
+                    Pošalji potvrdu ponovno
+                  </button>
+                </div>
               </form>
             </div>
           )}

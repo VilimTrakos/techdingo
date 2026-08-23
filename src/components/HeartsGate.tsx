@@ -17,7 +17,7 @@ const AD_DURATION_S = 5;
  * Ekran "nemaš srca" (tvrdi gate za lekcije). Nudi: čekanje regeneracije
  * (live odbrojavanje), gledanje reklame za +1 srce (STUB - lažna reklama od
  * 5 s; pravi ad SDK kasnije samo zamijeni sadržaj modala), Score Strike koji
- * ne troši srca, i testni refill (dok pravi ad network ne postoji).
+ * ne troši srca. Refill prečac postoji samo u razvojnom buildu.
  */
 export function HeartsGate({ scoreStrikeHref }: { scoreStrikeHref: string }) {
   const { state, grantAdHeart, refillHearts, syncHearts } = useProgress();
@@ -83,13 +83,16 @@ export function HeartsGate({ scoreStrikeHref }: { scoreStrikeHref: string }) {
         <Link to={scoreStrikeHref} className="game-button game-button-secondary px-6 py-3.5">
           <span aria-hidden="true">⚡</span> Igraj Score Strike (besplatno)
         </Link>
-        <button
-          type="button"
-          onClick={refillHearts}
-          className="mx-auto mt-1 text-xs font-bold text-ink-400 underline decoration-dotted underline-offset-4 hover:text-ink-600"
-        >
-          [test] Napuni srca odmah
-        </button>
+        {/* Razvojni prečac - u produkciji bi obesmislio čekanje i reklamu. */}
+        {import.meta.env.DEV && (
+          <button
+            type="button"
+            onClick={refillHearts}
+            className="mx-auto mt-1 text-xs font-bold text-ink-400 underline decoration-dotted underline-offset-4 hover:text-ink-600"
+          >
+            [dev] Napuni srca odmah
+          </button>
+        )}
       </div>
 
       {adSecondsLeft !== null && (

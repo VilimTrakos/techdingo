@@ -102,6 +102,17 @@ export function useAuth() {
     if (updateError) throw updateError;
   }, []);
 
+  /**
+   * Trajno briše vlastiti račun i sve povezane podatke (kaskadno preko
+   * auth.users). Nepovratno - pozivatelj MORA prvo tražiti potvrdu.
+   */
+  const deleteAccount = useCallback(async () => {
+    if (!supabase) throw new Error('Cloud značajke nisu konfigurirane.');
+    const { error: rpcError } = await supabase.rpc('delete_account');
+    if (rpcError) throw rpcError;
+    await supabase.auth.signOut();
+  }, []);
+
   /** Ponovno šalje potvrdu registracije ako prvi mail nije stigao. */
   const resendConfirmation = useCallback(async (email: string) => {
     if (!supabase) throw new Error('Cloud značajke nisu konfigurirane.');
@@ -124,5 +135,6 @@ export function useAuth() {
     requestPasswordReset,
     updatePassword,
     resendConfirmation,
+    deleteAccount,
   };
 }

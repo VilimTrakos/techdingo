@@ -106,7 +106,7 @@ export function useProgress() {
     setState(grantHeartsOnState(state, 1), { skipCloudPush: true });
   }, []);
 
-  /** Testni shortcut (klik na srca u headeru): puni refill. */
+  /** Puni refill. SAMO za razvojni build (import.meta.env.DEV) - vidi AppShell/HeartsGate. */
   const refillHearts = useCallback(() => {
     setState(grantHeartsOnState(state, MAX_HEARTS), { skipCloudPush: true });
   }, []);

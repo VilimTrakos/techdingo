@@ -56,15 +56,21 @@ export function AppShell() {
             <XPBadge xp={state.xpTotal} />
           </div>
 
-          <button
-            type="button"
-            onClick={refillHearts}
-            className="rounded-2xl transition hover:-translate-y-0.5 active:translate-y-0.5"
-            aria-label={`Preostala srca: ${hearts} od 5. Klikni za testno punjenje.`}
-            title="Testni prečac: napuni srca"
-          >
+          {/* U produkciji su srca samo prikaz. Refill je razvojni prečac -
+              u produkcijskom buildu bi poništio cijelu ekonomiju srca. */}
+          {import.meta.env.DEV ? (
+            <button
+              type="button"
+              onClick={refillHearts}
+              className="rounded-2xl transition hover:-translate-y-0.5 active:translate-y-0.5"
+              aria-label={`Preostala srca: ${hearts} od 5. Razvojni prečac: napuni srca.`}
+              title="Razvojni prečac: napuni srca"
+            >
+              <HeartsDisplay hearts={hearts} />
+            </button>
+          ) : (
             <HeartsDisplay hearts={hearts} />
-          </button>
+          )}
 
           <AuthControl />
         </div>
