@@ -1739,5 +1739,193 @@
     "explanation": "Kratak TTL znači svježe podatke uz više prometa, dug TTL obrnuto. Isti mehanizam vrijedi za DNS i za aplikacijski cache.",
     "difficulty": "easy",
     "conceptId": "ttl-valjanost"
+  },
+  {
+    "id": "backend-910-idempotency-key",
+    "topic": "backend",
+    "unitId": "http-api",
+    "difficulty": "hard",
+    "question": "Klijent pošalje POST /placanja, veza pukne prije odgovora i klijent ponovi zahtjev. Kako spriječiti dvostruko terećenje?",
+    "conceptId": "idempotentnost",
+    "options": [
+      "Klijent šalje Idempotency-Key, a poslužitelj vraća isti spremljeni odgovor",
+      "Poslužitelj odbije svaki POST koji stigne unutar minute s iste adrese",
+      "Klijent zamijeni POST s PUT, jer je PUT po definiciji siguran za ponavljanje",
+      "Poslužitelj usporedi tijelo zahtjeva i odbaci ono koje se ponavlja"
+    ],
+    "correctIndex": 0,
+    "explanation": "PUT je idempotentan na razini resursa, ali plaćanje nema klijentu poznat identitet unaprijed. Ključ koji šalje klijent to rješava."
+  },
+  {
+    "id": "backend-911-429-retry-after",
+    "topic": "backend",
+    "unitId": "http-api",
+    "difficulty": "hard",
+    "question": "Što bi API trebao poslati klijentu koji je prekoračio ograničenje broja zahtjeva?",
+    "options": [
+      "Status 429 i zaglavlje Retry-After s vremenom čekanja",
+      "Status 503, jer je usluga za tog klijenta privremeno nedostupna",
+      "Status 403, jer klijent nema pravo na daljnje zahtjeve",
+      "Status 200 s praznim tijelom, da klijent ne pokušava ponovno"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez Retry-After klijent nagađa i najčešće navali odmah. 503 govori o usluzi, 429 o klijentu."
+  },
+  {
+    "id": "backend-912-cursor-vs-offset",
+    "topic": "backend",
+    "unitId": "http-api",
+    "difficulty": "hard",
+    "question": "Zašto se za popis koji stalno dobiva nove zapise preporučuje cursor paginacija umjesto OFFSET-a?",
+    "options": [
+      "OFFSET pomiče prozor pa novi zapisi guraju stare i klijent ih preskoči",
+      "OFFSET ima gornju granicu od 10000 redaka u većini baza podataka",
+      "OFFSET se ne može kombinirati s uvjetom sortiranja po vremenu unosa",
+      "OFFSET zahtijeva da klijent zna ukupan broj zapisa prije prve stranice"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cursor pamti gdje si stao po stvarnoj vrijednosti, pa umetanje na vrh ne pomiče ostatak."
+  },
+  {
+    "id": "backend-913-401-vs-403",
+    "topic": "backend",
+    "unitId": "http-api",
+    "difficulty": "hard",
+    "question": "Prijavljeni korisnik traži tuđi dokument. Koji je status ispravan?",
+    "conceptId": "401-vs-403",
+    "options": [
+      "403, jer je identitet poznat ali pravo nedostaje",
+      "401, jer zahtjev nije prošao provjeru pristupa resursu",
+      "400, jer klijent traži nešto što mu ne pripada",
+      "404 uvijek, jer je svaki drugi status curenje informacija"
+    ],
+    "correctIndex": 0,
+    "explanation": "401 znači 'ne znam tko si'. 404 se koristi namjerno samo kad i samo postojanje resursa treba sakriti."
+  },
+  {
+    "id": "backend-914-cache-stampede",
+    "topic": "backend",
+    "unitId": "arhitektura",
+    "difficulty": "hard",
+    "question": "Popularan ključ u cacheu istekne i tisuću zahtjeva odjednom krene u bazu. Kako se to sprječava?",
+    "options": [
+      "Prvi zahtjev uzme bravu i osvježi vrijednost, ostali čekaju ili dobiju staru",
+      "Vrijeme života ključa se produži na nekoliko sati da istek bude rjeđi",
+      "Baza se skalira dodavanjem replika koje preuzmu val zahtjeva",
+      "Cache se briše ručno, izvan sata najvećeg prometa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zove se cache stampede. Uz bravu ide i raspršivanje isteka, da ključevi ne istječu svi u istoj sekundi."
+  },
+  {
+    "id": "backend-915-graceful-shutdown",
+    "topic": "backend",
+    "unitId": "arhitektura",
+    "difficulty": "hard",
+    "question": "Što instanca treba napraviti nakon SIGTERM-a da rolling deploy ne prekine zahtjeve u tijeku?",
+    "conceptId": "graceful-shutdown",
+    "options": [
+      "Prestati primati nove zahtjeve, dovršiti tekuće, pa se ugasiti",
+      "Odmah zatvoriti proces, jer balanser ionako preusmjeri promet",
+      "Odbiti tekuće zahtjeve sa statusom 503 da klijenti pokušaju ponovno",
+      "Nastaviti primati zahtjeve dok ne prođe zadano vrijeme čekanja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Redoslijed je bitan: prvo izađi iz balansera, pa onda čekaj da se posao dovrši."
+  },
+  {
+    "id": "backend-916-backpressure",
+    "topic": "backend",
+    "unitId": "arhitektura",
+    "difficulty": "medium",
+    "question": "Koji postupci štite servis kad zahtjevi stižu brže nego što ih stigne obraditi?",
+    "kind": "multi",
+    "options": [
+      "Ograničiti broj istodobnih zahtjeva u obradi",
+      "Odbaciti zahtjeve iz reda koji su već istekli klijentu",
+      "Vratiti 429 kad je red pun, umjesto neograničenog čekanja",
+      "Povećati red čekanja koliko god memorija dopušta",
+      "Povećati timeout klijenta da zahtjevi ne otpadaju"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Zadnje dvije samo pomiču problem: dulji red i dulji timeout znače da klijent dulje čeka odgovor koji više nikome ne treba."
+  },
+  {
+    "id": "backend-917-rolling-deploy-red",
+    "topic": "backend",
+    "unitId": "arhitektura",
+    "difficulty": "medium",
+    "question": "Poredaj korake sigurnog rolling deploya jedne instance:",
+    "kind": "order",
+    "steps": [
+      "Instanca se označi kao nezdrava i izlazi iz balansera",
+      "Tekući zahtjevi se dovrše",
+      "Stari proces se gasi",
+      "Nova verzija se pokreće i prolazi health check",
+      "Instanca se vraća u balanser"
+    ],
+    "explanation": "Ključ je da instanca izađe iz prometa PRIJE gašenja, a vrati se tek nakon što health check prođe."
+  },
+  {
+    "id": "backend-918-n-plus-1-rjesenja",
+    "topic": "backend",
+    "unitId": "baze-podataka",
+    "difficulty": "medium",
+    "question": "Kojim se pristupima rješava N+1 problem?",
+    "conceptId": "n-plus-1",
+    "kind": "multi",
+    "options": [
+      "Dohvatiti povezane zapise jednim JOIN upitom",
+      "Skupiti id-jeve i dohvatiti ih jednim IN upitom",
+      "Koristiti dataloader koji spaja zahtjeve unutar istog ciklusa",
+      "Povećati veličinu connection poola da stane N upita",
+      "Dodati indeks na strani ključ da svaki od N upita bude brži"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Zadnje dvije čine N upita bržima, ali ih i dalje ima N. Problem je broj odlazaka do baze, ne brzina pojedinog."
+  },
+  {
+    "id": "backend-919-select-for-update",
+    "topic": "backend",
+    "unitId": "baze-podataka",
+    "difficulty": "hard",
+    "question": "Dopuni upit koji zaključa redak do kraja transakcije:",
+    "kind": "fill",
+    "text": "SELECT stanje FROM racuni WHERE id = 7 ___ ___;",
+    "answers": [
+      "FOR",
+      "UPDATE"
+    ],
+    "distractors": [
+      "WITH",
+      "LOCK"
+    ],
+    "explanation": "Bez zaključavanja dvije istodobne transakcije pročitaju isto stanje i jedna prepiše drugu — klasičan lost update."
+  },
+  {
+    "id": "backend-920-migracija-red",
+    "topic": "backend",
+    "unitId": "baze-podataka",
+    "difficulty": "hard",
+    "question": "Poredaj korake preimenovanja stupca bez prekida rada:",
+    "conceptId": "expand-contract-migracija",
+    "kind": "order",
+    "steps": [
+      "Dodaj novi stupac",
+      "Piši u oba stupca istodobno",
+      "Prepiši postojeće podatke u novi stupac",
+      "Prebaci čitanje na novi stupac",
+      "Prestani pisati u stari stupac",
+      "Obriši stari stupac"
+    ],
+    "explanation": "Expand-contract: shema neko vrijeme podržava i staru i novu verziju aplikacije, pa nijedan deploy ne mora biti trenutačan."
   }
 ]
