@@ -1190,5 +1190,230 @@
     ],
     "explanation": "Procjena nije preciznija ako se nepoznanice sakriju iza jednog broja. Kratko istraživanje i vidljive pretpostavke daju korisniji raspon.",
     "conceptId": "procjena-postupak"
+  },
+  {
+    "id": "praksa-300-sprint",
+    "topic": "praksa",
+    "unitId": "agilni-rad",
+    "difficulty": "easy",
+    "question": "Što je sprint u Scrumu?",
+    "options": [
+      "Razdoblje fiksne duljine u kojem se isporučuje dio posla",
+      "Sastanak na kojem se planira rad na cijelom projektu",
+      "Popis svih zadataka koje tim mora obaviti do izdanja",
+      "Razdoblje u kojem se ne rade nove značajke"
+    ],
+    "correctIndex": 0,
+    "explanation": "Fiksna duljina je poanta: opseg se prilagođava vremenu, ne obrnuto."
+  },
+  {
+    "id": "praksa-301-standup",
+    "topic": "praksa",
+    "unitId": "agilni-rad",
+    "difficulty": "easy",
+    "question": "Čemu služi dnevni sastanak tima?",
+    "options": [
+      "Da svi znaju stanje i tko je na čemu zapeo",
+      "Da voditelj provjeri koliko je tko napravio",
+      "Da se rasprave i riješe tehnički problemi",
+      "Da se rasporede zadaci za sljedeći dan"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kratak je namjerno. Rasprava koja krene ide izvan sastanka, s onima kojih se tiče."
+  },
+  {
+    "id": "praksa-302-review-cilj",
+    "topic": "praksa",
+    "unitId": "code-review",
+    "difficulty": "easy",
+    "question": "Koji je glavni cilj pregleda koda?",
+    "options": [
+      "Uhvatiti probleme prije nego dođu u produkciju",
+      "Ocijeniti koliko je autor sposoban",
+      "Uskladiti kod s osobnim stilom pregledavatelja",
+      "Usporiti unos promjena u glavnu granu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Uz to se i znanje o kodu širi timom — često vrjednije od samih nađenih grešaka."
+  },
+  {
+    "id": "praksa-303-review-velicina",
+    "topic": "praksa",
+    "unitId": "code-review",
+    "difficulty": "easy",
+    "question": "Zašto je bolje slati manje promjene na pregled?",
+    "options": [
+      "Jer se male promjene pregledaju pažljivije",
+      "Jer velike promjene sustav odbija spojiti",
+      "Jer male promjene ne traže testove",
+      "Jer se male promjene brže prevode"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kod promjene od tisuću redaka pregled postaje formalnost, a to je gore od nikakvog."
+  },
+  {
+    "id": "praksa-304-review-ton",
+    "topic": "praksa",
+    "unitId": "code-review",
+    "difficulty": "easy",
+    "question": "Kako se piše koristan komentar na pregledu?",
+    "options": [
+      "Konkretno, o kodu, uz obrazloženje zašto",
+      "Kratko, da autor ne gubi vrijeme na čitanje",
+      "Kao pitanje, da autor sam otkrije problem",
+      "Uz usporedbu s time kako bi ti to napisao"
+    ],
+    "correctIndex": 0,
+    "explanation": "\"Ovo pukne ako je popis prazan\" pomaže. \"Ovo nije dobro\" ne pomaže nikome."
+  },
+  {
+    "id": "praksa-305-readme",
+    "topic": "praksa",
+    "unitId": "dokumentacija",
+    "difficulty": "easy",
+    "question": "Što bi README projekta prvo trebao reći?",
+    "options": [
+      "Što projekt radi i kako ga pokrenuti",
+      "Tko su svi autori i koje su njihove uloge",
+      "Kako je projekt interno organiziran po mapama",
+      "Koje su verzije svih korištenih knjižnica"
+    ],
+    "correctIndex": 0,
+    "explanation": "Novi čovjek ima dva pitanja: čemu ovo služi i kako da ga pokrenem."
+  },
+  {
+    "id": "praksa-306-komentar",
+    "topic": "praksa",
+    "unitId": "dokumentacija",
+    "difficulty": "easy",
+    "question": "Što dobar komentar u kodu objašnjava?",
+    "options": [
+      "Zašto je nešto napravljeno tako",
+      "Što točno svaki redak radi",
+      "Tko je i kada napisao taj dio",
+      "Koliko je taj dio brz u izvođenju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Što kod radi vidi se iz koda. Zašto baš tako — to nestaje s autorom."
+  },
+  {
+    "id": "praksa-307-verzija-cemu",
+    "topic": "praksa",
+    "unitId": "izdanja-i-verzije",
+    "difficulty": "easy",
+    "question": "Čemu služi broj verzije?",
+    "options": [
+      "Govori korisniku koliko se izdanje razlikuje od prošlog",
+      "Govori koliko je programera radilo na tom izdanju",
+      "Određuje redoslijed instalacije pojedinih komponenti",
+      "Označava koliko je grešaka popravljeno od zadnjeg"
+    ],
+    "correctIndex": 0,
+    "explanation": "U semantičkom verzioniranju prvi broj upozorava da nešto više neće raditi kao prije."
+  },
+  {
+    "id": "praksa-308-changelog",
+    "topic": "praksa",
+    "unitId": "izdanja-i-verzije",
+    "difficulty": "easy",
+    "question": "Čemu služi changelog?",
+    "options": [
+      "Popisuje što se promijenilo u svakom izdanju",
+      "Bilježi svaki commit u repozitoriju",
+      "Prati koliko korisnika koristi koju verziju",
+      "Opisuje kako se aplikacija instalira"
+    ],
+    "correctIndex": 0,
+    "explanation": "Piše se za ljude, ne za strojeve — zato nije isto što i popis commitova."
+  },
+  {
+    "id": "praksa-309-licenca-cemu",
+    "topic": "praksa",
+    "unitId": "licence",
+    "difficulty": "easy",
+    "question": "Čemu služi licenca na softveru?",
+    "options": [
+      "Kaže što drugi smiju raditi s tim kodom",
+      "Dokazuje tko je autor koda",
+      "Štiti kod od kopiranja i preuzimanja",
+      "Određuje cijenu po kojoj se kod prodaje"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kod bez licence nije slobodan za korištenje — po zadanom nitko nema nikakva prava."
+  },
+  {
+    "id": "praksa-310-open-source",
+    "topic": "praksa",
+    "unitId": "licence",
+    "difficulty": "easy",
+    "question": "Što znači da je projekt otvorenog koda?",
+    "options": [
+      "Izvorni kod je javno dostupan pod nekom licencom",
+      "Projekt je besplatan za svaku upotrebu",
+      "Svatko smije mijenjati službenu verziju projekta",
+      "Projekt nema vlasnika ni održavatelja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Otvoren ne znači bez uvjeta. Licenca i dalje određuje što smiješ."
+  },
+  {
+    "id": "praksa-311-procjena-zasto",
+    "topic": "praksa",
+    "unitId": "procjena-i-dug",
+    "difficulty": "easy",
+    "question": "Zašto se procjena daje kao raspon, a ne kao jedan broj?",
+    "options": [
+      "Jer raspon pokazuje koliko je toga nepoznato",
+      "Jer raspon ostavlja prostor za odgodu",
+      "Jer se jedan broj ne može uspoređivati s drugima",
+      "Jer raspon nije obvezujuć kao točan broj"
+    ],
+    "correctIndex": 0,
+    "explanation": "Jedan broj se čuje kao obećanje. Raspon prenosi i nesigurnost, što je dio informacije."
+  },
+  {
+    "id": "praksa-312-tehnicki-dug",
+    "topic": "praksa",
+    "unitId": "procjena-i-dug",
+    "difficulty": "easy",
+    "question": "Što je tehnički dug?",
+    "options": [
+      "Cijena bržeg rješenja koja se plaća kasnije",
+      "Zbroj svih neriješenih grešaka u sustavu",
+      "Vrijeme potrošeno na sastanke umjesto na kod",
+      "Kod koji je napisao netko tko je otišao"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kao i pravi dug, ima kamate: svaka sljedeća promjena u tom dijelu traje dulje."
+  },
+  {
+    "id": "praksa-313-intervju-priprema",
+    "topic": "praksa",
+    "unitId": "razgovor-za-posao",
+    "difficulty": "easy",
+    "question": "Što najviše pomaže na tehničkom razgovoru?",
+    "options": [
+      "Glasno objašnjavati kako razmišljaš",
+      "Odmah dati najkraće moguće rješenje",
+      "Izbjegavati spominjanje onoga što ne znaš",
+      "Navesti sve tehnologije koje si ikad koristio"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ispitivača zanima put do rješenja. Točan odgovor bez objašnjenja govori mu malo."
+  },
+  {
+    "id": "praksa-314-ne-znam",
+    "topic": "praksa",
+    "unitId": "razgovor-za-posao",
+    "difficulty": "easy",
+    "question": "Što je najbolje reći kad ne znaš odgovor?",
+    "options": [
+      "Da ne znaš, pa kako bi došao do odgovora",
+      "Nagađati, jer šutnja ostavlja gori dojam",
+      "Prijeći na temu koju bolje poznaješ",
+      "Reći da to nikad nisi trebao u praksi"
+    ],
+    "correctIndex": 0,
+    "explanation": "\"Ne znam, ali bih provjerio ovako\" je odgovor koji se pamti kao dobar."
   }
 ]

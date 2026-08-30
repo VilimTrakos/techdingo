@@ -1301,5 +1301,230 @@
     ],
     "correctIndex": 0,
     "explanation": "Ugniježđeni kvantifikatori stvaraju mnogo ekvivalentnih putova koje backtracking engine istražuje tek kad podudaranje kasno propadne. To može postati ReDoS."
+  },
+  {
+    "id": "cudni-300-cijeli-decimalni",
+    "topic": "cudni-kutovi",
+    "unitId": "brojevi",
+    "difficulty": "easy",
+    "question": "Koja je razlika između cijelog i decimalnog broja u programu?",
+    "options": [
+      "Cijeli nema decimalni dio, decimalni ima",
+      "Cijeli je uvijek pozitivan, decimalni može biti negativan",
+      "Cijeli zauzima više memorije od decimalnog",
+      "Cijeli se sprema kao tekst, decimalni kao broj"
+    ],
+    "correctIndex": 0,
+    "explanation": "Odabir tipa nije kozmetika: cjelobrojno dijeljenje 7/2 daje 3, ne 3.5."
+  },
+  {
+    "id": "cudni-301-zaokruzivanje",
+    "topic": "cudni-kutovi",
+    "unitId": "brojevi",
+    "difficulty": "easy",
+    "question": "Zašto se novčani iznosi radije drže u najmanjoj jedinici, npr. u lipama?",
+    "options": [
+      "Jer se tako izbjegavaju greške zaokruživanja",
+      "Jer se cijeli brojevi brže zbrajaju od decimalnih",
+      "Jer baze podataka ne podržavaju decimalni tip",
+      "Jer se time iznos automatski pretvara u valutu"
+    ],
+    "correctIndex": 0,
+    "explanation": "1234 lipe je točno 1234. 12.34 kao decimalni broj s pomičnim zarezom nije točno 12.34."
+  },
+  {
+    "id": "cudni-302-tekst-broj",
+    "topic": "cudni-kutovi",
+    "unitId": "tekst-i-znakovi",
+    "difficulty": "easy",
+    "question": "Koja je razlika između broja 42 i teksta \"42\"?",
+    "options": [
+      "S brojem se računa, tekst je niz znakova",
+      "Tekst zauzima manje memorije od broja",
+      "Broj se ne može ispisati bez pretvorbe",
+      "Tekst se uvijek automatski pretvori u broj"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zato \"2\" + \"2\" u nekim jezicima daje \"22\", a ne 4."
+  },
+  {
+    "id": "cudni-303-kodiranje",
+    "topic": "cudni-kutovi",
+    "unitId": "tekst-i-znakovi",
+    "difficulty": "easy",
+    "question": "Čemu služi kodiranje teksta poput UTF-8?",
+    "options": [
+      "Određuje kako se znakovi pretvaraju u bajtove",
+      "Određuje kojim se fontom tekst prikazuje",
+      "Sažima tekst da zauzme manje prostora",
+      "Šifrira tekst da ga drugi ne mogu pročitati"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kad pošiljatelj i primatelj koriste različito kodiranje, dobiješ čudne znakove."
+  },
+  {
+    "id": "cudni-304-vremenska-zona",
+    "topic": "cudni-kutovi",
+    "unitId": "vrijeme",
+    "difficulty": "easy",
+    "question": "Zašto vrijeme treba znati i vremensku zonu?",
+    "options": [
+      "Jer isti trenutak nije isti sat u različitim zemljama",
+      "Jer se bez zone vrijeme ne može spremiti u bazu",
+      "Jer se bez zone datum pomakne za jedan dan",
+      "Jer zona određuje format ispisa datuma"
+    ],
+    "correctIndex": 0,
+    "explanation": "14:00 u Zagrebu i 14:00 u New Yorku su različiti trenuci — razlika je šest sati."
+  },
+  {
+    "id": "cudni-305-utc",
+    "topic": "cudni-kutovi",
+    "unitId": "vrijeme",
+    "difficulty": "easy",
+    "question": "Zašto se u bazi trenutak obično sprema u UTC-u?",
+    "options": [
+      "Jer je jedna referenca za sve korisnike svugdje",
+      "Jer UTC zauzima manje prostora od lokalnog vremena",
+      "Jer se UTC ne mijenja prelaskom na ljetno vrijeme",
+      "Jer baze ne podržavaju lokalna vremena"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pretvorba u korisnikovu zonu radi se pri prikazu. Suprotan smjer je izvor grešaka."
+  },
+  {
+    "id": "cudni-306-regex-cemu",
+    "topic": "cudni-kutovi",
+    "unitId": "regex-i-parsiranje",
+    "difficulty": "easy",
+    "question": "Za što se regularni izrazi najčešće koriste?",
+    "options": [
+      "Za pronalaženje uzorka u tekstu",
+      "Za pretvaranje teksta u brojeve",
+      "Za sažimanje velikih tekstualnih datoteka",
+      "Za usporedbu dviju datoteka redak po redak"
+    ],
+    "correctIndex": 0,
+    "explanation": "Traženje, provjera oblika i zamjena — sve tri se svode na prepoznavanje uzorka."
+  },
+  {
+    "id": "cudni-307-regex-citljivost",
+    "topic": "cudni-kutovi",
+    "unitId": "regex-i-parsiranje",
+    "difficulty": "easy",
+    "question": "Koja je najveća praktična mana regularnih izraza?",
+    "options": [
+      "Teško se čitaju i još teže mijenjaju kasnije",
+      "Rade sporo na tekstovima kraćim od reda",
+      "Ne mogu se koristiti izvan JavaScripta",
+      "Ne razlikuju velika i mala slova"
+    ],
+    "correctIndex": 0,
+    "explanation": "Regex koji si napisao prije mjesec dana čita se kao tuđi. Zato ide komentar uz njega."
+  },
+  {
+    "id": "cudni-308-bit-bajt",
+    "topic": "cudni-kutovi",
+    "unitId": "bitovi-i-memorija",
+    "difficulty": "easy",
+    "question": "Koliko bitova ima jedan bajt?",
+    "options": [
+      "Osam",
+      "Četiri",
+      "Šesnaest",
+      "Trideset dva"
+    ],
+    "correctIndex": 0,
+    "explanation": "Osam bitova daje 256 različitih vrijednosti — zato jedan bajt pokriva 0 do 255."
+  },
+  {
+    "id": "cudni-309-binarno",
+    "topic": "cudni-kutovi",
+    "unitId": "bitovi-i-memorija",
+    "difficulty": "easy",
+    "question": "Zašto računala rade s binarnim brojevima?",
+    "options": [
+      "Jer sklopka ima dva stanja: uključeno i isključeno",
+      "Jer je binarni zapis kraći od decimalnog",
+      "Jer se binarni brojevi brže ispisuju na zaslon",
+      "Jer decimalni brojevi ne mogu biti negativni"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dva stanja se pouzdano razlikuju u struji. Deset razina bi se lako pobrkalo."
+  },
+  {
+    "id": "cudni-310-slucajno-cemu",
+    "topic": "cudni-kutovi",
+    "unitId": "slucajnost-i-id",
+    "difficulty": "easy",
+    "question": "Za što se slučajni brojevi koriste u programima?",
+    "options": [
+      "Za identifikatore, tokene i miješanje redoslijeda",
+      "Isključivo za igre i znanstvene simulacije",
+      "Za mjerenje brzine izvršavanja pojedinog koda",
+      "Za sažimanje podataka prije trajnog spremanja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tokeni i identifikatori su najčešća upotreba, i tamo kvaliteta slučajnosti najviše znači."
+  },
+  {
+    "id": "cudni-311-id-jedinstven",
+    "topic": "cudni-kutovi",
+    "unitId": "slucajnost-i-id",
+    "difficulty": "easy",
+    "question": "Zašto identifikator zapisa mora biti jedinstven?",
+    "options": [
+      "Da se zapis može nedvosmisleno pronaći i povezati",
+      "Da se zapisi mogu poredati po vremenu nastanka",
+      "Da zauzme manje prostora u bazi podataka",
+      "Da se zapis ne može obrisati greškom"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dva zapisa s istim id-em znače da ne znaš na koji se referenca odnosi."
+  },
+  {
+    "id": "cudni-312-bug-cijena",
+    "topic": "cudni-kutovi",
+    "unitId": "slavni-bugovi",
+    "difficulty": "easy",
+    "question": "Zašto se greška skuplje plaća što je kasnije otkrivena?",
+    "options": [
+      "Jer je u produkciji već napravila štetu korisnicima",
+      "Jer je stariji kod teže prevesti",
+      "Jer se popravak mora napisati u drugom jeziku",
+      "Jer se stare verzije ne mogu više mijenjati"
+    ],
+    "correctIndex": 0,
+    "explanation": "Greška uhvaćena pri pisanju košta minute. Ista greška u produkciji košta ispriku i novac."
+  },
+  {
+    "id": "cudni-313-testovi-zasto",
+    "topic": "cudni-kutovi",
+    "unitId": "slavni-bugovi",
+    "difficulty": "easy",
+    "question": "Čemu testovi služe uz otkrivanje grešaka?",
+    "options": [
+      "Sprječavaju da se ista greška vrati kasnije",
+      "Ubrzavaju izvršavanje programa u produkciji",
+      "Zamjenjuju potrebu za pregledom koda",
+      "Dokumentiraju kako je kod interno napisan"
+    ],
+    "correctIndex": 0,
+    "explanation": "Test napisan uz popravak je jedina stvar koja jamči da se ta greška ne vrati."
+  },
+  {
+    "id": "cudni-314-postmortem",
+    "topic": "cudni-kutovi",
+    "unitId": "slavni-bugovi",
+    "difficulty": "easy",
+    "question": "Što je cilj analize nakon većeg kvara?",
+    "options": [
+      "Naći uzrok i spriječiti ponavljanje",
+      "Utvrditi tko je odgovoran za kvar",
+      "Procijeniti nastalu financijsku štetu",
+      "Obavijestiti korisnike o prekidu rada"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kultura bez okrivljavanja nije ljubaznost — ljudi koji se boje krivnje skrivaju uzroke."
   }
 ]

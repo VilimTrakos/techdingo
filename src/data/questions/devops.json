@@ -1476,5 +1476,215 @@
       "Automatski zaustavi ili vrati izdanje ako metrike prijeđu prag"
     ],
     "explanation": "Isti artefakt promovira se kroz faze. Postupno izlaganje i unaprijed definirani pragovi ograničavaju blast radius lošeg izdanja."
+  },
+  {
+    "id": "devops-300-ci-sto",
+    "topic": "devops",
+    "unitId": "ci-cd",
+    "difficulty": "easy",
+    "question": "Što se događa u kontinuiranoj integraciji (CI)?",
+    "options": [
+      "Na svaku promjenu se automatski prevede i testira kod",
+      "Kod se automatski objavljuje korisnicima",
+      "Grane se automatski spajaju u glavnu granu",
+      "Kod se automatski formatira po pravilima tima"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ideja je da se problem spajanja vidi za minute, ne za tjedan."
+  },
+  {
+    "id": "devops-301-pipeline",
+    "topic": "devops",
+    "unitId": "ci-cd",
+    "difficulty": "easy",
+    "question": "Zašto CI mora pasti kad test padne?",
+    "options": [
+      "Da neispravna promjena ne dođe dalje",
+      "Da se testovi ponove s drugim postavkama",
+      "Da se autor promjene automatski obavijesti",
+      "Da se prethodna verzija vrati u produkciju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cjevovod koji propušta crveno je samo ukras. Njegova vrijednost je u tome što zaustavlja."
+  },
+  {
+    "id": "devops-302-cloud-sto",
+    "topic": "devops",
+    "unitId": "cloud-osnove",
+    "difficulty": "easy",
+    "question": "Što znači pokrenuti aplikaciju u oblaku?",
+    "options": [
+      "Radi na tuđem željezu, a plaćaš po potrošnji",
+      "Radi bez ijednog poslužitelja u pozadini",
+      "Radi na više kontinenata u isto vrijeme",
+      "Radi bez ikakve potrebe za održavanjem"
+    ],
+    "correctIndex": 0,
+    "explanation": "Netko drugi drži željezo. Održavanje aplikacije i dalje je tvoje."
+  },
+  {
+    "id": "devops-303-skaliranje-oblak",
+    "topic": "devops",
+    "unitId": "cloud-osnove",
+    "difficulty": "easy",
+    "question": "Koja je glavna prednost oblaka pred vlastitim poslužiteljem?",
+    "options": [
+      "Kapacitet se dodaje i oduzima po potrebi",
+      "Aplikacija radi brže nego na vlastitom željezu",
+      "Ne treba se brinuti o sigurnosti aplikacije",
+      "Podaci se automatski sigurnosno kopiraju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Plaćaš ono što koristiš i ne kupuješ željezo za vršno opterećenje koje traje sat dnevno."
+  },
+  {
+    "id": "devops-304-deploy-sto",
+    "topic": "devops",
+    "unitId": "deploy-strategije",
+    "difficulty": "easy",
+    "question": "Što znači deploy?",
+    "options": [
+      "Nova verzija se stavlja u pogon",
+      "Kod se sprema u repozitorij",
+      "Aplikacija se prevede u izvršni oblik",
+      "Baza se prebacuje na novu shemu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Prevođenje i spremanje koda dolaze prije. Deploy je trenutak kad to vide korisnici."
+  },
+  {
+    "id": "devops-305-rollback",
+    "topic": "devops",
+    "unitId": "deploy-strategije",
+    "difficulty": "easy",
+    "question": "Čemu služi mogućnost vraćanja na prethodnu verziju?",
+    "options": [
+      "Da se problem u produkciji brzo zaustavi",
+      "Da se izbjegne pisanje testova prije izdanja",
+      "Da se dvije verzije mogu uspoređivati",
+      "Da se nova verzija isporuči postupno"
+    ],
+    "correctIndex": 0,
+    "explanation": "Brzo vraćanje je često vrjednije od brzog popravka — prvo zaustavi štetu."
+  },
+  {
+    "id": "devops-306-iac-sto",
+    "topic": "devops",
+    "unitId": "infrastruktura-kao-kod",
+    "difficulty": "easy",
+    "question": "Što znači opisati infrastrukturu kao kod?",
+    "options": [
+      "Poslužitelji i mreža se definiraju u datotekama",
+      "Aplikacija sama stvara poslužitelje po potrebi",
+      "Konfiguracija se upisuje kroz web sučelje",
+      "Infrastruktura se dokumentira u wikiju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Onda se infrastruktura verzionira, pregledava i ponavlja kao i svaki drugi kod."
+  },
+  {
+    "id": "devops-307-iac-korist",
+    "topic": "devops",
+    "unitId": "infrastruktura-kao-kod",
+    "difficulty": "easy",
+    "question": "Koja je glavna korist takvog pristupa?",
+    "options": [
+      "Isto okruženje se može ponovno stvoriti bilo kad",
+      "Infrastruktura postaje jeftinija za održavanje",
+      "Poslužitelji se automatski ažuriraju",
+      "Nije potreban pristup upravljačkom sučelju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ručno klikanje se ne pamti. Datoteka se pamti, pregleda i vrati na staro."
+  },
+  {
+    "id": "devops-308-log",
+    "topic": "devops",
+    "unitId": "nadzor-produkcije",
+    "difficulty": "easy",
+    "question": "Čemu služe zapisi (logovi)?",
+    "options": [
+      "Bilježe što se dogodilo, za kasniju analizu",
+      "Mjere koliko je aplikacija brza",
+      "Prate koliko korisnika je trenutno prijavljeno",
+      "Spremaju stanje aplikacije za ponovno pokretanje"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kad nešto pukne u tri ujutro, zapisi su često jedino što imaš."
+  },
+  {
+    "id": "devops-309-metrika",
+    "topic": "devops",
+    "unitId": "nadzor-produkcije",
+    "difficulty": "easy",
+    "question": "Što je metrika u nadzoru sustava?",
+    "options": [
+      "Brojčana vrijednost koja se mjeri kroz vrijeme",
+      "Poruka koju aplikacija zapiše pri grešci",
+      "Prag na kojem se pokreće obavijest timu",
+      "Popis svih zahtjeva koje je servis primio"
+    ],
+    "correctIndex": 0,
+    "explanation": "Broj zahtjeva u sekundi, kašnjenje, postotak grešaka — sve su to metrike."
+  },
+  {
+    "id": "devops-310-alarm",
+    "topic": "devops",
+    "unitId": "nadzor-produkcije",
+    "difficulty": "easy",
+    "question": "Kad alarm ima smisla?",
+    "options": [
+      "Kad zahtijeva da netko odmah nešto poduzme",
+      "Kad se neka metrika promijeni od prošlog tjedna",
+      "Kad se u zapisima pojavi bilo koja greška",
+      "Kad se pokrene nova verzija aplikacije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Alarm koji se javlja bez potrebe ljudi prestanu gledati — i tada promaše onaj pravi."
+  },
+  {
+    "id": "devops-311-kontejner-zasto",
+    "topic": "devops",
+    "unitId": "orkestracija",
+    "difficulty": "easy",
+    "question": "Zašto se aplikacije pakiraju u kontejnere?",
+    "options": [
+      "Da rade isto na svakom stroju gdje se pokrenu",
+      "Da troše manje memorije nego bez njih",
+      "Da se ne mogu srušiti pri velikom opterećenju",
+      "Da im se kod ne može pročitati izvana"
+    ],
+    "correctIndex": 0,
+    "explanation": "\"Kod mene radi\" nestaje kad okruženje putuje zajedno s aplikacijom."
+  },
+  {
+    "id": "devops-312-orkestracija-sto",
+    "topic": "devops",
+    "unitId": "orkestracija",
+    "difficulty": "easy",
+    "question": "Što radi alat za orkestraciju poput Kubernetesa?",
+    "options": [
+      "Pokreće i nadzire kontejnere na više strojeva",
+      "Gradi slike kontejnera iz izvornog koda",
+      "Zamjenjuje potrebu za bazom podataka",
+      "Prevodi kod aplikacije prije pokretanja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Raspoređivanje, ponovno pokretanje palih instanci i skaliranje — sve automatski."
+  },
+  {
+    "id": "devops-313-health",
+    "topic": "devops",
+    "unitId": "orkestracija",
+    "difficulty": "easy",
+    "question": "Čemu služi provjera zdravlja (health check)?",
+    "options": [
+      "Sustav po njoj zna je li instanca spremna za promet",
+      "Mjeri koliko instanca troši procesora",
+      "Provjerava je li verzija aplikacije najnovija",
+      "Bilježi koliko je zahtjeva instanca obradila"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez nje promet ide i u instancu koja se još pokreće ili je zapela."
   }
 ]
