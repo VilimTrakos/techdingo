@@ -529,7 +529,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Ugovor je jedino što druga strana smije pretpostavljati. Sve izvan njega je detalj koji se smije mijenjati bez najave.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "api-ugovor"
   },
   {
     "id": "arh-030-versioning",
@@ -676,7 +677,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Shardanje rješava količinu koju jedan stroj ne može nositi. Cijena su upiti preko više shardova, koji postaju znatno teži.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "particioniranje-podataka"
   },
   {
     "id": "arh-038-shard-key",
@@ -1868,5 +1870,135 @@
     "correctIndex": 3,
     "explanation": "Redundancija uklanja pojedinačnu točku ispada samo ako se kvar otkriva i promet može prijeći na zdravu instancu.",
     "difficulty": "easy"
+  },
+  {
+    "id": "arh-238-uvod-arhitektonski-stil",
+    "topic": "arhitektura",
+    "unitId": "stilovi",
+    "question": "Što opisuje arhitektonski stil softvera?",
+    "options": [
+      "Opći način organiziranja dijelova sustava i njihovih odnosa",
+      "Točan popis klasa koje svaki projekt mora sadržavati",
+      "Vizualne boje i tipografiju korisničkog sučelja",
+      "Jedini dopušteni programski jezik za cijeli sustav"
+    ],
+    "correctIndex": 0,
+    "explanation": "Arhitektonski stil daje temeljna pravila organizacije, primjerice slojeve, monolit ili mikroservise, ali ne propisuje svaki detalj.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "arh-239-uvod-pattern-categories",
+    "topic": "arhitektura",
+    "unitId": "dizajn-obrasci",
+    "question": "Koje su tri uobičajene skupine GoF dizajn obrazaca?",
+    "options": [
+      "Lokalni, udaljeni i distribuirani obrasci",
+      "Kreacijski, strukturni i ponašajni obrasci",
+      "Brzi, sigurni i skalabilni obrasci",
+      "Frontend, backend i podatkovni obrasci"
+    ],
+    "correctIndex": 1,
+    "explanation": "Kreacijski obrasci uređuju stvaranje objekata, strukturni njihovo slaganje, a ponašajni suradnju i raspodjelu odgovornosti.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "arh-240-uvod-modul",
+    "topic": "arhitektura",
+    "unitId": "granice-i-moduli",
+    "question": "Što je modul u dizajnu softvera?",
+    "options": [
+      "Sigurnosna kopija cijelog sustava u drugoj regiji",
+      "Privremeni proces koji obrađuje samo jedan zahtjev",
+      "Omeđena cjelina koda s povezanom odgovornošću i sučeljem",
+      "Tablica baze koju svi dijelovi sustava smiju mijenjati"
+    ],
+    "correctIndex": 2,
+    "explanation": "Modul okuplja povezano ponašanje i podatke iza jasnog sučelja, neovisno o tome isporučuje li se zasebno.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "arh-241-uvod-api-ugovor",
+    "topic": "arhitektura",
+    "unitId": "komunikacija",
+    "question": "Što je API ugovor između dva dijela sustava?",
+    "options": [
+      "Popis svih internih klasa i privatnih metoda servisa",
+      "Dogovor o zahtjevima, odgovorima i očekivanom ponašanju",
+      "Obavezna zajednička baza podataka između dva servisa",
+      "Jamstvo da udaljeni poziv nikada neće završiti greškom"
+    ],
+    "correctIndex": 1,
+    "explanation": "Ugovor opisuje format i semantiku komunikacije kako bi se proizvođač i potrošač mogli mijenjati bez skrivenih pretpostavki.",
+    "difficulty": "easy",
+    "isIntro": true,
+    "conceptId": "api-ugovor"
+  },
+  {
+    "id": "arh-242-uvod-particioniranje",
+    "topic": "arhitektura",
+    "unitId": "podaci-u-velikom",
+    "question": "Što znači particionirati velik skup podataka?",
+    "options": [
+      "Kopirati cijeli skup na svaki čvor radi dostupnosti",
+      "Pretvoriti sve zapise u jednu veliku tekstualnu datoteku",
+      "Podijeliti zapise u manje dijelove prema odabranom pravilu",
+      "Trajno ukloniti stare zapise bez sigurnosne kopije"
+    ],
+    "correctIndex": 2,
+    "explanation": "Particioniranje raspoređuje različite dijelove skupa podataka, primjerice prema rasponu ili hashu ključa.",
+    "difficulty": "easy",
+    "isIntro": true,
+    "conceptId": "particioniranje-podataka"
+  },
+  {
+    "id": "arh-243-uvod-konzistentnost-kopija",
+    "topic": "arhitektura",
+    "unitId": "konzistentnost",
+    "question": "Na što se odnosi konzistentnost distribuiranih kopija podatka?",
+    "options": [
+      "Na to koliko brzo korisnik može upisivati tekst",
+      "Na pravila o tome kada kopije prikazuju istu vrijednost",
+      "Na broj programskih jezika korištenih u sustavu",
+      "Na veličinu instalacijskog paketa svake instance"
+    ],
+    "correctIndex": 1,
+    "explanation": "Model konzistentnosti određuje što čitanje smije vidjeti dok se promjena širi između čvorova i replika.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "arh-244-uvod-skalabilnost",
+    "topic": "arhitektura",
+    "unitId": "skaliranje",
+    "question": "Što znači da je sustav skalabilan?",
+    "options": [
+      "Može podnijeti rast opterećenja dodavanjem prikladnih resursa",
+      "Nikada ne treba mjerenje ni optimizaciju nakon puštanja u rad",
+      "Uvijek koristi najveći dostupan server bez obzira na promet",
+      "Svaki zahtjev obrađuje na svim instancama istovremeno"
+    ],
+    "correctIndex": 0,
+    "explanation": "Skalabilnost opisuje kako se kapacitet i ponašanje sustava mijenjaju dok rastu promet, podaci ili broj korisnika.",
+    "difficulty": "easy",
+    "isIntro": true
+  },
+  {
+    "id": "arh-245-uvod-nefunkcionalni-zahtjev",
+    "topic": "arhitektura",
+    "unitId": "system-design",
+    "question": "Što je nefunkcionalni zahtjev sustava?",
+    "options": [
+      "Popis ekrana koje dizajner treba nacrtati prije razvoja",
+      "Opis jedne poslovne radnje koju korisnik može pokrenuti",
+      "Naziv algoritma koji programer mora implementirati",
+      "Mjerljivo svojstvo poput latencije, kapaciteta ili dostupnosti"
+    ],
+    "correctIndex": 3,
+    "explanation": "Nefunkcionalni zahtjevi opisuju koliko dobro sustav mora raditi i često izravno određuju arhitektonske odluke.",
+    "difficulty": "easy",
+    "isIntro": true
   }
 ]
