@@ -349,22 +349,24 @@ function StatCard({ label, value, hint, icon, tone }: StatCardProps) {
   const colors = STAT_TONES[tone];
 
   return (
+    // <dl> dopušta <div> samo ako taj div IZRAVNO sadrži <dt> pa <dd>.
+    // Ranije su bila dva ugniježđena omotača, pa je struktura bila nevaljana
+    // i čitači ekrana nisu vidjeli parove naziv/vrijednost. Ikona je zato
+    // apsolutno pozicionirana umjesto da bude susjed u flexu.
     <div
-      className={`rounded-[1.65rem] border-2 p-5 shadow-[0_5px_0_rgba(23,32,42,0.10)] ${colors.card}`}
+      className={`relative rounded-[1.65rem] border-2 p-5 pr-20 shadow-[0_5px_0_rgba(23,32,42,0.10)] ${colors.card}`}
     >
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <dt className="text-sm font-black text-ink-600">{label}</dt>
-          <dd className="mt-2 text-3xl font-black tabular-nums text-ink-950">{value}</dd>
-          {hint && <dd className="mt-1 text-xs font-extrabold text-ink-600">{hint}</dd>}
-        </div>
+      <dt className="text-sm font-black text-ink-600">
+        {label}
         <span
-          className={`grid size-11 place-items-center rounded-2xl border-2 text-lg font-black ${colors.icon}`}
+          className={`absolute right-5 top-5 grid size-11 place-items-center rounded-2xl border-2 text-lg font-black ${colors.icon}`}
           aria-hidden="true"
         >
           {icon}
         </span>
-      </div>
+      </dt>
+      <dd className="mt-2 text-3xl font-black tabular-nums text-ink-950">{value}</dd>
+      {hint && <dd className="mt-1 text-xs font-extrabold text-ink-600">{hint}</dd>}
     </div>
   );
 }

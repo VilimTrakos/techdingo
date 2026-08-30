@@ -31,8 +31,11 @@
 
   --color-ink-950: #17202a;
   --color-ink-800: #2f3b48;
-  --color-ink-600: #667382;
-  --color-ink-400: #96a0aa;
+  /* ink-600 i ink-400 su zatamnjeni 2026-08-30: na svijetlim podlogama koje
+     aplikacija koristi davali su 2,5-4,3:1, ispod WCAG AA praga od 4,5:1.
+     Nove vrijednosti drže >=4,8:1 na svakoj podlozi u aplikaciji. */
+  --color-ink-600: #5f6b79;
+  --color-ink-400: #646b72;
   --color-cloud-50: #f8faf7;
   --color-cloud-100: #f0f4ed;
   --color-cloud-200: #e2e9df;
@@ -42,7 +45,14 @@
   --color-brand-200: #b8efc1;
   --color-brand-300: #82df91;
   --color-brand-500: #3bb44a;
-  --color-brand-600: #249438;
+  /* Zelena za pune plohe s BIJELIM tekstom. brand-500 je presvijetla:
+     bijelo na njoj daje 2,7:1. Ova daje 4,8:1 i ostaje ista boja, samo
+     tamnija - brand-500 se i dalje koristi za dekor i tanke naglaske. */
+  --color-brand-action: #2b8336;
+  --color-brand-action-dark: #22692b;
+  /* Zatamnjen 2026-08-30: kao boja TEKSTA davao je 3,5-3,9:1 na svijetlim
+     zelenim podlogama. Sada >=4,8:1 na svakoj podlozi u aplikaciji. */
+  --color-brand-600: #1e7b2e;
   --color-brand-700: #1e7430;
   --color-brand-800: #185d28;
 
@@ -170,13 +180,13 @@ a {
 
 .game-button-primary {
   border-color: var(--color-brand-700);
-  background: var(--color-brand-500);
+  background: var(--color-brand-action);
   color: white;
   box-shadow: 0 5px 0 var(--color-brand-700);
 }
 
 .game-button-primary:hover {
-  background: var(--color-brand-600);
+  background: var(--color-brand-action-dark);
   box-shadow: 0 7px 0 var(--color-brand-800);
 }
 

@@ -140,10 +140,12 @@ export function TopicPage() {
           return (
             <li key={unit.id} className="learning-path-step">
               {locked ? (
-                <span
-                  className={`learning-path-node ${tone.nodeLocked}`}
-                  aria-label={`${index + 1}. ${unit.labelHr}. Zaključano - prvo završi prethodnu cjelinu.`}
-                >
+                <span className={`learning-path-node ${tone.nodeLocked}`}>
+                  {/* aria-label na <span> bez uloge ARIA zabranjuje i čitači ga
+                      smiju ignorirati; isti tekst ide kao skriveni sadržaj. */}
+                  <span className="sr-only">
+                    {`${index + 1}. ${unit.labelHr}. Zaključano - prvo završi prethodnu cjelinu.`}
+                  </span>
                   {nodeContent}
                 </span>
               ) : (
