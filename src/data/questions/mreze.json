@@ -1398,5 +1398,57 @@
     "explanation": "Deblji kabel ne skraćuje put. Zato veća propusnost ne pomaže aplikaciji koja radi mnogo malih zahtjeva zaredom.",
     "difficulty": "medium",
     "conceptId": "latencija-vs-propusnost"
+  },
+  {
+    "id": "mreze-202-dns-negative-cache",
+    "topic": "mreze",
+    "unitId": "dns",
+    "difficulty": "hard",
+    "question": "Zašto se novo stvorena DNS domena ponekad ne razrješava odmah korisniku koji ju je malo prije pokušao otvoriti?",
+    "options": [
+      "Resolver može privremeno keširati prethodni negativni odgovor da naziv ne postoji",
+      "Autoritativni server odbija svaki naziv dok ga prvi put ne posjeti tražilica",
+      "DNS zapis postaje važeći tek nakon isteka TLS certifikata stare domene",
+      "Preglednik mora najprije poslati HTTP zahtjev prije nego smije postaviti DNS pitanje"
+    ],
+    "correctIndex": 0,
+    "explanation": "I negativni odgovori imaju vrijeme keširanja. Promjena na autoritativnom serveru zato ne mora odmah poništiti prethodni NXDOMAIN u svim resolverima."
+  },
+  {
+    "id": "mreze-203-multi-conditional-http",
+    "topic": "mreze",
+    "unitId": "http-protokol",
+    "difficulty": "medium",
+    "kind": "multi",
+    "question": "Što omogućuju HTTP ETag i zahtjev If-None-Match?",
+    "options": [
+      "Klijent šalje validator prethodno spremljene reprezentacije",
+      "Server može odgovoriti 304 bez ponovnog slanja tijela",
+      "Cache može provjeriti svježinu sadržaja uz manje prijenosa",
+      "ETag automatski šifrira tijelo odgovora između klijenta i servera",
+      "If-None-Match jamči da se resurs nikada neće promijeniti"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Uvjetni zahtjev revalidira cache. TLS rješava povjerljivost, a ETag samo identificira verziju reprezentacije."
+  },
+  {
+    "id": "mreze-204-order-tcp-close",
+    "topic": "mreze",
+    "unitId": "tcp-udp",
+    "difficulty": "hard",
+    "kind": "order",
+    "question": "Poredaj uredno zatvaranje TCP veze koje pokreće strana A.",
+    "steps": [
+      "A šalje FIN",
+      "B potvrđuje FIN porukom ACK",
+      "B nakon završetka slanja šalje svoj FIN",
+      "A potvrđuje B-ov FIN porukom ACK",
+      "A određeno vrijeme ostaje u stanju TIME_WAIT"
+    ],
+    "explanation": "TCP je full-duplex pa se svaki smjer zatvara zasebno. TIME_WAIT omogućuje da zakašnjeli segmenti iste veze isteknu i da se završni ACK po potrebi ponovi."
   }
 ]

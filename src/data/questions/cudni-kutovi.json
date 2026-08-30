@@ -1250,5 +1250,56 @@
     "correctIndex": 0,
     "explanation": "Veliki kvarovi često kombiniraju loše pretpostavke, nedostatne provjere i komunikacijske propuste. Njihove pouke pomažu graditi bolje zaštitne slojeve.",
     "difficulty": "easy"
+  },
+  {
+    "id": "cudni-201-unicode-normalization",
+    "topic": "cudni-kutovi",
+    "unitId": "tekst-i-znakovi",
+    "difficulty": "hard",
+    "question": "Zašto dva korisniku jednaka zapisa riječi 'café' mogu pasti na običnoj usporedbi stringova?",
+    "options": [
+      "Jedan može sadržavati složeni znak é, a drugi e i zaseban kombinirajući naglasak",
+      "Unicode ne definira slovo é pa ga svaki font pretvara u slučajan privatni znak",
+      "Usporedba stringova uvijek zanemaruje dijakritičke znakove i uspoređuje samo ASCII dio",
+      "UTF-8 svaki put nasumično bira drugi broj bajtova za isti niz code pointova"
+    ],
+    "correctIndex": 0,
+    "explanation": "Vizualno jednak tekst može imati različite nizove code pointova. Normalizacija u dogovoreni oblik poput NFC-a potrebna je prije određenih usporedbi i ključeva."
+  },
+  {
+    "id": "cudni-202-multi-monotonic-clock",
+    "topic": "cudni-kutovi",
+    "unitId": "vrijeme",
+    "difficulty": "hard",
+    "kind": "multi",
+    "question": "Za što je monotoni sat prikladniji od zidnog vremena?",
+    "options": [
+      "Mjerenje trajanja operacije",
+      "Izračun isteka timeouta unutar procesa",
+      "Usporedba koliko je vremena prošlo između dviju točaka izvršavanja",
+      "Prikaz kalendarskog datuma korisniku u njegovoj zoni",
+      "Trajno spremanje vremena poslovnog događaja za razmjenu među sustavima"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Monotoni sat ne skače zbog NTP korekcije ili ručne promjene vremena. Nije vezan uz kalendar pa nije format za trajno vrijeme događaja."
+  },
+  {
+    "id": "cudni-203-regex-backtracking",
+    "topic": "cudni-kutovi",
+    "unitId": "regex-i-parsiranje",
+    "difficulty": "hard",
+    "question": "Zašto obrazac poput `^(a+)+$` može biti opasan nad dugim gotovo podudarnim unosom?",
+    "options": [
+      "Backtracking engine može isprobati eksponencijalno mnogo podjela ponovljenih znakova",
+      "Sidra početka i kraja prisiljavaju engine da svaki znak pretvori u Unicode normalni oblik",
+      "Zagrada automatski sprema svako podudaranje na disk prije nego provjeri sljedeći znak",
+      "Znak plus dopušta samo jednu pojavu pa engine stalno ponovno učitava cijeli obrazac"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ugniježđeni kvantifikatori stvaraju mnogo ekvivalentnih putova koje backtracking engine istražuje tek kad podudaranje kasno propadne. To može postati ReDoS."
   }
 ]

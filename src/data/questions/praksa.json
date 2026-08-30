@@ -1136,5 +1136,57 @@
     ],
     "explanation": "Provjera na primjeru prije nego ispitivač nađe grešku ostavlja bolji dojam od savršenog koda bez provjere.",
     "difficulty": "hard"
+  },
+  {
+    "id": "praksa-064-sprint-goal",
+    "topic": "praksa",
+    "unitId": "agilni-rad",
+    "difficulty": "medium",
+    "question": "Čemu služi Sprint Goal ako backlog već sadrži popis zadataka?",
+    "options": [
+      "Daje zajednički ishod koji pomaže odlučiti što prilagoditi kada se okolnosti promijene",
+      "Zaključava svaki zadatak tako da ga tim više ne smije promijeniti tijekom sprinta",
+      "Zamjenjuje Definition of Done i sva pravila provjere kvalitete proizvoda",
+      "Služi isključivo upravi za uspoređivanje brzine različitih timova"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cilj objašnjava zašto sprint postoji. Stavke se mogu prilagoditi uz očuvanje ishoda, umjesto slijepog izvršavanja početnog popisa."
+  },
+  {
+    "id": "praksa-065-multi-small-pr",
+    "topic": "praksa",
+    "unitId": "code-review",
+    "difficulty": "medium",
+    "kind": "multi",
+    "question": "Zašto su mali, fokusirani pull requestovi obično lakši za kvalitetan review?",
+    "options": [
+      "Recenzent lakše drži cijeli kontekst promjene u glavi",
+      "Lakše se uočava je li promjena izašla iz dogovorenog opsega",
+      "Brže se vraća konkretan feedback i smanjuje rizik spajanja",
+      "Mali PR automatski dokazuje da kod nema regresija",
+      "Broj promijenjenih redaka važniji je od složenosti i povezanosti promjene"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Mali opseg poboljšava pažnju i brzinu povratne informacije, ali ne zamjenjuje testove niti jamči jednostavnost samo brojem redaka."
+  },
+  {
+    "id": "praksa-066-order-estimate-uncertainty",
+    "topic": "praksa",
+    "unitId": "procjena-i-dug",
+    "difficulty": "hard",
+    "kind": "order",
+    "question": "Poredaj razborit postupak procjene nejasnog tehničkog zadatka.",
+    "steps": [
+      "Razjasni očekivani ishod i rubne slučajeve",
+      "Razdvoji poznati rad od glavnih nepoznanica",
+      "Napravi kratki spike za najrizičniju pretpostavku",
+      "Razloži potvrđeno rješenje na manje korake",
+      "Daj raspon procjene i jasno navedi pretpostavke"
+    ],
+    "explanation": "Procjena nije preciznija ako se nepoznanice sakriju iza jednog broja. Kratko istraživanje i vidljive pretpostavke daju korisniji raspon."
   }
 ]

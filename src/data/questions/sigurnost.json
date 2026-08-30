@@ -1440,5 +1440,90 @@
     "explanation": "HTTPS štiti promet u prijenosu, ali CSRF ne treba čitati promet - koristi ono što preglednik ionako sam šalje.",
     "difficulty": "hard",
     "conceptId": "csrf-obrana"
+  },
+  {
+    "id": "sigurnost-203-code-sql-injection",
+    "topic": "sigurnost",
+    "unitId": "injekcije",
+    "difficulty": "medium",
+    "conceptId": "sql-injection",
+    "question": "Koja izmjena uklanja ključni uzrok ranjivosti u ovom kodu?",
+    "code": "const sql = `SELECT * FROM korisnici WHERE email = '${email}'`;\nconst result = await db.query(sql);",
+    "options": [
+      "Koristiti placeholder u SQL-u i vrijednost email poslati kao zaseban parametar",
+      "Prije slaganja upita ukloniti samo jednostruke navodnike iz vrijednosti email",
+      "Ograničiti duljinu vrijednosti email na najviše dvjesto znakova u obrascu",
+      "Pretvoriti sastavljeni SQL tekst u mala slova neposredno prije izvršavanja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Parametrizirani upit odvaja strukturu naredbe od podataka. Filtriranje pojedinih znakova i ograničenje duljine ne mogu pouzdano pokriti sve načine kodiranja i sintakse."
+  },
+  {
+    "id": "sigurnost-204-code-dom-xss",
+    "topic": "sigurnost",
+    "unitId": "xss-csrf",
+    "difficulty": "hard",
+    "question": "Koja je najuža sigurna ispravka ako vrijednost treba biti prikazana isključivo kao tekst?",
+    "code": "const poruka = location.hash.slice(1);\ndocument.querySelector('#rezultat').innerHTML = poruka;",
+    "options": [
+      "Dodijeliti poruku svojstvu textContent umjesto svojstvu innerHTML",
+      "Prije innerHTML ukloniti prvi znak manje-od iz primljene poruke",
+      "Premjestiti isti kod u DOMContentLoaded event bez promjene načina ispisa",
+      "Kodirati samo razmake u URL-u prije čitanja vrijednosti location.hash"
+    ],
+    "correctIndex": 0,
+    "explanation": "textContent tretira cijelu vrijednost kao tekst, pa oznake i event atributi ne postaju DOM. Parcijalno uklanjanje znakova ostavlja brojne druge XSS oblike."
+  },
+  {
+    "id": "sigurnost-205-session-fixation",
+    "topic": "sigurnost",
+    "unitId": "autentikacija-sesije",
+    "difficulty": "hard",
+    "question": "Kako se aplikacija primarno brani od session fixation napada nakon uspješne prijave?",
+    "options": [
+      "Generira novi identifikator sesije i poništi vezu sa starim identifikatorom",
+      "Produlji rok isteka postojećeg identifikatora sesije za još jedan dan",
+      "Spremi isti identifikator u localStorage i u kolačić radi redundancije",
+      "Doda korisničko ime u URL svake stranice nakon prijave"
+    ],
+    "correctIndex": 0,
+    "explanation": "Napadač ne smije unaprijed zadati identifikator koji će nakon prijave postati autentificiran. Rotacija sesije prekida tu vezu."
+  },
+  {
+    "id": "sigurnost-206-multi-rate-limit-login",
+    "topic": "sigurnost",
+    "unitId": "autentikacija-sesije",
+    "difficulty": "medium",
+    "kind": "multi",
+    "question": "Koje mjere zajedno razumno usporavaju automatizirano pogađanje lozinki?",
+    "options": [
+      "Ograničenje pokušaja po računu i mrežnom izvoru",
+      "Postupno kašnjenje ili privremena blokada",
+      "Višefaktorska autentikacija",
+      "Različita poruka koja otkriva postoji li uneseni e-mail",
+      "Neograničen broj pokušaja ako je zahtjev poslan preko HTTPS-a"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Jedna granica lako se zaobiđe distribuiranim napadom. Slojevita ograničenja i MFA pomažu, dok HTTPS ne ograničava broj pokušaja."
+  },
+  {
+    "id": "sigurnost-207-threat-model-order",
+    "topic": "sigurnost",
+    "unitId": "osnove-sigurnosti",
+    "difficulty": "medium",
+    "kind": "order",
+    "question": "Poredaj osnovni tok modeliranja prijetnji.",
+    "steps": [
+      "Popiši imovinu, aktere i granice povjerenja",
+      "Nacrtaj tokove podataka i ulazne točke",
+      "Prepoznaj moguće prijetnje i načine zlouporabe",
+      "Procijeni vjerojatnost i posljedice",
+      "Odaberi obrane i zabilježi preostali rizik"
+    ],
+    "explanation": "Model prijetnji počinje razumijevanjem sustava, zatim traži napade i prioritizira obrane. To je ponovljiv proces, ne jednokratna lista ranjivosti."
   }
 ]

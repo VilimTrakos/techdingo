@@ -1335,5 +1335,57 @@
     "explanation": "Kvar koordinatora nakon drugog koraka ostavlja sudionike zaključanima u pripremljenom stanju. Zbog toga se u praksi bira saga.",
     "difficulty": "hard",
     "conceptId": "dvofazno-potvrdivanje"
+  },
+  {
+    "id": "arh-203-modular-monolith-boundary",
+    "topic": "arhitektura",
+    "unitId": "granice-i-moduli",
+    "difficulty": "hard",
+    "question": "Što najbolje čuva granice modula unutar modularnog monolita?",
+    "options": [
+      "Javni API modula i zabrana izravnog pristupa njegovim internim tablicama i klasama",
+      "Smještanje svakog modula u zasebnu mapu bez pravila o dopuštenim ovisnostima",
+      "Korištenje jedne globalne service klase kojoj svi moduli mogu pristupiti",
+      "Dijeljenje svih modela baze kako bi se uklonila potreba za mapiranjem podataka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Granica postoji samo ako se može provesti pravilima koda, testovima arhitekture ili vlasništvom podataka. Sama struktura mapa nije dovoljna."
+  },
+  {
+    "id": "arh-204-multi-at-least-once",
+    "topic": "arhitektura",
+    "unitId": "komunikacija",
+    "difficulty": "hard",
+    "kind": "multi",
+    "question": "Što sustav treba očekivati kod at-least-once isporuke poruka?",
+    "options": [
+      "Ista poruka može stići više puta",
+      "Potrošač treba biti idempotentan ili deduplicirati poruke",
+      "Potvrda obrade mora se dogoditi tek nakon sigurnog spremanja učinka",
+      "Broker jamči da će svaka poruka stići točno jednom bez suradnje aplikacije",
+      "Redoslijed svih poruka globalno je uvijek zajamčen"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Ponovna isporuka je cijena izbjegavanja gubitka nakon pada između obrade i potvrde. Exactly-once poslovni učinak zahtijeva dizajn aplikacije."
+  },
+  {
+    "id": "arh-205-order-hot-shard",
+    "topic": "arhitektura",
+    "unitId": "podaci-u-velikom",
+    "difficulty": "hard",
+    "kind": "order",
+    "question": "Poredaj postupak dijagnostike i ublažavanja vrućeg sharda.",
+    "steps": [
+      "Izmjeri raspodjelu prometa i latenciju po shard ključu",
+      "Prepoznaj mali skup ključeva koji nosi nesrazmjeran teret",
+      "Provjeri stvara li odabrani particijski ključ koncentraciju zapisa",
+      "Odaberi salting, sekundarno particioniranje ili poseban put za vruće ključeve",
+      "Migriraj postupno i prati novu raspodjelu"
+    ],
+    "explanation": "Dodavanje kapaciteta svim shardovima često je skupo i ne rješava lošu raspodjelu. Najprije treba dokazati gdje se promet koncentrira."
   }
 ]

@@ -1324,5 +1324,60 @@
     "explanation": "Pas jest životinja, ali automobil ima motor. Kad odnos nije 'jest', nasljeđivanje vezuje jače nego što treba.",
     "difficulty": "medium",
     "conceptId": "kompozicija-vs-nasljedivanje"
+  },
+  {
+    "id": "jezici-202-covariance-write",
+    "topic": "jezici",
+    "unitId": "tipovi",
+    "difficulty": "hard",
+    "question": "Zašto mutable kolekcija Dog ne može općenito biti sigurno tretirana kao mutable kolekcija Animal?",
+    "options": [
+      "Pozivatelj bi kroz tip Animal mogao umetnuti Cat i prekršiti obećanje kolekcije Dog",
+      "Tip Dog automatski gubi sve metode čim se spremi u generičku kolekciju",
+      "Kovarijanca je dopuštena samo za brojeve i tekst, ali ne za korisničke tipove",
+      "Mutable kolekcije ne mogu se proslijediti funkcijama ni kada su tipovi potpuno jednaki"
+    ],
+    "correctIndex": 0,
+    "explanation": "Čitanje Dog kao Animal je sigurno, ali pisanje Animal nije. Zato su proizvođači često kovarijantni, a potrošači kontravarijantni."
+  },
+  {
+    "id": "jezici-203-multi-copy-on-write",
+    "topic": "jezici",
+    "unitId": "vrijednosti-reference",
+    "difficulty": "hard",
+    "kind": "multi",
+    "question": "Što vrijedi za copy-on-write dijeljenje podataka?",
+    "options": [
+      "Više vlasnika može čitati istu fizičku pohranu",
+      "Kopija se odgađa dok netko ne pokuša mijenjati podatke",
+      "Može uštedjeti memoriju kada su kopije uglavnom samo za čitanje",
+      "Svako čitanje nužno stvara novu duboku kopiju cijele strukture",
+      "Uklanja potrebu za praćenjem vlasništva i sinkronizacijom u svim implementacijama"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Copy-on-write plaća kopiranje tek pri mutaciji. Implementacija ipak mora sigurno pratiti dijeljenje i konkurentni pristup."
+  },
+  {
+    "id": "jezici-204-race-terms-fill",
+    "topic": "jezici",
+    "unitId": "konkurentnost",
+    "difficulty": "medium",
+    "kind": "fill",
+    "question": "Dopuni razliku pojmova.",
+    "text": "___ je nesinkroniziran konkurentni pristup istoj memoriji uz barem jedno pisanje, dok širi pojam ___ opisuje rezultat koji ovisi o redoslijedu događaja.",
+    "answers": [
+      "data race",
+      "race condition"
+    ],
+    "distractors": [
+      "deadlock",
+      "starvation",
+      "context switch"
+    ],
+    "explanation": "Data race ima preciznu memorijsku definiciju u mnogim jezicima. Race condition može postojati i uz pojedinačno sigurne operacije ako je širi protokol pogrešan."
   }
 ]

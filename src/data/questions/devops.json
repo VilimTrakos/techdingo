@@ -1386,5 +1386,95 @@
     "explanation": "Image je nepromjenjiv predložak, kontejner je njegova pokrenuta instanca s vlastitim slojem za pisanje.",
     "difficulty": "easy",
     "conceptId": "image-vs-kontejner"
+  },
+  {
+    "id": "devops-202-code-pipefail",
+    "topic": "devops",
+    "unitId": "linux-shell",
+    "difficulty": "hard",
+    "question": "Zašto je `pipefail` važan u ovoj skripti?",
+    "code": "set -euo pipefail\ngenerate_report | gzip > report.gz\necho \"gotovo\"",
+    "options": [
+      "Pipeline prijavljuje neuspjeh ako padne generate_report, iako gzip uspije",
+      "Sve naredbe u pipelineu prisilno se izvršavaju jedna po jedna umjesto paralelno",
+      "Standardni izlaz svake naredbe automatski se sprema u zasebnu datoteku dnevnika",
+      "Neuspjela naredba automatski se ponavlja sve dok ne vrati izlazni kod nula"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez pipefaila status pipelinea obično je status zadnje naredbe. gzip može uspjeti nad praznim ulazom i sakriti pad generatora, pa bi skripta lažno ispisala da je završila."
+  },
+  {
+    "id": "devops-203-code-multistage-build",
+    "topic": "devops",
+    "unitId": "kontejneri",
+    "difficulty": "medium",
+    "kind": "multi",
+    "question": "Što vrijedi za ovaj višefazni Docker build?",
+    "code": "FROM node:22 AS build\nWORKDIR /app\nCOPY . .\nRUN npm ci && npm run build\n\nFROM nginx:alpine\nCOPY --from=build /app/dist /usr/share/nginx/html",
+    "options": [
+      "Konačni image temelji se na nginx:alpine, a ne na node:22",
+      "U konačni image kopira se izgrađeni sadržaj direktorija dist",
+      "Node alatni lanac ne mora ostati u konačnom runtime imageu",
+      "Drugi FROM nastavlja dodavati slojeve na isti node:22 image",
+      "COPY --from=build kopira automatski cijeli filesystem prve faze"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Svaki FROM počinje novu fazu. Završna faza sadrži nginx bazu i samo eksplicitno kopirani build rezultat, što smanjuje veličinu i površinu napada."
+  },
+  {
+    "id": "devops-204-ci-cache-vs-artifact",
+    "topic": "devops",
+    "unitId": "ci-cd",
+    "difficulty": "medium",
+    "question": "Koja je praktična razlika između CI cachea i build artefakta?",
+    "options": [
+      "Cache ubrzava buduća izvođenja, a artefakt je izlaz koji se čuva ili isporučuje",
+      "Artefakt ubrzava instalaciju ovisnosti, a cache je jedina datoteka dopuštena za deploy",
+      "Cache mora biti javno dostupan, a artefakt se uvijek čuva samo na računalu developera",
+      "Nema razlike; nazivi ovise samo o CI pružatelju i imaju jednaka jamstva"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cache je optimizacija i njegov nestanak ne smije pokvariti build. Artefakt je rezultat konkretnog izvođenja, primjerice paket, izvještaj ili image digest."
+  },
+  {
+    "id": "devops-205-multi-ci-supply-chain",
+    "topic": "devops",
+    "unitId": "ci-cd",
+    "difficulty": "hard",
+    "kind": "multi",
+    "question": "Što smanjuje rizik opskrbnog lanca u CI pipelineu?",
+    "options": [
+      "Pribijanje vanjskih akcija na provjeren commit ili nepromjenjivu verziju",
+      "Najmanje potrebne ovlasti za CI token",
+      "Provjera provenancea i potpisa objavljenih artefakata",
+      "Davanje write ovlasti svakom workflowu radi jednostavnije konfiguracije",
+      "Automatsko izvršavanje koda iz svakog vanjskog pull requesta s produkcijskim tajnama"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "CI izvršava tuđi kod u privilegiranom okruženju. Neizmjenjive reference, uske ovlasti i provjerljivi artefakti smanjuju prostor napada."
+  },
+  {
+    "id": "devops-206-order-safe-deploy",
+    "topic": "devops",
+    "unitId": "deploy-strategije",
+    "difficulty": "medium",
+    "kind": "order",
+    "question": "Poredaj siguran automatizirani deploy nakon uspješnog builda.",
+    "steps": [
+      "Objavi nepromjenjivi verzionirani artefakt",
+      "Primijeni ga na malo testno ili canary okruženje",
+      "Pokreni zdravstvene i ključne funkcionalne provjere",
+      "Postupno povećaj udio prometa",
+      "Automatski zaustavi ili vrati izdanje ako metrike prijeđu prag"
+    ],
+    "explanation": "Isti artefakt promovira se kroz faze. Postupno izlaganje i unaprijed definirani pragovi ograničavaju blast radius lošeg izdanja."
   }
 ]
