@@ -1525,5 +1525,350 @@
       "Odaberi obrane i zabilježi preostali rizik"
     ],
     "explanation": "Model prijetnji počinje razumijevanjem sustava, zatim traži napade i prioritizira obrane. To je ponovljiv proces, ne jednokratna lista ranjivosti."
+  },
+  {
+    "id": "sigurnost-300-najmanje-ovlasti",
+    "topic": "sigurnost",
+    "unitId": "osnove-sigurnosti",
+    "difficulty": "easy",
+    "question": "Što nalaže načelo najmanjih ovlasti?",
+    "options": [
+      "Svatko dobiva samo prava koja mu trebaju za posao",
+      "Svatko dobiva ista prava radi jednostavnosti",
+      "Prava se dodjeljuju unaprijed za sve buduće potrebe",
+      "Prava se provjeravaju samo pri prvoj prijavi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kad račun bude probijen, šteta je ograničena na ono što je taj račun smio."
+  },
+  {
+    "id": "sigurnost-301-azuriranje",
+    "topic": "sigurnost",
+    "unitId": "osnove-sigurnosti",
+    "difficulty": "easy",
+    "question": "Zašto se knjižnice i sustavi redovito ažuriraju?",
+    "options": [
+      "Jer novije verzije popravljaju objavljene ranjivosti",
+      "Jer starije verzije rade osjetno sporije od novijih",
+      "Jer se stare verzije brišu s poslužitelja nakon godine",
+      "Jer novije verzije troše bitno manje memorije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Objavljena ranjivost je javna uputa napadaču. Zakrpa je jedini pravi odgovor."
+  },
+  {
+    "id": "sigurnost-302-sto-je-injekcija",
+    "topic": "sigurnost",
+    "unitId": "injekcije",
+    "difficulty": "easy",
+    "question": "Što napadač postiže injekcijom?",
+    "options": [
+      "Njegov unos se izvrši kao naredba, a ne kao podatak",
+      "Preoptereti poslužitelj velikim brojem zahtjeva",
+      "Presretne promet između preglednika i poslužitelja",
+      "Pogodi lozinku isprobavanjem uobičajenih kombinacija"
+    ],
+    "correctIndex": 0,
+    "explanation": "Srž je brisanje granice između podatka i naredbe. Sve obrane vraćaju tu granicu."
+  },
+  {
+    "id": "sigurnost-303-parametri",
+    "topic": "sigurnost",
+    "unitId": "injekcije",
+    "difficulty": "easy",
+    "question": "Zašto se vrijednosti u upit šalju kao parametri, a ne lijepe u tekst upita?",
+    "options": [
+      "Jer baza tada vrijednost tretira kao podatak, ne kao kod",
+      "Jer je upit s parametrima kraći i čitljiviji",
+      "Jer baza parametre sprema u predmemoriju umjesto na disk",
+      "Jer parametri automatski provjere je li unos prazan"
+    ],
+    "correctIndex": 0,
+    "explanation": "Parametrizirani upit je jedina obrana koja radi uvijek — filtriranje znakova se da zaobići."
+  },
+  {
+    "id": "sigurnost-304-nikad-vjeruj",
+    "topic": "sigurnost",
+    "unitId": "injekcije",
+    "difficulty": "easy",
+    "question": "Kojem unosu se ne smije vjerovati?",
+    "options": [
+      "Svakom koji dolazi izvan tvog koda",
+      "Samo onome iz obrazaca na stranici",
+      "Samo onome koji sadrži posebne znakove",
+      "Samo onome od neprijavljenih korisnika"
+    ],
+    "correctIndex": 0,
+    "explanation": "Prijavljeni korisnik, tuđi API, čak i tvoj drugi servis — sve je vanjski ulaz."
+  },
+  {
+    "id": "sigurnost-305-xss-posljedica",
+    "topic": "sigurnost",
+    "unitId": "xss-csrf",
+    "difficulty": "easy",
+    "question": "Što napadač postiže uspješnim XSS-om?",
+    "options": [
+      "Njegova skripta se izvrši u pregledniku druge osobe",
+      "Dobije izravan pristup datotekama poslužitelja",
+      "Izmijeni podatke u bazi bez prolaska kroz aplikaciju",
+      "Pročita promet svih korisnika na istoj mreži"
+    ],
+    "correctIndex": 0,
+    "explanation": "Skripta radi s pravima žrtve — može čitati stranicu, slati zahtjeve i krasti sesiju."
+  },
+  {
+    "id": "sigurnost-306-escape",
+    "topic": "sigurnost",
+    "unitId": "xss-csrf",
+    "difficulty": "easy",
+    "question": "Što znači propustiti korisnički tekst kroz escapanje prije ispisa?",
+    "options": [
+      "Posebni znakovi se prikažu kao tekst, a ne kao oznake",
+      "Tekst se skrati na duljinu koja se smatra sigurnom",
+      "Tekst se šifrira pa dešifrira neposredno pri prikazu",
+      "Tekst se sprema u zaseban dio baze podataka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zato `textContent` rješava ono što `innerHTML` ne rješava — tekst ostaje tekst."
+  },
+  {
+    "id": "sigurnost-307-kolacic",
+    "topic": "sigurnost",
+    "unitId": "xss-csrf",
+    "difficulty": "easy",
+    "question": "Čemu služi kolačić sesije?",
+    "options": [
+      "Preglednik njime dokazuje da si već prijavljen",
+      "U njemu se čuva tvoja lozinka za sljedeći put",
+      "U njemu se pamte postavke izgleda stranice",
+      "Njime poslužitelj mjeri brzinu tvoje veze"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zato je krađa kolačića sesije jednako vrijedna napadaču kao i krađa lozinke."
+  },
+  {
+    "id": "sigurnost-308-auth-razlika",
+    "topic": "sigurnost",
+    "unitId": "autentikacija-sesije",
+    "difficulty": "easy",
+    "question": "Što je autentikacija?",
+    "options": [
+      "Provjera tko si",
+      "Provjera što smiješ raditi",
+      "Zapisivanje svega što si napravio",
+      "Šifriranje podataka koje šalješ"
+    ],
+    "correctIndex": 0,
+    "explanation": "Autentikacija je identitet, autorizacija su prava. Prvo jedno, pa drugo."
+  },
+  {
+    "id": "sigurnost-309-jaka-lozinka",
+    "topic": "sigurnost",
+    "unitId": "autentikacija-sesije",
+    "difficulty": "easy",
+    "question": "Što lozinku čini teškom za probijanje?",
+    "options": [
+      "Duljina i to da nije u popisima procurjelih lozinki",
+      "To što sadrži barem jedan poseban znak i jednu brojku",
+      "To što se obavezno mijenja svakih trideset dana",
+      "To što nije zapisana nigdje izvan korisnikove glave"
+    ],
+    "correctIndex": 0,
+    "explanation": "Moderne preporuke naglašavaju duljinu i provjeru protiv procurjelih lozinki, ne prisilne izmjene."
+  },
+  {
+    "id": "sigurnost-310-odjava",
+    "topic": "sigurnost",
+    "unitId": "autentikacija-sesije",
+    "difficulty": "easy",
+    "question": "Što se treba dogoditi pri odjavi?",
+    "options": [
+      "Sesija prestaje vrijediti i na poslužitelju",
+      "Kolačić se samo sakrije od prikaza",
+      "Lozinka se ponovno sažme s novom soli",
+      "Svi zahtjevi u tijeku se ponove"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ako sesija ostane važeća, ukraden kolačić i dalje radi nakon odjave."
+  },
+  {
+    "id": "sigurnost-311-autorizacija-sto",
+    "topic": "sigurnost",
+    "unitId": "autorizacija",
+    "difficulty": "easy",
+    "question": "Što je autorizacija?",
+    "options": [
+      "Provjera smiješ li napraviti ono što tražiš",
+      "Provjera jesi li onaj za koga se predstavljaš",
+      "Provjera je li tvoja veza šifrirana",
+      "Provjera je li tvoj račun potvrđen e-mailom"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dolazi nakon autentikacije: znamo tko si, sad pitamo smiješ li."
+  },
+  {
+    "id": "sigurnost-312-server-provjera",
+    "topic": "sigurnost",
+    "unitId": "autorizacija",
+    "difficulty": "easy",
+    "question": "Gdje se provjera prava mora dogoditi?",
+    "options": [
+      "Na poslužitelju, jer klijent nije pod tvojom kontrolom",
+      "U pregledniku, jer je tamo provjera najbrža",
+      "U bazi podataka, jer podaci ondje ionako žive",
+      "U mrežnom sloju, prije nego zahtjev uopće stigne"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sve u pregledniku napadač može promijeniti. Provjera koja živi tamo nije provjera."
+  },
+  {
+    "id": "sigurnost-313-uloga",
+    "topic": "sigurnost",
+    "unitId": "autorizacija",
+    "difficulty": "easy",
+    "question": "Što je uloga u sustavu prava pristupa?",
+    "options": [
+      "Skup prava koji se dodjeljuje korisniku",
+      "Ime pod kojim se korisnik prijavljuje",
+      "Zapis o tome što je korisnik radio",
+      "Razina povjerenja izračunata iz ponašanja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Prava se vežu uz ulogu, a uloga uz korisnika — pa se prava mijenjaju na jednom mjestu."
+  },
+  {
+    "id": "sigurnost-314-hash-jednosmjeran",
+    "topic": "sigurnost",
+    "unitId": "kriptografija-praksa",
+    "difficulty": "easy",
+    "question": "Po čemu se sažetak (hash) razlikuje od šifriranja?",
+    "options": [
+      "Sažetak se ne može vratiti u izvorni oblik",
+      "Sažetak je uvijek kraći od šifriranog teksta",
+      "Sažetak se računa brže nego šifriranje",
+      "Sažetak traži ključ, a šifriranje ne"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zato se lozinke sažimaju, a ne šifriraju: ni ti ne trebaš moći doznati izvornu lozinku."
+  },
+  {
+    "id": "sigurnost-315-https",
+    "topic": "sigurnost",
+    "unitId": "kriptografija-praksa",
+    "difficulty": "easy",
+    "question": "Što HTTPS štiti?",
+    "options": [
+      "Sadržaj prometa između preglednika i poslužitelja",
+      "Podatke spremljene u bazi na poslužitelju",
+      "Lozinku od pogađanja isprobavanjem kombinacija",
+      "Poslužitelj od preopterećenja zahtjevima"
+    ],
+    "correctIndex": 0,
+    "explanation": "Štiti podatke u prijenosu. Ono što je na poslužitelju traži zasebnu zaštitu."
+  },
+  {
+    "id": "sigurnost-316-kljuc-tajna",
+    "topic": "sigurnost",
+    "unitId": "kriptografija-praksa",
+    "difficulty": "easy",
+    "question": "Što vrijedi za privatni ključ?",
+    "options": [
+      "Ne smije napustiti sustav kojemu pripada",
+      "Dijeli se sa svima koji šalju poruke",
+      "Mijenja se pri svakoj novoj vezi",
+      "Objavljuje se uz javni ključ radi provjere"
+    ],
+    "correctIndex": 0,
+    "explanation": "Javni se dijeli, privatni nikad. Procurjeli privatni ključ ruši cijelu shemu."
+  },
+  {
+    "id": "sigurnost-317-osobni-podatak",
+    "topic": "sigurnost",
+    "unitId": "privatnost",
+    "difficulty": "easy",
+    "question": "Što je osobni podatak?",
+    "options": [
+      "Svaki podatak po kojem se osoba može prepoznati",
+      "Samo ime i prezime zajedno s adresom",
+      "Samo podatak koji je korisnik označio privatnim",
+      "Samo podatak spremljen izvan Europske unije"
+    ],
+    "correctIndex": 0,
+    "explanation": "I IP adresa i identifikator uređaja mogu biti osobni podatak ako vode do osobe."
+  },
+  {
+    "id": "sigurnost-318-minimizacija",
+    "topic": "sigurnost",
+    "unitId": "privatnost",
+    "difficulty": "easy",
+    "question": "Što nalaže načelo minimizacije podataka?",
+    "options": [
+      "Skupljaj samo ono što ti stvarno treba",
+      "Skupljaj sve pa kasnije odbaci suvišno",
+      "Skupljaj podatke samo od prijavljenih korisnika",
+      "Skupljaj podatke u sažetom obliku"
+    ],
+    "correctIndex": 0,
+    "explanation": "Podatak koji nisi skupio ne može procuriti. Najjeftinija zaštita koja postoji."
+  },
+  {
+    "id": "sigurnost-319-brisanje",
+    "topic": "sigurnost",
+    "unitId": "privatnost",
+    "difficulty": "easy",
+    "question": "Što korisnik smije tražiti za svoje podatke?",
+    "options": [
+      "Uvid i brisanje",
+      "Samo uvid, ali ne i brisanje",
+      "Brisanje samo ako račun nije nikad korišten",
+      "Ništa, ako je pristao na uvjete korištenja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pravo na uvid i brisanje ne gasi se pristankom na uvjete."
+  },
+  {
+    "id": "sigurnost-320-tajna-u-kodu",
+    "topic": "sigurnost",
+    "unitId": "tajne-i-ovisnosti",
+    "difficulty": "easy",
+    "question": "Zašto lozinka ili ključ ne smiju biti u izvornom kodu?",
+    "options": [
+      "Jer ostaju u povijesti repozitorija i nakon brisanja",
+      "Jer se pri prevođenju pretvore u čitljiv tekst",
+      "Jer usporavaju pokretanje aplikacije",
+      "Jer ih sustav za verzioniranje ne može spremiti"
+    ],
+    "correctIndex": 0,
+    "explanation": "Brisanje iz zadnje verzije ne pomaže — tajna je i dalje u svakom starom commitu."
+  },
+  {
+    "id": "sigurnost-321-env",
+    "topic": "sigurnost",
+    "unitId": "tajne-i-ovisnosti",
+    "difficulty": "easy",
+    "question": "Gdje tajne obično žive umjesto u kodu?",
+    "options": [
+      "U varijablama okoline ili spremištu tajni",
+      "U komentarima na vrhu glavne datoteke",
+      "U bazi podataka uz ostale postavke",
+      "U datoteci koja se šalje uz svaki deploy"
+    ],
+    "correctIndex": 0,
+    "explanation": "Datoteka s tajnama mora biti izvan repozitorija — zato `.env.local` ide u `.gitignore`."
+  },
+  {
+    "id": "sigurnost-322-ovisnost-rizik",
+    "topic": "sigurnost",
+    "unitId": "tajne-i-ovisnosti",
+    "difficulty": "easy",
+    "question": "Zašto vanjska knjižnica nosi sigurnosni rizik?",
+    "options": [
+      "Njezin kod se izvršava s pravima tvoje aplikacije",
+      "Njezin kod se ne može ažurirati nakon instalacije",
+      "Njezin kod usporava provjeru korisničkih prava",
+      "Njezin kod zaobilazi šifriranje mrežnog prometa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tuđi kod u tvom procesu vidi sve što i tvoj — uključujući tajne i podatke korisnika."
   }
 ]
