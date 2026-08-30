@@ -95,6 +95,22 @@ export function useProgress() {
     setState(recordReviewResultPure(state, input));
   }, []);
 
+  /**
+   * Briše napredak i vraća stanje na nulu.
+   *
+   * NAMJERNO gura u cloud kad je korisnik prijavljen: reset koji ostavi
+   * cloud netaknutim izgledao bi kao da ne radi, jer bi ga sljedeći merge
+   * pri prijavi vratio. Pozivatelj MORA prije toga tražiti potvrdu i reći
+   * da se briše i spremljeno u oblaku.
+   *
+   * Srca se NE diraju - vezana su uz uređaj, ne uz napredak. Kad bi ih
+   * reset napunio, brisanje napretka bilo bi besplatan refill.
+   */
+  const resetProgress = useCallback(() => {
+    const fresh = createDefaultProgressState();
+    setState({ ...fresh, hearts: state.hearts });
+  }, []);
+
   // Srca se ne sinkroniziraju u cloud (lokalno po uređaju) - skipCloudPush
   // izbjegava besmislen mrežni upsert na svako potrošeno/regenerirano srce.
   const spendHeart = useCallback(() => {
@@ -123,6 +139,7 @@ export function useProgress() {
     recordScoreStrikeResult,
     recordDailyChallengeResult,
     recordReviewResult,
+    resetProgress,
     spendHeart,
     grantAdHeart,
     refillHearts,

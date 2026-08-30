@@ -25,6 +25,12 @@ const PasswordRecoveryPage = lazy(() =>
   import('./pages/PasswordRecoveryPage').then((m) => ({ default: m.PasswordRecoveryPage })),
 );
 const StatsPage = lazy(() => import('./pages/StatsPage').then((m) => ({ default: m.StatsPage })));
+const PrivacyPage = lazy(() =>
+  import('./pages/PrivacyPage').then((m) => ({ default: m.PrivacyPage })),
+);
+const SettingsPage = lazy(() =>
+  import('./pages/SettingsPage').then((m) => ({ default: m.SettingsPage })),
+);
 const NotFoundPage = lazy(() =>
   import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })),
 );
@@ -54,6 +60,8 @@ function App() {
                 <Route path="review" element={<ReviewPage />} />
                 <Route path="auth/recovery" element={<PasswordRecoveryPage />} />
                 <Route path="stats" element={<StatsPage />} />
+                <Route path="privatnost" element={<PrivacyPage />} />
+                <Route path="postavke" element={<SettingsPage />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </Suspense>

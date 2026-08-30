@@ -93,6 +93,14 @@ export function AppShell() {
           <p>
             <span aria-hidden="true">🔥</span> Serija {state.streak.current} · {state.xpTotal} XP
           </p>
+          <nav className="flex items-center gap-4" aria-label="Podnožje">
+            <NavLink to="/privatnost" className="font-bold underline hover:text-brand-700">
+              Privatnost
+            </NavLink>
+            <NavLink to="/postavke" className="font-bold underline hover:text-brand-700">
+              Postavke
+            </NavLink>
+          </nav>
         </div>
       </footer>
     </div>
