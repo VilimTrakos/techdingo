@@ -1450,5 +1450,320 @@
       "A određeno vrijeme ostaje u stanju TIME_WAIT"
     ],
     "explanation": "TCP je full-duplex pa se svaki smjer zatvara zasebno. TIME_WAIT omogućuje da zakašnjeli segmenti iste veze isteknu i da se završni ACK po potrebi ponovi."
+  },
+  {
+    "id": "mreze-300-tcp-kada",
+    "topic": "mreze",
+    "unitId": "tcp-udp",
+    "difficulty": "easy",
+    "question": "Kada je TCP bolji izbor od UDP-a?",
+    "options": [
+      "Kad svaki bajt mora stići i to točnim redoslijedom",
+      "Kad je važnija brzina od potpunosti podataka",
+      "Kad se šalje vrlo malo podataka odjednom",
+      "Kad primatelj nije poznat unaprijed"
+    ],
+    "correctIndex": 0,
+    "explanation": "Preuzimanje datoteke ili učitavanje stranice — jedan izgubljen bajt kvari sve."
+  },
+  {
+    "id": "mreze-301-udp-kada",
+    "topic": "mreze",
+    "unitId": "tcp-udp",
+    "difficulty": "easy",
+    "question": "Zašto UDP ne ponavlja izgubljene pakete?",
+    "options": [
+      "Jer bi zakašnjeli podatak već bio beskoristan",
+      "Jer UDP ne zna koji su paketi izgubljeni",
+      "Jer bi ponavljanje zahtijevalo dodatni port",
+      "Jer UDP šalje sve pakete odjednom"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kod poziva uživo, sličica od prije dvije sekunde nikome ne treba."
+  },
+  {
+    "id": "mreze-302-veza",
+    "topic": "mreze",
+    "unitId": "tcp-udp",
+    "difficulty": "easy",
+    "question": "Što znači da je TCP protokol s uspostavljenom vezom?",
+    "options": [
+      "Obje strane se prvo dogovore pa tek onda šalju podatke",
+      "Veza ostaje otvorena i kad se aplikacija ugasi",
+      "Podaci putuju uvijek istim fizičkim putem kroz mrežu",
+      "Samo jedna strana smije slati u jednom trenutku"
+    ],
+    "correctIndex": 0,
+    "explanation": "Taj dogovor je handshake. UDP ga nema — samo pošalje i nada se."
+  },
+  {
+    "id": "mreze-303-dns-sto",
+    "topic": "mreze",
+    "unitId": "dns",
+    "difficulty": "easy",
+    "question": "Što DNS radi kad upišeš adresu stranice?",
+    "options": [
+      "Pretvara ime domene u IP adresu poslužitelja",
+      "Preuzima sadržaj stranice s poslužitelja",
+      "Provjerava je li certifikat stranice valjan",
+      "Bira najbržu rutu do odredišnog poslužitelja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez DNS-a bi trebao pamtiti brojeve umjesto imena."
+  },
+  {
+    "id": "mreze-304-domena-dijelovi",
+    "topic": "mreze",
+    "unitId": "dns",
+    "difficulty": "easy",
+    "question": "Što je poddomena?",
+    "options": [
+      "Ime ispred glavne domene, npr. blog.primjer.hr",
+      "Druga domena registrirana na istog vlasnika",
+      "Rezervna domena koja se koristi pri kvaru",
+      "Domena koja pokazuje na istu IP adresu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Poddomena može voditi na sasvim drugi poslužitelj od glavne domene."
+  },
+  {
+    "id": "mreze-305-ttl-osnovno",
+    "topic": "mreze",
+    "unitId": "dns",
+    "difficulty": "easy",
+    "question": "Što govori TTL na DNS zapisu?",
+    "options": [
+      "Koliko dugo se odgovor smije pamtiti prije novog upita",
+      "Koliko dugo domena vrijedi prije isteka registracije",
+      "Koliko upita se smije poslati u jednoj minuti",
+      "Koliko poslužitelja smije odgovarati na tu domenu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zato promjena zapisa ne djeluje odmah — stari odgovor negdje još čeka istek."
+  },
+  {
+    "id": "mreze-306-zahtjev-odgovor",
+    "topic": "mreze",
+    "unitId": "http-protokol",
+    "difficulty": "easy",
+    "question": "Kako izgleda osnovni HTTP tijek?",
+    "options": [
+      "Klijent pošalje zahtjev, poslužitelj vrati odgovor",
+      "Poslužitelj sam šalje podatke kad ih ima",
+      "Obje strane šalju istodobno dok je veza otvorena",
+      "Klijent šalje zahtjev svim poslužiteljima odjednom"
+    ],
+    "correctIndex": 0,
+    "explanation": "Poslužitelj u običnom HTTP-u ne može započeti razgovor — zato postoje WebSocketi."
+  },
+  {
+    "id": "mreze-307-get-post",
+    "topic": "mreze",
+    "unitId": "http-protokol",
+    "difficulty": "easy",
+    "question": "Koja je uobičajena razlika između GET-a i POST-a?",
+    "options": [
+      "GET dohvaća podatke, POST ih šalje na obradu",
+      "GET je brži jer ne prolazi kroz mrežu",
+      "GET radi samo nad HTTPS vezom",
+      "GET smije slati podatke samo prijavljenim korisnicima"
+    ],
+    "correctIndex": 0,
+    "explanation": "GET treba biti bez posljedica: ponovno učitavanje ne smije ništa promijeniti."
+  },
+  {
+    "id": "mreze-308-status-200",
+    "topic": "mreze",
+    "unitId": "http-protokol",
+    "difficulty": "easy",
+    "question": "Što znači statusni kod 200?",
+    "options": [
+      "Zahtjev je uspješno obrađen",
+      "Zahtjev je preusmjeren na drugu adresu",
+      "Zahtjev čeka na dodatnu potvrdu",
+      "Zahtjev je primljen ali još nije obrađen"
+    ],
+    "correctIndex": 0,
+    "explanation": "Grupe kodova: 2xx uspjeh, 3xx preusmjeravanje, 4xx greška klijenta, 5xx greška poslužitelja."
+  },
+  {
+    "id": "mreze-309-https-osnovno",
+    "topic": "mreze",
+    "unitId": "tls-sigurna-veza",
+    "difficulty": "easy",
+    "question": "Što se dogodi kad stranica koristi HTTPS umjesto HTTP-a?",
+    "options": [
+      "Promet je šifriran pa ga netko usput ne može čitati",
+      "Stranica se učitava iz predmemorije umjesto s mreže",
+      "Poslužitelj provjerava lozinku prije slanja sadržaja",
+      "Podaci se komprimiraju prije slanja korisniku"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez HTTPS-a svatko na istoj mreži može čitati što šalješ, uključujući lozinke."
+  },
+  {
+    "id": "mreze-310-lokot",
+    "topic": "mreze",
+    "unitId": "tls-sigurna-veza",
+    "difficulty": "easy",
+    "question": "Što znači lokot u adresnoj traci preglednika?",
+    "options": [
+      "Veza je šifrirana i certifikat je valjan",
+      "Stranica je provjerena kao sigurna za korištenje",
+      "Stranica ne skuplja nikakve osobne podatke",
+      "Stranica je vlasništvo provjerene tvrtke"
+    ],
+    "correctIndex": 0,
+    "explanation": "Lokot govori o vezi, ne o poštenju stranice. I prijevarna stranica može imati HTTPS."
+  },
+  {
+    "id": "mreze-311-certifikat",
+    "topic": "mreze",
+    "unitId": "tls-sigurna-veza",
+    "difficulty": "easy",
+    "question": "Čemu služi TLS certifikat?",
+    "options": [
+      "Potvrđuje da poslužitelj doista pripada toj domeni",
+      "Šifrira podatke spremljene u bazi poslužitelja",
+      "Ograničava tko se smije spojiti na poslužitelj",
+      "Ubrzava uspostavu veze s poslužiteljem"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez njega bi netko mogao glumiti tuđu stranicu i primati tvoje podatke."
+  },
+  {
+    "id": "mreze-312-cdn",
+    "topic": "mreze",
+    "unitId": "isporuka-prometa",
+    "difficulty": "easy",
+    "question": "Čemu služi CDN?",
+    "options": [
+      "Poslužuje sadržaj s poslužitelja bližeg korisniku",
+      "Sprema podatke korisnika umjesto glavne baze",
+      "Zamjenjuje poslužitelj aplikacije kad ovaj padne",
+      "Provjerava sigurnost sadržaja prije isporuke"
+    ],
+    "correctIndex": 0,
+    "explanation": "Manja udaljenost znači manje kašnjenje. Slike i skripte su tipični sadržaj za CDN."
+  },
+  {
+    "id": "mreze-313-balanser",
+    "topic": "mreze",
+    "unitId": "isporuka-prometa",
+    "difficulty": "easy",
+    "question": "Što radi load balancer?",
+    "options": [
+      "Raspoređuje dolazne zahtjeve na više poslužitelja",
+      "Ograničava broj zahtjeva po korisniku",
+      "Sprema odgovore da se ne moraju ponovno računati",
+      "Šifrira promet između poslužitelja i baze"
+    ],
+    "correctIndex": 0,
+    "explanation": "Uz to obično prati zdravlje instanci i preskače one koje ne odgovaraju."
+  },
+  {
+    "id": "mreze-314-kes-preglednik",
+    "topic": "mreze",
+    "unitId": "isporuka-prometa",
+    "difficulty": "easy",
+    "question": "Zašto preglednik pamti već preuzete slike i skripte?",
+    "options": [
+      "Da se pri sljedećem posjetu ne preuzimaju ponovno",
+      "Da rade i kad korisnik nema internetsku vezu",
+      "Da se sadržaj prikaže prije nego stigne HTML",
+      "Da poslužitelj zna koliko puta si posjetio stranicu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zato promjena datoteke traži novo ime — inače korisnik dobiva staru verziju."
+  },
+  {
+    "id": "mreze-315-websocket",
+    "topic": "mreze",
+    "unitId": "realtime",
+    "difficulty": "easy",
+    "question": "Što WebSocket omogućuje što obični HTTP ne?",
+    "options": [
+      "Poslužitelj može poslati podatak bez da ga klijent traži",
+      "Veza se automatski obnavlja nakon svakog prekida",
+      "Podaci se šalju bez šifriranja radi veće brzine",
+      "Više klijenata dijeli jednu istu mrežnu vezu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zato se koristi za chat i obavijesti uživo — poslužitelj gura, ne čeka pitanje."
+  },
+  {
+    "id": "mreze-316-polling",
+    "topic": "mreze",
+    "unitId": "realtime",
+    "difficulty": "easy",
+    "question": "Što je polling?",
+    "options": [
+      "Klijent u razmacima ponovno pita ima li novosti",
+      "Poslužitelj šalje podatke čim ih ima",
+      "Klijent drži otvorenu vezu dok čeka odgovor",
+      "Više klijenata glasa o tome tko dobiva podatke"
+    ],
+    "correctIndex": 0,
+    "explanation": "Jednostavan je, ali troši zahtjeve i kasni — zato postoje WebSocketi."
+  },
+  {
+    "id": "mreze-317-realtime-primjer",
+    "topic": "mreze",
+    "unitId": "realtime",
+    "difficulty": "easy",
+    "question": "Za što se komunikacija u stvarnom vremenu najčešće koristi?",
+    "options": [
+      "Chat, obavijesti i zajedničko uređivanje",
+      "Preuzimanje velikih datoteka s poslužitelja",
+      "Slanje e-pošte između poslužitelja",
+      "Sigurnosno kopiranje baze podataka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zajedničko im je da promjena mora stići drugoj strani odmah, bez osvježavanja."
+  },
+  {
+    "id": "mreze-318-ping",
+    "topic": "mreze",
+    "unitId": "dijagnostika-mreze",
+    "difficulty": "easy",
+    "question": "Što provjerava naredba ping?",
+    "options": [
+      "Odgovara li udaljeno računalo i za koliko vremena",
+      "Koliko je propusnost veze prema tom računalu",
+      "Koji su portovi otvoreni na udaljenom računalu",
+      "Je li certifikat udaljenog poslužitelja valjan"
+    ],
+    "correctIndex": 0,
+    "explanation": "Daje dvije stvari: dostupnost i kašnjenje. Ne govori ništa o samoj usluzi."
+  },
+  {
+    "id": "mreze-319-latencija",
+    "topic": "mreze",
+    "unitId": "dijagnostika-mreze",
+    "difficulty": "easy",
+    "question": "Što je latencija?",
+    "options": [
+      "Vrijeme koje podatku treba do odredišta i natrag",
+      "Količina podataka koja stane u jednu sekundu",
+      "Broj uređaja kroz koje paket prolazi na putu",
+      "Postotak paketa koji se izgube na putu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Latencija i propusnost su različite stvari: široka veza može biti spora."
+  },
+  {
+    "id": "mreze-320-alat-preglednik",
+    "topic": "mreze",
+    "unitId": "dijagnostika-mreze",
+    "difficulty": "easy",
+    "question": "Gdje u pregledniku vidiš koliko je koji zahtjev trajao?",
+    "options": [
+      "U kartici Network u alatima za razvojne inženjere",
+      "U postavkama privatnosti i sigurnosti preglednika",
+      "U izvornom kodu stranice, unutar zaglavlja",
+      "U povijesti nedavno posjećenih stranica"
+    ],
+    "correctIndex": 0,
+    "explanation": "Network kartica pokazuje svaki zahtjev, njegov status, veličinu i trajanje."
   }
 ]
