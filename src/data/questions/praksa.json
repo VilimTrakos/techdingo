@@ -1554,5 +1554,117 @@
     "correctIndex": 0,
     "explanation": "Konkretan protuprimjer autor može odmah provjeriti. Općenita primjedba traži još jedan krug razgovora.",
     "conceptId": "dobar-code-review"
+  },
+  {
+    "id": "praksa-340-uvod-agilno",
+    "topic": "praksa",
+    "unitId": "agilni-rad",
+    "difficulty": "easy",
+    "question": "Što agilni rad stavlja u prvi plan?",
+    "options": [
+      "Česta isporuka i prilagodbu umjesto plana do kraja",
+      "Detaljan plan cijelog projekta prije početka",
+      "Što veći tim koji radi paralelno na svemu",
+      "Dokumentaciju koja prethodi svakom kodu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ne znači bez plana — znači plan koji se mijenja kad stignu nove informacije.",
+    "isIntro": true
+  },
+  {
+    "id": "praksa-341-uvod-review",
+    "topic": "praksa",
+    "unitId": "code-review",
+    "difficulty": "easy",
+    "question": "Što je pregled koda?",
+    "options": [
+      "Netko drugi pročita promjenu prije nego uđe u projekt",
+      "Automatska provjera stila i sintakse",
+      "Mjerenje koliko je kod pokriven testovima",
+      "Sastanak na kojem tim planira sljedeći zadatak"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ljudsko čitanje. Alati hvataju stil, čovjek hvata pogrešnu pretpostavku.",
+    "isIntro": true
+  },
+  {
+    "id": "praksa-342-uvod-dokumentacija",
+    "topic": "praksa",
+    "unitId": "dokumentacija",
+    "difficulty": "easy",
+    "question": "Kome je dokumentacija prvenstveno namijenjena?",
+    "options": [
+      "Onome tko dolazi na projekt bez konteksta",
+      "Onome tko je kod napisao, kao podsjetnik",
+      "Alatima koji iz nje generiraju sučelje",
+      "Korisnicima aplikacije, umjesto pomoći"
+    ],
+    "correctIndex": 0,
+    "explanation": "Uključujući tebe za pola godine — tada si i ti bez konteksta.",
+    "isIntro": true
+  },
+  {
+    "id": "praksa-343-uvod-izdanje",
+    "topic": "praksa",
+    "unitId": "izdanja-i-verzije",
+    "difficulty": "easy",
+    "question": "Što je izdanje (release) softvera?",
+    "options": [
+      "Verzija koja se objavljuje korisnicima",
+      "Svaka promjena spremljena u repozitorij",
+      "Grana na kojoj se razvijaju nove značajke",
+      "Kopija projekta napravljena radi sigurnosti"
+    ],
+    "correctIndex": 0,
+    "explanation": "Između commita i izdanja stoji odluka: ovo je spremno da to netko koristi.",
+    "isIntro": true
+  },
+  {
+    "id": "praksa-344-uvod-licenca",
+    "topic": "praksa",
+    "unitId": "licence",
+    "difficulty": "easy",
+    "question": "Što licenca uređuje?",
+    "options": [
+      "Pod kojim uvjetima drugi smiju koristiti kod",
+      "Tko se vodi kao pravni vlasnik projekta",
+      "Koliko se kod smije naplatiti krajnjim korisnicima",
+      "Gdje se kod smije javno objaviti"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez licence po zadanom nitko nema pravo koristiti tuđi kod, ni ako je javno vidljiv.",
+    "isIntro": true
+  },
+  {
+    "id": "praksa-345-uvod-procjena",
+    "topic": "praksa",
+    "unitId": "procjena-i-dug",
+    "difficulty": "easy",
+    "question": "Zašto je procjena trajanja posla teška?",
+    "options": [
+      "Jer se dio posla otkrije tek dok se radi",
+      "Jer se programeri boje obvezati na rok",
+      "Jer alati za praćenje ne mjere točno vrijeme",
+      "Jer se opseg posla ne smije mijenjati"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nepoznato ne možeš procijeniti dok ga ne dodirneš. Zato raspon, a ne broj.",
+    "isIntro": true
+  },
+  {
+    "id": "praksa-346-uvod-intervju",
+    "topic": "praksa",
+    "unitId": "razgovor-za-posao",
+    "difficulty": "easy",
+    "question": "Što tehnički razgovor prvenstveno provjerava?",
+    "options": [
+      "Kako razmišljaš kad naiđeš na nepoznat problem",
+      "Koliko si tehnologija naveo u životopisu",
+      "Znaš li napamet sintaksu jezika koji koristiš",
+      "Koliko brzo tipkaš rješenje bez greške"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rješenje bez objašnjenja govori malo. Put do rješenja govori sve.",
+    "isIntro": true
   }
 ]

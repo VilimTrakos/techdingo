@@ -1742,5 +1742,133 @@
     ],
     "correctIndex": 0,
     "explanation": "return je izlaz iz funkcije. Kod iza njega je mrtav i većina alata to prijavi."
+  },
+  {
+    "id": "jezici-340-uvod-tip",
+    "topic": "jezici",
+    "unitId": "tipovi",
+    "difficulty": "easy",
+    "question": "Što tipski sustav jezika određuje?",
+    "options": [
+      "Koje vrijednosti varijabla smije primiti",
+      "Koliko memorije program smije zauzeti dok radi",
+      "Kojim redoslijedom se naredbe izvršavaju",
+      "Koje se biblioteke smiju uvesti u projekt"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tip je obećanje o obliku podatka. Iz njega slijedi i što se s njim smije raditi.",
+    "isIntro": true
+  },
+  {
+    "id": "jezici-341-uvod-memorija",
+    "topic": "jezici",
+    "unitId": "memorija",
+    "difficulty": "easy",
+    "question": "Zašto program uopće mora upravljati memorijom?",
+    "options": [
+      "Jer je memorija ograničena i mora se dijeliti s drugima",
+      "Jer se podaci inače spremaju na disk umjesto u memoriju",
+      "Jer se memorija briše svaki put kad funkcija završi",
+      "Jer operativni sustav to zahtijeva od svakog programa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Program koji uzima i nikad ne vraća prije ili kasnije stane — i sruši ostale s'obom.",
+    "isIntro": true
+  },
+  {
+    "id": "jezici-342-uvod-vrijednost",
+    "topic": "jezici",
+    "unitId": "vrijednosti-reference",
+    "difficulty": "easy",
+    "question": "Što varijabla zapravo drži?",
+    "options": [
+      "Vrijednost ili uputu na mjesto gdje vrijednost živi",
+      "Isključivo kopiju vrijednosti, nikad njezinu adresu",
+      "Ime pod kojim je vrijednost spremljena na disk",
+      "Tip podatka koji je vrijednosti dodijeljen"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ta razlika objašnjava zašto izmjena kroz jednu varijablu ponekad promijeni i drugu.",
+    "isIntro": true
+  },
+  {
+    "id": "jezici-343-uvod-paradigma",
+    "topic": "jezici",
+    "unitId": "paradigme",
+    "difficulty": "easy",
+    "question": "Što je programska paradigma?",
+    "options": [
+      "Način razmišljanja o tome kako se program gradi",
+      "Skup pravila koje prevoditelj provjerava",
+      "Popis jezika koji dijele istu sintaksu",
+      "Standard koji propisuje oblikovanje koda"
+    ],
+    "correctIndex": 0,
+    "explanation": "Objektna, funkcijska, imperativna — svaka nudi drugi način razlaganja problema.",
+    "isIntro": true
+  },
+  {
+    "id": "jezici-344-uvod-konkurentnost",
+    "topic": "jezici",
+    "unitId": "konkurentnost",
+    "difficulty": "easy",
+    "question": "Što znači da program radi konkurentno?",
+    "options": [
+      "Više zadataka napreduje u preklapajućim razdobljima",
+      "Više kopija programa radi na istom računalu",
+      "Zadaci se izvršavaju točno određenim redoslijedom",
+      "Program koristi sve dostupne procesorske jezgre"
+    ],
+    "correctIndex": 0,
+    "explanation": "Konkurentno nije isto što i paralelno: zadaci se mogu izmjenjivati i na jednoj jezgri.",
+    "isIntro": true
+  },
+  {
+    "id": "jezici-345-uvod-izvodjenje",
+    "topic": "jezici",
+    "unitId": "izvodjenje-koda",
+    "difficulty": "easy",
+    "question": "Što se mora dogoditi s izvornim kodom prije nego se izvrši?",
+    "options": [
+      "Mora se prevesti ili protumačiti u strojne upute",
+      "Mora se spremiti u bazu podataka projekta",
+      "Mora se provjeriti protiv stilskih pravila",
+      "Mora se sažeti da zauzme manje prostora"
+    ],
+    "correctIndex": 0,
+    "explanation": "Procesor razumije samo svoje upute. Sve ostalo je posao prevoditelja ili tumača.",
+    "isIntro": true
+  },
+  {
+    "id": "jezici-346-uvod-greske",
+    "topic": "jezici",
+    "unitId": "greske",
+    "difficulty": "easy",
+    "question": "Zašto program treba imati plan za greške?",
+    "options": [
+      "Jer vanjski svijet zakaže i bez krivnje programa",
+      "Jer prevoditelj to zahtijeva prije pokretanja",
+      "Jer se bez toga program ne može testirati",
+      "Jer se greške inače ne zapisuju u dnevnik"
+    ],
+    "correctIndex": 0,
+    "explanation": "Mreža padne, disk se napuni, korisnik upiše besmislicu. Ništa od toga nije bug u tvom kodu.",
+    "isIntro": true
+  },
+  {
+    "id": "jezici-347-uvod-funkcija",
+    "topic": "jezici",
+    "unitId": "funkcije-i-opseg",
+    "difficulty": "easy",
+    "question": "Što je doseg (scope) u programu?",
+    "options": [
+      "Dio koda u kojem je neko ime vidljivo",
+      "Broj puta koliko se funkcija smije pozvati",
+      "Količina memorije koju funkcija zauzima",
+      "Popis argumenata koje funkcija prima"
+    ],
+    "correctIndex": 0,
+    "explanation": "Doseg određuje odakle se do varijable može doći — i time koliko koda je može pokvariti.",
+    "isIntro": true
   }
 ]
