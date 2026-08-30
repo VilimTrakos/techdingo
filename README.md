@@ -26,13 +26,36 @@ Supabase integracija omogućuje račun, sinkronizaciju između uređaja i ljestv
 - **Dnevni izazov** — 10 pitanja iz svih tema, ista za sve igrače, jednom dnevno.
 - **Ljestvica i značke** — javna ljestvica po temama (uz račun) i lokalna
   postignuća.
-- **1000+ pitanja** kroz jedanaest područja, s objašnjenjem nakon svakog
-  odgovora. Svaka cjelina počinje uvodnim pitanjima koja predstavljaju pojmove.
+- **1290+ pitanja** kroz jedanaest područja, s objašnjenjem nakon svakog
+  odgovora. Svaka cjelina počinje uvodnim pitanjima koja predstavljaju pojmove,
+  pa ide postupno prema težima — nijedna ne skače s uvoda ravno na teško.
 - **Razmaknuto ponavljanje mjereno u lekcijama** — promašen pojam vraća se već
   u sljedećoj lekciji, a naučen se javlja sve rjeđe (1/2/3/5/8/13 lekcija).
   Ista činjenica može se vratiti kao druga vrsta pitanja.
+- **Privatnost i postavke** — stranica koja kaže što se sprema i gdje, te
+  brisanje vlastitog napretka i računa.
+- **Radi bez računa** — cijela banka pitanja, napredak, srca i dnevni izazov
+  rade bez prijave; račun služi samo za sinkronizaciju i ljestvicu.
 - Otvoren za doprinose — dodavanje novih pitanja je pull request na jednu
   JSON datoteku, validiran automatski u CI-u.
+
+## Kvaliteta
+
+Provjere koje CI vrti na svaki push:
+
+| Provjera | Što drži |
+|---|---|
+| `npm run validate:questions` | shema pitanja, jedinstveni id-jevi, svaka cjelina ima pitanja i uvod, i da duljina odgovora ne odaje rješenje |
+| `npm run test` | 191 test: logika rasporeda, migracije stanja, spajanje napretka, sve četiri vrste pitanja kroz stvarnu interakciju, tijek lekcije, prijava, kontrast boja |
+| `npm run lint` / `typecheck` / `build` | oxlint, TypeScript i produkcijski build |
+
+Pristupačnost je provjerena alatom axe-core kroz dvanaest ekrana: nula
+prekršaja. Kontrast boja čuva zaseban test koji provjerava svaki token teksta
+protiv svake podloge koju aplikacija koristi.
+
+Početno učitavanje je oko 170 kB gzip — pitanja se dovlače po temi, tek kad
+lekcija krene, pa posjetitelj koji otvori jednu SQL lekciju ne skida ostalih
+deset tema.
 
 ## Lokalni razvoj
 

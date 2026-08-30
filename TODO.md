@@ -111,14 +111,43 @@ napretka pri odjavi (spriječeno miješanje računa na dijeljenom uređaju).
 `http://localhost:5173/#/auth/recovery` u Supabase → Authentication →
 URL Configuration → Redirect URLs, inače oporavak lozinke neće raditi.
 
-## 5. Otvoreno / namjerno odgođeno
+## 5. Spremnost za tržište (2026-08-30)
 
-PWA + push podsjetnici (traži service worker, tablicu pretplata, Edge
-Function i raspored — plus Supabase CLI setup); PvP (backend stoji, klijenta
-nema, migracija 0002 blokirana); postavke/reset napretka; i18n; dark mode;
-zvukovi; komponentni i hook testovi; a11y dorada (timer bez najave).
+Napravljeno u ovom krugu:
 
-## 6. Linkovi
+- **Kartica pri dijeljenju linka** (og:image 1200x630) i **manifest** za
+  "dodaj na početni zaslon", s ikonama 192/512 i apple-touch-icon.
+- **Stranica o privatnosti** (`#/privatnost`) i **postavke** (`#/postavke`)
+  s brisanjem vlastitog napretka. Reset gura u oblak kad si prijavljen i
+  namjerno NE puni srca.
+- **Pristupačnost**: axe-core kroz 12 ekrana, 0 prekršaja. Popravljeni
+  kontrast (glavni gumb je bio 2,7:1), `aria-label` na `<span>` bez uloge,
+  i nevaljana `<dl>` struktura. Test čuva kontrast tokena.
+- **Mobitel**: cijela aplikacija se skrolala postrance 63px jer zaglavlje
+  nije imalo `flex-wrap`. Provjereno na 320/360/390/414/768px. Sve dodirne
+  mete su >= 24px.
+- **Banka pitanja 1293**, i ZADATAK K je gotov: cjelina s manje od 2 laka
+  pitanja 54 -> 0. Nijedna cjelina više ne skače s uvoda ravno na teško.
+- **Testova 191** (bilo 115), uključujući sve četiri vrste pitanja kroz
+  stvarnu interakciju, tijek lekcije, AuthControl i kontrast.
+- Cloud dohvat odustaje nakon 8 s umjesto da 15 s stoji na spinneru.
+
+### Blokira izdanje — nije u kodu
+
+**Supabase projekt više ne odgovara** (`ERR_NAME_NOT_RESOLVED` na
+`otjokpjkunhntmfvbadl.supabase.co`). Dok se ne vrati:
+
+- prijava, ljestvica i sinkronizacija ne rade
+- sve ostalo radi normalno bez računa
+
+Kad projekt proradi, treba pokrenuti i dalje nepokrenute migracije
+`0003_lesson_struggled_ids.sql` i `0004_profile_hardening.sql`, pa
+`seed_questions_meta.sql` (1293 retka). Bez `0003` se prijavljenima
+napredak lekcija ne sprema u oblak, i to tiho.
+
+## 6. Otvoreno / namjerno odgođeno
+
+## 7. Linkovi
 
 - Repo: https://github.com/VilimTrakos/techdingo
 - Live app: https://vilimtrakos.github.io/techdingo/
