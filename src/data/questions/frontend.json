@@ -2240,5 +2240,114 @@
       2
     ],
     "explanation": "Zadnje dvije su česta zabluda — semantika ne mijenja ni raspored ni veličinu datoteka."
+  },
+  {
+    "id": "frontend-919-order-effect-dependency-change",
+    "topic": "frontend",
+    "unitId": "react",
+    "difficulty": "medium",
+    "kind": "order",
+    "conceptId": "react-effect-cleanup",
+    "question": "Poredaj životni ciklus effecta kada se promijeni jedna njegova ovisnost.",
+    "steps": [
+      "Komponenta se renderira s novom vrijednošću ovisnosti",
+      "React pokrene cleanup prethodnog izvođenja effecta",
+      "React pokrene effect s novom vrijednošću ovisnosti"
+    ],
+    "explanation": "Cleanup se ne izvršava samo pri unmountu. Prije ponovnog pokretanja effecta React prvo čisti resurse koje je postavilo prethodno izvođenje."
+  },
+  {
+    "id": "frontend-920-multi-list-key",
+    "topic": "frontend",
+    "unitId": "react",
+    "difficulty": "hard",
+    "kind": "multi",
+    "question": "Lista se može umetati, brisati i preslagivati. Koje tvrdnje o key propovima vrijede?",
+    "code": "items.map((item, index) => (\n  <Row key={index} item={item} />\n))",
+    "options": [
+      "Stabilni identifikator stavke bolji je key od njezina trenutačnog indeksa",
+      "Key pomaže Reactu povezati isti element između dvaju renderiranja",
+      "Indeks može povezati lokalni state retka s pogrešnom stavkom nakon preslagivanja",
+      "Key mora biti globalno jedinstven među svim komponentama cijele aplikacije",
+      "Promjena keya čuva postojeću instancu komponente i sav njezin lokalni state"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Key treba biti stabilan među susjedima. Indeks je prihvatljiv za doista statičnu listu, ali kod promjene poretka može premjestiti lokalno stanje na krivi redak."
+  },
+  {
+    "id": "frontend-921-order-functional-updaters",
+    "topic": "frontend",
+    "unitId": "react",
+    "difficulty": "medium",
+    "kind": "order",
+    "question": "Početni count je 0. Poredaj što React radi nakon ovog klika.",
+    "code": "setCount(c => c + 1);\nsetCount(c => c + 1);",
+    "steps": [
+      "U red ažuriranja doda se prvi funkcionalni updater",
+      "U red ažuriranja doda se drugi funkcionalni updater",
+      "Prvi updater izračuna vrijednost 1 iz prethodne vrijednosti 0",
+      "Drugi updater izračuna vrijednost 2 iz prethodne vrijednosti 1",
+      "Komponenta se ponovno prikaže s vrijednošću 2"
+    ],
+    "explanation": "Funkcionalni updateri obrađuju se redom i svaki dobiva rezultat prethodnoga. Zato dva poziva povećavaju vrijednost dvaput i kada React grupira ažuriranja."
+  },
+  {
+    "id": "frontend-922-layout-thrashing",
+    "topic": "frontend",
+    "unitId": "performanse",
+    "difficulty": "hard",
+    "question": "Zašto petlja koja naizmjenično mijenja stil elementa i odmah čita offsetHeight može biti spora?",
+    "options": [
+      "Čitanje geometrije može prisiliti preglednik da više puta sinkrono izračuna layout",
+      "Svako čitanje offsetHeight šalje zaseban mrežni zahtjev prema CSS datoteci",
+      "Promjena inline stila uvijek ponovno parsira sav JavaScript učitan na stranici",
+      "Preglednik za svaki element mora stvoriti novu radnu dretvu i čekati njezin završetak"
+    ],
+    "correctIndex": 0,
+    "explanation": "Grupiranje svih čitanja prije svih pisanja smanjuje prisilne reflowe. Mjerenje u profileru potvrđuje je li layout stvarno usko grlo."
+  },
+  {
+    "id": "frontend-923-multi-list-virtualization",
+    "topic": "frontend",
+    "unitId": "performanse",
+    "difficulty": "medium",
+    "kind": "multi",
+    "question": "Što virtualizacija velike liste tipično postiže?",
+    "options": [
+      "Renderira uglavnom stavke unutar ili blizu vidljivog područja",
+      "Smanjuje broj DOM čvorova koji postoje istodobno",
+      "Zahtijeva upravljanje visinama ili položajem stavki",
+      "Automatski smanjuje veličinu odgovora API-ja bez promjene dohvata",
+      "Jamči da screen reader uvijek može doseći stavke koje nisu renderirane"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Virtualizacija rješava trošak DOM-a i renderiranja, ne nužno mrežni dohvat. Pristupačnost i fokus traže dodatnu pažnju jer dio liste nije u DOM-u."
+  },
+  {
+    "id": "frontend-924-accessible-name",
+    "topic": "frontend",
+    "unitId": "pristupacnost-testiranje",
+    "difficulty": "medium",
+    "kind": "fill",
+    "question": "Dopuni najizravnije povezivanje vidljive oznake i polja obrasca.",
+    "text": "<label ___=\"email\">E-mail</label> <input ___=\"email\" type=\"email\">",
+    "answers": [
+      "for",
+      "id"
+    ],
+    "distractors": [
+      "name",
+      "title",
+      "aria-hidden"
+    ],
+    "explanation": "Vrijednosti for i id povezuju oznaku s kontrolom, povećavaju klikabilno područje i daju polju pristupačno ime. U React JSX-u svojstvo se piše htmlFor."
   }
 ]
