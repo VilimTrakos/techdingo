@@ -1,3 +1,4 @@
+import { withTimeout } from '../lib/withTimeout';
 import { useCallback, useEffect, useState } from 'react';
 import { supabase } from '../state/supabaseClient';
 
@@ -31,12 +32,15 @@ export function useLeaderboard(topicId: string) {
     // poruke i gumba "Pokušaj ponovno".
     void (async () => {
       try {
-        const { data, error } = await supabase!
-          .from('leaderboard')
-          .select('display_name, best_score')
-          .eq('topic_id', topicId)
-          .order('best_score', { ascending: false })
-          .limit(LEADERBOARD_LIMIT);
+        const { data, error } = await withTimeout(
+          supabase!
+            .from('leaderboard')
+            .select('display_name, best_score')
+            .eq('topic_id', topicId)
+            .order('best_score', { ascending: false })
+            .limit(LEADERBOARD_LIMIT),
+          'dohvat ljestvice',
+        );
         if (cancelled) return;
         if (error) {
           setState({ entries: [], isLoading: false, error: error.message });

@@ -1,3 +1,4 @@
+import { withTimeout } from '../lib/withTimeout';
 import { useCallback, useEffect, useState } from 'react';
 import { supabase } from '../state/supabaseClient';
 import { useAuth } from './useAuth';
@@ -36,11 +37,10 @@ export function useProfile() {
     // .catch. Bez try/catch mrežni pad ostavlja isLoading zauvijek na true.
     void (async () => {
       try {
-        const { data, error } = await supabase!
-          .from('profiles')
-          .select('display_name')
-          .eq('id', user.id)
-          .maybeSingle();
+        const { data, error } = await withTimeout(
+          supabase!.from('profiles').select('display_name').eq('id', user.id).maybeSingle(),
+          'dohvat profila',
+        );
         if (cancelled) return;
         setState({
           displayName: (data?.display_name as string | undefined) ?? null,
