@@ -54,7 +54,7 @@ async function renderLesson(path = '/lesson/sql/osnove-upita') {
       </Routes>
     </MemoryRouter>,
   );
-  return { user: userEvent.setup() };
+  return { user: userEvent.setup({ delay: null }) };
 }
 
 /** Odgovara na trenutno prikazano pitanje - točno ili namjerno krivo. */

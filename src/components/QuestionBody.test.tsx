@@ -46,7 +46,7 @@ function renderQuestion(question: Question) {
   const onAnswer = vi.fn();
   const prepared = prepareQuestion(question);
   render(<QuestionBody prepared={prepared} isAnswered={false} onAnswer={onAnswer} questionNumber={1} />);
-  return { onAnswer, prepared, user: userEvent.setup() };
+  return { onAnswer, prepared, user: userEvent.setup({ delay: null }) };
 }
 
 describe('single choice', () => {

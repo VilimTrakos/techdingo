@@ -39,7 +39,7 @@ async function renderSettings({ signedIn = false } = {}) {
   }));
   const { SettingsPage } = await import('./SettingsPage');
   render(<MemoryRouter><SettingsPage /></MemoryRouter>);
-  return { user: userEvent.setup() };
+  return { user: userEvent.setup({ delay: null }) };
 }
 
 beforeEach(() => vi.resetModules());

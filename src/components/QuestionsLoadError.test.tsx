@@ -14,7 +14,7 @@ function renderError(onRetry = vi.fn()) {
       <QuestionsLoadError onRetry={onRetry} />
     </MemoryRouter>,
   );
-  return { onRetry, user: userEvent.setup() };
+  return { onRetry, user: userEvent.setup({ delay: null }) };
 }
 
 describe('QuestionsLoadError', () => {
