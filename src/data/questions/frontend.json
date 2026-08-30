@@ -916,7 +916,8 @@
     "correctIndex": 0,
     "explanation": "Za zahtjeve koji nisu CORS-simple preglednik prvo OPTIONS zahtjevom provjerava serverova Access-Control dopuštenja.",
     "difficulty": "medium",
-    "unitId": "mreza-sigurnost"
+    "unitId": "mreza-sigurnost",
+    "conceptId": "cors"
   },
   {
     "id": "frontend-044-effect-cleanup",

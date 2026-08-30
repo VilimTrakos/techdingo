@@ -2587,7 +2587,8 @@
       "Jer bi upiti tada postali nepredvidivi"
     ],
     "correctIndex": 0,
-    "explanation": "Svaki INSERT, UPDATE i DELETE mora osvježiti svaki indeks nad tom tablicom."
+    "explanation": "Svaki INSERT, UPDATE i DELETE mora osvježiti svaki indeks nad tom tablicom.",
+    "conceptId": "kompromis-indeksa"
   },
   {
     "id": "sql-933-podupit-gdje",
@@ -2677,7 +2678,8 @@
       "Da se prijenos zabilježi u zapisniku promjena"
     ],
     "correctIndex": 0,
-    "explanation": "Bez transakcije novac može nestati s jednog računa a ne pojaviti se na drugom."
+    "explanation": "Bez transakcije novac može nestati s jednog računa a ne pojaviti se na drugom.",
+    "conceptId": "transakcija-atomarnost"
   },
   {
     "id": "sql-939-commit-rollback",
@@ -2692,7 +2694,8 @@
       "Prebacuju se u sljedeću transakciju"
     ],
     "correctIndex": 0,
-    "explanation": "Sve ili ništa. To je atomarnost, prvo slovo u ACID-u."
+    "explanation": "Sve ili ništa. To je atomarnost, prvo slovo u ACID-u.",
+    "conceptId": "transakcija-atomarnost"
   },
   {
     "id": "sql-940-transakcija-kratka",

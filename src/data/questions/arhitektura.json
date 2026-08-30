@@ -1008,7 +1008,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Stanje u memoriji instance veže korisnika uz nju. Kad ga nema, dodavanje instance je jedina potrebna radnja.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "stateless"
   },
   {
     "id": "arh-056-bottleneck",
@@ -1613,7 +1614,8 @@
     ],
     "correctIndex": 2,
     "explanation": "Bez vremenskog ograničenja spor ili nedostupan servis može zadržati dretve, veze i memoriju pozivatelja do iscrpljenja.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "conceptId": "timeout-udaljeni-poziv"
   },
   {
     "id": "arh-221-backward-compatible-field",
@@ -2047,7 +2049,8 @@
       "Obrada se prekida ako poruka stigne prekasno"
     ],
     "correctIndex": 0,
-    "explanation": "Kod at-least-once isporuke duplikat je normalan. Zapis o obrađenom id-u ga čini bezopasnim."
+    "explanation": "Kod at-least-once isporuke duplikat je normalan. Zapis o obrađenom id-u ga čini bezopasnim.",
+    "conceptId": "idempotentnost"
   },
   {
     "id": "arh-333-code-verzija-dogadjaja",
@@ -2133,6 +2136,7 @@
       "Ista vrijednost se koristi za sve vrste poziva"
     ],
     "correctIndex": 0,
-    "explanation": "Ako te tvoj pozivatelj odustane nakon 5 s, tvoje čekanje od 30 s samo troši vezu i dretvu bez ikakve koristi."
+    "explanation": "Ako te tvoj pozivatelj odustane nakon 5 s, tvoje čekanje od 30 s samo troši vezu i dretvu bez ikakve koristi.",
+    "conceptId": "timeout-udaljeni-poziv"
   }
 ]

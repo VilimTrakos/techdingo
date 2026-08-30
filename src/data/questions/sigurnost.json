@@ -343,7 +343,8 @@
     "correctIndex": 0,
     "explanation": "Kod napadača se izvršava u kontekstu tvoje stranice, s pristupom svemu što i tvoj kod ima.",
     "difficulty": "easy",
-    "isIntro": true
+    "isIntro": true,
+    "conceptId": "xss-posljedica"
   },
   {
     "id": "sigurnost-019-xss-types",
@@ -373,7 +374,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Kodiranje pri ISPISU je ključno jer ovisi o kontekstu. Isti podatak drukčije se kodira u HTML-u, atributu i u JavaScriptu.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "xss-obrana"
   },
   {
     "id": "sigurnost-021-dom-xss",
@@ -831,7 +833,8 @@
     "correctIndex": 0,
     "explanation": "Hash se ne vraća unatrag ni s kojim ključem. Zato lozinke idu kroz hash, a podaci koje treba pročitati kroz šifriranje.",
     "difficulty": "easy",
-    "isIntro": true
+    "isIntro": true,
+    "conceptId": "hash-vs-sifriranje"
   },
   {
     "id": "sigurnost-046-symmetric-asymmetric",
@@ -1333,7 +1336,8 @@
     ],
     "correctIndex": 0,
     "explanation": "XSS omogućuje izvođenje napadačkog JavaScripta pod originom aplikacije. Sigurno kodiranje izlaza i izbjegavanje opasnih HTML sinkova ključne su obrane.",
-    "difficulty": "easy"
+    "difficulty": "easy",
+    "conceptId": "xss-posljedica"
   },
   {
     "id": "sigurnost-uvod2-autorizacija",
@@ -1539,7 +1543,8 @@
       "Prava se provjeravaju samo pri prvoj prijavi"
     ],
     "correctIndex": 0,
-    "explanation": "Kad račun bude probijen, šteta je ograničena na ono što je taj račun smio."
+    "explanation": "Kad račun bude probijen, šteta je ograničena na ono što je taj račun smio.",
+    "conceptId": "nacelo-najmanjih-ovlasti"
   },
   {
     "id": "sigurnost-301-azuriranje",
@@ -1614,7 +1619,8 @@
       "Pročita promet svih korisnika na istoj mreži"
     ],
     "correctIndex": 0,
-    "explanation": "Skripta radi s pravima žrtve — može čitati stranicu, slati zahtjeve i krasti sesiju."
+    "explanation": "Skripta radi s pravima žrtve — može čitati stranicu, slati zahtjeve i krasti sesiju.",
+    "conceptId": "xss-posljedica"
   },
   {
     "id": "sigurnost-306-escape",
@@ -1629,7 +1635,8 @@
       "Tekst se sprema u zaseban dio baze podataka"
     ],
     "correctIndex": 0,
-    "explanation": "Zato `textContent` rješava ono što `innerHTML` ne rješava — tekst ostaje tekst."
+    "explanation": "Zato `textContent` rješava ono što `innerHTML` ne rješava — tekst ostaje tekst.",
+    "conceptId": "xss-obrana"
   },
   {
     "id": "sigurnost-307-kolacic",
@@ -1749,7 +1756,8 @@
       "Sažetak traži ključ, a šifriranje ne"
     ],
     "correctIndex": 0,
-    "explanation": "Zato se lozinke sažimaju, a ne šifriraju: ni ti ne trebaš moći doznati izvornu lozinku."
+    "explanation": "Zato se lozinke sažimaju, a ne šifriraju: ni ti ne trebaš moći doznati izvornu lozinku.",
+    "conceptId": "hash-vs-sifriranje"
   },
   {
     "id": "sigurnost-315-https",
@@ -1839,7 +1847,8 @@
       "Jer ih sustav za verzioniranje ne može spremiti"
     ],
     "correctIndex": 0,
-    "explanation": "Brisanje iz zadnje verzije ne pomaže — tajna je i dalje u svakom starom commitu."
+    "explanation": "Brisanje iz zadnje verzije ne pomaže — tajna je i dalje u svakom starom commitu.",
+    "conceptId": "tajna-u-povijesti"
   },
   {
     "id": "sigurnost-321-env",
@@ -1885,7 +1894,8 @@
       "Sprječava rad aplikacije na vlastitoj domeni"
     ],
     "correctIndex": 0,
-    "explanation": "Zvjezdica uz `credentials: true` preglednici odbijaju baš zato. Konkretno porijeklo uz kolačiće znači da svaka stranica može djelovati u ime prijavljenog korisnika."
+    "explanation": "Zvjezdica uz `credentials: true` preglednici odbijaju baš zato. Konkretno porijeklo uz kolačiće znači da svaka stranica može djelovati u ime prijavljenog korisnika.",
+    "conceptId": "cors"
   },
   {
     "id": "sigurnost-331-code-jwt-bez-provjere",
@@ -1901,7 +1911,8 @@
       "Token se ne provjerava protiv popisa opozvanih"
     ],
     "correctIndex": 0,
-    "explanation": "`decode` samo raspakira tekst. Svatko može napisati bilo koji sadržaj — provjeru radi `verify` s tajnom."
+    "explanation": "`decode` samo raspakira tekst. Svatko može napisati bilo koji sadržaj — provjeru radi `verify` s tajnom.",
+    "conceptId": "jwt-token"
   },
   {
     "id": "sigurnost-332-code-bcrypt-cost",
@@ -1933,6 +1944,7 @@
       "Aplikacija neće raditi na drugom računalu"
     ],
     "correctIndex": 0,
-    "explanation": "Brisanje datoteke ne pomaže — ključ ostaje u svakom starom commitu. Jedini pravi odgovor je zamijeniti ključ."
+    "explanation": "Brisanje datoteke ne pomaže — ključ ostaje u svakom starom commitu. Jedini pravi odgovor je zamijeniti ključ.",
+    "conceptId": "tajna-u-povijesti"
   }
 ]

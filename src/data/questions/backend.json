@@ -184,7 +184,8 @@
     "correctIndex": 0,
     "explanation": "Ako jedan korak ne uspije, cijela se transakcija poništava. Primjerice, prijenos novca ne smije teretiti jedan račun bez odobravanja drugoga.",
     "difficulty": "easy",
-    "unitId": "baze-podataka"
+    "unitId": "baze-podataka",
+    "conceptId": "transakcija-atomarnost"
   },
   {
     "id": "backend-030-structured-logging",
@@ -447,7 +448,8 @@
     "correctIndex": 0,
     "explanation": "Statelessness olakšava skaliranje (bilo koji server instance može obraditi bilo koji zahtjev) jer server ne mora dijeliti session stanje - autentikacija se npr. rješava tokenom koji klijent šalje sa svakim zahtjevom.",
     "difficulty": "medium",
-    "unitId": "arhitektura"
+    "unitId": "arhitektura",
+    "conceptId": "stateless"
   },
   {
     "id": "backend-007-middleware",
@@ -492,7 +494,8 @@
     "correctIndex": 0,
     "explanation": "Cache ubrzava sustav izbjegavanjem ponovnog računanja/dohvaćanja istih podataka, ali unosi izazov: ako se izvorni podatak promijeni, stara verzija u cacheu mora se osvježiti ili ukloniti - poznato kao jedan od 'dva najteža problema u informatici'.",
     "difficulty": "medium",
-    "unitId": "kesiranje-skaliranje"
+    "unitId": "kesiranje-skaliranje",
+    "conceptId": "cache-invalidacija"
   },
   {
     "id": "backend-012-idempotency",
@@ -569,7 +572,8 @@
     "correctIndex": 0,
     "explanation": "Bez odgovarajućih CORS zaglavlja (npr. Access-Control-Allow-Origin) preglednik će blokirati JavaScript kod jedne domene da čita odgovor s druge domene, radi zaštite korisnika od zlonamjernih cross-origin zahtjeva.",
     "difficulty": "medium",
-    "unitId": "http-api"
+    "unitId": "http-api",
+    "conceptId": "cors"
   },
   {
     "id": "backend-017-jwt-token-auth",
@@ -584,7 +588,8 @@
     "correctIndex": 0,
     "explanation": "JWT se sastoji od headera, payloada i potpisa - budući da je potpisan (ne nužno enkriptiran), server može provjeriti njegovu autentičnost bez pristupa bazi, što odgovara stateless arhitekturi.",
     "difficulty": "medium",
-    "unitId": "autentikacija-sigurnost"
+    "unitId": "autentikacija-sigurnost",
+    "conceptId": "jwt-token"
   },
   {
     "id": "backend-018-message-queue",
@@ -660,7 +665,8 @@
     "correctIndex": 0,
     "explanation": "Single-flight ili kratka brava sprječava paralelno računanje iste vrijednosti, a nasumično odstupanje isteka i posluživanje kratko zastarjele vrijednosti smanjuju nagli val prema izvoru.",
     "difficulty": "medium",
-    "unitId": "kesiranje-skaliranje"
+    "unitId": "kesiranje-skaliranje",
+    "conceptId": "cache-stampede"
   },
   {
     "id": "backend-037-payment-idempotency-key",
@@ -892,7 +898,8 @@
       3
     ],
     "explanation": "JWT je potpisan (integritet), ali payload svatko može dekodirati - nikad ne stavljaj tajne u njega. Glavna prednost je što server NE mora čuvati stanje, ali zato opoziv prije isteka traži dodatan mehanizam (blacklist, kratki TTL + refresh).",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "jwt-token"
   },
   {
     "id": "backend-009-race-condition",
@@ -1533,7 +1540,8 @@
       2
     ],
     "explanation": "Ispravan potpis nije dovoljan ako token nije namijenjen tom servisu, dolazi od pogrešnog izdavatelja ili je istekao.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "jwt-token"
   },
   {
     "id": "backend-110-multi-retry-safety",
@@ -1819,7 +1827,8 @@
       "Cache se briše ručno, izvan sata najvećeg prometa"
     ],
     "correctIndex": 0,
-    "explanation": "Zove se cache stampede. Uz bravu ide i raspršivanje isteka, da ključevi ne istječu svi u istoj sekundi."
+    "explanation": "Zove se cache stampede. Uz bravu ide i raspršivanje isteka, da ključevi ne istječu svi u istoj sekundi.",
+    "conceptId": "cache-stampede"
   },
   {
     "id": "backend-915-graceful-shutdown",
@@ -2028,7 +2037,8 @@
       "Da se poziv automatski ponovi nakon isteka"
     ],
     "correctIndex": 0,
-    "explanation": "Bez timeouta jedan zaglavljen servis zaustavi lanac servisa iznad sebe."
+    "explanation": "Bez timeouta jedan zaglavljen servis zaustavi lanac servisa iznad sebe.",
+    "conceptId": "timeout-udaljeni-poziv"
   },
   {
     "id": "backend-933-ponovni-pokusaj",
@@ -2043,7 +2053,8 @@
       "Kad je greška došla od mreže, a ne od servisa"
     ],
     "correctIndex": 0,
-    "explanation": "To je idempotentnost. Ponovljena naplata bez nje znači dvostruko terećenje."
+    "explanation": "To je idempotentnost. Ponovljena naplata bez nje znači dvostruko terećenje.",
+    "conceptId": "idempotentnost"
   },
   {
     "id": "backend-934-otpornost-sto",

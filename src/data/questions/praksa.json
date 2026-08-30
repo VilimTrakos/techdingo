@@ -1234,7 +1234,8 @@
       "Usporiti unos promjena u glavnu granu"
     ],
     "correctIndex": 0,
-    "explanation": "Uz to se i znanje o kodu širi timom — često vrjednije od samih nađenih grešaka."
+    "explanation": "Uz to se i znanje o kodu širi timom — često vrjednije od samih nađenih grešaka.",
+    "conceptId": "svrha-code-reviewa"
   },
   {
     "id": "praksa-303-review-velicina",
@@ -1264,7 +1265,8 @@
       "Uz usporedbu s time kako bi ti to napisao"
     ],
     "correctIndex": 0,
-    "explanation": "\"Ovo pukne ako je popis prazan\" pomaže. \"Ovo nije dobro\" ne pomaže nikome."
+    "explanation": "\"Ovo pukne ako je popis prazan\" pomaže. \"Ovo nije dobro\" ne pomaže nikome.",
+    "conceptId": "dobar-code-review"
   },
   {
     "id": "praksa-305-readme",
@@ -1309,7 +1311,8 @@
       "Označava koliko je grešaka popravljeno od zadnjeg"
     ],
     "correctIndex": 0,
-    "explanation": "U semantičkom verzioniranju prvi broj upozorava da nešto više neće raditi kao prije."
+    "explanation": "U semantičkom verzioniranju prvi broj upozorava da nešto više neće raditi kao prije.",
+    "conceptId": "semanticko-verzioniranje"
   },
   {
     "id": "praksa-308-changelog",
@@ -1478,7 +1481,8 @@
       "Samo popravke, dakle 4.17.x"
     ],
     "correctIndex": 0,
-    "explanation": "Kapica dopušta manje i zakrpe, ali ne glavnu verziju — jer glavna smije rušiti kompatibilnost."
+    "explanation": "Kapica dopušta manje i zakrpe, ali ne glavnu verziju — jer glavna smije rušiti kompatibilnost.",
+    "conceptId": "semanticko-verzioniranje"
   },
   {
     "id": "praksa-334-code-changelog",
@@ -1548,6 +1552,7 @@
       "Onaj koji pita je li autor razmišljao o tome"
     ],
     "correctIndex": 0,
-    "explanation": "Konkretan protuprimjer autor može odmah provjeriti. Općenita primjedba traži još jedan krug razgovora."
+    "explanation": "Konkretan protuprimjer autor može odmah provjeriti. Općenita primjedba traži još jedan krug razgovora.",
+    "conceptId": "dobar-code-review"
   }
 ]

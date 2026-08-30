@@ -191,7 +191,8 @@
     ],
     "correctIndex": 0,
     "explanation": "Dosežljivost, ne starost. Zato jedna zaboravljena referenca u globalnom popisu drži cijeli graf objekata na životu.",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "conceptId": "sakupljac-smeca"
   },
   {
     "id": "jezici-011-leak-gc",
@@ -322,7 +323,8 @@
       "Oslobodi memoriju koju su zauzimali"
     ],
     "explanation": "Poznato kao mark and sweep. Ključno je da se polazi od korijena, a ne od objekata - zato zaboravljena globalna referenca drži sve.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "conceptId": "sakupljac-smeca"
   },
   {
     "id": "jezici-uvod-reference",
@@ -1468,7 +1470,8 @@
       "Zbija podatke da zauzmu manje prostora na disku"
     ],
     "correctIndex": 0,
-    "explanation": "Ključna je dohvatljivost: ako do vrijednosti ne vodi nijedna referenca, program je više ne može upotrijebiti."
+    "explanation": "Ključna je dohvatljivost: ako do vrijednosti ne vodi nijedna referenca, program je više ne može upotrijebiti.",
+    "conceptId": "sakupljac-smeca"
   },
   {
     "id": "jezici-306-kopija",

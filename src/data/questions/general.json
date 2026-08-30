@@ -570,7 +570,8 @@
     "correctIndex": 2,
     "explanation": "Cache je kopija čija se svježina mora uskladiti s izvorom istine. TTL ograničava trajanje zastarjelosti, a obrasci poput cache-aside zahtijevaju pažljivo ažuriranje ili uklanjanje zapisa nakon promjene.",
     "difficulty": "medium",
-    "unitId": "sustavi-koncepti"
+    "unitId": "sustavi-koncepti",
+    "conceptId": "cache-invalidacija"
   },
   {
     "id": "general-042-process-vs-thread",
