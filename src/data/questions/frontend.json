@@ -2349,5 +2349,170 @@
       "aria-hidden"
     ],
     "explanation": "Vrijednosti for i id povezuju oznaku s kontrolom, povećavaju klikabilno područje i daju polju pristupačno ime. U React JSX-u svojstvo se piše htmlFor."
+  },
+  {
+    "id": "frontend-930-callback",
+    "topic": "frontend",
+    "unitId": "asinkroni-js",
+    "difficulty": "easy",
+    "question": "Što je callback funkcija?",
+    "options": [
+      "Funkcija koju predaš da se pozove kasnije",
+      "Funkcija koja poziva samu sebe dok ne stane",
+      "Funkcija koja se izvršava prije svih ostalih",
+      "Funkcija koja vraća vrijednost bez argumenata"
+    ],
+    "correctIndex": 0,
+    "explanation": "Predaješ je nekome tko zna kad je treba pozvati — npr. kad odgovor stigne."
+  },
+  {
+    "id": "frontend-931-promise-stanja",
+    "topic": "frontend",
+    "unitId": "asinkroni-js",
+    "difficulty": "easy",
+    "question": "U kojim stanjima Promise može biti?",
+    "options": [
+      "Na čekanju, ispunjen ili odbijen",
+      "Otvoren, zatvoren ili istekao",
+      "Aktivan, pauziran ili prekinut",
+      "Prazan, popunjen ili obrisan"
+    ],
+    "correctIndex": 0,
+    "explanation": "Iz stanja na čekanju prelazi točno jednom i nakon toga se više ne mijenja."
+  },
+  {
+    "id": "frontend-932-fetch",
+    "topic": "frontend",
+    "unitId": "mreza-sigurnost",
+    "difficulty": "easy",
+    "question": "Čemu služi fetch u pregledniku?",
+    "options": [
+      "Šalje zahtjev poslužitelju i vraća odgovor",
+      "Sprema podatke u memoriju preglednika",
+      "Učitava sliku prije nego korisnik dođe do nje",
+      "Otvara trajnu vezu s poslužiteljem"
+    ],
+    "correctIndex": 0,
+    "explanation": "Vraća Promise — odgovor ne stiže odmah, nego kad mreža obavi svoje."
+  },
+  {
+    "id": "frontend-933-localstorage",
+    "topic": "frontend",
+    "unitId": "mreza-sigurnost",
+    "difficulty": "easy",
+    "question": "Što vrijedi za localStorage?",
+    "options": [
+      "Podaci ostaju i nakon zatvaranja preglednika",
+      "Podaci nestaju pri zatvaranju kartice",
+      "Podaci se šalju poslužitelju uz svaki zahtjev",
+      "Podaci su dostupni i drugim stranicama"
+    ],
+    "correctIndex": 0,
+    "explanation": "Za razliku od kolačića, ne putuje na poslužitelj. I vezan je uz jedno porijeklo."
+  },
+  {
+    "id": "frontend-934-porijeklo",
+    "topic": "frontend",
+    "unitId": "mreza-sigurnost",
+    "difficulty": "easy",
+    "question": "Što čini porijeklo (origin) stranice?",
+    "options": [
+      "Protokol, domena i port zajedno",
+      "Samo naziv domene bez ostalog",
+      "Domena i putanja do stranice",
+      "IP adresa poslužitelja i port"
+    ],
+    "correctIndex": 0,
+    "explanation": "Promjena bilo kojeg od to troje daje drugo porijeklo — i tu nastupa CORS."
+  },
+  {
+    "id": "frontend-935-zasto-brzina",
+    "topic": "frontend",
+    "unitId": "performanse",
+    "difficulty": "easy",
+    "question": "Zašto je brzina učitavanja stranice važna?",
+    "options": [
+      "Korisnici odustaju od stranica koje se dugo učitavaju",
+      "Preglednik odbija prikazati sporu stranicu",
+      "Tražilice ne indeksiraju stranice sporije od sekunde",
+      "Spora stranica troši više memorije uređaja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Mjeri se i utječe na to koliko ljudi uopće dočeka sadržaj."
+  },
+  {
+    "id": "frontend-936-velicina",
+    "topic": "frontend",
+    "unitId": "performanse",
+    "difficulty": "easy",
+    "question": "Što najviše usporava prvo učitavanje na mobilnoj mreži?",
+    "options": [
+      "Količina podataka koju treba preuzeti",
+      "Broj CSS pravila u stilskoj datoteci",
+      "Broj HTML elemenata na stranici",
+      "Duljina imena datoteka koje se preuzimaju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zato se slike optimiziraju, a kod dijeli na dijelove koji se učitaju po potrebi."
+  },
+  {
+    "id": "frontend-937-slika-format",
+    "topic": "frontend",
+    "unitId": "performanse",
+    "difficulty": "easy",
+    "question": "Što najlakše smanjuje težinu stranice s puno slika?",
+    "options": [
+      "Slike prilagođene veličini u kojoj se prikazuju",
+      "Više slika spojenih u jednu datoteku",
+      "Slike učitane tek nakon svih skripti",
+      "Slike smještene na kraj HTML dokumenta"
+    ],
+    "correctIndex": 0,
+    "explanation": "Slika od 4000px prikazana na 400px šalje šesnaest puta više podataka nego treba."
+  },
+  {
+    "id": "frontend-938-tipkovnica",
+    "topic": "frontend",
+    "unitId": "pristupacnost-testiranje",
+    "difficulty": "easy",
+    "question": "Zašto se sučelje mora dati koristiti samo tipkovnicom?",
+    "options": [
+      "Jer dio korisnika ne može koristiti miš",
+      "Jer je tipkovnica brža od miša za sve korisnike",
+      "Jer preglednici postupno ukidaju podršku za miš",
+      "Jer se tako smanjuje broj potrebnih testova"
+    ],
+    "correctIndex": 0,
+    "explanation": "Motoričke poteškoće, čitači ekrana, pokvaren miš — razloga je više nego što se čini."
+  },
+  {
+    "id": "frontend-939-alt",
+    "topic": "frontend",
+    "unitId": "pristupacnost-testiranje",
+    "difficulty": "easy",
+    "question": "Čemu služi alt tekst na slici?",
+    "options": [
+      "Opisuje sliku onima koji je ne vide",
+      "Prikazuje se ispod slike kao opis",
+      "Pomaže pregledniku odabrati veličinu slike",
+      "Sprječava kopiranje slike sa stranice"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ako slika ništa ne znači, alt ostaje prazan — tada je čitač ekrana preskoči."
+  },
+  {
+    "id": "frontend-940-kontrast",
+    "topic": "frontend",
+    "unitId": "pristupacnost-testiranje",
+    "difficulty": "easy",
+    "question": "Zašto je kontrast teksta i podloge važan?",
+    "options": [
+      "Jer preslab kontrast čini tekst nečitljivim",
+      "Jer jak kontrast ubrzava iscrtavanje stranice",
+      "Jer preglednik odbija prikazati slab kontrast",
+      "Jer kontrast utječe na veličinu CSS datoteke"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pogađa i ljude sa slabijim vidom i svakoga tko čita na suncu."
   }
 ]

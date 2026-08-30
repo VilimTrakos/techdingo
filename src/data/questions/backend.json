@@ -1984,5 +1984,110 @@
       "Outbox zapis označi poslanim uz podršku za sigurno ponavljanje"
     ],
     "explanation": "Poslovni podatak i namjera slanja atomarno se spremaju zajedno. Objavljivanje je naknadno i može se ponoviti, pa potrošači trebaju biti idempotentni."
+  },
+  {
+    "id": "backend-930-sloj-uloga",
+    "topic": "backend",
+    "unitId": "arhitektura",
+    "difficulty": "easy",
+    "question": "Zašto se aplikacija dijeli na slojeve?",
+    "options": [
+      "Da se svaki dio može mijenjati zasebno",
+      "Da se kod izvršava brže nego u jednom sloju",
+      "Da svaki sloj radi u vlastitom procesu",
+      "Da se smanji broj datoteka u projektu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sloj za pristup podacima možeš zamijeniti bez diranja poslovne logike."
+  },
+  {
+    "id": "backend-931-api-uloga",
+    "topic": "backend",
+    "unitId": "arhitektura",
+    "difficulty": "easy",
+    "question": "Čemu backend API služi frontendu?",
+    "options": [
+      "Nudi dogovorena mjesta za dohvat i izmjenu podataka",
+      "Sprema datoteke koje frontend ne može držati",
+      "Prikazuje sučelje koje korisnik vidi",
+      "Prevodi JavaScript u oblik razumljiv pregledniku"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ugovor između njih: frontend ne zna kako je backend građen, samo što nudi."
+  },
+  {
+    "id": "backend-932-timeout",
+    "topic": "backend",
+    "unitId": "otpornost-distribuirani",
+    "difficulty": "easy",
+    "question": "Zašto poziv prema drugom servisu mora imati timeout?",
+    "options": [
+      "Da tvoj servis ne čeka beskonačno na odgovor",
+      "Da se poziv izvrši u zadanom vremenu",
+      "Da drugi servis zna koliko ima vremena",
+      "Da se poziv automatski ponovi nakon isteka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez timeouta jedan zaglavljen servis zaustavi lanac servisa iznad sebe."
+  },
+  {
+    "id": "backend-933-ponovni-pokusaj",
+    "topic": "backend",
+    "unitId": "otpornost-distribuirani",
+    "difficulty": "easy",
+    "question": "Kada je sigurno ponoviti neuspjeli zahtjev?",
+    "options": [
+      "Kad ponavljanje ne mijenja ishod",
+      "Kad je prošlo manje od sekunde od prvog",
+      "Kad je zahtjev bio manji od zadane veličine",
+      "Kad je greška došla od mreže, a ne od servisa"
+    ],
+    "correctIndex": 0,
+    "explanation": "To je idempotentnost. Ponovljena naplata bez nje znači dvostruko terećenje."
+  },
+  {
+    "id": "backend-934-otpornost-sto",
+    "topic": "backend",
+    "unitId": "otpornost-distribuirani",
+    "difficulty": "easy",
+    "question": "Što znači da je sustav otporan na kvarove?",
+    "options": [
+      "Nastavi raditi, makar slabije, kad dio zakaže",
+      "Nikad ne doživi kvar nijednog svog dijela",
+      "Automatski se vrati na prethodnu verziju",
+      "Radi jednako brzo bez obzira na opterećenje"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cilj nije spriječiti svaki kvar, nego da kvar jednog dijela ne sruši cjelinu."
+  },
+  {
+    "id": "backend-935-red-zasto",
+    "topic": "backend",
+    "unitId": "poruke-redovi",
+    "difficulty": "easy",
+    "question": "Zašto se posao stavlja u red umjesto da se obavi odmah?",
+    "options": [
+      "Da korisnik ne čeka dok se dugi posao izvrši",
+      "Da se posao izvrši točno jednom",
+      "Da se posao izvrši prije ostalih zahtjeva",
+      "Da se smanji broj poslužitelja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Slanje e-pošte ili obrada slike ne moraju se dogoditi prije nego korisnik dobije odgovor."
+  },
+  {
+    "id": "backend-936-proizvodjac-potrosac",
+    "topic": "backend",
+    "unitId": "poruke-redovi",
+    "difficulty": "easy",
+    "question": "Tko je proizvođač, a tko potrošač poruke?",
+    "options": [
+      "Proizvođač šalje poruku, potrošač je obrađuje",
+      "Proizvođač obrađuje poruku, potrošač je šalje",
+      "Oboje šalju, a broker obrađuje poruke",
+      "Proizvođač je korisnik, potrošač je poslužitelj"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ne moraju raditi istodobno — red ih razdvaja i u vremenu i u brzini."
   }
 ]

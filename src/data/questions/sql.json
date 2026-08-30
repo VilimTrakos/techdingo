@@ -2543,5 +2543,170 @@
     ],
     "correctIndex": 0,
     "explanation": "Uvjet verzije pretvara izgubljeno ažuriranje u vidljiv konflikt. Klijent može ponovno učitati podatke, spojiti izmjene ili obavijestiti korisnika."
+  },
+  {
+    "id": "sql-930-indeks-analogija",
+    "topic": "sql",
+    "unitId": "indeksi-performanse",
+    "difficulty": "easy",
+    "question": "Čemu indeks služi pri pretraživanju tablice?",
+    "options": [
+      "Baza brzo nađe retke bez čitanja cijele tablice",
+      "Baza sprema rezultat upita za sljedeći put",
+      "Baza drži tablicu poredanu po ključu u memoriji",
+      "Baza dijeli tablicu na manje datoteke"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kao kazalo u knjizi: umjesto listanja svake stranice, skočiš na pravu."
+  },
+  {
+    "id": "sql-931-indeks-gdje",
+    "topic": "sql",
+    "unitId": "indeksi-performanse",
+    "difficulty": "easy",
+    "question": "Nad kojim stupcem indeks obično najviše pomaže?",
+    "options": [
+      "Nad onim po kojem se često filtrira ili spaja",
+      "Nad onim koji ima najviše različitih vrijednosti",
+      "Nad onim koji se najčešće mijenja",
+      "Nad onim koji je najveći po duljini teksta"
+    ],
+    "correctIndex": 0,
+    "explanation": "WHERE i JOIN su mjesta gdje baza traži. Stupac koji se samo ispisuje ne treba indeks."
+  },
+  {
+    "id": "sql-932-indeks-cijena",
+    "topic": "sql",
+    "unitId": "indeksi-performanse",
+    "difficulty": "easy",
+    "question": "Zašto se ne stavi indeks na svaki stupac?",
+    "options": [
+      "Jer svaki indeks usporava upise i troši prostor",
+      "Jer baza dopušta najviše pet indeksa po tablici",
+      "Jer indeksi zastare i treba ih ručno obnavljati",
+      "Jer bi upiti tada postali nepredvidivi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Svaki INSERT, UPDATE i DELETE mora osvježiti svaki indeks nad tom tablicom."
+  },
+  {
+    "id": "sql-933-podupit-gdje",
+    "topic": "sql",
+    "unitId": "podupiti-pogledi",
+    "difficulty": "easy",
+    "question": "Gdje se podupit najčešće pojavljuje?",
+    "options": [
+      "U WHERE klauzuli, kao izvor vrijednosti za usporedbu",
+      "Isključivo na samom kraju upita, iza ORDER BY",
+      "Umjesto imena tablice u naredbi INSERT",
+      "U definiciji stupca pri stvaranju tablice"
+    ],
+    "correctIndex": 0,
+    "explanation": "Može i u FROM i u SELECT listi, ali WHERE je najčešće mjesto."
+  },
+  {
+    "id": "sql-934-pogled-sto",
+    "topic": "sql",
+    "unitId": "podupiti-pogledi",
+    "difficulty": "easy",
+    "question": "Što je pogled (view)?",
+    "options": [
+      "Spremljeni upit koji se koristi kao tablica",
+      "Kopija tablice osvježena jednom dnevno",
+      "Popis prava pristupa nad tablicom",
+      "Privremena tablica koja nestaje nakon upita"
+    ],
+    "correctIndex": 0,
+    "explanation": "Obični pogled ne drži podatke — izvršava se svaki put kad ga pozoveš."
+  },
+  {
+    "id": "sql-935-cte-sto",
+    "topic": "sql",
+    "unitId": "podupiti-pogledi",
+    "difficulty": "easy",
+    "question": "Čemu služi WITH na početku upita?",
+    "options": [
+      "Imenuje međurezultat da se upit lakše čita",
+      "Zaključava tablice do kraja upita",
+      "Postavlja razinu izolacije za taj upit",
+      "Ograničava broj redaka koje upit smije vratiti"
+    ],
+    "correctIndex": 0,
+    "explanation": "CTE ne mora biti brži — glavna korist je da složen upit postane čitljiv."
+  },
+  {
+    "id": "sql-936-ovlasti-app",
+    "topic": "sql",
+    "unitId": "sigurnost",
+    "difficulty": "easy",
+    "question": "Koja prava treba račun baze koji koristi web aplikacija?",
+    "options": [
+      "Samo ona koja aplikacija stvarno koristi",
+      "Sva prava, da nikad ne zapne na dozvoli",
+      "Prava čitanja nad svime, upis samo uz potvrdu",
+      "Ista prava kao i administrator, ali bez brisanja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kad aplikacija bude probijena, napadač dobiva točno ta prava i ništa više."
+  },
+  {
+    "id": "sql-937-backup",
+    "topic": "sql",
+    "unitId": "sigurnost",
+    "difficulty": "easy",
+    "question": "Zašto se sigurnosna kopija baze povremeno vraća na test?",
+    "options": [
+      "Jer kopija koja se nikad ne vraća možda ne radi",
+      "Jer se time oslobađa prostor na disku",
+      "Jer baza inače odbije stvoriti novu kopiju",
+      "Jer se time provjerava brzina diska"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nevraćena kopija je samo nada. Provjera vraćanja je jedini dokaz da radi."
+  },
+  {
+    "id": "sql-938-transakcija-zasto",
+    "topic": "sql",
+    "unitId": "transakcije",
+    "difficulty": "easy",
+    "question": "Zašto se prijenos novca s računa na račun radi u transakciji?",
+    "options": [
+      "Da se ne dogodi da jedna strana prođe, a druga ne",
+      "Da se prijenos izvrši brže nego u dva upita",
+      "Da se iznos zaokruži na dvije decimale",
+      "Da se prijenos zabilježi u zapisniku promjena"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez transakcije novac može nestati s jednog računa a ne pojaviti se na drugom."
+  },
+  {
+    "id": "sql-939-commit-rollback",
+    "topic": "sql",
+    "unitId": "transakcije",
+    "difficulty": "easy",
+    "question": "Što se dogodi s izmjenama nakon ROLLBACK-a?",
+    "options": [
+      "Poništavaju se kao da ih nikad nije bilo",
+      "Spremaju se, ali označene kao neispravne",
+      "Ostaju vidljive samo toj vezi do odjave",
+      "Prebacuju se u sljedeću transakciju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sve ili ništa. To je atomarnost, prvo slovo u ACID-u."
+  },
+  {
+    "id": "sql-940-transakcija-kratka",
+    "topic": "sql",
+    "unitId": "transakcije",
+    "difficulty": "easy",
+    "question": "Zašto transakcija treba biti što kraća?",
+    "options": [
+      "Jer dok traje drži resurse i blokira druge",
+      "Jer baza prekida transakcije dulje od minute",
+      "Jer duga transakcija troši više prostora na disku",
+      "Jer se dugi upiti ne mogu poništiti"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zato se čekanje na korisnika ili vanjski servis nikad ne stavlja unutar transakcije."
   }
 ]
