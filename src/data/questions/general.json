@@ -1375,5 +1375,110 @@
       2
     ],
     "explanation": "Zadnje dvije nisu točne — cijena nasljeđivanja je razumljivost i vezanost, ne memorija."
+  },
+  {
+    "id": "general-914-multi-lru-cache",
+    "topic": "general",
+    "unitId": "strukture-podataka",
+    "difficulty": "hard",
+    "kind": "multi",
+    "question": "Koje tvrdnje opisuju tipičnu implementaciju LRU cachea s O(1) dohvatom i izbacivanjem?",
+    "options": [
+      "Hash mapa pronalazi čvor prema ključu u očekivanom O(1) vremenu",
+      "Dvostruko povezana lista održava redoslijed nedavne uporabe",
+      "Najmanje nedavno korišten čvor izbacuje se s jednog kraja liste",
+      "Sortirano polje pomiče sve elemente nakon svakog čitanja u O(1) vremenu",
+      "Binarno stablo pretraživanja samo po sebi pamti vrijeme zadnjeg pristupa"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Mapa daje izravan pristup čvoru, a dvostruko povezana lista omogućuje njegovo O(1) uklanjanje i premještanje na kraj koji označava najnoviju uporabu."
+  },
+  {
+    "id": "general-915-order-bfs-queue",
+    "topic": "general",
+    "unitId": "strukture-podataka",
+    "difficulty": "medium",
+    "kind": "order",
+    "question": "Poredaj osnovne korake BFS obilaska grafa pomoću reda.",
+    "steps": [
+      "Označi početni vrh posjećenim i dodaj ga u red",
+      "Ukloni vrh s početka reda",
+      "Obradi uklonjeni vrh",
+      "Svaki neposjećeni susjed označi posjećenim i dodaj na kraj reda",
+      "Ponavljaj dok red ne ostane prazan"
+    ],
+    "explanation": "Označavanje pri dodavanju u red sprječava da se isti vrh u cikličkom grafu doda više puta. FIFO red zatim daje obilazak po udaljenosti od početka."
+  },
+  {
+    "id": "general-916-code-path-compression",
+    "topic": "general",
+    "unitId": "strukture-podataka",
+    "difficulty": "hard",
+    "question": "Što dodatna dodjela u ovoj implementaciji funkcije find postiže?",
+    "code": "function find(x) {\n  if (parent[x] !== x) {\n    parent[x] = find(parent[x]);\n  }\n  return parent[x];\n}",
+    "options": [
+      "Sve posjećene čvorove izravnije povezuje s korijenom i ubrzava buduće upite",
+      "Spaja dvije različite komponente bez pozivanja operacije union nad korijenima",
+      "Sortira elemente komponente prema njihovoj brojčanoj vrijednosti tijekom pretrage",
+      "Jamči konstantno najgore vrijeme svakog pojedinog poziva bez drugih optimizacija"
+    ],
+    "correctIndex": 0,
+    "explanation": "To je path compression: nakon pronalaska korijena skraćuje put svim čvorovima kroz koje je rekurzija prošla. Uz union by rank ili size daje gotovo konstantno amortizirano vrijeme."
+  },
+  {
+    "id": "general-917-binary-search-invariant",
+    "topic": "general",
+    "unitId": "algoritmi",
+    "difficulty": "hard",
+    "question": "Koji invariant najviše pomaže izbjeći off-by-one greške u binarnom pretraživanju?",
+    "options": [
+      "Definirati jesu li granice uključive i gdje se odgovor još može nalaziti",
+      "Uvijek izračunati sredinu dijeljenjem duljine cijelog polja s dva",
+      "Nakon svake usporedbe smanjiti obje granice za točno jedan element",
+      "Prekinuti petlju čim lijeva granica postane strogo manja od desne"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ispravnost dolazi iz dosljednog intervala, primjerice [lo, hi) ili [lo, hi]. Uvjet petlje i pomaci granica moraju slijediti tu definiciju."
+  },
+  {
+    "id": "general-918-multi-dijkstra-limits",
+    "topic": "general",
+    "unitId": "algoritmi",
+    "difficulty": "hard",
+    "kind": "multi",
+    "question": "Koje tvrdnje vrijede za Dijkstrin algoritam?",
+    "options": [
+      "Traži najkraće putove iz jednog izvora",
+      "Ne daje općenito ispravan rezultat uz negativne težine bridova",
+      "Prioritetni red učinkovito bira sljedeći vrh najmanje poznate udaljenosti",
+      "Zahtijeva da graf bude usmjeren i bez ciklusa",
+      "Uvijek radi u O(V) vremenu bez obzira na prikaz grafa"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Nenegativne težine opravdavaju konačno prihvaćanje najmanje udaljenosti. Graf smije biti usmjeren ili neusmjeren i smije sadržavati cikluse."
+  },
+  {
+    "id": "general-919-order-topological-sort",
+    "topic": "general",
+    "unitId": "algoritmi",
+    "difficulty": "medium",
+    "kind": "order",
+    "question": "Poredaj Kahnov postupak topološkog sortiranja.",
+    "steps": [
+      "Izračunaj ulazni stupanj svakog vrha",
+      "U red dodaj sve vrhove ulaznog stupnja nula",
+      "Ukloni jedan vrh iz reda i dodaj ga rezultatu",
+      "Smanji ulazni stupanj njegovim izlaznim susjedima",
+      "Ako rezultat nema sve vrhove, graf sadrži ciklus"
+    ],
+    "explanation": "Vrh bez ulaznih bridova može doći sljedeći. Ako proces zapne prije obrade svih vrhova, preostali dio grafa sadrži ciklus."
   }
 ]

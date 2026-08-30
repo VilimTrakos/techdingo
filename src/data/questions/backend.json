@@ -1932,5 +1932,57 @@
       "Obriši stari stupac"
     ],
     "explanation": "Expand-contract: shema neko vrijeme podržava i staru i novu verziju aplikacije, pa nijedan deploy ne mora biti trenutačan."
+  },
+  {
+    "id": "backend-921-high-cardinality-metric",
+    "topic": "backend",
+    "unitId": "observability",
+    "difficulty": "hard",
+    "question": "Zašto je user_id obično loša oznaka (label) na Prometheus metrici?",
+    "options": [
+      "Stvara vrlo mnogo vremenskih serija i povećava memorijski i upitni trošak",
+      "Prometheus labels prihvaćaju samo brojeve, a user_id je najčešće tekst",
+      "Oznaka automatski anonimizira korisnika pa se kvar više ne može istražiti",
+      "Svaka oznaka prisiljava servis da metricu šalje isključivo jednom dnevno"
+    ],
+    "correctIndex": 0,
+    "explanation": "Metrike vole mali, ograničen skup dimenzija poput metode i statusa. Identifikatori zahtjeva ili korisnika prikladniji su za logove i traceove."
+  },
+  {
+    "id": "backend-922-multi-trace-context",
+    "topic": "backend",
+    "unitId": "observability",
+    "difficulty": "medium",
+    "kind": "multi",
+    "question": "Što omogućuje propagacija trace konteksta kroz više servisa?",
+    "options": [
+      "Povezivanje spanova istog zahtjeva u jedan distribuirani trace",
+      "Mjerenje gdje je zahtjev proveo vrijeme",
+      "Povezivanje relevantnih logova s istim trace identifikatorom",
+      "Automatsko ispravljanje svakog neuspjelog mrežnog poziva",
+      "Trajno uklanjanje potrebe za metrikama i zdravstvenim provjerama"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Trace kontekst daje uzročnu vezu kroz granice servisa. Ne popravlja kvarove i nadopunjuje, a ne zamjenjuje, logove i metrike."
+  },
+  {
+    "id": "backend-923-order-message-outbox",
+    "topic": "backend",
+    "unitId": "poruke-redovi",
+    "difficulty": "hard",
+    "kind": "order",
+    "question": "Poredaj osnovni tijek transactional outbox obrasca.",
+    "steps": [
+      "U istoj transakciji spremi poslovnu promjenu i outbox zapis",
+      "Potvrdi transakciju u bazi",
+      "Pozadinski publisher pročita neposlane outbox zapise",
+      "Publisher objavi poruku brokeru",
+      "Outbox zapis označi poslanim uz podršku za sigurno ponavljanje"
+    ],
+    "explanation": "Poslovni podatak i namjera slanja atomarno se spremaju zajedno. Objavljivanje je naknadno i može se ponoviti, pa potrošači trebaju biti idempotentni."
   }
 ]

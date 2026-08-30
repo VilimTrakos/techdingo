@@ -2431,5 +2431,114 @@
     ],
     "correctIndex": 0,
     "explanation": "Praktična posljedica: uz USING pišeš korisnik_id bez prefiksa tablice, jer postoji samo jedan."
+  },
+  {
+    "id": "sql-924-not-in-null",
+    "topic": "sql",
+    "unitId": "podupiti-pogledi",
+    "difficulty": "hard",
+    "question": "Zašto ovaj upit može vratiti nula redaka iako postoje korisnici koji nisu blokirani?",
+    "code": "SELECT id\nFROM korisnici\nWHERE id NOT IN (SELECT korisnik_id FROM blokade);",
+    "options": [
+      "Podupit može vratiti NULL, pa usporedbe preko NOT IN postaju UNKNOWN",
+      "NOT IN radi samo s tekstualnim stupcima, a id je obično brojčani stupac",
+      "Podupit bez ORDER BY uvijek vraća prazan skup unutar WHERE klauzule",
+      "Vanjski SELECT mora ponoviti tablicu blokade u zasebnom INNER JOIN-u"
+    ],
+    "correctIndex": 0,
+    "explanation": "Jedan NULL u skupu čini izraz id NOT IN (...) nepoznatim za svaki nepodudarni id. Čest sigurniji oblik je korelirani NOT EXISTS ili isključivanje NULL vrijednosti u podupitu."
+  },
+  {
+    "id": "sql-925-fill-correlated-exists",
+    "topic": "sql",
+    "unitId": "podupiti-pogledi",
+    "difficulty": "medium",
+    "kind": "fill",
+    "conceptId": "sql-correlated-subquery",
+    "question": "Dopuni korelirani podupit koji vraća korisnike s barem jednom narudžbom.",
+    "text": "SELECT * FROM korisnici k WHERE ___ (SELECT 1 FROM narudzbe n WHERE n.korisnik_id = ___);",
+    "answers": [
+      "EXISTS",
+      "k.id"
+    ],
+    "distractors": [
+      "IN",
+      "n.id",
+      "COUNT"
+    ],
+    "explanation": "EXISTS provjerava postoji li podudarni redak, a k.id povezuje unutarnji upit s trenutačnim retkom vanjskog upita."
+  },
+  {
+    "id": "sql-926-multi-view-tradeoffs",
+    "topic": "sql",
+    "unitId": "podupiti-pogledi",
+    "difficulty": "medium",
+    "kind": "multi",
+    "question": "Koje su razumne primjene običnog SQL pogleda (viewa)?",
+    "options": [
+      "Sakriti složen JOIN iza jednostavnijeg sučelja za čitanje",
+      "Izložiti samo dopuštene stupce određenoj skupini korisnika",
+      "Centralizirati često ponavljanu logiku upita pod jednim imenom",
+      "Jamčiti da je rezultat fizički spremljen i uvijek brži od izvornog upita",
+      "Automatski sačuvati stare retke nakon njihova brisanja iz osnovnih tablica"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Obični pogled je imenovani upit i može pojednostavniti pristup ili ograničiti izložene stupce. Ne sprema nužno rezultat niti sam stvara povijest podataka."
+  },
+  {
+    "id": "sql-927-dynamic-order-by",
+    "topic": "sql",
+    "unitId": "sigurnost",
+    "difficulty": "hard",
+    "question": "API dopušta korisniku izbor stupca za ORDER BY. Zašto običan bind parametar nije dovoljan i što treba učiniti?",
+    "options": [
+      "Parametri predstavljaju vrijednosti, ne SQL identifikatore; naziv stupca treba mapirati kroz allowlist",
+      "Parametri rade samo u SELECT listi; naziv stupca treba pretvoriti u broj prije umetanja",
+      "ORDER BY se ne može zaštititi; sortiranje uvijek treba premjestiti u klijentsku aplikaciju",
+      "Dovoljno je ukloniti razmake iz naziva stupca jer injekcija bez razmaka nije moguća"
+    ],
+    "correctIndex": 0,
+    "explanation": "Strukturni dijelovi upita poput imena stupca ne mogu se vezati kao vrijednosti. Vanjski izbor mapira se na mali skup unaprijed dopuštenih SQL fragmenata."
+  },
+  {
+    "id": "sql-928-multi-least-privilege",
+    "topic": "sql",
+    "unitId": "sigurnost",
+    "difficulty": "medium",
+    "kind": "multi",
+    "question": "Koje mjere provode načelo najmanjih ovlasti za račun aplikacije?",
+    "options": [
+      "Dopustiti samo naredbe i tablice koje aplikacija stvarno treba",
+      "Odvojiti račun za migracije od računa koji služi web zahtjeve",
+      "Ograničiti pristup osjetljivim stupcima pogledom ili eksplicitnim ovlastima",
+      "Dodijeliti vlasništvo nad cijelom bazom radi jednostavnijeg deploya",
+      "Koristiti isti administratorski račun za razvoj i produkciju"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Ako aplikacija bude kompromitirana, uske ovlasti ograničavaju štetu. Migracije često trebaju DDL prava koja runtime račun ne treba."
+  },
+  {
+    "id": "sql-929-optimistic-lock-update",
+    "topic": "sql",
+    "unitId": "izmjene-podataka",
+    "difficulty": "hard",
+    "question": "Što znači rezultat affected_rows = 0 u ovom optimističkom ažuriranju?",
+    "code": "UPDATE dokumenti\nSET sadrzaj = :novi, verzija = verzija + 1\nWHERE id = :id AND verzija = :procitana_verzija;",
+    "options": [
+      "Redak je u međuvremenu promijenjen ili više ne postoji pa klijent mora razriješiti konflikt",
+      "Baza je uspješno spremila sadržaj, ali brojač verzije nije mogla povećati",
+      "UPDATE bez RETURNING uvijek prijavljuje nula promijenjenih redaka",
+      "Parametar procitana_verzija automatski se ažurirao na novu vrijednost prije usporedbe"
+    ],
+    "correctIndex": 0,
+    "explanation": "Uvjet verzije pretvara izgubljeno ažuriranje u vidljiv konflikt. Klijent može ponovno učitati podatke, spojiti izmjene ili obavijestiti korisnika."
   }
 ]
