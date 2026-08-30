@@ -173,6 +173,33 @@ describe('LessonPage', () => {
     expect(screen.queryByRole('group', { name: /Ponuđeni odgovori/ })).not.toBeInTheDocument();
   });
 
+  it('zadnje pitanje nudi gumb koji zaključuje lekciju', async () => {
+    // Gumb za nastavak mijenja natpis na zadnjem pitanju. Ako se to pokvari,
+    // lekcija se ne može dovršiti: XP se ne dodjeljuje, cjelina ne prolazi i
+    // sljedeća se ne otključava - a igrač vidi samo pitanje bez izlaza.
+    seedProgress(5);
+    const { user } = await renderLesson();
+    await screen.findByRole('heading', { level: 1 });
+
+    let zadnji = false;
+    for (let i = 0; i < 40 && !zadnji; i++) {
+      const nastavi = screen.queryByRole('button', { name: /Nastavi|Prikaži rezultat/ });
+      if (nastavi) {
+        zadnji = /Prikaži rezultat/.test(nastavi.textContent ?? '');
+        if (zadnji) break;
+        await user.click(nastavi);
+        continue;
+      }
+      await answerCurrent(user, true);
+    }
+
+    expect(zadnji, 'nijedno pitanje nije ponudilo "Prikaži rezultat"').toBe(true);
+    await user.click(screen.getByRole('button', { name: /Prikaži rezultat/ }));
+    expect(await screen.findByText(/Lekcija završena/i)).toBeInTheDocument();
+    expect(storedHearts()).toBe(5);
+    // Prolazak kroz cijelo sjedenje od 8-10 pitanja ne stane u zadanih 5 s.
+  }, 30000);
+
   it('nepoznata tema daje poruku, ne prazan ekran', async () => {
     seedProgress(5);
     await renderLesson('/lesson/ne-postoji/neka-cjelina');
