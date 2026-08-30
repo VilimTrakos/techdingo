@@ -51,6 +51,17 @@ function lengthTellRatio(options: string[], correctIndex: number): number | null
 }
 
 /**
+ * Pitanje koje se poziva na prikazani isječak, a nema `code`, doslovno je
+ * neodgovorivo - igrač čita "iz ovog odgovora" i nema što gledati.
+ *
+ * Nastalo iz stvarne greške: tri `multi` pitanja bila su napisana uz isječak,
+ * ali je pomoćnik kojim su generirana ispuštao polje `code`, pa su objavljena
+ * bez njega. Nijedna druga provjera to nije uhvatila.
+ */
+const REFERENCIRA_ISJECAK =
+  /\bov(aj|og|om|akav|akvo|akva|e|ih) (kod|ispis|odgovor|zahtjev|upit|zaglavlj|definicij|postavk|isječ|skript|naredb)|u ovom kodu|prikazan\w* (kod|isječ)/i;
+
+/**
  * `npm run validate:questions -- --list-length-tells` ispisuje SVAKO pitanje
  * kod kojeg duljina odaje odgovor, najgore prvo - radna lista za prepravak
  * netočnih opcija.
@@ -115,6 +126,12 @@ function main(): void {
         }
       }
       if (q.kind && q.kind !== 'single') richKindTotal++;
+      if (!q.code && REFERENCIRA_ISJECAK.test(q.question)) {
+        errors.push(
+          `Pitanje "${q.id}" se poziva na prikazani isječak ("${q.question.slice(0, 60)}…"), ` +
+            `ali nema polje "code" - igraču nema što gledati.`,
+        );
+      }
       if (q.conceptId) {
         const entry = conceptQuestions.get(q.conceptId) ?? { kinds: new Set<string>(), count: 0 };
         entry.kinds.add(q.kind ?? 'single');

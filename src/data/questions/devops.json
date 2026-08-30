@@ -1686,5 +1686,101 @@
     ],
     "correctIndex": 0,
     "explanation": "Bez nje promet ide i u instancu koja se još pokreće ili je zapela."
+  },
+  {
+    "id": "devops-330-code-compose-health",
+    "topic": "devops",
+    "unitId": "kontejneri",
+    "difficulty": "medium",
+    "question": "Čemu služi `healthcheck` u ovoj definiciji?",
+    "code": "services:\n  api:\n    image: primjer/api:1.4\n    healthcheck:\n      test: [\"CMD\", \"curl\", \"-f\", \"http://localhost:3000/zdrav\"]\n      interval: 30s\n      retries: 3",
+    "options": [
+      "Orkestrator zna kad je servis spreman primati promet",
+      "Kontejner se ponovno pokreće svakih trideset sekundi",
+      "Aplikacija se prevede prije nego kontejner krene",
+      "Log se zapisuje svaki put kad servis odgovori"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez toga se promet šalje i kontejneru koji je pokrenut ali se još diže — korisnik dobiva greške."
+  },
+  {
+    "id": "devops-331-code-crashloop",
+    "topic": "devops",
+    "unitId": "orkestracija",
+    "difficulty": "hard",
+    "question": "Što ovaj ispis govori?",
+    "code": "$ kubectl get pods\nNAME             READY   STATUS             RESTARTS   AGE\napi-7d9f-2xk4    0/1     CrashLoopBackOff   5          3m",
+    "options": [
+      "Kontejner se pokreće, odmah pada i pokušava opet",
+      "Kontejner čeka da se oslobodi mjesto na čvoru",
+      "Slika kontejnera se ne može preuzeti iz registra",
+      "Provjera zdravlja nije definirana pa se pod ne pokreće"
+    ],
+    "correctIndex": 0,
+    "explanation": "CrashLoopBackOff znači da proces izlazi ubrzo nakon pokretanja. Uzrok se traži u `kubectl logs --previous`."
+  },
+  {
+    "id": "devops-332-code-actions-cache",
+    "topic": "devops",
+    "unitId": "ci-cd",
+    "difficulty": "medium",
+    "question": "Što ovaj korak postiže?",
+    "code": "- uses: actions/cache@v4\n  with:\n    path: ~/.npm\n    key: npm-${{ hashFiles('package-lock.json') }}",
+    "options": [
+      "Ovisnosti se ne preuzimaju ponovno kad se nisu promijenile",
+      "Testovi se pokreću samo ako se datoteka promijenila",
+      "Rezultat builda se dijeli s drugim projektima",
+      "Instalacija se preskače ako je prethodni build prošao"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ključ ovisi o lock datoteci: promijeni li se, cache promašuje i ovisnosti se preuzmu iznova."
+  },
+  {
+    "id": "devops-333-code-iac-plan",
+    "topic": "devops",
+    "unitId": "infrastruktura-kao-kod",
+    "difficulty": "medium",
+    "question": "Zašto se ovaj ispis gleda prije primjene?",
+    "code": "$ terraform plan\n\nPlan: 2 to add, 1 to change, 1 to destroy.\n\n  - aws_db_instance.baza will be destroyed",
+    "options": [
+      "Pokazuje što će se stvoriti, izmijeniti i uništiti",
+      "Provjerava ima li račun dovoljno sredstava",
+      "Prevodi konfiguraciju u oblik razumljiv oblaku",
+      "Sprema trenutno stanje infrastrukture kao kopiju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Riječ `destroy` u planu je zadnja prilika da primijetiš da ćeš srušiti bazu u produkciji."
+  },
+  {
+    "id": "devops-334-code-log-razina",
+    "topic": "devops",
+    "unitId": "nadzor-produkcije",
+    "difficulty": "easy",
+    "question": "Koja je prednost ovakvog zapisa nad običnim tekstom?",
+    "code": "{\"razina\":\"error\",\"vrijeme\":\"2026-08-30T18:02:11Z\",\n \"poruka\":\"upis nije uspio\",\"korisnik\":\"u-8813\",\n \"trajanje_ms\":842}",
+    "options": [
+      "Može se pretraživati i filtrirati po poljima",
+      "Zauzima manje prostora na disku",
+      "Čita se lakše kad se gleda u terminalu",
+      "Automatski se briše nakon zadanog roka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Strukturiran zapis znači da možeš tražiti sve greške jednog korisnika bez pisanja regexa."
+  },
+  {
+    "id": "devops-335-code-deploy-postotak",
+    "topic": "devops",
+    "unitId": "deploy-strategije",
+    "difficulty": "medium",
+    "question": "Što ovakva postavka opisuje?",
+    "code": "izdanje:\n  strategija: canary\n  koraci:\n    - promet: 5\n      cekaj: 10m\n    - promet: 50\n      cekaj: 10m\n    - promet: 100",
+    "options": [
+      "Nova verzija prvo dobiva mali dio prometa",
+      "Sav promet prelazi na novu verziju odjednom",
+      "Stara verzija se gasi prije nego nova krene",
+      "Promet se dijeli podjednako na obje verzije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Canary: ako se greške povećaju na tih 5%, vraćaš se prije nego to vidi većina korisnika."
   }
 ]

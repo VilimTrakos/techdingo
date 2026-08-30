@@ -1415,5 +1415,139 @@
     ],
     "correctIndex": 0,
     "explanation": "\"Ne znam, ali bih provjerio ovako\" je odgovor koji se pamti kao dobar."
+  },
+  {
+    "id": "praksa-330-code-commit-poruka",
+    "topic": "praksa",
+    "unitId": "code-review",
+    "difficulty": "easy",
+    "question": "Koja je glavna mana ove poruke commita?",
+    "code": "commit 3f9a2b1\nAuthor: neko <neko@primjer.hr>\n\n    fix",
+    "options": [
+      "Ne govori što je promijenjeno ni zašto",
+      "Predugačka je za jedan redak",
+      "Ne sadrži broj zadatka iz sustava za praćenje",
+      "Napisana je u prošlom vremenu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Za šest mjeseci tražiš zašto je nešto promijenjeno. \"fix\" ti ne kaže ništa."
+  },
+  {
+    "id": "praksa-331-code-commit-dobra",
+    "topic": "praksa",
+    "unitId": "code-review",
+    "difficulty": "medium",
+    "question": "Zašto je ova poruka commita korisna?",
+    "code": "Odbij prijavu nakon pet promašaja u minuti\n\nAutomatizirani pokusaji su prolazili bez ikakvog\nogranicenja, pa je pogadanje lozinke bilo izvedivo\ns jednog racunala u nekoliko sati.",
+    "options": [
+      "Kaže i što je promijenjeno i zašto je trebalo",
+      "Sadrži točan popis izmijenjenih datoteka",
+      "Napisana je u imperativu kako nalaže konvencija",
+      "Kratka je pa stane u jedan redak povijesti"
+    ],
+    "correctIndex": 0,
+    "explanation": "Prvi redak je sažetak, tijelo nosi razlog. Razlog je ono što se ne vidi iz koda."
+  },
+  {
+    "id": "praksa-332-code-konflikt",
+    "topic": "praksa",
+    "unitId": "code-review",
+    "difficulty": "medium",
+    "question": "Što ove oznake u datoteci znače?",
+    "code": "<<<<<<< HEAD\nconst limit = 20;\n=======\nconst limit = 50;\n>>>>>>> feature/paginacija",
+    "options": [
+      "Git ne zna koju verziju zadržati pa čeka odluku",
+      "Datoteka je oštećena pri spajanju grana",
+      "Dvije grane su spojene, a ovo je zapis promjene",
+      "Kod iznad je nova verzija, a ispod stara kopija"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sve između oznaka treba zamijeniti ispravnom verzijom, pa i same oznake obrisati."
+  },
+  {
+    "id": "praksa-333-code-semver",
+    "topic": "praksa",
+    "unitId": "izdanja-i-verzije",
+    "difficulty": "medium",
+    "question": "Što ovaj raspon dopušta pri instalaciji?",
+    "code": "{\n  \"dependencies\": {\n    \"knjiznica\": \"^4.17.1\"\n  }\n}",
+    "options": [
+      "Svaku verziju 4.x noviju od 4.17.1, ali ne 5.0.0",
+      "Točno verziju 4.17.1 i nijednu drugu",
+      "Svaku verziju noviju od 4.17.1, uključujući 5.0.0",
+      "Samo popravke, dakle 4.17.x"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kapica dopušta manje i zakrpe, ali ne glavnu verziju — jer glavna smije rušiti kompatibilnost."
+  },
+  {
+    "id": "praksa-334-code-changelog",
+    "topic": "praksa",
+    "unitId": "izdanja-i-verzije",
+    "difficulty": "easy",
+    "question": "Zašto je ovaj changelog koristan korisniku?",
+    "code": "## 2.0.0\n\n### PROMJENE KOJE RUSE\n- `dohvati()` sada vraca Promise\n\n### Dodano\n- Podrska za filtriranje po datumu\n\n### Popravljeno\n- Kriv izracun poreza za iznose iznad 1000",
+    "options": [
+      "Grupira promjene i ističe ono što ruši kompatibilnost",
+      "Sadrži popis svih commitova iz tog razdoblja",
+      "Navodi tko je autor svake pojedine promjene",
+      "Prikazuje razliku u kodu za svaku stavku"
+    ],
+    "correctIndex": 0,
+    "explanation": "Korisnik prvo traži hoće li mu se nešto pokvariti. Zato PROMJENE KOJE RUŠE idu na vrh."
+  },
+  {
+    "id": "praksa-335-code-licenca-zaglavlje",
+    "topic": "praksa",
+    "unitId": "licence",
+    "difficulty": "medium",
+    "question": "Što ovakvo zaglavlje govori onome tko nađe datoteku?",
+    "code": "// Copyright (c) 2026 Vilim Trakostanec\n// SPDX-License-Identifier: AGPL-3.0-or-later\n//\n// Puni tekst licence: vidi LICENSE u korijenu projekta.",
+    "kind": "multi",
+    "options": [
+      "Pod kojom licencom se kod smije koristiti",
+      "Tko drži autorska prava",
+      "Da puni tekst licence stoji negdje drugdje",
+      "Da je kod javno vlasništvo bez ograničenja",
+      "Koliko je autora radilo na datoteci"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Zaglavlje putuje s datotekom i kad je netko iskopira iz repozitorija — zato se piše."
+  },
+  {
+    "id": "praksa-336-code-todo-dug",
+    "topic": "praksa",
+    "unitId": "procjena-i-dug",
+    "difficulty": "medium",
+    "question": "Zašto je ovaj komentar bolji od običnog TODO?",
+    "code": "// Privremeno: dohvacamo sve pa filtriramo u memoriji.\n// Zamijeniti upitom s WHERE kad tablica prijede\n// ~10k redaka (sada ih je 400). Vidi #214.",
+    "options": [
+      "Kaže zašto je privremeno i pod kojim uvjetom nestaje",
+      "Sadrži ime autora pa se zna koga pitati",
+      "Kratak je pa ne opterećuje čitanje koda",
+      "Označen je velikim slovima pa se lakše pretražuje"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tehnički dug koji ima zapisan uvjet za otplatu ima šanse biti otplaćen. Goli TODO nema."
+  },
+  {
+    "id": "praksa-337-code-review-komentar",
+    "topic": "praksa",
+    "unitId": "code-review",
+    "difficulty": "medium",
+    "question": "Koji komentar na pregledu koda je najkorisniji?",
+    "code": "function prosjek(brojevi) {\n  return brojevi.reduce((a, b) => a + b) / brojevi.length;\n}\n\n// komentar: sto se dogodi za prosjek([]) ?",
+    "options": [
+      "Onaj koji imenuje slučaj u kojem kod pukne",
+      "Onaj koji predlaže kraći način pisanja istoga",
+      "Onaj koji upućuje na stilski vodič tima",
+      "Onaj koji pita je li autor razmišljao o tome"
+    ],
+    "correctIndex": 0,
+    "explanation": "Konkretan protuprimjer autor može odmah provjeriti. Općenita primjedba traži još jedan krug razgovora."
   }
 ]

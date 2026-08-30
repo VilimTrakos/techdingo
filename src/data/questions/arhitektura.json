@@ -2000,5 +2000,139 @@
     "explanation": "Nefunkcionalni zahtjevi opisuju koliko dobro sustav mora raditi i često izravno određuju arhitektonske odluke.",
     "difficulty": "easy",
     "isIntro": true
+  },
+  {
+    "id": "arh-330-code-retry-bez-backoffa",
+    "topic": "arhitektura",
+    "unitId": "komunikacija",
+    "difficulty": "hard",
+    "question": "Zašto je ova petlja ponovnih pokušaja opasna po servis koji zove?",
+    "code": "for (let i = 0; i < 3; i++) {\n  try {\n    return await pozovi(url);\n  } catch {\n    await pauza(1000);\n  }\n}",
+    "options": [
+      "Svi klijenti pogode isti trenutak i zajedno ga preplave",
+      "Petlja se nikad ne prekida jer nema gornje granice",
+      "Iznimka iz zadnjeg pokušaja se tiho izgubi",
+      "Odgovor se odbacuje pa se poziv izvršava tri puta"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bez rastuće stanke i nasumičnog pomaka, tisuću klijenata pokuša u istoj sekundi — servis koji se oporavljao pada opet."
+  },
+  {
+    "id": "arh-331-code-sinkroni-lanac",
+    "topic": "arhitektura",
+    "unitId": "komunikacija",
+    "difficulty": "hard",
+    "question": "Koji rizik nosi ovaj lanac poziva?",
+    "code": "const korisnik  = await servisA.dohvati(id);\nconst narudzbe  = await servisB.zaKorisnika(korisnik.id);\nconst preporuke = await servisC.zaNarudzbe(narudzbe);",
+    "options": [
+      "Kašnjenja se zbrajaju, a pad bilo kojeg ruši cijeli zahtjev",
+      "Servisi se ne mogu skalirati neovisno jedan o drugome",
+      "Podaci se dohvaćaju dvaput pa se troši dvostruko",
+      "Redoslijed odgovora nije zajamčen između poziva"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tri sinkrona koraka znače da je dostupnost umnožak triju dostupnosti, a kašnjenje njihov zbroj."
+  },
+  {
+    "id": "arh-332-code-idempotentni-handler",
+    "topic": "arhitektura",
+    "unitId": "konzistentnost",
+    "difficulty": "medium",
+    "question": "Što ovaj kod osigurava?",
+    "code": "if (await vecObradjeno(poruka.id)) return;\n\nawait obradi(poruka);\nawait zabiljeziObradjeno(poruka.id);",
+    "options": [
+      "Ista poruka obrađena dvaput ne stvara dvostruki učinak",
+      "Poruke se obrađuju točno onim redoslijedom kojim su stigle",
+      "Poruka se briše iz reda prije nego obrada počne",
+      "Obrada se prekida ako poruka stigne prekasno"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kod at-least-once isporuke duplikat je normalan. Zapis o obrađenom id-u ga čini bezopasnim."
+  },
+  {
+    "id": "arh-333-code-verzija-dogadjaja",
+    "topic": "arhitektura",
+    "unitId": "komunikacija",
+    "difficulty": "medium",
+    "question": "Što ovakav događaj s poljem `verzija` omogućuje?",
+    "code": "{\n  \"tip\": \"narudzba.stvorena\",\n  \"verzija\": 2,\n  \"id\": \"n-8813\",\n  \"iznos_lipa\": 249900,\n  \"kupac\": { \"id\": \"k-42\" }\n}",
+    "kind": "multi",
+    "options": [
+      "Potrošači mogu razlikovati stari i novi oblik",
+      "Novo polje se može dodati bez rušenja starih potrošača",
+      "Stari potrošači smiju preskočiti verzije koje ne poznaju",
+      "Redoslijed događaja postaje zajamčen",
+      "Događaj se automatski pretvara u stari oblik"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Verzija ne rješava redoslijed niti pretvara oblike — samo omogućuje da oba oblika žive zajedno."
+  },
+  {
+    "id": "arh-334-code-cqrs-podjela",
+    "topic": "arhitektura",
+    "unitId": "podaci-u-velikom",
+    "difficulty": "medium",
+    "question": "Što ovakva podjela postiže?",
+    "code": "// upis\nawait naredbe.spremiNarudzbu(narudzba);\n\n// citanje, iz zasebnog modela\nconst pregled = await upiti.pregledNarudzbi(korisnikId);",
+    "options": [
+      "Čitanja i upisi se mogu skalirati i optimizirati odvojeno",
+      "Podaci se automatski drže konzistentnima između obje strane",
+      "Broj upita prema bazi se prepolovi",
+      "Upisi postaju atomarni preko više tablica"
+    ],
+    "correctIndex": 0,
+    "explanation": "To je CQRS. Cijena je što strana za čitanje kasni — konzistentnost postaje eventualna."
+  },
+  {
+    "id": "arh-335-code-granica-modula",
+    "topic": "arhitektura",
+    "unitId": "granice-i-moduli",
+    "difficulty": "hard",
+    "question": "Što je pogrešno u ovom uvozu?",
+    "code": "// modul: naplata\nimport { racunajPopust } from '../korisnici/interno/popusti';",
+    "options": [
+      "Modul poseže u tuđu unutrašnjost umjesto u njegovo sučelje",
+      "Uvoz je predubok pa usporava prevođenje projekta",
+      "Relativna putanja pukne kad se datoteka premjesti",
+      "Uvoz stvara kružnu ovisnost među modulima"
+    ],
+    "correctIndex": 0,
+    "explanation": "Granica postoji samo ako je svi poštuju. Uvoz iz `interno/` znači da promjena tuđeg detalja ruši tvoj modul."
+  },
+  {
+    "id": "arh-336-code-jedna-odgovornost",
+    "topic": "arhitektura",
+    "unitId": "granice-i-moduli",
+    "difficulty": "medium",
+    "question": "Zašto je ovu funkciju teško testirati?",
+    "code": "async function obradiNarudzbu(n) {\n  const porez = n.iznos * 0.25;\n  await baza.spremi({ ...n, porez });\n  await posta.posalji(n.email, 'Potvrda');\n  await analitika.zabiljezi('narudzba', n.id);\n}",
+    "options": [
+      "Radi previše stvari odjednom, uključujući mrežu i bazu",
+      "Nema povratnu vrijednost koja bi se mogla provjeriti",
+      "Poziva asinkrone funkcije bez čekanja rezultata",
+      "Prima objekt umjesto pojedinačnih argumenata"
+    ],
+    "correctIndex": 0,
+    "explanation": "Da bi testirao izračun poreza, moraš podignuti bazu i uhvatiti slanje e-pošte. Razdvajanje to rješava."
+  },
+  {
+    "id": "arh-337-code-timeout-kaskada",
+    "topic": "arhitektura",
+    "unitId": "skaliranje",
+    "difficulty": "hard",
+    "question": "Zašto je ovaj timeout loše odabran?",
+    "code": "// pozivatelj odustaje nakon 5 s\nconst odgovor = await fetch(url, {\n  signal: AbortSignal.timeout(30000),\n});",
+    "options": [
+      "Dulji je od timeouta pozivatelja pa mu ne pomaže",
+      "Prekratak je da udaljeni servis stigne odgovoriti",
+      "Ne prekida sam mrežni zahtjev nego samo čekanje",
+      "Ista vrijednost se koristi za sve vrste poziva"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ako te tvoj pozivatelj odustane nakon 5 s, tvoje čekanje od 30 s samo troši vezu i dretvu bez ikakve koristi."
   }
 ]

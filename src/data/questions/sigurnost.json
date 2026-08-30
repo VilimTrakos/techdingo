@@ -1870,5 +1870,69 @@
     ],
     "correctIndex": 0,
     "explanation": "Tuđi kod u tvom procesu vidi sve što i tvoj — uključujući tajne i podatke korisnika."
+  },
+  {
+    "id": "sigurnost-330-code-cors-siroko",
+    "topic": "sigurnost",
+    "unitId": "tajne-i-ovisnosti",
+    "difficulty": "hard",
+    "question": "Zašto je ova kombinacija zaglavlja opasna?",
+    "code": "Access-Control-Allow-Origin: *\nAccess-Control-Allow-Credentials: true",
+    "options": [
+      "Dopušta bilo kojoj stranici slanje zahtjeva s kolačićima",
+      "Onemogućuje pregledniku da uopće pošalje zahtjev",
+      "Otkriva popis dopuštenih metoda napadaču",
+      "Sprječava rad aplikacije na vlastitoj domeni"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zvjezdica uz `credentials: true` preglednici odbijaju baš zato. Konkretno porijeklo uz kolačiće znači da svaka stranica može djelovati u ime prijavljenog korisnika."
+  },
+  {
+    "id": "sigurnost-331-code-jwt-bez-provjere",
+    "topic": "sigurnost",
+    "unitId": "autentikacija-sesije",
+    "difficulty": "hard",
+    "question": "Što je ključno pogrešno u ovom kodu?",
+    "code": "const token = zaglavlje.replace('Bearer ', '');\nconst podaci = jwt.decode(token);\n\nif (podaci.uloga === 'admin') {\n  dopustiPristup();\n}",
+    "options": [
+      "Token se čita bez provjere potpisa",
+      "Token se dekodira sinkrono pa blokira dretvu",
+      "Iz tokena se čita polje koje možda ne postoji",
+      "Token se ne provjerava protiv popisa opozvanih"
+    ],
+    "correctIndex": 0,
+    "explanation": "`decode` samo raspakira tekst. Svatko može napisati bilo koji sadržaj — provjeru radi `verify` s tajnom."
+  },
+  {
+    "id": "sigurnost-332-code-bcrypt-cost",
+    "topic": "sigurnost",
+    "unitId": "kriptografija-praksa",
+    "difficulty": "medium",
+    "question": "Što ovdje nije u redu?",
+    "code": "const hash = await bcrypt.hash(lozinka, 4);",
+    "options": [
+      "Faktor cijene je prenizak da bi usporio pogađanje",
+      "Sol se ne generira pa je ista za sve lozinke",
+      "Rezultat se ne sprema nego samo uspoređuje",
+      "Funkcija se poziva sinkrono pa blokira poslužitelj"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cijela ideja bcrypta je da bude spor. Faktor 4 je brz koliko i obični hash, pa gubiš zaštitu."
+  },
+  {
+    "id": "sigurnost-333-code-env-u-repo",
+    "topic": "sigurnost",
+    "unitId": "tajne-i-ovisnosti",
+    "difficulty": "easy",
+    "question": "Što je problem s ovim stanjem repozitorija?",
+    "code": "$ git status\n$ git log --oneline -1 -- .env\na91f3c2 Dodaj konfiguraciju\n\n$ cat .env\nSTRIPE_SECRET_KEY=sk_live_51H...",
+    "options": [
+      "Tajni ključ je zapisan u povijesti i vidi ga svatko",
+      "Datoteka se neće učitati pri pokretanju aplikacije",
+      "Ključ će isteći jer nije zapisan u spremištu tajni",
+      "Aplikacija neće raditi na drugom računalu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Brisanje datoteke ne pomaže — ključ ostaje u svakom starom commitu. Jedini pravi odgovor je zamijeniti ključ."
   }
 ]

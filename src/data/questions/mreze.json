@@ -1765,5 +1765,155 @@
     ],
     "correctIndex": 0,
     "explanation": "Network kartica pokazuje svaki zahtjev, njegov status, veličinu i trajanje."
+  },
+  {
+    "id": "mreze-330-code-cache-control",
+    "topic": "mreze",
+    "unitId": "http-protokol",
+    "difficulty": "medium",
+    "question": "Što ovo zaglavlje poručuje pregledniku?",
+    "code": "HTTP/1.1 200 OK\nContent-Type: application/json\nCache-Control: public, max-age=3600",
+    "options": [
+      "Odgovor se smije čuvati sat vremena bez ponovnog pitanja",
+      "Odgovor vrijedi sat vremena, ali se svaki put mora provjeriti",
+      "Odgovor se smije čuvati samo na posredničkim poslužiteljima",
+      "Odgovor se briše iz predmemorije nakon sat vremena neaktivnosti"
+    ],
+    "correctIndex": 0,
+    "explanation": "max-age je koliko dugo se odgovor smatra svježim. Dok je svjež, preglednik ne šalje zahtjev."
+  },
+  {
+    "id": "mreze-331-code-redirect",
+    "topic": "mreze",
+    "unitId": "http-protokol",
+    "difficulty": "medium",
+    "question": "Što će preglednik napraviti s ovim odgovorom?",
+    "code": "HTTP/1.1 301 Moved Permanently\nLocation: https://primjer.hr/novo\nContent-Length: 0",
+    "options": [
+      "Poslati novi zahtjev na adresu iz zaglavlja Location",
+      "Prikazati poruku o grešci jer nema tijela odgovora",
+      "Ponoviti isti zahtjev nakon kratke stanke",
+      "Spremiti adresu u povijest bez otvaranja stranice"
+    ],
+    "correctIndex": 0,
+    "explanation": "301 je trajno preusmjeravanje — preglednik ga zapamti i idući put ide ravno na novu adresu."
+  },
+  {
+    "id": "mreze-332-code-curl",
+    "topic": "mreze",
+    "unitId": "dijagnostika-mreze",
+    "difficulty": "medium",
+    "question": "Što ovaj ispis govori o zahtjevu?",
+    "code": "$ curl -i https://api.primjer.hr/me\nHTTP/2 401\nwww-authenticate: Bearer\ncontent-type: application/json\n\n{\"error\":\"unauthorized\"}",
+    "options": [
+      "Poslužitelj je odgovorio, ali traži prijavu",
+      "Poslužitelj nije dostupan pa veza nije uspostavljena",
+      "Zahtjev je uspio, ali je odgovor prazan",
+      "Certifikat poslužitelja nije valjan"
+    ],
+    "correctIndex": 0,
+    "explanation": "401 znači da identitet nije poznat. Zaglavlje WWW-Authenticate kaže kojim načinom se prijaviti."
+  },
+  {
+    "id": "mreze-333-code-dig",
+    "topic": "mreze",
+    "unitId": "dns",
+    "difficulty": "medium",
+    "question": "Što ovaj DNS odgovor pokazuje?",
+    "code": "$ dig www.primjer.hr\n\n;; ANSWER SECTION:\nwww.primjer.hr.  300  IN  CNAME  primjer.hr.\nprimjer.hr.      300  IN  A      203.0.113.10",
+    "options": [
+      "www je alias koji vodi na drugo ime, pa tek onda na IP",
+      "www i primjer.hr dijele istu IP adresu",
+      "www ima dva zapisa pa se opterećenje raspoređuje",
+      "www je nevažeći jer CNAME ne smije stajati uz A zapis"
+    ],
+    "correctIndex": 0,
+    "explanation": "CNAME lanac razrješivač prati do kraja. Zato jedan upit vrati i alias i konačnu adresu."
+  },
+  {
+    "id": "mreze-334-code-ratelimit",
+    "topic": "mreze",
+    "unitId": "isporuka-prometa",
+    "difficulty": "medium",
+    "question": "Što klijent smije zaključiti iz ovog odgovora?",
+    "code": "HTTP/1.1 429 Too Many Requests\nRetry-After: 30\nX-RateLimit-Limit: 100\nX-RateLimit-Remaining: 0",
+    "kind": "multi",
+    "options": [
+      "Ograničenje je premašeno i treba pričekati",
+      "Sljedeći pokušaj ima smisla tek za 30 sekundi",
+      "Dopušteno je 100 zahtjeva u prozoru",
+      "Zahtjev je bio neispravno oblikovan",
+      "Poslužitelj je trajno odbio ovog klijenta"
+    ],
+    "correctIndexes": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "429 govori o klijentu, ne o servisu. Retry-After je jedini pouzdan podatak o tome kad pokušati opet."
+  },
+  {
+    "id": "mreze-335-code-tls-verzija",
+    "topic": "mreze",
+    "unitId": "tls-sigurna-veza",
+    "difficulty": "medium",
+    "question": "Što ovaj ispis potvrđuje?",
+    "code": "$ openssl s_client -connect primjer.hr:443\nProtocol  : TLSv1.3\nCipher    : TLS_AES_256_GCM_SHA384\nVerify return code: 0 (ok)",
+    "options": [
+      "Veza koristi TLS 1.3 i certifikat je prihvaćen",
+      "Certifikat je istekao pa je veza odbijena",
+      "Poslužitelj je ponudio samo nesigurne šifre",
+      "Klijent nije poslao vlastiti certifikat"
+    ],
+    "correctIndex": 0,
+    "explanation": "Verify return code 0 znači da je lanac certifikata provjeren do korijena kojem klijent vjeruje."
+  },
+  {
+    "id": "mreze-336-code-tcp-ping",
+    "topic": "mreze",
+    "unitId": "dijagnostika-mreze",
+    "difficulty": "easy",
+    "question": "Što ovaj ispis govori?",
+    "code": "$ ping -c 3 primjer.hr\n64 bytes from 203.0.113.10: seq=1 ttl=54 time=23.8 ms\n64 bytes from 203.0.113.10: seq=2 ttl=54 time=24.1 ms\n3 packets transmitted, 3 received, 0% packet loss",
+    "options": [
+      "Poslužitelj odgovara, a odgovor putuje oko 24 ms",
+      "Poslužitelj ne odgovara pa su paketi izgubljeni",
+      "Veza je prekinuta nakon trećeg paketa",
+      "Poslužitelj odbija ICMP pakete iz sigurnosnih razloga"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ping mjeri dvije stvari: stiže li odgovor i za koliko. Ne govori radi li usluga na tom poslužitelju."
+  },
+  {
+    "id": "mreze-337-code-ws",
+    "topic": "mreze",
+    "unitId": "realtime",
+    "difficulty": "medium",
+    "question": "Što ovaj kod postiže?",
+    "code": "const ws = new WebSocket('wss://primjer.hr/chat');\n\nws.onmessage = (event) => {\n  prikaziPoruku(JSON.parse(event.data));\n};",
+    "options": [
+      "Otvara trajnu vezu i reagira na svaku poruku poslužitelja",
+      "Šalje jedan zahtjev i čeka jedan odgovor",
+      "Provjerava je li poslužitelj dostupan prije slanja",
+      "Preuzima podatke u razmacima od jedne sekunde"
+    ],
+    "correctIndex": 0,
+    "explanation": "Za razliku od fetcha, veza ostaje otvorena i poslužitelj šalje kad želi, bez novog zahtjeva."
+  },
+  {
+    "id": "mreze-338-code-http-zahtjev",
+    "topic": "mreze",
+    "unitId": "http-protokol",
+    "difficulty": "easy",
+    "question": "Što ovaj zahtjev traži?",
+    "code": "GET /korisnici HTTP/1.1\nHost: api.primjer.hr\nAccept: application/json\nAuthorization: Bearer eyJ...",
+    "options": [
+      "Dohvat popisa korisnika, s odgovorom u JSON obliku",
+      "Stvaranje novog korisnika s podacima iz zaglavlja",
+      "Brisanje korisnika navedenog u putanji",
+      "Provjeru je li putanja /korisnici dostupna"
+    ],
+    "correctIndex": 0,
+    "explanation": "GET dohvaća. Accept govori u kojem obliku klijent želi odgovor."
   }
 ]
