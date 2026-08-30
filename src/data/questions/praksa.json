@@ -485,7 +485,8 @@
       "Iznesi procjenu kao raspon, uz pretpostavke"
     ],
     "explanation": "Pretpostavke su dio procjene. Bez njih se raspon pamti kao obećanje, a razlog za njegovu širinu se zaboravi.",
-    "difficulty": "hard"
+    "difficulty": "hard",
+    "conceptId": "procjena-postupak"
   },
   {
     "id": "praksa-uvod-verzije",
@@ -1187,6 +1188,7 @@
       "Razloži potvrđeno rješenje na manje korake",
       "Daj raspon procjene i jasno navedi pretpostavke"
     ],
-    "explanation": "Procjena nije preciznija ako se nepoznanice sakriju iza jednog broja. Kratko istraživanje i vidljive pretpostavke daju korisniji raspon."
+    "explanation": "Procjena nije preciznija ako se nepoznanice sakriju iza jednog broja. Kratko istraživanje i vidljive pretpostavke daju korisniji raspon.",
+    "conceptId": "procjena-postupak"
   }
 ]
