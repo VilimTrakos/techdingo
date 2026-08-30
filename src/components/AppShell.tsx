@@ -24,7 +24,10 @@ export function AppShell() {
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-40 border-b-2 border-cloud-200/90 bg-white/92 shadow-sm backdrop-blur-xl">
-        <div className="mx-auto flex w-full max-w-6xl items-center gap-2 px-3 py-2.5 sm:gap-3 sm:px-6">
+        {/* flex-wrap je OBAVEZAN: navigacija ispod nosi `order-3 w-full` da se na
+            mobitelu prelomi u vlastiti red. Bez wrapa ostaje u istom retku i gura
+            stranicu 63px u širinu, pa se cijela aplikacija skrola postrance. */}
+        <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center gap-2 px-3 py-2.5 sm:flex-nowrap sm:gap-3 sm:px-6">
           <NavLink
             to="/"
             className="group flex min-w-0 items-center gap-2 rounded-xl"
