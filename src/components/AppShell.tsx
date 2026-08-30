@@ -97,10 +97,18 @@ export function AppShell() {
             <span aria-hidden="true">🔥</span> Serija {state.streak.current} · {state.xpTotal} XP
           </p>
           <nav className="flex items-center gap-4" aria-label="Podnožje">
-            <NavLink to="/privatnost" className="font-bold underline hover:text-brand-700">
+            {/* inline-flex + min-h-6: sam tekst je visok 20px, ispod WCAG
+                minimuma od 24px za dodirnu metu. */}
+            <NavLink
+              to="/privatnost"
+              className="inline-flex min-h-6 items-center font-bold underline hover:text-brand-700"
+            >
               Privatnost
             </NavLink>
-            <NavLink to="/postavke" className="font-bold underline hover:text-brand-700">
+            <NavLink
+              to="/postavke"
+              className="inline-flex min-h-6 items-center font-bold underline hover:text-brand-700"
+            >
               Postavke
             </NavLink>
           </nav>

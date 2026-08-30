@@ -79,7 +79,7 @@ export function StatsPage() {
               Tvoj rezultat dosad
             </h2>
           </div>
-          <Link to="/" className="text-sm font-black text-brand-700 hover:underline">
+          <Link to="/" className="inline-flex min-h-6 items-center text-sm font-black text-brand-700 hover:underline">
             Nastavi učiti →
           </Link>
         </div>
