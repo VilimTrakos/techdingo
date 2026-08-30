@@ -1387,5 +1387,486 @@
       "Migriraj postupno i prati novu raspodjelu"
     ],
     "explanation": "Dodavanje kapaciteta svim shardovima često je skupo i ne rješava lošu raspodjelu. Najprije treba dokazati gdje se promet koncentrira."
+  },
+  {
+    "id": "arh-206-monolith-deploy",
+    "topic": "arhitektura",
+    "unitId": "stilovi",
+    "question": "Kako se monolit najčešće isporučuje u produkciju?",
+    "options": [
+      "Kao jedna verzionirana aplikacijska cjelina",
+      "Kao skup obavezno neovisnih mrežnih servisa",
+      "Kao zasebna baza za svaku funkciju sustava",
+      "Kao funkcija koja se pokreće samo na događaj"
+    ],
+    "correctIndex": 0,
+    "explanation": "Monolit može imati mnogo unutarnjih modula, ali se gradi i isporučuje kao jedna aplikacijska cjelina.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-207-layered-style",
+    "topic": "arhitektura",
+    "unitId": "stilovi",
+    "question": "Koja je osnovna ideja slojevite arhitekture?",
+    "options": [
+      "Svaki sloj sprema vlastitu kopiju svih podataka",
+      "Odgovornosti se dijele u slojeve s jasnim ulogama",
+      "Svaki korisnički zahtjev obrađuje zaseban servis",
+      "Svi dijelovi sustava ovise izravno jedni o drugima"
+    ],
+    "correctIndex": 1,
+    "explanation": "Primjer su prezentacijski, poslovni i podatkovni sloj; podjela olakšava razumijevanje odgovornosti i ovisnosti.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-208-microservice-ownership",
+    "topic": "arhitektura",
+    "unitId": "stilovi",
+    "question": "Što bi dobro omeđen mikroservis trebao posjedovati?",
+    "options": [
+      "Samo kontrolere, dok su sva poslovna pravila zajednička",
+      "Sve tablice sustava kako ne bi trebao mrežne pozive",
+      "Jasnu poslovnu odgovornost i podatke potrebne za nju",
+      "Isključivo korisničko sučelje jedne stranice aplikacije"
+    ],
+    "correctIndex": 2,
+    "explanation": "Vlasništvo nad poslovnom sposobnošću i njezinim podacima omogućuje servisu da se mijenja i isporučuje neovisno.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-209-serverless-trigger",
+    "topic": "arhitektura",
+    "unitId": "stilovi",
+    "question": "Što najčešće pokreće serverless funkciju?",
+    "options": [
+      "Isključivo ručno pokretanje administratora",
+      "Trajna dretva koja stalno čeka u memoriji",
+      "Ponovno pokretanje cijelog operacijskog sustava",
+      "Događaj poput HTTP zahtjeva ili dolaska poruke"
+    ],
+    "correctIndex": 3,
+    "explanation": "Serverless funkcije obično se izvršavaju kao odgovor na događaj i ne održavaju stalni proces između poziva.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-210-factory-purpose",
+    "topic": "arhitektura",
+    "unitId": "dizajn-obrasci",
+    "question": "Čemu služi obrazac tvornice (Factory)?",
+    "options": [
+      "Odvaja stvaranje objekta od koda koji ga koristi",
+      "Osigurava da svaki objekt postoji u jednoj instanci",
+      "Pretvara sinkroni poziv u asinkronu poruku",
+      "Sprema prethodne rezultate skupog izračuna"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tvornica skriva odluku o konkretnoj klasi i detalje konstrukcije iza namjenskog sučelja ili funkcije.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-211-decorator-purpose",
+    "topic": "arhitektura",
+    "unitId": "dizajn-obrasci",
+    "question": "Što omogućuje obrazac dekoratera (Decorator)?",
+    "options": [
+      "Zamjenjuje sve ovisnosti globalnim objektom",
+      "Dodaje ponašanje omatanjem postojećeg objekta",
+      "Spaja više baza u jednu fizičku bazu",
+      "Šalje promjene svim udaljenim servisima"
+    ],
+    "correctIndex": 1,
+    "explanation": "Dekorater čuva isto sučelje, ali oko postojećeg objekta dodaje ponašanje poput logiranja, mjerenja ili keširanja.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-212-facade-purpose",
+    "topic": "arhitektura",
+    "unitId": "dizajn-obrasci",
+    "question": "Koja je svrha obrasca fasade (Facade)?",
+    "options": [
+      "Dijeli jednu klasu u više mrežnih servisa",
+      "Automatski bira najbrži algoritam pri izvođenju",
+      "Nudi jednostavno sučelje prema složenom podsustavu",
+      "Prisiljava sve objekte da koriste istu instancu"
+    ],
+    "correctIndex": 2,
+    "explanation": "Fasada skriva više koraka i unutarnjih suradnika iza manjeg, jasnijeg sučelja za česte slučajeve uporabe.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-213-command-purpose",
+    "topic": "arhitektura",
+    "unitId": "dizajn-obrasci",
+    "question": "Što obrazac naredbe (Command) pretvara u objekt?",
+    "options": [
+      "Cijelu bazu podataka i njezine indekse",
+      "Mrežnu vezu između klijenta i servera",
+      "Korisničko sučelje i njegove komponente",
+      "Zahtjev za izvršavanje određene radnje"
+    ],
+    "correctIndex": 3,
+    "explanation": "Predstavljanje radnje objektom olakšava redove poslova, bilježenje, odgodu i eventualno poništavanje naredbi.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-214-module-interface",
+    "topic": "arhitektura",
+    "unitId": "granice-i-moduli",
+    "question": "Zašto modul treba imati malo i jasno javno sučelje?",
+    "options": [
+      "Kako bi drugi moduli ovisili o manje njegovih detalja",
+      "Kako bi sve interne funkcije bile dostupne cijelom sustavu",
+      "Kako bi se uklonila potreba za testiranjem tog modula",
+      "Kako bi svaki poziv automatski postao mrežni zahtjev"
+    ],
+    "correctIndex": 0,
+    "explanation": "Malo javno sučelje skriva unutarnju implementaciju i smanjuje broj razloga zbog kojih se potrošači moraju mijenjati.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-215-high-cohesion-example",
+    "topic": "arhitektura",
+    "unitId": "granice-i-moduli",
+    "question": "Koji je primjer visoke kohezije modula?",
+    "options": [
+      "Modul sadrži nasumične pomoćne funkcije iz cijele aplikacije",
+      "Modul okuplja pravila i operacije jedne poslovne sposobnosti",
+      "Modul izravno mijenja interne podatke svih drugih modula",
+      "Modul sadrži sve kontrolere, neovisno o njihovoj domeni"
+    ],
+    "correctIndex": 1,
+    "explanation": "Visoka kohezija znači da dijelovi modula pripadaju istoj svrsi i mijenjaju se zbog povezanih razloga.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-216-dependency-cycle",
+    "topic": "arhitektura",
+    "unitId": "granice-i-moduli",
+    "question": "Zašto je kružna ovisnost između modula problem?",
+    "options": [
+      "Uvijek udvostručuje broj zapisa u povezanoj bazi podataka",
+      "Onemogućuje korištenje funkcija unutar modula",
+      "Otežava neovisnu promjenu, testiranje i razumijevanje modula",
+      "Pretvara svaki lokalni poziv u udaljeni mrežni poziv"
+    ],
+    "correctIndex": 2,
+    "explanation": "Kad A ovisi o B, a B o A, granica postaje nejasna i promjena jednog dijela lako se prelijeva na drugi.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-217-information-hiding",
+    "topic": "arhitektura",
+    "unitId": "granice-i-moduli",
+    "question": "Što znači skrivanje informacija unutar modula?",
+    "options": [
+      "Brisanje dokumentacije kako korisnik ne bi vidio detalje",
+      "Šifriranje svakog podatka koji modul drži u memoriji",
+      "Premještanje svih internih klasa u zaseban repozitorij",
+      "Izlaganje ugovora, ali ne i promjenjivih detalja izvedbe"
+    ],
+    "correctIndex": 3,
+    "explanation": "Potrošač zna što modul jamči, ali ne ovisi o tome kako je jamstvo interno ostvareno.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-218-request-response",
+    "topic": "arhitektura",
+    "unitId": "komunikacija",
+    "question": "Što obilježava komunikaciju zahtjev–odgovor?",
+    "options": [
+      "Pošiljatelj čeka odgovor primatelja na poslani zahtjev",
+      "Primatelj uvijek obrađuje poruku tek sljedećeg dana",
+      "Poruka se sprema bez poznatog odredišta i ugovora",
+      "Pošiljatelj nikad ne saznaje je li poziv prihvaćen"
+    ],
+    "correctIndex": 0,
+    "explanation": "HTTP API je čest primjer: klijent šalje zahtjev i očekuje odgovor u istom komunikacijskom toku.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-219-message-queue-role",
+    "topic": "arhitektura",
+    "unitId": "komunikacija",
+    "question": "Koja je osnovna uloga reda poruka između servisa?",
+    "options": [
+      "Pretvara svaki događaj u tablicu relacijske baze",
+      "Privremeno čuva posao dok ga potrošač ne obradi",
+      "Jamči da obrada nikad neće proizvesti pogrešku",
+      "Uklanja potrebu za ugovorom o formatu poruke"
+    ],
+    "correctIndex": 1,
+    "explanation": "Red odvaja brzinu proizvođača od brzine potrošača i omogućuje kasniju obradu, ali ne uklanja potrebu za greškama i ponavljanjem.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-220-timeout-purpose",
+    "topic": "arhitektura",
+    "unitId": "komunikacija",
+    "question": "Zašto udaljeni poziv mora imati timeout?",
+    "options": [
+      "Kako bi odgovor uvijek stigao brže od jedne milisekunde",
+      "Kako bi se zahtjev automatski pretvorio u događaj",
+      "Kako resursi ne bi beskonačno čekali nedostupan servis",
+      "Kako bi oba servisa koristila isti programski jezik"
+    ],
+    "correctIndex": 2,
+    "explanation": "Bez vremenskog ograničenja spor ili nedostupan servis može zadržati dretve, veze i memoriju pozivatelja do iscrpljenja.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-221-backward-compatible-field",
+    "topic": "arhitektura",
+    "unitId": "komunikacija",
+    "question": "Koja je promjena API-ja obično kompatibilna sa starim klijentima?",
+    "options": [
+      "Uklanjanje obaveznog polja iz odgovora koji klijenti koriste",
+      "Promjena značenja postojećeg statusnog koda",
+      "Preimenovanje polja koje svi klijenti čitaju",
+      "Dodavanje neobaveznog polja koje klijenti smiju zanemariti"
+    ],
+    "correctIndex": 3,
+    "explanation": "Aditivna, neobavezna promjena obično ne ruši tolerantne stare klijente, dok uklanjanje ili promjena značenja često ruše ugovor.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-222-primary-replica",
+    "topic": "arhitektura",
+    "unitId": "podaci-u-velikom",
+    "question": "Kako se najčešće dijele uloge primarne baze i replike za čitanje?",
+    "options": [
+      "Primarna prima upise, a replika poslužuje dio čitanja",
+      "Replika prima sve upise, a primarna služi samo backupu",
+      "Obje baze neovisno prihvaćaju iste upise bez usklađivanja",
+      "Primarna sprema indekse, a replika samo tekstualna polja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Replike mogu rasteretiti čitanja, dok se promjene upisuju na primarnoj bazi i zatim prenose replikama.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-223-shard-definition",
+    "topic": "arhitektura",
+    "unitId": "podaci-u-velikom",
+    "question": "Što je shard baze podataka?",
+    "options": [
+      "Potpuna sigurnosna kopija svih podataka sustava",
+      "Dio podataka dodijeljen jednoj particiji ili instanci",
+      "Privremeni rezultat jednog složenog SQL upita",
+      "Indeks koji sadrži samo najčešće korištene stupce"
+    ],
+    "correctIndex": 1,
+    "explanation": "Shardanje vodoravno dijeli skup zapisa; svaki shard drži samo dio ukupnih podataka prema odabranom ključu.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-224-read-write-load",
+    "topic": "arhitektura",
+    "unitId": "podaci-u-velikom",
+    "question": "Zašto se prije skaliranja baze odvojeno mjere čitanja i upisi?",
+    "options": [
+      "Jer svaka baza dopušta ili samo čitanje ili samo upisivanje",
+      "Jer se upiti za čitanje nikada ne mogu optimizirati indeksom",
+      "Jer različita uska grla traže različita rješenja skaliranja",
+      "Jer broj upisa uvijek mora biti jednak broju čitanja"
+    ],
+    "correctIndex": 2,
+    "explanation": "Mnogo čitanja može se rasteretiti kešem ili replikama, dok visok promet upisa može tražiti particioniranje i drukčiji model.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-225-denormalization-cost",
+    "topic": "arhitektura",
+    "unitId": "podaci-u-velikom",
+    "question": "Koju cijenu najčešće donosi denormalizacija podataka?",
+    "options": [
+      "Svaki upit mora koristiti mrežni load balancer",
+      "Podaci se više ne mogu spremati na trajni disk",
+      "Sustav automatski gubi svaku zaštitu transakcija",
+      "Duplikate podataka treba dosljedno ažurirati na više mjesta"
+    ],
+    "correctIndex": 3,
+    "explanation": "Denormalizacija ubrzava neka čitanja, ali uvodi više kopija iste činjenice koje mogu postati međusobno neusklađene.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-226-strong-consistency",
+    "topic": "arhitektura",
+    "unitId": "konzistentnost",
+    "question": "Što korisnik očekuje od jako konzistentnog čitanja nakon uspješnog upisa?",
+    "options": [
+      "Da odmah vidi potvrđenu novu vrijednost podatka",
+      "Da uvijek dobije vrijednost iz najbliže stare replike",
+      "Da sustav vrati bilo koju verziju radi manje latencije",
+      "Da se upis primijeni tek nakon sljedećeg čitanja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Jaka konzistentnost daje dojam jedne aktualne vrijednosti: potvrđeni upis mora biti vidljiv sljedećem relevantnom čitanju.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-227-idempotency-basic",
+    "topic": "arhitektura",
+    "unitId": "konzistentnost",
+    "question": "Što znači da je operacija idempotentna?",
+    "options": [
+      "Operacija se smije izvršiti samo jednom u životu sustava",
+      "Ponavljanje iste operacije ostavlja isti konačni učinak",
+      "Operacija uvijek vraća odgovor bez pristupa podacima",
+      "Operacija se izvršava istovremeno na svim servisima"
+    ],
+    "correctIndex": 1,
+    "explanation": "Mrežni klijent može ponoviti zahtjev nakon timeouta; idempotentan dizajn sprječava dvostruki poslovni učinak.",
+    "difficulty": "easy",
+    "conceptId": "idempotentnost"
+  },
+  {
+    "id": "arh-228-eventual-delay",
+    "topic": "arhitektura",
+    "unitId": "konzistentnost",
+    "question": "Što korisnik može kratko primijetiti kod eventualne konzistentnosti?",
+    "options": [
+      "Da se svi čvorovi trajno zaustave nakon svakog upisa",
+      "Da isti zapis više nikada nije moguće promijeniti",
+      "Da različita čitanja privremeno vraćaju različite verzije",
+      "Da svaki upis mora čekati potvrdu baš svakog čvora"
+    ],
+    "correctIndex": 2,
+    "explanation": "Replike se usklađuju s odgodom, pa neke kratko mogu vratiti stariju vrijednost prije nego sustav konvergira.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-229-compensating-action",
+    "topic": "arhitektura",
+    "unitId": "konzistentnost",
+    "question": "Čemu služi kompenzacijska radnja u distribuiranom procesu?",
+    "options": [
+      "Zaključava sve baze prije prvog koraka procesa",
+      "Pretvara asinkroni proces u jedan lokalni poziv",
+      "Jamči da se nijedan pojedini korak ne može pokvariti",
+      "Poslovno poništava učinak ranije uspjelog koraka"
+    ],
+    "correctIndex": 3,
+    "explanation": "Ako kasniji korak sage ne uspije, kompenzacija primjerice vraća rezervaciju ili refundira prethodno naplaćeni iznos.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-230-load-balancer-role",
+    "topic": "arhitektura",
+    "unitId": "skaliranje",
+    "question": "Koja je osnovna uloga load balancera?",
+    "options": [
+      "Raspoređuje dolazne zahtjeve na više dostupnih instanci",
+      "Sprema sve poslovne podatke umjesto aplikacijske baze",
+      "Prevodi izvorni kod u strojne instrukcije pri svakom pozivu",
+      "Trajno zamjenjuje nadzor, alarme i provjere zdravlja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Load balancer dijeli promet i obično izbjegava instance koje ne prolaze provjeru zdravlja.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-231-stateless-session",
+    "topic": "arhitektura",
+    "unitId": "skaliranje",
+    "question": "Gdje se obično sprema korisnička sesija da bi aplikacijske instance ostale bez stanja?",
+    "options": [
+      "Isključivo u lokalnu memoriju prve odabrane instance",
+      "U zajedničko spremište ili potpisani podatak kod klijenta",
+      "U konfiguracijsku datoteku ugrađenu u aplikacijski image",
+      "U DNS zapis domene preko koje korisnik pristupa"
+    ],
+    "correctIndex": 1,
+    "explanation": "Kad stanje nije vezano uz jednu instancu, bilo koja zdrava instanca može obraditi sljedeći korisnikov zahtjev.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-232-cache-goal",
+    "topic": "arhitektura",
+    "unitId": "skaliranje",
+    "question": "Koji je glavni cilj keširanja često čitanog podatka?",
+    "options": [
+      "Osigurati da se podatak nikada više ne promijeni",
+      "Ukloniti svaku potrebu za trajnim spremanjem podataka",
+      "Smanjiti kašnjenje i opterećenje izvornog spremišta",
+      "Pretvoriti sve operacije čitanja u operacije upisa"
+    ],
+    "correctIndex": 2,
+    "explanation": "Keš poslužuje česte rezultate bliže potrošaču, ali zahtijeva pravila isteka i osvježavanja podataka.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-233-autoscaling-signal",
+    "topic": "arhitektura",
+    "unitId": "skaliranje",
+    "question": "Koji signal može opravdano pokrenuti dodavanje aplikacijskih instanci?",
+    "options": [
+      "Promjena boje gumba u korisničkom sučelju",
+      "Broj komentara u repozitoriju izvornog koda",
+      "Veličina instalacijskog paketa na računalu programera",
+      "Trajno visoka potrošnja resursa ili duljina reda poslova"
+    ],
+    "correctIndex": 3,
+    "explanation": "Autoscaling treba reagirati na mjerljiv signal stvarnog opterećenja, uz pragove koji izbjegavaju stalno dodavanje i uklanjanje instanci.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-234-functional-requirement",
+    "topic": "arhitektura",
+    "unitId": "system-design",
+    "question": "Koji je primjer funkcionalnog zahtjeva za sustav poruka?",
+    "options": [
+      "Korisnik može poslati tekstualnu poruku drugom korisniku",
+      "Sustav treba podnijeti milijun istodobnih korisnika",
+      "Devedeset devet posto zahtjeva treba završiti ispod 200 ms",
+      "Usluga treba ostati dostupna tijekom ispada jedne regije"
+    ],
+    "correctIndex": 0,
+    "explanation": "Funkcionalni zahtjev opisuje što sustav radi; kapacitet, latencija i dostupnost nefunkcionalni su zahtjevi.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-235-scope-question",
+    "topic": "arhitektura",
+    "unitId": "system-design",
+    "question": "Zašto na početku system design intervjua treba razjasniti opseg?",
+    "options": [
+      "Kako bi se izbjeglo crtanje bilo kakve arhitekture",
+      "Kako bi se vrijeme usmjerilo na tražene funkcije i ograničenja",
+      "Kako bi ispitivač unaprijed otkrio konačno rješenje",
+      "Kako bi se odmah odabrao programski jezik za sve servise"
+    ],
+    "correctIndex": 1,
+    "explanation": "Nejasan zadatak ima previše mogućih smjerova; dogovoreni opseg određuje što treba projektirati i koje kompromise analizirati.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-236-access-pattern-database",
+    "topic": "arhitektura",
+    "unitId": "system-design",
+    "question": "Što treba znati prije izbora vrste baze podataka?",
+    "options": [
+      "Koju bazu trenutačno najčešće spominju oglasi za posao",
+      "Koji operacijski sustav koristi računalo kandidata",
+      "Kako će se podaci zapisivati, čitati i povezivati",
+      "Koju boju ima administracijsko sučelje baze"
+    ],
+    "correctIndex": 2,
+    "explanation": "Pristupni obrasci, konzistentnost, volumen i odnosi podataka vode izbor spremišta; popularnost sama nije tehnički zahtjev.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "arh-237-redundancy-purpose",
+    "topic": "arhitektura",
+    "unitId": "system-design",
+    "question": "Zašto se kritična komponenta postavlja u više instanci?",
+    "options": [
+      "Kako bi sve instance morale dijeliti isti proces i memoriju",
+      "Kako bi se izbjegla potreba za ikakvim testiranjem kvarova",
+      "Kako bi svaki zahtjev obavezno bio obrađen više puta",
+      "Kako kvar jedne instance ne bi zaustavio cijelu uslugu"
+    ],
+    "correctIndex": 3,
+    "explanation": "Redundancija uklanja pojedinačnu točku ispada samo ako se kvar otkriva i promet može prijeći na zdravu instancu.",
+    "difficulty": "easy"
   }
 ]
