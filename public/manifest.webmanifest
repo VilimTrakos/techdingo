@@ -1,0 +1,17 @@
+{
+  "name": "TechDingo — tehnički intervju kao igra",
+  "short_name": "TechDingo",
+  "description": "Uvježbaj tehnički intervju kroz kratke lekcije: SQL, frontend, backend, DevOps, mreže, sigurnost i još.",
+  "lang": "hr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f8faf7",
+  "theme_color": "#3bb44a",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
