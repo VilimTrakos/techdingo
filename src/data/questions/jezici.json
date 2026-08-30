@@ -1379,5 +1379,365 @@
       "context switch"
     ],
     "explanation": "Data race ima preciznu memorijsku definiciju u mnogim jezicima. Race condition može postojati i uz pojedinačno sigurne operacije ako je širi protokol pogrešan."
+  },
+  {
+    "id": "jezici-300-tip-primjer",
+    "topic": "jezici",
+    "unitId": "tipovi",
+    "difficulty": "easy",
+    "question": "Koji tip je prirodan izbor za broj korisnika u sustavu?",
+    "options": [
+      "Cijeli broj",
+      "Tekst",
+      "Logička vrijednost",
+      "Vrijeme i datum"
+    ],
+    "correctIndex": 0,
+    "explanation": "Broj koji se prebrojava je cijeli broj. Tekst bi dopustio i vrijednosti koje nisu broj."
+  },
+  {
+    "id": "jezici-301-boolean",
+    "topic": "jezici",
+    "unitId": "tipovi",
+    "difficulty": "easy",
+    "question": "Koje vrijednosti može poprimiti logički (boolean) tip?",
+    "options": [
+      "Točno ili netočno",
+      "Bilo koji cijeli broj",
+      "Prazno ili popunjeno",
+      "Samo nulu ili jedinicu kao tekst"
+    ],
+    "correctIndex": 0,
+    "explanation": "Boolean ima točno dvije vrijednosti. U nekim jezicima se prikazuju kao 1 i 0, ali tip je i dalje logički."
+  },
+  {
+    "id": "jezici-302-tip-greska",
+    "topic": "jezici",
+    "unitId": "tipovi",
+    "difficulty": "easy",
+    "question": "Što se najčešće dogodi kad se broju pokuša pridružiti tekst u jeziku sa strogim tipovima?",
+    "options": [
+      "Prevoditelj javi grešku prije pokretanja",
+      "Vrijednost se tiho pretvori u nulu",
+      "Program se pokrene pa preskoči tu naredbu",
+      "Varijabla ostane bez vrijednosti do kraja"
+    ],
+    "correctIndex": 0,
+    "explanation": "To je glavna korist statičkih tipova: greška se vidi prije nego program dođe do korisnika."
+  },
+  {
+    "id": "jezici-303-varijabla-memorija",
+    "topic": "jezici",
+    "unitId": "memorija",
+    "difficulty": "easy",
+    "question": "Što je memorija u kontekstu programa?",
+    "options": [
+      "Prostor u kojem program drži vrijednosti dok radi",
+      "Trajni zapis na disku nakon gašenja",
+      "Popis naredbi koje procesor tek treba izvršiti",
+      "Međuspremnik mrežne kartice za pakete"
+    ],
+    "correctIndex": 0,
+    "explanation": "Memorija je radna, ne trajna. Kad se program ugasi, sadržaj nestaje."
+  },
+  {
+    "id": "jezici-304-oslobadjanje",
+    "topic": "jezici",
+    "unitId": "memorija",
+    "difficulty": "easy",
+    "question": "Zašto program mora osloboditi memoriju koju više ne treba?",
+    "options": [
+      "Inače je zauzeće raste dok ne ostane bez memorije",
+      "Inače se podaci u njoj oštete nakon nekog vremena",
+      "Inače operativni sustav odbije pokrenuti druge programe",
+      "Inače se pri sljedećem pokretanju ne može pročitati"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zauzeće koje samo raste zove se curenje memorije. Prije ili kasnije program stane."
+  },
+  {
+    "id": "jezici-305-sakupljac",
+    "topic": "jezici",
+    "unitId": "memorija",
+    "difficulty": "easy",
+    "question": "Što radi sakupljač smeća (garbage collector)?",
+    "options": [
+      "Sam oslobađa memoriju do koje program više ne može doći",
+      "Briše datoteke koje program nije zatvorio",
+      "Sprema stanje programa da se može nastaviti kasnije",
+      "Zbija podatke da zauzmu manje prostora na disku"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ključna je dohvatljivost: ako do vrijednosti ne vodi nijedna referenca, program je više ne može upotrijebiti."
+  },
+  {
+    "id": "jezici-306-kopija",
+    "topic": "jezici",
+    "unitId": "vrijednosti-reference",
+    "difficulty": "easy",
+    "question": "Što znači kopirati vrijednost?",
+    "options": [
+      "Nastaje druga vrijednost koja se mijenja neovisno",
+      "Nastaje drugo ime za isti podatak u memoriji",
+      "Podatak se premjesti na novo mjesto i staro se briše",
+      "Podatak postaje nepromjenjiv do kraja programa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kopija je odvojena. Izmjena jedne ne dira drugu — po tome se razlikuje od reference."
+  },
+  {
+    "id": "jezici-307-referenca",
+    "topic": "jezici",
+    "unitId": "vrijednosti-reference",
+    "difficulty": "easy",
+    "question": "Što znači da dvije varijable pokazuju na isti objekt?",
+    "options": [
+      "Izmjena preko jedne vidi se i kroz drugu",
+      "Svaka od njih ima vlastitu kopiju sadržaja",
+      "Druga varijabla postaje samo za čitanje",
+      "Objekt se automatski udvostruči pri izmjeni"
+    ],
+    "correctIndex": 0,
+    "explanation": "To je najčešći izvor iznenađenja: mislio si da mijenjaš svoju kopiju, a mijenjaš zajednički objekt."
+  },
+  {
+    "id": "jezici-308-nepromjenjivo",
+    "topic": "jezici",
+    "unitId": "vrijednosti-reference",
+    "difficulty": "easy",
+    "question": "Što vrijedi za nepromjenjivu (immutable) vrijednost?",
+    "options": [
+      "Ne mijenja se, nego se stvara nova s izmjenom",
+      "Mijenja se samo unutar funkcije koja ju je stvorila",
+      "Mijenja se, ali izmjena postaje vidljiva tek kasnije",
+      "Sprema se na disk umjesto u radnu memoriju"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zato je nepromjenjive vrijednosti sigurno dijeliti: nitko ih ne može promijeniti pod tobom."
+  },
+  {
+    "id": "jezici-309-funkcija-svrha",
+    "topic": "jezici",
+    "unitId": "paradigme",
+    "difficulty": "easy",
+    "question": "Čemu prvenstveno služi funkcija?",
+    "options": [
+      "Imenuje i izdvaja dio posla da se može ponoviti",
+      "Ubrzava program time što zaobilazi memoriju",
+      "Osigurava da se kod izvrši točno jednom",
+      "Pretvara podatke iz jednog tipa u drugi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ponovna upotreba i ime koje objašnjava namjeru — oboje je vrijednije od uštede redaka."
+  },
+  {
+    "id": "jezici-310-argument-povrat",
+    "topic": "jezici",
+    "unitId": "paradigme",
+    "difficulty": "easy",
+    "question": "Koja je razlika između argumenta i povratne vrijednosti?",
+    "options": [
+      "Argument ulazi u funkciju, povratna vrijednost izlazi",
+      "Argument izlazi iz funkcije, povratna ulazi",
+      "Argument je uvijek broj, povratna vrijednost tekst",
+      "Argument se koristi samo kod čistih funkcija"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ulaz i izlaz. Funkcija bez povratne vrijednosti obično radi nešto s nuspojavom."
+  },
+  {
+    "id": "jezici-311-deklarativno",
+    "topic": "jezici",
+    "unitId": "paradigme",
+    "difficulty": "easy",
+    "question": "Što znači deklarativno opisati što želiš?",
+    "options": [
+      "Kažeš kakav rezultat želiš, ne korak po korak kako",
+      "Napišeš svaki korak izvršavanja redom",
+      "Sve varijable deklariraš na početku programa",
+      "Tipove navodiš izričito umjesto da se zaključe"
+    ],
+    "correctIndex": 0,
+    "explanation": "SQL je dobar primjer: tražiš koje retke želiš, a baza bira kako će do njih doći."
+  },
+  {
+    "id": "jezici-312-paralelno",
+    "topic": "jezici",
+    "unitId": "konkurentnost",
+    "difficulty": "easy",
+    "question": "Što znači da program radi više stvari istodobno?",
+    "options": [
+      "Više poslova napreduje bez čekanja da prethodni završi",
+      "Isti posao se izvršava više puta radi sigurnosti",
+      "Program koristi više memorije nego inače",
+      "Naredbe se izvršavaju obrnutim redoslijedom"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ključno je da napreduju usporedno. Sekvencijalni program mora čekati da prethodni korak završi."
+  },
+  {
+    "id": "jezici-313-dretva",
+    "topic": "jezici",
+    "unitId": "konkurentnost",
+    "difficulty": "easy",
+    "question": "Što je dretva (thread)?",
+    "options": [
+      "Tok izvršavanja unutar istog programa",
+      "Zaseban program s vlastitom memorijom",
+      "Red u koji se spremaju poruke između programa",
+      "Kopija programa pokrenuta na drugom računalu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dretve dijele memoriju programa — zato su brze, i zato je dijeljeni podatak opasan."
+  },
+  {
+    "id": "jezici-314-cekanje",
+    "topic": "jezici",
+    "unitId": "konkurentnost",
+    "difficulty": "easy",
+    "question": "Zašto se dohvat podataka s mreže obično radi asinkrono?",
+    "options": [
+      "Da program ne stoji dok čeka odgovor",
+      "Da se odgovor obavezno spremi u međuspremnik",
+      "Da se zahtjev pošalje više puta zaredom",
+      "Da podaci stignu ispravnim redoslijedom"
+    ],
+    "correctIndex": 0,
+    "explanation": "Mreža je spora u odnosu na procesor. Sinkrono čekanje znači zamrznuto sučelje."
+  },
+  {
+    "id": "jezici-315-izvorni-kod",
+    "topic": "jezici",
+    "unitId": "izvodjenje-koda",
+    "difficulty": "easy",
+    "question": "Što je izvorni kod?",
+    "options": [
+      "Tekst programa koji piše čovjek",
+      "Oblik programa koji procesor izravno izvršava",
+      "Zapis pogrešaka nastalih pri pokretanju",
+      "Popis vanjskih biblioteka koje program koristi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Procesor ga ne razumije izravno — treba ga prevesti ili protumačiti."
+  },
+  {
+    "id": "jezici-316-prevoditelj",
+    "topic": "jezici",
+    "unitId": "izvodjenje-koda",
+    "difficulty": "easy",
+    "question": "Što radi prevoditelj (compiler)?",
+    "options": [
+      "Pretvara izvorni kod u oblik koji stroj izvršava",
+      "Pokreće kod redak po redak dok program radi",
+      "Preuzima biblioteke o kojima program ovisi",
+      "Prati koliko memorije program troši"
+    ],
+    "correctIndex": 0,
+    "explanation": "Prevođenje se dogodi prije pokretanja, pa se dio grešaka uhvati tada."
+  },
+  {
+    "id": "jezici-317-greska-kad",
+    "topic": "jezici",
+    "unitId": "izvodjenje-koda",
+    "difficulty": "easy",
+    "question": "Kad se otkriva greška u sintaksi?",
+    "options": [
+      "Prije pokretanja, jer se kod ne može ni prevesti",
+      "Tek kad korisnik dođe do tog dijela programa",
+      "Nikad, jer sintaksu provjerava sam operativni sustav",
+      "Pri sljedećem pokretanju, iz zapisa grešaka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zato su sintaktičke greške najjeftinije: nikad ne dođu do korisnika."
+  },
+  {
+    "id": "jezici-318-iznimka",
+    "topic": "jezici",
+    "unitId": "greske",
+    "difficulty": "easy",
+    "question": "Što se dogodi kad se baci iznimka, a nitko je ne uhvati?",
+    "options": [
+      "Program se prekida i javlja grešku",
+      "Program nastavi od sljedeće naredbe",
+      "Iznimka se zapiše i pokuša ponovno kasnije",
+      "Vrijednost funkcije postane prazna"
+    ],
+    "correctIndex": 0,
+    "explanation": "Neuhvaćena iznimka ruši program. To je često bolje od tihog nastavka s neispravnim stanjem."
+  },
+  {
+    "id": "jezici-319-validacija",
+    "topic": "jezici",
+    "unitId": "greske",
+    "difficulty": "easy",
+    "question": "Zašto se korisnički unos provjerava prije upotrebe?",
+    "options": [
+      "Jer može biti prazan, krivog oblika ili zlonamjeran",
+      "Jer se inače ne može spremiti u bazu podataka",
+      "Jer bi inače zauzeo previše mjesta u memoriji",
+      "Jer se tekst mora pretvoriti u broj prije ispisa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nikad ne vjeruj ulazu koji dolazi izvana — ni korisnikovom, ni tuđeg servisa."
+  },
+  {
+    "id": "jezici-320-poruka-greske",
+    "topic": "jezici",
+    "unitId": "greske",
+    "difficulty": "easy",
+    "question": "Kakva poruka o grešci najviše pomaže onome tko je vidi?",
+    "options": [
+      "Ona koja kaže što je pošlo po zlu i što sad",
+      "Ona koja sadrži cijeli ispis stanja programa",
+      "Ona koja je što kraća da ne zbuni korisnika",
+      "Ona koja upućuje na dokumentaciju biblioteke"
+    ],
+    "correctIndex": 0,
+    "explanation": "Korisniku treba sljedeći korak, ne dijagnostika. Dijagnostika ide u zapisnik."
+  },
+  {
+    "id": "jezici-321-doseg",
+    "topic": "jezici",
+    "unitId": "funkcije-i-opseg",
+    "difficulty": "easy",
+    "question": "Što znači da je varijabla lokalna za funkciju?",
+    "options": [
+      "Postoji samo unutar te funkcije",
+      "Vidi se u cijelom programu nakon prvog poziva",
+      "Zadržava vrijednost između dva poziva funkcije",
+      "Može se mijenjati samo jednom"
+    ],
+    "correctIndex": 0,
+    "explanation": "Lokalnost je zaštita: manje koda može je pokvariti."
+  },
+  {
+    "id": "jezici-322-parametar",
+    "topic": "jezici",
+    "unitId": "funkcije-i-opseg",
+    "difficulty": "easy",
+    "question": "Što je parametar funkcije?",
+    "options": [
+      "Ime pod kojim funkcija prima ulaznu vrijednost",
+      "Vrijednost koju funkcija vraća pozivatelju",
+      "Varijabla vidljiva svim funkcijama u datoteci",
+      "Oznaka koliko puta se funkcija smije pozvati"
+    ],
+    "correctIndex": 0,
+    "explanation": "Parametar je ime u definiciji; ono što proslijediš pri pozivu je argument."
+  },
+  {
+    "id": "jezici-323-povratak",
+    "topic": "jezici",
+    "unitId": "funkcije-i-opseg",
+    "difficulty": "easy",
+    "question": "Što se dogodi s kodom koji stoji nakon naredbe return?",
+    "options": [
+      "Ne izvršava se, jer funkcija tu završava",
+      "Izvršava se prije nego vrijednost ode pozivatelju",
+      "Izvršava se samo ako funkcija nema parametara",
+      "Prevoditelj ga premjesti na početak funkcije"
+    ],
+    "correctIndex": 0,
+    "explanation": "return je izlaz iz funkcije. Kod iza njega je mrtav i većina alata to prijavi."
   }
 ]
